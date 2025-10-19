@@ -2,7 +2,7 @@
 
 **Project:** Cathay General Bancorp (CATY) SELL Thesis
 **Analyst:** Nirvan Chitnis
-**Last Updated:** October 18, 2025
+**Last Updated:** October 19, 2025
 
 ---
 
@@ -167,7 +167,8 @@ evidence/
 **Purpose:** Peer comparison for P/TBV regression validation
 **Peers:** 8 regional banks (EWBC, CVBF, HAFC, HOPE, COLB, WAFD, PPBI, BANC)
 **Columns:** Ticker, Price, TBVPS, P/TBV, ROTE, CRE %, Mkt Cap, Source
-**Status:** Citations pending — numerical placeholders require loan footnote sourcing
+**Status:** Citations locked for all eight peers Oct 19, 2025 03:45 PT (CVBF & HOPE cite untagged loan footnote tables; rationale noted in CSV)
+**Notes:** Inline parser upgraded for scaling + segment selection with fallback to portfolio percentages; manual footnote references retained where XBRL facts absent.
 
 **Citation columns:** TBVPS_Citation, ROTE_Citation, CRE_Citation added Oct 18 to enforce source discipline
 
@@ -322,7 +323,7 @@ curl -sL 'https://api.fdic.gov/banks/financials?filters=CERT:18503&dates=2024-12
 | 2025-10-18 | 1700 | HTML updates (office data) | CATY_08_cre_exposure.html, index.html | Git commit c008ee0 | ✅ PUSHED |
 | 2025-10-18 | 1700 | Evidence folder complete | 13 files added | Git commit 2ff43c0 | ✅ PUSHED |
 | 2025-10-18 | 2125 | Peer filings compressed | *.html → *.html.gz | SHA256 set (see File Inventory) | ✅ UPDATED |
-| 2025-10-19 | 0830 | Peer metric automation | analysis/extract_peer_metrics.py; peer_snapshot_2025Q2.csv | v0.3 (inline XBRL parser w/ CRE capture) | ✅ UPDATED |
+| 2025-10-19 | 0830 | Peer metric automation | analysis/extract_peer_metrics.py; peer_snapshot_2025Q2.csv | v0.4 (scaled facts + CRE capture, citations populated) | ✅ UPDATED |
 
 **Governance Protocol:**
 - All primary sources require SHA256 hash documentation
