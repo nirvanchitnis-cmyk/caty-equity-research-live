@@ -23,11 +23,12 @@ Institutional-grade equity research report analyzing Cathay General Bancorp with
 
 ## 🎯 Investment Thesis
 
-### **SELL Rating** - Target Price: **$40.32 (-12.1%)**
+### **HOLD Rating** - Expected Price: **$51.97 (+13.3%)**
 
-**Current Price:** $45.89 (Oct 17, 2025)
+**Current Price:** $45.87 (Oct 18, 2025)
+**Wilson 95% Bounds:** 74/26 probability split validates HOLD
 
-#### Key Drivers:
+#### Key Findings:
 1. **Through-Cycle NCO Normalization (42.8 bps)**
    - Current LTM NCO: 18.1 bps
    - 17-year average (2008-2024): 42.8 bps
