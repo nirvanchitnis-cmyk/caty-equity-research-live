@@ -397,3 +397,43 @@ bf768e927f6ea9d112218930e07af3374bb730699550f79fb8324f64d916ed79  PPBI_2025-06-3
 ```
 
 **Note:** Original HTML files decompressed on-demand for parsing. Compressed format reduces repo footprint from ~50MB to ~2.3MB while preserving full audit trail.
+
+---
+
+## VALUATION & PROBABILITY ANALYSIS - OCTOBER 19, 2025
+
+### Wilson 95% Confidence Bound Analysis
+
+**File:** analysis/PROBABILITY_WEIGHTED_VALUATION.md  
+**Updated:** 2025-10-19 05:22 PT  
+**SHA256:** [To be calculated]
+
+**Key Findings:**
+- Post-2014 breach rate: 0.0% (46 quarters)
+- Wilson 95% upper bound: 26% normalization probability
+- Expected return at 74/26: +13.3% (HOLD validated)
+- BUY trigger: tail <21.5%
+
+**File:** analysis/rating_policy.md  
+**Created:** 2025-10-19 05:15 PT  
+**SHA256:** [To be calculated]
+
+**Policy:**
+- BUY: Expected return >+15%
+- HOLD: -10% to +15%
+- SELL: <-10%
+- Auto-flip when confidence band moves
+
+### Probability Dashboard
+
+**File:** evidence/probability_dashboard.md  
+**Created:** 2025-10-19 05:40 PT  
+**Monitoring:** Quarterly post-earnings, monthly market-implied tracking
+
+### Sensitivity Analysis
+
+**File:** evidence/valuation_sensitivity_summary.md  
+**Elasticity:** -$1.83 per 10 bps NCO, -$1.57 per 10 bps deposit beta
+
+---
+
