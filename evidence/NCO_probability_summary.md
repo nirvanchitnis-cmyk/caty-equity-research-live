@@ -6,13 +6,13 @@ Data source: FDIC Bank Financials API (field `NTLNLSCOQR`). Values represent ann
 
 Threshold: 45.8 bps (0.458%) total loan & lease net charge-off ratio
 
-| Window | Quarters | Breach Probability |
-|--------|----------|--------------------|
-| Full history (since 1984) | 166 | 13.3% |
-| Post-2000 | 102 | 12.7% |
-| Post-GFC (>= 2008) | 70 | 15.7% |
-| Post-2014 | 46 | 0.0% |
-| Post-2020 | 22 | 0.0% |
+| Window | Quarters | Breach Probability | 95% Upper Bound |
+|--------|----------|--------------------|------------------|
+| Full history (since 1984) | 166 | 13.3% | 19.3% |
+| Post-2000 | 102 | 12.7% | 20.6% |
+| Post-GFC (>= 2008) | 70 | 15.7% | 26.0% |
+| Post-2014 | 46 | 0.0% | 7.7% |
+| Post-2020 | 22 | 0.0% | 14.9% |
 
 | Trailing sample | Breach Probability |
 |-----------------|--------------------|
