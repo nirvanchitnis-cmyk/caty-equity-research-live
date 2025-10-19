@@ -143,11 +143,29 @@ evidence/
 **Source URL:** https://api.fdic.gov/banks/financials?filters=CERT:18503%20AND%20REPDTE:20250630&fields=LNLS,LNRECNFM,LNRECNOT,LNREMULT,LNRENROW,LNRENROT,LNRELOC,LNREAG,REPDTE&format=json
 **Notes:** Stored in `evidence/raw/`; used to populate RC-C reconciliation table.
 
+### raw/fdic_CATY_NTLNLSCOQR_timeseries.csv
+**Purpose:** Historical quarterly total loan & lease net charge-off ratios (NTLNLSCOQR) for Cathay Bank
+**Status:** ✅ ARCHIVED Oct 19, 2025 11:05 PT
+**File Size:** 16 KB
+**SHA256:** `8c3c4d488823df90a61aefcbfccdedf91f891bf27dcf241d56cab4b2622cb5e3`
+**Source URL:** https://api.fdic.gov/banks/financials?filters=CERT:18503&fields=REPDTE,NTLNLSCOQR&sort_by=REPDTE&order=asc&limit=500&format=csv
+**Notes:** Basis for scenario-weight probability study (`analysis/nco_probability_analysis.py`). Replace SHA after hash log run.
+
 ### parser_regression_log.txt
 **Purpose:** Pytest run of `analysis/tests/test_peer_extraction.py`
 **Status:** ✅ GENERATED Oct 19, 2025 04:40 PT
 **SHA256:** `9a111c6b63c4a4aa664af863164c51bfeb79978e847579440ff8bb5c63e502f2`
 **Notes:** Captures pass/fail status and pytest warnings for peer extraction suite.
+
+### NCO_probability_summary.md
+**Purpose:** Probability table for breaching the 45.8 bps through-cycle NCO assumption
+**Status:** ✅ GENERATED Oct 19, 2025 11:05 PT via `analysis/nco_probability_analysis.py`
+**Key findings:** 0% breach rate post-2014; rolling 4-quarter averages last exceeded threshold in 2012
+
+### valuation_sensitivity_summary.md
+**Purpose:** Maps NCO and deposit beta shocks into price deltas using regression slope
+**Status:** ✅ GENERATED Oct 19, 2025 11:07 PT via `analysis/valuation_sensitivity.py`
+**Key deltas:** +10 bps NCO → -$1.83, +10 bps deposit beta → -$1.57
 
 ### 2. acl_bridge_2023Q3-2025Q2_FINAL.csv
 ### peer_extraction_template.md
