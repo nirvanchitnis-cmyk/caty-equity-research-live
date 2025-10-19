@@ -1,0 +1,27 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.12.11, pytest-7.4.4, pluggy-1.0.0
+rootdir: /Users/nirvanchitnis/Desktop/CATY_Clean
+plugins: anyio-4.2.0
+collected 4 items
+
+analysis/tests/test_peer_extraction.py ....                              [100%]
+
+=============================== warnings summary ===============================
+analysis/tests/test_peer_extraction.py::test_ewbc_extraction
+  /opt/anaconda3/lib/python3.12/site-packages/_pytest/python.py:198: PytestReturnNotNoneWarning: Expected None, but analysis/tests/test_peer_extraction.py::test_ewbc_extraction returned True, which will be an error in a future version of pytest.  Did you mean to use `assert` instead of `return`?
+    warnings.warn(
+
+analysis/tests/test_peer_extraction.py::test_cvbf_high_cre_flag
+  /opt/anaconda3/lib/python3.12/site-packages/_pytest/python.py:198: PytestReturnNotNoneWarning: Expected None, but analysis/tests/test_peer_extraction.py::test_cvbf_high_cre_flag returned True, which will be an error in a future version of pytest.  Did you mean to use `assert` instead of `return`?
+    warnings.warn(
+
+analysis/tests/test_peer_extraction.py::test_ppbi_extraction
+  /opt/anaconda3/lib/python3.12/site-packages/_pytest/python.py:198: PytestReturnNotNoneWarning: Expected None, but analysis/tests/test_peer_extraction.py::test_ppbi_extraction returned True, which will be an error in a future version of pytest.  Did you mean to use `assert` instead of `return`?
+    warnings.warn(
+
+analysis/tests/test_peer_extraction.py::test_all_peers_extraction
+  /opt/anaconda3/lib/python3.12/site-packages/_pytest/python.py:198: PytestReturnNotNoneWarning: Expected None, but analysis/tests/test_peer_extraction.py::test_all_peers_extraction returned True, which will be an error in a future version of pytest.  Did you mean to use `assert` instead of `return`?
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+======================== 4 passed, 4 warnings in 0.41s =========================
