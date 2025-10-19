@@ -147,9 +147,9 @@ Total: 14 files (~648K)
 | Metric | Value | Source |
 |--------|-------|--------|
 | **Valuation** | | |
-| Current Price | $45.89 | Oct 17, 2025 |
-| Target Price | $40.32 | Base case (42.8 bps NCO) |
-| Downside | -12.1% | SELL |
+| Current Price | $45.87 | Oct 18, 2025 |
+| Expected Price | $51.97 | Wilson 95% (74/26) |
+| Expected Return | +13.3% | HOLD |
 | P/TBV | 1.269x | Current |
 | Target P/TBV | 1.115x | Normalized |
 | **Profitability** | | |
