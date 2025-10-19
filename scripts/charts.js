@@ -286,3 +286,34 @@ async function initValuationChart(canvasId) {
 
     return createValuationChart(canvasId, chartData);
 }
+
+// Fetch NCO history from JSON
+async function fetchNCOHistory() {
+    try {
+        const response = await fetch('data/fdic_nco_history.json');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return await response.json();
+    } catch (error) {
+        console.error('Error fetching NCO history:', error);
+        return null;
+    }
+}
+
+// Initialize NCO trend chart from FDIC history
+async function initNCOChart(canvasId) {
+    const ncoHistory = await fetchNCOHistory();
+
+    if (!ncoHistory) {
+        console.error('Failed to load NCO history');
+        return null;
+    }
+
+    const chartData = {
+        labels: ncoHistory.labels,
+        values: ncoHistory.values
+    };
+
+    return createNCOTrendChart(canvasId, chartData);
+}

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CATY - Valuation Model | Data Repository</title>
     <link rel="stylesheet" href="styles/caty-equity-research.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 </head>
 <body>
     <!-- Theme Toggle -->
@@ -317,6 +318,38 @@
                 and ultimately the target P/TBV multiple and price. The <strong>42.8 bps base case</strong> is anchored
                 to 17 years of empirical FDIC data.
             </p>
+
+            <h3>NCO Historical Trend (Post-2008)</h3>
+            <p class="text-secondary">FDIC quarterly net charge-off rate from 2008-Q1 to 2025-Q2 (70 quarters including GFC and COVID)</p>
+
+            <div class="chart-container chart-container-centered">
+                <canvas id="ncoTrendChart" aria-label="NCO trend chart showing quarterly net charge-off rates from 2008 to 2025, highlighting through-cycle assumption of 42.8 basis points"></canvas>
+            </div>
+
+            <div class="price-target-grid price-target-grid-spaced">
+                <div class="metric-card">
+                    <div class="metric-label">Current NCO (Q2 2025)</div>
+                    <div class="metric-value">18.1 bps</div>
+                    <div class="metric-subtext">Below through-cycle average</div>
+                </div>
+                <div class="metric-card metric-card-gold">
+                    <div class="metric-label">Through-Cycle NCO</div>
+                    <div class="metric-value">42.8 bps</div>
+                    <div class="metric-subtext">2008-2025 FDIC average</div>
+                </div>
+                <div class="metric-card metric-card-danger">
+                    <div class="metric-label">GFC Peak (2009)</div>
+                    <div class="metric-value">306 bps</div>
+                    <div class="metric-subtext">Severe stress scenario</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Sample Size</div>
+                    <div class="metric-value">70 qtrs</div>
+                    <div class="metric-subtext">17+ years of data</div>
+                </div>
+            </div>
+
+            <h3>NCO Sensitivity Analysis</h3>
 
             <table>
                 <thead>
@@ -1008,5 +1041,30 @@
 
     <!-- JavaScript for Theme Toggle -->
     <script src="scripts/theme-toggle.js"></script>
+    <script src="scripts/charts.js"></script>
+
+    <!-- Initialize NCO Chart -->
+    <script>
+        // Store chart instances globally for theme updates
+        let chartInstances = [];
+
+        // Initialize NCO trend chart
+        document.addEventListener('DOMContentLoaded', async function() {
+            const ncoChart = await initNCOChart('ncoTrendChart');
+            if (ncoChart) {
+                chartInstances.push(ncoChart);
+            }
+
+            // Re-render charts when theme changes
+            const originalToggleTheme = window.toggleTheme;
+            window.toggleTheme = function() {
+                originalToggleTheme();
+                // Small delay to let CSS variables update
+                setTimeout(() => {
+                    updateChartsOnThemeChange(chartInstances);
+                }, 100);
+            };
+        });
+    </script>
 </body>
 </html>
