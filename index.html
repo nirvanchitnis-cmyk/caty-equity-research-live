@@ -2284,25 +2284,36 @@
                 <li><a href="CATY_08_cre_exposure.html" target="_blank" rel="noopener noreferrer">08: CRE Exposure</a> - CRE 52.4% of loans; office detail NOT_DISCLOSED</li>
                 <li><a href="CATY_09_capital_liquidity_aoci.html" target="_blank" rel="noopener noreferrer">09: Capital & Liquidity</a> - Regulatory capital ratios, RWA, pro forma analysis</li>
                 <li><a href="CATY_10_capital_actions.html" target="_blank" rel="noopener noreferrer">10: Capital Actions</a> - Dividends, buyback authorization and execution</li>
-                <li><a href="CATY_11_peers_normalized.html" target="_blank" rel="noopener noreferrer">11: Peer Comparison</a> - Peer comparison (EWBC, CVBF, HAFC, HOPE) with normalized metrics</li>
+                <li><a href="CATY_11_peers_normalized.html" target="_blank" rel="noopener noreferrer">11: Peer Comparison</a> - Peer comparison (EWBC, CVBF, HAFC, COLB, WAFD, PPBI, BANC) with regression diagnostics</li>
                 <li><a href="CATY_12_valuation_model.html" target="_blank" rel="noopener noreferrer">12: Valuation Model</a> - Regression, implied COE, P/TBV mapping, scenarios, sensitivities</li>
             </ul>
 
-            <h3>Methodology Documentation</h3>
+            <h3>Methodology &amp; IRC Appendices</h3>
             <ul>
-                <li><a href="" target="_blank" rel="noopener noreferrer">DEPOSIT_BETA_METHODOLOGY.md</a> - Beta calculation framework (IB-only vs All-in, cycle anchors)</li>
-                <li><a href="" target="_blank" rel="noopener noreferrer">VERIFICATION_GATING_SYSTEM.md</a> - Data quality controls and blocking rules</li>
-                <li><a href="" target="_blank" rel="noopener noreferrer">QA_SUMMARY_PHASE1A.md</a> - Phase 1A quality assurance results</li>
+                <li><a href="APPENDIX_INDEX.md" target="_blank" rel="noopener noreferrer">APPENDIX_INDEX.md</a> - Navigation map for all CFA IRC-grade supporting materials</li>
+                <li><a href="evidence/PEER_REGRESSION_METHODOLOGY.md" target="_blank" rel="noopener noreferrer">PEER_REGRESSION_METHODOLOGY.md</a> - Seven-peer regression with Cook's Distance diagnostics and jackknife tests</li>
+                <li><a href="analysis/RESIDUAL_INCOME_VALUATION.md" target="_blank" rel="noopener noreferrer">RESIDUAL_INCOME_VALUATION.md</a> - Residual Income Model (RIM) valuation, 60% weight in blended target</li>
+                <li><a href="analysis/MONTE_CARLO_VALUATION.md" target="_blank" rel="noopener noreferrer">MONTE_CARLO_VALUATION.md</a> - 10,000-path simulation with VaR/CVaR and Wilson overlay</li>
+                <li><a href="analysis/ESG_MATERIALITY_MATRIX.md" target="_blank" rel="noopener noreferrer">ESG_MATERIALITY_MATRIX.md</a> - SASB/TCFD materiality map informing valuation adjustments</li>
+                <li><a href="evidence/CLIMATE_RISK_CRE_PORTFOLIO.md" target="_blank" rel="noopener noreferrer">CLIMATE_RISK_CRE_PORTFOLIO.md</a> - TCFD 2°C scenario for CRE portfolio and capital impact</li>
+                <li><a href="evidence/SOCIAL_IMPACT_COMMUNITY_BANKING_MOAT.md" target="_blank" rel="noopener noreferrer">SOCIAL_IMPACT_COMMUNITY_BANKING_MOAT.md</a> - Social moat valuation quantifying deposit stickiness</li>
+                <li><a href="evidence/COE_TRIANGULATION.md" target="_blank" rel="noopener noreferrer">COE_TRIANGULATION.md</a> - CAPM, Fama-French, and dividend-derived cost of equity triangulation</li>
+                <li><a href="evidence/GORDON_GROWTH_PARAMETER_DEFENSE.md" target="_blank" rel="noopener noreferrer">GORDON_GROWTH_PARAMETER_DEFENSE.md</a> - Growth rate, payout, and tax rationale for normalized path</li>
+                <li><a href="analysis/INVESTMENT_RISK_MATRIX.md" target="_blank" rel="noopener noreferrer">INVESTMENT_RISK_MATRIX.md</a> - Probability × impact framework with quantified downside scenarios</li>
+                <li><a href="analysis/monitoring_runbook.md" target="_blank" rel="noopener noreferrer">monitoring_runbook.md</a> - Post-earnings refresh checklist and cadence</li>
+                <li><a href="analysis/PROBABILITY_WEIGHTED_VALUATION.md" target="_blank" rel="noopener noreferrer">PROBABILITY_WEIGHTED_VALUATION.md</a> - Wilson 95% automation and rating trigger documentation</li>
+                <li><a href="evidence/WILSON_WINDOW_METHODOLOGY.md" target="_blank" rel="noopener noreferrer">WILSON_WINDOW_METHODOLOGY.md</a> - Window selection defense (post-2008 vs post-2014 vs post-2020)</li>
             </ul>
+            <p><strong>Target Posture Reminder:</strong> benchmark all work against CFA IRC-winning materials kept locally at <code>/Users/nirvanchitnis/Downloads/Target CFA Report Posuture.pdf</code> and <code>/Users/nirvanchitnis/Downloads/rc-2020-winning-presentation-university-of-sydney.pdf</code>. Commit cadence, not calendar, governs improvement.</p>
 
             <h3>Key Assumptions & Sensitivities</h3>
 
             <h4>Valuation Assumptions</h4>
             <ul>
-                <li><strong>Cost of Equity:</strong> 9.59% (peer-calibrated mean via implied COE calculation)</li>
-                <li><strong>Sustainable Growth:</strong> 2.5% (assumption - not empirically derived from CATY historical TBV growth)</li>
-                <li><strong>Through-Cycle NCO:</strong> 25 bps (peer median ~24.6 bps; CATY historical 18.1 bps LTM)</li>
-                <li><strong>Normalized ROTE:</strong> 11.52% (adjusts for through-cycle provisioning vs LTM actuals)</li>
+                <li><strong>Cost of Equity:</strong> 9.587% (triangulated via CAPM, Fama-French, DDM)</li>
+                <li><strong>Sustainable Growth:</strong> 2.5% (long-run nominal GDP proxy, normalized for buyback effects)</li>
+                <li><strong>Through-Cycle NCO:</strong> 42.8 bps (17-year FDIC history including GFC, plus CRE premium)</li>
+                <li><strong>Normalized ROTE:</strong> 10.21% (Gordon Growth path post provision normalization)</li>
             </ul>
 
             <h4>Sensitivity Analysis Summary</h4>

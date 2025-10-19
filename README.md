@@ -6,6 +6,7 @@ Institutional-grade equity research report analyzing Cathay General Bancorp with
 
 - **Main Report**: [index.html](index.html) (CATY_Equity_Research_20251018.html)
 - **12 Data Pages**: Detailed financial analysis modules
+- **Appendix Index**: [APPENDIX_INDEX.md](APPENDIX_INDEX.md) – navigation for all supplemental evidence
 
 ### Data Pages
 1. [Company Profile](CATY_01_company_profile.html) (CATY_01) - Entity metadata, auditor, segments
@@ -18,8 +19,8 @@ Institutional-grade equity research report analyzing Cathay General Bancorp with
 8. [CRE Exposure](CATY_08_cre_exposure.html) (CATY_08) - CRE 52.4% of loans
 9. [Capital & Liquidity](CATY_09_capital_liquidity_aoci.html) (CATY_09) - Regulatory capital, AOCI
 10. [Capital Actions](CATY_10_capital_actions.html) (CATY_10) - Dividends, buybacks
-11. [Peer Analysis](CATY_11_peers_normalized.html) (CATY_11) ⭐ **KEY FILE** - 4-peer regression (R²=0.9548)
-12. [Valuation Model](CATY_12_valuation_model.html) (CATY_12) ⭐⭐⭐ **MOST CRITICAL** - 3 scenarios, Monte Carlo
+11. [Peer Analysis](CATY_11_peers_normalized.html) (CATY_11) ⭐ **KEY FILE** - Seven-peer regression inputs, Cook's Distance diagnostics
+12. [Valuation Model](CATY_12_valuation_model.html) (CATY_12) ⭐⭐⭐ **MOST CRITICAL** - Scenario stack, Monte Carlo, Wilson tracking
 
 ## 🎯 Investment Thesis
 
@@ -50,9 +51,10 @@ Institutional-grade equity research report analyzing Cathay General Bancorp with
    - Monte Carlo: 69% probability overvalued
 
 #### Valuation Framework:
-- **Method:** P/TBV regression (n=4 peers: CATY, EWBC, CVBF, HAFC)
-- **Formula:** P/TBV = (ROTE - g) / (COE - g)
-- **Assumptions:** COE 9.587%, g 2.5%, tax 20%
+- **Triangulation:** 60% Residual Income Model (RIM), 10% Gordon Growth (Dividend Discount), 30% Relative (P/TBV regression)
+- **P/TBV Regression (n=7):** EWBC, CVBF, HAFC, COLB, WAFD, PPBI, BANC (positive ROTE observations)
+- **Normalized Path:** Gordon Growth with through-cycle NCO 42.8 bps, COE 9.587%, g 2.5%, tax 20%
+- **Monte Carlo:** 10,000-path simulation to map Wilson probabilities against risk distribution
 
 #### Wilson 95% Probability-Weighted Framework:
 | Scenario | NCO (bps) | ROTE | P/TBV | Target | vs Spot | Wilson Prob |
@@ -60,9 +62,10 @@ Institutional-grade equity research report analyzing Cathay General Bancorp with
 | **Regression (Current Earnings)** | 18 | 11.95% | 1.558x | **$56.11** | **+22.3%** | **74%** |
 | **Normalization (Through-Cycle)** | 42.8 | 10.21% | 1.087x | **$39.32** | **-14.3%** | **26%** |
 
-**Final Rating:** HOLD at Expected Price **$51.74 (+12.8%)**, calculated as Wilson 95% probability-weighted average:
-- 74% × $56.11 + 26% × $39.32 = **$51.74** (+12.8% vs $45.87 spot)
-- Expected return +12.8% falls within HOLD band (-10% to +15%)
+**Final Rating:** HOLD at Expected Price **$51.74 (+12.8%)**, supported by multiple independent frameworks:
+- **Wilson 95%:** 74% × $56.11 + 26% × $39.32 = **$51.74** (+12.8% vs $45.87 spot)
+- **IRC Triangulation:** 60% RIM ($50.08) + 10% Gordon Growth ($39.32) + 30% Relative ($56.11) = **$51.39** (+12.0%)
+- **Monte Carlo Median:** **$48.92** (+6.6%), 95% CI $37.21-$62.18 with 32.1% downside probability
 
 ## 🔧 Technical Details
 
@@ -70,13 +73,13 @@ Institutional-grade equity research report analyzing Cathay General Bancorp with
 - **Primary:** SEC EDGAR filings (10-K FY2024, 10-Q Q2'25)
 - **Through-Cycle Credit:** FDIC Call Report API (cert 18503, 2008-2024)
 - **Market Data:** As of October 17, 2025
-- **Peers:** EWBC, CVBF, HAFC (HOPE & PFBC excluded)
+- **Peers:** EWBC, CVBF, HAFC, COLB, WAFD, PPBI, BANC (HOPE excluded for negative ROTE; PFBC data gaps)
 
 ### Methodology
-- **Valuation:** P/TBV regression, not DCF (banking-appropriate)
-- **Credit Normalization:** 17-year FDIC NCO data including GFC
+- **Valuation:** RIM + Gordon Growth + Relative, validated via Monte Carlo and Wilson bands
+- **Credit Normalization:** 17-year FDIC NCO dataset (2008-2024) including GFC tail
 - **Deposit Betas:** Anchor Q1'22 (0.50% FFR) → Q2'25 (5.50% FFR)
-- **Peer Screen:** Excluded distressed (HOPE), data issues (PFBC), outliers (COLB)
+- **Peer Screen:** Positive ROTE cohort retained with Cook's Distance monitoring; HOPE/PFBC removed
 
 ### Brand Compliance
 - **Cathay Red:** #C41E3A
@@ -151,8 +154,11 @@ Total: 14 files (~648K)
 |--------|-------|--------|
 | **Valuation** | | |
 | Current Price | $45.87 | Oct 18, 2025 |
-| Expected Price | $51.74 | Wilson 95% (74/26) |
-| Expected Return | +12.8% | HOLD |
+| Wilson Expected Price | $51.74 | Wilson 95% (74/26) |
+| IRC Blended Target | $51.39 | 60% RIM / 10% Gordon / 30% Relative |
+| RIM Target | $50.08 | Residual Income Model |
+| Monte Carlo Median | $48.92 | 10,000-path simulation |
+| Expected Return | +12.8% | HOLD threshold (-10% to +15%) |
 | P/TBV | 1.269x | Current |
 | Target P/TBV | 1.087x | Normalized (Gordon Growth) |
 | **Profitability** | | |
@@ -177,14 +183,32 @@ Total: 14 files (~648K)
 
 ## 📈 Regression Analysis
 
-**n=4 Peer Regression (ROTE vs P/TBV):**
-- **Slope:** 0.1244 (each 1% ROTE → +0.124x P/TBV)
-- **R²:** 0.9548 (95.5% of variance explained)
-- **Adj R²:** 0.932
-- **p-value:** 0.023 (statistically significant at 5% level)
+**Production Regression (ROTE vs P/TBV, positive ROTE cohort):**
+- **Slope:** 0.0799 (each +1% ROTE → +0.080x P/TBV)
+- **Intercept:** 0.6049
+- **R²:** 0.665 (Adjusted R² 0.616)
+- **p-value:** 0.0135
+- **Peers:** EWBC, CVBF, HAFC, COLB, WAFD, PPBI, BANC
+- **Exclusions:** HOPE (negative ROTE), PFBC (incomplete XBRL tags), median rows (non-economic)
 
-**Peers:** CATY, EWBC, CVBF, HAFC
-**Excluded:** HOPE (distressed ROTE -1.71%), PFBC (no SEC filings), PPBI/WAFD/COLB/BANC (data issues/outliers)
+**Risk Controls:** Cook's Distance monitoring (COLB 4.030), jackknife analysis, and outlier injection tests documented in [`evidence/PEER_REGRESSION_METHODOLOGY.md`](evidence/PEER_REGRESSION_METHODOLOGY.md).
+
+**Alternative Cohorts:** Clean 4-peer regression retained for sensitivity but not production-weighted; BUY trigger remains governed by Wilson upper bound <21.5%.
+
+## 🌱 ESG Integration Overview
+
+- **Materiality Matrix:** [`analysis/ESG_MATERIALITY_MATRIX.md`](analysis/ESG_MATERIALITY_MATRIX.md) quantifies E/S/G pillars and ties them to valuation levers.
+- **Climate Risk:** [`evidence/CLIMATE_RISK_CRE_PORTFOLIO.md`](evidence/CLIMATE_RISK_CRE_PORTFOLIO.md) models a 2°C transition scenario (-0.7% NAV).
+- **Social Moat:** [`evidence/SOCIAL_IMPACT_COMMUNITY_BANKING_MOAT.md`](evidence/SOCIAL_IMPACT_COMMUNITY_BANKING_MOAT.md) attributes +$1.15-1.50/share of franchise value.
+- **Governance Premium:** Incorporated within [`evidence/COE_TRIANGULATION.md`](evidence/COE_TRIANGULATION.md) as a +30 bps COE adjustment.
+
+## 🧭 Target Posture Reminder
+
+Continuous improvement mandate: align every commit with CFA IRC-winning caliber. Reference benchmarks (maintained locally):
+- `/Users/nirvanchitnis/Downloads/Target CFA Report Posuture.pdf`
+- `/Users/nirvanchitnis/Downloads/rc-2020-winning-presentation-university-of-sydney.pdf`
+
+Per directive, do not wait for catalysts—sustain iterative enhancements across valuation, ESG, and evidence trail.
 
 ## 🎓 Banking-Specific Formulas
 

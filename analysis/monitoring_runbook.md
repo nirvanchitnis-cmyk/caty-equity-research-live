@@ -111,5 +111,14 @@ THEN rating = BUY
 
 ---
 
+## Continuous Improvement Backlog (Commit-Driven)
+- Convert high-impact IRC appendices (RIM, ESG, Monte Carlo) into HTML modules for on-site browsing.
+- Refresh scenario sensitivity tables in index.html and CATY_12_valuation_model.html with current 42.8 bps normalization assumptions.
+- Automate reconciliation check between valuation_bridge_final.py outputs and README/index headline numbers (unit test or CI hook).
+- Build dashboard for ESG KPIs (lending to underserved communities, board independence) sourced from CRA reports.
+- Draft pre-earnings question bank for peers reporting before CATY to capture read-through signals.
+
+---
+
 **Next Execution:** October 21, 2025 (after market close, post Q3 earnings)
 **Generated:** 2025-10-19 05:52 PT
