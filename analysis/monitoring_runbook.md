@@ -122,10 +122,12 @@ THEN rating = BUY
 - ✅ **Scenario Tables Refreshed:** index.html and CATY_12_valuation_model.html now include IRC Blended ($51.39) + Wilson 95% ($51.74) + 42.8 bps NCO base
 - ✅ **Reconciliation Guard Built:** `analysis/reconciliation_guard.py` validates published numbers vs script outputs (wired into Step 6 above)
 
+### ✅ Completed (Oct 19, 2025 - Automation Sprint)
+- ✅ **Pre-Commit Hook Installed:** `.git/hooks/pre-commit` auto-validates valuation numbers, blocks commits with discrepancies (see `analysis/PRE_COMMIT_HOOK_GUIDE.md`)
+
 ### 🔄 Pending
 - Build dashboard for ESG KPIs (lending to underserved communities, board independence) sourced from CRA reports.
 - Draft pre-earnings question bank for peers reporting before CATY to capture read-through signals.
-- Add pre-commit hook integration for reconciliation guard (prevent drift).
 
 ---
 
