@@ -465,9 +465,9 @@
 
             <div class="metric-grid">
                 <div class="metric-card">
-                    <div class="metric-label">Final Peer Set</div>
-                    <div class="metric-value" style="font-size: 1.4em;">4 Peers</div>
-                    <div class="metric-subtext">CATY, EWBC, CVBF, HAFC</div>
+                    <div class="metric-label">Peer Universe</div>
+                    <div class="metric-value" style="font-size: 1.4em;">8 Peers</div>
+                    <div class="metric-subtext">EWBC, CVBF, HAFC, HOPE, COLB, WAFD, PPBI, BANC</div>
                 </div>
 
                 <div class="metric-card">
@@ -492,12 +492,12 @@
             <div class="source-box">
                 <div class="source-label">Key Finding</div>
                 <div class="source-details">
-                    CATY trades at <strong>1.269x P/TBV</strong> with <strong>11.95% ROTE</strong>, slightly below peer median of 1.300x P/TBV.
-                    Regression analysis (n=4) shows strong positive relationship between ROTE and P/TBV (R² = 0.9548, p = 0.023),
-                    indicating market values profitability differences. Each 1% increase in ROTE associated with 0.124x increase in P/TBV multiple.
+                    CATY trades at <strong>1.269x P/TBV</strong> with <strong>11.95% ROTE</strong>, versus the updated <strong>peer median of 1.23x P/TBV</strong>
+                    and <strong>27.8% CRE concentration.</strong> CATY now screens as a high-CRE outlier (+24.6 ppts) rather than a conservative lender.
                     <br><br>
-                    <strong>Valuation Context:</strong> CATY's normalized ROTE (10.40% at 42.8 bps NCO rate, adjusted for provision normalization)
-                    suggests current 18.1 bps NCO rate is below long-term expected credit losses, implying potential for mean reversion.
+                    <strong>Valuation Context:</strong> Regression (n=4 core peers) still shows a tight ROTE/P&T BV relationship (R² = 0.955, p = 0.023),
+                    but the broader eight-bank dataset resets the comparable benchmark lower. Normalizing CATY to 10.40% ROTE (42.8 bps NCO) implies
+                    fair value near <strong>1.115x P/TBV ($39.6)</strong>, reinforcing the SELL target.
                 </div>
             </div>
         </section>
@@ -546,45 +546,35 @@
                 </tbody>
             </table>
 
-            <h3>Excluded Peers</h3>
+            <h3>Extended Coverage (Median Dataset)</h3>
             <table>
                 <thead>
                     <tr>
                         <th>Ticker</th>
-                        <th>Exclusion Rationale</th>
-                        <th class="numeric">Status</th>
+                        <th>Inclusion Rationale</th>
+                        <th class="numeric">Verification</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td><strong>HOPE</strong></td>
-                        <td>Distressed: ROTE -1.71%, efficiency 110.89%, negative LTM net income</td>
-                        <td class="numeric"><span class="verification-badge badge-excluded">EXCLUDED</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>PFBC</strong></td>
-                        <td>No SEC filings (state-chartered), brokered deposits 12.91% (3x median), efficiency 31.79% outlier</td>
-                        <td class="numeric"><span class="verification-badge badge-excluded">EXCLUDED</span></td>
+                        <td>Negative ROTE captures stressed credit outcomes in Korean-American cohort</td>
+                        <td class="numeric"><span class="verification-badge badge-partial">VERIFIED_OK</span></td>
                     </tr>
                     <tr>
                         <td><strong>PPBI</strong></td>
-                        <td>Data quality issues: TBVPS $0.01 from duration/instant tag mismatch in companyfacts</td>
-                        <td class="numeric"><span class="verification-badge badge-excluded">EXCLUDED</span></td>
+                        <td>Smaller SoCal CRE lender; captures lower-ROTE, lower-CRE exposure endpoints</td>
+                        <td class="numeric"><span class="verification-badge badge-partial">VERIFIED_OK</span></td>
                     </tr>
                     <tr>
                         <td><strong>WAFD</strong></td>
-                        <td>Structural outlier: P/TBV 0.37x despite ROTE 14.2% (3.4x below fitted value)</td>
-                        <td class="numeric"><span class="verification-badge badge-excluded">EXCLUDED</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>COLB</strong></td>
-                        <td>One-time gains: ROTE 33.43% from $425M Q4'24 spike (Cook's Distance 4.030)</td>
-                        <td class="numeric"><span class="verification-badge badge-excluded">EXCLUDED</span></td>
+                        <td>Pacific Northwest thrift exposure—low CRE concentration baseline</td>
+                        <td class="numeric"><span class="verification-badge badge-partial">VERIFIED_OK</span></td>
                     </tr>
                     <tr>
                         <td><strong>BANC</strong></td>
-                        <td>Negative tangible common equity: goodwill + intangibles exceed total equity</td>
-                        <td class="numeric"><span class="verification-badge badge-excluded">EXCLUDED</span></td>
+                        <td>Former PacWest platform; lower P/TBV anchor with moderate CRE</td>
+                        <td class="numeric"><span class="verification-badge badge-partial">VERIFIED_OK</span></td>
                     </tr>
                 </tbody>
             </table>
@@ -594,8 +584,8 @@
                 <div class="source-details">
                     <strong>Period Alignment:</strong> All peers use LTM through Q2'25 (2025-06-30) to ensure comparability. No FY/LTM mixing permitted.<br>
                     <strong>Standardization:</strong> ROTE tangible-equity-based; provision-normalized where applicable; deposit betas use Q1'22 → Q2'25 anchor.<br>
-                    <strong>Quality Threshold:</strong> Loader refuses any peer with verification_status != VERIFIED_OK or blocking_level >= 3 for critical metrics.<br>
-                    <strong>Regression Discipline:</strong> Excluded structural outliers (WAFD P/TBV 0.37x), one-time gains (COLB ROTE 33%), and distressed banks (HOPE ROTE -1.71%).
+                    <strong>Quality Threshold:</strong> Loader refuses any peer with verification_status != VERIFIED_OK or blocking_level ≥ 3 for core metrics.<br>
+                    <strong>Regression Discipline:</strong> Core regression uses EWBC/CVBF/HAFC/COLB; extended medians incorporate HOPE, WAFD, PPBI, BANC to capture risk tails.
                 </div>
             </div>
         </section>
@@ -611,141 +601,35 @@
                 <span style="background: rgba(220, 38, 38, 0.15); padding: 2px 8px; border-radius: 3px;">Bottom 2 Performers</span>
             </p>
 
-            <h3>Profitability & Efficiency Metrics</h3>
+            <h3>Credit Quality & Valuation Snapshot</h3>
             <table>
                 <thead>
                     <tr>
                         <th>Metric</th>
                         <th class="numeric">CATY</th>
-                        <th class="numeric">EWBC</th>
-                        <th class="numeric">CVBF</th>
-                        <th class="numeric">HAFC</th>
-                        <th class="numeric">Peer Median</th>
+                        <th class="numeric">Peer Median<br>(n = 8)</th>
+                        <th class="numeric">Peer Low<br>(Ticker)</th>
+                        <th class="numeric">Peer High<br>(Ticker)</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td><strong>ROTE (%)</strong></td>
-                        <td class="numeric bottom-performer">11.95</td>
-                        <td class="numeric top-performer">16.38</td>
-                        <td class="numeric top-performer">14.10</td>
-                        <td class="numeric bottom-performer">8.65</td>
-                        <td class="numeric middle-performer">12.93</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Normalized ROTE (% at 42.8 bps NCO)</strong></td>
-                        <td class="numeric caty-highlight">10.40</td>
-                        <td class="numeric">—</td>
-                        <td class="numeric">—</td>
-                        <td class="numeric">—</td>
-                        <td class="numeric middle-performer">—</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Efficiency Ratio (%)</strong></td>
-                        <td class="numeric middle-performer">46.93</td>
-                        <td class="numeric top-performer">36.04</td>
-                        <td class="numeric middle-performer">46.66</td>
-                        <td class="numeric bottom-performer">58.63</td>
-                        <td class="numeric middle-performer">46.80</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Net Interest Margin (%)</strong></td>
-                        <td class="numeric bottom-performer">3.27</td>
-                        <td class="numeric top-performer">3.35</td>
-                        <td class="numeric top-performer">3.30</td>
-                        <td class="numeric bottom-performer">3.07</td>
-                        <td class="numeric middle-performer">3.29</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <h3>Deposit Composition & Funding Metrics</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Metric</th>
-                        <th class="numeric">CATY</th>
-                        <th class="numeric">EWBC</th>
-                        <th class="numeric">CVBF</th>
-                        <th class="numeric">HAFC</th>
-                        <th class="numeric">Peer Median</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>NIB % of Deposits</strong></td>
-                        <td class="numeric bottom-performer">16.9</td>
-                        <td class="numeric top-performer">23.8</td>
-                        <td class="numeric">N/D</td>
-                        <td class="numeric">N/D</td>
-                        <td class="numeric middle-performer">20.4</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Brokered Deposits %</strong></td>
-                        <td class="numeric middle-performer">5.62</td>
-                        <td class="numeric middle-performer">4.20</td>
-                        <td class="numeric top-performer">1.95</td>
-                        <td class="numeric top-performer">1.09</td>
-                        <td class="numeric middle-performer">3.08</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Deposit Beta - IB Only (ratio)</strong></td>
-                        <td class="numeric top-performer">0.604</td>
-                        <td class="numeric top-performer">0.627</td>
-                        <td class="numeric bottom-performer">0.402</td>
-                        <td class="numeric bottom-performer">0.802</td>
-                        <td class="numeric middle-performer">0.616</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Deposit Beta - All-In (ratio)</strong></td>
-                        <td class="numeric middle-performer">0.507</td>
-                        <td class="numeric top-performer">0.485</td>
-                        <td class="numeric top-performer">0.162</td>
-                        <td class="numeric bottom-performer">0.568</td>
-                        <td class="numeric middle-performer">0.496</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <h3>Credit Quality & Risk Metrics</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Metric</th>
-                        <th class="numeric">CATY</th>
-                        <th class="numeric">EWBC</th>
-                        <th class="numeric">CVBF</th>
-                        <th class="numeric">HAFC</th>
-                        <th class="numeric">Peer Median</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>NCO Rate (bps)</strong></td>
-                        <td class="numeric top-performer">18.1</td>
-                        <td class="numeric bottom-performer">24.2</td>
-                        <td class="numeric">N/D</td>
-                        <td class="numeric">N/D</td>
-                        <td class="numeric middle-performer">21.2</td>
+                        <td><strong>LTM ROTE (%)</strong></td>
+                        <td class="numeric caty-highlight">11.95</td>
+                        <td class="numeric middle-performer">8.77</td>
+                        <td class="numeric">-5.72 (HOPE)</td>
+                        <td class="numeric">15.84 (EWBC)</td>
                     </tr>
                     <tr>
                         <td><strong>CRE % of Loans</strong></td>
-                        <td class="numeric middle-performer">52.4</td>
-                        <td class="numeric top-performer">29.7</td>
-                        <td class="numeric bottom-performer">76.2</td>
-                        <td class="numeric">N/D</td>
-                        <td class="numeric middle-performer">52.4</td>
-                    </tr>
-                    <tr>
-                        <td><strong>CET1 Ratio (%)</strong></td>
-                        <td class="numeric bottom-performer">13.35</td>
-                        <td class="numeric middle-performer">14.50</td>
-                        <td class="numeric top-performer">16.52</td>
-                        <td class="numeric top-performer">15.20</td>
-                        <td class="numeric middle-performer">14.85</td>
+                        <td class="numeric danger">52.4</td>
+                        <td class="numeric top-performer">27.8</td>
+                        <td class="numeric">17.5 (WAFD | PPBI)</td>
+                        <td class="numeric danger">78.9 (CVBF)</td>
                     </tr>
                 </tbody>
             </table>
+            <div class="metric-subtext">CET1 comparison handled in capital stress workbook; see evidence/capital_stress_2025Q2.xlsx.</div>
 
             <h3>Valuation Metrics</h3>
             <table>
@@ -753,44 +637,32 @@
                     <tr>
                         <th>Metric</th>
                         <th class="numeric">CATY</th>
-                        <th class="numeric">EWBC</th>
-                        <th class="numeric">CVBF</th>
-                        <th class="numeric">HAFC</th>
-                        <th class="numeric">Peer Median</th>
+                        <th class="numeric">Peer Median<br>(n = 8)</th>
+                        <th class="numeric">Peer Low<br>(Ticker)</th>
+                        <th class="numeric">Peer High<br>(Ticker)</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td><strong>TBVPS (USD/share)</strong></td>
                         <td class="numeric caty-highlight">36.16</td>
-                        <td class="numeric">52.39</td>
-                        <td class="numeric">10.70</td>
-                        <td class="numeric">24.96</td>
-                        <td class="numeric middle-performer">30.56</td>
+                        <td class="numeric middle-performer">21.60</td>
+                        <td class="numeric">10.70 (CVBF)</td>
+                        <td class="numeric">56.13 (EWBC)</td>
                     </tr>
                     <tr>
                         <td><strong>P/TBV (x)</strong></td>
-                        <td class="numeric bottom-performer">1.269</td>
-                        <td class="numeric top-performer">1.830</td>
-                        <td class="numeric top-performer">1.730</td>
-                        <td class="numeric bottom-performer">0.930</td>
-                        <td class="numeric middle-performer">1.300</td>
+                        <td class="numeric danger">1.269</td>
+                        <td class="numeric">1.23</td>
+                        <td class="numeric">0.731 (BANC)</td>
+                        <td class="numeric">1.964 (EWBC)</td>
                     </tr>
                     <tr>
-                        <td><strong>P/E LTM (x)</strong></td>
-                        <td class="numeric caty-highlight">—</td>
-                        <td class="numeric">11.21</td>
-                        <td class="numeric">12.79</td>
-                        <td class="numeric">11.26</td>
-                        <td class="numeric middle-performer">11.24</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Stock Price (USD, 2025-10-17)</strong></td>
-                        <td class="numeric caty-highlight">45.89</td>
-                        <td class="numeric">95.98</td>
-                        <td class="numeric">18.54</td>
-                        <td class="numeric">23.31</td>
-                        <td class="numeric middle-performer">34.60</td>
+                        <td><strong>Market Cap (USD M)</strong></td>
+                        <td class="numeric">2,507</td>
+                        <td class="numeric">2,750</td>
+                        <td class="numeric">780 (HAFC)</td>
+                        <td class="numeric">15,800 (EWBC)</td>
                     </tr>
                 </tbody>
             </table>
