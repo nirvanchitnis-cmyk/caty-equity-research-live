@@ -2,8 +2,6 @@
 
 Institutional-grade equity research report analyzing Cathay General Bancorp with comprehensive financial data transformation from SEC filings.
 
-<!-- Pre-commit hook test: Oct 19, 2025 -->
-
 ## 📊 Report Structure
 
 - **Main Report**: [index.html](index.html) (CATY_Equity_Research_20251018.html)
@@ -26,7 +24,7 @@ Institutional-grade equity research report analyzing Cathay General Bancorp with
 
 ## 🎯 Investment Thesis
 
-### **HOLD Rating** - Expected Price: **$53.50 (+16.6%)**
+### **HOLD Rating** - Expected Price: **$51.74 (+12.8%)**
 
 **Current Price:** $45.87 (Oct 18, 2025)
 **Wilson 95% Bounds:** 74/26 probability split validates HOLD

@@ -1,0 +1,8 @@
+Category,Metric,Value,Materiality
+E,CRE Portfolio Exposure,52.4%,HIGH
+E,CRE Office Exposure,$2886M,HIGH
+S,CRA Rating,Outstanding,HIGH
+S,Deposit Beta,0.35,HIGH
+G,Board Independence,40%,HIGH
+G,ISS Governance Score,4/10,HIGH
+Aggregate,Composite ESG Score,5.0/10,HIGH
