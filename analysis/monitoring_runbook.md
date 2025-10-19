@@ -130,9 +130,13 @@ THEN rating = BUY
 ### ✅ Completed (Oct 19, 2025 - CI Integration)
 - ✅ **CI Reconciliation Guard:** `.github/workflows/reconciliation-guard.yml` validates valuation numbers on every push/PR (required check, blocks merge on failure)
 
+### ✅ Completed (Oct 19, 2025 - ESG & Peer Prep)
+- ✅ **ESG Dashboard Surfaced:** `CATY_17_esg_kpi_dashboard.html` + index summary cards expose valuation impact on-site
+- ✅ **Peer Monitoring Template:** `analysis/peer_preearnings_monitoring_template.md` structured for Oct 17 EWBC/COLB read-through
+
 ### 🔄 Pending
-- Surface ESG KPI outputs on the public site (HTML module or executive dashboard cards) ahead of peer read-through.
 - Populate peer question bank responses with real-time takeaways as EWBC/COLB report (target: Oct 17 end-of-day).
+- Stand up rapid-turnaround memo workflow (template + checklist) for distributing Oct 17 insights within 2 hours.
 
 ---
 
