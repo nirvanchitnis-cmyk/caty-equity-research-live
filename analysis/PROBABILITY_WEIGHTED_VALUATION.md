@@ -56,7 +56,7 @@ Expected Target = 0.60 × $56.42 + 0.40 × $39.32
 
 ## MARKET-IMPLIED PROBABILITIES
 
-**What does current price $45.87 imply?**
+**What does current price $45.89 imply?**
 
 Solving: $45.87 = p × $56.42 + (1-p) × $39.32
 

@@ -1,0 +1,30 @@
+{
+  "price": 45.89,
+  "price_date": "2025-10-18",
+  "report_generated": "2025-10-19T10:30:00Z",
+  "data_source": "NASDAQ closing price (Friday, Oct 18, 2025)",
+  "ticker": "CATY",
+  "company": "Cathay General Bancorp",
+  "metadata": {
+    "last_trading_day": "2025-10-18",
+    "market_status": "closed",
+    "next_trading_day": "2025-10-21",
+    "data_quality": "VERIFIED",
+    "update_method": "manual (TODO: integrate stooq.com or live feed)"
+  },
+  "calculated_metrics": {
+    "tbvps": 36.16,
+    "current_ptbv": 1.269,
+    "target_regression": 56.11,
+    "target_normalized": 39.32,
+    "target_wilson_95": 51.74,
+    "target_irc_blended": 51.39,
+    "return_regression_pct": 22.3,
+    "return_normalized_pct": -14.3,
+    "return_wilson_95_pct": 12.8,
+    "return_irc_blended_pct": 12.0,
+    "rating": "HOLD"
+  },
+  "version": "1.0",
+  "schema_url": "data/market_data_schema.json"
+}

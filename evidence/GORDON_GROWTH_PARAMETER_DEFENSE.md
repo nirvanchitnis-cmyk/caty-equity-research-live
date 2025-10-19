@@ -335,4 +335,4 @@ Target = **$39.85** (+1.3% vs. base)
 **Document Owner:** Nirvan Chitnis
 **Gordon Growth Methodology:** Myron Gordon (1962), Williams Dividend Theory (1938)
 **Data Sources:** BEA (GDP), CBO (long-term projections), CATY 10-Q (historical tax rates)
-**Next Review:** Post-Q3 2025 earnings (Oct 21, 2025)
+**Next Review:** Post-Q3 2025 earnings (October 18, 2025)

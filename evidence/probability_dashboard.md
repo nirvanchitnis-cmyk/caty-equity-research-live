@@ -9,7 +9,7 @@
 |-----------|-----------|-----------|-----------------|-----------------|--------|
 | **Data-Anchored (post-2008 mean)** | **85%** | **15%** | **$53.86** | **+17.4%** | BUY |
 | **Wilson 95% Upper Bound** | **74%** | **26%** | **$51.97** | **+13.3%** | **HOLD** ✓ |
-| Market-Implied (spot $45.87) | 38% | 62% | $45.87 | 0.0% | — |
+| Market-Implied (spot $45.89) | 38% | 62% | $45.87 | 0.0% | — |
 
 **Official Weighting:** 74/26 (Wilson 95% ceiling)
 **Current Rating:** HOLD

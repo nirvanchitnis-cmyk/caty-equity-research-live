@@ -3,10 +3,18 @@ Probability-Weighted Valuation Analysis
 Reconciles regression vs normalized earnings with market-implied probabilities
 """
 
+import json
+from pathlib import Path
+
+# Load current market data from single source of truth
+_data_path = Path(__file__).parent.parent / 'data' / 'market_data_current.json'
+with open(_data_path, 'r') as f:
+    _market_data = json.load(f)
+
 # Scenario targets
 target_current = 56.11  # Regression at ROTE 11.95% (7-peer: EWBC, CVBF, HAFC, COLB, WAFD, PPBI, BANC)
 target_normalized = 39.32  # Gordon Growth at ROTE 10.21%
-current_price = 45.87
+current_price = _market_data['price']  # DYNAMIC: loaded from data/market_data_current.json
 
 
 def expected_return(prob_current: float) -> float:

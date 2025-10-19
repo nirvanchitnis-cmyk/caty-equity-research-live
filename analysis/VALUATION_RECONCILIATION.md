@@ -152,7 +152,7 @@ This is the SAME as baseline COE. So Gordon Growth at 9.59% COE gives correct $3
    - HIGH-CRE status documented but premium magnitude uncertain
 
 4. **Market may be right:**
-   - Current price $45.87 between regression $56 and normalized $39
+   - Current price $45.89 between regression $56 and normalized $39
    - Implies market assigns ~40% probability to normalization scenario
    - This is REASONABLE given uncertainty
 

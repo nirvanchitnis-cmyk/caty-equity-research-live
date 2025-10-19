@@ -26,7 +26,7 @@ Institutional-grade equity research report analyzing Cathay General Bancorp with
 
 ### **HOLD Rating** - Expected Price: **$51.74 (+12.8%)**
 
-**Current Price:** $45.87 (Oct 18, 2025)
+**Current Price:** $45.87 (October 18, 2025)
 **Wilson 95% Bounds:** 74/26 probability split validates HOLD
 
 #### Key Findings:
@@ -72,7 +72,7 @@ Institutional-grade equity research report analyzing Cathay General Bancorp with
 ### Data Sources
 - **Primary:** SEC EDGAR filings (10-K FY2024, 10-Q Q2'25)
 - **Through-Cycle Credit:** FDIC Call Report API (cert 18503, 2008-2024)
-- **Market Data:** As of October 17, 2025
+- **Market Data:** As of October 18, 2025
 - **Peers:** EWBC, CVBF, HAFC, COLB, WAFD, PPBI, BANC (HOPE excluded for negative ROTE; PFBC data gaps)
 
 ### Methodology

@@ -1,6 +1,6 @@
 # Peer Pre-Earnings Question Bank
 **Created:** Oct 19, 2025
-**Purpose:** Extract read-through signals from peer earnings before CATY Q3 (Oct 21, 2025)
+**Purpose:** Extract read-through signals from peer earnings before CATY Q3 (October 18, 2025)
 **Target Peers:** EWBC, CVBF, HAFC, COLB, WAFD, PPBI, BANC
 
 ---

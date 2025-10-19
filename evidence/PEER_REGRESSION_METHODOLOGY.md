@@ -236,4 +236,4 @@ Target Price: $56.11
 
 **Document Owner:** Nirvan Chitnis
 **Technical Review:** Derek (Codex CLI)
-**Next Review:** Post-Q3 2025 earnings (Oct 21, 2025)
+**Next Review:** Post-Q3 2025 earnings (October 18, 2025)

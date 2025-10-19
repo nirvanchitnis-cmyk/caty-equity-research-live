@@ -3,9 +3,16 @@ DUAL VALUATION BRIDGE - Regression vs Gordon Growth Reconciliation
 Generated: 2025-10-19 04:30 PT
 """
 
+import json
 import numpy as np
+from pathlib import Path
 from scipy import stats
 import csv
+
+# Load current market data from single source of truth
+_data_path = Path(__file__).parent.parent / 'data' / 'market_data_current.json'
+with open(_data_path, 'r') as f:
+    _market_data = json.load(f)
 
 # Load peer data
 with open('evidence/peer_snapshot_2025Q2.csv', 'r') as f:
@@ -42,8 +49,10 @@ target_gordon = justified_ptbv * caty_tbvps
 required_coe = ((normalized_rote - g) / (target_regression / caty_tbvps)) + g
 coe_premium_bps = (coe - required_coe) * 100
 
-print(f"PATH A (Regression): ${target_regression:.2f} (+{((target_regression-45.87)/45.87)*100:.1f}%)")
-print(f"PATH B (Normalized): ${target_gordon:.2f} ({((target_gordon-45.87)/45.87)*100:.1f}%)")
+spot_price = _market_data['price']  # DYNAMIC: loaded from data/market_data_current.json
+print(f"PATH A (Regression): ${target_regression:.2f} (+{((target_regression-spot_price)/spot_price)*100:.1f}%)")
+print(f"PATH B (Normalized): ${target_gordon:.2f} ({((target_gordon-spot_price)/spot_price)*100:.1f}%)")
+print(f"\nMarket Data: ${spot_price:.2f} as of {_market_data['price_date']}")
 print(f"Gap: ${target_regression - target_gordon:.2f}")
 print(f"Required CRE Premium: {coe_premium_bps:.0f} bps")
 print(f"\nCONCLUSION: {coe_premium_bps:.0f} bps CRE premium UNSUBSTANTIATED")

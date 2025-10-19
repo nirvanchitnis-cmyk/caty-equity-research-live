@@ -119,7 +119,7 @@ THEN rating = BUY
 
 ## Continuous Improvement Backlog (Commit-Driven)
 
-### ✅ Completed (Oct 19, 2025)
+### ✅ Completed (October 18, 2025)
 - ✅ **HTML Companions Created:** CATY_13 (RIM), CATY_14 (Monte Carlo), CATY_15 (ESG), CATY_16 (COE) - all IRC appendices now web-accessible
 - ✅ **Scenario Tables Refreshed:** index.html and CATY_12_valuation_model.html now include IRC Blended ($51.39) + Wilson 95% ($51.74) + 42.8 bps NCO base
 - ✅ **Reconciliation Guard Built:** `analysis/reconciliation_guard.py` validates published numbers vs script outputs (wired into Step 6 above)

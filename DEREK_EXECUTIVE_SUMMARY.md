@@ -220,7 +220,7 @@ Step 4: Target price
 3. See BASE CASE card with:
    - Target P/TBV: 1.087x (Gordon Growth)
    - Target Price: $39.32
-   - vs Current $45.87: -14.3% DOWNSIDE
+   - vs Current $45.89: -14.3% DOWNSIDE
    - Rating: HOLD
    - Probability: 60%
 4. Scroll to "Provision Normalization Table"

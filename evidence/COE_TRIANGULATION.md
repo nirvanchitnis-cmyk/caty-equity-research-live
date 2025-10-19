@@ -44,7 +44,7 @@ Where:
 
 | Parameter | Value | Source | Justification |
 |-----------|-------|--------|---------------|
-| **Rf (Risk-free rate)** | 4.337% | 10-year US Treasury (Oct 18, 2025) | Bloomberg USGG10YR Index |
+| **Rf (Risk-free rate)** | 4.337% | 10-year US Treasury (October 18, 2025) | Bloomberg USGG10YR Index |
 | **β (Levered beta)** | 1.125 | 5-year regression (CATY vs. SPX) | Capital IQ (Oct 2025) |
 | **Rm - Rf (ERP)** | 4.45% | Historical ERP (1926-2024) | Ibbotson SBBI Yearbook |
 
@@ -211,7 +211,7 @@ Where:
 | Parameter | Value | Source | Justification |
 |-----------|-------|--------|---------------|
 | **DPS₁ (NTM dividend)** | $4.32 | Consensus estimate (CapIQ) | FY2025E DPS |
-| **P₀ (Current price)** | $45.87 | Market (Oct 18, 2025) | Last close |
+| **P₀ (Current price)** | $45.87 | Market (October 18, 2025) | Last close |
 | **g (Perpetual growth)** | 2.5% | GDP + inflation | Long-term sustainable |
 
 **DPS₁ Derivation:**
@@ -250,7 +250,7 @@ Dividend yield = $4.32 / $45.87 = 9.42%
 **Revised DPS₁:**
 
 Verify market dividend yield:
-- Current price: $45.87
+- Current price: $45.89
 - FY2024 DPS: $4.32 (actual)
 - Dividend yield: $4.32 / $45.87 = **9.42%** ✓ (CORRECT, CATY high-yield stock)
 
@@ -376,7 +376,7 @@ P/TBV = (11.95 - 2.5) / (9.587 - 2.5)
 = 9.45 / 7.087
 = **1.333x**
 
-**Actual P/TBV (Oct 18, 2025):**
+**Actual P/TBV (October 18, 2025):**
 P = $45.87, TBVPS = $36.16
 P/TBV = 1.269x
 
@@ -421,4 +421,4 @@ COE = **9.947%**
 **Document Owner:** Nirvan Chitnis
 **COE Methodology:** CAPM (Sharpe 1964), FF3 (Fama-French 1993), DDM (Gordon 1962)
 **Data Sources:** Capital IQ (beta), Kenneth French Data Library (FF3 factors), Bloomberg (Rf)
-**Next Review:** Post-Q3 2025 earnings (Oct 21, 2025)
+**Next Review:** Post-Q3 2025 earnings (October 18, 2025)
