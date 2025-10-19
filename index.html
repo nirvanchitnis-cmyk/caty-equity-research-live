@@ -19,7 +19,7 @@
         <h3 class="toc-header">Table of Contents</h3>
         <ul class="toc-list">
             <li><a href="#executive-dashboard" class="toc-link">Executive Dashboard</a></li>
-            <li><a href="#investment-summary" class="toc-link">Investment Summary</a></li>
+            <li><a href="#interactive-visuals" class="toc-link">📊 Interactive Visuals & Modules</a></li>
             <li><a href="#recent-developments" class="toc-link">Recent Developments</a></li>
             <li><a href="#company-overview" class="toc-link">Company Overview</a></li>
             <li><a href="#industry-analysis" class="toc-link">Industry Analysis</a></li>
@@ -367,7 +367,117 @@
         </div>
 
         <!-- ======================================== -->
-        <!-- 2. RECENT DEVELOPMENTS (Last 90 Days) -->
+        <!-- 2. INTERACTIVE VISUALS & MODULES -->
+        <!-- ======================================== -->
+        <section id="interactive-visuals" class="content-section">
+            <h2>Interactive Valuation Analysis</h2>
+            <p class="text-secondary">Visual comparison of valuation methodologies with deep-dive IRC modules</p>
+
+            <!-- Valuation Comparison Chart -->
+            <h3>Price Target Comparison</h3>
+            <p class="text-secondary">Current price vs. triangulated target methodologies (data as of October 18, 2025)</p>
+
+            <div class="chart-container chart-container-centered">
+                <canvas id="valuationComparisonChart" aria-label="Valuation comparison chart showing current price versus Wilson 95%, IRC blended, and regression targets"></canvas>
+            </div>
+
+            <div class="price-target-grid price-target-grid-spaced">
+                <div class="metric-card">
+                    <div class="metric-label">Current Price</div>
+                    <div class="metric-value">$45.89</div>
+                    <div class="metric-subtext">As of October 18, 2025</div>
+                </div>
+                <div class="metric-card metric-card-success">
+                    <div class="metric-label">Wilson 95%</div>
+                    <div class="metric-value">$51.74</div>
+                    <div class="metric-subtext">+12.8% (HOLD band)</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">IRC Blended</div>
+                    <div class="metric-value">$51.39</div>
+                    <div class="metric-subtext">+12.0% (60% RIM)</div>
+                </div>
+                <div class="metric-card metric-card-success">
+                    <div class="metric-label">Regression</div>
+                    <div class="metric-value">$56.11</div>
+                    <div class="metric-subtext">+22.3% (7-peer)</div>
+                </div>
+            </div>
+
+            <!-- Interactive HTML Modules -->
+            <h3 class="margin-top-40">Deep-Dive Valuation Modules</h3>
+            <p class="text-secondary">Click any module for detailed IRC-grade analysis</p>
+
+            <div class="module-card-grid">
+                <!-- Module 13: Residual Income Valuation -->
+                <a href="CATY_13_residual_income_valuation.html" target="_blank" rel="noopener noreferrer" class="dashboard-card module-card-link">
+                    <div class="module-card-header">
+                        <span class="module-card-icon">📊</span>
+                        <h5 class="module-card-title">RIM Valuation</h5>
+                    </div>
+                    <div class="module-card-value">$50.08</div>
+                    <div class="module-card-description">Intrinsic Value (60% IRC weight)</div>
+                    <div class="module-card-status">
+                        Updated 19 Oct 2025
+                    </div>
+                </a>
+
+                <!-- Module 14: Monte Carlo Simulation -->
+                <a href="CATY_14_monte_carlo_valuation.html" target="_blank" rel="noopener noreferrer" class="dashboard-card module-card-link">
+                    <div class="module-card-header">
+                        <span class="module-card-icon">🎲</span>
+                        <h5 class="module-card-title">Monte Carlo</h5>
+                    </div>
+                    <div class="module-card-value">$48.92</div>
+                    <div class="module-card-description">Median (10,000 runs, 95% CI $37-$62)</div>
+                    <div class="module-card-status">
+                        Updated 19 Oct 2025
+                    </div>
+                </a>
+
+                <!-- Module 15: ESG Materiality Matrix -->
+                <a href="CATY_15_esg_materiality_matrix.html" target="_blank" rel="noopener noreferrer" class="dashboard-card module-card-link">
+                    <div class="module-card-header">
+                        <span class="module-card-icon">🌱</span>
+                        <h5 class="module-card-title">ESG Matrix</h5>
+                    </div>
+                    <div class="module-card-value">5.0/10</div>
+                    <div class="module-card-description">Composite Score (E 4.0, S 7.0, G 4.0)</div>
+                    <div class="module-card-status">
+                        Updated 19 Oct 2025
+                    </div>
+                </a>
+
+                <!-- Module 16: COE Triangulation -->
+                <a href="CATY_16_coe_triangulation.html" target="_blank" rel="noopener noreferrer" class="dashboard-card module-card-link">
+                    <div class="module-card-header">
+                        <span class="module-card-icon">🎯</span>
+                        <h5 class="module-card-title">COE Triangulation</h5>
+                    </div>
+                    <div class="module-card-value">9.587%</div>
+                    <div class="module-card-description">CAPM + FF3 + DDM (weighted average)</div>
+                    <div class="module-card-status">
+                        Updated 19 Oct 2025
+                    </div>
+                </a>
+
+                <!-- Module 17: ESG KPI Dashboard -->
+                <a href="CATY_17_esg_kpi_dashboard.html" target="_blank" rel="noopener noreferrer" class="dashboard-card module-card-link">
+                    <div class="module-card-header">
+                        <span class="module-card-icon">📉</span>
+                        <h5 class="module-card-title">ESG Impact</h5>
+                    </div>
+                    <div class="module-card-value-danger">-$1.47</div>
+                    <div class="module-card-description">ESG Discount (Governance +30 bps COE)</div>
+                    <div class="module-card-status">
+                        Updated 19 Oct 2025
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- ======================================== -->
+        <!-- 3. RECENT DEVELOPMENTS (Last 90 Days) -->
         <!-- ======================================== -->
         <section id="recent-developments">
             <h2>Recent Developments & Catalysts</h2>
@@ -1811,108 +1921,6 @@
                 <li><a href="analysis/PROBABILITY_WEIGHTED_VALUATION.md" target="_blank" rel="noopener noreferrer">PROBABILITY_WEIGHTED_VALUATION.md</a> - Wilson 95% automation and rating trigger documentation</li>
                 <li><a href="evidence/WILSON_WINDOW_METHODOLOGY.md" target="_blank" rel="noopener noreferrer">WILSON_WINDOW_METHODOLOGY.md</a> - Window selection defense (post-2008 vs post-2014 vs post-2020)</li>
             </ul>
-
-            <h4>Interactive HTML Modules</h4>
-            <p class="text-secondary">IRC-grade valuation appendices with full methodological transparency</p>
-
-            <div class="module-card-grid">
-                <!-- Module 13: Residual Income Valuation -->
-                <a href="CATY_13_residual_income_valuation.html" target="_blank" rel="noopener noreferrer" class="dashboard-card module-card-link">
-                    <div class="module-card-header">
-                        <span class="module-card-icon">📊</span>
-                        <h5 class="module-card-title">RIM Valuation</h5>
-                    </div>
-                    <div class="module-card-value">$50.08</div>
-                    <div class="module-card-description">Intrinsic Value (60% IRC weight)</div>
-                    <div class="module-card-status">
-                        Updated 19 Oct 2025
-                    </div>
-                </a>
-
-                <!-- Module 14: Monte Carlo Simulation -->
-                <a href="CATY_14_monte_carlo_valuation.html" target="_blank" rel="noopener noreferrer" class="dashboard-card module-card-link">
-                    <div class="module-card-header">
-                        <span class="module-card-icon">🎲</span>
-                        <h5 class="module-card-title">Monte Carlo</h5>
-                    </div>
-                    <div class="module-card-value">$48.92</div>
-                    <div class="module-card-description">Median (10,000 runs, 95% CI $37-$62)</div>
-                    <div class="module-card-status">
-                        Updated 19 Oct 2025
-                    </div>
-                </a>
-
-                <!-- Module 15: ESG Materiality Matrix -->
-                <a href="CATY_15_esg_materiality_matrix.html" target="_blank" rel="noopener noreferrer" class="dashboard-card module-card-link">
-                    <div class="module-card-header">
-                        <span class="module-card-icon">🌱</span>
-                        <h5 class="module-card-title">ESG Matrix</h5>
-                    </div>
-                    <div class="module-card-value">5.0/10</div>
-                    <div class="module-card-description">Composite Score (E 4.0, S 7.0, G 4.0)</div>
-                    <div class="module-card-status">
-                        Updated 19 Oct 2025
-                    </div>
-                </a>
-
-                <!-- Module 16: COE Triangulation -->
-                <a href="CATY_16_coe_triangulation.html" target="_blank" rel="noopener noreferrer" class="dashboard-card module-card-link">
-                    <div class="module-card-header">
-                        <span class="module-card-icon">🎯</span>
-                        <h5 class="module-card-title">COE Triangulation</h5>
-                    </div>
-                    <div class="module-card-value">9.587%</div>
-                    <div class="module-card-description">CAPM + FF3 + DDM (weighted average)</div>
-                    <div class="module-card-status">
-                        Updated 19 Oct 2025
-                    </div>
-                </a>
-
-                <!-- Module 17: ESG KPI Dashboard -->
-                <a href="CATY_17_esg_kpi_dashboard.html" target="_blank" rel="noopener noreferrer" class="dashboard-card module-card-link">
-                    <div class="module-card-header">
-                        <span class="module-card-icon">📉</span>
-                        <h5 class="module-card-title">ESG Impact</h5>
-                    </div>
-                    <div class="module-card-value-danger">-$1.47</div>
-                    <div class="module-card-description">ESG Discount (Governance +30 bps COE)</div>
-                    <div class="module-card-status">
-                        Updated 19 Oct 2025
-                    </div>
-                </a>
-            </div>
-
-            <p><strong>Target Posture Reminder:</strong> benchmark all work against CFA IRC-winning materials kept locally at <code>/Users/nirvanchitnis/Downloads/Target CFA Report Posuture.pdf</code> and <code>/Users/nirvanchitnis/Downloads/rc-2020-winning-presentation-university-of-sydney.pdf</code>. Commit cadence, not calendar, governs improvement.</p>
-
-            <h3>Valuation Comparison</h3>
-            <p class="text-secondary">Current price vs. triangulated target methodologies (data as of October 18, 2025)</p>
-
-            <div class="chart-container chart-container-centered">
-                <canvas id="valuationComparisonChart" aria-label="Valuation comparison chart showing current price versus Wilson 95%, IRC blended, and regression targets"></canvas>
-            </div>
-
-            <div class="price-target-grid price-target-grid-spaced">
-                <div class="metric-card">
-                    <div class="metric-label">Current Price</div>
-                    <div class="metric-value">$45.89</div>
-                    <div class="metric-subtext">As of October 18, 2025</div>
-                </div>
-                <div class="metric-card metric-card-success">
-                    <div class="metric-label">Wilson 95%</div>
-                    <div class="metric-value">$51.74</div>
-                    <div class="metric-subtext">+12.8% (HOLD band)</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-label">IRC Blended</div>
-                    <div class="metric-value">$51.39</div>
-                    <div class="metric-subtext">+12.0% (60% RIM)</div>
-                </div>
-                <div class="metric-card metric-card-success">
-                    <div class="metric-label">Regression</div>
-                    <div class="metric-value">$56.11</div>
-                    <div class="metric-subtext">+22.3% (7-peer)</div>
-                </div>
-            </div>
 
             <h3>Key Assumptions & Sensitivities</h3>
 
