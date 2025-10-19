@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cathay General Bancorp (CATY) - Institutional Equity Research | October 19, 2025</title>
     <link rel="stylesheet" href="styles/caty-equity-research.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 </head>
 <body>
     <!-- Theme Toggle -->
@@ -1882,6 +1883,36 @@
 
             <p><strong>Target Posture Reminder:</strong> benchmark all work against CFA IRC-winning materials kept locally at <code>/Users/nirvanchitnis/Downloads/Target CFA Report Posuture.pdf</code> and <code>/Users/nirvanchitnis/Downloads/rc-2020-winning-presentation-university-of-sydney.pdf</code>. Commit cadence, not calendar, governs improvement.</p>
 
+            <h3>Valuation Comparison</h3>
+            <p class="text-secondary">Current price vs. triangulated target methodologies (data as of October 18, 2025)</p>
+
+            <div class="chart-container chart-container-centered">
+                <canvas id="valuationComparisonChart" aria-label="Valuation comparison chart showing current price versus Wilson 95%, IRC blended, and regression targets"></canvas>
+            </div>
+
+            <div class="price-target-grid price-target-grid-spaced">
+                <div class="metric-card">
+                    <div class="metric-label">Current Price</div>
+                    <div class="metric-value">$45.89</div>
+                    <div class="metric-subtext">As of October 18, 2025</div>
+                </div>
+                <div class="metric-card metric-card-success">
+                    <div class="metric-label">Wilson 95%</div>
+                    <div class="metric-value">$51.74</div>
+                    <div class="metric-subtext">+12.8% (HOLD band)</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">IRC Blended</div>
+                    <div class="metric-value">$51.39</div>
+                    <div class="metric-subtext">+12.0% (60% RIM)</div>
+                </div>
+                <div class="metric-card metric-card-success">
+                    <div class="metric-label">Regression</div>
+                    <div class="metric-value">$56.11</div>
+                    <div class="metric-subtext">+22.3% (7-peer)</div>
+                </div>
+            </div>
+
             <h3>Key Assumptions & Sensitivities</h3>
 
             <h4>Valuation Assumptions</h4>
@@ -1957,6 +1988,31 @@
 
     <!-- JavaScript for Theme Toggle -->
     <script src="scripts/theme-toggle.js"></script>
+    <script src="scripts/charts.js"></script>
+
+    <!-- Initialize Charts -->
+    <script>
+        // Store chart instances globally for theme updates
+        let chartInstances = [];
+
+        // Initialize valuation comparison chart
+        document.addEventListener('DOMContentLoaded', async function() {
+            const valuationChart = await initValuationChart('valuationComparisonChart');
+            if (valuationChart) {
+                chartInstances.push(valuationChart);
+            }
+
+            // Re-render charts when theme changes
+            const originalToggleTheme = window.toggleTheme;
+            window.toggleTheme = function() {
+                originalToggleTheme();
+                // Small delay to let CSS variables update
+                setTimeout(() => {
+                    updateChartsOnThemeChange(chartInstances);
+                }, 100);
+            };
+        });
+    </script>
 
 </body>
 </html>

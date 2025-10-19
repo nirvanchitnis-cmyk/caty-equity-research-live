@@ -1234,3 +1234,26 @@ a:hover {
         font-size: 24px;
     }
 }
+
+/* ============================================================
+   CHART CONTAINERS
+   ============================================================ */
+
+/* Centered chart container with max-width */
+.chart-container-centered {
+    max-width: 800px;
+    margin: 30px auto;
+}
+
+/* Price target grid with top margin */
+.price-target-grid-spaced {
+    margin: 20px 0;
+}
+
+/* Responsive chart container */
+@media (max-width: 768px) {
+    .chart-container-centered {
+        max-width: 100%;
+        margin: 20px 0;
+    }
+}
