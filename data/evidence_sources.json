@@ -6,7 +6,21 @@
       "description": "FDIC Call Report NCO timeseries (CATY)",
       "accession": "FDIC API (NTLNLSCOQR)",
       "owner": "Credit Analytics",
-      "refresh_frequency": "Quarterly"
+      "refresh_frequency": "Quarterly",
+      "status": "VERIFIED_OK",
+      "sha256": "8c3c4d488823df90a61aefcbfccdedf91f891bf27dcf241d56cab4b2622cb5e3",
+      "last_verified": "2025-10-19"
+    },
+    {
+      "id": "fdic_financials",
+      "path": "evidence/raw/fdic_CATY_20250630_financials.json",
+      "description": "FDIC Call Report Q2 2025 financials (CATY)",
+      "accession": "FDIC API (Quarterly)",
+      "owner": "Credit Analytics",
+      "refresh_frequency": "Quarterly",
+      "status": "VERIFIED_OK",
+      "sha256": "TBD",
+      "last_verified": "2025-10-19"
     },
     {
       "id": "caty_10q_q2_2025",
@@ -14,7 +28,11 @@
       "description": "CATY 10-Q Q2 2025",
       "accession": "0001437749-25-025772",
       "owner": "Financial Reporting",
-      "refresh_frequency": "Quarterly"
+      "refresh_frequency": "Quarterly",
+      "status": "MISSING",
+      "sha256": null,
+      "last_verified": null,
+      "note": "Available via SEC EDGAR, not downloaded to repo"
     },
     {
       "id": "caty_10k_2024",
@@ -22,15 +40,23 @@
       "description": "CATY 10-K FY 2024",
       "accession": "0001437749-25-005749",
       "owner": "Financial Reporting",
-      "refresh_frequency": "Annual"
+      "refresh_frequency": "Annual",
+      "status": "MISSING",
+      "sha256": null,
+      "last_verified": null,
+      "note": "Available via SEC EDGAR, not downloaded to repo"
     },
     {
       "id": "peer_metrics",
-      "path": "evidence/raw/peer_regression_inputs.csv",
-      "description": "Peer regression inputs (CATY, EWBC, CVBF, HAFC, COLB)",
-      "accession": "FactSet Extract 2025-10-17",
+      "path": "evidence/peer_snapshot_2025Q2.csv",
+      "description": "Peer regression inputs (CATY, EWBC, CVBF, HAFC + 3 others)",
+      "accession": "Internal extract from SEC 10-Qs",
       "owner": "Peer Analytics",
-      "refresh_frequency": "Quarterly"
+      "refresh_frequency": "Quarterly",
+      "status": "VERIFIED_OK",
+      "sha256": "TBD",
+      "last_verified": "2025-10-19",
+      "note": "Located at evidence/peer_snapshot_2025Q2.csv (not evidence/raw/)"
     }
   ]
 }
