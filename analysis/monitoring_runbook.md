@@ -102,6 +102,16 @@ THEN rating = BUY
 - Update dashboard only
 - Log in evidence/README.md
 
+### Step 8: Print Validation (Manual)
+1. Open `index.html` and `CATY_12_valuation_model.html` in a Chromium-based browser (light mode first).
+2. Trigger **Print Preview** (`Cmd+P` on macOS) and confirm:
+   - Valuation bar chart renders with Cathay colors and legible axis labels.
+   - NCO trend chart renders with Cathay red line and readable gridlines.
+   - Executive dashboard cards preserve layout (no truncated text).
+3. Toggle dark mode on each page and repeat Print Preview to confirm charts and typography remain legible on white background.
+4. Capture the local timestamp (PT) and append an entry to `logs/automation_run.log` documenting the manual validation outcome (pass/fail, issues, browser version).
+5. If any artifact fails, fix before publishing; rerun Steps 6-8 after remediation.
+
 ---
 
 ## Kill-Switches (Immediate Action)

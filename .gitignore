@@ -28,3 +28,4 @@ push_*.sh
 
 # Evidence archive (historical session docs)
 evidence/archive/
+test_output/

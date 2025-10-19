@@ -1,0 +1,480 @@
+{
+  "last_updated": "2025-10-19T20:45:00Z",
+  "sections": [
+    {
+      "id": "company_snapshot",
+      "marker": "exec-company-snapshot",
+      "defaults": {
+        "card_class": "dashboard-card",
+        "label_class": "dashboard-label",
+        "value_class": "dashboard-value",
+        "subtext_class": "dashboard-subtext"
+      },
+      "cards": [
+        {
+          "label": "Ticker",
+          "value": {
+            "source": "market",
+            "path": "ticker",
+            "format": "text_upper",
+            "prefix": "NASDAQ: "
+          }
+        },
+        {
+          "label": "Current Price",
+          "value": {
+            "source": "market",
+            "path": "price",
+            "format": "currency",
+            "decimals": 2
+          },
+          "subtext": {
+            "template": "{price_date}",
+            "placeholders": {
+              "{price_date}": {
+                "source": "market",
+                "path": "price_date",
+                "format": "date_short"
+              }
+            }
+          }
+        },
+        {
+          "label": "Market Cap",
+          "value": {
+            "source": "market",
+            "path": "calculated_metrics.market_cap_billions",
+            "format": "currency_scale",
+            "scale": "billions",
+            "decimals": 2
+          },
+          "subtext": {
+            "template": "{shares} shares",
+            "placeholders": {
+              "{shares}": {
+                "source": "market",
+                "path": "calculated_metrics.shares_outstanding_millions",
+                "format": "number_scale",
+                "scale": "millions",
+                "decimals": 2
+              }
+            }
+          }
+        },
+        {
+          "label": "Rating",
+          "value": {
+            "source": "market",
+            "path": "calculated_metrics.rating",
+            "format": "text_upper"
+          },
+          "value_class": "dashboard-value dashboard-value-orange",
+          "subtext": {
+            "template": "{expected_return} expected ({probability})",
+            "placeholders": {
+              "{expected_return}": {
+                "source": "market",
+                "path": "calculated_metrics.return_wilson_95_pct",
+                "format": "percent_signed",
+                "decimals": 1
+              },
+              "{probability}": {
+                "source": "valuation",
+                "path": "methods.wilson.probability_text",
+                "format": "text"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "valuation_metrics",
+      "marker": "exec-valuation-metrics",
+      "defaults": {
+        "card_class": "dashboard-card-subtle",
+        "label_class": "dashboard-label-small",
+        "value_class": "dashboard-value-medium",
+        "subtext_class": "dashboard-subtext-small"
+      },
+      "cards": [
+        {
+          "label": "Normalized Fair Value",
+          "value": {
+            "source": "market",
+            "path": "calculated_metrics.target_normalized",
+            "format": "currency",
+            "decimals": 2
+          },
+          "subtext": {
+            "template": "P/TBV {multiple}",
+            "placeholders": {
+              "{multiple}": {
+                "source": "market",
+                "path": "calculated_metrics.normalized_ptbv",
+                "format": "multiple",
+                "decimals": 3
+              }
+            }
+          }
+        },
+        {
+          "label": "P/TBV (Current)",
+          "value": {
+            "source": "market",
+            "path": "calculated_metrics.current_ptbv",
+            "format": "multiple",
+            "decimals": 3
+          },
+          "subtext": {
+            "template": "vs {normalized} normalized",
+            "placeholders": {
+              "{normalized}": {
+                "source": "market",
+                "path": "calculated_metrics.normalized_ptbv",
+                "format": "multiple",
+                "decimals": 3
+              }
+            }
+          }
+        },
+        {
+          "label": "P/E (LTM)",
+          "value": {
+            "source": "market",
+            "path": "calculated_metrics.pe_ltm",
+            "format": "multiple",
+            "decimals": 1
+          },
+          "subtext": {
+            "template": "EPS {eps}",
+            "placeholders": {
+              "{eps}": {
+                "source": "market",
+                "path": "calculated_metrics.eps_ltm",
+                "format": "currency",
+                "decimals": 2
+              }
+            }
+          }
+        },
+        {
+          "label": "TBVPS",
+          "value": {
+            "source": "market",
+            "path": "calculated_metrics.tbvps",
+            "format": "currency",
+            "decimals": 2
+          },
+          "subtext": {
+            "template": "Q2'25"
+          }
+        },
+        {
+          "label": "Div Yield",
+          "value": {
+            "source": "market",
+            "path": "calculated_metrics.dividend_yield_pct",
+            "format": "percent",
+            "decimals": 1
+          },
+          "subtext": {
+            "template": "{dividend} annual",
+            "placeholders": {
+              "{dividend}": {
+                "source": "market",
+                "path": "calculated_metrics.dividend_annual",
+                "format": "currency",
+                "decimals": 2
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "performance_metrics",
+      "marker": "exec-performance-metrics",
+      "defaults": {
+        "card_class": "dashboard-card-subtle",
+        "label_class": "dashboard-label-small",
+        "value_class": "dashboard-value-medium",
+        "subtext_class": "dashboard-subtext-small"
+      },
+      "cards": [
+        {
+          "label": "ROTE",
+          "value": {
+            "source": "market",
+            "path": "calculated_metrics.rote_ltm_pct",
+            "format": "percent",
+            "decimals": 2
+          },
+          "subtext": {
+            "template": "Normalized: {normalized}",
+            "placeholders": {
+              "{normalized}": {
+                "source": "market",
+                "path": "calculated_metrics.normalized_rote_pct",
+                "format": "percent",
+                "decimals": 2
+              }
+            }
+          }
+        },
+        {
+          "label": "NIM",
+          "value": {
+            "source": "market",
+            "path": "calculated_metrics.nim_pct",
+            "format": "percent",
+            "decimals": 2
+          },
+          "subtext": {
+            "template": "Q2'25"
+          }
+        },
+        {
+          "label": "Efficiency",
+          "value": {
+            "source": "market",
+            "path": "calculated_metrics.efficiency_ratio_pct",
+            "format": "percent",
+            "decimals": 1
+          },
+          "subtext": {
+            "template": "LTM"
+          }
+        },
+        {
+          "label": "NIB %",
+          "value": {
+            "source": "market",
+            "path": "calculated_metrics.nib_pct",
+            "format": "percent",
+            "decimals": 1
+          },
+          "subtext": {
+            "template": "Q2'25"
+          }
+        },
+        {
+          "label": "Deposit Beta",
+          "value": {
+            "source": "market",
+            "path": "calculated_metrics.deposit_beta_all_in",
+            "format": "decimal",
+            "decimals": 3
+          },
+          "subtext": {
+            "template": "All-in (IB: {ib_beta})",
+            "placeholders": {
+              "{ib_beta}": {
+                "source": "market",
+                "path": "calculated_metrics.deposit_beta_interest_bearing",
+                "format": "decimal",
+                "decimals": 3
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "credit_capital",
+      "marker": "exec-credit-metrics",
+      "defaults": {
+        "card_class": "dashboard-card-subtle",
+        "label_class": "dashboard-label-small",
+        "value_class": "dashboard-value-medium",
+        "subtext_class": "dashboard-subtext-small"
+      },
+      "cards": [
+        {
+          "label": "NCO Rate",
+          "value": {
+            "source": "market",
+            "path": "calculated_metrics.nco_rate_bps",
+            "format": "bps",
+            "decimals": 1
+          },
+          "subtext": {
+            "template": "LTM (TC: {through_cycle})",
+            "placeholders": {
+              "{through_cycle}": {
+                "source": "market",
+                "path": "calculated_metrics.through_cycle_nco_bps",
+                "format": "bps",
+                "decimals": 1
+              }
+            }
+          }
+        },
+        {
+          "label": "ACL/Loans",
+          "value": {
+            "source": "market",
+            "path": "calculated_metrics.acl_loans_pct",
+            "format": "percent",
+            "decimals": 2
+          },
+          "subtext": {
+            "template": "{acl_amount} ACL",
+            "placeholders": {
+              "{acl_amount}": {
+                "source": "market",
+                "path": "calculated_metrics.acl_amount_millions",
+                "format": "currency_scale",
+                "scale": "millions",
+                "decimals": 1
+              }
+            }
+          }
+        },
+        {
+          "label": "NPA/Assets",
+          "value": {
+            "source": "market",
+            "path": "calculated_metrics.npa_assets_pct",
+            "format": "percent",
+            "decimals": 2
+          },
+          "subtext": {
+            "template": "Q2'25"
+          }
+        },
+        {
+          "label": "CET1 Ratio",
+          "value": {
+            "source": "market",
+            "path": "calculated_metrics.cet1_ratio_pct",
+            "format": "percent",
+            "decimals": 2
+          },
+          "subtext": {
+            "template": "Q2'25 (Basel III)"
+          }
+        },
+        {
+          "label": "CRE / Loans",
+          "value": {
+            "source": "market",
+            "path": "calculated_metrics.cre_loans_pct",
+            "format": "percent",
+            "decimals": 1
+          },
+          "subtext": {
+            "template": "Elevated",
+            "class": "dashboard-subtext-small dashboard-subtext-alert"
+          }
+        },
+        {
+          "label": "Brokered Dep",
+          "value": {
+            "source": "market",
+            "path": "calculated_metrics.brokered_deposit_pct",
+            "format": "percent",
+            "decimals": 2
+          },
+          "subtext": {
+            "template": "vs peers 1-4%"
+          }
+        }
+      ]
+    }
+  ],
+  "price_target": {
+    "marker": "price-target-grid",
+    "defaults": {
+      "card_class": "metric-card",
+      "label_class": "metric-label",
+      "value_class": "metric-value",
+      "subtext_class": "metric-subtext"
+    },
+    "cards": [
+      {
+        "label": "Current Price",
+        "value": {
+          "source": "market",
+          "path": "price",
+          "format": "currency",
+          "decimals": 2
+        },
+        "subtext": {
+          "template": "As of {price_date}",
+          "placeholders": {
+            "{price_date}": {
+              "source": "market",
+              "path": "price_date",
+              "format": "date_long"
+            }
+          }
+        }
+      },
+      {
+        "label": "Normalized Fair Value (P/TBV 1.087x)",
+        "value": {
+          "source": "market",
+          "path": "calculated_metrics.target_normalized",
+          "format": "currency",
+          "decimals": 2
+        },
+        "subtext": {
+          "template": "Normalized ROTE {rote} (NCO {nco}), COE {coe}, g 2.5%",
+          "placeholders": {
+            "{rote}": {
+              "source": "market",
+              "path": "calculated_metrics.normalized_rote_pct",
+              "format": "percent",
+              "decimals": 2
+            },
+            "{nco}": {
+              "source": "market",
+              "path": "calculated_metrics.through_cycle_nco_bps",
+              "format": "bps",
+              "decimals": 1
+            },
+            "{coe}": {
+              "source": "market",
+              "path": "calculated_metrics.implied_coe_pct",
+              "format": "percent",
+              "decimals": 2
+            }
+          }
+        }
+      },
+      {
+        "label": "P/TBV (Current)",
+        "value": {
+          "source": "market",
+          "path": "calculated_metrics.current_ptbv",
+          "format": "multiple",
+          "decimals": 3
+        },
+        "subtext": {
+          "template": "Price / TBVPS ({tbvps})",
+          "placeholders": {
+            "{tbvps}": {
+              "source": "market",
+              "path": "calculated_metrics.tbvps",
+              "format": "currency",
+              "decimals": 2
+            }
+          }
+        }
+      },
+      {
+        "label": "Implied COE",
+        "value": {
+          "source": "market",
+          "path": "calculated_metrics.implied_coe_pct",
+          "format": "percent",
+          "decimals": 2
+        },
+        "subtext": {
+          "template": "Peer-calibrated (g = 2.5%)"
+        }
+      }
+    ]
+  }
+}

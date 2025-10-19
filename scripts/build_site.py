@@ -24,6 +24,7 @@ from typing import Any, Dict
 ROOT = Path(__file__).resolve().parents[1]
 INDEX_PATH = ROOT / "index.html"
 LOG_PATH = ROOT / "logs" / "automation_run.log"
+EXEC_METRICS_PATH = ROOT / "data" / "executive_metrics.json"
 
 # ---------------------------------------------------------------------------
 # Helpers
@@ -68,6 +69,176 @@ def resolve_path(data: Dict[str, Any], path: str) -> Any:
             raise KeyError(f"Path '{path}' missing key '{part}'")
         current = current[part]
     return current
+
+
+def to_float(value: Any) -> float:
+    if isinstance(value, (int, float)):
+        return float(value)
+    return float(str(value))
+
+
+def format_date_value(value: Any, style: str) -> str:
+    if value in (None, ""):
+        return "—"
+    if isinstance(value, dt.datetime):
+        dt_value = value
+    else:
+        value_str = str(value)
+        if len(value_str) == 10:
+            dt_value = dt.datetime.strptime(value_str, "%Y-%m-%d")
+        else:
+            parsed = parse_iso(value_str)
+            if parsed is None:
+                return str(value)
+            dt_value = parsed
+    if style == "short":
+        return dt_value.strftime("%b %d, %Y")
+    if style == "long":
+        return dt_value.strftime("%B %d, %Y")
+    return dt_value.isoformat()
+
+
+def format_value(raw: Any, fmt: str, spec: Dict[str, Any]) -> str:
+    if raw in (None, ""):
+        return "—"
+
+    prefix = spec.get("prefix", "")
+    suffix = spec.get("suffix", "")
+    decimals = spec.get("decimals")
+
+    try:
+        if fmt in {
+            "currency",
+            "currency_scale",
+            "number_scale",
+            "multiple",
+            "percent",
+            "percent_signed",
+            "decimal",
+            "bps",
+        }:
+            raw_num = to_float(raw)
+        else:
+            raw_num = None
+    except (TypeError, ValueError):
+        raw_num = None
+
+    if fmt == "currency":
+        decimals = 2 if decimals is None else decimals
+        text = f"${raw_num:,.{decimals}f}"
+    elif fmt == "currency_scale":
+        decimals = 2 if decimals is None else decimals
+        scale = spec.get("scale", "millions")
+        suffix_scale = ""
+        value = raw_num
+        if scale == "billions":
+            suffix_scale = "B"
+        elif scale == "millions":
+            suffix_scale = "M"
+        text = f"${value:,.{decimals}f}{suffix_scale}"
+    elif fmt == "number_scale":
+        decimals = 2 if decimals is None else decimals
+        scale = spec.get("scale", "millions")
+        suffix_scale = ""
+        value = raw_num
+        if scale == "billions":
+            suffix_scale = "B"
+        elif scale == "millions":
+            suffix_scale = "M"
+        text = f"{value:,.{decimals}f}{suffix_scale}"
+    elif fmt == "multiple":
+        decimals = 3 if decimals is None else decimals
+        text = f"{raw_num:.{decimals}f}x"
+    elif fmt == "percent":
+        decimals = 1 if decimals is None else decimals
+        text = f"{raw_num:.{decimals}f}%"
+    elif fmt == "percent_signed":
+        decimals = 1 if decimals is None else decimals
+        text = f"{raw_num:+.{decimals}f}%"
+    elif fmt == "decimal":
+        decimals = 3 if decimals is None else decimals
+        text = f"{raw_num:.{decimals}f}"
+    elif fmt == "bps":
+        decimals = 1 if decimals is None else decimals
+        text = f"{raw_num:.{decimals}f}"
+        if not spec.get("omit_unit", False):
+            text += " bps"
+    elif fmt == "date_short":
+        text = format_date_value(raw, "short")
+    elif fmt == "date_long":
+        text = format_date_value(raw, "long")
+    elif fmt == "text_upper":
+        text = str(raw).upper()
+    elif fmt == "text":
+        text = str(raw)
+    else:
+        text = str(raw)
+
+    return f"{prefix}{text}{suffix}"
+
+
+def render_text_spec(spec: Any, context: Dict[str, Any]) -> str:
+    if spec is None:
+        return ""
+    if isinstance(spec, str):
+        return spec
+    if "template" in spec:
+        template = spec["template"]
+        for placeholder, placeholder_spec in spec.get("placeholders", {}).items():
+            replacement = render_text_spec(placeholder_spec, context)
+            template = template.replace(placeholder, replacement)
+        return template
+    return render_value_spec(spec, context)
+
+
+def render_value_spec(spec: Any, context: Dict[str, Any]) -> str:
+    if spec is None:
+        return ""
+    if isinstance(spec, str):
+        return spec
+    if isinstance(spec, (int, float)):
+        return str(spec)
+
+    if "template" in spec:
+        return render_text_spec(spec, context)
+
+    if "source" in spec:
+        source = spec["source"]
+        data = context.get(source)
+        if data is None:
+            raise KeyError(f"Unknown data source '{source}'")
+        raw = resolve_path(data, spec["path"])
+    else:
+        raw = spec.get("value")
+
+    fmt = spec.get("format", "text")
+    return format_value(raw, fmt, spec)
+
+
+def render_cards(section_cfg: Dict[str, Any], context: Dict[str, Any]) -> str:
+    defaults = section_cfg.get("defaults", {})
+    lines: list[str] = []
+
+    for card in section_cfg.get("cards", []):
+        card_class = card.get("card_class", defaults.get("card_class", "dashboard-card"))
+        label_class = card.get("label_class", defaults.get("label_class", "dashboard-label"))
+        value_class = card.get("value_class", defaults.get("value_class", "dashboard-value"))
+        subtext_cfg = card.get("subtext")
+
+        lines.append(f'    <div class="{card_class}">')
+        lines.append(f'        <div class="{label_class}">{card["label"]}</div>')
+        value_text = render_value_spec(card.get("value"), context)
+        lines.append(f'        <div class="{value_class}">{value_text}</div>')
+
+        if subtext_cfg is not None:
+            subtext_class = subtext_cfg.get("class", defaults.get("subtext_class", "dashboard-subtext"))
+            subtext_text = render_text_spec(subtext_cfg, context)
+            if subtext_text:
+                lines.append(f'        <div class="{subtext_class}">{subtext_text}</div>')
+
+        lines.append("    </div>")
+
+    return "\n".join(lines)
 
 
 def build_reconciliation_table() -> str:
@@ -315,6 +486,12 @@ def append_log(entry: str) -> None:
 def main() -> int:
     try:
         html = INDEX_PATH.read_text(encoding="utf-8")
+        market = load_json(ROOT / "data" / "market_data_current.json")
+        methods_cfg = load_json(ROOT / "data" / "valuation_methods.json")
+        exec_cfg = load_json(EXEC_METRICS_PATH)
+
+        valuation_lookup = {"methods": {m["id"]: m for m in methods_cfg.get("methods", [])}, "config": methods_cfg}
+        context = {"market": market, "valuation": valuation_lookup, "executive": exec_cfg}
 
         reconciliation_html = build_reconciliation_table()
         html = replace_section(html, "reconciliation-dashboard", reconciliation_html)
@@ -325,8 +502,20 @@ def main() -> int:
         evidence_html = render_evidence_table()
         html = replace_section(html, "evidence-provenance", evidence_html)
 
+        for section in exec_cfg.get("sections", []):
+            marker = section["marker"]
+            section_html = render_cards(section, context)
+            html = replace_section(html, marker, section_html)
+
+        price_target_cfg = exec_cfg.get("price_target")
+        if price_target_cfg:
+            price_html = render_cards(price_target_cfg, context)
+            html = replace_section(html, price_target_cfg["marker"], price_html)
+
         INDEX_PATH.write_text(html, encoding="utf-8")
-        append_log("build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance updated")
+        append_log(
+            "build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target updated"
+        )
         return 0
     except Exception as exc:  # noqa: BLE001
         append_log(f"build_site.py FAILED: {exc}")

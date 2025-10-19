@@ -166,6 +166,7 @@
 
             <!-- Company Snapshot -->
             <div class="dashboard-grid">
+            <!-- BEGIN AUTOGEN: exec-company-snapshot -->
                 <div class="dashboard-card">
                     <div class="dashboard-label">Ticker</div>
                     <div class="dashboard-value">NASDAQ: CATY</div>
@@ -173,7 +174,7 @@
                 <div class="dashboard-card">
                     <div class="dashboard-label">Current Price</div>
                     <div class="dashboard-value">$45.89</div>
-                    <div class="dashboard-subtext">Oct 17, 2025</div>
+                    <div class="dashboard-subtext">Oct 18, 2025</div>
                 </div>
                 <div class="dashboard-card">
                     <div class="dashboard-label">Market Cap</div>
@@ -183,13 +184,15 @@
                 <div class="dashboard-card">
                     <div class="dashboard-label">Rating</div>
                     <div class="dashboard-value dashboard-value-orange">HOLD</div>
-                    <div class="dashboard-subtext">+12.8% expected (Wilson 74/26)</div>
+                    <div class="dashboard-subtext">+12.8% expected (74% / 26%)</div>
                 </div>
+            <!-- END AUTOGEN: exec-company-snapshot -->
             </div>
 
             <!-- Valuation Metrics -->
             <h3 class="dashboard-section-header">Valuation Metrics</h3>
             <div class="dashboard-grid-compact">
+            <!-- BEGIN AUTOGEN: exec-valuation-metrics -->
                 <div class="dashboard-card-subtle">
                     <div class="dashboard-label-small">Normalized Fair Value</div>
                     <div class="dashboard-value-medium">$39.32</div>
@@ -215,11 +218,13 @@
                     <div class="dashboard-value-medium">3.3%</div>
                     <div class="dashboard-subtext-small">$1.52 annual</div>
                 </div>
+            <!-- END AUTOGEN: exec-valuation-metrics -->
             </div>
 
             <!-- Performance Metrics -->
             <h3 class="dashboard-section-header">Performance Metrics (LTM through Q2'25)</h3>
             <div class="dashboard-grid-compact">
+            <!-- BEGIN AUTOGEN: exec-performance-metrics -->
                 <div class="dashboard-card-subtle">
                     <div class="dashboard-label-small">ROTE</div>
                     <div class="dashboard-value-medium">11.95%</div>
@@ -245,11 +250,13 @@
                     <div class="dashboard-value-medium">0.507</div>
                     <div class="dashboard-subtext-small">All-in (IB: 0.604)</div>
                 </div>
+            <!-- END AUTOGEN: exec-performance-metrics -->
             </div>
 
             <!-- Credit & Capital -->
             <h3 class="dashboard-section-header">Credit Quality & Capital</h3>
             <div class="dashboard-grid-minimal">
+            <!-- BEGIN AUTOGEN: exec-credit-metrics -->
                 <div class="dashboard-card-subtle">
                     <div class="dashboard-label-small">NCO Rate</div>
                     <div class="dashboard-value-medium">18.1 bps</div>
@@ -280,6 +287,7 @@
                     <div class="dashboard-value-medium">5.62%</div>
                     <div class="dashboard-subtext-small">vs peers 1-4%</div>
                 </div>
+            <!-- END AUTOGEN: exec-credit-metrics -->
             </div>
         </section>
 
@@ -290,6 +298,7 @@
             <div class="rating-badge rating-hold rating-badge-gradient">HOLD</div>
 
             <div class="price-target-grid">
+            <!-- BEGIN AUTOGEN: price-target-grid -->
                 <div class="metric-card">
                     <div class="metric-label">Current Price</div>
                     <div class="metric-value">$45.89</div>
@@ -298,7 +307,7 @@
                 <div class="metric-card">
                     <div class="metric-label">Normalized Fair Value (P/TBV 1.087x)</div>
                     <div class="metric-value">$39.32</div>
-                    <div class="metric-subtext">Normalized ROTE 10.21% (42.8 bps NCO), COE 9.587%, g 2.5% (Gordon Growth)</div>
+                    <div class="metric-subtext">Normalized ROTE 10.21% (NCO 42.8 bps), COE 9.95%, g 2.5%</div>
                 </div>
                 <div class="metric-card">
                     <div class="metric-label">P/TBV (Current)</div>
@@ -310,6 +319,7 @@
                     <div class="metric-value">9.95%</div>
                     <div class="metric-subtext">Peer-calibrated (g = 2.5%)</div>
                 </div>
+            <!-- END AUTOGEN: price-target-grid -->
             </div>
 
             <h3 class="section-header-large">ESG Impact on Valuation <a href="CATY_17_esg_kpi_dashboard.html" class="section-link-gold">[View Full Dashboard →]</a></h3>
@@ -1978,6 +1988,14 @@
                         <td>Credit Analytics</td>
                     </tr>
                     <tr>
+                        <td>fdic_financials</td>
+                        <td>FDIC Call Report Q2 2025 financials (CATY)</td>
+                        <td>FDIC API (Quarterly)</td>
+                        <td><code>8b57e0e0fc92b67fb69b801e44be0b99126663755f605cf3215529b2a50003bc</code></td>
+                        <td>2025-10-19 04:05 UTC</td>
+                        <td>Credit Analytics</td>
+                    </tr>
+                    <tr>
                         <td>caty_10q_q2_2025</td>
                         <td>CATY 10-Q Q2 2025</td>
                         <td>0001437749-25-025772</td>
@@ -1995,10 +2013,10 @@
                     </tr>
                     <tr>
                         <td>peer_metrics</td>
-                        <td>Peer regression inputs (CATY, EWBC, CVBF, HAFC, COLB)</td>
-                        <td>FactSet Extract 2025-10-17</td>
-                        <td><code>MISSING</code></td>
-                        <td>MISSING</td>
+                        <td>Peer regression inputs (CATY, EWBC, CVBF, HAFC + 3 others)</td>
+                        <td>Internal extract from SEC 10-Qs</td>
+                        <td><code>576b7b73f0c8aefffcdc2c91600cd00f9f7f181210b95803f237e14cf358964f</code></td>
+                        <td>2025-10-19 03:40 UTC</td>
                         <td>Peer Analytics</td>
                     </tr>
                 </tbody>
