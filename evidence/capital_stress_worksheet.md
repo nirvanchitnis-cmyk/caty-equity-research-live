@@ -1,6 +1,6 @@
 # CAPITAL STRESS WORKSHEET - CATHAY GENERAL BANCORP
 
-**Date:** October 18, 2025
+**Date:** October 19, 2025
 **Analyst:** Nirvan Chitnis
 **Objective:** Model CET1 and TBVPS impact under through-cycle NCO scenarios
 
@@ -10,10 +10,10 @@
 
 **Purpose:** Quantify capital burn and tangible book value impairment if CATY normalizes to through-cycle NCO rates (42.8 bps base case, 60 bps bear case) from current 18.1 bps LTM.
 
-**Key Findings (PRELIMINARY):**
-- CET1 ratio burn: TBD (awaiting extraction)
-- TBVPS compression: TBD
-- ACL adequacy: Coverage ratio 0.90% provides cushion but insufficient under GFC-level stress
+**Key Findings (UPDATED):**
+- **Through-cycle NCO normalization (42.8 bps)** requires $48.0M gross provisions ($38.4M after tax), equating to a **20.1 bps CET1 burn** and leaving **265 bps** of cushion above the 10.5% management buffer.
+- **Industrial/Warehouse bear case (15% cumulative loss)** consumes **121.2 bps** of CET1 and, when stacked with base-case normalization, totals **141.3 bps** of capital erosion; buffer tightens to **164 bps** and **TBVPS falls to $32.82 (-9.2%)**.
+- **Capital flexibility is materially reduced:** buybacks must pause; dividend coverage remains but moves onto watch as CRE outlier risk compounds other stress assumptions.
 
 ---
 
@@ -23,18 +23,12 @@
 
 | Metric | Value | Source |
 |--------|-------|--------|
-| **Common Equity Tier 1 (CET1)** | [EXTRACTING] | Q2'25 10-Q, Regulatory Capital table |
-| **Tier 1 Capital** | [EXTRACTING] | Q2'25 10-Q |
-| **Total Capital** | [EXTRACTING] | Q2'25 10-Q |
-| **Risk-Weighted Assets (RWA)** | [EXTRACTING] | Q2'25 10-Q |
-| **CET1 Ratio** | [EXTRACTING] % | CET1 / RWA |
-| **Tier 1 Ratio** | [EXTRACTING] % | Tier 1 / RWA |
-| **Total Capital Ratio** | [EXTRACTING] % | Total Capital / RWA |
+| **Common Equity Tier 1 (CET1)** | $2,552.3M | Q2'25 10-Q, Reg. Capital table |
+| **Risk-Weighted Assets (RWA)** | $19,118.5M | Q2'25 10-Q |
+| **CET1 Ratio** | 13.35% | Q2'25 10-Q |
+| **Total Loans** | $19,784.7M | Q2'25 10-Q |
 
-**Regulatory Minimums:**
-- CET1: 4.5% (well-capitalized: 6.5%)
-- Tier 1: 6.0% (well-capitalized: 8.0%)
-- Total Capital: 8.0% (well-capitalized: 10.0%)
+**Regulatory Minimums:** CET1 4.5% (well-capitalized: 6.5%); Cathay targets ≥10.5% buffer.
 
 ---
 
@@ -42,11 +36,10 @@
 
 | Metric | Value | Source |
 |--------|-------|--------|
-| **Shareholders' Equity** | $2,511.4M | Q2'25 10-Q, Balance Sheet |
-| **Goodwill** | $5.5M | Q2'25 10-Q |
-| **Intangibles** | $2.1M | Q2'25 10-Q |
-| **Tangible Common Equity (TCE)** | $2,503.8M | Equity - Goodwill - Intangibles |
-| **Shares Outstanding** | 69.24M | Q2'25 10-Q |
+| **Shareholders' Equity** | $2,511.4M | Q2'25 10-Q |
+| **Goodwill + Intangibles** | $7.6M | Q2'25 10-Q |
+| **Tangible Common Equity (TCE)** | $2,503.8M | Equity − Goodwill/Intangibles |
+| **Shares Outstanding** | 69.34M | Q2'25 10-Q |
 | **TBVPS** | $36.16 | TCE / Shares |
 
 ---
@@ -124,24 +117,21 @@ After-Tax NI Impact = $48.0M - $9.6M = $38.4M reduction
 
 **Year 1 Capital Burn:**
 ```
-NCO Impact = $48.0M after-tax (from Step 1)
-CET1 Reduction = $48.0M
-Starting CET1 = [EXTRACTING]
-Ending CET1 = Starting CET1 - $48.0M
+After-tax NCO Impact = $38.4M (from Step 1)
+CET1 Reduction       = $38.4M
+Starting CET1 Ratio  = 13.35%
+RWA                  = $19,118.5M
 
-CET1 Ratio Impact = $48.0M / RWA
-                   = $48.0M / [EXTRACTING RWA]
-                   = [TBD] bps reduction
+CET1 Ratio Impact = ($38.4M ÷ $19,118.5M) × 10,000 = **20.1 bps**
+Ending CET1 Ratio = 13.35% − 0.201% = **13.15%**
 ```
 
 **Cushion Above Minimum:**
 ```
-Current CET1 Ratio: [EXTRACTING] %
-Well-Capitalized Minimum: 6.5%
-Cushion: [TBD] bps
+Cushion vs. 10.5% buffer = (13.15% − 10.5%) × 100 = **265 bps**
 ```
 
-**Assessment:** If current CET1 is >10%, bank has 350+ bps cushion and can absorb Base Case NCO without regulatory concern.
+**Assessment:** Headroom remains, but the cushion drops by ~350 bps versus the prior (incorrect) peer median math—share buybacks now compete with capital preservation.
 
 ---
 
@@ -151,17 +141,17 @@ Cushion: [TBD] bps
 
 ```
 Starting TCE: $2,503.8M
-NCO Impact (Year 1): -$38.4M (after-tax)
+After-tax NCO Impact: -$38.4M
 Ending TCE: $2,465.4M
-Shares: 69.24M
-Ending TBVPS: $35.61 (-1.5% from $36.16)
+Shares: 69.34M
+Ending TBVPS: $35.55 (-1.7% vs. $36.16)
 ```
 
 **Valuation Impact:**
 ```
 Fair P/TBV: 1.115x
-Target Price = $35.61 × 1.115 = $39.70
-Downside from $45.89: -13.5%
+Target Price = $35.55 × 1.115 = $39.64
+Downside from $45.89: -13.6%
 ```
 
 ---
@@ -191,25 +181,25 @@ After-Tax Impact = $65.2M reduction
 |--------|---------|-----------|
 | **LTM Net Income** | $294.7M | $229.5M |
 | **ROTE** | 11.95% | 9.31% |
-| **Fair P/TBV** | — | 0.95x (compressed multiple) |
-| **Target TBVPS** | — | $36.16 × 0.95 = $34.35 |
+| **Fair P/TBV** | 1.115x | 0.95x |
+| **Implied TBVPS Target** | $40.32 | $34.35 |
 
-**Downside:** -25% from $45.89
+**Downside:** ~25% vs. $45.89 spot once multiple compression is applied alongside earnings drag.
 
 ---
 
 ### Step 3: CET1 Burn (Bear Case)
 
+After-tax NCO Impact = $65.2M/year
+CET1 Reduction       = $65.2M
+RWA                  = $19,118.5M
+CET1 Ratio Impact    = ($65.2M ÷ $19,118.5M) × 10,000 = **34.1 bps per year**
+3-Year Cumulative    = **102.3 bps**
+Ending CET1 Ratio    = 13.35% − 1.023% = **12.33%**
+Buffer vs. 10.5%     = **183 bps**
 ```
-NCO Impact: $65.2M after-tax annually
-CET1 Reduction: $65.2M
-CET1 Ratio Impact = $65.2M / [EXTRACTING RWA]
-                   = [TBD] bps
 
-Over 3 years: -[TBD] bps cumulative
-```
-
-**Risk Assessment:** If cumulative CET1 burn exceeds 200 bps, bank may need to curtail buybacks or raise capital.
+**Risk Assessment:** Stack this 102 bps with industrial/warehouse bear (121 bps) and base-case normalization (20 bps) → **243 bps** total erosion. CET1 would slide to ~11.0%, triggering a hard stop on buybacks and a dividend review.
 
 ---
 
@@ -258,46 +248,38 @@ Ending TBVPS: $14.23 (-60% from $36.16)
 **CET1 Impact:**
 ```
 CET1 Burn = $1,518M
-CET1 Ratio = ([EXTRACTING CET1] - $1,518M) / RWA
-           = [WOULD BREACH MINIMUMS]
+Pro forma CET1 Capital = $2,552.3M − $1,518M = $1,034.3M
+CET1 Ratio = $1,034.3M ÷ $19,118.5M = 5.41% (below 6.5% well-cap threshold)
 ```
 
 **Result:** Bank would be undercapitalized and require TARP-style rescue or M&A.
 
 ---
 
-## KEY FINDINGS (PENDING DATA EXTRACTION)
+## KEY FINDINGS (UPDATED)
 
-### Base Case (42.8 bps NCO)
-- ✅ **MANAGEABLE:** CET1 cushion likely adequate (pending extraction)
-- ✅ **SELL THESIS VALID:** TBVPS compression + ROTE normalization supports $40.32 target
-- Risk: Moderate (requires provision builds but not capital raise)
+### Base Case (42.8 bps Through-Cycle NCO)
+- ✅ **CET1 cushion shrinks to 265 bps** — still above management buffer but materially tighter than previously assumed.
+- ✅ **ROTE drops to 10.4%; TBVPS to $35.55** — regression target holds at $39.6, reinforcing SELL call.
+- ⚠ **Buybacks constrained** — optionality limited until excess CRE capital premium is addressed.
 
-### Bear Case (60 bps NCO)
-- ⚠ **ELEVATED RISK:** 3-year ACL shortfall $175M requires reserve builds
-- ⚠ **CET1 BURN:** May curtail buybacks; target price drops to $34-36
-- Risk: High (capital actions needed)
+### Bear Case (60 bps NCO + Industrial/Warehouse Stress)
+- ⚠ **Combined CET1 burn hits 243 bps** (102 bps NCO + 121 bps property + 20 bps base normalization) → pro forma CET1 ≈ 11.0%.
+- ⚠ **TBVPS down to $32.82 (-9.2%)** — dividend sustainable but subject to scrutiny; buybacks halted.
+- 🚨 **ACL shortfall $175M** — demands reserve build or capital action if cycle deteriorates.
 
 ### Tail Risk (20% CRE Loss Severity)
-- 🚨 **EXISTENTIAL:** Would breach CET1 minimums; require capital raise or M&A
-- 🚨 **TBVPS IMPAIRMENT:** -60% to $14-15 range
-- Probability: Low (<5%) but catastrophic if occurs
+- 🚨 **Capital wipe-out scenario** — $1.9B net loss would collapse CET1; only included as qualitative tail marker.
+- Probability low (<5%), but underscores necessity of caps on CRE exposure.
 
 ---
 
 ## NEXT STEPS
 
-**Immediate (within 1 hour):**
-1. ✅ Extract CET1, Tier 1, Total Capital from Q2'25 10-Q
-2. ✅ Extract RWA from Q2'25 10-Q
-3. ✅ Calculate CET1 ratio and cushion above minimums
-4. ✅ Populate all [EXTRACTING] fields in worksheet
-
-**Next Session:**
-5. Build 3-year projection with provision paths under Base/Bear scenarios
-6. Stress test ACL coverage adequacy
-7. Model buyback curtailment scenarios
-8. Integrate findings into index.html and DEREK_EXECUTIVE_SUMMARY.md
+1. Embed refreshed capital outputs into `CATY_11_peers_normalized.html` and `DEREK_EXECUTIVE_SUMMARY.md`.
+2. Extend workbook with multi-period capital bridge (Years 1–3) using updated NCO and property stress inputs.
+3. Align valuation bridge with revised TBVPS trajectory and CRE-driven multiple compression.
+4. Archive parser/log outputs and tie evidence hashes to this worksheet revision.
 
 ---
 
@@ -321,4 +303,4 @@ grep -i "common equity tier 1\|risk-weighted assets" /tmp/caty_q2_2025_full.html
 
 ---
 
-**STATUS:** PRELIMINARY WORKSHEET - Awaiting capital metrics extraction to complete calculations.
+**STATUS:** UPDATED 2025-10-19 04:35 PT — Base/Bear capital impacts recalculated; multi-period projection pending.
