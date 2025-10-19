@@ -6,12 +6,52 @@ Generates PDFs via headless Chrome and validates output
 
 import subprocess
 import sys
+import platform
+import shutil
 from pathlib import Path
 from datetime import datetime, timezone
 
 # Paths
 base_dir = Path(__file__).parent.parent
 log_path = base_dir / 'logs' / 'automation_run.log'
+
+def find_chrome() -> str | None:
+    """
+    Find Chrome executable across different platforms
+    Returns None if Chrome is not found
+    """
+    system = platform.system()
+
+    if system == "Darwin":  # macOS
+        candidates = [
+            "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+            "/Applications/Chromium.app/Contents/MacOS/Chromium",
+        ]
+    elif system == "Linux":
+        # Try common Linux locations
+        candidates = ["google-chrome", "chromium-browser", "chromium", "google-chrome-stable"]
+    elif system == "Windows":
+        candidates = [
+            r"C:\Program Files\Google\Chrome\Application\chrome.exe",
+            r"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe",
+        ]
+    else:
+        return None
+
+    # Check each candidate
+    for candidate in candidates:
+        if Path(candidate).exists():
+            return candidate
+        # For Linux, try which command
+        if system == "Linux":
+            try:
+                result = shutil.which(candidate)
+                if result:
+                    return result
+            except Exception:
+                continue
+
+    return None
 
 def append_log(entry: str) -> None:
     log_path.parent.mkdir(parents=True, exist_ok=True)
@@ -48,9 +88,32 @@ def validate_print_output():
         }
     ]
 
-    # Create output directory
+    # Create output directory and clean old PDFs
     output_dir = base_dir / 'test_output'
     output_dir.mkdir(exist_ok=True)
+
+    # Cleanup: Remove old PDF files before generating new ones
+    for old_pdf in output_dir.glob('*.pdf'):
+        try:
+            old_pdf.unlink()
+            print(f"Cleaned up old file: {old_pdf.name}")
+        except Exception as e:
+            print(f"Warning: Could not delete {old_pdf.name}: {e}")
+
+    # Find Chrome executable
+    chrome_path = find_chrome()
+    if not chrome_path:
+        print("❌ ERROR: Chrome/Chromium not found")
+        print()
+        print("Please install Google Chrome or Chromium:")
+        print("  - macOS: https://www.google.com/chrome/")
+        print("  - Linux: sudo apt-get install google-chrome-stable")
+        print("  - Windows: https://www.google.com/chrome/")
+        append_log("print_validation FAILED: Chrome not found")
+        return 1
+
+    print(f"Using Chrome: {chrome_path}")
+    print()
 
     results = []
 
@@ -65,7 +128,7 @@ def validate_print_output():
         # Use Chrome headless mode to print to PDF
         try:
             cmd = [
-                '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
+                chrome_path,
                 '--headless',
                 '--disable-gpu',
                 '--print-to-pdf=' + str(pdf_path),

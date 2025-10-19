@@ -7,7 +7,7 @@
       "description": "Entity metadata, CIK, auditor (KPMG), segments",
       "status": "UPDATED",
       "importance": "STANDARD",
-      "last_updated": "2025-10-19",
+      "last_updated": "2025-10-18",
       "data_dependencies": ["SEC 10-Q", "Proxy Statement"]
     },
     {
@@ -17,7 +17,7 @@
       "description": "Q2'25 NII, NIM 3.27%, efficiency 45.33%, EPS $1.10",
       "status": "UPDATED",
       "importance": "STANDARD",
-      "last_updated": "2025-10-19",
+      "last_updated": "2025-10-18",
       "data_dependencies": ["SEC 10-Q"]
     },
     {
@@ -27,7 +27,7 @@
       "description": "Assets $23.7B, TCE $2.51B, TBVPS $36.16",
       "status": "UPDATED",
       "importance": "STANDARD",
-      "last_updated": "2025-10-19",
+      "last_updated": "2025-10-17",
       "data_dependencies": ["SEC 10-Q"]
     },
     {
@@ -37,7 +37,7 @@
       "description": "Operating CF, investing, financing, capital returns",
       "status": "UPDATED",
       "importance": "STANDARD",
-      "last_updated": "2025-10-19",
+      "last_updated": "2025-10-17",
       "data_dependencies": ["SEC 10-Q"]
     },
     {
@@ -47,7 +47,7 @@
       "description": "Deposit betas (IB 60.4%, All-in 50.7%), NIM bridge",
       "status": "UPDATED",
       "importance": "KEY",
-      "last_updated": "2025-10-19",
+      "last_updated": "2025-10-17",
       "data_dependencies": ["SEC 10-Q", "Earnings Presentation"]
     },
     {
@@ -57,7 +57,7 @@
       "description": "NIB 16.9%, brokered 5.62%, funding mix",
       "status": "UPDATED",
       "importance": "STANDARD",
-      "last_updated": "2025-10-19",
+      "last_updated": "2025-10-18",
       "data_dependencies": ["SEC 10-Q"]
     },
     {
@@ -67,7 +67,7 @@
       "description": "Through-cycle NCO: 42.8 bps (2008-2024 FDIC data)",
       "status": "UPDATED",
       "importance": "CRITICAL",
-      "last_updated": "2025-10-19",
+      "last_updated": "2025-10-17",
       "data_dependencies": ["FDIC Call Reports", "SEC 10-Q"]
     },
     {
@@ -77,7 +77,7 @@
       "description": "CRE 52.4% (ELEVATED), office tail risk",
       "status": "UPDATED",
       "importance": "CRITICAL",
-      "last_updated": "2025-10-19",
+      "last_updated": "2025-10-17",
       "data_dependencies": ["SEC 10-Q", "Earnings Presentation"]
     },
     {
@@ -87,7 +87,7 @@
       "description": "CET1 13.35%, regulatory capital, AOCI",
       "status": "UPDATED",
       "importance": "STANDARD",
-      "last_updated": "2025-10-19",
+      "last_updated": "2025-10-17",
       "data_dependencies": ["SEC 10-Q"]
     },
     {
@@ -97,7 +97,7 @@
       "description": "Dividends, buybacks, payout ratio 32.1%",
       "status": "UPDATED",
       "importance": "STANDARD",
-      "last_updated": "2025-10-19",
+      "last_updated": "2025-10-17",
       "data_dependencies": ["SEC 10-Q"]
     },
     {
@@ -107,7 +107,7 @@
       "description": "n=4 peers, R²=0.9548, implied COE 9.587%",
       "status": "UPDATED",
       "importance": "KEY",
-      "last_updated": "2025-10-19",
+      "last_updated": "2025-10-18",
       "data_dependencies": ["SEC EDGAR (peers)", "FactSet"]
     },
     {
@@ -117,7 +117,7 @@
       "description": "3 scenarios, Expected $51.74 (Wilson weighted), probabilities",
       "status": "UPDATED",
       "importance": "MOST_CRITICAL",
-      "last_updated": "2025-10-19",
+      "last_updated": "2025-10-18",
       "data_dependencies": ["All above modules", "Python scripts"]
     },
     {

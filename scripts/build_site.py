@@ -434,7 +434,7 @@ def render_evidence_table() -> str:
         abs_path = ROOT / rel_path
         sha256 = compute_sha256(abs_path)
         if abs_path.exists():
-            mtime = dt.datetime.utcfromtimestamp(abs_path.stat().st_mtime).strftime("%Y-%m-%d %H:%M UTC")
+            mtime = dt.datetime.fromtimestamp(abs_path.stat().st_mtime, tz=dt.timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
         else:
             mtime = "MISSING"
 
@@ -476,14 +476,16 @@ def ensure_log_dir() -> None:
     LOG_PATH.parent.mkdir(parents=True, exist_ok=True)
 
 
-def append_log(entry: str) -> None:
+def append_log(entry: str, test_mode: bool = False) -> None:
+    if test_mode:
+        return  # Skip logging in test mode to avoid polluting production audit trail
     ensure_log_dir()
     timestamp = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
     with LOG_PATH.open("a", encoding="utf-8") as fh:
         fh.write(f"[{timestamp}] {entry}\n")
 
 
-def main() -> int:
+def main(test_mode: bool = False) -> int:
     try:
         html = INDEX_PATH.read_text(encoding="utf-8")
         market = load_json(ROOT / "data" / "market_data_current.json")
@@ -514,13 +516,18 @@ def main() -> int:
 
         INDEX_PATH.write_text(html, encoding="utf-8")
         append_log(
-            "build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target updated"
+            "build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target updated",
+            test_mode=test_mode
         )
         return 0
     except Exception as exc:  # noqa: BLE001
-        append_log(f"build_site.py FAILED: {exc}")
+        append_log(f"build_site.py FAILED: {exc}", test_mode=test_mode)
         raise
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    import argparse
+    parser = argparse.ArgumentParser(description="Build site sections from data sources")
+    parser.add_argument("--test-mode", action="store_true", help="Run in test mode (skip logging)")
+    args = parser.parse_args()
+    sys.exit(main(test_mode=args.test_mode))

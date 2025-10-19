@@ -29,10 +29,10 @@
       "accession": "0001437749-25-025772",
       "owner": "Financial Reporting",
       "refresh_frequency": "Quarterly",
-      "status": "MISSING",
+      "status": "VERIFIED_AVAILABLE_EDGAR",
       "sha256": null,
-      "last_verified": null,
-      "note": "Available via SEC EDGAR, not downloaded to repo"
+      "last_verified": "2025-10-19",
+      "note": "Verified at https://www.sec.gov/cgi-bin/viewer?action=view&cik=861842&accession_number=0001437749-25-025772 (SEC blocks automated download, manual download available)"
     },
     {
       "id": "caty_10k_2024",
@@ -41,10 +41,10 @@
       "accession": "0001437749-25-005749",
       "owner": "Financial Reporting",
       "refresh_frequency": "Annual",
-      "status": "MISSING",
+      "status": "VERIFIED_AVAILABLE_EDGAR",
       "sha256": null,
-      "last_verified": null,
-      "note": "Available via SEC EDGAR, not downloaded to repo"
+      "last_verified": "2025-10-19",
+      "note": "Available at https://www.sec.gov/cgi-bin/viewer?action=view&cik=861842&accession_number=0001437749-25-005749 (SEC blocks automated download, manual download available)"
     },
     {
       "id": "peer_metrics",

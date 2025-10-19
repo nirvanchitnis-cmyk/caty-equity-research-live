@@ -50,7 +50,7 @@ def extract_marker(html: str, marker: str) -> str:
 class BuildSiteSnapshotTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
-        subprocess.run([sys.executable, str(BUILD_SCRIPT)], check=True, cwd=ROOT)
+        subprocess.run([sys.executable, str(BUILD_SCRIPT), "--test-mode"], check=True, cwd=ROOT)
         cls.html = INDEX_PATH.read_text(encoding="utf-8")
 
     def test_snapshots(self) -> None:
