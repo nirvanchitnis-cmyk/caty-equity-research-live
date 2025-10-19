@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CATY - Peer Analysis | Data Repository</title>
     <link rel="stylesheet" href="styles/caty-equity-research.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 </head>
 <body>
     <!-- Theme Toggle -->
@@ -354,66 +355,17 @@
             </div>
 
             <h3>Scatter Plot: P/TBV vs ROTE</h3>
-            <div class="scatter-container">
-                <p class="text-secondary-small">
-                    <strong>Visual representation:</strong> CATY (gold), Peers (red), Regression line (black dashed)
-                </p>
-                <div class="scatter-plot" class="scatter-plot-white">
-                    <svg width="100%" height="100%" viewBox="0 0 800 500" class="svg-chart">
-                        <!-- Grid lines -->
-                        <line x1="80" y1="50" x2="80" y2="420" stroke="#ccc" stroke-width="2"/>
-                        <line x1="80" y1="420" x2="750" y2="420" stroke="#ccc" stroke-width="2"/>
+            <p class="text-secondary">n=4 clean cohort (CATY, EWBC, CVBF, HAFC) - Cook's Distance filtered | R²=0.9548, Slope=0.1244</p>
 
-                        <!-- Y-axis labels (P/TBV) -->
-                        <text x="30" y="425" font-size="14" fill="#666">0.0</text>
-                        <text x="30" y="330" font-size="14" fill="#666">0.5</text>
-                        <text x="30" y="235" font-size="14" fill="#666">1.0</text>
-                        <text x="30" y="140" font-size="14" fill="#666">1.5</text>
-                        <text x="30" y="55" font-size="14" fill="#666">2.0</text>
-
-                        <!-- X-axis labels (ROTE %) -->
-                        <text x="120" y="445" font-size="14" fill="#666">8</text>
-                        <text x="280" y="445" font-size="14" fill="#666">10</text>
-                        <text x="440" y="445" font-size="14" fill="#666">12</text>
-                        <text x="600" y="445" font-size="14" fill="#666">14</text>
-                        <text x="720" y="445" font-size="14" fill="#666">16</text>
-
-                        <!-- Axis titles -->
-                        <text x="400" y="485" font-size="16" fill="#1C1C1C" text-anchor="middle" font-weight="bold">ROTE (%)</text>
-                        <text x="20" y="240" font-size="16" fill="#1C1C1C" text-anchor="middle" font-weight="bold" transform="rotate(-90 20 240)">P/TBV (x)</text>
-
-                        <!-- Regression line: P/TBV = -0.1483 + 0.1244*ROTE -->
-                        <!-- At ROTE 8%: P/TBV = 0.8469 → y = 420 - (0.8469 * 185) = 263.3 -->
-                        <!-- At ROTE 17%: P/TBV = 1.9665 → y = 420 - (1.9665 * 185) = 56.2 -->
-                        <line x1="80" y1="263" x2="760" y2="56" stroke="#1C1C1C" stroke-width="2" stroke-dasharray="8,4"/>
-
-                        <!-- Data points -->
-                        <!-- HAFC: ROTE 8.65%, P/TBV 0.930 → x = 80 + (8.65-8)*83.75 = 134.4, y = 420 - 0.930*185 = 248.0 -->
-                        <circle cx="134" cy="248" r="8" fill="#C41E3A"/>
-                        <text x="134" y="265" font-size="12" fill="#C41E3A" text-anchor="middle" font-weight="bold">HAFC</text>
-
-                        <!-- CATY: ROTE 11.95%, P/TBV 1.269 → x = 80 + (11.95-8)*83.75 = 410.8, y = 420 - 1.269*185 = 185.2 -->
-                        <circle cx="411" cy="185" r="10" fill="#D4AF37" stroke="#C41E3A" stroke-width="2"/>
-                        <text x="411" y="172" font-size="13" fill="#D4AF37" text-anchor="middle" font-weight="bold">CATY</text>
-
-                        <!-- CVBF: ROTE 14.10%, P/TBV 1.730 → x = 80 + (14.10-8)*83.75 = 591.1, y = 420 - 1.730*185 = 99.9 -->
-                        <circle cx="591" cy="100" r="8" fill="#C41E3A"/>
-                        <text x="591" y="90" font-size="12" fill="#C41E3A" text-anchor="middle" font-weight="bold">CVBF</text>
-
-                        <!-- EWBC: ROTE 16.38%, P/TBV 1.830 → x = 80 + (16.38-8)*83.75 = 781.9, y = 420 - 1.830*185 = 81.4 -->
-                        <circle cx="782" cy="81" r="8" fill="#C41E3A"/>
-                        <text x="782" y="70" font-size="12" fill="#C41E3A" text-anchor="middle" font-weight="bold">EWBC</text>
-
-                        <!-- Legend -->
-                        <text x="600" y="400" font-size="12" fill="#666">R² = 0.9548</text>
-                        <text x="600" y="420" font-size="12" fill="#666">Slope = 0.1244</text>
-                    </svg>
-                </div>
-                <p class="text-secondary-tiny text-align-center">
-                    <strong>Note:</strong> Scatter plot shows strong positive linear relationship between ROTE and P/TBV.
-                    CATY (gold dot) sits slightly below regression line, suggesting modest undervaluation vs peers.
-                </p>
+            <div class="chart-container chart-container-centered">
+                <canvas id="peerScatterChart" aria-label="Peer regression scatter plot showing P/TBV versus ROTE with regression line, highlighting CATY position relative to peers"></canvas>
             </div>
+
+            <p class="text-secondary-tiny text-align-center">
+                <strong>Interpretation:</strong> Scatter plot shows strong positive linear relationship between ROTE and P/TBV.
+                CATY (gold dot) sits slightly below regression line at current ROTE 11.95%, suggesting modest undervaluation vs peers.
+                Regression line: P/TBV = -0.1483 + 0.1244 × ROTE (each 1% ROTE increase → 0.124x P/TBV increase).
+            </p>
         </section>
 
         <!-- ======================================== -->
@@ -825,5 +777,17 @@
 
     <!-- JavaScript for Theme Toggle and Collapsibles -->
     <script src="scripts/theme-toggle.js"></script>
+    <script src="scripts/charts.js"></script>
+
+    <!-- Initialize Peer Scatter Chart -->
+    <script>
+        // Initialize scatter chart on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const scatterChart = initPeerScatterChart('peerScatterChart');
+            if (scatterChart) {
+                console.log('Peer scatter chart initialized');
+            }
+        });
+    </script>
 </body>
 </html>

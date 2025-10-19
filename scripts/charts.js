@@ -287,6 +287,150 @@ function createNCOTrendChart(canvasId, data) {
     return new Chart(ctx, chartConfig);
 }
 
+// Create scatter plot (for peer regression) - Cathay Brand Colors
+function createPeerScatterChart(canvasId, peerData, regressionData) {
+    const ctx = document.getElementById(canvasId);
+
+    if (!ctx) {
+        console.error(`Canvas element with ID '${canvasId}' not found`);
+        return null;
+    }
+
+    // Cathay Brand Colors
+    const cathayRed = '#C41E3A';
+    const cathayGold = '#D4AF37';
+    const offBlack = '#1C1C1C';
+    const offWhite = '#F8F8F6';
+    const gridColor = '#E5E5E5';
+
+    const chartConfig = {
+        type: 'scatter',
+        data: {
+            datasets: [
+                // Peers (red dots)
+                {
+                    label: 'Peers',
+                    data: peerData.peers,
+                    backgroundColor: cathayRed,
+                    borderColor: cathayRed,
+                    pointRadius: 8,
+                    pointHoverRadius: 10
+                },
+                // CATY (gold dot with red border)
+                {
+                    label: 'CATY',
+                    data: [peerData.caty],
+                    backgroundColor: cathayGold,
+                    borderColor: cathayRed,
+                    pointRadius: 12,
+                    pointHoverRadius: 14,
+                    borderWidth: 2
+                },
+                // Regression line (off-black dashed)
+                {
+                    label: 'Regression Line',
+                    data: regressionData,
+                    type: 'line',
+                    borderColor: offBlack,
+                    borderWidth: 2,
+                    borderDash: [8, 4],
+                    fill: false,
+                    pointRadius: 0
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'top',
+                    labels: {
+                        color: offBlack,
+                        font: {
+                            size: 12,
+                            weight: '600'
+                        },
+                        usePointStyle: true
+                    }
+                },
+                tooltip: {
+                    backgroundColor: offWhite,
+                    titleColor: offBlack,
+                    bodyColor: offBlack,
+                    borderColor: gridColor,
+                    borderWidth: 1,
+                    padding: 12,
+                    callbacks: {
+                        label: function(context) {
+                            if (context.dataset.type === 'line') return null;
+                            return `ROTE: ${context.parsed.x.toFixed(2)}%, P/TBV: ${context.parsed.y.toFixed(3)}x`;
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    type: 'linear',
+                    min: 7,
+                    max: 18,
+                    ticks: {
+                        color: offBlack,
+                        font: {
+                            size: 12
+                        },
+                        callback: function(value) {
+                            return value.toFixed(0) + '%';
+                        }
+                    },
+                    grid: {
+                        color: gridColor,
+                        lineWidth: 1
+                    },
+                    title: {
+                        display: true,
+                        text: 'ROTE (%)',
+                        color: offBlack,
+                        font: {
+                            size: 14,
+                            weight: 'bold'
+                        }
+                    }
+                },
+                y: {
+                    min: 0.5,
+                    max: 2.0,
+                    ticks: {
+                        color: offBlack,
+                        font: {
+                            size: 12
+                        },
+                        callback: function(value) {
+                            return value.toFixed(1) + 'x';
+                        }
+                    },
+                    grid: {
+                        color: gridColor,
+                        lineWidth: 1
+                    },
+                    title: {
+                        display: true,
+                        text: 'P/TBV (x)',
+                        color: offBlack,
+                        font: {
+                            size: 14,
+                            weight: 'bold'
+                        }
+                    }
+                }
+            }
+        }
+    };
+
+    return new Chart(ctx, chartConfig);
+}
+
 // Update all charts when theme changes
 function updateChartsOnThemeChange(chartInstances) {
     chartInstances.forEach(chart => {
@@ -385,4 +529,26 @@ async function initNCOChart(canvasId) {
     };
 
     return createNCOTrendChart(canvasId, chartData);
+}
+
+// Initialize peer scatter plot (ROTE vs P/TBV)
+function initPeerScatterChart(canvasId) {
+    // Peer data from CATY_11 (n=4 clean cohort)
+    const peerData = {
+        peers: [
+            { x: 8.65, y: 0.930, label: 'HAFC' },
+            { x: 14.10, y: 1.730, label: 'CVBF' },
+            { x: 16.38, y: 1.830, label: 'EWBC' }
+        ],
+        caty: { x: 11.95, y: 1.269, label: 'CATY' }
+    };
+
+    // Regression line: P/TBV = -0.1483 + 0.1244*ROTE
+    // Calculate two points for the line
+    const regressionData = [
+        { x: 8, y: -0.1483 + 0.1244 * 8 },    // Left edge
+        { x: 17, y: -0.1483 + 0.1244 * 17 }   // Right edge
+    ];
+
+    return createPeerScatterChart(canvasId, peerData, regressionData);
 }
