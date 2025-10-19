@@ -19,7 +19,7 @@
       "owner": "Credit Analytics",
       "refresh_frequency": "Quarterly",
       "status": "VERIFIED_OK",
-      "sha256": "TBD",
+      "sha256": "8b57e0e0fc92b67fb69b801e44be0b99126663755f605cf3215529b2a50003bc",
       "last_verified": "2025-10-19"
     },
     {
@@ -54,7 +54,7 @@
       "owner": "Peer Analytics",
       "refresh_frequency": "Quarterly",
       "status": "VERIFIED_OK",
-      "sha256": "TBD",
+      "sha256": "576b7b73f0c8aefffcdc2c91600cd00f9f7f181210b95803f237e14cf358964f",
       "last_verified": "2025-10-19",
       "note": "Located at evidence/peer_snapshot_2025Q2.csv (not evidence/raw/)"
     }
