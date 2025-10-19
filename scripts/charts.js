@@ -76,9 +76,8 @@ function getDefaultChartConfig() {
     };
 }
 
-// Create horizontal bar chart (for valuation comparison)
+// Create vertical bar chart (for valuation comparison) - Cathay Brand Colors
 function createValuationChart(canvasId, data) {
-    const colors = getThemeColors();
     const ctx = document.getElementById(canvasId);
 
     if (!ctx) {
@@ -86,15 +85,20 @@ function createValuationChart(canvasId, data) {
         return null;
     }
 
+    // Cathay Brand Colors (NO gradients)
+    const cathayRed = '#C41E3A';
+    const cathayGold = '#D4AF37';
+    const offBlack = '#1C1C1C';
+    const offWhite = '#F8F8F6';
+    const gridColor = '#E5E5E5';
+
     // Define colors for each bar
     const barColors = [
-        colors.textSecondary,    // Current Price (gray)
-        colors.cathayGold,       // Wilson 95% (gold)
-        colors.info,             // IRC Blended (blue)
-        colors.success           // Regression (green)
+        offBlack,      // Current Price (off-black)
+        cathayGold,    // Wilson 95% (Cathay Gold)
+        cathayRed,     // IRC Blended (Cathay Red)
+        cathayGold     // Regression (Cathay Gold)
     ];
-
-    const config = getDefaultChartConfig();
 
     const chartConfig = {
         type: 'bar',
@@ -105,22 +109,27 @@ function createValuationChart(canvasId, data) {
                 data: data.values,
                 backgroundColor: barColors,
                 borderColor: barColors,
-                borderWidth: 1
+                borderWidth: 2
             }]
         },
         options: {
-            ...config,
-            indexAxis: 'y', // Horizontal bars
+            responsive: true,
+            maintainAspectRatio: true,
             plugins: {
-                ...config.plugins,
                 legend: {
-                    display: false // Hide legend for single dataset
+                    display: false
                 },
                 tooltip: {
-                    ...config.plugins.tooltip,
+                    backgroundColor: offWhite,
+                    titleColor: offBlack,
+                    bodyColor: offBlack,
+                    borderColor: gridColor,
+                    borderWidth: 1,
+                    padding: 12,
+                    displayColors: false,
                     callbacks: {
                         label: function(context) {
-                            const value = context.parsed.x;
+                            const value = context.parsed.y;
                             const currentPrice = data.values[0];
                             const returnPct = ((value - currentPrice) / currentPrice * 100).toFixed(1);
                             return `$${value.toFixed(2)} (${returnPct > 0 ? '+' : ''}${returnPct}%)`;
@@ -130,19 +139,43 @@ function createValuationChart(canvasId, data) {
             },
             scales: {
                 x: {
-                    ...config.scales.x,
-                    beginAtZero: false,
-                    min: Math.floor(Math.min(...data.values) * 0.9),
-                    max: Math.ceil(Math.max(...data.values) * 1.05),
                     ticks: {
-                        ...config.scales.x.ticks,
-                        callback: function(value) {
-                            return '$' + value.toFixed(0);
+                        color: offBlack,
+                        font: {
+                            size: 12,
+                            weight: '600'
                         }
+                    },
+                    grid: {
+                        display: false
                     }
                 },
                 y: {
-                    ...config.scales.y
+                    beginAtZero: false,
+                    min: 35,
+                    max: 60,
+                    ticks: {
+                        color: offBlack,
+                        font: {
+                            size: 12
+                        },
+                        callback: function(value) {
+                            return '$' + value.toFixed(0);
+                        }
+                    },
+                    grid: {
+                        color: gridColor,
+                        lineWidth: 1
+                    },
+                    title: {
+                        display: true,
+                        text: 'Target Price ($)',
+                        color: offBlack,
+                        font: {
+                            size: 14,
+                            weight: 'bold'
+                        }
+                    }
                 }
             }
         }
@@ -151,9 +184,8 @@ function createValuationChart(canvasId, data) {
     return new Chart(ctx, chartConfig);
 }
 
-// Create line chart (for NCO trend)
+// Create line chart (for NCO trend) - Cathay Brand Colors
 function createNCOTrendChart(canvasId, data) {
-    const colors = getThemeColors();
     const ctx = document.getElementById(canvasId);
 
     if (!ctx) {
@@ -161,7 +193,11 @@ function createNCOTrendChart(canvasId, data) {
         return null;
     }
 
-    const config = getDefaultChartConfig();
+    // Cathay Brand Colors
+    const cathayRed = '#C41E3A';
+    const offBlack = '#1C1C1C';
+    const offWhite = '#F8F8F6';
+    const gridColor = '#E5E5E5';
 
     const chartConfig = {
         type: 'line',
@@ -170,26 +206,33 @@ function createNCOTrendChart(canvasId, data) {
             datasets: [{
                 label: 'NCO Rate (bps)',
                 data: data.values,
-                borderColor: colors.cathayRed,
-                backgroundColor: colors.cathayRed + '20', // 20% opacity
-                tension: 0.1,
+                borderColor: cathayRed,
+                backgroundColor: cathayRed + '33', // 20% opacity
+                tension: 0.3,
                 fill: true,
-                pointBackgroundColor: colors.cathayRed,
-                pointBorderColor: colors.bgSecondary,
+                pointBackgroundColor: cathayRed,
+                pointBorderColor: offWhite,
                 pointBorderWidth: 2,
-                pointRadius: 4,
-                pointHoverRadius: 6
+                pointRadius: 3,
+                pointHoverRadius: 6,
+                borderWidth: 3
             }]
         },
         options: {
-            ...config,
+            responsive: true,
+            maintainAspectRatio: true,
             plugins: {
-                ...config.plugins,
                 legend: {
                     display: false
                 },
                 tooltip: {
-                    ...config.plugins.tooltip,
+                    backgroundColor: offWhite,
+                    titleColor: offBlack,
+                    bodyColor: offBlack,
+                    borderColor: gridColor,
+                    borderWidth: 1,
+                    padding: 12,
+                    displayColors: false,
                     callbacks: {
                         label: function(context) {
                             return context.parsed.y.toFixed(1) + ' bps';
@@ -199,15 +242,41 @@ function createNCOTrendChart(canvasId, data) {
             },
             scales: {
                 x: {
-                    ...config.scales.x
+                    ticks: {
+                        color: offBlack,
+                        font: {
+                            size: 10
+                        },
+                        maxRotation: 45,
+                        minRotation: 45
+                    },
+                    grid: {
+                        color: gridColor,
+                        lineWidth: 0.5
+                    }
                 },
                 y: {
-                    ...config.scales.y,
                     beginAtZero: true,
                     ticks: {
-                        ...config.scales.y.ticks,
+                        color: offBlack,
+                        font: {
+                            size: 12
+                        },
                         callback: function(value) {
                             return value.toFixed(0) + ' bps';
+                        }
+                    },
+                    grid: {
+                        color: gridColor,
+                        lineWidth: 1
+                    },
+                    title: {
+                        display: true,
+                        text: 'Net Charge-Off Rate (bps)',
+                        color: offBlack,
+                        font: {
+                            size: 14,
+                            weight: 'bold'
                         }
                     }
                 }
