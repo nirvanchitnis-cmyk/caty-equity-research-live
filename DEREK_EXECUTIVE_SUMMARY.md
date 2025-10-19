@@ -8,11 +8,13 @@
 
 ## ELEVATOR PITCH (30 seconds)
 
-**SELL Cathay General Bancorp (CATY) at $45.89 → Target $40.32 (-12.1%)**
+**HOLD Cathay General Bancorp (CATY) at $45.87**
 
-**Thesis:** Current credit costs (18 bps NCO) are unsustainably low. Normalizing to 17-year FDIC average (42.8 bps) compresses ROTE from 11.95% to 10.40%, justifying P/TBV of 1.115x vs. current 1.269x. 69% Monte Carlo probability stock is overvalued.
+**Thesis:** Dual-path valuation shows conflict: Regression at current earnings (ROTE 11.95%) implies $56.42 target (+23% upside), but through-cycle normalization implies $39.32 (-14% downside). Wilson 95% confidence bounds on NCO breach probability give 74/26 probability split → expected $51.97 (+13.3%), just below +15% BUY threshold.
 
-**Edge:** Market hasn't priced in mean reversion. Peer regression (n=4, R²=0.95, p=0.02) validates 1.115x fair value at normalized ROTE.
+**Edge:** HOLD validated by statistical uncertainty. 95% upper bound (26% tail probability) keeps expected return at +13.3%, below BUY hurdle. Market pricing (38/62 split) appears overly pessimistic vs FDIC data (0% post-2014 breach rate).
+
+**Rating:** HOLD (supported by 74/26 Wilson ceiling). Upgrade to BUY if tail probability tightens below 21.5%.
 
 ---
 
