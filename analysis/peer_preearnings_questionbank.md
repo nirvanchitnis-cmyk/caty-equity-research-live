@@ -18,20 +18,25 @@ Asian-American and California regional banks report Q3 earnings on a staggered s
 
 ---
 
-## Peer Reporting Schedule (Q3 2025)
+## Peer Reporting Schedule (Q3 2025) - **CORRECTED**
 
-| Ticker | Company | Expected Report Date | Days Before CATY |
-|--------|---------|----------------------|------------------|
-| **EWBC** | East West Bancorp | Oct 17 (Thu) | **-4 days** ⭐ |
-| **COLB** | Columbia Banking | Oct 17 (Thu) | **-4 days** ⭐ |
-| **HAFC** | Hanmi Financial | Oct 18 (Fri) | **-3 days** ⭐ |
-| **CVBF** | CVB Financial | Oct 21 (Mon AM) | **-0 days** (same morning) |
-| **CATY** | **Cathay General** | **Oct 21 (Mon PM)** | **[TARGET]** |
-| PPBI | Pacific Premier | Oct 22 (Tue) | +1 days |
-| WAFD | Washington Federal | Oct 23 (Wed) | +2 days |
-| BANC | Banc of California | Oct 23 (Wed) | +2 days |
+| Ticker | Company | Expected Report Date | Timing vs CATY |
+|--------|---------|----------------------|----------------|
+| **EWBC** | East West Bancorp | **Oct 21 (Tue) 2pm PT** | **-1 hour** ⚠️ SAME DAY |
+| **CATY** | **Cathay General** | **Oct 21 (Tue) 3pm PT** | **[TARGET]** |
+| **COLB** | Columbia Banking | **Oct 30 (Thu) 2pm PT** | **+9 days** (post-CATY) |
+| HAFC | Hanmi Financial | TBD | Unknown |
+| CVBF | CVB Financial | TBD | Unknown |
+| PPBI | Pacific Premier | TBD | Unknown |
+| WAFD | Washington Federal | TBD | Unknown |
+| BANC | Banc of California | TBD | Unknown |
 
-**High-Priority Peers:** EWBC (largest comp, -4 days), COLB (CRE heavy), HAFC (Asian-American focused)
+**⚠️ CRITICAL CHANGE:** EWBC and CATY report **same day** with **60-minute window** (not 4-day advance notice).
+
+**Revised Strategy:**
+- **EWBC (Oct 21, 2pm PT):** Speed-read for red flags only (60-min turnaround)
+- **CATY (Oct 21, 3pm PT):** Primary focus, armed with EWBC signals
+- **COLB (Oct 30):** Post-CATY validation, full analysis (no time pressure)
 
 ---
 
@@ -200,29 +205,33 @@ Asian-American and California regional banks report Q3 earnings on a staggered s
 
 ---
 
-## Actionable Framework: Pre-CATY Checklist
+## Actionable Framework: **CORRECTED TIMELINE**
 
-**By Oct 17 (Thu)** - EWBC & COLB Report
-- [ ] Download earnings release + 8-K
-- [ ] Listen to call (or read transcript)
-- [ ] Extract answers to CRE, deposit, NIM questions above
-- [ ] **Calibrate CATY NCO expectations:** If EWBC reports NCO >30 bps, increase CATY normalization probability
-- [ ] **Assess NIM trajectory:** If EWBC NIM compresses >10 bps, factor into CATY Q3 estimate
+**⚠️ NOTE:** Original schedule assumed Oct 17 EWBC/COLB. Web search confirms actual dates below.
 
-**By Oct 18 (Fri)** - HAFC Report
-- [ ] Extract Asian-American banking specific signals
-- [ ] Compare HAFC deposit beta to CATY's 0.35
-- [ ] Note any HAFC commentary on community banking moat durability
+**Oct 21 (Tue) 2:00-3:00 PM PT** - EWBC Call
+- [ ] Monitor SEC filing: `python3 analysis/fetch_peer_filings.py EWBC --cutoff 2025-10-20`
+- [ ] Download 8-K OR web search: "EWBC Q3 2025 earnings results"
+- [ ] **SPEED READ (30 min):** Extract NCO, NIM, deposits, red flags only
+- [ ] **Draft 2-3 CATY questions** if red flags triggered (30 min)
 
-**By Oct 21 (Mon AM)** - CVBF Report (Same Morning as CATY)
-- [ ] Fast read earnings release (30 min turnaround)
-- [ ] Extract CRE credit trends (CVBF is CRE-heavy)
-- [ ] Use CVBF data to **pre-position CATY questions** for afternoon call
+**Oct 21 (Tue) 3:00-4:00 PM PT** - CATY Call (1 HOUR AFTER EWBC)
+- Armed with EWBC red flag triage (not deep analysis)
+- Ask calibrated questions based on EWBC divergences
+- Flag any CATY divergences from EWBC patterns
 
-**Oct 21 (Mon PM)** - CATY Earnings (Target)
-- Armed with 3-4 days of peer read-through
-- Ask calibrated questions based on peer trends
-- Flag any CATY divergences from peer patterns (positive or negative)
+**Oct 21 (Tue) Evening** - Post-CATY Analysis
+- [ ] Populate full monitoring template with CATY data
+- [ ] Compare CATY vs EWBC on critical metrics
+- [ ] Update Wilson bounds if red flags warrant
+- [ ] Commit changes (reconciliation guard validates)
+- [ ] Distribute memo within 2 hours of CATY call
+
+**Oct 30 (Thu) 2:00 PM PT** - COLB Call (POST-CATY VALIDATION)
+- [ ] Full analysis using complete template (no time pressure)
+- [ ] Triangulate CATY vs EWBC vs COLB
+- [ ] Validate CATY assumptions or reconvene rating committee
+- [ ] Use as post-facto check on Wilson bounds
 
 ---
 
@@ -311,16 +320,21 @@ After CATY Q3 earnings, **systematically compare** CATY vs. peer metrics:
 
 ## Conclusion
 
-**Pre-Earnings Intelligence Protocol:**
-1. **Oct 17-18:** Extract signals from EWBC, COLB, HAFC
-2. **Oct 21 (AM):** Fast read CVBF earnings
-3. **Oct 21 (PM):** Armed with 3-4 days of peer data, analyze CATY earnings with context
-4. **Oct 23:** Post-CATY comparative analysis (8-peer benchmarking)
+**CORRECTED Pre-Earnings Intelligence Protocol:**
+1. **Oct 21 (2:00-3:00 PM PT):** EWBC call - Speed extract top 3 red flags (60-min window)
+2. **Oct 21 (3:00-4:00 PM PT):** CATY call - Armed with EWBC signals (1-hour calibration)
+3. **Oct 21 (Evening):** Post-CATY full analysis, update Wilson bounds if needed
+4. **Oct 30 (2:00 PM PT):** COLB call - Post-CATY validation, triangulate 3-peer data
 
-**Goal:** Reduce surprise risk, calibrate assumptions, and make **data-driven rating decisions** anchored to peer reality.
+**Revised Goal:**
+- **Oct 21:** Limited EWBC read-through (60-min constraint), focus on CATY execution
+- **Oct 30:** Full COLB analysis for post-facto validation and rating confirmation
+
+**Lesson Learned:** Always web search earnings dates when uncertain. Original Oct 17 assumption was incorrect.
 
 ---
 
 **Document Owner:** Derek review desk
-**Next Use:** Q3 2025 Earnings Week (Oct 17-23, 2025)
+**Next Use:** Tuesday, October 21, 2025 (EWBC 2pm PT, CATY 3pm PT)
+**Post-CATY Use:** Thursday, October 30, 2025 (COLB 2pm PT)
 **Maintenance:** Update reporting schedule quarterly, add new questions based on evolving risks

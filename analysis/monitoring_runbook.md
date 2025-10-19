@@ -8,7 +8,7 @@
 
 ## Pre-Earnings Preparation
 
-**Timing:** October 27, 2025
+**Timing:** October 19-20, 2025 (Weekend before Oct 21 earnings)
 
 1. Review current probability dashboard (evidence/probability_dashboard.md)
 2. Note current Wilson bounds: 74/26 (26% upper bound)
@@ -17,7 +17,8 @@
    - CRE portfolio updates
    - Reserve adequacy commentary
    - Capital allocation plans
-4. Monitor peer filings daily using `python3 analysis/fetch_peer_filings.py EWBC COLB --cutoff 2025-10-15` and archive earnings 8-Ks the moment they post.
+4. **CRITICAL:** EWBC reports same day (Oct 21, 2pm PT) - see `analysis/rapid_memo_workflow_oct21.md` for 60-minute speed-read protocol
+5. Monitor peer filings: `python3 analysis/fetch_peer_filings.py EWBC --cutoff 2025-10-20` (check Oct 21 morning)
 
 ---
 

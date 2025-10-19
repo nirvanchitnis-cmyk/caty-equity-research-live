@@ -1,15 +1,20 @@
-# Peer Pre-Earnings Monitoring Template (Oct 17, 2025)
+# Peer Earnings Monitoring Template (Oct 21/30, 2025)
 
-**Peers Covered:** East West Bancorp (EWBC), Columbia Banking System (COLB)  
-**Objective:** Capture real-time datapoints from Oct 17 earnings releases to recalibrate CATY assumptions ahead of Oct 21.
+**Peers Covered:** East West Bancorp (EWBC), Columbia Banking System (COLB)
+**Dates:** EWBC Oct 21 (2pm PT, 1hr before CATY), COLB Oct 30 (+9 days post-CATY)
+**Objective:** Speed-read EWBC for red flags (60min window), use COLB for post-CATY validation.
 
 ---
 
 ## 1. Call Logistics
-- **EWBC Call Time / Replay Link:** 
-- **COLB Call Time / Replay Link:** 
-- **Participants:** Treasury, Credit, IR contacts for follow-up
-- **Analyst On Duty:** 
+- **EWBC:** Tuesday, Oct 21, 2025 - 2:00 PM PT / 5:00 PM ET (after market close)
+  - 8-K filing: Monitor via `python3 analysis/fetch_peer_filings.py EWBC --cutoff 2025-10-20`
+  - Replay: https://investor.eastwestbank.com/
+- **COLB:** Thursday, Oct 30, 2025 - 2:00 PM PT / 5:00 PM ET (after market close)
+  - 8-K filing: Monitor via `python3 analysis/fetch_peer_filings.py COLB --cutoff 2025-10-29`
+  - Replay: Columbia Banking investor relations
+- **CATY (Target):** Tuesday, Oct 21, 2025 - 3:00 PM PT / 6:00 PM ET
+  - **1-hour window after EWBC call ends** 
 
 ---
 
