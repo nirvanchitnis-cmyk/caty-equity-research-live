@@ -1,0 +1,186 @@
+{
+  "modules": [
+    {
+      "id": "01",
+      "file": "CATY_01_company_profile.html",
+      "title": "Company Profile",
+      "description": "Entity metadata, CIK, auditor (KPMG), segments",
+      "status": "UPDATED",
+      "importance": "STANDARD",
+      "last_updated": "2025-10-19",
+      "data_dependencies": ["SEC 10-Q", "Proxy Statement"]
+    },
+    {
+      "id": "02",
+      "file": "CATY_02_income_statement.html",
+      "title": "Income Statement",
+      "description": "Q2'25 NII, NIM 3.27%, efficiency 45.33%, EPS $1.10",
+      "status": "UPDATED",
+      "importance": "STANDARD",
+      "last_updated": "2025-10-19",
+      "data_dependencies": ["SEC 10-Q"]
+    },
+    {
+      "id": "03",
+      "file": "CATY_03_balance_sheet.html",
+      "title": "Balance Sheet",
+      "description": "Assets $23.7B, TCE $2.51B, TBVPS $36.16",
+      "status": "UPDATED",
+      "importance": "STANDARD",
+      "last_updated": "2025-10-19",
+      "data_dependencies": ["SEC 10-Q"]
+    },
+    {
+      "id": "04",
+      "file": "CATY_04_cash_flow.html",
+      "title": "Cash Flow",
+      "description": "Operating CF, investing, financing, capital returns",
+      "status": "UPDATED",
+      "importance": "STANDARD",
+      "last_updated": "2025-10-19",
+      "data_dependencies": ["SEC 10-Q"]
+    },
+    {
+      "id": "05",
+      "file": "CATY_05_nim_decomposition.html",
+      "title": "NIM Decomposition",
+      "description": "Deposit betas (IB 60.4%, All-in 50.7%), NIM bridge",
+      "status": "UPDATED",
+      "importance": "KEY",
+      "last_updated": "2025-10-19",
+      "data_dependencies": ["SEC 10-Q", "Earnings Presentation"]
+    },
+    {
+      "id": "06",
+      "file": "CATY_06_deposits_funding.html",
+      "title": "Deposits & Funding",
+      "description": "NIB 16.9%, brokered 5.62%, funding mix",
+      "status": "UPDATED",
+      "importance": "STANDARD",
+      "last_updated": "2025-10-19",
+      "data_dependencies": ["SEC 10-Q"]
+    },
+    {
+      "id": "07",
+      "file": "CATY_07_loans_credit_quality.html",
+      "title": "Credit Quality & NCO Analysis",
+      "description": "Through-cycle NCO: 42.8 bps (2008-2024 FDIC data)",
+      "status": "UPDATED",
+      "importance": "CRITICAL",
+      "last_updated": "2025-10-19",
+      "data_dependencies": ["FDIC Call Reports", "SEC 10-Q"]
+    },
+    {
+      "id": "08",
+      "file": "CATY_08_cre_exposure.html",
+      "title": "CRE Exposure",
+      "description": "CRE 52.4% (ELEVATED), office tail risk",
+      "status": "UPDATED",
+      "importance": "CRITICAL",
+      "last_updated": "2025-10-19",
+      "data_dependencies": ["SEC 10-Q", "Earnings Presentation"]
+    },
+    {
+      "id": "09",
+      "file": "CATY_09_capital_liquidity_aoci.html",
+      "title": "Capital & Liquidity",
+      "description": "CET1 13.35%, regulatory capital, AOCI",
+      "status": "UPDATED",
+      "importance": "STANDARD",
+      "last_updated": "2025-10-19",
+      "data_dependencies": ["SEC 10-Q"]
+    },
+    {
+      "id": "10",
+      "file": "CATY_10_capital_actions.html",
+      "title": "Capital Actions",
+      "description": "Dividends, buybacks, payout ratio 32.1%",
+      "status": "UPDATED",
+      "importance": "STANDARD",
+      "last_updated": "2025-10-19",
+      "data_dependencies": ["SEC 10-Q"]
+    },
+    {
+      "id": "11",
+      "file": "CATY_11_peers_normalized.html",
+      "title": "Peer Comparison & Regression",
+      "description": "n=4 peers, R²=0.9548, implied COE 9.587%",
+      "status": "UPDATED",
+      "importance": "KEY",
+      "last_updated": "2025-10-19",
+      "data_dependencies": ["SEC EDGAR (peers)", "FactSet"]
+    },
+    {
+      "id": "12",
+      "file": "CATY_12_valuation_model.html",
+      "title": "Valuation Model",
+      "description": "3 scenarios, Expected $51.74 (Wilson weighted), probabilities",
+      "status": "UPDATED",
+      "importance": "MOST_CRITICAL",
+      "last_updated": "2025-10-19",
+      "data_dependencies": ["All above modules", "Python scripts"]
+    },
+    {
+      "id": "13",
+      "file": "CATY_13_residual_income_valuation.html",
+      "title": "Residual Income Valuation",
+      "description": "RIM intrinsic value $50.08, IRC blended $51.39 (60% weight)",
+      "status": "UPDATED",
+      "importance": "KEY",
+      "last_updated": "2025-10-18",
+      "data_dependencies": ["Python scripts", "CATY_02/03"]
+    },
+    {
+      "id": "14",
+      "file": "CATY_14_monte_carlo_valuation.html",
+      "title": "Monte Carlo Simulation",
+      "description": "10,000 runs, median $48.92, 95% CI $37-$62",
+      "status": "UPDATED",
+      "importance": "KEY",
+      "last_updated": "2025-10-18",
+      "data_dependencies": ["Python scripts"]
+    },
+    {
+      "id": "15",
+      "file": "CATY_15_esg_materiality_matrix.html",
+      "title": "ESG Materiality Matrix",
+      "description": "E/S/G quantified, COE adjustments, climate scenario",
+      "status": "UPDATED",
+      "importance": "STANDARD",
+      "last_updated": "2025-10-19",
+      "data_dependencies": ["ESG data sources"]
+    },
+    {
+      "id": "16",
+      "file": "CATY_16_coe_triangulation.html",
+      "title": "COE Triangulation",
+      "description": "CAPM 9.337% + FF3 10.142% + DDM 9.710%",
+      "status": "UPDATED",
+      "importance": "KEY",
+      "last_updated": "2025-10-19",
+      "data_dependencies": ["Python scripts", "Market data"]
+    },
+    {
+      "id": "17",
+      "file": "CATY_17_esg_kpi_dashboard.html",
+      "title": "ESG KPI Dashboard",
+      "description": "Material weaknesses, valuation impact -$1.47/share",
+      "status": "UPDATED",
+      "importance": "STANDARD",
+      "last_updated": "2025-10-19",
+      "data_dependencies": ["evidence/esg_kpi_data.json"]
+    }
+  ],
+  "last_refresh": "2025-10-19T13:40:00Z",
+  "status_legend": {
+    "UPDATED": "green",
+    "STALE": "yellow",
+    "PENDING_Q3": "red"
+  },
+  "importance_legend": {
+    "MOST_CRITICAL": "⭐⭐⭐",
+    "CRITICAL": "⭐⭐",
+    "KEY": "⭐",
+    "STANDARD": ""
+  }
+}
