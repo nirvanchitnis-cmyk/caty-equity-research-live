@@ -17,6 +17,7 @@
    - CRE portfolio updates
    - Reserve adequacy commentary
    - Capital allocation plans
+4. Monitor peer filings daily using `python3 analysis/fetch_peer_filings.py EWBC COLB --cutoff 2025-10-15` and archive earnings 8-Ks the moment they post.
 
 ---
 
