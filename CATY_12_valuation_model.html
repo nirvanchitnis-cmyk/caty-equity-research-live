@@ -572,14 +572,14 @@
             </div>
 
             <div class="highlight-box critical">
-                <h4>KEY STAT: Probability of Overvaluation</h4>
+                <h4>KEY STAT: Market-Implied Probability</h4>
                 <p class="text-emphasis-large">
-                    Pr(Fair Value < $45.89 Spot): <span class="text-danger">69%</span>
+                    Pr(Fair Value < $45.89 Spot): <span class="text-danger">60.9%</span>
                 </p>
                 <p class="line-height-relaxed">
-                    There is a <strong>69% probability</strong> that the fair value is below the current spot price of $45.89,
-                    indicating the stock is likely overvalued. Conversely, there is only a <strong>31% probability</strong>
-                    of meaningful upside above the current price.
+                    There is a <strong>60.9% probability</strong> that the fair value is below the current spot price of $45.89
+                    (market-implied weighting), indicating modest overvaluation. Conversely, there is a <strong>39.1% probability</strong>
+                    of upside above the current price. Wilson 95% upper bound uses 26% tail probability for conservative HOLD.
                 </p>
             </div>
 
@@ -614,12 +614,12 @@
                     </tr>
                     <tr class="base-case">
                         <td><strong>Pr(Overvalued)</strong></td>
-                        <td class="number">69%</td>
+                        <td class="number">60.9%</td>
                         <td>Probability that fair value < $45.89 spot price</td>
                     </tr>
                     <tr>
                         <td><strong>Pr(Upside > Spot)</strong></td>
-                        <td class="number">31%</td>
+                        <td class="number">39.1%</td>
                         <td>Probability of upside above current price</td>
                     </tr>
                 </tbody>
