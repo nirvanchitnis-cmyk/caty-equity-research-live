@@ -23,7 +23,7 @@ Institutional-grade equity research report analyzing Cathay General Bancorp with
 
 ## 🎯 Investment Thesis
 
-### **HOLD Rating** - Expected Price: **$51.97 (+13.3%)**
+### **HOLD Rating** - Expected Price: **$51.74 (+12.8%)**
 
 **Current Price:** $45.87 (Oct 18, 2025)
 **Wilson 95% Bounds:** 74/26 probability split validates HOLD
@@ -57,12 +57,12 @@ Institutional-grade equity research report analyzing Cathay General Bancorp with
 #### Wilson 95% Probability-Weighted Framework:
 | Scenario | NCO (bps) | ROTE | P/TBV | Target | vs Spot | Wilson Prob |
 |----------|-----------|------|-------|--------|---------|-------------|
-| **Regression (Current Earnings)** | 18 | 11.95% | 1.558x | **$56.42** | **+23.0%** | **74%** |
+| **Regression (Current Earnings)** | 18 | 11.95% | 1.558x | **$56.11** | **+22.3%** | **74%** |
 | **Normalization (Through-Cycle)** | 42.8 | 10.21% | 1.087x | **$39.32** | **-14.3%** | **26%** |
 
-**Final Rating:** HOLD at Expected Price **$51.97 (+13.3%)**, calculated as Wilson 95% probability-weighted average:
-- 74% × $56.42 + 26% × $39.32 = **$51.97** (+13.3% vs $45.87 spot)
-- Expected return +13.3% falls within HOLD band (-10% to +15%)
+**Final Rating:** HOLD at Expected Price **$51.74 (+12.8%)**, calculated as Wilson 95% probability-weighted average:
+- 74% × $56.11 + 26% × $39.32 = **$51.74** (+12.8% vs $45.87 spot)
+- Expected return +12.8% falls within HOLD band (-10% to +15%)
 
 ## 🔧 Technical Details
 
@@ -151,8 +151,8 @@ Total: 14 files (~648K)
 |--------|-------|--------|
 | **Valuation** | | |
 | Current Price | $45.87 | Oct 18, 2025 |
-| Expected Price | $51.97 | Wilson 95% (74/26) |
-| Expected Return | +13.3% | HOLD |
+| Expected Price | $51.74 | Wilson 95% (74/26) |
+| Expected Return | +12.8% | HOLD |
 | P/TBV | 1.269x | Current |
 | Target P/TBV | 1.087x | Normalized (Gordon Growth) |
 | **Profitability** | | |

@@ -10,9 +10,9 @@
 
 **HOLD Cathay General Bancorp (CATY) at $45.87**
 
-**Thesis:** Dual-path valuation shows conflict: Regression at current earnings (ROTE 11.95%) implies $56.42 target (+23% upside), but through-cycle normalization implies $39.32 (-14% downside). Wilson 95% confidence bounds on NCO breach probability give 74/26 probability split → expected $51.97 (+13.3%), just below +15% BUY threshold.
+**Thesis:** Dual-path valuation shows conflict: Regression at current earnings (ROTE 11.95%) implies $56.11 target (+22.3% upside), but through-cycle normalization implies $39.32 (-14.3% downside). Wilson 95% confidence bounds on NCO breach probability give 74/26 probability split → expected $51.74 (+12.8%), just below +15% BUY threshold.
 
-**Edge:** HOLD validated by statistical uncertainty. 95% upper bound (26% tail probability) keeps expected return at +13.3%, below BUY hurdle. Market pricing (38/62 split) appears overly pessimistic vs FDIC data (0% post-2014 breach rate).
+**Edge:** HOLD validated by statistical uncertainty. 95% upper bound (26% tail probability) keeps expected return at +12.8%, below BUY hurdle. Market pricing (39/61 split) appears overly pessimistic vs FDIC data (0% post-2014 breach rate).
 
 **Rating:** HOLD (supported by 74/26 Wilson ceiling). Upgrade to BUY if tail probability tightens below 21.5%.
 
@@ -488,7 +488,7 @@ Based on Derek's standards, these sections MUST be present and were built:
 | 60 | Bear | 9.31% | 0.961x | $34.75 | -24.3% | Bear downside |
 
 **Takeaway:** Target is highly sensitive to NCO assumption. 10 bps NCO = ~$0.90 price impact.
-**Final Rating:** HOLD at $51.97 (+13.3%), calculated as Wilson 95% weighted average (74% × $56.42 + 26% × $39.32).
+**Final Rating:** HOLD at $51.74 (+12.8%), calculated as Wilson 95% weighted average (74% × $56.11 + 26% × $39.32).
 
 ---
 
@@ -610,7 +610,7 @@ Based on his process directive, Derek will provide:
 Transformed 12 JSON data files + SEC filings into a live equity research website with interactive data modules, verified calculations, and comprehensive provenance. Deployed to GitHub Pages for easy sharing.
 
 **Investment Call:**
-HOLD CATY at $45.87, normalized target $39.32 (-14.3%), based on through-cycle credit normalization (42.8 bps NCO vs. current 18 bps) compressing ROTE and P/TBV multiple. Wilson 95% probability-weighted expected price $51.97 (+13.3%).
+HOLD CATY at $45.87, normalized target $39.32 (-14.3%), based on through-cycle credit normalization (42.8 bps NCO vs. current 18 bps) compressing ROTE and P/TBV multiple. Wilson 95% probability-weighted expected price $51.74 (+12.8%).
 
 **How to Test:**
 1. Click the URL

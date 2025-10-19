@@ -4,7 +4,7 @@ Reconciles regression vs normalized earnings with market-implied probabilities
 """
 
 # Scenario targets
-target_current = 56.42  # Regression at ROTE 11.95%
+target_current = 56.11  # Regression at ROTE 11.95% (7-peer: EWBC, CVBF, HAFC, COLB, WAFD, PPBI, BANC)
 target_normalized = 39.32  # Gordon Growth at ROTE 10.21%
 current_price = 45.87
 
