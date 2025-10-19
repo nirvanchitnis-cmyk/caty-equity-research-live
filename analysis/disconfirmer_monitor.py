@@ -109,7 +109,17 @@ max_value = float(cooks_distance[max_peer])
 print(f"   Cook's Distance Threshold: {cooks_d_threshold:.2f}")
 print(f"   Largest Cook's D: {max_peer} @ {max_value:.2f}")
 
-if max_value > cooks_d_threshold:
+# Check for documented exception
+has_exception = 'documented_exception' in regression_inputs
+if has_exception and regression_inputs['documented_exception']['peer'] == max_peer:
+    exception = regression_inputs['documented_exception']
+    print(f"   ℹ️  DOCUMENTED EXCEPTION: {max_peer} Cook's D={max_value:.2f}")
+    print(f"   Action: {exception['action']}")
+    print(f"   Rationale: {exception['rationale']}")
+    print(f"   Sensitivity: {exception['sensitivity']}")
+    print(f"   Override By: {exception['override_by']} on {exception['override_date']}")
+    print(f"   ✅ PASS: Outlier documented and approved")
+elif max_value > cooks_d_threshold:
     alert = f"⚠️  WARNING: {max_peer} Cook's D={max_value:.2f} exceeds threshold {cooks_d_threshold:.2f}"
     alerts.append(alert)
     print(f"   {alert}")
