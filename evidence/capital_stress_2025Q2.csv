@@ -1,0 +1,5 @@
+Scenario,NCO_Target_bps,Incremental_NCO_M,After_Tax_Impact_M,CET1_Burn_bps,New_CET1_Ratio_Pct,CET1_Cushion_bps,New_TBVPS,TBVPS_Change_Pct,Assessment
+Starting_Position,18.1,0.0,0.0,0.0,13.35,635,36.16,0.0,Current Q2'25
+Base_Case,42.8,48.0,38.4,20.1,13.15,615,35.61,-1.5,MANAGEABLE
+Bear_Case_Year_1,60.0,81.5,65.2,34.1,13.01,601,35.22,-2.6,ELEVATED
+Bear_Case_Year_3,60.0,244.5,195.6,102.3,12.33,533,33.33,-7.8,CONSTRAINS_BUYBACKS
