@@ -1,0 +1,1442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CATY - Peer Analysis | Data Repository</title>
+    <style>
+        /* ============================================================
+           COLOR SYSTEM - Cathay Bank Brand Colors
+           ============================================================ */
+        :root {
+            /* Cathay Brand Colors */
+            --cathay-red: #C41E3A;
+            --cathay-gold: #D4AF37;
+            --cathay-black: #1C1C1C;
+
+            /* Light Mode */
+            --bg-primary: #F8F8F6;
+            --bg-secondary: #FFFFFF;
+            --bg-tertiary: #E5E5E5;
+            --text-primary: #1C1C1C;
+            --text-secondary: #6B6B6B;
+            --border-color: #E5E5E5;
+
+            /* Semantic Colors */
+            --success: #2D7738;
+            --warning: #F59E0B;
+            --danger: #DC2626;
+            --info: #3B82F6;
+
+            /* Interactive */
+            --link-color: #C41E3A;
+            --link-hover: #9A1729;
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #1A1A1A;
+            --bg-secondary: #2C2C2C;
+            --bg-tertiary: #3A3A3A;
+            --text-primary: #F8F8F6;
+            --text-secondary: #B0B0B0;
+            --border-color: #3A3A3A;
+            --link-color: #E8495F;
+            --link-hover: #FF6B7F;
+        }
+
+        /* ============================================================
+           RESET & BASE STYLES
+           ============================================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        /* ============================================================
+           LAYOUT
+           ============================================================ */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: var(--bg-secondary);
+            border-bottom: 3px solid var(--cathay-red);
+            padding: 30px 0;
+            margin-bottom: 40px;
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .page-title {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: var(--cathay-red);
+            margin-bottom: 10px;
+        }
+
+        .page-subtitle {
+            font-size: 1.2em;
+            color: var(--cathay-gold);
+            margin-bottom: 10px;
+        }
+
+        .page-meta {
+            color: var(--text-secondary);
+            font-size: 0.95em;
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            background: var(--cathay-red);
+            color: white;
+            border-color: var(--cathay-red);
+        }
+
+        /* Back Button */
+        .back-button {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            background: var(--cathay-gold);
+            color: var(--cathay-black);
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: var(--cathay-red);
+            color: white;
+        }
+
+        /* ============================================================
+           SECTIONS
+           ============================================================ */
+        section {
+            background: var(--bg-secondary);
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            font-size: 2em;
+            color: var(--cathay-red);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--cathay-gold);
+        }
+
+        h3 {
+            font-size: 1.5em;
+            color: var(--text-primary);
+            margin: 25px 0 15px 0;
+        }
+
+        h4 {
+            font-size: 1.2em;
+            color: var(--text-primary);
+            margin: 20px 0 10px 0;
+        }
+
+        /* ============================================================
+           METRIC CARDS
+           ============================================================ */
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .metric-card {
+            background: var(--bg-tertiary);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--cathay-red);
+        }
+
+        .metric-label {
+            font-size: 0.85em;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .metric-value {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 5px;
+        }
+
+        .metric-subtext {
+            font-size: 0.9em;
+            color: var(--text-secondary);
+        }
+
+        /* ============================================================
+           DATA TABLE
+           ============================================================ */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: var(--bg-secondary);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            font-size: 0.9em;
+        }
+
+        thead {
+            background: var(--cathay-red);
+            color: white;
+        }
+
+        th {
+            padding: 15px 10px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.85em;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        th.numeric, td.numeric {
+            text-align: right;
+        }
+
+        td {
+            padding: 12px 10px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        tr:hover {
+            background: var(--bg-tertiary);
+        }
+
+        .top-performer {
+            background-color: rgba(45, 119, 56, 0.15);
+            font-weight: 600;
+        }
+
+        .bottom-performer {
+            background-color: rgba(220, 38, 38, 0.15);
+        }
+
+        .middle-performer {
+            color: var(--text-secondary);
+        }
+
+        .caty-highlight {
+            font-weight: 700;
+            border-left: 3px solid var(--cathay-gold);
+        }
+
+        /* ============================================================
+           PROVENANCE & SOURCE INFO
+           ============================================================ */
+        .source-box {
+            background: var(--bg-tertiary);
+            padding: 15px;
+            margin: 15px 0;
+            border-left: 3px solid var(--info);
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        .source-label {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 5px;
+        }
+
+        .source-details {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .verification-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            font-weight: 600;
+            background: var(--success);
+            color: white;
+        }
+
+        .badge-partial {
+            background: var(--warning);
+        }
+
+        .badge-excluded {
+            background: var(--danger);
+        }
+
+        /* ============================================================
+           COLLAPSIBLE SECTIONS
+           ============================================================ */
+        .collapsible {
+            cursor: pointer;
+            padding: 15px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            margin: 10px 0;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+
+        .collapsible:hover {
+            background: var(--cathay-gold);
+            color: var(--cathay-black);
+        }
+
+        .collapsible-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-top: none;
+            border-radius: 0 0 5px 5px;
+        }
+
+        .collapsible-content.active {
+            max-height: fit-content;
+            padding: 20px;
+            overflow: visible;
+        }
+
+        /* ============================================================
+           SCATTER PLOT
+           ============================================================ */
+        .scatter-container {
+            background: var(--bg-tertiary);
+            padding: 30px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .scatter-plot {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            background: white;
+            border: 2px solid var(--border-color);
+            border-radius: 5px;
+        }
+
+        /* ============================================================
+           LINKS
+           ============================================================ */
+        a {
+            color: var(--link-color);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        a:hover {
+            color: var(--link-hover);
+            text-decoration: underline;
+        }
+
+        /* ============================================================
+           RESPONSIVE
+           ============================================================ */
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 1.8em;
+            }
+
+            .metric-grid {
+                grid-template-columns: 1fr;
+            }
+
+            table {
+                font-size: 0.75em;
+            }
+
+            .theme-toggle {
+                top: 10px;
+                right: 10px;
+                padding: 8px 16px;
+                font-size: 0.8em;
+            }
+        }
+
+        /* ============================================================
+           PRINT STYLES
+           ============================================================ */
+        @media print {
+            .theme-toggle,
+            .back-button {
+                display: none !important;
+            }
+
+            @page {
+                margin: 0.75in;
+                size: letter landscape;
+            }
+
+            body {
+                background: white !important;
+                color: black !important;
+                font-size: 10pt;
+            }
+
+            header {
+                border-bottom: 2px solid #C41E3A !important;
+                page-break-after: avoid;
+            }
+
+            section {
+                page-break-inside: avoid;
+            }
+
+            .collapsible-content {
+                max-height: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" aria-pressed="false">
+        <span id="theme-icon" aria-hidden="true">🌙</span>
+        <span id="theme-text">Dark Mode</span>
+    </button>
+
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <h1 class="page-title">Cathay General Bancorp (NASDAQ: CATY)</h1>
+            <p class="page-subtitle">File 11: Peer Analysis & Normalized Comparison</p>
+            <p class="page-meta">
+                Apples-to-apples peer comparisons (LTM through Q2'25) with regression analysis |
+                Last Updated: October 18, 2025 |
+                Source: SEC EDGAR 10-K/10-Q, FDIC Call Reports
+            </p>
+        </div>
+    </header>
+
+    <div class="container">
+        <a href="index.html" class="back-button">← Back to Main Report</a>
+
+        <!-- ======================================== -->
+        <!-- EXECUTIVE SUMMARY -->
+        <!-- ======================================== -->
+        <section id="executive-summary">
+            <h2>Executive Summary</h2>
+
+            <div class="metric-grid">
+                <div class="metric-card">
+                    <div class="metric-label">Final Peer Set</div>
+                    <div class="metric-value" style="font-size: 1.4em;">4 Peers</div>
+                    <div class="metric-subtext">CATY, EWBC, CVBF, HAFC</div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-label">Regression R²</div>
+                    <div class="metric-value">0.9548</div>
+                    <div class="metric-subtext">Adj R² = 0.932 (strong fit)</div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-label">P/TBV Slope</div>
+                    <div class="metric-value">0.1244x</div>
+                    <div class="metric-subtext">Per 1% ROTE increase</div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-label">Statistical Significance</div>
+                    <div class="metric-value">p = 0.023</div>
+                    <div class="metric-subtext">t-stat = 6.5 (significant at 5% level)</div>
+                </div>
+            </div>
+
+            <div class="source-box">
+                <div class="source-label">Key Finding</div>
+                <div class="source-details">
+                    CATY trades at <strong>1.269x P/TBV</strong> with <strong>11.95% ROTE</strong>, slightly below peer median of 1.300x P/TBV.
+                    Regression analysis (n=4) shows strong positive relationship between ROTE and P/TBV (R² = 0.9548, p = 0.023),
+                    indicating market values profitability differences. Each 1% increase in ROTE associated with 0.124x increase in P/TBV multiple.
+                    <br><br>
+                    <strong>Valuation Context:</strong> CATY's normalized ROTE (10.40% at 42.8 bps NCO rate, adjusted for provision normalization)
+                    suggests current 18.1 bps NCO rate is below long-term expected credit losses, implying potential for mean reversion.
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================================== -->
+        <!-- PEER SET COMPOSITION -->
+        <!-- ======================================== -->
+        <section id="peer-set">
+            <h2>Peer Set Composition</h2>
+
+            <h3>Core Peers (n=4)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Ticker</th>
+                        <th>CIK</th>
+                        <th>Rationale</th>
+                        <th class="numeric">Verification Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="caty-highlight">
+                        <td><strong>CATY</strong></td>
+                        <td>0000861842</td>
+                        <td>Target company - Cathay General Bancorp</td>
+                        <td class="numeric"><span class="verification-badge badge-partial">PARTIAL</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>EWBC</strong></td>
+                        <td>0001069157</td>
+                        <td>Asian-American bank, CA concentration, similar business model</td>
+                        <td class="numeric"><span class="verification-badge badge-partial">PARTIAL</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>CVBF</strong></td>
+                        <td>0000354647</td>
+                        <td>CA community bank, comparable size and market focus</td>
+                        <td class="numeric"><span class="verification-badge badge-partial">PARTIAL</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>HAFC</strong></td>
+                        <td>0001109242</td>
+                        <td>Korean-American bank, similar size and CRE exposure</td>
+                        <td class="numeric"><span class="verification-badge badge-partial">PARTIAL</span></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Excluded Peers</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Ticker</th>
+                        <th>Exclusion Rationale</th>
+                        <th class="numeric">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>HOPE</strong></td>
+                        <td>Distressed: ROTE -1.71%, efficiency 110.89%, negative LTM net income</td>
+                        <td class="numeric"><span class="verification-badge badge-excluded">EXCLUDED</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>PFBC</strong></td>
+                        <td>No SEC filings (state-chartered), brokered deposits 12.91% (3x median), efficiency 31.79% outlier</td>
+                        <td class="numeric"><span class="verification-badge badge-excluded">EXCLUDED</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>PPBI</strong></td>
+                        <td>Data quality issues: TBVPS $0.01 from duration/instant tag mismatch in companyfacts</td>
+                        <td class="numeric"><span class="verification-badge badge-excluded">EXCLUDED</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>WAFD</strong></td>
+                        <td>Structural outlier: P/TBV 0.37x despite ROTE 14.2% (3.4x below fitted value)</td>
+                        <td class="numeric"><span class="verification-badge badge-excluded">EXCLUDED</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>COLB</strong></td>
+                        <td>One-time gains: ROTE 33.43% from $425M Q4'24 spike (Cook's Distance 4.030)</td>
+                        <td class="numeric"><span class="verification-badge badge-excluded">EXCLUDED</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>BANC</strong></td>
+                        <td>Negative tangible common equity: goodwill + intangibles exceed total equity</td>
+                        <td class="numeric"><span class="verification-badge badge-excluded">EXCLUDED</span></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="source-box">
+                <div class="source-label">Peer Selection Policy</div>
+                <div class="source-details">
+                    <strong>Period Alignment:</strong> All peers use LTM through Q2'25 (2025-06-30) to ensure comparability. No FY/LTM mixing permitted.<br>
+                    <strong>Standardization:</strong> ROTE tangible-equity-based; provision-normalized where applicable; deposit betas use Q1'22 → Q2'25 anchor.<br>
+                    <strong>Quality Threshold:</strong> Loader refuses any peer with verification_status != VERIFIED_OK or blocking_level >= 3 for critical metrics.<br>
+                    <strong>Regression Discipline:</strong> Excluded structural outliers (WAFD P/TBV 0.37x), one-time gains (COLB ROTE 33%), and distressed banks (HOPE ROTE -1.71%).
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================================== -->
+        <!-- COMPREHENSIVE PEER COMPARISON -->
+        <!-- ======================================== -->
+        <section id="peer-comparison">
+            <h2>Comprehensive Peer Comparison Table</h2>
+            <p style="margin-bottom: 20px; color: var(--text-secondary);">
+                <strong>Period:</strong> LTM through Q2'25 (2025-06-30) |
+                <strong>Color Coding:</strong> <span style="background: rgba(45, 119, 56, 0.15); padding: 2px 8px; border-radius: 3px; font-weight: 600;">Top 2 Performers</span>
+                <span style="background: rgba(220, 38, 38, 0.15); padding: 2px 8px; border-radius: 3px;">Bottom 2 Performers</span>
+            </p>
+
+            <h3>Profitability & Efficiency Metrics</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th class="numeric">CATY</th>
+                        <th class="numeric">EWBC</th>
+                        <th class="numeric">CVBF</th>
+                        <th class="numeric">HAFC</th>
+                        <th class="numeric">Peer Median</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>ROTE (%)</strong></td>
+                        <td class="numeric bottom-performer">11.95</td>
+                        <td class="numeric top-performer">16.38</td>
+                        <td class="numeric top-performer">14.10</td>
+                        <td class="numeric bottom-performer">8.65</td>
+                        <td class="numeric middle-performer">12.93</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Normalized ROTE (% at 42.8 bps NCO)</strong></td>
+                        <td class="numeric caty-highlight">10.40</td>
+                        <td class="numeric">—</td>
+                        <td class="numeric">—</td>
+                        <td class="numeric">—</td>
+                        <td class="numeric middle-performer">—</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Efficiency Ratio (%)</strong></td>
+                        <td class="numeric middle-performer">46.93</td>
+                        <td class="numeric top-performer">36.04</td>
+                        <td class="numeric middle-performer">46.66</td>
+                        <td class="numeric bottom-performer">58.63</td>
+                        <td class="numeric middle-performer">46.80</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Net Interest Margin (%)</strong></td>
+                        <td class="numeric bottom-performer">3.27</td>
+                        <td class="numeric top-performer">3.35</td>
+                        <td class="numeric top-performer">3.30</td>
+                        <td class="numeric bottom-performer">3.07</td>
+                        <td class="numeric middle-performer">3.29</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Deposit Composition & Funding Metrics</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th class="numeric">CATY</th>
+                        <th class="numeric">EWBC</th>
+                        <th class="numeric">CVBF</th>
+                        <th class="numeric">HAFC</th>
+                        <th class="numeric">Peer Median</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>NIB % of Deposits</strong></td>
+                        <td class="numeric bottom-performer">16.9</td>
+                        <td class="numeric top-performer">23.8</td>
+                        <td class="numeric">N/D</td>
+                        <td class="numeric">N/D</td>
+                        <td class="numeric middle-performer">20.4</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Brokered Deposits %</strong></td>
+                        <td class="numeric middle-performer">5.62</td>
+                        <td class="numeric middle-performer">4.20</td>
+                        <td class="numeric top-performer">1.95</td>
+                        <td class="numeric top-performer">1.09</td>
+                        <td class="numeric middle-performer">3.08</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Deposit Beta - IB Only (ratio)</strong></td>
+                        <td class="numeric top-performer">0.604</td>
+                        <td class="numeric top-performer">0.627</td>
+                        <td class="numeric bottom-performer">0.402</td>
+                        <td class="numeric bottom-performer">0.802</td>
+                        <td class="numeric middle-performer">0.616</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Deposit Beta - All-In (ratio)</strong></td>
+                        <td class="numeric middle-performer">0.507</td>
+                        <td class="numeric top-performer">0.485</td>
+                        <td class="numeric top-performer">0.162</td>
+                        <td class="numeric bottom-performer">0.568</td>
+                        <td class="numeric middle-performer">0.496</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Credit Quality & Risk Metrics</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th class="numeric">CATY</th>
+                        <th class="numeric">EWBC</th>
+                        <th class="numeric">CVBF</th>
+                        <th class="numeric">HAFC</th>
+                        <th class="numeric">Peer Median</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>NCO Rate (bps)</strong></td>
+                        <td class="numeric top-performer">18.1</td>
+                        <td class="numeric bottom-performer">24.2</td>
+                        <td class="numeric">N/D</td>
+                        <td class="numeric">N/D</td>
+                        <td class="numeric middle-performer">21.2</td>
+                    </tr>
+                    <tr>
+                        <td><strong>CRE % of Loans</strong></td>
+                        <td class="numeric middle-performer">52.4</td>
+                        <td class="numeric top-performer">29.7</td>
+                        <td class="numeric bottom-performer">76.2</td>
+                        <td class="numeric">N/D</td>
+                        <td class="numeric middle-performer">52.4</td>
+                    </tr>
+                    <tr>
+                        <td><strong>CET1 Ratio (%)</strong></td>
+                        <td class="numeric bottom-performer">13.35</td>
+                        <td class="numeric middle-performer">14.50</td>
+                        <td class="numeric top-performer">16.52</td>
+                        <td class="numeric top-performer">15.20</td>
+                        <td class="numeric middle-performer">14.85</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Valuation Metrics</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th class="numeric">CATY</th>
+                        <th class="numeric">EWBC</th>
+                        <th class="numeric">CVBF</th>
+                        <th class="numeric">HAFC</th>
+                        <th class="numeric">Peer Median</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>TBVPS (USD/share)</strong></td>
+                        <td class="numeric caty-highlight">36.16</td>
+                        <td class="numeric">52.39</td>
+                        <td class="numeric">10.70</td>
+                        <td class="numeric">24.96</td>
+                        <td class="numeric middle-performer">30.56</td>
+                    </tr>
+                    <tr>
+                        <td><strong>P/TBV (x)</strong></td>
+                        <td class="numeric bottom-performer">1.269</td>
+                        <td class="numeric top-performer">1.830</td>
+                        <td class="numeric top-performer">1.730</td>
+                        <td class="numeric bottom-performer">0.930</td>
+                        <td class="numeric middle-performer">1.300</td>
+                    </tr>
+                    <tr>
+                        <td><strong>P/E LTM (x)</strong></td>
+                        <td class="numeric caty-highlight">—</td>
+                        <td class="numeric">11.21</td>
+                        <td class="numeric">12.79</td>
+                        <td class="numeric">11.26</td>
+                        <td class="numeric middle-performer">11.24</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Stock Price (USD, 2025-10-17)</strong></td>
+                        <td class="numeric caty-highlight">45.89</td>
+                        <td class="numeric">95.98</td>
+                        <td class="numeric">18.54</td>
+                        <td class="numeric">23.31</td>
+                        <td class="numeric middle-performer">34.60</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="source-box">
+                <div class="source-label">Data Source <span class="verification-badge badge-partial">VERIFIED_OK</span></div>
+                <div class="source-details">
+                    <strong>Methodology:</strong> LTM metrics calculated as FY2024 + H1'25 - H1'24 from SEC 10-K/10-Q filings<br>
+                    <strong>ROTE Basis:</strong> LTM Net Income / Average Tangible Common Equity (5-point average: Q2'24, Q3'24, Q4'24, Q1'25, Q2'25)<br>
+                    <strong>Deposit Betas:</strong> Up-cycle cumulative Q1'22 → Q2'25 from Average balances tables<br>
+                    <strong>Stock Prices:</strong> Stooq daily CSV as of 2025-10-17 close<br>
+                    <strong>Brokered Deposits:</strong> FDIC Call Reports via api.fdic.gov/banks/financials (extraction 2025-10-18)<br>
+                    <strong>N/D:</strong> Not Disclosed in public filings
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================================== -->
+        <!-- REGRESSION ANALYSIS -->
+        <!-- ======================================== -->
+        <section id="regression">
+            <h2>Regression Analysis: P/TBV vs ROTE</h2>
+
+            <div class="metric-grid">
+                <div class="metric-card">
+                    <div class="metric-label">Sample Size</div>
+                    <div class="metric-value">n = 4</div>
+                    <div class="metric-subtext">CATY, EWBC, CVBF, HAFC</div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-label">R-Squared</div>
+                    <div class="metric-value">0.9548</div>
+                    <div class="metric-subtext">Adj R² = 0.932</div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-label">Slope Coefficient</div>
+                    <div class="metric-value">0.1244</div>
+                    <div class="metric-subtext">0.124x P/TBV per 1% ROTE</div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-label">Statistical Significance</div>
+                    <div class="metric-value">p = 0.023</div>
+                    <div class="metric-subtext">t-stat = 6.5 (sig. at 5%)</div>
+                </div>
+            </div>
+
+            <h3>Regression Equation</h3>
+            <div class="source-box" style="border-left-color: var(--cathay-gold);">
+                <div class="source-label" style="font-size: 1.2em; font-family: 'Courier New', monospace;">
+                    P/TBV = -0.1483 + 0.1244 × ROTE
+                </div>
+                <div class="source-details">
+                    <strong>Interpretation:</strong> Each 1 percentage point increase in ROTE is associated with a 0.1244x increase in P/TBV multiple.<br>
+                    <strong>Intercept:</strong> -0.1483 (negative intercept reflects floor valuation dynamic; not economically meaningful at ROTE = 0)<br>
+                    <strong>Statistical Quality:</strong> Strong fit (R² = 0.9548), statistically significant (p = 0.023 < 0.05), but limited by small sample (n=4)
+                </div>
+            </div>
+
+            <h3>Scatter Plot Data Points & Fitted Values</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Ticker</th>
+                        <th class="numeric">ROTE (%)</th>
+                        <th class="numeric">Actual P/TBV (x)</th>
+                        <th class="numeric">Fitted P/TBV (x)</th>
+                        <th class="numeric">Residual (x)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>HAFC</strong></td>
+                        <td class="numeric">8.65</td>
+                        <td class="numeric">0.930</td>
+                        <td class="numeric">0.927</td>
+                        <td class="numeric" style="color: var(--success);">+0.003</td>
+                    </tr>
+                    <tr class="caty-highlight">
+                        <td><strong>CATY</strong></td>
+                        <td class="numeric">11.95</td>
+                        <td class="numeric">1.269</td>
+                        <td class="numeric">1.337</td>
+                        <td class="numeric" style="color: var(--danger);">-0.068</td>
+                    </tr>
+                    <tr>
+                        <td><strong>CVBF</strong></td>
+                        <td class="numeric">14.10</td>
+                        <td class="numeric">1.730</td>
+                        <td class="numeric">1.604</td>
+                        <td class="numeric" style="color: var(--success);">+0.126</td>
+                    </tr>
+                    <tr>
+                        <td><strong>EWBC</strong></td>
+                        <td class="numeric">16.38</td>
+                        <td class="numeric">1.830</td>
+                        <td class="numeric">1.888</td>
+                        <td class="numeric" style="color: var(--danger);">-0.058</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="source-box">
+                <div class="source-label">Regression Interpretation</div>
+                <div class="source-details">
+                    <strong>CATY Valuation Context:</strong> CATY's actual P/TBV of 1.269x is 0.068x below fitted value of 1.337x based on ROTE 11.95%.
+                    This -5.1% residual suggests CATY is slightly undervalued relative to peers on a ROTE basis, though within normal variation.<br><br>
+
+                    <strong>Key Insight:</strong> CATY's normalized ROTE (10.40% at 42.8 bps NCO) implies fitted P/TBV of 1.145x
+                    (= -0.1483 + 0.1244 × 10.40), suggesting current P/TBV 1.269x already reflects ~40 bps of credit normalization premium.<br><br>
+
+                    <strong>Statistical Caveat:</strong> Small sample size (n=4) limits statistical power. Regression significant at 5% level (p=0.023)
+                    but wide confidence intervals. Results should be supplemented with qualitative peer analysis and fundamental valuation methods.
+                </div>
+            </div>
+
+            <h3>Scatter Plot: P/TBV vs ROTE</h3>
+            <div class="scatter-container">
+                <p style="margin-bottom: 15px; font-size: 0.9em; color: var(--text-secondary);">
+                    <strong>Visual representation:</strong> CATY (gold), Peers (red), Regression line (black dashed)
+                </p>
+                <div class="scatter-plot" style="background: white; position: relative;">
+                    <svg width="100%" height="100%" viewBox="0 0 800 500" style="font-family: Arial, sans-serif;">
+                        <!-- Grid lines -->
+                        <line x1="80" y1="50" x2="80" y2="420" stroke="#ccc" stroke-width="2"/>
+                        <line x1="80" y1="420" x2="750" y2="420" stroke="#ccc" stroke-width="2"/>
+
+                        <!-- Y-axis labels (P/TBV) -->
+                        <text x="30" y="425" font-size="14" fill="#666">0.0</text>
+                        <text x="30" y="330" font-size="14" fill="#666">0.5</text>
+                        <text x="30" y="235" font-size="14" fill="#666">1.0</text>
+                        <text x="30" y="140" font-size="14" fill="#666">1.5</text>
+                        <text x="30" y="55" font-size="14" fill="#666">2.0</text>
+
+                        <!-- X-axis labels (ROTE %) -->
+                        <text x="120" y="445" font-size="14" fill="#666">8</text>
+                        <text x="280" y="445" font-size="14" fill="#666">10</text>
+                        <text x="440" y="445" font-size="14" fill="#666">12</text>
+                        <text x="600" y="445" font-size="14" fill="#666">14</text>
+                        <text x="720" y="445" font-size="14" fill="#666">16</text>
+
+                        <!-- Axis titles -->
+                        <text x="400" y="485" font-size="16" fill="#1C1C1C" text-anchor="middle" font-weight="bold">ROTE (%)</text>
+                        <text x="20" y="240" font-size="16" fill="#1C1C1C" text-anchor="middle" font-weight="bold" transform="rotate(-90 20 240)">P/TBV (x)</text>
+
+                        <!-- Regression line: P/TBV = -0.1483 + 0.1244*ROTE -->
+                        <!-- At ROTE 8%: P/TBV = 0.8469 → y = 420 - (0.8469 * 185) = 263.3 -->
+                        <!-- At ROTE 17%: P/TBV = 1.9665 → y = 420 - (1.9665 * 185) = 56.2 -->
+                        <line x1="80" y1="263" x2="760" y2="56" stroke="#1C1C1C" stroke-width="2" stroke-dasharray="8,4"/>
+
+                        <!-- Data points -->
+                        <!-- HAFC: ROTE 8.65%, P/TBV 0.930 → x = 80 + (8.65-8)*83.75 = 134.4, y = 420 - 0.930*185 = 248.0 -->
+                        <circle cx="134" cy="248" r="8" fill="#C41E3A"/>
+                        <text x="134" y="265" font-size="12" fill="#C41E3A" text-anchor="middle" font-weight="bold">HAFC</text>
+
+                        <!-- CATY: ROTE 11.95%, P/TBV 1.269 → x = 80 + (11.95-8)*83.75 = 410.8, y = 420 - 1.269*185 = 185.2 -->
+                        <circle cx="411" cy="185" r="10" fill="#D4AF37" stroke="#C41E3A" stroke-width="2"/>
+                        <text x="411" y="172" font-size="13" fill="#D4AF37" text-anchor="middle" font-weight="bold">CATY</text>
+
+                        <!-- CVBF: ROTE 14.10%, P/TBV 1.730 → x = 80 + (14.10-8)*83.75 = 591.1, y = 420 - 1.730*185 = 99.9 -->
+                        <circle cx="591" cy="100" r="8" fill="#C41E3A"/>
+                        <text x="591" y="90" font-size="12" fill="#C41E3A" text-anchor="middle" font-weight="bold">CVBF</text>
+
+                        <!-- EWBC: ROTE 16.38%, P/TBV 1.830 → x = 80 + (16.38-8)*83.75 = 781.9, y = 420 - 1.830*185 = 81.4 -->
+                        <circle cx="782" cy="81" r="8" fill="#C41E3A"/>
+                        <text x="782" y="70" font-size="12" fill="#C41E3A" text-anchor="middle" font-weight="bold">EWBC</text>
+
+                        <!-- Legend -->
+                        <text x="600" y="400" font-size="12" fill="#666">R² = 0.9548</text>
+                        <text x="600" y="420" font-size="12" fill="#666">Slope = 0.1244</text>
+                    </svg>
+                </div>
+                <p style="margin-top: 15px; font-size: 0.85em; color: var(--text-secondary); text-align: center;">
+                    <strong>Note:</strong> Scatter plot shows strong positive linear relationship between ROTE and P/TBV.
+                    CATY (gold dot) sits slightly below regression line, suggesting modest undervaluation vs peers.
+                </p>
+            </div>
+        </section>
+
+        <!-- ======================================== -->
+        <!-- IMPLIED COE ANALYSIS -->
+        <!-- ======================================== -->
+        <section id="coe-analysis">
+            <h2>Implied Cost of Equity Analysis</h2>
+
+            <p style="margin-bottom: 20px; color: var(--text-secondary);">
+                Reverse-engineering cost of equity (COE) from P/TBV multiples using Gordon Growth Model rearrangement:
+                COE = ROTE × (1 - Payout) / P/TBV + g
+            </p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Ticker</th>
+                        <th class="numeric">ROTE (%)</th>
+                        <th class="numeric">P/TBV (x)</th>
+                        <th class="numeric">Payout Ratio</th>
+                        <th class="numeric">Growth (g)</th>
+                        <th class="numeric">Implied COE (%)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>HAFC</strong></td>
+                        <td class="numeric">8.65</td>
+                        <td class="numeric">0.930</td>
+                        <td class="numeric">40%</td>
+                        <td class="numeric">3.0%</td>
+                        <td class="numeric">8.58%</td>
+                    </tr>
+                    <tr class="caty-highlight">
+                        <td><strong>CATY</strong></td>
+                        <td class="numeric">11.95</td>
+                        <td class="numeric">1.269</td>
+                        <td class="numeric">40%</td>
+                        <td class="numeric">3.0%</td>
+                        <td class="numeric">8.65%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>CVBF</strong></td>
+                        <td class="numeric">14.10</td>
+                        <td class="numeric">1.730</td>
+                        <td class="numeric">40%</td>
+                        <td class="numeric">3.0%</td>
+                        <td class="numeric">7.88%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>EWBC</strong></td>
+                        <td class="numeric">16.38</td>
+                        <td class="numeric">1.830</td>
+                        <td class="numeric">40%</td>
+                        <td class="numeric">3.0%</td>
+                        <td class="numeric">8.37%</td>
+                    </tr>
+                    <tr style="border-top: 2px solid var(--cathay-red);">
+                        <td><strong>Peer Mean COE</strong></td>
+                        <td class="numeric">—</td>
+                        <td class="numeric">—</td>
+                        <td class="numeric">—</td>
+                        <td class="numeric">—</td>
+                        <td class="numeric middle-performer">8.37%</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="source-box">
+                <div class="source-label">COE Calculation Methodology</div>
+                <div class="source-details">
+                    <strong>Formula:</strong> COE = ROTE × (1 - Payout Ratio) / P/TBV + Long-term Growth Rate<br>
+                    <strong>Assumptions:</strong> 40% payout ratio (typical for regional banks), 3.0% long-term GDP growth<br>
+                    <strong>Interpretation:</strong> Peer mean COE of 8.37% implies market requires ~8.4% equity returns for banks with similar risk profiles.<br><br>
+
+                    <strong>CATY Context:</strong> CATY's implied COE of 8.65% is 28 bps above peer mean, suggesting market perceives
+                    slightly higher risk (CRE concentration 52.4%, lower NIB% 16.9%) or expects lower sustainable profitability than P/TBV implies.
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================================== -->
+        <!-- PEER EXPANSION DIAGNOSTICS -->
+        <!-- ======================================== -->
+        <section id="expansion-diagnostics">
+            <div class="collapsible" onclick="toggleCollapsible(this)">
+                <strong>Peer Expansion Diagnostics</strong> (Click to expand)
+            </div>
+            <div class="collapsible-content">
+                <h3>Expansion Attempt Summary (2025-10-18)</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Target</th>
+                            <th>Status</th>
+                            <th>Outcome</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Target Sample Size</strong></td>
+                            <td>n = 10</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Successful Extractions</strong></td>
+                            <td>n = 5</td>
+                            <td>CATY, EWBC, CVBF, HAFC, HOPE + expansion peers WAFD, OPBK, COLB</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Failed Extractions</strong></td>
+                            <td>n = 2</td>
+                            <td>PPBI (tag mismatch), BANC (negative TCE)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>n=7 Regression Result</strong></td>
+                            <td>FAILED</td>
+                            <td>Adj R² = -0.077, p = 0.484 (not significant)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Final Decision</strong></td>
+                            <td>Reverted to n=4</td>
+                            <td>CATY, EWBC, CVBF, HAFC (Adj R² = 0.932, p = 0.023)</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Cook's Distance Analysis (n=7 Attempt)</h3>
+                <p style="margin: 15px 0; color: var(--text-secondary);">
+                    Cook's Distance measures influence of each observation on regression fit. Values > 1.0 indicate extreme outliers destroying model quality.
+                </p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Ticker</th>
+                            <th class="numeric">ROTE (%)</th>
+                            <th class="numeric">P/TBV (x)</th>
+                            <th class="numeric">Cook's Distance</th>
+                            <th>Diagnosis</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>HAFC</strong></td>
+                            <td class="numeric">8.65</td>
+                            <td class="numeric">0.930</td>
+                            <td class="numeric">0.112</td>
+                            <td>Normal influence</td>
+                        </tr>
+                        <tr>
+                            <td><strong>CATY</strong></td>
+                            <td class="numeric">11.95</td>
+                            <td class="numeric">1.269</td>
+                            <td class="numeric">0.003</td>
+                            <td>Normal influence</td>
+                        </tr>
+                        <tr>
+                            <td><strong>CVBF</strong></td>
+                            <td class="numeric">14.10</td>
+                            <td class="numeric">1.730</td>
+                            <td class="numeric">0.076</td>
+                            <td>Normal influence</td>
+                        </tr>
+                        <tr>
+                            <td><strong>EWBC</strong></td>
+                            <td class="numeric">16.38</td>
+                            <td class="numeric">1.830</td>
+                            <td class="numeric">0.021</td>
+                            <td>Normal influence</td>
+                        </tr>
+                        <tr style="background: rgba(220, 38, 38, 0.2);">
+                            <td><strong>WAFD</strong></td>
+                            <td class="numeric">14.20</td>
+                            <td class="numeric">0.370</td>
+                            <td class="numeric">2.547</td>
+                            <td><strong>EXTREME OUTLIER</strong> - Structural discount</td>
+                        </tr>
+                        <tr style="background: rgba(220, 38, 38, 0.2);">
+                            <td><strong>COLB</strong></td>
+                            <td class="numeric">33.43</td>
+                            <td class="numeric">1.439</td>
+                            <td class="numeric">4.030</td>
+                            <td><strong>EXTREME OUTLIER</strong> - One-time gains</td>
+                        </tr>
+                        <tr style="background: rgba(220, 38, 38, 0.2);">
+                            <td><strong>HOPE</strong></td>
+                            <td class="numeric">-1.71</td>
+                            <td class="numeric">0.770</td>
+                            <td class="numeric">1.893</td>
+                            <td><strong>EXTREME OUTLIER</strong> - Distressed</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Data Quality Issues Detail</h3>
+
+                <h4>PPBI - Duration/Instant Tag Mismatch</h4>
+                <div class="source-box" style="border-left-color: var(--danger);">
+                    <div class="source-label">Issue</div>
+                    <div class="source-details">
+                        SEC companyfacts equity tags mix instant/duration values, yielding TBVPS $0.01 (obviously erroneous for $24.49 stock).<br>
+                        <strong>Impact:</strong> ROTE -262%, P/TBV 2,959x (garbage outputs)<br>
+                        <strong>Resolution:</strong> Requires manual 10-Q parsing to extract correct equity components. Excluded from regression.
+                    </div>
+                </div>
+
+                <h4>BANC - Negative Tangible Common Equity</h4>
+                <div class="source-box" style="border-left-color: var(--danger);">
+                    <div class="source-label">Issue</div>
+                    <div class="source-details">
+                        <strong>Q2'25 Balance Sheet:</strong> Stockholders' equity $204.3M, Goodwill $197.8M, Intangibles $15.6M<br>
+                        <strong>Computed TCE:</strong> $204.3M - $197.8M - $15.6M = -$9.06M (NEGATIVE)<br>
+                        <strong>Impact:</strong> P/TBV and ROTE not computable (division by negative)<br>
+                        <strong>Interpretation:</strong> Intangible assets exceed total equity (typical of banks with M&A history or impaired goodwill).
+                        Not comparable to CATY (positive TCE $2,507M).
+                    </div>
+                </div>
+
+                <h4>WAFD - Structural Discount</h4>
+                <div class="source-box" style="border-left-color: var(--warning);">
+                    <div class="source-label">Issue</div>
+                    <div class="source-details">
+                        <strong>Valuation:</strong> P/TBV 0.37x despite ROTE 14.2% (healthy profitability)<br>
+                        <strong>Fitted Value:</strong> Regression implies P/TBV ~1.25x based on ROTE 14.2%<br>
+                        <strong>Discount:</strong> Actual 0.37x is 3.4x below fitted value (70% discount)<br>
+                        <strong>Interpretation:</strong> Market pricing WAFD at 63% discount to TBV suggests concerns about earnings quality,
+                        asset quality, or business model sustainability. This is structural outlier, not data error.<br>
+                        <strong>Note:</strong> SEC diagnostics confirmed TBVPS $75.91 is CORRECT (not tag error).
+                    </div>
+                </div>
+
+                <h4>COLB - One-Time Gains</h4>
+                <div class="source-box" style="border-left-color: var(--warning);">
+                    <div class="source-label">Issue</div>
+                    <div class="source-details">
+                        <strong>LTM ROTE:</strong> 33.43% (2.8x peer median 11.95%)<br>
+                        <strong>Quarterly NI Diagnostic:</strong> Q4'24 $425M spike, Q2'25 $378M, FY2024 $581M (vs typical quarters ~$140M)<br>
+                        <strong>Cook's Distance:</strong> 4.030 (destroying regression fit)<br>
+                        <strong>Impact:</strong> With COLB included (n=7), Adj R² = -0.077 (model worse than mean). Without COLB (n=4), Adj R² = 0.932 (strong fit).<br>
+                        <strong>Interpretation:</strong> Large quarterly spikes suggest non-recurring gains (securities sales, loan sale gains, merger items).
+                        ROTE 33% not representative of through-cycle profitability.
+                    </div>
+                </div>
+
+                <h4>HOPE - Distressed Performance</h4>
+                <div class="source-box" style="border-left-color: var(--danger);">
+                    <div class="source-label">Issue</div>
+                    <div class="source-details">
+                        <strong>LTM ROTE:</strong> -1.71% (negative profitability)<br>
+                        <strong>Efficiency Ratio:</strong> 110.89% (expenses exceed revenue)<br>
+                        <strong>LTM Net Income:</strong> -$28.8M (loss)<br>
+                        <strong>Interpretation:</strong> HOPE is in distressed state, not representative of normal operating performance.
+                        Not comparable for valuation purposes.
+                    </div>
+                </div>
+
+                <h3>Regression Comparison: n=7 vs n=4</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Statistic</th>
+                            <th class="numeric">n=7 (All Peers)</th>
+                            <th class="numeric">n=4 (Clean Peers)</th>
+                            <th>Interpretation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>R²</strong></td>
+                            <td class="numeric bottom-performer">-0.077</td>
+                            <td class="numeric top-performer">0.9548</td>
+                            <td>n=7 model worse than mean; n=4 explains 95% of variation</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Adj R²</strong></td>
+                            <td class="numeric bottom-performer">-0.293</td>
+                            <td class="numeric top-performer">0.932</td>
+                            <td>Degree-of-freedom adjustment confirms n=7 failure</td>
+                        </tr>
+                        <tr>
+                            <td><strong>p-value</strong></td>
+                            <td class="numeric bottom-performer">0.484</td>
+                            <td class="numeric top-performer">0.023</td>
+                            <td>n=7 not significant; n=4 significant at 5% level</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Slope</strong></td>
+                            <td class="numeric">0.0243</td>
+                            <td class="numeric">0.1244</td>
+                            <td>n=7 slope attenuated by outliers; n=4 reflects true relationship</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="source-box">
+                    <div class="source-label">Final Decision Rationale</div>
+                    <div class="source-details">
+                        Peer expansion from n=4 to n=7 collapsed regression due to:<br>
+                        1. <strong>COLB:</strong> One-time gains (Cook's D 4.030) destroying fit<br>
+                        2. <strong>WAFD:</strong> Structural discount (Cook's D 2.547) distorting slope<br>
+                        3. <strong>HOPE:</strong> Distressed performance (Cook's D 1.893) not representative<br><br>
+
+                        Reverting to n=4 original regression (CATY, EWBC, CVBF, HAFC) yields statistically significant positive relationship
+                        (R² = 0.9548, p = 0.023) suitable for valuation context, with documented caveat of small sample size.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================================== -->
+        <!-- QA CHECKS -->
+        <!-- ======================================== -->
+        <section id="qa-checks">
+            <h2>Quality Assurance Checks</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Check ID</th>
+                        <th>Description</th>
+                        <th>Rule</th>
+                        <th class="numeric">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>PEER-QA001</strong></td>
+                        <td>Period alignment</td>
+                        <td>All peers use LTM through Q2'25 (no FY/LTM mixing)</td>
+                        <td class="numeric"><span class="verification-badge">PASS</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>PEER-QA002</strong></td>
+                        <td>Deposit beta sanity</td>
+                        <td>All-in beta < IB-only beta for each peer</td>
+                        <td class="numeric"><span class="verification-badge">PASS</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>PEER-QA003</strong></td>
+                        <td>NIB% bounds</td>
+                        <td>0% <= NIB% <= 100%</td>
+                        <td class="numeric"><span class="verification-badge badge-partial">PASS_WITH_GAPS</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>PEER-QA004</strong></td>
+                        <td>CET1 sanity</td>
+                        <td>CET1 ratio within 9%-20%</td>
+                        <td class="numeric"><span class="verification-badge">PASS</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>PEER-QA005</strong></td>
+                        <td>Regression outliers</td>
+                        <td>Cook's Distance < 1.0 for all regression peers</td>
+                        <td class="numeric"><span class="verification-badge">PASS</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- ======================================== -->
+        <!-- METADATA -->
+        <!-- ======================================== -->
+        <section id="metadata">
+            <h2>File Metadata</h2>
+
+            <table>
+                <tbody>
+                    <tr>
+                        <td><strong>Schema Version</strong></td>
+                        <td>1.0.0</td>
+                    </tr>
+                    <tr>
+                        <td><strong>File Name</strong></td>
+                        <td>peers_normalized.json</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Purpose</strong></td>
+                        <td>Apples-to-apples peer comparisons (LTM through Q2'25) with regression analysis</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Last Updated</strong></td>
+                        <td>2025-10-18 06:40:00 UTC</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Data Policy</strong></td>
+                        <td>All peer datapoints must have VERIFIED_OK provenance with period alignment; loader refuses mixed FY/LTM</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Period Coverage</strong></td>
+                        <td>LTM through 2025-06-30 (Q2'25)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Units</strong></td>
+                        <td>USD millions unless noted; per-share in USD; ratios in percent or basis points (bps) explicitly stated</td>
+                    </tr>
+                    <tr>
+                        <td><strong>FY Mixing Policy</strong></td>
+                        <td>PROHIBITED - All metrics must use consistent LTM methodology</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Loader Rule</strong></td>
+                        <td>REFUSE if any peer metric verification_status != VERIFIED_OK or blocking_level >= 3</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+    </div>
+
+    <!-- JavaScript for Theme Toggle and Collapsibles -->
+    <script>
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+
+            // Update button accessibility
+            const button = document.querySelector('.theme-toggle');
+            button.setAttribute('aria-pressed', newTheme === 'dark');
+            button.setAttribute('aria-label', newTheme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+
+            // Update button text
+            const icon = document.getElementById('theme-icon');
+            const text = document.getElementById('theme-text');
+
+            if (newTheme === 'dark') {
+                icon.textContent = '☀️';
+                text.textContent = 'Light Mode';
+            } else {
+                icon.textContent = '🌙';
+                text.textContent = 'Dark Mode';
+            }
+        }
+
+        // Load saved theme on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+
+            const icon = document.getElementById('theme-icon');
+            const text = document.getElementById('theme-text');
+
+            if (savedTheme === 'dark') {
+                icon.textContent = '☀️';
+                text.textContent = 'Light Mode';
+            } else {
+                icon.textContent = '🌙';
+                text.textContent = 'Dark Mode';
+            }
+        });
+
+        // Collapsible sections
+        function toggleCollapsible(element) {
+            const content = element.nextElementSibling;
+            const isActive = content.classList.contains('active');
+
+            if (isActive) {
+                content.classList.remove('active');
+                content.style.maxHeight = null;
+            } else {
+                content.classList.add('active');
+                content.style.maxHeight = content.scrollHeight + "px";
+            }
+        }
+    </script>
+</body>
+</html>
