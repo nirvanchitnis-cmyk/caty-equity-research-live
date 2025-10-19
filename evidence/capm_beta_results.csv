@@ -1,0 +1,18 @@
+Metric,Value
+Beta,0.9022039147167981
+Alpha (annualized),0.08835853640693814
+R-squared,0.24643545089178254
+p-value,1.3913302899353935e-17
+Standard Error,0.09822080567064871
+Risk-Free Rate,0.0425
+Equity Risk Premium,0.055
+Implied COE (CAPM),0.0921212153094239
+Implied COE (Multiples),0.09587
+COE Delta,-0.0037487846905761013
+CATY Annualized Return,0.23981685174722767
+CATY Annualized Volatility,0.30275605951729817
+SP500 Annualized Return,0.15042410614002222
+SP500 Annualized Volatility,0.16658647116491312
+Number of Weeks,260
+Date Range Start,2020-10-19
+Date Range End,2025-10-06
