@@ -477,15 +477,16 @@ Based on Derek's standards, these sections MUST be present and were built:
 ### Sensitivity Table: Target Price to NCO Assumption
 **From CATY_12, provision normalization table:**
 
-| NCO (bps) | Scenario | Normalized ROTE | P/TBV | Target | vs Spot | Rating |
-|-----------|----------|-----------------|-------|--------|---------|--------|
-| 20 | Optimistic | 11.84% | 1.317x | $47.61 | +3.8% | BUY |
-| **25** | **Bull** | **11.52%** | **1.273x** | **$46.02** | **+0.3%** | **HOLD** |
-| 30 | Moderate | 11.20% | 1.228x | $44.39 | -3.3% | HOLD |
-| **42.8** | **Base** | **10.40%** | **1.115x** | **$40.32** | **-12.1%** | **SELL** |
-| 60 | Bear | 9.31% | 0.961x | $34.75 | -24.3% | SELL |
+| NCO (bps) | Scenario | Normalized ROTE | P/TBV | Target | vs Spot | Scenario Return |
+|-----------|----------|-----------------|-------|--------|---------|-----------------|
+| 20 | Optimistic | 11.84% | 1.317x | $47.61 | +3.8% | Above HOLD |
+| **25** | **Bull** | **11.52%** | **1.273x** | **$46.02** | **+0.3%** | **HOLD band** |
+| 30 | Moderate | 11.20% | 1.228x | $44.39 | -3.3% | HOLD band |
+| **42.8** | **Base** | **10.40%** | **1.115x** | **$40.32** | **-12.1%** | **Below HOLD** |
+| 60 | Bear | 9.31% | 0.961x | $34.75 | -24.3% | Bear downside |
 
 **Takeaway:** Target is highly sensitive to NCO assumption. 10 bps NCO = ~$0.90 price impact.
+**Final Rating:** HOLD at $51.97 (+13.3%), calculated as Wilson 95% weighted average (74% × $56.42 + 26% × $40.32).
 
 ---
 
