@@ -26,6 +26,7 @@ import csv
 import datetime as dt
 from dataclasses import dataclass
 from pathlib import Path
+from math import sqrt
 from statistics import mean
 from typing import Iterable, List, Sequence, Tuple
 
@@ -34,6 +35,26 @@ RAW_CSV = Path(__file__).resolve().parents[1] / "evidence" / "raw" / "fdic_CATY_
 OUTPUT_MD = Path(__file__).resolve().parents[1] / "evidence" / "NCO_probability_summary.md"
 # Through-cycle net charge-off assumption expressed as a decimal (45.8 bps)
 THRESHOLD = 0.00458
+
+
+def wilson_interval(successes: int, total: int, confidence: float = 0.95) -> Tuple[float, float]:
+    """Return the Wilson score interval for a Bernoulli proportion."""
+
+    if total == 0:
+        return float("nan"), float("nan")
+
+    if confidence != 0.95:
+        raise ValueError("Currently only 95% confidence supported")
+
+    z = 1.96
+
+    phat = successes / total
+    denom = 1 + z**2 / total
+    center = phat + z**2 / (2 * total)
+    sqrt_term = sqrt((phat * (1 - phat) + z**2 / (4 * total)) / total)
+    lower = (center - z * sqrt_term) / denom
+    upper = (center + z * sqrt_term) / denom
+    return lower, upper
 
 
 @dataclass(frozen=True)
@@ -100,13 +121,15 @@ def generate_markdown(observations: Sequence[Observation]) -> str:
     sections.append("## Frequency of quarterly breaches\n")
     sections.append("Threshold: 45.8 bps (0.458%) total loan & lease net charge-off ratio")
     sections.append("")
-    sections.append("| Window | Quarters | Breach Probability |")
-    sections.append("|--------|----------|--------------------|")
+    sections.append("| Window | Quarters | Breach Probability | 95% Upper Bound |")
+    sections.append("|--------|----------|--------------------|------------------|")
     for label, start in windows:
         window_obs = [obs for obs in observations if start is None or obs.date >= start]
         probability = window_prob(observations, start)
+        breaches = sum(obs.ratio >= THRESHOLD for obs in window_obs)
+        upper = wilson_interval(breaches, len(window_obs))[1]
         sections.append(
-            f"| {label} | {len(window_obs)} | {format_percentage(probability)} |"
+            f"| {label} | {len(window_obs)} | {format_percentage(probability)} | {format_percentage(upper)} |"
         )
 
     trailing_windows = [8, 16, 32]
