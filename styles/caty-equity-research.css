@@ -1306,3 +1306,101 @@ a:focus-visible {
 *:focus:not(:focus-visible) {
     outline: none;
 }
+
+/* ============================================================
+   UTILITY CLASSES - Reusable Styling
+   ============================================================ */
+
+/* Typography utilities */
+.text-large {
+    font-size: 1.1em;
+    line-height: 1.8;
+}
+
+.text-small {
+    font-size: 0.95em;
+    line-height: 1.8;
+}
+
+.text-mono {
+    font-family: monospace;
+    font-size: 1.3em;
+    margin: 15px 0;
+}
+
+.line-height-relaxed {
+    line-height: 1.8;
+}
+
+/* Color utilities */
+.text-danger {
+    color: var(--cathay-red);
+}
+
+.text-danger-dark {
+    color: var(--bear-sell);
+}
+
+/* Border utilities */
+.border-left-gold {
+    border-left-color: var(--cathay-gold);
+}
+
+.border-left-danger {
+    border-left-color: var(--cathay-red);
+}
+
+/* Spacing and background utilities */
+.highlight-box-spaced {
+    margin-top: 20px;
+    background: var(--bg-tertiary);
+}
+
+/* Paragraph variations */
+.text-intro {
+    margin-bottom: 20px;
+    font-size: 1.05em;
+    line-height: 1.8;
+}
+
+.text-emphasis {
+    font-size: 1.2em;
+    line-height: 1.8;
+}
+
+.text-emphasis-large {
+    font-size: 1.5em;
+    font-weight: 700;
+    margin: 15px 0;
+}
+
+.text-note {
+    margin-top: 15px;
+    font-style: italic;
+    color: var(--text-secondary);
+}
+
+/* Table row highlights */
+.row-highlight-yellow {
+    background: #FFF9E6;
+}
+
+.row-highlight-red {
+    background: #FFEBEE;
+}
+
+/* Border color variants */
+.border-left-info {
+    border-left-color: var(--info);
+}
+
+.border-left-success {
+    border-left-color: var(--success);
+}
+
+/* List styles */
+.list-mono {
+    line-height: 2.0;
+    font-family: monospace;
+    font-size: 0.95em;
+}

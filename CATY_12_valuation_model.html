@@ -38,7 +38,7 @@
 
             <div class="highlight-box critical">
                 <h4>KEY FINDING: BASE CASE SUPPORTS HOLD RATING</h4>
-                <p style="font-size: 1.1em; line-height: 1.8;">
+                <p class="text-large">
                     Using empirical through-cycle NCO of <strong>42.8 bps</strong> (2008-2024 FDIC average including GFC and COVID),
                     normalized ROTE is <strong>10.21%</strong>, implying a normalized fair value P/TBV of <strong>1.087x</strong> (Gordon Growth) and target price of
                     <strong>$39.32</strong>. This represents <strong>14.3% downside</strong> from the October 17, 2025 spot price of $45.87,
@@ -102,7 +102,7 @@
                         </div>
                         <div class="scenario-metric">
                             <div class="scenario-metric-label">Downside</div>
-                            <div class="scenario-metric-value" style="color: var(--cathay-red);">-14.3%</div>
+                            <div class="scenario-metric-value text-danger">-14.3%</div>
                         </div>
                         <div class="scenario-metric">
                             <div class="scenario-metric-label">P/TBV</div>
@@ -143,7 +143,7 @@
                         </div>
                         <div class="scenario-metric">
                             <div class="scenario-metric-label">Downside</div>
-                            <div class="scenario-metric-value" style="color: var(--bear-sell);">-24.3%</div>
+                            <div class="scenario-metric-value text-danger-dark">-24.3%</div>
                         </div>
                         <div class="scenario-metric">
                             <div class="scenario-metric-label">P/TBV</div>
@@ -188,27 +188,27 @@
                     <div class="metric-subtext">$45.89 / $36.16</div>
                 </div>
 
-                <div class="metric-card" style="border-left-color: var(--cathay-gold);">
+                <div class="metric-card border-left-gold">
                     <div class="metric-label">Probability-Weighted Target</div>
                     <div class="metric-value">$40.47</div>
                     <div class="metric-subtext">25% Bull + 60% Base + 15% Bear</div>
                 </div>
 
-                <div class="metric-card" style="border-left-color: var(--cathay-red);">
+                <div class="metric-card border-left-danger">
                     <div class="metric-label">IRC Blended Valuation</div>
                     <div class="metric-value">$51.39</div>
                     <div class="metric-subtext">60% RIM + 10% DDM + 30% Relative</div>
                 </div>
 
-                <div class="metric-card" style="border-left-color: var(--cathay-red);">
+                <div class="metric-card border-left-danger">
                     <div class="metric-label">Wilson 95% Framework</div>
                     <div class="metric-value">$51.74</div>
                     <div class="metric-subtext">74% Current + 26% Normalized</div>
                 </div>
             </div>
 
-            <div class="highlight-box" style="margin-top: 20px; background: var(--bg-tertiary);">
-                <p style="font-size: 0.95em; line-height: 1.8;">
+            <div class="highlight-box highlight-box-spaced">
+                <p class="text-small">
                     <strong>Note on Multiple Valuation Frameworks:</strong> The probability-weighted scenario ($40.47) uses symmetric probabilities (25/60/15),
                     while the Wilson 95% framework ($51.74) and IRC blended valuation ($51.39) use data-driven probability weights (74/26) and methodological triangulation respectively.
                     <strong>Both Wilson and IRC frameworks converge on +12.0-12.8% expected return → HOLD rating.</strong> The 42.8 bps NCO normalization base is consistent across all approaches.
@@ -225,10 +225,10 @@
             <h3>Core Formula</h3>
             <div class="highlight-box">
                 <h4>Gordon Growth Model Simplification</h4>
-                <p style="font-size: 1.3em; font-family: monospace; margin: 15px 0;">
+                <p class="text-mono">
                     P/TBV = (ROTE - g) / (COE - g)
                 </p>
-                <p style="line-height: 1.8;">
+                <p class="line-height-relaxed">
                     <strong>Where:</strong><br>
                     - ROTE = Return on Tangible Common Equity (normalized for through-cycle credit)<br>
                     - COE = Cost of Equity (peer-calibrated from implied COE analysis)<br>
@@ -313,7 +313,7 @@
         <section id="provision-normalization">
             <h2>Provision Normalization: NCO Sensitivity</h2>
 
-            <p style="margin-bottom: 20px; font-size: 1.05em; line-height: 1.8;">
+            <p class="text-intro">
                 The table below shows how different through-cycle NCO assumptions impact normalized earnings, ROTE,
                 and ultimately the target P/TBV multiple and price. The <strong>42.8 bps base case</strong> is anchored
                 to 17 years of empirical FDIC data.
@@ -420,7 +420,7 @@
 
             <div class="highlight-box">
                 <h4>Normalization Methodology</h4>
-                <p style="line-height: 1.8;">
+                <p class="line-height-relaxed">
                     <strong>Inputs:</strong><br>
                     - LTM Net Income: $294.7M<br>
                     - Average TCE: $2,465.1M<br>
@@ -443,7 +443,7 @@
         <section id="sensitivity">
             <h2>Sensitivity Analysis: P/TBV vs (COE, g)</h2>
 
-            <p style="margin-bottom: 20px; font-size: 1.05em;">
+            <p class="text-intro">
                 The table below shows target P/TBV multiples under the <strong>BULL CASE</strong> scenario (25 bps NCO, 11.52% ROTE)
                 for different combinations of cost of equity (COE) and growth rate (g).
             </p>
@@ -468,7 +468,7 @@
                         <td class="number">1.12x</td>
                         <td class="number">1.058x</td>
                     </tr>
-                    <tr style="background: #FFF9E6;">
+                    <tr class="row-highlight-yellow">
                         <td><strong>2.5%</strong> (Base)</td>
                         <td class="number">1.388x</td>
                         <td class="number">1.289x</td>
@@ -489,7 +489,7 @@
 
             <div class="highlight-box">
                 <h4>Base Case Cell (COE 9.587%, g 2.5%)</h4>
-                <p style="font-size: 1.2em; line-height: 1.8;">
+                <p class="text-emphasis">
                     Using our calibrated COE of <strong>9.587%</strong> and growth rate of <strong>2.5%</strong>,
                     the bull case (25 bps NCO) implies a P/TBV of approximately <strong>1.273x</strong>,
                     which translates to a target price of <strong>$46.02</strong> (essentially at spot).
@@ -513,7 +513,7 @@
                         <td class="number">$40.04</td>
                         <td>Lower g → slightly lower target</td>
                     </tr>
-                    <tr style="background: #FFEBEE;">
+                    <tr class="row-highlight-red">
                         <td><strong>2.5%</strong> (Base)</td>
                         <td class="number">1.087x</td>
                         <td class="number">$39.32</td>
@@ -528,7 +528,7 @@
                 </tbody>
             </table>
 
-            <p style="margin-top: 15px; font-style: italic; color: var(--text-secondary);">
+            <p class="text-note">
                 Note: Each 50 bps change in g changes the target price by approximately <strong>$0.30</strong>.
                 This is relatively small compared to the impact of NCO assumptions (which can swing the target by several dollars).
             </p>
@@ -540,31 +540,31 @@
         <section id="monte-carlo">
             <h2>Monte Carlo Simulation Summary</h2>
 
-            <p style="margin-bottom: 20px; font-size: 1.05em; line-height: 1.8;">
+            <p class="text-intro">
                 A Monte Carlo simulation was run with the following probability weights: <strong>25% Bull, 60% Base, 15% Bear</strong>.
                 The simulation confirms the central tendency around the base case target of $39.32 (Gordon Growth).
             </p>
 
             <div class="metric-grid">
-                <div class="metric-card" style="border-left-color: var(--cathay-gold);">
+                <div class="metric-card border-left-gold">
                     <div class="metric-label">Mean Target Price</div>
                     <div class="metric-value">$40.47</div>
                     <div class="metric-subtext">Expected value across scenarios</div>
                 </div>
 
-                <div class="metric-card" style="border-left-color: var(--cathay-gold);">
+                <div class="metric-card border-left-gold">
                     <div class="metric-label">Median Target Price</div>
                     <div class="metric-value">$40.16</div>
                     <div class="metric-subtext">50th percentile</div>
                 </div>
 
-                <div class="metric-card" style="border-left-color: var(--info);">
+                <div class="metric-card border-left-info">
                     <div class="metric-label">5th Percentile</div>
                     <div class="metric-value">$26.06</div>
                     <div class="metric-subtext">Downside tail risk</div>
                 </div>
 
-                <div class="metric-card" style="border-left-color: var(--info);">
+                <div class="metric-card border-left-info">
                     <div class="metric-label">95th Percentile</div>
                     <div class="metric-value">$56.36</div>
                     <div class="metric-subtext">Upside tail potential</div>
@@ -573,10 +573,10 @@
 
             <div class="highlight-box critical">
                 <h4>KEY STAT: Probability of Overvaluation</h4>
-                <p style="font-size: 1.5em; font-weight: 700; margin: 15px 0;">
-                    Pr(Fair Value < $45.89 Spot): <span style="color: var(--cathay-red);">69%</span>
+                <p class="text-emphasis-large">
+                    Pr(Fair Value < $45.89 Spot): <span class="text-danger">69%</span>
                 </p>
-                <p style="line-height: 1.8;">
+                <p class="line-height-relaxed">
                     There is a <strong>69% probability</strong> that the fair value is below the current spot price of $45.89,
                     indicating the stock is likely overvalued. Conversely, there is only a <strong>31% probability</strong>
                     of meaningful upside above the current price.
@@ -632,7 +632,7 @@
         <section id="regression-analysis">
             <h2>Regression-Based Fair Value Analysis</h2>
 
-            <p style="margin-bottom: 20px; font-size: 1.05em; line-height: 1.8;">
+            <p class="text-intro">
                 A simple linear regression of P/TBV on ROTE was performed using four peer banks: EWBC, CVBF, HAFC, and CATY.
                 The regression has an <strong>R² of 0.9548</strong>, indicating that ROTE explains 95.48% of the variation in P/TBV multiples.
             </p>
@@ -651,7 +651,7 @@
                     <div class="metric-subtext">Constant term</div>
                 </div>
 
-                <div class="metric-card" style="border-left-color: var(--success);">
+                <div class="metric-card border-left-success">
                     <div class="metric-label">R-Squared (R²)</div>
                     <div class="metric-value">0.9548</div>
                     <div class="metric-subtext">Excellent model fit</div>
@@ -714,7 +714,7 @@
 
             <div class="highlight-box">
                 <h4>CATY Residual Analysis</h4>
-                <p style="line-height: 1.8;">
+                <p class="line-height-relaxed">
                     CATY's actual P/TBV of <strong>1.269x</strong> is <strong>0.069x below</strong> the regression-fitted value of 1.338x,
                     based on its raw ROTE of 11.95%. This suggests CATY is trading at a slight discount relative to its current profitability.
                     <br><br>
@@ -731,7 +731,7 @@
         <section id="implied-coe">
             <h2>Implied Cost of Equity (COE) from Peer Mapping</h2>
 
-            <p style="margin-bottom: 20px; font-size: 1.05em; line-height: 1.8;">
+            <p class="text-intro">
                 Using the P/TBV mapping formula <code>P/TBV = (ROTE - g) / (COE - g)</code> and assuming <strong>g = 2.5%</strong>,
                 we can back out the implied COE for each peer based on their current P/TBV multiples and ROTE.
             </p>
@@ -786,7 +786,7 @@
 
             <div class="highlight-box">
                 <h4>CATY Predicted P/TBV from Mean COE</h4>
-                <p style="font-size: 1.1em; line-height: 1.8;">
+                <p class="text-large">
                     Using the mean peer COE of <strong>9.587%</strong> and CATY's current ROTE of 11.95%,
                     the predicted P/TBV is <strong>1.333x</strong>. CATY is currently trading at <strong>1.269x</strong>,
                     which is <strong>0.048x below</strong> the peer-calibrated prediction.
@@ -906,7 +906,7 @@
             <h3>Formula Audit Trail</h3>
             <div class="highlight-box">
                 <h4>Base Case Calculation Step-by-Step</h4>
-                <ol style="line-height: 2.0; font-family: monospace; font-size: 0.95em;">
+                <ol class="list-mono">
                     <li><strong>Delta Provision:</strong> (42.8 bps - 18.13 bps) × $19,449.0M = $48.0M</li>
                     <li><strong>Tax Effect:</strong> $48.0M × 20% = $9.6M (benefit)</li>
                     <li><strong>After-Tax Delta:</strong> $48.0M - $9.6M = $38.4M</li>
