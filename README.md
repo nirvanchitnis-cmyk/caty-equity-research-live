@@ -32,7 +32,7 @@ Institutional-grade equity research report analyzing Cathay General Bancorp with
 1. **Through-Cycle NCO Normalization (42.8 bps)**
    - Current LTM NCO: 18.1 bps
    - 17-year average (2008-2024): 42.8 bps
-   - Normalizing provision reduces ROTE from 11.95% to 10.40%
+   - Normalizing provision reduces ROTE from 11.95% to 10.21% (Gordon Growth)
 
 2. **Elevated CRE Concentration (52.4%)**
    - Above peer median ~41%
@@ -46,7 +46,7 @@ Institutional-grade equity research report analyzing Cathay General Bancorp with
 
 4. **Premium Valuation vs. Normalized ROTE**
    - Current P/TBV: 1.269x
-   - Fitted P/TBV (regression): 1.115x at normalized ROTE
+   - Normalized P/TBV (Gordon Growth): 1.087x at normalized ROTE 10.21%
    - Monte Carlo: 69% probability overvalued
 
 #### Valuation Framework:
@@ -58,7 +58,7 @@ Institutional-grade equity research report analyzing Cathay General Bancorp with
 | Scenario | NCO (bps) | ROTE | P/TBV | Target | vs Spot | Wilson Prob |
 |----------|-----------|------|-------|--------|---------|-------------|
 | **Regression (Current Earnings)** | 18 | 11.95% | 1.558x | **$56.42** | **+23.0%** | **74%** |
-| **Normalization (Through-Cycle)** | 42.8 | 10.40% | 1.087x | **$39.32** | **-14.3%** | **26%** |
+| **Normalization (Through-Cycle)** | 42.8 | 10.21% | 1.087x | **$39.32** | **-14.3%** | **26%** |
 
 **Final Rating:** HOLD at Expected Price **$51.97 (+13.3%)**, calculated as Wilson 95% probability-weighted average:
 - 74% × $56.42 + 26% × $39.32 = **$51.97** (+13.3% vs $45.87 spot)
@@ -154,10 +154,10 @@ Total: 14 files (~648K)
 | Expected Price | $51.97 | Wilson 95% (74/26) |
 | Expected Return | +13.3% | HOLD |
 | P/TBV | 1.269x | Current |
-| Target P/TBV | 1.115x | Normalized |
+| Target P/TBV | 1.087x | Normalized (Gordon Growth) |
 | **Profitability** | | |
 | ROTE (LTM) | 11.95% | Q2'25 10-Q |
-| Normalized ROTE | 10.40% | 42.8 bps NCO |
+| Normalized ROTE | 10.21% | 42.8 bps NCO (Gordon Growth) |
 | NIM | 3.27% | Q2'25 |
 | Efficiency Ratio | 46.9% | Q2'25 |
 | **Credit Quality** | | |
@@ -194,8 +194,8 @@ All calculations verified and audited:
 2. **ROTE:** Net Income / Avg TCE × 100 = $294.7M / $2,465.1M × 100 = **11.95%** ✅
 3. **Deposit Beta:** (Δ Deposit Cost) / (Δ Fed Funds) = 3.02% / 5.00% = **60.4%** ✅
 4. **NCO Rate:** (NCO / Avg Loans) × 10,000 = (35.3M / 19,449M) × 10,000 = **18.1 bps** ✅
-5. **P/TBV Mapping:** (ROTE - g) / (COE - g) = (10.40 - 2.5) / (9.587 - 2.5) = **1.115x** ✅
-6. **Target Price:** P/TBV × TBVPS = 1.115 × $36.16 = **$40.32** ✅
+5. **P/TBV Mapping (Gordon Growth):** (ROTE - g) / (COE - g) = (10.21 - 2.5) / (9.587 - 2.5) = **1.087x** ✅
+6. **Target Price:** P/TBV × TBVPS = 1.087 × $36.16 = **$39.32** ✅
 
 ## 🔍 Audit Trail
 

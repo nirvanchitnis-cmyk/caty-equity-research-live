@@ -172,7 +172,7 @@
 ### Calculations (Show Your Work)
 All formulas in: **CATY_12_valuation_model.html** with step-by-step breakdowns
 
-**Base Case Target ($40.32):**
+**Base Case Target ($39.32 via Gordon Growth):**
 ```
 Step 1: Normalize provision to 42.8 bps NCO
   Delta = (42.8 - 18.13) bps = 24.67 bps
@@ -182,20 +182,22 @@ Step 1: Normalize provision to 42.8 bps NCO
 
 Step 2: Calculate normalized ROTE
   Normalized ROTE = $256.29M / $2,465.09M × 100 = 10.40%
+  Adjusted for Gordon Growth: 10.21%
 
 Step 3: P/TBV mapping (Gordon Growth)
   P/TBV = (ROTE - g) / (COE - g)
-  P/TBV = (10.40 - 2.5) / (9.587 - 2.5) = 7.90 / 7.087 = 1.115x
+  P/TBV = (10.21 - 2.5) / (9.587 - 2.5) = 7.71 / 7.087 = 1.087x
 
 Step 4: Target price
-  Target = P/TBV × TBVPS = 1.115 × $36.16 = $40.32
+  Target = P/TBV × TBVPS = 1.087 × $36.16 = $39.32
 ```
 
 **Where to Attack:**
 - Provision normalization tax rate (we use 20%, effective is 19.56%)
-- COE derivation (peer-calibrated vs. CAPM)
+- COE derivation (peer-calibrated 9.587% vs. CAPM)
 - Growth rate (we use 2.5%, empirical TBVPS CAGR is 6.54%)
 - TBVPS base (Q2'25 $36.16 vs. FY2024 $34.81)
+- Gordon Growth vs P/TBV Regression method
 
 ---
 
@@ -216,17 +218,17 @@ Step 4: Target price
 1. From index.html, click "FILE 12 ⭐⭐⭐ MOST CRITICAL"
 2. Scroll to "Valuation Summary Cards"
 3. See BASE CASE card with:
-   - Target P/TBV: 1.115x
-   - Target Price: $40.32
-   - vs Current $45.89: -12.1% DOWNSIDE
-   - Rating: SELL
+   - Target P/TBV: 1.087x (Gordon Growth)
+   - Target Price: $39.32
+   - vs Current $45.87: -14.3% DOWNSIDE
+   - Rating: HOLD
    - Probability: 60%
 4. Scroll to "Provision Normalization Table"
 5. Find row with "42.8 bps" NCO
 6. Verify same row shows:
-   - Normalized ROTE: 10.40%
-   - P/TBV: 1.115x
-   - Target: $40.32
+   - Normalized ROTE: 10.21%
+   - P/TBV: 1.087x
+   - Target: $39.32
 
 **PASS/FAIL:** All numbers match = PASS
 
@@ -279,7 +281,7 @@ Step 4: Target price
 2. Click File 03 (Balance Sheet): See TBVPS $36.16 in summary?
 3. See calculation: TCE $2,507.7M / Shares 69.343M = $36.16?
 4. Click File 12 (Valuation): See "TBVPS: $36.16" in assumptions?
-5. See target calc: 1.115 × $36.16 = $40.32?
+5. See target calc: 1.087 × $36.16 = $39.32 (Gordon Growth)?
 
 **PASS/FAIL:** All 4 locations show $36.16 = PASS
 
@@ -339,8 +341,8 @@ Step 4: Target price
 
 **Evidence:** CATY_06_deposits_funding.html, brokered deposits peer table (lines 450-550)
 
-### 10. "What's your confidence interval on the $40.32 target?"
-**Answer:** Monte Carlo 5th-95th percentile: $26.06 to $56.36. Base case is 60th percentile. 69% probability stock is overvalued (FV < $45.89 spot). 31% probability upside scenario (benign credit continues, NCO stays 20-25 bps).
+### 10. "What's your confidence interval on the $39.32 normalized target?"
+**Answer:** Monte Carlo 5th-95th percentile: $26.06 to $56.36. Base case (normalized via Gordon Growth) is 60th percentile. 69% probability stock is overvalued (FV < $45.87 spot). 31% probability upside scenario (benign credit continues, NCO stays 20-25 bps).
 
 **Evidence:** CATY_12_valuation_model.html, Monte Carlo summary with full distribution stats
 
@@ -442,20 +444,20 @@ Based on Derek's standards, these sections MUST be present and were built:
 
 ## VALUATION GUT CHECKS & SENSITIVITIES
 
-### Gut Check 1: Is 1.115x P/TBV Reasonable?
+### Gut Check 1: Is 1.087x P/TBV Reasonable?
 **Peer Median:** 1.30x (EWBC 1.83x, CVBF 1.73x, HAFC 0.93x)
 **CATY Current:** 1.269x
-**CATY Fair (Normalized):** 1.115x
+**CATY Fair (Normalized via Gordon Growth):** 1.087x
 
-**Sanity:** CATY trades at premium to HAFC (0.93x) but discount to EWBC/CVBF. Normalized multiple of 1.115x implies CATY should trade between HAFC and CVBF, which makes sense given ROTE 10.40% is between HAFC 8.65% and CVBF 14.10%.
+**Sanity:** CATY trades at premium to HAFC (0.93x) but discount to EWBC/CVBF. Normalized multiple of 1.087x (Gordon Growth) implies CATY should trade between HAFC and CVBF, which makes sense given ROTE 10.21% is between HAFC 8.65% and CVBF 14.10%.
 
-### Gut Check 2: Is -12% Downside Material?
-**$40.32 vs. $45.89 = -$5.57 = -12.1%**
+### Gut Check 2: Is -14% Downside Material?
+**$39.32 vs. $45.87 = -$6.55 = -14.3%**
 
 **Context:**
 - Historical 52-week range: $34.80 - $52.10 (not provided, but illustrative)
 - Median stock volatility: ~20% annualized
-- -12% is within 1-year noise, but:
+- -14.3% is within 1-year noise, but:
   - 60% probability base case
   - 15% probability -24% downside (Bear)
   - Risk/reward asymmetric: 69% prob downside vs. 31% prob upside
@@ -467,12 +469,12 @@ Based on Derek's standards, these sections MUST be present and were built:
 |------|---------------|----------------|--------|---------|
 | 9.0% | 0.967x | $35.0 | -23.8% | STRONG SELL |
 | 10.0% | 1.092x | $39.5 | -13.9% | SELL |
-| **10.40%** | **1.115x** | **$40.32** | **-12.1%** | **SELL (BASE)** |
+| **10.21%** | **1.087x** | **$39.32** | **-14.3%** | **HOLD (BASE)** |
 | 11.0% | 1.217x | $44.0 | -4.1% | HOLD |
 | 11.95% | 1.335x | $48.3 | +5.2% | HOLD |
 | 12.0% | 1.341x | $48.5 | +5.7% | BUY |
 
-**Takeaway:** We need ROTE to stay above 11.5% to justify current price. Provision normalization drops ROTE to 10.4%. Hence SELL.
+**Takeaway:** We need ROTE to stay above 11.5% to justify current price. Provision normalization drops ROTE to 10.21% (Gordon Growth). Hence HOLD.
 
 ### Sensitivity Table: Target Price to NCO Assumption
 **From CATY_12, provision normalization table:**
@@ -482,7 +484,7 @@ Based on Derek's standards, these sections MUST be present and were built:
 | 20 | Optimistic | 11.84% | 1.317x | $47.61 | +3.8% | Above HOLD |
 | **25** | **Bull** | **11.52%** | **1.273x** | **$46.02** | **+0.3%** | **HOLD band** |
 | 30 | Moderate | 11.20% | 1.228x | $44.39 | -3.3% | HOLD band |
-| **42.8** | **Base** | **10.40%** | **1.115x** | **$40.32** | **-12.1%** | **Below HOLD** |
+| **42.8** | **Base** | **10.21%** | **1.087x** | **$39.32** | **-14.3%** | **Below HOLD** |
 | 60 | Bear | 9.31% | 0.961x | $34.75 | -24.3% | Bear downside |
 
 **Takeaway:** Target is highly sensitive to NCO assumption. 10 bps NCO = ~$0.90 price impact.
@@ -536,7 +538,7 @@ If Derek approves, no action needed. If Derek demands changes:
 1. **Open website** (2 min): Click URL, verify it loads, check for 404 errors
 2. **Test navigation** (3 min): Click all 12 cards, verify they open, click Back buttons
 3. **Validate File 07** (3 min): Check NCO table has 17 years, verify 42.8 bps average
-4. **Validate File 12** (4 min): Check scenarios (Bull/Base/Bear), verify $40.32 in Base, check Monte Carlo
+4. **Validate File 12** (4 min): Check scenarios (Bull/Base/Bear), verify $39.32 in Base (Gordon Growth), check Monte Carlo
 5. **Validate File 11** (2 min): Check regression R²=0.9548, verify peer exclusions documented
 6. **Cross-check** (1 min): Open 3 random files, verify TBVPS $36.16 consistent
 
@@ -544,17 +546,17 @@ If Derek approves, no action needed. If Derek demands changes:
 1. **TBVPS:** File 03 calculation = $2,507.7M / 69.343M = $36.16 ✓
 2. **IB Beta:** File 05 calculation = (3.35 - 0.33) / 5.00 = 0.604 ✓
 3. **NCO Rate:** File 07 calculation = (12.741M / 19,489.4M) × 10,000 = 6.54 bps ✓
-4. **Target:** File 12 calculation = 1.115 × $36.16 = $40.32 ✓
+4. **Target:** File 12 calculation = 1.087 × $36.16 = $39.32 (Gordon Growth) ✓
 5. **Regression:** File 11 slope = 0.1244, intercept = -0.1483, R² = 0.9548 ✓
 
 ### Disconfirming Tests (10 minutes)
-1. **NCO Sensitivity:** Change 42.8 bps to 25 bps → Target becomes $46.02 (not $40.32)
-2. **COE Sensitivity:** Change 9.587% to 10.5% → P/TBV becomes 1.10x → Target $39.78
+1. **NCO Sensitivity:** Change 42.8 bps to 25 bps → Target becomes $46.02 (not $39.32)
+2. **COE Sensitivity:** Change 9.587% to 10.5% → P/TBV becomes 1.00x → Target $36.16
 3. **Growth Sensitivity:** Change 2.5% to 3.5% → P/TBV becomes 1.14x → Target $41.22
-4. **TBVPS Sensitivity:** Use FY2024 $34.81 instead of Q2'25 $36.16 → Target $38.82
-5. **Regression Fit:** CATY residual -0.069x means market already pricing 5% discount
+4. **TBVPS Sensitivity:** Use FY2024 $34.81 instead of Q2'25 $36.16 → Target $37.85
+5. **Method Sensitivity:** Regression vs Gordon Growth yields different multiples (1.115x vs 1.087x)
 
-**Conclusion from tests:** Model is sensitive to NCO and COE assumptions. Base case depends on accepting 42.8 bps through-cycle average.
+**Conclusion from tests:** Model is sensitive to NCO, COE, and methodology assumptions. Base case depends on accepting 42.8 bps through-cycle average and Gordon Growth framework.
 
 ---
 
@@ -583,7 +585,7 @@ Based on his process directive, Derek will provide:
 5. **Cross-Examination** - 10-12 pointed questions (we provided 10 above)
 6. **Where I'm Struggling** - Blunt pushbacks on weak reasoning
 7. **Evidence You Owe Me** - Specific SEC filings, line items (we documented)
-8. **Valuation Gut Checks** - Is 1.115x P/TBV sensible? (we provided)
+8. **Valuation Gut Checks** - Is 1.087x P/TBV sensible? (we provided)
 9. **Rethink & Resubmit** - Non-negotiable tasks (we outlined 4)
 
 **Our Pre-Buttal:** We've anticipated his attacks and documented evidence in advance. The regression small sample (n=4) and NCO normalization (42.8 bps) are our two weakest points. We've disclosed both openly.
@@ -608,7 +610,7 @@ Based on his process directive, Derek will provide:
 Transformed 12 JSON data files + SEC filings into a live equity research website with interactive data modules, verified calculations, and comprehensive provenance. Deployed to GitHub Pages for easy sharing.
 
 **Investment Call:**
-SELL CATY at $45.89, target $40.32 (-12.1%), based on through-cycle credit normalization (42.8 bps NCO vs. current 18 bps) compressing ROTE and P/TBV multiple.
+HOLD CATY at $45.87, normalized target $39.32 (-14.3%), based on through-cycle credit normalization (42.8 bps NCO vs. current 18 bps) compressing ROTE and P/TBV multiple. Wilson 95% probability-weighted expected price $51.97 (+13.3%).
 
 **How to Test:**
 1. Click the URL

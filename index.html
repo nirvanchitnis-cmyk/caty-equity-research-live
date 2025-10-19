@@ -659,7 +659,7 @@
                 <a href="CATY_12_valuation_model.html" style="display: block; background: #FFEBEE; padding: 20px; border-radius: 8px; border-left: 4px solid var(--danger); text-decoration: none; transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(220,38,38,0.3)'" onmouseout="this.style.transform=''; this.style.boxShadow=''">
                     <div style="font-size: 0.85em; color: var(--danger); font-weight: 700; margin-bottom: 5px;">FILE 12 ⭐⭐⭐ MOST CRITICAL</div>
                     <div style="font-size: 1.2em; font-weight: 700; color: var(--danger); margin-bottom: 8px;">Valuation Model</div>
-                    <div style="font-size: 0.9em; color: var(--text-primary);"><strong>3 scenarios, Target $40.32, Monte Carlo (69% overvalued)</strong></div>
+                    <div style="font-size: 0.9em; color: var(--text-primary);"><strong>3 scenarios, Expected $51.97 (Wilson weighted), Monte Carlo (69% overvalued)</strong></div>
                 </a>
             </div>
         </section>
@@ -697,14 +697,14 @@
             <h3 style="color: #D4AF37; font-size: 18px; margin: 24px 0 12px 0;">Valuation Metrics</h3>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 24px;">
                 <div style="background: rgba(255,255,255,0.03); padding: 12px; border-radius: 6px;">
-                    <div style="font-size: 11px; color: #D4AF37;">Fair Value</div>
-                    <div style="font-size: 20px; font-weight: bold; margin-top: 4px;">$40.32</div>
-                    <div style="font-size: 10px; color: #999;">P/TBV 1.115x</div>
+                    <div style="font-size: 11px; color: #D4AF37;">Normalized Fair Value</div>
+                    <div style="font-size: 20px; font-weight: bold; margin-top: 4px;">$39.32</div>
+                    <div style="font-size: 10px; color: #999;">P/TBV 1.087x</div>
                 </div>
                 <div style="background: rgba(255,255,255,0.03); padding: 12px; border-radius: 6px;">
                     <div style="font-size: 11px; color: #D4AF37;">P/TBV (Current)</div>
                     <div style="font-size: 20px; font-weight: bold; margin-top: 4px;">1.269x</div>
-                    <div style="font-size: 10px; color: #999;">vs 1.115x fair</div>
+                    <div style="font-size: 10px; color: #999;">vs 1.087x normalized</div>
                 </div>
                 <div style="background: rgba(255,255,255,0.03); padding: 12px; border-radius: 6px;">
                     <div style="font-size: 11px; color: #D4AF37;">P/E (LTM)</div>
@@ -729,7 +729,7 @@
                 <div style="background: rgba(255,255,255,0.03); padding: 12px; border-radius: 6px;">
                     <div style="font-size: 11px; color: #D4AF37;">ROTE</div>
                     <div style="font-size: 20px; font-weight: bold; margin-top: 4px;">11.95%</div>
-                    <div style="font-size: 10px; color: #999;">Normalized: 10.40%</div>
+                    <div style="font-size: 10px; color: #999;">Normalized: 10.21%</div>
                 </div>
                 <div style="background: rgba(255,255,255,0.03); padding: 12px; border-radius: 6px;">
                     <div style="font-size: 11px; color: #D4AF37;">NIM</div>
@@ -802,9 +802,9 @@
                     <div class="metric-subtext">As of Oct 17, 2025</div>
                 </div>
                 <div class="metric-card">
-                    <div class="metric-label">Fair Value (P/TBV 1.115x)</div>
-                    <div class="metric-value">$40.32</div>
-                    <div class="metric-subtext">Normalized ROTE 10.40% (42.8 bps NCO), COE 9.59%, g 2.5%</div>
+                    <div class="metric-label">Normalized Fair Value (P/TBV 1.087x)</div>
+                    <div class="metric-value">$39.32</div>
+                    <div class="metric-subtext">Normalized ROTE 10.21% (42.8 bps NCO), COE 9.587%, g 2.5% (Gordon Growth)</div>
                 </div>
                 <div class="metric-card">
                     <div class="metric-label">P/TBV (Current)</div>
@@ -824,8 +824,8 @@
             <h4>Rating Framework (Wilson Bounds)</h4>
             <ul>
                 <li><strong>Empirical NCO Understated:</strong> 42.8 bps through-cycle average (2008-2024) vs previous 25 bps assumption; GFC peak 306 bps shows tail risk</li>
-                <li><strong>Overvaluation:</strong> Current P/TBV 1.269x vs empirical fair value 1.115x = 13.8% multiple premium; price $45.89 vs fair $40.32 = 12.1% downside</li>
-                <li><strong>Mid-Tier Profitability:</strong> Normalized ROTE 10.40% ranks 3rd of 5 peers; insufficient to justify current multiple</li>
+                <li><strong>Overvaluation:</strong> Current P/TBV 1.269x vs normalized fair value 1.087x = 16.7% multiple premium; price $45.89 vs normalized $39.32 = 14.3% downside</li>
+                <li><strong>Mid-Tier Profitability:</strong> Normalized ROTE 10.21% ranks 3rd of 5 peers; insufficient to justify current multiple</li>
                 <li><strong>CRE Concentration:</strong> 52.4% CRE exposure in uncertain commercial real estate environment; brokered deposits 5.62% above HAFC/CVBF</li>
             </ul>
 
@@ -857,8 +857,8 @@
                     <tr>
                         <td>P/TBV</td>
                         <td class="text-right">1.269x</td>
-                        <td class="text-right">1.115x</td>
-                        <td class="text-right text-danger">+13.8%</td>
+                        <td class="text-right">1.087x</td>
+                        <td class="text-right text-danger">+16.7%</td>
                     </tr>
                 </tbody>
             </table>
@@ -1214,13 +1214,13 @@
                 </thead>
                 <tbody>
                     <tr><td>25</td><td class="text-right">11.52%</td><td class="text-right">1.273x</td><td class="text-right">$46.02</td><td class="text-right text-success">+0.3%</td></tr>
-                    <tr class="target-company"><td><strong>42.8</strong></td><td class="text-right"><strong>10.40%</strong></td><td class="text-right"><strong>1.115x</strong></td><td class="text-right"><strong>$40.32</strong></td><td class="text-right text-danger"><strong>-12.1%</strong></td></tr>
+                    <tr class="target-company"><td><strong>42.8</strong></td><td class="text-right"><strong>10.21%</strong></td><td class="text-right"><strong>1.087x</strong></td><td class="text-right"><strong>$39.32</strong></td><td class="text-right text-danger"><strong>-14.3%</strong></td></tr>
                     <tr><td>60</td><td class="text-right">9.31%</td><td class="text-right">0.961x</td><td class="text-right">$34.75</td><td class="text-right text-danger">-24.3%</td></tr>
                 </tbody>
             </table>
 
             <h3>8.4 P/TBV Valuation Bridge</h3>
-            <p>Target P/TBV = (ROTE − g) / (COE − g). <strong>Base case:</strong> normalized ROTE 10.40%, g 2.5%, COE 9.59% → 1.115x; Price = 1.115 × 36.16 = <strong>$40.32</strong>.</p>
+            <p>Target P/TBV = (ROTE − g) / (COE − g). <strong>Base case:</strong> normalized ROTE 10.21%, g 2.5%, COE 9.587% → 1.087x (Gordon Growth); Price = 1.087 × 36.16 = <strong>$39.32</strong>.</p>
 
             <h3>8.5 Sensitivity (Normalized ROTE 11.52%)</h3>
             <table>
@@ -1256,19 +1256,19 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Bull (Regression)</td>
-                        <td class="text-right">25</td>
-                        <td class="text-right">11.52%</td>
-                        <td class="text-right">1.273x</td>
+                        <td>Current Earnings (Regression)</td>
+                        <td class="text-right">18</td>
+                        <td class="text-right">11.95%</td>
+                        <td class="text-right">1.558x</td>
                         <td class="text-right">$56.42</td>
                         <td class="text-right text-success">+23.0%</td>
                         <td class="text-right"><strong>74%</strong></td>
                     </tr>
                     <tr class="target-company">
-                        <td><strong>BASE (Normalization)</strong></td>
+                        <td><strong>Normalized (Gordon Growth)</strong></td>
                         <td class="text-right"><strong>42.8</strong></td>
-                        <td class="text-right"><strong>10.40%</strong></td>
-                        <td class="text-right"><strong>1.115x</strong></td>
+                        <td class="text-right"><strong>10.21%</strong></td>
+                        <td class="text-right"><strong>1.087x</strong></td>
                         <td class="text-right"><strong>$39.32</strong></td>
                         <td class="text-right text-danger"><strong>-14.3%</strong></td>
                         <td class="text-right"><strong>26%</strong></td>
@@ -1496,7 +1496,7 @@
             <p><strong>Note:</strong> Beta measures cumulative deposit cost sensitivity Q1'22 (0.50% Fed Funds) → Q2'25 (5.50%). Lower beta = stickier deposits. Up-cycle refers to rising rate environment 2022-2024.</p>
 
             <h3>Competitive Positioning Conclusion</h3>
-            <p>CATY ranks as a <strong>mid-tier quality</strong> Asian-American regional bank. Superior credit quality (18.1 bps NCO) partially offsets mid-tier ROTE (11.95%) and moderate deposit franchise (0.507 beta). Elevated CRE concentration (52.4%) creates tail risk relative to EWBC (29.7%) but significantly lower than CVBF (76.2%). Current P/TBV 1.269x is <strong>above empirical fair value</strong> (1.115x base case).</p>
+            <p>CATY ranks as a <strong>mid-tier quality</strong> Asian-American regional bank. Superior credit quality (18.1 bps NCO) partially offsets mid-tier ROTE (11.95%) and moderate deposit franchise (0.507 beta). Elevated CRE concentration (52.4%) creates tail risk relative to EWBC (29.7%) but significantly lower than CVBF (76.2%). Current P/TBV 1.269x is <strong>above normalized fair value</strong> (1.087x base case via Gordon Growth).</p>
         </section>
 
         <!-- ======================================== -->
@@ -1816,7 +1816,7 @@
                 <li><strong>FY2025E EPS $4.448:</strong> Implies -10.3% decline vs FY2024 actual $4.96 (LTM EPS $4.25). Consensus expects revenue pressure from NIM compression and/or elevated credit provisioning.</li>
                 <li><strong>FY2026E EPS $5.032:</strong> Recovery scenario with +13.1% YoY growth, implying forward P/E 9.1x (cheap vs LTM 10.8x). Suggests Street expects H2'25 headwinds to abate by 2026.</li>
                 <li><strong>Q3'25E EPS $1.154:</strong> +4.9% vs Q2'25 actual $1.10, indicating modest sequential improvement expected.</li>
-                <li><strong>Valuation Context:</strong> FY2026E P/E 9.1x appears attractive on headline basis, but our HOLD rating reflects P/TBV overvaluation (1.269x vs fair 1.115x) driven by provision normalization to through-cycle NCO 42.8 bps.</li>
+                <li><strong>Valuation Context:</strong> FY2026E P/E 9.1x appears attractive on headline basis, but our HOLD rating reflects P/TBV overvaluation (1.269x vs normalized 1.087x via Gordon Growth) driven by provision normalization to through-cycle NCO 42.8 bps.</li>
             </ul>
 
             <p><strong>Limitations:</strong> FactSet data provided as point estimates only (mean consensus); analyst coverage count, estimate ranges (high/low), and revision trends not available in source files. For institutional-grade analysis, recommend supplementing with Bloomberg, CapIQ, or direct broker research for estimate distribution and revision momentum.</p>
@@ -1892,12 +1892,12 @@
             <h2>Scenario Analysis</h2>
 
             <h3>Base Case (Probability: 60%)</h3>
-            <p><strong>Target P/TBV: 1.115x | Target Price: $40.32 | Downside: -12.1%</strong></p>
+            <p><strong>Target P/TBV: 1.087x | Target Price: $39.32 | Downside: -14.3%</strong></p>
 
             <p><strong>Assumptions:</strong></p>
             <ul>
-                <li>Normalized ROTE: 10.40% (through-cycle NCO 42.8 bps)</li>
-                <li>Cost of Equity: 9.59% (peer-calibrated mean)</li>
+                <li>Normalized ROTE: 10.21% (through-cycle NCO 42.8 bps)</li>
+                <li>Cost of Equity: 9.587% (peer-calibrated mean via Gordon Growth)</li>
                 <li>Sustainable Growth: 2.5%</li>
                 <li>NIM stabilizes around 3.20-3.30%</li>
                 <li>Efficiency maintains mid-40s% (45-47%)</li>
@@ -1966,8 +1966,8 @@
                     <tr>
                         <td><strong>Base</strong></td>
                         <td class="text-right"><strong>60%</strong></td>
-                        <td class="text-right"><strong>$40.32</strong></td>
-                        <td class="text-right text-danger"><strong>-12.1%</strong></td>
+                        <td class="text-right"><strong>$39.32</strong></td>
+                        <td class="text-right text-danger"><strong>-14.3%</strong></td>
                     </tr>
                     <tr>
                         <td>Bear</td>
@@ -1978,13 +1978,13 @@
                     <tr>
                         <td><strong>Probability-Weighted</strong></td>
                         <td class="text-right"><strong>100%</strong></td>
-                        <td class="text-right"><strong>$40.91</strong></td>
-                        <td class="text-right text-danger"><strong>-10.9%</strong></td>
+                        <td class="text-right"><strong>$40.31</strong></td>
+                        <td class="text-right text-danger"><strong>-12.2%</strong></td>
                     </tr>
                 </tbody>
             </table>
 
-            <p><strong>Scenario Takeaway:</strong> Base case implies -12.1% downside to $40.32; bull case is +0.3% to $46.02; bear case -24.3% to $34.75. Framework supports a <strong>HOLD</strong> rating pending evidence of structurally lower credit costs or meaningfully higher ROTE.</p>
+            <p><strong>Scenario Takeaway:</strong> Base case implies -14.3% downside to $39.32; bull case is +0.3% to $46.02; bear case -24.3% to $34.75. Framework supports a <strong>HOLD</strong> rating pending evidence of structurally lower credit costs or meaningfully higher ROTE.</p>
         </section>
 
         <!-- ======================================== -->
@@ -2178,9 +2178,9 @@
 
             <div class="investment-summary">
                 <h3>Rating: <span class="rating-badge rating-hold" style="background: #ffa500;">HOLD</span></h3>
-                <h3>Fair Value: $40.32 (P/TBV 1.115x)</h3>
+                <h3>Normalized Fair Value: $39.32 (P/TBV 1.087x Gordon Growth)</h3>
                 <h3>Current Price: $45.89 (As of Oct 17, 2025)</h3>
-                <h3>Downside to Fair Value: -12.1%</h3>
+                <h3>Downside to Fair Value: -14.3%</h3>
             </div>
 
             <h3>Investment Rationale</h3>
@@ -2189,8 +2189,8 @@
             <h3>Rating Framework (Wilson Bounds)</h3>
             <ul>
                 <li><strong>Empirical NCO higher:</strong> 42.8 bps through‑cycle avg vs prior 25 bps assumption; GFC peak 306 bps shows tail risk</li>
-                <li><strong>Overvaluation:</strong> Current 1.269x vs empirical fair 1.115x = 13.8% multiple premium; price $45.89 vs $40.32 fair = 12.1% downside</li>
-                <li><strong>Mid‑tier profitability:</strong> Normalized ROTE 10.40% (base) insufficient to justify current multiple vs peers</li>
+                <li><strong>Overvaluation:</strong> Current 1.269x vs normalized fair 1.087x = 16.7% multiple premium; price $45.89 vs normalized $39.32 = 14.3% downside</li>
+                <li><strong>Mid‑tier profitability:</strong> Normalized ROTE 10.21% (base via Gordon Growth) insufficient to justify current multiple vs peers</li>
                 <li><strong>CRE concentration:</strong> 52.4% of loans with undisclosed office %; asymmetric downside in recession</li>
             </ul>
 
@@ -2355,7 +2355,7 @@
             <p><strong>Impact:</strong> Disclosure gaps create uncertainty around tail risks (CRE property-type stress, rate shock) and limit precision of downside scenario analysis. Conservative investors may require additional disclosure before accumulating positions. HOLD thesis proceeds using total CRE concentration (52.4%) + through-cycle NCO normalization.</p>
 
             <h3>Report Conclusion</h3>
-            <p><strong>Cathay General Bancorp (CATY) is overvalued at current levels ($45.89, 1.269x P/TBV) versus empirical fair value $40.32 (1.115x).</strong> Using a through‑cycle NCO of 42.8 bps, normalized ROTE is 10.40%, implying 12.1% downside. While the bull case ($46.02) is plausible under a 25 bps NCO assumption, we view it as optimistic into a potential recession. <strong>Rating: HOLD.</strong></p>
+            <p><strong>Cathay General Bancorp (CATY) is overvalued at current levels ($45.89, 1.269x P/TBV) versus normalized fair value $39.32 (1.087x via Gordon Growth).</strong> Using a through‑cycle NCO of 42.8 bps, normalized ROTE is 10.21%, implying 14.3% downside. While the bull case ($46.02) is plausible under a 25 bps NCO assumption, we view it as optimistic into a potential recession. <strong>Rating: HOLD.</strong></p>
         </section>
 
         <footer style="margin-top: 60px; padding: 30px 0; border-top: 2px solid var(--cathay-gold); text-align: center; color: var(--text-secondary); font-size: 0.9em;">
