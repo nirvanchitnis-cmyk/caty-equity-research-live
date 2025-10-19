@@ -1149,3 +1149,88 @@ a:hover {
         margin: 12pt 0;
     }
 }
+
+/* ============================================================
+   MODULE CARDS - Interactive HTML Modules Section
+   ============================================================ */
+
+/* Grid container for module cards */
+.module-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    margin-top: 20px;
+}
+
+/* Individual module card (clickable link) */
+.module-card-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease;
+}
+
+.module-card-link:hover {
+    transform: translateY(-4px);
+}
+
+/* Module card header (icon + title) */
+.module-card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.module-card-icon {
+    font-size: 24px;
+}
+
+.module-card-title {
+    margin: 0;
+    font-size: 1em;
+    font-weight: 600;
+    color: var(--cathay-red);
+}
+
+/* Module card metrics */
+.module-card-value {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 8px 0;
+    color: var(--cathay-gold);
+}
+
+.module-card-value-danger {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 8px 0;
+    color: var(--danger);
+}
+
+.module-card-description {
+    font-size: 0.9em;
+    color: var(--text-secondary);
+    line-height: 1.4;
+}
+
+/* Module card status line */
+.module-card-status {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.85em;
+    color: var(--text-secondary);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .module-card-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .module-card-value,
+    .module-card-value-danger {
+        font-size: 24px;
+    }
+}
