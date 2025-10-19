@@ -76,7 +76,7 @@ function getDefaultChartConfig() {
     };
 }
 
-// Create vertical bar chart (for valuation comparison) - Cathay Brand Colors
+// Create vertical bar chart (for valuation comparison) - Theme-Aware Cathay Colors
 function createValuationChart(canvasId, data) {
     const ctx = document.getElementById(canvasId);
 
@@ -85,19 +85,17 @@ function createValuationChart(canvasId, data) {
         return null;
     }
 
-    // Cathay Brand Colors (NO gradients)
-    const cathayRed = '#C41E3A';
-    const cathayGold = '#D4AF37';
-    const offBlack = '#1C1C1C';
-    const offWhite = '#F8F8F6';
-    const gridColor = '#E5E5E5';
+    // Get theme colors from CSS variables
+    const colors = getThemeColors();
+    const cathayRed = getCSSVar('--cathay-red');
+    const cathayGold = getCSSVar('--cathay-gold');
 
-    // Define colors for each bar
+    // Define colors for each bar (theme-aware)
     const barColors = [
-        offBlack,      // Current Price (off-black)
-        cathayGold,    // Wilson 95% (Cathay Gold)
-        cathayRed,     // IRC Blended (Cathay Red)
-        cathayGold     // Regression (Cathay Gold)
+        colors.textPrimary,    // Current Price (text primary - adapts to theme)
+        cathayGold,            // Wilson 95% (Cathay Gold)
+        cathayRed,             // IRC Blended (Cathay Red)
+        cathayGold             // Regression (Cathay Gold)
     ];
 
     const chartConfig = {
@@ -120,10 +118,10 @@ function createValuationChart(canvasId, data) {
                     display: false
                 },
                 tooltip: {
-                    backgroundColor: offWhite,
-                    titleColor: offBlack,
-                    bodyColor: offBlack,
-                    borderColor: gridColor,
+                    backgroundColor: colors.bgSecondary,
+                    titleColor: colors.textPrimary,
+                    bodyColor: colors.textSecondary,
+                    borderColor: colors.borderColor,
                     borderWidth: 1,
                     padding: 12,
                     displayColors: false,
@@ -140,7 +138,7 @@ function createValuationChart(canvasId, data) {
             scales: {
                 x: {
                     ticks: {
-                        color: offBlack,
+                        color: colors.textPrimary,
                         font: {
                             size: 12,
                             weight: '600'
@@ -155,7 +153,7 @@ function createValuationChart(canvasId, data) {
                     min: 35,
                     max: 60,
                     ticks: {
-                        color: offBlack,
+                        color: colors.textPrimary,
                         font: {
                             size: 12
                         },
@@ -164,13 +162,13 @@ function createValuationChart(canvasId, data) {
                         }
                     },
                     grid: {
-                        color: gridColor,
+                        color: colors.borderColor,
                         lineWidth: 1
                     },
                     title: {
                         display: true,
                         text: 'Target Price ($)',
-                        color: offBlack,
+                        color: colors.textPrimary,
                         font: {
                             size: 14,
                             weight: 'bold'
@@ -184,7 +182,7 @@ function createValuationChart(canvasId, data) {
     return new Chart(ctx, chartConfig);
 }
 
-// Create line chart (for NCO trend) - Cathay Brand Colors
+// Create line chart (for NCO trend) - Theme-Aware Cathay Colors
 function createNCOTrendChart(canvasId, data) {
     const ctx = document.getElementById(canvasId);
 
@@ -193,11 +191,9 @@ function createNCOTrendChart(canvasId, data) {
         return null;
     }
 
-    // Cathay Brand Colors
-    const cathayRed = '#C41E3A';
-    const offBlack = '#1C1C1C';
-    const offWhite = '#F8F8F6';
-    const gridColor = '#E5E5E5';
+    // Get theme colors from CSS variables
+    const colors = getThemeColors();
+    const cathayRed = getCSSVar('--cathay-red');
 
     const chartConfig = {
         type: 'line',
@@ -211,7 +207,7 @@ function createNCOTrendChart(canvasId, data) {
                 tension: 0.3,
                 fill: true,
                 pointBackgroundColor: cathayRed,
-                pointBorderColor: offWhite,
+                pointBorderColor: colors.bgSecondary,
                 pointBorderWidth: 2,
                 pointRadius: 3,
                 pointHoverRadius: 6,
@@ -226,10 +222,10 @@ function createNCOTrendChart(canvasId, data) {
                     display: false
                 },
                 tooltip: {
-                    backgroundColor: offWhite,
-                    titleColor: offBlack,
-                    bodyColor: offBlack,
-                    borderColor: gridColor,
+                    backgroundColor: colors.bgSecondary,
+                    titleColor: colors.textPrimary,
+                    bodyColor: colors.textSecondary,
+                    borderColor: colors.borderColor,
                     borderWidth: 1,
                     padding: 12,
                     displayColors: false,
@@ -243,7 +239,7 @@ function createNCOTrendChart(canvasId, data) {
             scales: {
                 x: {
                     ticks: {
-                        color: offBlack,
+                        color: colors.textSecondary,
                         font: {
                             size: 10
                         },
@@ -251,14 +247,14 @@ function createNCOTrendChart(canvasId, data) {
                         minRotation: 45
                     },
                     grid: {
-                        color: gridColor,
+                        color: colors.borderColor,
                         lineWidth: 0.5
                     }
                 },
                 y: {
                     beginAtZero: true,
                     ticks: {
-                        color: offBlack,
+                        color: colors.textPrimary,
                         font: {
                             size: 12
                         },
@@ -267,13 +263,13 @@ function createNCOTrendChart(canvasId, data) {
                         }
                     },
                     grid: {
-                        color: gridColor,
+                        color: colors.borderColor,
                         lineWidth: 1
                     },
                     title: {
                         display: true,
                         text: 'Net Charge-Off Rate (bps)',
-                        color: offBlack,
+                        color: colors.textPrimary,
                         font: {
                             size: 14,
                             weight: 'bold'
@@ -287,7 +283,7 @@ function createNCOTrendChart(canvasId, data) {
     return new Chart(ctx, chartConfig);
 }
 
-// Create scatter plot (for peer regression) - Cathay Brand Colors
+// Create scatter plot (for peer regression) - Theme-Aware Cathay Colors
 function createPeerScatterChart(canvasId, peerData, regressionData) {
     const ctx = document.getElementById(canvasId);
 
@@ -296,12 +292,10 @@ function createPeerScatterChart(canvasId, peerData, regressionData) {
         return null;
     }
 
-    // Cathay Brand Colors
-    const cathayRed = '#C41E3A';
-    const cathayGold = '#D4AF37';
-    const offBlack = '#1C1C1C';
-    const offWhite = '#F8F8F6';
-    const gridColor = '#E5E5E5';
+    // Get theme colors from CSS variables
+    const colors = getThemeColors();
+    const cathayRed = getCSSVar('--cathay-red');
+    const cathayGold = getCSSVar('--cathay-gold');
 
     const chartConfig = {
         type: 'scatter',
@@ -326,12 +320,12 @@ function createPeerScatterChart(canvasId, peerData, regressionData) {
                     pointHoverRadius: 14,
                     borderWidth: 2
                 },
-                // Regression line (off-black dashed)
+                // Regression line (theme-aware text color, dashed)
                 {
                     label: 'Regression Line',
                     data: regressionData,
                     type: 'line',
-                    borderColor: offBlack,
+                    borderColor: colors.textPrimary,
                     borderWidth: 2,
                     borderDash: [8, 4],
                     fill: false,
@@ -347,7 +341,7 @@ function createPeerScatterChart(canvasId, peerData, regressionData) {
                     display: true,
                     position: 'top',
                     labels: {
-                        color: offBlack,
+                        color: colors.textPrimary,
                         font: {
                             size: 12,
                             weight: '600'
@@ -356,10 +350,10 @@ function createPeerScatterChart(canvasId, peerData, regressionData) {
                     }
                 },
                 tooltip: {
-                    backgroundColor: offWhite,
-                    titleColor: offBlack,
-                    bodyColor: offBlack,
-                    borderColor: gridColor,
+                    backgroundColor: colors.bgSecondary,
+                    titleColor: colors.textPrimary,
+                    bodyColor: colors.textSecondary,
+                    borderColor: colors.borderColor,
                     borderWidth: 1,
                     padding: 12,
                     callbacks: {
@@ -376,7 +370,7 @@ function createPeerScatterChart(canvasId, peerData, regressionData) {
                     min: 7,
                     max: 18,
                     ticks: {
-                        color: offBlack,
+                        color: colors.textPrimary,
                         font: {
                             size: 12
                         },
@@ -385,13 +379,13 @@ function createPeerScatterChart(canvasId, peerData, regressionData) {
                         }
                     },
                     grid: {
-                        color: gridColor,
+                        color: colors.borderColor,
                         lineWidth: 1
                     },
                     title: {
                         display: true,
                         text: 'ROTE (%)',
-                        color: offBlack,
+                        color: colors.textPrimary,
                         font: {
                             size: 14,
                             weight: 'bold'
@@ -402,7 +396,7 @@ function createPeerScatterChart(canvasId, peerData, regressionData) {
                     min: 0.5,
                     max: 2.0,
                     ticks: {
-                        color: offBlack,
+                        color: colors.textPrimary,
                         font: {
                             size: 12
                         },
@@ -411,13 +405,13 @@ function createPeerScatterChart(canvasId, peerData, regressionData) {
                         }
                     },
                     grid: {
-                        color: gridColor,
+                        color: colors.borderColor,
                         lineWidth: 1
                     },
                     title: {
                         display: true,
                         text: 'P/TBV (x)',
-                        color: offBlack,
+                        color: colors.textPrimary,
                         font: {
                             size: 14,
                             weight: 'bold'
