@@ -1404,3 +1404,310 @@ a:focus-visible {
     font-family: monospace;
     font-size: 0.95em;
 }
+
+/* Font size variations */
+.font-size-12 {
+    font-size: 1.2em;
+}
+
+.font-size-13 {
+    font-size: 1.3em;
+}
+
+.font-size-14 {
+    font-size: 1.4em;
+}
+
+.font-size-15 {
+    font-size: 1.5em;
+}
+
+.font-size-16 {
+    font-size: 1.6em;
+}
+
+/* Line height variations */
+.line-height-13 {
+    line-height: 1.3;
+}
+
+.line-height-19 {
+    line-height: 1.9;
+}
+
+/* Margin utilities */
+.margin-y-20 {
+    margin: 20px 0;
+}
+
+.margin-top-15 {
+    margin-top: 15px;
+}
+
+.margin-top-20 {
+    margin-top: 20px;
+}
+
+.margin-bottom-20 {
+    margin-bottom: 20px;
+}
+
+/* Callout boxes with backgrounds */
+.callout-box-gold {
+    background: #FFF9E5;
+    border-left: 5px solid var(--cathay-gold);
+}
+
+.callout-box-info {
+    background: #E8F4F8;
+    border-left: 4px solid var(--info);
+}
+
+.callout-title {
+    font-size: 1.3em;
+    color: var(--cathay-red);
+}
+
+/* Color coding badges */
+.badge-success {
+    background: rgba(45, 119, 56, 0.15);
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-weight: 600;
+}
+
+.badge-danger {
+    background: rgba(220, 38, 38, 0.15);
+    padding: 2px 8px;
+    border-radius: 3px;
+}
+
+/* Numeric cell colors */
+.numeric-success {
+    color: var(--success);
+}
+
+.numeric-danger {
+    color: var(--danger);
+}
+
+/* Source box variants */
+.source-label-mono {
+    font-size: 1.2em;
+    font-family: 'Courier New', monospace;
+}
+
+.source-box.border-left-warning {
+    border-left-color: var(--warning);
+}
+
+/* Notice boxes with backgrounds */
+.notice-box-info {
+    background: #E6F4FF;
+    border-color: var(--info);
+}
+
+.notice-box-warning {
+    background: #FFF9E6;
+    border-color: var(--warning);
+}
+
+.notice-title-info {
+    color: var(--info);
+}
+
+.notice-title-warning {
+    color: var(--warning);
+}
+
+/* Text alignment */
+.text-align-right {
+    text-align: right;
+}
+
+.text-align-center {
+    text-align: center;
+}
+
+/* Display utilities */
+.display-block {
+    display: block;
+}
+
+/* Combined utilities for common patterns */
+.text-secondary-small {
+    margin-bottom: 15px;
+    font-size: 0.9em;
+    color: var(--text-secondary);
+}
+
+.text-secondary-tiny {
+    margin-top: 15px;
+    font-size: 0.85em;
+    color: var(--text-secondary);
+}
+
+.text-secondary-margin {
+    margin: 15px 0;
+    color: var(--text-secondary);
+}
+
+/* Table utilities */
+.row-border-top-red {
+    border-top: 2px solid var(--cathay-red);
+}
+
+.row-danger-highlight {
+    background: rgba(220, 38, 38, 0.2);
+}
+
+/* SVG utilities */
+.svg-chart {
+    font-family: Arial, sans-serif;
+}
+
+/* Scatter plot */
+.scatter-plot-white {
+    background: white;
+    position: relative;
+}
+
+/* List with custom margins */
+.list-spaced {
+    margin-top: 10px;
+    margin-left: 20px;
+    line-height: 1.8;
+}
+
+.list-margin-20 {
+    margin-left: 20px;
+    line-height: 2;
+}
+
+/* Table cell utilities */
+.cell-indent-30 {
+    padding-left: 30px;
+}
+
+/* Text color utilities */
+.text-color-secondary {
+    color: var(--text-secondary);
+}
+
+.text-color-primary {
+    color: var(--text-primary);
+}
+
+/* Paragraph with combined styles */
+.paragraph-intro-primary {
+    margin-bottom: 20px;
+    line-height: 1.8;
+    color: var(--text-primary);
+}
+
+/* Badge/pill variants */
+.badge-warning {
+    background: var(--warning);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.85em;
+    font-weight: 600;
+}
+
+/* Table row backgrounds */
+.row-highlight-blue {
+    background: #F0F9FF;
+}
+
+.row-highlight-pink {
+    background: #FFF0F0;
+}
+
+.row-highlight-orange {
+    background: rgba(255, 152, 0, 0.15);
+}
+
+.row-highlight-yellow-alt {
+    background: #fff3cd;
+}
+
+.row-strong {
+    background: var(--bg-tertiary);
+    font-weight: 600;
+}
+
+.row-danger-strong {
+    background: rgba(220, 38, 38, 0.2);
+}
+
+/* Table utilities */
+.table-margin-top {
+    margin-top: 20px;
+}
+
+.row-border-top-gold {
+    border-top: 2px solid var(--cathay-gold);
+}
+
+.cell-center-secondary {
+    text-align: center;
+    color: var(--text-secondary);
+    padding: 20px;
+}
+
+/* Monospace formula styles */
+.formula-mono {
+    font-family: monospace;
+    margin: 15px 0;
+}
+
+.formula-mono-large {
+    font-family: monospace;
+    font-size: 1.2em;
+    margin: 15px 0;
+}
+
+.formula-mono-medium {
+    font-family: monospace;
+    font-size: 1.1em;
+    margin: 15px 0;
+}
+
+/* Paragraph utilities */
+.paragraph-11 {
+    font-size: 1.1em;
+}
+
+/* List utilities */
+.list-simple {
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.list-reversed {
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+/* Text utilities */
+.text-center-large {
+    text-align: center;
+    font-size: 1.3em;
+    margin-bottom: 30px;
+}
+
+/* Pre/code utilities */
+.pre-mono {
+    font-family: monospace;
+    white-space: pre;
+}
+
+/* Table row special backgrounds */
+.row-red-subtle {
+    background: rgba(196, 30, 58, 0.1);
+}
+
+.row-tertiary {
+    background: var(--bg-tertiary);
+}
