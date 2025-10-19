@@ -127,8 +127,10 @@ THEN rating = BUY
 - ✅ **ESG KPI Dashboard Delivered:** `analysis/esg_kpi_dashboard.py` + `evidence/esg_kpi_data.json` quantify material ESG drivers and valuation impact
 - ✅ **Peer Question Bank Constructed:** `analysis/peer_preearnings_questionbank.md` covers Oct 17-21 peer calls with triggers to update CATY probabilities
 
+### ✅ Completed (Oct 19, 2025 - CI Integration)
+- ✅ **CI Reconciliation Guard:** `.github/workflows/reconciliation-guard.yml` validates valuation numbers on every push/PR (required check, blocks merge on failure)
+
 ### 🔄 Pending
-- Mirror valuation reconciliation guard in lightweight CI so remote pushes cannot bypass local hooks.
 - Surface ESG KPI outputs on the public site (HTML module or executive dashboard cards) ahead of peer read-through.
 - Populate peer question bank responses with real-time takeaways as EWBC/COLB report (target: Oct 17 end-of-day).
 

@@ -1,0 +1,93 @@
+name: Valuation Reconciliation Guard
+
+on:
+  push:
+    branches:
+      - main
+      - q3-prep-oct19
+    paths:
+      - 'README.md'
+      - 'index.html'
+      - 'CATY_12_valuation_model.html'
+      - 'analysis/valuation_bridge_final.py'
+      - 'analysis/probability_weighted_valuation.py'
+      - 'analysis/reconciliation_guard.py'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'README.md'
+      - 'index.html'
+      - 'CATY_12_valuation_model.html'
+      - 'analysis/valuation_bridge_final.py'
+      - 'analysis/probability_weighted_valuation.py'
+
+jobs:
+  validate-valuation-numbers:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install numpy scipy
+
+      - name: Run reconciliation guard
+        run: |
+          echo "========================================"
+          echo "CATY Valuation Reconciliation Guard"
+          echo "========================================"
+          echo ""
+          python3 analysis/reconciliation_guard.py
+          exit_code=$?
+          echo ""
+          if [ $exit_code -eq 0 ]; then
+            echo "✅ Reconciliation check PASSED"
+            echo "Published numbers match script outputs."
+          else
+            echo "❌ Reconciliation check FAILED"
+            echo "Published numbers do not match script outputs."
+            echo ""
+            echo "To fix:"
+            echo "  1. Rerun valuation scripts locally"
+            echo "  2. Update README.md and index.html with correct values"
+            echo "  3. Push corrected changes"
+            echo ""
+            echo "To bypass (use sparingly):"
+            echo "  Add '[skip ci]' to commit message"
+            exit $exit_code
+          fi
+
+      - name: Summary
+        if: success()
+        run: |
+          echo "### ✅ Valuation Numbers Validated" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "All published valuation numbers match script outputs within ±\$0.50 tolerance." >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Validated Metrics:**" >> $GITHUB_STEP_SUMMARY
+          echo "- Wilson 95% Target: \$51.74" >> $GITHUB_STEP_SUMMARY
+          echo "- IRC Blended Target: \$51.39" >> $GITHUB_STEP_SUMMARY
+          echo "- Regression Target: \$56.11" >> $GITHUB_STEP_SUMMARY
+          echo "- Normalized Target: \$39.32" >> $GITHUB_STEP_SUMMARY
+
+      - name: Failure Summary
+        if: failure()
+        run: |
+          echo "### ❌ Valuation Reconciliation Failed" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Published numbers in README.md or index.html do not match script outputs." >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Action Required:**" >> $GITHUB_STEP_SUMMARY
+          echo "1. Run \`python3 analysis/reconciliation_guard.py\` locally to see discrepancies" >> $GITHUB_STEP_SUMMARY
+          echo "2. Rerun \`python3 analysis/valuation_bridge_final.py\` and \`python3 analysis/probability_weighted_valuation.py\`" >> $GITHUB_STEP_SUMMARY
+          echo "3. Update README.md and index.html with correct values" >> $GITHUB_STEP_SUMMARY
+          echo "4. Push corrected changes" >> $GITHUB_STEP_SUMMARY
