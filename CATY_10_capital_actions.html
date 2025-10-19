@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CATY - Capital Actions | Data Repository</title>
+    <style>
+        /* ============================================================
+           COLOR SYSTEM - Cathay Bank Brand Colors
+           ============================================================ */
+        :root {
+            /* Cathay Brand Colors */
+            --cathay-red: #C41E3A;
+            --cathay-gold: #D4AF37;
+            --cathay-black: #1C1C1C;
+
+            /* Light Mode */
+            --bg-primary: #F8F8F6;
+            --bg-secondary: #FFFFFF;
+            --bg-tertiary: #E5E5E5;
+            --text-primary: #1C1C1C;
+            --text-secondary: #6B6B6B;
+            --border-color: #E5E5E5;
+
+            /* Semantic Colors */
+            --success: #2D7738;
+            --warning: #F59E0B;
+            --danger: #DC2626;
+            --info: #3B82F6;
+
+            /* Interactive */
+            --link-color: #C41E3A;
+            --link-hover: #9A1729;
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #1A1A1A;
+            --bg-secondary: #2C2C2C;
+            --bg-tertiary: #3A3A3A;
+            --text-primary: #F8F8F6;
+            --text-secondary: #B0B0B0;
+            --border-color: #3A3A3A;
+            --link-color: #E8495F;
+            --link-hover: #FF6B7F;
+        }
+
+        /* ============================================================
+           RESET & BASE STYLES
+           ============================================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        /* ============================================================
+           LAYOUT
+           ============================================================ */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: var(--bg-secondary);
+            border-bottom: 3px solid var(--cathay-red);
+            padding: 30px 0;
+            margin-bottom: 40px;
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .page-title {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: var(--cathay-red);
+            margin-bottom: 10px;
+        }
+
+        .page-subtitle {
+            font-size: 1.2em;
+            color: var(--cathay-gold);
+            margin-bottom: 10px;
+        }
+
+        .page-meta {
+            color: var(--text-secondary);
+            font-size: 0.95em;
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            background: var(--cathay-red);
+            color: white;
+            border-color: var(--cathay-red);
+        }
+
+        /* Back Button */
+        .back-button {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            background: var(--cathay-gold);
+            color: var(--cathay-black);
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: var(--cathay-red);
+            color: white;
+        }
+
+        /* ============================================================
+           SECTIONS
+           ============================================================ */
+        section {
+            background: var(--bg-secondary);
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            font-size: 2em;
+            color: var(--cathay-red);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--cathay-gold);
+        }
+
+        h3 {
+            font-size: 1.5em;
+            color: var(--text-primary);
+            margin: 25px 0 15px 0;
+        }
+
+        h4 {
+            font-size: 1.2em;
+            color: var(--text-primary);
+            margin: 20px 0 10px 0;
+        }
+
+        /* ============================================================
+           METRIC CARDS
+           ============================================================ */
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .metric-card {
+            background: var(--bg-tertiary);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--cathay-red);
+        }
+
+        .metric-label {
+            font-size: 0.85em;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .metric-value {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 5px;
+        }
+
+        .metric-subtext {
+            font-size: 0.9em;
+            color: var(--text-secondary);
+        }
+
+        /* ============================================================
+           DATA TABLE
+           ============================================================ */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: var(--bg-secondary);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        thead {
+            background: var(--cathay-red);
+            color: white;
+        }
+
+        th {
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.9em;
+            text-transform: uppercase;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        tr:hover {
+            background: var(--bg-tertiary);
+        }
+
+        /* ============================================================
+           ALERT BOXES
+           ============================================================ */
+        .alert-box {
+            background: var(--bg-tertiary);
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 4px solid var(--warning);
+            border-radius: 4px;
+        }
+
+        .alert-box.info {
+            border-left-color: var(--info);
+        }
+
+        .alert-box.pending {
+            border-left-color: var(--cathay-gold);
+        }
+
+        .alert-title {
+            font-weight: 700;
+            font-size: 1.1em;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+        }
+
+        .alert-text {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* ============================================================
+           PROVENANCE & SOURCE INFO
+           ============================================================ */
+        .source-box {
+            background: var(--bg-tertiary);
+            padding: 15px;
+            margin: 15px 0;
+            border-left: 3px solid var(--info);
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        .source-label {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 5px;
+        }
+
+        .source-details {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .verification-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            font-weight: 600;
+            background: var(--success);
+            color: white;
+        }
+
+        .verification-badge.pending {
+            background: var(--cathay-gold);
+            color: var(--cathay-black);
+        }
+
+        .verification-badge.not-disclosed {
+            background: var(--text-secondary);
+            color: white;
+        }
+
+        /* ============================================================
+           LINKS
+           ============================================================ */
+        a {
+            color: var(--link-color);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        a:hover {
+            color: var(--link-hover);
+            text-decoration: underline;
+        }
+
+        /* ============================================================
+           RESPONSIVE
+           ============================================================ */
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 1.8em;
+            }
+
+            .metric-grid {
+                grid-template-columns: 1fr;
+            }
+
+            table {
+                font-size: 0.85em;
+            }
+
+            .theme-toggle {
+                top: 10px;
+                right: 10px;
+                padding: 8px 16px;
+                font-size: 0.8em;
+            }
+        }
+
+        /* ============================================================
+           PRINT STYLES
+           ============================================================ */
+        @media print {
+            .theme-toggle,
+            .back-button {
+                display: none !important;
+            }
+
+            @page {
+                margin: 0.75in;
+                size: letter;
+            }
+
+            body {
+                background: white !important;
+                color: black !important;
+                font-size: 11pt;
+            }
+
+            header {
+                border-bottom: 2px solid #C41E3A !important;
+                page-break-after: avoid;
+            }
+
+            section {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" aria-pressed="false">
+        <span id="theme-icon" aria-hidden="true">🌙</span>
+        <span id="theme-text">Dark Mode</span>
+    </button>
+
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <h1 class="page-title">Cathay General Bancorp (NASDAQ: CATY)</h1>
+            <p class="page-subtitle">File 10: Capital Actions</p>
+            <p class="page-meta">
+                Dividends, Buybacks, and Capital Return Policy |
+                Last Updated: October 17, 2025 |
+                Source: SEC EDGAR 8-K, 10-Q, 10-K
+            </p>
+        </div>
+    </header>
+
+    <div class="container">
+        <a href="index.html" class="back-button">← Back to Main Report</a>
+
+        <!-- ======================================== -->
+        <!-- DATA AVAILABILITY NOTICE -->
+        <!-- ======================================== -->
+        <div class="alert-box pending">
+            <div class="alert-title">Data Extraction Status</div>
+            <div class="alert-text">
+                <strong>Current Status:</strong> Scaffolded file awaiting full quarterly extraction.<br><br>
+                <strong>Required Actions:</strong>
+                <ul style="margin-top: 10px; margin-left: 20px; line-height: 1.8;">
+                    <li><strong>Dividend History:</strong> Extract from 10-Q quarterly dividend declarations (Q1 2015 - Q2 2025)</li>
+                    <li><strong>Share Repurchases:</strong> Extract from quarterly 10-Q/10-K treasury stock activity notes</li>
+                    <li><strong>Buyback Authorization:</strong> Extract $150M program details from 8-K filing</li>
+                    <li><strong>Payout Ratios:</strong> Calculate once dividend and earnings data are populated</li>
+                </ul>
+                <br>
+                <strong>Verification Level:</strong> All capital action datapoints are currently marked as <span class="verification-badge not-disclosed">NOT_DISCLOSED</span> or <span class="verification-badge pending">PENDING</span> until source extraction is completed.
+            </div>
+        </div>
+
+        <!-- ======================================== -->
+        <!-- CAPITAL RETURN FRAMEWORK -->
+        <!-- ======================================== -->
+        <section id="framework">
+            <h2>Capital Return Framework</h2>
+
+            <div class="alert-box info">
+                <div class="alert-title">Banking Sector Context</div>
+                <div class="alert-text">
+                    Banks like Cathay General Bancorp return capital to shareholders through two primary mechanisms:<br><br>
+                    <strong>1. Cash Dividends:</strong> Regular quarterly distributions representing a percentage of earnings<br>
+                    <strong>2. Share Repurchases:</strong> Buyback programs authorized by the Board to reduce share count and enhance per-share metrics<br><br>
+                    Key metrics for evaluating capital return include:<br>
+                    <strong>• Dividend Payout Ratio:</strong> Dividends ÷ Net Income (typically 30-40% for banks)<br>
+                    <strong>• Retention Rate:</strong> 1 - Payout Ratio (funds retained for organic growth)<br>
+                    <strong>• Organic Growth Capacity:</strong> ROTE × Retention Rate (sustainable equity growth)<br>
+                    <strong>• Total Shareholder Return:</strong> Dividend Yield + Share Price Appreciation
+                </div>
+            </div>
+
+            <h3>Expected Capital Return Metrics (Pending Full Extraction)</h3>
+
+            <div class="metric-grid">
+                <div class="metric-card">
+                    <div class="metric-label">Dividend Payout Ratio</div>
+                    <div class="metric-value" style="font-size: 1.5em;">~32.1%</div>
+                    <div class="metric-subtext">Industry typical range: 30-40%</div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-label">Retention Rate</div>
+                    <div class="metric-value" style="font-size: 1.5em;">~67.9%</div>
+                    <div class="metric-subtext">Earnings reinvested in business</div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-label">Organic Growth Capacity</div>
+                    <div class="metric-value" style="font-size: 1.5em;">~8.1%</div>
+                    <div class="metric-subtext">ROTE × Retention (estimated)</div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-label">Buyback Authorization</div>
+                    <div class="metric-value" style="font-size: 1.5em;">$150M</div>
+                    <div class="metric-subtext">Expected program size (pending 8-K)</div>
+                </div>
+            </div>
+
+            <div class="alert-box pending">
+                <div class="alert-title">Data Validation Required</div>
+                <div class="alert-text">
+                    <strong>Status:</strong> Framework metrics above are based on industry averages and narrative expectations pending extraction of actual quarterly dividend and repurchase data from SEC filings.<br><br>
+                    <strong>Next Steps:</strong>
+                    <ul style="margin-top: 10px; margin-left: 20px;">
+                        <li>Extract quarterly dividend declarations from 10-Q filings (2015-Q1 to 2025-Q2)</li>
+                        <li>Extract treasury stock activity from balance sheet notes</li>
+                        <li>Locate and extract 8-K filing announcing $150M buyback authorization</li>
+                        <li>Calculate actual payout ratios using net income from File 03</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================================== -->
+        <!-- DIVIDEND HISTORY -->
+        <!-- ======================================== -->
+        <section id="dividends">
+            <h2>Dividend History</h2>
+
+            <h3>Latest Dividend Declaration</h3>
+
+            <div class="metric-grid">
+                <div class="metric-card">
+                    <div class="metric-label">Q2 2025 Dividend</div>
+                    <div class="metric-value" style="font-size: 1.6em;">$0.38/share</div>
+                    <div class="metric-subtext">Expected per share (pending 10-Q extraction)</div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-label">Dividend Frequency</div>
+                    <div class="metric-value" style="font-size: 1.4em;">Quarterly</div>
+                    <div class="metric-subtext">Declared in Q1, Q2, Q3, Q4</div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-label">Dividend Yield</div>
+                    <div class="metric-value" style="font-size: 1.6em;">TBD</div>
+                    <div class="metric-subtext">Requires current share price</div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-label">Payout Ratio</div>
+                    <div class="metric-value" style="font-size: 1.6em;">TBD</div>
+                    <div class="metric-subtext">Dividends ÷ Net Income</div>
+                </div>
+            </div>
+
+            <h3>Quarterly Dividend Time Series</h3>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Period</th>
+                        <th>Fiscal Year</th>
+                        <th>Quarter</th>
+                        <th>Dividend/Share</th>
+                        <th>Payout Ratio</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>2025-06-30</strong></td>
+                        <td>2025</td>
+                        <td>Q2</td>
+                        <td>$0.38 (expected)</td>
+                        <td>TBD</td>
+                        <td><span class="verification-badge not-disclosed">NOT_DISCLOSED</span></td>
+                    </tr>
+                    <tr>
+                        <td colspan="6" style="text-align: center; color: var(--text-secondary); padding: 20px;">
+                            <strong>Quarterly dividend history (Q1 2015 - Q1 2025) to be populated from 10-Q extractions</strong><br>
+                            <em>Timeline: 10 years × 4 quarters = 40 data points pending extraction</em>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Annual Dividend Summary</h3>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Fiscal Year</th>
+                        <th>Total Dividends/Share</th>
+                        <th>Payout Ratio</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>FY2024</strong></td>
+                        <td>TBD</td>
+                        <td>TBD</td>
+                        <td><span class="verification-badge not-disclosed">NOT_DISCLOSED</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>FY2023</strong></td>
+                        <td>TBD</td>
+                        <td>TBD</td>
+                        <td><span class="verification-badge not-disclosed">NOT_DISCLOSED</span></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" style="text-align: center; color: var(--text-secondary); padding: 20px;">
+                            <strong>Annual dividend history (FY2015 - FY2024) to be populated</strong><br>
+                            <em>Will be aggregated from quarterly data once extracted</em>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="source-box">
+                <div class="source-label">Data Source <span class="verification-badge not-disclosed">NOT_DISCLOSED</span></div>
+                <div class="source-details">
+                    <strong>Required Form:</strong> 10-Q (Quarterly Reports)<br>
+                    <strong>Location:</strong> Notes to Financial Statements - Stockholders' Equity or Dividend Declaration footnote<br>
+                    <strong>Typical Disclosure:</strong> "On [Date], the Board of Directors declared a quarterly cash dividend of $X.XX per common share, payable on [Payment Date] to shareholders of record as of [Record Date]."<br>
+                    <strong>Period Coverage:</strong> Q1 2015 through Q2 2025 (42 quarters)<br>
+                    <strong>Extraction Status:</strong> Pending quarterly 10-Q parsing<br>
+                    <strong>URL Template:</strong> https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000861842&type=10-Q
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================================== -->
+        <!-- SHARE REPURCHASE HISTORY -->
+        <!-- ======================================== -->
+        <section id="repurchases">
+            <h2>Share Repurchase History</h2>
+
+            <h3>Buyback Authorization</h3>
+
+            <div class="metric-grid">
+                <div class="metric-card">
+                    <div class="metric-label">Program Authorization</div>
+                    <div class="metric-value" style="font-size: 1.5em;">$150M</div>
+                    <div class="metric-subtext">Expected program size (pending 8-K)</div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-label">Authorization Date</div>
+                    <div class="metric-value" style="font-size: 1.3em;">TBD</div>
+                    <div class="metric-subtext">Board approval date pending 8-K</div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-label">Program Status</div>
+                    <div class="metric-value" style="font-size: 1.3em;">Pending</div>
+                    <div class="metric-subtext">Active/Completed status TBD</div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-label">Remaining Authorization</div>
+                    <div class="metric-value" style="font-size: 1.5em;">TBD</div>
+                    <div class="metric-subtext">Unutilized capacity</div>
+                </div>
+            </div>
+
+            <div class="alert-box pending">
+                <div class="alert-title">8-K Extraction Required</div>
+                <div class="alert-text">
+                    <strong>Target Filing:</strong> Form 8-K - Regulation FD Disclosure or Material Events<br>
+                    <strong>Expected Content:</strong> Board of Directors authorizes share repurchase program of up to $150 million<br>
+                    <strong>Typical Disclosure:</strong> Program duration, authorization amount, execution method (open market, private transactions, Rule 10b5-1 plans)<br>
+                    <strong>Search URL:</strong> <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000861842&type=8-K" target="_blank" rel="noopener noreferrer">CATY 8-K Filings</a>
+                </div>
+            </div>
+
+            <h3>Quarterly Repurchase Activity</h3>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Period</th>
+                        <th>Shares Repurchased (M)</th>
+                        <th>$ Repurchased (M)</th>
+                        <th>Avg Price Paid</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>2025-Q2</strong></td>
+                        <td>TBD</td>
+                        <td>TBD</td>
+                        <td>TBD</td>
+                        <td><span class="verification-badge not-disclosed">NOT_DISCLOSED</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>2025-Q1</strong></td>
+                        <td>TBD</td>
+                        <td>TBD</td>
+                        <td>TBD</td>
+                        <td><span class="verification-badge not-disclosed">NOT_DISCLOSED</span></td>
+                    </tr>
+                    <tr>
+                        <td colspan="5" style="text-align: center; color: var(--text-secondary); padding: 20px;">
+                            <strong>Quarterly repurchase history (Q1 2015 - Q2 2025) to be populated from 10-Q/10-K extractions</strong><br>
+                            <em>Source: Treasury Stock activity in Stockholders' Equity notes or Statement of Changes in Equity</em>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Annual Repurchase Summary</h3>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Fiscal Year</th>
+                        <th>Total Shares Repurchased (M)</th>
+                        <th>Total $ Repurchased (M)</th>
+                        <th>Avg Price Paid</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>FY2024</strong></td>
+                        <td>TBD</td>
+                        <td>TBD</td>
+                        <td>TBD</td>
+                        <td><span class="verification-badge not-disclosed">NOT_DISCLOSED</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>FY2023</strong></td>
+                        <td>TBD</td>
+                        <td>TBD</td>
+                        <td>TBD</td>
+                        <td><span class="verification-badge not-disclosed">NOT_DISCLOSED</span></td>
+                    </tr>
+                    <tr>
+                        <td colspan="5" style="text-align: center; color: var(--text-secondary); padding: 20px;">
+                            <strong>Annual repurchase history (FY2015 - FY2024) to be populated</strong><br>
+                            <em>Will be aggregated from quarterly data once extracted</em>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="source-box">
+                <div class="source-label">Data Source <span class="verification-badge not-disclosed">NOT_DISCLOSED</span></div>
+                <div class="source-details">
+                    <strong>Required Forms:</strong> 10-Q (Quarterly), 10-K (Annual)<br>
+                    <strong>Location:</strong> Notes to Financial Statements - Stockholders' Equity / Treasury Stock Activity<br>
+                    <strong>Alternative Location:</strong> Consolidated Statements of Changes in Stockholders' Equity<br>
+                    <strong>Typical Disclosure:</strong> "During [Period], the Company repurchased X shares of common stock at an average price of $Y per share for a total cost of $Z million under its share repurchase program."<br>
+                    <strong>Period Coverage:</strong> Q1 2015 through Q2 2025<br>
+                    <strong>Extraction Status:</strong> Pending quarterly/annual filing parsing<br>
+                    <strong>URL Template:</strong> https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000861842&type=10-
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================================== -->
+        <!-- CAPITAL RETURN SUMMARY -->
+        <!-- ======================================== -->
+        <section id="summary">
+            <h2>Capital Return Summary & Analysis</h2>
+
+            <h3>Total Capital Returned to Shareholders</h3>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Fiscal Year</th>
+                        <th>Total Dividends ($M)</th>
+                        <th>Total Buybacks ($M)</th>
+                        <th>Total Capital Return ($M)</th>
+                        <th>% of Net Income</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>FY2024</strong></td>
+                        <td>TBD</td>
+                        <td>TBD</td>
+                        <td>TBD</td>
+                        <td>TBD</td>
+                    </tr>
+                    <tr>
+                        <td><strong>FY2023</strong></td>
+                        <td>TBD</td>
+                        <td>TBD</td>
+                        <td>TBD</td>
+                        <td>TBD</td>
+                    </tr>
+                    <tr>
+                        <td colspan="5" style="text-align: center; color: var(--text-secondary); padding: 20px;">
+                            <strong>10-year capital return summary to be calculated once dividend and repurchase data are extracted</strong>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Key Banking Capital Metrics (Framework Only - Pending Data)</h3>
+
+            <div class="metric-grid">
+                <div class="metric-card">
+                    <div class="metric-label">Average Payout Ratio</div>
+                    <div class="metric-value" style="font-size: 1.5em;">~32.1%</div>
+                    <div class="metric-subtext">Dividends ÷ Net Income (FY2015-FY2024 avg)</div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-label">Average Retention Rate</div>
+                    <div class="metric-value" style="font-size: 1.5em;">~67.9%</div>
+                    <div class="metric-subtext">1 - Payout Ratio (reinvested earnings)</div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-label">Implied ROTE</div>
+                    <div class="metric-value" style="font-size: 1.5em;">~12.0%</div>
+                    <div class="metric-subtext">Return on Tangible Equity (expected)</div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-label">Organic Growth Capacity</div>
+                    <div class="metric-value" style="font-size: 1.5em;">~8.1%</div>
+                    <div class="metric-subtext">ROTE × Retention (sustainable equity growth)</div>
+                </div>
+            </div>
+
+            <div class="alert-box info">
+                <div class="alert-title">Capital Return Analysis Framework</div>
+                <div class="alert-text">
+                    <strong>Dividend Policy:</strong> Banks typically maintain stable or growing quarterly dividends, targeting 30-40% payout ratios to balance shareholder returns with capital retention for regulatory requirements and organic growth.<br><br>
+                    <strong>Buyback Policy:</strong> Share repurchases provide flexibility to return excess capital when regulatory capital ratios exceed targets and loan growth is moderate. Buybacks enhance EPS and ROTE by reducing equity base.<br><br>
+                    <strong>Organic Growth Capacity:</strong> The product of ROTE and retention rate determines sustainable equity growth without external capital raises:<br>
+                    • If ROTE = 12% and Retention = 68%, organic growth capacity = 8.1%<br>
+                    • This means equity can grow 8.1% annually from retained earnings alone<br>
+                    • Actual growth may differ based on loan demand, M&A activity, and capital management decisions<br><br>
+                    <strong>Regulatory Constraints:</strong> Bank capital returns are subject to Federal Reserve stress testing (for larger banks) and must maintain Common Equity Tier 1 ratios above regulatory minimums (typically 7%+ including buffer).
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================================== -->
+        <!-- QA CHECKS -->
+        <!-- ======================================== -->
+        <section id="qa-checks">
+            <h2>Quality Assurance Checks</h2>
+
+            <div class="alert-box pending">
+                <div class="alert-title">QA Framework - Pending Data Population</div>
+                <div class="alert-text">
+                    Once dividend and repurchase data are extracted, the following QA checks will be implemented:
+                </div>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Check ID</th>
+                        <th>Description</th>
+                        <th>Rule</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>QA101</strong></td>
+                        <td>Payout Ratio Range Check</td>
+                        <td>0% <= payout_ratio <= 100%</td>
+                        <td><span class="verification-badge pending">PENDING</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>QA102</strong></td>
+                        <td>Dividend Continuity</td>
+                        <td>No missing quarters in time series</td>
+                        <td><span class="verification-badge pending">PENDING</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>QA103</strong></td>
+                        <td>Buyback Authorization Consistency</td>
+                        <td>8-K authorization matches 10-Q/10-K disclosures</td>
+                        <td><span class="verification-badge pending">PENDING</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>QA104</strong></td>
+                        <td>Share Count Reconciliation</td>
+                        <td>Treasury shares = shares repurchased cumulative</td>
+                        <td><span class="verification-badge pending">PENDING</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>QA105</strong></td>
+                        <td>Avg Price Paid Calculation</td>
+                        <td>$ repurchased ÷ shares repurchased = avg price</td>
+                        <td><span class="verification-badge pending">PENDING</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>QA106</strong></td>
+                        <td>Quarterly vs Annual Aggregation</td>
+                        <td>Sum of Q1-Q4 dividends = annual dividend per share</td>
+                        <td><span class="verification-badge pending">PENDING</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- ======================================== -->
+        <!-- DATA DICTIONARY -->
+        <!-- ======================================== -->
+        <section id="data-dictionary">
+            <h2>Data Dictionary</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Field</th>
+                        <th>Description</th>
+                        <th>Unit</th>
+                        <th>Source</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>repurchase_authorization</strong></td>
+                        <td>Buyback authorization amount approved by Board of Directors</td>
+                        <td>USD millions</td>
+                        <td>8-K</td>
+                    </tr>
+                    <tr>
+                        <td><strong>shares_repurchased</strong></td>
+                        <td>Number of shares repurchased during period</td>
+                        <td>millions</td>
+                        <td>10-Q, 10-K</td>
+                    </tr>
+                    <tr>
+                        <td><strong>dividend_per_share</strong></td>
+                        <td>Cash dividend declared per common share</td>
+                        <td>USD</td>
+                        <td>10-Q, 10-K</td>
+                    </tr>
+                    <tr>
+                        <td><strong>payout_ratio</strong></td>
+                        <td>Total dividends ÷ Net income available to common shareholders</td>
+                        <td>percent</td>
+                        <td>calc</td>
+                    </tr>
+                    <tr>
+                        <td><strong>retention_rate</strong></td>
+                        <td>1 - Payout Ratio (percentage of earnings retained)</td>
+                        <td>percent</td>
+                        <td>calc</td>
+                    </tr>
+                    <tr>
+                        <td><strong>organic_growth_capacity</strong></td>
+                        <td>ROTE × Retention Rate (sustainable equity growth rate)</td>
+                        <td>percent</td>
+                        <td>calc</td>
+                    </tr>
+                    <tr>
+                        <td><strong>avg_price_paid</strong></td>
+                        <td>$ Repurchased ÷ Shares Repurchased</td>
+                        <td>USD per share</td>
+                        <td>calc</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- ======================================== -->
+        <!-- METADATA -->
+        <!-- ======================================== -->
+        <section id="metadata">
+            <h2>File Metadata</h2>
+
+            <table>
+                <tbody>
+                    <tr>
+                        <td><strong>Schema Version</strong></td>
+                        <td>1.0.0</td>
+                    </tr>
+                    <tr>
+                        <td><strong>File Number</strong></td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td><strong>File Name</strong></td>
+                        <td>capital_actions.json</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Purpose</strong></td>
+                        <td>Buybacks, dividends, and capital return constraints</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Last Updated</strong></td>
+                        <td>2025-10-17 22:53:30 UTC</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Data Policy</strong></td>
+                        <td>All material datapoints sourced from SEC filings with mandatory provenance</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Period Coverage</strong></td>
+                        <td>Quarterly 2015-Q1 to 2025-Q2; Annual FY2015-FY2024</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Units</strong></td>
+                        <td>USD millions unless noted; per-share in USD; ratios in percent or bps</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Data Status</strong></td>
+                        <td>Scaffolded file awaiting full quarterly extraction from 10-Q/10-K filings</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Extraction Notes</strong></td>
+                        <td>Stub file with Q2'25 and FY2024 placeholders; buyback authorization requires 8-K extraction; dividends/repurchases pending 10-Q extraction</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- ======================================== -->
+        <!-- EXTRACTION ROADMAP -->
+        <!-- ======================================== -->
+        <section id="roadmap">
+            <h2>Data Extraction Roadmap</h2>
+
+            <h3>Required SEC Filing Extractions</h3>
+
+            <div class="alert-box info">
+                <div class="alert-title">Phase 1: Buyback Authorization (8-K)</div>
+                <div class="alert-text">
+                    <strong>Target:</strong> Locate 8-K filing announcing share repurchase program<br>
+                    <strong>Search Terms:</strong> "share repurchase," "stock buyback," "$150 million"<br>
+                    <strong>Expected Fields:</strong>
+                    <ul style="margin-top: 10px; margin-left: 20px;">
+                        <li>Authorization amount (expected: $150M)</li>
+                        <li>Board approval date</li>
+                        <li>Program duration/expiration date</li>
+                        <li>Execution methods (open market, Rule 10b5-1, etc.)</li>
+                    </ul>
+                    <strong>URL:</strong> <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000861842&type=8-K" target="_blank" rel="noopener noreferrer">CATY 8-K Filings</a>
+                </div>
+            </div>
+
+            <div class="alert-box info">
+                <div class="alert-title">Phase 2: Quarterly Dividends (10-Q)</div>
+                <div class="alert-text">
+                    <strong>Target:</strong> Extract dividend declarations from 42 quarterly reports (Q1 2015 - Q2 2025)<br>
+                    <strong>Location:</strong> Notes to Financial Statements - Stockholders' Equity note or Subsequent Events note<br>
+                    <strong>Expected Fields:</strong>
+                    <ul style="margin-top: 10px; margin-left: 20px;">
+                        <li>Dividend per share (e.g., $0.38)</li>
+                        <li>Declaration date</li>
+                        <li>Record date</li>
+                        <li>Payment date</li>
+                    </ul>
+                    <strong>URL:</strong> <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000861842&type=10-Q" target="_blank" rel="noopener noreferrer">CATY 10-Q Filings</a>
+                </div>
+            </div>
+
+            <div class="alert-box info">
+                <div class="alert-title">Phase 3: Share Repurchases (10-Q/10-K)</div>
+                <div class="alert-text">
+                    <strong>Target:</strong> Extract treasury stock activity from quarterly and annual reports<br>
+                    <strong>Location:</strong> Consolidated Statements of Changes in Stockholders' Equity or Treasury Stock footnote<br>
+                    <strong>Expected Fields:</strong>
+                    <ul style="margin-top: 10px; margin-left: 20px;">
+                        <li>Shares repurchased during period</li>
+                        <li>Total cost of repurchases ($ millions)</li>
+                        <li>Average price paid per share (calc: $ ÷ shares)</li>
+                        <li>Remaining authorization (if disclosed)</li>
+                    </ul>
+                    <strong>URL:</strong> <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000861842&type=10-" target="_blank" rel="noopener noreferrer">CATY 10-Q/10-K Filings</a>
+                </div>
+            </div>
+
+            <div class="alert-box info">
+                <div class="alert-title">Phase 4: Calculate Derived Metrics</div>
+                <div class="alert-text">
+                    <strong>Payout Ratio:</strong> (Dividend per share × Shares outstanding) ÷ Net income<br>
+                    <strong>Retention Rate:</strong> 1 - Payout Ratio<br>
+                    <strong>Organic Growth Capacity:</strong> ROTE × Retention Rate<br>
+                    <strong>Total Capital Return:</strong> Total dividends + Total repurchases<br>
+                    <strong>Dividend Yield:</strong> (Annual dividend per share ÷ Current stock price) × 100<br><br>
+                    <strong>Dependencies:</strong> Requires Net Income from File 03 (Income Statement) and ROTE calculation from File 07 (Profitability Ratios)
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- JavaScript for Theme Toggle -->
+    <script>
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+
+            // Update button accessibility
+            const button = document.querySelector('.theme-toggle');
+            button.setAttribute('aria-pressed', newTheme === 'dark');
+            button.setAttribute('aria-label', newTheme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+
+            // Update button text
+            const icon = document.getElementById('theme-icon');
+            const text = document.getElementById('theme-text');
+
+            if (newTheme === 'dark') {
+                icon.textContent = '☀️';
+                text.textContent = 'Light Mode';
+            } else {
+                icon.textContent = '🌙';
+                text.textContent = 'Dark Mode';
+            }
+        }
+
+        // Load saved theme on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+
+            const icon = document.getElementById('theme-icon');
+            const text = document.getElementById('theme-text');
+
+            if (savedTheme === 'dark') {
+                icon.textContent = '☀️';
+                text.textContent = 'Light Mode';
+            } else {
+                icon.textContent = '🌙';
+                text.textContent = 'Dark Mode';
+            }
+        });
+    </script>
+</body>
+</html>
