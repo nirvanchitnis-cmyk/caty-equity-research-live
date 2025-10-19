@@ -1,0 +1,11 @@
+Ticker,Company,Price_10_18_25,TBVPS,P_TBV,ROTE_Pct,CRE_Pct,Mkt_Cap_M,Source,TBVPS_Citation,ROTE_Citation,CRE_Citation,Notes
+CATY,Cathay General Bancorp,45.87,36.16,1.269,11.95,52.4,2507.0,Q2'25 10-Q + Market,Consolidated Balance Sheet p.4; Shares: Cover,Income Statement p.5; MD&A avg TCE,Loan Schedule Note 4 p.19,Current valuation
+EWBC,East West Bancorp,110.25,56.13,1.964,15.84,70.3,15800.0,Q2 2025 10-Q (0001069157-25-000096),Auto-extracted (context pending),Auto-extracted (context pending),Auto-extracted (context pending),Auto-extracted (validation pending)
+CVBF,CVB Financial Corp,19.75,10.7,1.846,10.92,88.2,2650.0,Q2 2025 10-Q (0000950170-25-105728),Auto-extracted (context pending),Auto-extracted (context pending),Auto-extracted (context pending),Auto-extracted (validation pending)
+HAFC,Hanmi Financial Corp,25.6,24.96,1.026,8.04,84.0,780.0,Q2 2025 10-Q (0000950170-25-105658),Auto-extracted (context pending),Auto-extracted (context pending),Auto-extracted (context pending),Auto-extracted (validation pending)
+HOPE,Hope Bancorp,13.85,13.59,1.019,5.72,86.6,1520.0,Q2 2025 10-Q (0001128361-25-000036),Auto-extracted (context pending),Auto-extracted (context pending),Auto-extracted (context pending),Auto-extracted (validation pending)
+COLB,Columbia Banking System,32.4,20.51,1.58,14.46,20.9,6100.0,Q2 2025 10-Q (0000887343-25-000233),Auto-extracted (context pending),Auto-extracted (context pending),Auto-extracted (context pending),Auto-extracted (validation pending)
+WAFD,Washington Federal,37.2,32.99,1.128,9.5,60.5,2800.0,Q2 2025 10-Q (0000936528-25-000086),Auto-extracted (context pending),Auto-extracted (context pending),Auto-extracted (context pending),Auto-extracted (validation pending)
+PPBI,Pacific Premier Bancorp,28.5,21.38,1.333,5.09,15.3,2700.0,Q2 2025 10-Q (0001028918-25-000086),Auto-extracted (context pending),Auto-extracted (context pending),Auto-extracted (context pending),Auto-extracted (validation pending)
+BANC,Banc of California,17.9,24.5,0.731,3.09,13.3,2900.0,Q2 2025 10-Q (0001169770-25-000029),Auto-extracted (context pending),Auto-extracted (context pending),Auto-extracted (context pending),Auto-extracted (validation pending)
+Median (ex-CATY),,,,1.23,8.77,65.4,,,,,Peer group median,
