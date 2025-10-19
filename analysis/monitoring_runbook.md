@@ -78,8 +78,12 @@ THEN rating = BUY
 2. Add SHA256 hash to evidence/README.md
 3. Update DEREK_EXECUTIVE_SUMMARY.md if rating changes
 4. Update index.html rating badge if needed
-5. Git commit with timestamp
-6. Push to GitHub
+5. **Run reconciliation guard:** `python3 analysis/reconciliation_guard.py`
+   - Validates published numbers match script outputs
+   - Must pass (exit code 0) before committing
+   - If fails, fix discrepancies in README.md/index.html
+6. Git commit with timestamp
+7. Push to GitHub
 
 ### Step 7: Notification
 **If rating changes:**
@@ -112,11 +116,16 @@ THEN rating = BUY
 ---
 
 ## Continuous Improvement Backlog (Commit-Driven)
-- Convert high-impact IRC appendices (RIM, ESG, Monte Carlo) into HTML modules for on-site browsing.
-- Refresh scenario sensitivity tables in index.html and CATY_12_valuation_model.html with current 42.8 bps normalization assumptions.
-- Automate reconciliation check between valuation_bridge_final.py outputs and README/index headline numbers (unit test or CI hook).
+
+### ✅ Completed (Oct 19, 2025)
+- ✅ **HTML Companions Created:** CATY_13 (RIM), CATY_14 (Monte Carlo), CATY_15 (ESG), CATY_16 (COE) - all IRC appendices now web-accessible
+- ✅ **Scenario Tables Refreshed:** index.html and CATY_12_valuation_model.html now include IRC Blended ($51.39) + Wilson 95% ($51.74) + 42.8 bps NCO base
+- ✅ **Reconciliation Guard Built:** `analysis/reconciliation_guard.py` validates published numbers vs script outputs (wired into Step 6 above)
+
+### 🔄 Pending
 - Build dashboard for ESG KPIs (lending to underserved communities, board independence) sourced from CRA reports.
 - Draft pre-earnings question bank for peers reporting before CATY to capture read-through signals.
+- Add pre-commit hook integration for reconciliation guard (prevent drift).
 
 ---
 
