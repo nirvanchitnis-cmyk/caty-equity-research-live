@@ -135,6 +135,20 @@ evidence/
 **Key finding:** Office $1.5B (14% of CRE), CBD $49M, LTV 46%
 **Source:** Q2'25 Presentation (archived)
 
+### raw/fdic_CATY_20250630_financials.json
+**Purpose:** FDIC Bank Data API extract (Schedule RC-C balances) for 2025-06-30
+**Status:** ✅ ARCHIVED Oct 19, 2025 04:22 PT
+**File Size:** 6 KB
+**SHA256:** `8b57e0e0fc92b67fb69b801e44be0b99126663755f605cf3215529b2a50003bc`
+**Source URL:** https://api.fdic.gov/banks/financials?filters=CERT:18503%20AND%20REPDTE:20250630&fields=LNLS,LNRECNFM,LNRECNOT,LNREMULT,LNRENROW,LNRENROT,LNRELOC,LNREAG,REPDTE&format=json
+**Notes:** Stored in `evidence/raw/`; used to populate RC-C reconciliation table.
+
+### parser_regression_log.txt
+**Purpose:** Pytest run of `analysis/tests/test_peer_extraction.py`
+**Status:** ✅ GENERATED Oct 19, 2025 04:40 PT
+**SHA256:** `9a111c6b63c4a4aa664af863164c51bfeb79978e847579440ff8bb5c63e502f2`
+**Notes:** Captures pass/fail status and pytest warnings for peer extraction suite.
+
 ### 2. acl_bridge_2023Q3-2025Q2_FINAL.csv
 ### peer_extraction_template.md
 **Purpose:** Manual extraction checklist for eight peer 10-Qs (TBVPS, ROTE, CRE %)
@@ -143,8 +157,8 @@ evidence/
 
 ### fdic_call_report_reconciliation.md
 **Purpose:** Bridge management CRE disclosures to FDIC RC-C data
-**Status:** Framework drafted Oct 18, 2025 21:55 PT (data TBD)
-**Next Steps:** Populate RC-C balances (RCON1410/1415/1417/1400) once SDI export available
+**Status:** ✅ UPDATED Oct 19, 2025 04:25 PT – SDI API balances ingested, variance analysis documented
+**Evidence:** Mapping table with RCON codes, variance commentary, pending hash log for raw extract
 
 **Purpose:** 8-quarter ACL reserve rollforward
 **Columns:** Quarter, Period_End, Beginning_ACL_K, Provision_K, Net_CO_K, Ending_ACL_K, Avg_Loans_M, ACL_Coverage_Pct, Accession, Source
