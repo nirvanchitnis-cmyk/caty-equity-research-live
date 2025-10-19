@@ -1,0 +1,35 @@
+{
+  "meta": {
+    "total": 1,
+    "parameters": {
+      "filters": "CERT:18503 AND REPDTE:20250630",
+      "fields": "LNLS,LNLSGR,LNLSNET,LNRECNOT,LNRECNFM,LNREMULT,LNRENROT,LNRENROW,LNRELOC,LNREAG,REPDTE"
+    },
+    "index": {
+      "name": "risview_20251014200848",
+      "createTimestamp": "2025-10-14T20:08:50Z"
+    }
+  },
+  "data": [
+    {
+      "data": {
+        "LNRENROT": 4906531,
+        "REPDTE": "20250630",
+        "LNREMULT": 2497955,
+        "LNLS": 19794184,
+        "LNREAG": 348,
+        "LNLSGR": 19794184,
+        "LNRELOC": 265438,
+        "LNRENROW": 1674139,
+        "LNLSNET": 19620653,
+        "LNRECNOT": 359523,
+        "LNRECNFM": 10355,
+        "ID": "18503_20250630"
+      },
+      "score": 0
+    }
+  ],
+  "totals": {
+    "count": 1
+  }
+}
