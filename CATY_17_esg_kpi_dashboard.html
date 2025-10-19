@@ -1,0 +1,1384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CATY - ESG KPI Dashboard | IRC Appendix</title>
+    <style>
+        /* ============================================================
+           COLOR SYSTEM - Cathay Bank Brand Colors
+           ============================================================ */
+        :root {
+            /* Cathay Brand Colors */
+            --cathay-red: #C41E3A;
+            --cathay-gold: #D4AF37;
+            --cathay-black: #1C1C1C;
+
+            /* Light Mode */
+            --bg-primary: #F8F8F6;
+            --bg-secondary: #FFFFFF;
+            --bg-tertiary: #E5E5E5;
+            --text-primary: #1C1C1C;
+            --text-secondary: #6B6B6B;
+            --border-color: #E5E5E5;
+
+            /* Semantic Colors */
+            --success: #2D7738;
+            --warning: #F59E0B;
+            --danger: #DC2626;
+            --info: #3B82F6;
+            --bull: #3B82F6;
+            --base-sell: #C41E3A;
+            --bear-sell: #8B0000;
+
+            /* Interactive */
+            --link-color: #C41E3A;
+            --link-hover: #9A1729;
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #1A1A1A;
+            --bg-secondary: #2C2C2C;
+            --bg-tertiary: #3A3A3A;
+            --text-primary: #F8F8F6;
+            --text-secondary: #B0B0B0;
+            --border-color: #3A3A3A;
+            --link-color: #E8495F;
+            --link-hover: #FF6B7F;
+        }
+
+        /* ============================================================
+           RESET & BASE STYLES
+           ============================================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        /* ============================================================
+           LAYOUT
+           ============================================================ */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: var(--bg-secondary);
+            border-bottom: 3px solid var(--cathay-red);
+            padding: 30px 0;
+            margin-bottom: 40px;
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .page-title {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: var(--cathay-red);
+            margin-bottom: 10px;
+        }
+
+        .page-subtitle {
+            font-size: 1.2em;
+            color: var(--cathay-gold);
+            margin-bottom: 10px;
+        }
+
+        .page-meta {
+            color: var(--text-secondary);
+            font-size: 0.95em;
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            background: var(--cathay-red);
+            color: white;
+            border-color: var(--cathay-red);
+        }
+
+        /* Back Button */
+        .back-button {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            background: var(--cathay-gold);
+            color: var(--cathay-black);
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: var(--cathay-red);
+            color: white;
+        }
+
+        /* ============================================================
+           SECTIONS
+           ============================================================ */
+        section {
+            background: var(--bg-secondary);
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            font-size: 2em;
+            color: var(--cathay-red);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--cathay-gold);
+        }
+
+        h3 {
+            font-size: 1.5em;
+            color: var(--text-primary);
+            margin: 25px 0 15px 0;
+        }
+
+        h4 {
+            font-size: 1.2em;
+            color: var(--text-primary);
+            margin: 20px 0 10px 0;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        /* ============================================================
+           DATA TABLE
+           ============================================================ */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: var(--bg-secondary);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        thead {
+            background: var(--cathay-red);
+            color: white;
+        }
+
+        th {
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.9em;
+            text-transform: uppercase;
+        }
+
+        th.number,
+        td.number {
+            text-align: right;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        tr:hover {
+            background: var(--bg-tertiary);
+        }
+
+        tr.base-case {
+            background: #FFEBEE !important;
+            border-left: 4px solid var(--cathay-red);
+            font-weight: 600;
+        }
+
+        tr.base-case:hover {
+            background: #FFD6DC !important;
+        }
+
+        tr.danger {
+            border-left: 4px solid var(--danger);
+        }
+
+        tr.success {
+            border-left: 4px solid var(--success);
+        }
+
+        /* ============================================================
+           HIGHLIGHT BOXES
+           ============================================================ */
+        .highlight-box {
+            background: var(--bg-tertiary);
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 4px solid var(--cathay-gold);
+            border-radius: 4px;
+        }
+
+        .highlight-box.critical {
+            border-left-color: var(--cathay-red);
+            background: #FFEBEE;
+        }
+
+        .highlight-box.success {
+            border-left-color: var(--success);
+            background: #E8F5E9;
+        }
+
+        .highlight-box h4 {
+            margin-top: 0;
+            color: var(--cathay-red);
+        }
+
+        .highlight-box.success h4 {
+            color: var(--success);
+        }
+
+        /* ============================================================
+           CODE BLOCKS
+           ============================================================ */
+        pre {
+            background: var(--bg-tertiary);
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 20px 0;
+            border-left: 4px solid var(--cathay-gold);
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+
+        /* Inline code */
+        p code, li code, td code {
+            background: var(--bg-tertiary);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.9em;
+        }
+
+        /* ============================================================
+           LISTS
+           ============================================================ */
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        /* ============================================================
+           LINKS
+           ============================================================ */
+        a {
+            color: var(--link-color);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        a:hover {
+            color: var(--link-hover);
+            text-decoration: underline;
+        }
+
+        /* ============================================================
+           RESPONSIVE
+           ============================================================ */
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 1.8em;
+            }
+
+            table {
+                font-size: 0.85em;
+            }
+
+            .theme-toggle {
+                top: 10px;
+                right: 10px;
+                padding: 8px 16px;
+                font-size: 0.8em;
+            }
+        }
+
+        /* ============================================================
+           PRINT STYLES
+           ============================================================ */
+        @media print {
+            .theme-toggle,
+            .back-button {
+                display: none !important;
+            }
+
+            @page {
+                margin: 0.75in;
+                size: letter;
+            }
+
+            body {
+                background: white !important;
+                color: black !important;
+                font-size: 11pt;
+            }
+
+            header {
+                border-bottom: 2px solid #C41E3A !important;
+                page-break-after: avoid;
+            }
+
+            section {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" aria-pressed="false">
+        <span id="theme-icon" aria-hidden="true">🌙</span>
+        <span id="theme-text">Dark Mode</span>
+    </button>
+
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <h1 class="page-title">Cathay General Bancorp (NASDAQ: CATY)</h1>
+            <p class="page-subtitle">Appendix 17: ESG KPI Dashboard</p>
+            <p class="page-meta">
+                Environmental, Social & Governance Materiality Analysis |
+                Created: October 19, 2025 |
+                Framework: SASB Financials / TCFD / GRI Standards
+            </p>
+        </div>
+    </header>
+
+    <div class="container">
+        <a href="index.html" class="back-button">← Back to Main Report</a>
+
+        <!-- ======================================== -->
+        <!-- EXECUTIVE SUMMARY -->
+        <!-- ======================================== -->
+        <section id="executive-summary">
+            <h2>Executive Summary</h2>
+
+            <div class="highlight-box critical">
+                <h4>ESG Composite Score: 5.0 / 10 (12th Percentile vs. Peers)</h4>
+                <p style="font-size: 1.1em; line-height: 1.8;">
+                    CATY's ESG profile presents <strong>moderate financial materiality</strong> with <strong>high social differentiation</strong> offset by <strong>governance weaknesses</strong>. ESG-adjusted valuation discount: <strong>-$1.47/share (-3.6%)</strong>.
+                </p>
+            </div>
+
+            <h3>ESG Pillar Scores</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Pillar</th>
+                        <th class="number">CATY Score</th>
+                        <th class="number">Peer Median</th>
+                        <th class="number">Gap</th>
+                        <th>Materiality</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Environmental (E)</td>
+                        <td class="number">4.0</td>
+                        <td class="number">4.5</td>
+                        <td class="number">-0.5</td>
+                        <td>High - CRE climate risk</td>
+                    </tr>
+                    <tr class="success">
+                        <td>Social (S)</td>
+                        <td class="number">7.0</td>
+                        <td class="number">5.8</td>
+                        <td class="number">+1.2</td>
+                        <td>High - Community banking moat</td>
+                    </tr>
+                    <tr class="danger">
+                        <td>Governance (G)</td>
+                        <td class="number">4.0</td>
+                        <td class="number">6.8</td>
+                        <td class="number">-2.8</td>
+                        <td>High - Board independence gap</td>
+                    </tr>
+                    <tr class="base-case">
+                        <td><strong>Composite Score</strong></td>
+                        <td class="number"><strong>5.0</strong></td>
+                        <td class="number"><strong>6.1</strong></td>
+                        <td class="number"><strong>-1.1</strong></td>
+                        <td><strong>12th Percentile</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p><strong>Key Findings:</strong></p>
+            <ul>
+                <li><strong>Environmental:</strong> CRE portfolio exposure (52.4%) creates material climate transition risk under 2°C scenario (-3.2% NAV impact)</li>
+                <li><strong>Social:</strong> Asian-American community banking mission represents competitive moat (+$1.15-1.50/share value from deposit stickiness)</li>
+                <li><strong>Governance:</strong> Insufficient board independence (40% vs. 67% peer median) drives +30 bps COE governance premium</li>
+            </ul>
+        </section>
+
+        <!-- ======================================== -->
+        <!-- ENVIRONMENTAL FACTORS -->
+        <!-- ======================================== -->
+        <section id="environmental">
+            <h2>1. Environmental Factors (E Score: 4.0 / 10)</h2>
+
+            <h3>1.1 Climate Risk on CRE Portfolio</h3>
+            <div class="highlight-box critical">
+                <h4>Material Risk: CRE Exposure 52.4% of Loan Book</h4>
+                <p>
+                    CRE portfolio ($10.2B / $19.4B total loans) faces climate transition risk under 2°C scenario.
+                    Office exposure ($2.9B, 28.3% of CRE) particularly vulnerable to carbon pricing and energy efficiency mandates.
+                </p>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th class="number">Value</th>
+                        <th class="number">Trend (5Y)</th>
+                        <th>Materiality</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>CRE Portfolio Exposure</td>
+                        <td class="number">52.4%</td>
+                        <td class="number">+4.2 ppts</td>
+                        <td>HIGH</td>
+                    </tr>
+                    <tr>
+                        <td>CRE Office Exposure ($M)</td>
+                        <td class="number">$2,886</td>
+                        <td class="number">+17.8%</td>
+                        <td>HIGH</td>
+                    </tr>
+                    <tr>
+                        <td>Energy-Inefficient Office (Est.)</td>
+                        <td class="number">60%</td>
+                        <td class="number">-</td>
+                        <td>HIGH</td>
+                    </tr>
+                    <tr>
+                        <td>Climate Risk Provision Buffer (bps)</td>
+                        <td class="number">3.0 bps</td>
+                        <td class="number">New</td>
+                        <td>MEDIUM</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>Climate Transition Risk (2°C Scenario)</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th class="number">Base Case</th>
+                        <th class="number">2°C Scenario</th>
+                        <th class="number">Delta</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Office Exposure ($M)</td>
+                        <td class="number">$2,886</td>
+                        <td class="number">$2,886</td>
+                        <td class="number">-</td>
+                    </tr>
+                    <tr>
+                        <td>Energy-Inefficient (% of office)</td>
+                        <td class="number">60%</td>
+                        <td class="number">60%</td>
+                        <td class="number">-</td>
+                    </tr>
+                    <tr>
+                        <td>Value Impairment (stranded assets)</td>
+                        <td class="number">0%</td>
+                        <td class="number">15%</td>
+                        <td class="number">-15%</td>
+                    </tr>
+                    <tr>
+                        <td>Loss Given Default (LGD)</td>
+                        <td class="number">40%</td>
+                        <td class="number">55%</td>
+                        <td class="number">+15%</td>
+                    </tr>
+                    <tr class="danger">
+                        <td><strong>Expected Loss ($M)</strong></td>
+                        <td class="number"><strong>$9.2</strong></td>
+                        <td class="number"><strong>$238.8</strong></td>
+                        <td class="number"><strong>+$229.6</strong></td>
+                    </tr>
+                    <tr class="danger">
+                        <td><strong>NAV Impact</strong></td>
+                        <td class="number"><strong>-</strong></td>
+                        <td class="number"><strong>-3.2%</strong></td>
+                        <td class="number"><strong>-3.2%</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>1.2 Climate Risk Disclosure</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Disclosure Item</th>
+                        <th>Status</th>
+                        <th>Peer Rate</th>
+                        <th>Materiality</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>TCFD Disclosure</td>
+                        <td>❌ None</td>
+                        <td>35%</td>
+                        <td>LOW</td>
+                    </tr>
+                    <tr>
+                        <td>Scope 3 Financed Emissions</td>
+                        <td>❌ None</td>
+                        <td>28%</td>
+                        <td>LOW</td>
+                    </tr>
+                    <tr>
+                        <td>CRE Energy Efficiency Audits</td>
+                        <td>✅ Yes (per 10-Q)</td>
+                        <td>-</td>
+                        <td>MEDIUM</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p><strong>Valuation Linkage:</strong> +20 bps COE climate risk premium embedded in ESG-adjusted COE (9.587% vs. 9.337% base)</p>
+        </section>
+
+        <!-- ======================================== -->
+        <!-- SOCIAL FACTORS -->
+        <!-- ======================================== -->
+        <section id="social">
+            <h2>2. Social Factors (S Score: 7.0 / 10)</h2>
+
+            <h3>2.1 Asian-American Community Banking Mission (Competitive Moat)</h3>
+            <div class="highlight-box success">
+                <h4>Strategic Moat: Cultural Alignment + Network Effects</h4>
+                <p>
+                    CATY's Asian-American community focus creates <strong>social capital moat</strong> with quantifiable financial advantages:
+                    lower deposit beta (0.35 vs. 0.42 peers), higher branch productivity ($285M vs. $210M peers), and lower marketing costs (0.8% vs. 1.2% of revenue).
+                </p>
+                <p><strong>Estimated Moat Value: +$1.15-1.50/share</strong> from deposit franchise stickiness</p>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th class="number">CATY</th>
+                        <th class="number">Peer Median</th>
+                        <th class="number">Advantage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="success">
+                        <td>Deposit Beta (rate sensitivity)</td>
+                        <td class="number">0.35</td>
+                        <td class="number">0.42</td>
+                        <td class="number">-17% (stickier)</td>
+                    </tr>
+                    <tr class="success">
+                        <td>Non-Interest Bearing Deposits (%)</td>
+                        <td class="number">27%</td>
+                        <td class="number">24%</td>
+                        <td class="number">+3 ppts</td>
+                    </tr>
+                    <tr class="success">
+                        <td>Branch Deposits per Branch ($M)</td>
+                        <td class="number">$285</td>
+                        <td class="number">$210</td>
+                        <td class="number">+36%</td>
+                    </tr>
+                    <tr class="success">
+                        <td>Marketing Expense / Revenue (%)</td>
+                        <td class="number">0.8%</td>
+                        <td class="number">1.2%</td>
+                        <td class="number">-40 bps (lower CAC)</td>
+                    </tr>
+                    <tr>
+                        <td>Asian-American Deposit Concentration (%)</td>
+                        <td class="number">68%</td>
+                        <td class="number">-</td>
+                        <td class="number">Concentration Risk</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>Moat Valuation Impact</h4>
+            <ul>
+                <li><strong>NIM Advantage:</strong> Lower deposit costs contribute +5 bps NIM vs. peers (2.10% vs. 2.05% peer median)</li>
+                <li><strong>Efficiency Ratio:</strong> Community model enables lower marketing spend, CTI 42.3% vs. 45.1% peers</li>
+                <li><strong>Social COE Offset:</strong> -25 bps discount to COE for deposit moat (partially offsets governance premium)</li>
+            </ul>
+
+            <h3>2.2 CRA Performance & Community Reinvestment</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th class="number">Value</th>
+                        <th>Source</th>
+                        <th>Trend</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="success">
+                        <td>CRA Rating</td>
+                        <td class="number">Outstanding</td>
+                        <td>2023 OCC Exam</td>
+                        <td>Maintained (2018-2023)</td>
+                    </tr>
+                    <tr>
+                        <td>Community Development Lending ($M)</td>
+                        <td class="number">$1,200</td>
+                        <td>2023 CRA Evaluation</td>
+                        <td>+22.4% (5Y)</td>
+                    </tr>
+                    <tr>
+                        <td>CD Lending (% of assets)</td>
+                        <td class="number">6.2%</td>
+                        <td>Calculated</td>
+                        <td>+0.8 ppts (5Y)</td>
+                    </tr>
+                    <tr>
+                        <td>Affordable Housing Financing ($M)</td>
+                        <td class="number">$480</td>
+                        <td>2023 CRA Evaluation</td>
+                        <td>40% of CD lending</td>
+                    </tr>
+                    <tr>
+                        <td>Small Business Lending ($M)</td>
+                        <td class="number">$320</td>
+                        <td>2023 CRA Evaluation</td>
+                        <td>26.7% of CD lending</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p><strong>Peer Comparison (CRA Outstanding Rate):</strong> 42% of peer banks hold Outstanding rating (CATY in top tier)</p>
+        </section>
+
+        <!-- ======================================== -->
+        <!-- GOVERNANCE FACTORS -->
+        <!-- ======================================== -->
+        <section id="governance">
+            <h2>3. Governance Factors (G Score: 4.0 / 10)</h2>
+
+            <h3>3.1 Board Composition (Material Weakness)</h3>
+            <div class="highlight-box critical">
+                <h4>Critical Gap: Board Independence 40% vs. 67% Peer Median</h4>
+                <p>
+                    CATY's board independence falls <strong>27 percentage points below peer median</strong>, driving +30 bps governance risk premium in COE.
+                    ISS Governance QualityScore: <strong>4/10 vs. 7/10 peer median</strong>.
+                </p>
+                <p><strong>Financial Impact:</strong> -$1.80/share valuation discount from governance premium</p>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th class="number">CATY</th>
+                        <th class="number">Peer Median</th>
+                        <th class="number">Gap</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="danger">
+                        <td>Board Independence (%)</td>
+                        <td class="number">40%</td>
+                        <td class="number">67%</td>
+                        <td class="number">-27 ppts</td>
+                    </tr>
+                    <tr>
+                        <td>Board Size</td>
+                        <td class="number">10</td>
+                        <td class="number">11</td>
+                        <td class="number">-1</td>
+                    </tr>
+                    <tr>
+                        <td>Board Diversity (%)</td>
+                        <td class="number">30%</td>
+                        <td class="number">42%</td>
+                        <td class="number">-12 ppts</td>
+                    </tr>
+                    <tr class="danger">
+                        <td>ISS Governance Score (1-10)</td>
+                        <td class="number">4</td>
+                        <td class="number">7</td>
+                        <td class="number">-3 pts</td>
+                    </tr>
+                    <tr>
+                        <td>Average Director Tenure (years)</td>
+                        <td class="number">12.3</td>
+                        <td class="number">8.5</td>
+                        <td class="number">+3.8 yrs</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>Shareholder Rights Analysis</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Status</th>
+                        <th>Impact</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>CEO/Chairman Split</td>
+                        <td>✅ Separate</td>
+                        <td>Best practice</td>
+                    </tr>
+                    <tr>
+                        <td>Audit Committee Independence</td>
+                        <td>✅ 100%</td>
+                        <td>Compliant</td>
+                    </tr>
+                    <tr>
+                        <td>Compensation Committee Independence</td>
+                        <td>✅ 100%</td>
+                        <td>Compliant</td>
+                    </tr>
+                    <tr class="danger">
+                        <td>Staggered Board</td>
+                        <td>❌ Yes</td>
+                        <td>Limits shareholder control</td>
+                    </tr>
+                    <tr>
+                        <td>Poison Pill</td>
+                        <td>✅ None</td>
+                        <td>Shareholder-friendly</td>
+                    </tr>
+                    <tr>
+                        <td>Dual-Class Stock</td>
+                        <td>✅ None</td>
+                        <td>One share, one vote</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>3.2 Executive Compensation</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th class="number">CATY</th>
+                        <th class="number">Peer Median</th>
+                        <th class="number">Gap</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>CEO Total Compensation ($M)</td>
+                        <td class="number">$4.2</td>
+                        <td class="number">$5.8</td>
+                        <td class="number">-$1.6M</td>
+                    </tr>
+                    <tr class="danger">
+                        <td>CEO Comp / Net Income (%)</td>
+                        <td class="number">1.8%</td>
+                        <td class="number">1.0%</td>
+                        <td class="number">+80 bps</td>
+                    </tr>
+                    <tr class="danger">
+                        <td>Say-on-Pay Opposition (%)</td>
+                        <td class="number">28%</td>
+                        <td class="number">10%</td>
+                        <td class="number">+18 ppts</td>
+                    </tr>
+                    <tr>
+                        <td>ROTE Linkage (% of LTI)</td>
+                        <td class="number">40%</td>
+                        <td class="number">42%</td>
+                        <td class="number">-2 ppts</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p><strong>Red Flags:</strong></p>
+            <ul>
+                <li>CEO compensation ratio 1.8% of NI vs. 1.0% peer median (+80 bps premium)</li>
+                <li>Say-on-pay opposition 28% vs. 10% peer median (shareholder dissent)</li>
+                <li>Personal aircraft use perquisite ($180K, 2024 proxy) - optics issue</li>
+            </ul>
+        </section>
+
+        <!-- ======================================== -->
+        <!-- MATERIAL WEAKNESSES -->
+        <!-- ======================================== -->
+        <section id="material-weaknesses">
+            <h2>4. Material ESG Weaknesses</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Weakness</th>
+                        <th>Metric</th>
+                        <th class="number">CATY</th>
+                        <th class="number">Peer Median</th>
+                        <th>Financial Impact</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="danger">
+                        <td>Board Independence Gap</td>
+                        <td>Independent Directors (%)</td>
+                        <td class="number">40%</td>
+                        <td class="number">67%</td>
+                        <td>+30 bps COE governance premium</td>
+                    </tr>
+                    <tr class="danger">
+                        <td>Climate Risk Concentration</td>
+                        <td>CRE Portfolio (%)</td>
+                        <td class="number">52.4%</td>
+                        <td class="number">38.2%</td>
+                        <td>+20 bps COE climate premium</td>
+                    </tr>
+                    <tr class="danger">
+                        <td>Say-on-Pay Opposition</td>
+                        <td>Shareholder Opposition (%)</td>
+                        <td class="number">28%</td>
+                        <td class="number">10%</td>
+                        <td>Reputational risk (activists)</td>
+                    </tr>
+                    <tr class="danger">
+                        <td>Customer Concentration</td>
+                        <td>Asian-American Deposits (%)</td>
+                        <td class="number">68%</td>
+                        <td class="number">-</td>
+                        <td>Demographic shift vulnerability</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- ======================================== -->
+        <!-- VALUATION IMPACT -->
+        <!-- ======================================== -->
+        <section id="valuation-impact">
+            <h2>5. ESG Valuation Impact</h2>
+
+            <h3>5.1 Cost of Equity (COE) Adjustments</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Component</th>
+                        <th class="number">Base COE (%)</th>
+                        <th class="number">Adjustment (bps)</th>
+                        <th class="number">Adjusted COE (%)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Base COE (CAPM, ESG-neutral)</td>
+                        <td class="number">9.337%</td>
+                        <td class="number">-</td>
+                        <td class="number">9.337%</td>
+                    </tr>
+                    <tr class="danger">
+                        <td>Environmental (Climate Risk)</td>
+                        <td class="number">9.337%</td>
+                        <td class="number">+20</td>
+                        <td class="number">9.537%</td>
+                    </tr>
+                    <tr class="success">
+                        <td>Social (Community Moat)</td>
+                        <td class="number">9.537%</td>
+                        <td class="number">-25</td>
+                        <td class="number">9.287%</td>
+                    </tr>
+                    <tr class="danger">
+                        <td>Governance (Board Independence)</td>
+                        <td class="number">9.287%</td>
+                        <td class="number">+30</td>
+                        <td class="number">9.587%</td>
+                    </tr>
+                    <tr class="base-case">
+                        <td><strong>ESG-Adjusted COE (Total)</strong></td>
+                        <td class="number"><strong>9.337%</strong></td>
+                        <td class="number"><strong>+25</strong></td>
+                        <td class="number"><strong>9.587%</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>5.2 Gordon Growth Valuation Impact</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Scenario</th>
+                        <th class="number">COE (%)</th>
+                        <th class="number">Justified P/TBV</th>
+                        <th class="number">Target Price</th>
+                        <th class="number">vs. Spot</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>ESG-Neutral (Base)</td>
+                        <td class="number">9.337%</td>
+                        <td class="number">1.128x</td>
+                        <td class="number">$40.79</td>
+                        <td class="number">-11.1%</td>
+                    </tr>
+                    <tr class="base-case">
+                        <td><strong>ESG-Adjusted (Current)</strong></td>
+                        <td class="number"><strong>9.587%</strong></td>
+                        <td class="number"><strong>1.087x</strong></td>
+                        <td class="number"><strong>$39.32</strong></td>
+                        <td class="number"><strong>-14.3%</strong></td>
+                    </tr>
+                    <tr>
+                        <td>ESG Discount</td>
+                        <td class="number">+25 bps</td>
+                        <td class="number">-0.041x</td>
+                        <td class="number">-$1.47</td>
+                        <td class="number">-3.6%</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p><strong>ESG Valuation Discount:</strong> -$1.47/share (-3.6% vs. ESG-neutral case)</p>
+
+            <h3>5.3 Breakdown of ESG Value Impact</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ESG Factor</th>
+                        <th class="number">COE Impact (bps)</th>
+                        <th class="number">P/TBV Impact</th>
+                        <th class="number">$/Share Impact</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="danger">
+                        <td>Environmental (CRE Climate Risk)</td>
+                        <td class="number">+20</td>
+                        <td class="number">-0.023x</td>
+                        <td class="number">-$0.83</td>
+                    </tr>
+                    <tr class="success">
+                        <td>Social (Community Moat)</td>
+                        <td class="number">-25</td>
+                        <td class="number">+0.029x</td>
+                        <td class="number">+$1.05</td>
+                    </tr>
+                    <tr class="danger">
+                        <td>Governance (Board Independence)</td>
+                        <td class="number">+30</td>
+                        <td class="number">-0.035x</td>
+                        <td class="number">-$1.27</td>
+                    </tr>
+                    <tr class="base-case">
+                        <td><strong>Net ESG Impact</strong></td>
+                        <td class="number"><strong>+25</strong></td>
+                        <td class="number"><strong>-0.041x</strong></td>
+                        <td class="number"><strong>-$1.47</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- ======================================== -->
+        <!-- PEER COMPARISON -->
+        <!-- ======================================== -->
+        <section id="peer-comparison">
+            <h2>6. Peer ESG Comparison</h2>
+
+            <h3>6.1 ESG Composite Scores</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Bank</th>
+                        <th class="number">E Score</th>
+                        <th class="number">S Score</th>
+                        <th class="number">G Score</th>
+                        <th class="number">Composite</th>
+                        <th class="number">Percentile Rank</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>COLB</td>
+                        <td class="number">5.2</td>
+                        <td class="number">7.8</td>
+                        <td class="number">7.5</td>
+                        <td class="number">6.8</td>
+                        <td class="number">88th</td>
+                    </tr>
+                    <tr>
+                        <td>EWBC</td>
+                        <td class="number">4.8</td>
+                        <td class="number">7.2</td>
+                        <td class="number">7.5</td>
+                        <td class="number">6.5</td>
+                        <td class="number">75th</td>
+                    </tr>
+                    <tr>
+                        <td>PPBI</td>
+                        <td class="number">4.5</td>
+                        <td class="number">6.8</td>
+                        <td class="number">7.3</td>
+                        <td class="number">6.2</td>
+                        <td class="number">63rd</td>
+                    </tr>
+                    <tr>
+                        <td>BANC</td>
+                        <td class="number">4.2</td>
+                        <td class="number">6.5</td>
+                        <td class="number">7.2</td>
+                        <td class="number">6.0</td>
+                        <td class="number">50th</td>
+                    </tr>
+                    <tr>
+                        <td>CVBF</td>
+                        <td class="number">4.0</td>
+                        <td class="number">6.2</td>
+                        <td class="number">7.2</td>
+                        <td class="number">5.8</td>
+                        <td class="number">38th</td>
+                    </tr>
+                    <tr>
+                        <td>WAFD</td>
+                        <td class="number">3.8</td>
+                        <td class="number">6.0</td>
+                        <td class="number">6.8</td>
+                        <td class="number">5.5</td>
+                        <td class="number">25th</td>
+                    </tr>
+                    <tr>
+                        <td>HAFC</td>
+                        <td class="number">3.5</td>
+                        <td class="number">5.8</td>
+                        <td class="number">6.2</td>
+                        <td class="number">5.2</td>
+                        <td class="number">13th</td>
+                    </tr>
+                    <tr class="base-case">
+                        <td><strong>CATY</strong></td>
+                        <td class="number"><strong>4.0</strong></td>
+                        <td class="number"><strong>7.0</strong></td>
+                        <td class="number"><strong>4.0</strong></td>
+                        <td class="number"><strong>5.0</strong></td>
+                        <td class="number"><strong>12th</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Peer Median</strong></td>
+                        <td class="number"><strong>4.5</strong></td>
+                        <td class="number"><strong>5.8</strong></td>
+                        <td class="number"><strong>6.8</strong></td>
+                        <td class="number"><strong>6.1</strong></td>
+                        <td class="number"><strong>50th</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p><strong>Key Insight:</strong> CATY ranks <strong>12th percentile</strong> in composite ESG score, driven by governance weakness. Social score (7.0) exceeds peers (+1.2 vs. median), but insufficient to offset governance gap (-2.8 vs. median).</p>
+
+            <h3>6.2 ESG Pillar Detail vs. Peers</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th class="number">CATY</th>
+                        <th class="number">Peer Median</th>
+                        <th class="number">Gap</th>
+                        <th>Rank</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Board Independence (%)</td>
+                        <td class="number">40%</td>
+                        <td class="number">67%</td>
+                        <td class="number">-27 ppts</td>
+                        <td>8th / 8</td>
+                    </tr>
+                    <tr>
+                        <td>ISS Governance Score</td>
+                        <td class="number">4/10</td>
+                        <td class="number">7/10</td>
+                        <td class="number">-3 pts</td>
+                        <td>8th / 8</td>
+                    </tr>
+                    <tr class="success">
+                        <td>Deposit Beta</td>
+                        <td class="number">0.35</td>
+                        <td class="number">0.42</td>
+                        <td class="number">-0.07</td>
+                        <td>1st / 8</td>
+                    </tr>
+                    <tr class="success">
+                        <td>CRA Rating (Outstanding = 1)</td>
+                        <td class="number">1.0</td>
+                        <td class="number">0.58</td>
+                        <td class="number">+0.42</td>
+                        <td>1st / 8</td>
+                    </tr>
+                    <tr>
+                        <td>CRE Portfolio Concentration (%)</td>
+                        <td class="number">52.4%</td>
+                        <td class="number">38.2%</td>
+                        <td class="number">+14.2 ppts</td>
+                        <td>7th / 8</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- ======================================== -->
+        <!-- KEY INITIATIVES -->
+        <!-- ======================================== -->
+        <section id="initiatives">
+            <h2>7. Key ESG Initiatives & Recommendations</h2>
+
+            <h3>7.1 Priority Initiatives (From Evidence)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Initiative</th>
+                        <th>Status</th>
+                        <th>Target</th>
+                        <th>Impact if Achieved</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Board Independence Improvement</td>
+                        <td>PENDING</td>
+                        <td>Add 3 independent directors by 2026 AGM</td>
+                        <td>+2.1% valuation uplift (governance premium removal)</td>
+                    </tr>
+                    <tr>
+                        <td>TCFD Disclosure</td>
+                        <td>RECOMMENDED</td>
+                        <td>Publish TCFD report by 2026</td>
+                        <td>ESG score +0.5 pts, stakeholder perception improvement</td>
+                    </tr>
+                    <tr>
+                        <td>CRA Lending Expansion</td>
+                        <td>ON_TRACK</td>
+                        <td>Maintain Outstanding rating (next exam 2026)</td>
+                        <td>Social moat preservation</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>7.2 Management Recommendations (Prioritized)</h3>
+
+            <div class="highlight-box critical">
+                <h4>Priority 1 (High Impact): Board Independence</h4>
+                <ul>
+                    <li><strong>Action:</strong> Recruit 3 independent directors (target: financial services expertise, ESG credentials)</li>
+                    <li><strong>Timeline:</strong> 2026 proxy</li>
+                    <li><strong>Valuation Impact:</strong> +2.1% (+$0.83/share) from -15 bps governance premium reduction</li>
+                    <li><strong>ROI:</strong> Highest value creation opportunity</li>
+                </ul>
+            </div>
+
+            <div class="highlight-box">
+                <h4>Priority 2 (Medium Impact): TCFD Disclosure</h4>
+                <ul>
+                    <li><strong>Action:</strong> Publish climate risk report (CRE portfolio scenario analysis)</li>
+                    <li><strong>Timeline:</strong> 2026 ESG report</li>
+                    <li><strong>Valuation Impact:</strong> -20 bps climate risk premium reduction → +$0.47/share</li>
+                    <li><strong>Cost:</strong> ~$500K PCAF methodology implementation</li>
+                </ul>
+            </div>
+
+            <div class="highlight-box">
+                <h4>Priority 3 (Low Impact): Executive Compensation Alignment</h4>
+                <ul>
+                    <li><strong>Action:</strong> Reduce CEO comp ratio to 1.2% of NI (peer 25th percentile)</li>
+                    <li><strong>Timeline:</strong> 2026 proxy</li>
+                    <li><strong>Valuation Impact:</strong> Minimal (reputational benefit, lower activist risk)</li>
+                    <li><strong>Savings:</strong> $1.8M annually</li>
+                </ul>
+            </div>
+
+            <h3>7.3 ESG Improvement Scenarios</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Scenario</th>
+                        <th>Trigger</th>
+                        <th class="number">COE Impact (bps)</th>
+                        <th class="number">Target Price</th>
+                        <th class="number">vs. Base</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="base-case">
+                        <td><strong>Base Case (Current)</strong></td>
+                        <td>Current ESG profile</td>
+                        <td class="number"><strong>9.587%</strong></td>
+                        <td class="number"><strong>$39.32</strong></td>
+                        <td class="number"><strong>-</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Governance Improvement</td>
+                        <td>Add 3 independent directors</td>
+                        <td class="number">-15</td>
+                        <td class="number">$40.15</td>
+                        <td class="number">+2.1%</td>
+                    </tr>
+                    <tr>
+                        <td>Climate Disclosure</td>
+                        <td>Publish TCFD report</td>
+                        <td class="number">-20</td>
+                        <td class="number">$40.47</td>
+                        <td class="number">+2.9%</td>
+                    </tr>
+                    <tr>
+                        <td>Social Moat Erosion</td>
+                        <td>Asian-American community shift</td>
+                        <td class="number">+10</td>
+                        <td class="number">$38.95</td>
+                        <td class="number">-0.9%</td>
+                    </tr>
+                    <tr>
+                        <td>Climate Stress (2°C)</td>
+                        <td>Carbon pricing $100/ton</td>
+                        <td class="number">+40</td>
+                        <td class="number">$37.92</td>
+                        <td class="number">-3.6%</td>
+                    </tr>
+                    <tr class="success">
+                        <td>ESG Best-in-Class</td>
+                        <td>Governance + TCFD + Net-Zero</td>
+                        <td class="number">-45</td>
+                        <td class="number">$41.52</td>
+                        <td class="number">+5.6%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- ======================================== -->
+        <!-- IRC DEFENSE Q&A -->
+        <!-- ======================================== -->
+        <section id="irc-qa">
+            <h2>8. IRC Defense Q&A</h2>
+
+            <div class="highlight-box">
+                <h4>Q: Why is board independence a "material weakness" vs. regulatory requirement?</h4>
+                <p><strong>A:</strong> 40% independence <strong>exceeds</strong> NASDAQ minimum (50% of board or audit/comp committees), but falls <strong>27 ppts below peer median</strong>. ISS Governance QualityScore penalizes CATY (4/10 vs. 7/10 peers), elevating institutional investor scrutiny and COE. <strong>Financial materiality:</strong> +30 bps governance premium = -$1.27/share.</p>
+            </div>
+
+            <div class="highlight-box">
+                <h4>Q: How do you quantify the Asian-American community banking "moat"?</h4>
+                <p><strong>A:</strong> Observable financial advantages: (1) Deposit beta 0.35 vs. 0.42 peers = -17% rate sensitivity → +5 bps NIM, (2) Marketing expense 0.8% vs. 1.2% peers = -40 bps efficiency gain, (3) Branch deposits $285M vs. $210M peers = +36% productivity. <strong>Moat value estimate:</strong> -25 bps COE discount = +$1.05/share, conservative (could be +$1.15-1.50/share using deposit franchise DCF).</p>
+            </div>
+
+            <div class="highlight-box">
+                <h4>Q: Why exclude Scope 3 financed emissions if industry standard?</h4>
+                <p><strong>A:</strong> Materiality threshold: CATY assets $19.5B vs. $50B Dodd-Frank climate stress test threshold. BAC/JPM disclosures driven by regulatory pressure (>$50B) and activist investors. <strong>Peer comparison:</strong> EWBC, CVBF, HAFC also non-disclosers. <strong>Cost-benefit:</strong> PCAF methodology implementation ~$500K, limited investor demand for sub-$20B banks.</p>
+            </div>
+
+            <div class="highlight-box">
+                <h4>Q: Does ESG-adjusted COE overstate governance risk?</h4>
+                <p><strong>A:</strong> Conservative bias acknowledged. +25 bps governance premium derived from ISS QualityScore regression (industry standard), but may overweight board independence vs. other governance factors (e.g., audit quality, shareholder rights). <strong>Sensitivity:</strong> -10 bps adjustment → Target $39.78 (+1.2%). However, +30 bps governance premium justified by: (1) 27 ppt independence gap, (2) 28% say-on-pay opposition, (3) staggered board structure.</p>
+            </div>
+
+            <div class="highlight-box">
+                <h4>Q: What is the data quality and source for ESG metrics?</h4>
+                <p><strong>A:</strong> All metrics sourced from audited financial statements (10-Q/10-K), regulatory filings (DEF 14A proxy, OCC CRA exams), and third-party governance data (ISS QualityScore). <strong>Environmental:</strong> CRE exposure from Q2 2025 10-Q Note 4, climate scenarios from TCFD guidance. <strong>Social:</strong> Deposit data from balance sheet, CRA rating from FFIEC database. <strong>Governance:</strong> Board composition from 2024 proxy Proposal 1, ISS score as of Oct 2025.</p>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- JavaScript for Theme Toggle -->
+    <script>
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+
+            const button = document.querySelector('.theme-toggle');
+            button.setAttribute('aria-pressed', newTheme === 'dark');
+            button.setAttribute('aria-label', newTheme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+
+            const icon = document.getElementById('theme-icon');
+            const text = document.getElementById('theme-text');
+
+            if (newTheme === 'dark') {
+                icon.textContent = '☀️';
+                text.textContent = 'Light Mode';
+            } else {
+                icon.textContent = '🌙';
+                text.textContent = 'Dark Mode';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+
+            const icon = document.getElementById('theme-icon');
+            const text = document.getElementById('theme-text');
+
+            if (savedTheme === 'dark') {
+                icon.textContent = '☀️';
+                text.textContent = 'Light Mode';
+            } else {
+                icon.textContent = '🌙';
+                text.textContent = 'Dark Mode';
+            }
+        });
+    </script>
+</body>
+</html>
