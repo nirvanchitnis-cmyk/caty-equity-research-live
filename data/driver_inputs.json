@@ -1,0 +1,47 @@
+{
+  "nco": {
+    "threshold_bps": 45.8,
+    "last_quarter_bps": 21.73,
+    "through_cycle_bps": 42.8,
+    "last_updated": "2025-10-18T00:00:00Z",
+    "source": "data/fdic_nco_history.json"
+  },
+  "deposit_beta": {
+    "rolling_3m": 0.35,
+    "threshold": 0.45,
+    "nib_mix_pct": 27.0,
+    "nib_mix_year_change_bps": -120,
+    "nib_mix_threshold_bps": -200,
+    "last_updated": "2025-10-18T00:00:00Z",
+    "source": "CATY_05_nim_decomposition.html"
+  },
+  "regression": {
+    "cooks_distance": {
+      "EWBC": 0.35,
+      "CVBF": 0.28,
+      "HAFC": 0.41,
+      "COLB": 4.03
+    },
+    "threshold": 1.0,
+    "last_updated": "2025-10-18T00:00:00Z",
+    "source": "analysis/extract_peer_metrics.py"
+  },
+  "probability_weights": {
+    "wilson_success_prob": 0.74,
+    "wilson_tail_prob": 0.26,
+    "market_implied_below_prob": 0.609,
+    "divergence_threshold": 0.40,
+    "monte_carlo_tail_prob": 0.35,
+    "last_updated": "2025-10-18T00:00:00Z",
+    "source": "analysis/probability_weighted_valuation.py"
+  },
+  "esg": {
+    "coe_premium_bps": 25,
+    "climate_bps": 20,
+    "governance_bps": 30,
+    "social_bps": -25,
+    "valuation_impact": -1.47,
+    "last_updated": "2025-10-18T00:00:00Z",
+    "source": "analysis/esg_kpi_dashboard.py"
+  }
+}

@@ -8,6 +8,16 @@ Institutional-grade equity research report analyzing Cathay General Bancorp with
 - **12 Data Pages**: Detailed financial analysis modules
 - **Appendix Index**: [APPENDIX_INDEX.md](APPENDIX_INDEX.md) – navigation for all supplemental evidence
 
+### 🔁 Build & Automation Workflow
+
+| Task | Command | Purpose |
+|------|---------|---------|
+| Regenerate site sections | `python3 scripts/build_site.py` | Rebuilds the valuation reconciliation dashboard, module navigation, and evidence provenance table from canonical JSON sources; appends status to `logs/automation_run.log`. |
+| Reconciliation guard | `python3 analysis/reconciliation_guard.py` | Verifies published targets (README/index) match script outputs within ±$0.50 tolerance before commit. |
+| Driver disconfirmer | `python3 analysis/disconfirmer_monitor.py` | Validates NCO, deposit beta, regression diagnostics, probability divergence, and ESG COE premium; exit code ≠ 0 blocks deployment until remediated. |
+
+All three steps must succeed (exit code 0) before pushing to `origin-live/main` or publishing updates.
+
 ### Data Pages
 1. [Company Profile](CATY_01_company_profile.html) (CATY_01) - Entity metadata, auditor, segments
 2. [Income Statement](CATY_02_income_statement.html) (CATY_02) - Q2'25 and FY2024 with NIM, efficiency, EPS
@@ -26,7 +36,7 @@ Institutional-grade equity research report analyzing Cathay General Bancorp with
 
 ### **HOLD Rating** - Expected Price: **$51.74 (+12.8%)**
 
-**Current Price:** $45.87 (October 18, 2025)
+**Current Price:** $45.89 (October 18, 2025)
 **Wilson 95% Bounds:** 74/26 probability split validates HOLD
 
 #### Key Findings:
@@ -63,7 +73,7 @@ Institutional-grade equity research report analyzing Cathay General Bancorp with
 | **Normalization (Through-Cycle)** | 42.8 | 10.21% | 1.087x | **$39.32** | **-14.3%** | **26%** |
 
 **Final Rating:** HOLD at Expected Price **$51.74 (+12.8%)**, supported by multiple independent frameworks:
-- **Wilson 95%:** 74% × $56.11 + 26% × $39.32 = **$51.74** (+12.8% vs $45.87 spot)
+- **Wilson 95%:** 74% × $56.11 + 26% × $39.32 = **$51.74** (+12.8% vs $45.89 spot)
 - **IRC Triangulation:** 60% RIM ($50.08) + 10% Gordon Growth ($39.32) + 30% Relative ($56.11) = **$51.39** (+12.0%)
 - **Monte Carlo Median:** **$48.92** (+6.6%), 95% CI $37.21-$62.18 with 32.1% downside probability
 
@@ -153,7 +163,7 @@ Total: 14 files (~648K)
 | Metric | Value | Source |
 |--------|-------|--------|
 | **Valuation** | | |
-| Current Price | $45.87 | Oct 18, 2025 |
+| Current Price | $45.89 | Oct 18, 2025 |
 | Wilson Expected Price | $51.74 | Wilson 95% (74/26) |
 | IRC Blended Target | $51.39 | 60% RIM / 10% Gordon / 30% Relative |
 | RIM Target | $50.08 | Residual Income Model |

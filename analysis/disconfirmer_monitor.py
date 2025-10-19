@@ -5,28 +5,32 @@ Monitors key drivers and raises alerts when assumptions invalidated
 """
 
 import json
-import csv
 import sys
 from pathlib import Path
-from datetime import datetime
+from datetime import datetime, timezone
 
 # Paths
 base_dir = Path(__file__).parent.parent
-market_data = base_dir / 'data' / 'market_data_current.json'
-nco_history = base_dir / 'data' / 'fdic_nco_history.json'
+log_path = base_dir / 'logs' / 'automation_run.log'
+market_data_path = base_dir / 'data' / 'market_data_current.json'
+nco_history_path = base_dir / 'data' / 'fdic_nco_history.json'
+driver_inputs_path = base_dir / 'data' / 'driver_inputs.json'
 
-# Load market data
-with open(market_data, 'r') as f:
+with open(market_data_path, 'r', encoding='utf-8') as f:
     data = json.load(f)
 
 # Load NCO history
-with open(nco_history, 'r') as f:
+with open(nco_history_path, 'r', encoding='utf-8') as f:
     nco_data = json.load(f)
+
+# Load driver inputs
+with open(driver_inputs_path, 'r', encoding='utf-8') as f:
+    driver_inputs = json.load(f)
 
 print("=" * 70)
 print("DISCONFIRMER MONITORING - Driver Invalidation Check")
 print("=" * 70)
-print(f"Run Time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S PT')}")
+print("Run Time: {}".format(datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')))
 print()
 
 # Track alert count
@@ -38,12 +42,13 @@ alerts = []
 print("1. THROUGH-CYCLE NCO NORMALIZATION")
 print("-" * 70)
 
-current_nco = nco_data['values'][-1]  # Latest quarter
-threshold_nco = 45.8  # 42.8 + 3.0 CRE premium
+current_nco = float(nco_data['values'][-1])  # Latest quarter
+nco_inputs = driver_inputs['nco']
+threshold_nco = float(nco_inputs['threshold_bps'])
 
 print(f"   Current NCO (Q2 2025): {current_nco:.2f} bps")
 print(f"   Threshold: {threshold_nco:.2f} bps")
-print(f"   Through-Cycle Assumption: 42.8 bps")
+print(f"   Through-Cycle Assumption: {nco_inputs['through_cycle_bps']:.1f} bps")
 
 if current_nco > threshold_nco:
     alert = f"❌ ALERT: NCO {current_nco:.2f} bps exceeds threshold {threshold_nco:.2f} bps"
@@ -61,15 +66,17 @@ print()
 print("2. DEPOSIT BETA TRAJECTORY")
 print("-" * 70)
 
-# Placeholder - would read from quarterly data
-current_beta = 0.35  # Hardcoded for now, would pull from data
-threshold_beta = 0.45
-nib_mix = 27.0  # Current NIB %
-nib_threshold_drop = 200  # bps YoY decline
+deposit_inputs = driver_inputs['deposit_beta']
+current_beta = float(deposit_inputs['rolling_3m'])
+threshold_beta = float(deposit_inputs['threshold'])
+nib_mix = float(deposit_inputs['nib_mix_pct'])
+nib_change = float(deposit_inputs['nib_mix_year_change_bps'])
+nib_threshold_drop = float(deposit_inputs['nib_mix_threshold_bps'])
 
 print(f"   Current Beta: {current_beta:.2f}")
 print(f"   Threshold: {threshold_beta:.2f}")
 print(f"   NIB Mix: {nib_mix:.1f}%")
+print(f"   YoY NIB Δ: {nib_change:+.0f} bps (threshold {nib_threshold_drop:+.0f} bps)")
 
 if current_beta > threshold_beta:
     alert = f"❌ ALERT: Deposit beta {current_beta:.2f} exceeds threshold {threshold_beta:.2f}"
@@ -79,6 +86,12 @@ if current_beta > threshold_beta:
 else:
     print(f"   ✅ PASS: Deposit beta within tolerance")
 
+if nib_change < nib_threshold_drop:
+    alert = f"❌ ALERT: NIB mix change {nib_change:+.0f} bps worse than threshold {nib_threshold_drop:+.0f} bps"
+    alerts.append(alert)
+    print(f"   {alert}")
+    print("   ACTION: Refresh funding mix assumptions and liquidity plan")
+
 print()
 
 # ============================================================
@@ -87,16 +100,20 @@ print()
 print("3. ROTE vs P/TBV REGRESSION (PEER POSITIONING)")
 print("-" * 70)
 
-# Placeholder - would calculate Cook's D from peer data
-cooks_d_threshold = 1.0
-colb_cooks_d = 4.03  # Known outlier
+regression_inputs = driver_inputs['regression']
+cooks_d_threshold = float(regression_inputs['threshold'])
+cooks_distance = regression_inputs['cooks_distance']
+max_peer = max(cooks_distance, key=lambda k: cooks_distance[k])
+max_value = float(cooks_distance[max_peer])
 
 print(f"   Cook's Distance Threshold: {cooks_d_threshold:.2f}")
-print(f"   COLB Cook's D: {colb_cooks_d:.2f}")
+print(f"   Largest Cook's D: {max_peer} @ {max_value:.2f}")
 
-if colb_cooks_d > cooks_d_threshold:
-    print(f"   ⚠️  WARNING: COLB is high outlier (Cook's D={colb_cooks_d:.2f})")
-    print(f"   NOTE: Retained for sample size, but monitor")
+if max_value > cooks_d_threshold:
+    alert = f"⚠️  WARNING: {max_peer} Cook's D={max_value:.2f} exceeds threshold {cooks_d_threshold:.2f}"
+    alerts.append(alert)
+    print(f"   {alert}")
+    print("   ACTION: Recalculate regression excluding outlier and document impact")
 else:
     print(f"   ✅ PASS: No high outliers detected")
 
@@ -108,10 +125,11 @@ print()
 print("4. PROBABILITY WEIGHTING RECONCILIATION")
 print("-" * 70)
 
-wilson_tail = 0.26  # 26% tail probability
-market_impl_tail = 0.609  # 60.9% probability below spot
+prob_inputs = driver_inputs['probability_weights']
+wilson_tail = float(prob_inputs['wilson_tail_prob'])
+market_impl_tail = float(prob_inputs['market_implied_below_prob'])
 divergence = abs(wilson_tail - market_impl_tail)
-divergence_threshold = 0.40  # Alert if >40 ppts divergence
+divergence_threshold = float(prob_inputs['divergence_threshold'])
 
 print(f"   Wilson Tail Probability: {wilson_tail * 100:.1f}%")
 print(f"   Market-Implied (below spot): {market_impl_tail * 100:.1f}%")
@@ -134,8 +152,9 @@ print()
 print("5. ESG DISCOUNT / COE PREMIUM")
 print("-" * 70)
 
-esg_coe_premium = 0.0025  # 25 bps (20 climate + 30 governance - 25 social)
-esg_valuation_impact = -1.47  # $/share
+esg_inputs = driver_inputs['esg']
+esg_coe_premium = float(esg_inputs['coe_premium_bps']) / 10000.0
+esg_valuation_impact = float(esg_inputs['valuation_impact'])
 
 print(f"   ESG COE Premium: {esg_coe_premium * 10000:.0f} bps")
 print(f"   ESG Valuation Impact: ${esg_valuation_impact:.2f}/share")
@@ -151,14 +170,24 @@ print("=" * 70)
 print("MONITORING SUMMARY")
 print("=" * 70)
 
-if len(alerts) > 0:
+status_code = 1 if alerts else 0
+
+def append_log(message: str) -> None:
+    log_path.parent.mkdir(parents=True, exist_ok=True)
+    timestamp = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')
+    with log_path.open('a', encoding='utf-8') as fh:
+        fh.write(f"[{timestamp}] {message}\n")
+
+if alerts:
     print(f"\n🚨 {len(alerts)} ALERT(S) TRIGGERED:\n")
     for i, alert in enumerate(alerts, 1):
         print(f"   {i}. {alert}")
     print()
     print("Exit Code: 1 (THRESHOLDS BREACHED)")
-    sys.exit(1)
+    append_log(f"disconfirmer_monitor.py status=FAIL alerts={len(alerts)}")
+    sys.exit(status_code)
 else:
     print("\n✅ ALL DRIVERS WITHIN TOLERANCE")
     print("Exit Code: 0 (MONITORING PASS)")
-    sys.exit(0)
+    append_log("disconfirmer_monitor.py status=PASS alerts=0")
+    sys.exit(status_code)

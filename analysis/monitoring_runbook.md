@@ -84,8 +84,13 @@ THEN rating = BUY
    - Validates published numbers match script outputs
    - Must pass (exit code 0) before committing
    - If fails, fix discrepancies in README.md/index.html
-6. Git commit with timestamp
-7. Push to GitHub
+6. **Regenerate site sections:** `python3 scripts/build_site.py`
+   - Rebuilds valuation dashboard, module navigation, and evidence provenance table from JSON sources
+   - Appends run status to `logs/automation_run.log`
+7. **Execute disconfirmer monitor:** `python3 analysis/disconfirmer_monitor.py`
+   - Exit code ≠ 0 means a driver breached threshold—remediate and rerun before publishing
+8. Git commit with timestamp
+9. Push to GitHub
 
 ### Step 7: Notification
 **If rating changes:**

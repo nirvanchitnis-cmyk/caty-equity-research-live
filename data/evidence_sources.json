@@ -1,0 +1,36 @@
+{
+  "sources": [
+    {
+      "id": "fdic_nco",
+      "path": "evidence/raw/fdic_CATY_NTLNLSCOQR_timeseries.csv",
+      "description": "FDIC Call Report NCO timeseries (CATY)",
+      "accession": "FDIC API (NTLNLSCOQR)",
+      "owner": "Credit Analytics",
+      "refresh_frequency": "Quarterly"
+    },
+    {
+      "id": "caty_10q_q2_2025",
+      "path": "evidence/raw/CATY_2025Q2_10Q.pdf",
+      "description": "CATY 10-Q Q2 2025",
+      "accession": "0001437749-25-025772",
+      "owner": "Financial Reporting",
+      "refresh_frequency": "Quarterly"
+    },
+    {
+      "id": "caty_10k_2024",
+      "path": "evidence/raw/CATY_2024_10K.pdf",
+      "description": "CATY 10-K FY 2024",
+      "accession": "0001437749-25-005749",
+      "owner": "Financial Reporting",
+      "refresh_frequency": "Annual"
+    },
+    {
+      "id": "peer_metrics",
+      "path": "evidence/raw/peer_regression_inputs.csv",
+      "description": "Peer regression inputs (CATY, EWBC, CVBF, HAFC, COLB)",
+      "accession": "FactSet Extract 2025-10-17",
+      "owner": "Peer Analytics",
+      "refresh_frequency": "Quarterly"
+    }
+  ]
+}
