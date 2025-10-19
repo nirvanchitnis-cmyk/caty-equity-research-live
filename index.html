@@ -1288,7 +1288,7 @@
             <h3>8.7 Conclusion</h3>
             <p><strong>SELL:</strong> Empirical through-cycle NCO of 42.8 bps reduces normalized ROTE to 10.40%, mapping to 1.115x P/TBV and $40.32 fair value (vs $45.89 current). Multiple and price imply 13.8% and 12.1% downside, respectively. Scenario framing preserves transparency: Bull/Hold at $46.02 (25 bps NCO) and Bear/Sell at $34.75 (60 bps).</p>
 
-            <p><strong>Statistical Note:</strong> P/TBV mapping calibrated using n=4 clean-peer regression (slope 0.124, t=6.5, p=0.023, Adj R²=0.932). Peer expansion attempted but collapsed due to data quality issues (see Section 8.2). Target price $40.32 is directionally robust but subject to statistical uncertainty from small sample; confidence interval [0.042, 0.207] on slope implies fair value range $37-42. Monte Carlo simulation (69% overvaluation probability) provides additional conviction for SELL rating.</p>
+            <p><strong>Statistical Note:</strong> P/TBV mapping calibrated using n=4 clean-peer regression (slope 0.124, t=6.5, p=0.023, Adj R²=0.932). Peer expansion attempted but collapsed due to data quality issues (see Section 8.2). Target price $40.32 is directionally robust but subject to statistical uncertainty from small sample; confidence interval [0.042, 0.207] on slope implies fair value range $37-42. Monte Carlo simulation (69% overvaluation probability) provides additional conviction for HOLD rating.</p>
         </section>
 
         <!-- ======================================== -->
@@ -1819,7 +1819,7 @@
                 <li><strong>FY2025E EPS $4.448:</strong> Implies -10.3% decline vs FY2024 actual $4.96 (LTM EPS $4.25). Consensus expects revenue pressure from NIM compression and/or elevated credit provisioning.</li>
                 <li><strong>FY2026E EPS $5.032:</strong> Recovery scenario with +13.1% YoY growth, implying forward P/E 9.1x (cheap vs LTM 10.8x). Suggests Street expects H2'25 headwinds to abate by 2026.</li>
                 <li><strong>Q3'25E EPS $1.154:</strong> +4.9% vs Q2'25 actual $1.10, indicating modest sequential improvement expected.</li>
-                <li><strong>Valuation Context:</strong> FY2026E P/E 9.1x appears attractive on headline basis, but our SELL rating reflects P/TBV overvaluation (1.269x vs fair 1.115x) driven by provision normalization to through-cycle NCO 42.8 bps.</li>
+                <li><strong>Valuation Context:</strong> FY2026E P/E 9.1x appears attractive on headline basis, but our HOLD rating reflects P/TBV overvaluation (1.269x vs fair 1.115x) driven by provision normalization to through-cycle NCO 42.8 bps.</li>
             </ul>
 
             <p><strong>Limitations:</strong> FactSet data provided as point estimates only (mean consensus); analyst coverage count, estimate ranges (high/low), and revision trends not available in source files. For institutional-grade analysis, recommend supplementing with Bloomberg, CapIQ, or direct broker research for estimate distribution and revision momentum.</p>
@@ -1987,7 +1987,7 @@
                 </tbody>
             </table>
 
-            <p><strong>Scenario Takeaway:</strong> Base case implies -12.1% downside to $40.32; bull case is +0.3% to $46.02; bear case -24.3% to $34.75. Framework supports a <strong>SELL</strong> rating pending evidence of structurally lower credit costs or meaningfully higher ROTE.</p>
+            <p><strong>Scenario Takeaway:</strong> Base case implies -12.1% downside to $40.32; bull case is +0.3% to $46.02; bear case -24.3% to $34.75. Framework supports a <strong>HOLD</strong> rating pending evidence of structurally lower credit costs or meaningfully higher ROTE.</p>
         </section>
 
         <!-- ======================================== -->
@@ -2006,7 +2006,7 @@
             </p>
             <img src="assets/monte_carlo_pt_distribution.png" alt="Monte Carlo fair value distribution" style="max-width: 100%; height: auto; border: 1px solid #ddd;" />
             <p><strong>Results:</strong> Mean $40.47; Median $40.16; 5th percentile $26.06; 95th percentile $56.36; <strong>Probability(Fair Value &gt; $45.89) = 31.1%</strong>.</p>
-            <p><strong>Interpretation:</strong> <strong>69% probability that CATY is overvalued</strong> represents high-confidence SELL conviction. The 31% right-tail probability reflects a legitimate bull case where recent benign credit trends (2020-2024 avg NCO 9.3 bps) continue and/or market assigns lower risk premium (COE 9.0-9.2%) due to superior credit quality. This upside scenario would normalize ROTE to 11.8%+ and justify fair value $47-50. The base case (42.8 bps through-cycle NCO) remains our primary view given inclusion of GFC stress in historical data.</p>
+            <p><strong>Interpretation:</strong> <strong>69% probability that CATY is overvalued</strong> represents high-confidence HOLD conviction. The 31% right-tail probability reflects a legitimate bull case where recent benign credit trends (2020-2024 avg NCO 9.3 bps) continue and/or market assigns lower risk premium (COE 9.0-9.2%) due to superior credit quality. This upside scenario would normalize ROTE to 11.8%+ and justify fair value $47-50. The base case (42.8 bps through-cycle NCO) remains our primary view given inclusion of GFC stress in historical data.</p>
             <p><strong>Reproducibility:</strong> Generated by <code>scripts/monte_carlo_valuation.py</code> from <code>12_valuation_model.json</code> inputs. All parameters empirically calibrated to avoid arbitrary variance assumptions.</p>
         </section>
 
@@ -2180,7 +2180,7 @@
             <h2>Investment Recommendation</h2>
 
             <div class="investment-summary">
-                <h3>Rating: <span class="rating-badge rating-sell">SELL</span></h3>
+                <h3>Rating: <span class="rating-badge rating-hold" style="background: #ffa500;">HOLD</span></h3>
                 <h3>Fair Value: $40.32 (P/TBV 1.115x)</h3>
                 <h3>Current Price: $45.89 (As of Oct 17, 2025)</h3>
                 <h3>Downside to Fair Value: -12.1%</h3>
@@ -2293,9 +2293,9 @@
 
             <h3>Methodology Documentation</h3>
             <ul>
-                <li><a href="file:///Users/nirvanchitnis/Desktop/Agents_Terminal_Core/EWBC_readout/tmp/DEPOSIT_BETA_METHODOLOGY.md" target="_blank" rel="noopener noreferrer">DEPOSIT_BETA_METHODOLOGY.md</a> - Beta calculation framework (IB-only vs All-in, cycle anchors)</li>
-                <li><a href="file:///Users/nirvanchitnis/Desktop/Agents_Terminal_Core/EWBC_readout/tmp/VERIFICATION_GATING_SYSTEM.md" target="_blank" rel="noopener noreferrer">VERIFICATION_GATING_SYSTEM.md</a> - Data quality controls and blocking rules</li>
-                <li><a href="file:///Users/nirvanchitnis/Desktop/Agents_Terminal_Core/EWBC_readout/tmp/QA_SUMMARY_PHASE1A.md" target="_blank" rel="noopener noreferrer">QA_SUMMARY_PHASE1A.md</a> - Phase 1A quality assurance results</li>
+                <li><a href="" target="_blank" rel="noopener noreferrer">DEPOSIT_BETA_METHODOLOGY.md</a> - Beta calculation framework (IB-only vs All-in, cycle anchors)</li>
+                <li><a href="" target="_blank" rel="noopener noreferrer">VERIFICATION_GATING_SYSTEM.md</a> - Data quality controls and blocking rules</li>
+                <li><a href="" target="_blank" rel="noopener noreferrer">QA_SUMMARY_PHASE1A.md</a> - Phase 1A quality assurance results</li>
             </ul>
 
             <h3>Key Assumptions & Sensitivities</h3>
@@ -2355,7 +2355,7 @@
                 <li><strong>Criticized/Classified Loans:</strong> Not disclosed in Q2'25 10-Q; using FY2024 10-K as proxy</li>
             </ul>
 
-            <p><strong>Impact:</strong> Disclosure gaps create uncertainty around tail risks (CRE property-type stress, rate shock) and limit precision of downside scenario analysis. Conservative investors may require additional disclosure before accumulating positions. SELL thesis proceeds using total CRE concentration (52.4%) + through-cycle NCO normalization.</p>
+            <p><strong>Impact:</strong> Disclosure gaps create uncertainty around tail risks (CRE property-type stress, rate shock) and limit precision of downside scenario analysis. Conservative investors may require additional disclosure before accumulating positions. HOLD thesis proceeds using total CRE concentration (52.4%) + through-cycle NCO normalization.</p>
 
             <h3>Report Conclusion</h3>
             <p><strong>Cathay General Bancorp (CATY) is overvalued at current levels ($45.89, 1.269x P/TBV) versus empirical fair value $40.32 (1.115x).</strong> Using a through‑cycle NCO of 42.8 bps, normalized ROTE is 10.40%, implying 12.1% downside. While the bull case ($46.02) is plausible under a 25 bps NCO assumption, we view it as optimistic into a potential recession. <strong>Rating: SELL.</strong></p>
