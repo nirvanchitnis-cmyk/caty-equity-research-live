@@ -1251,44 +1251,41 @@
                         <th class="text-right">P/TBV</th>
                         <th class="text-right">Target Price</th>
                         <th class="text-right">vs $45.89</th>
-                        <th>Rating</th>
+                        <th class="text-right">Prob Weight</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Bull</td>
+                        <td>Bull (Regression)</td>
                         <td class="text-right">25</td>
                         <td class="text-right">11.52%</td>
                         <td class="text-right">1.273x</td>
-                        <td class="text-right">$46.02</td>
-                        <td class="text-right text-success">+0.3%</td>
-                        <td>HOLD</td>
+                        <td class="text-right">$56.42</td>
+                        <td class="text-right text-success">+23.0%</td>
+                        <td class="text-right"><strong>74%</strong></td>
                     </tr>
                     <tr class="target-company">
-                        <td><strong>BASE</strong></td>
+                        <td><strong>BASE (Normalization)</strong></td>
                         <td class="text-right"><strong>42.8</strong></td>
                         <td class="text-right"><strong>10.40%</strong></td>
                         <td class="text-right"><strong>1.115x</strong></td>
-                        <td class="text-right"><strong>$40.32</strong></td>
-                        <td class="text-right text-danger"><strong>-12.1%</strong></td>
-                        <td><strong>HOLD</strong></td>
+                        <td class="text-right"><strong>$39.32</strong></td>
+                        <td class="text-right text-danger"><strong>-14.3%</strong></td>
+                        <td class="text-right"><strong>26%</strong></td>
                     </tr>
                     <tr>
-                        <td>Bear</td>
-                        <td class="text-right">60</td>
-                        <td class="text-right">9.31%</td>
-                        <td class="text-right">0.961x</td>
-                        <td class="text-right">$34.75</td>
-                        <td class="text-right text-danger">-24.3%</td>
-                        <td>HOLD</td>
+                        <td colspan="5" style="text-align: right; padding-top: 12px;"><strong>Wilson 95% Expected Value:</strong></td>
+                        <td class="text-right" style="padding-top: 12px;"><strong>$51.97</strong></td>
+                        <td class="text-right text-success" style="padding-top: 12px;"><strong>+13.3%</strong></td>
                     </tr>
                 </tbody>
             </table>
+            <p style="margin-top: 12px; font-size: 0.95em; color: #999;"><strong>Final Rating: HOLD</strong> (Expected return +13.3% within -10% to +15% band). Bear case omitted for clarity.</p>
 
             <h3>8.7 Conclusion</h3>
             <p><strong>HOLD:</strong> Wilson 95% confidence bounds (74/26 probability split) yield expected price $51.97 vs current $45.87 = +13.3% return, just below +15% BUY threshold. Regression at current earnings implies $56.42 (+23%), while through-cycle normalization implies $39.32 (-14%). Statistical uncertainty validates conservative stance pending Q3 data.</p>
 
-            <p><strong>Statistical Note:</strong> Wilson 95% upper bound (26% tail probability) derived from FDIC 166-quarter breach analysis (0% post-2014). Auto-upgrade to BUY if tail drops below 21.5%. Monitoring protocol: Rerun after Q3 earnings (Oct 28), update confidence intervals, apply rating policy thresholds. See evidence/probability_dashboard.md for complete framework.</p>
+            <p><strong>Statistical Note:</strong> Wilson 95% upper bound (26% tail probability) derived from FDIC 166-quarter breach analysis (0% post-2014). Auto-upgrade to BUY if tail drops below 21.5%. Monitoring protocol: Rerun after Q3 earnings (Oct 21, 2025), update confidence intervals, apply rating policy thresholds. See evidence/probability_dashboard.md for complete framework.</p>
         </section>
 
         <!-- ======================================== -->

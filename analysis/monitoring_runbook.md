@@ -1,7 +1,7 @@
 # Monitoring Runbook - Post-Q3 Earnings
 
 **Event:** Q3 2025 Earnings Release
-**Expected Date:** October 28, 2025
+**Expected Date:** October 21, 2025 (after market close)
 **Owner:** Derek review desk
 
 ---
@@ -22,7 +22,9 @@
 
 ## Post-Earnings Execution
 
-**Timing:** October 28, 2025 (within 2 hours of earnings release)
+**Timing:** October 21, 2025 (after market close)
+
+**CRITICAL NOTE:** FDIC Q3 data will NOT be available until late November (~55 days after Sept 30). Use 10-Q reported NCO initially.
 
 ### Step 1: Data Collection
 - Download Q3 2025 10-Q from SEC EDGAR
@@ -109,5 +111,5 @@ THEN rating = BUY
 
 ---
 
-**Next Execution:** October 28, 2025 (post Q3 earnings)
+**Next Execution:** October 21, 2025 (after market close, post Q3 earnings)
 **Generated:** 2025-10-19 05:52 PT

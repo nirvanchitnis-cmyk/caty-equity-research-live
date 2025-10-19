@@ -1,7 +1,7 @@
 # Probability Dashboard
 
 **Last Updated:** October 19, 2025, 05:40 PT
-**Next Update:** Post-Q3 earnings (Oct 28, 2025)
+**Next Update:** Post-Q3 earnings (Oct 21, 2025 after market close)
 
 ## Current Probability Estimates
 
@@ -38,7 +38,7 @@ Market appears **excessively pessimistic** relative to FDIC breach history (0% p
 - Flag if spread widens >50 ppts
 
 **Owner:** Derek review desk
-**Next Execution:** October 28, 2025 (post-Q3 earnings)
+**Next Execution:** October 21, 2025 (after market close, post-Q3 earnings)
 
 ---
 

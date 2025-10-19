@@ -9,7 +9,7 @@
 
 | Timing | Catalyst | Evidence To Capture | Thesis Impact |
 |--------|----------|---------------------|---------------|
-| ~Oct 28 2025 (est.) | Q3'25 earnings release & call | 10-Q, transcript, slide deck (if issued) | Update provision trajectory, deposit beta guidance, CRE commentary |
+| Oct 21 2025 (after market close) | Q3'25 earnings release & call | 10-Q, transcript, slide deck (if issued) | Update provision trajectory, deposit beta guidance, CRE commentary. FDIC data lags ~55 days. |
 | Week of Nov 10 2025 | Fed Senior Loan Officer Opinion Survey | Survey PDF (CRE, C&I, lending standards) | If CRE underwriting is tightening, increases probability of normalization scenario |
 | Nov 2025 | FDIC SDI data refresh (Q3 2025 call report) | Download RC-C & charge-off schedules | Re-baseline CRE balances, owner-occupied mix |
 | Late Nov 2025 | KBW / Piper investor conferences | Speaker remarks or deck | Any public commitment to de-risk CRE would lower normalization probability |

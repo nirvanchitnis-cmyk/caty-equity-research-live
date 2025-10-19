@@ -32,7 +32,7 @@ Example (Oct-19-2025):
 ## Monitoring & Trigger Cadence
 
 - **Quarterly:** Refresh FDIC NCO data and recompute Wilson bounds.
-- **Earnings (next: Oct-28-2025):** Update management guidance, CRE delinquency trends, reserve build.
+- **Earnings (next: Oct-21-2025, after market close):** Update management guidance, CRE delinquency trends, reserve build.
 - **Monthly:** Track market-implied probabilities via spot price reconciliation.
 - **Kill-Switches:**
   - Tail scenario triggered if CET1 buffer < 120 bps or NCO > 35 bps for two consecutive quarters.

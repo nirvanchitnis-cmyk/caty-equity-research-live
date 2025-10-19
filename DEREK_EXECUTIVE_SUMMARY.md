@@ -486,7 +486,7 @@ Based on Derek's standards, these sections MUST be present and were built:
 | 60 | Bear | 9.31% | 0.961x | $34.75 | -24.3% | Bear downside |
 
 **Takeaway:** Target is highly sensitive to NCO assumption. 10 bps NCO = ~$0.90 price impact.
-**Final Rating:** HOLD at $51.97 (+13.3%), calculated as Wilson 95% weighted average (74% × $56.42 + 26% × $40.32).
+**Final Rating:** HOLD at $51.97 (+13.3%), calculated as Wilson 95% weighted average (74% × $56.42 + 26% × $39.32).
 
 ---
 
