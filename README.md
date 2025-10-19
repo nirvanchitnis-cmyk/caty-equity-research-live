@@ -55,11 +55,15 @@ Institutional-grade equity research report analyzing Cathay General Bancorp with
 - **Assumptions:** COE 9.587%, g 2.5%, tax 20%
 
 #### Three Scenarios:
-| Scenario | NCO (bps) | ROTE | P/TBV | Target | vs Spot | Rating | Prob |
-|----------|-----------|------|-------|--------|---------|--------|------|
-| **Bull** | 25 | 11.52% | 1.273x | $46.02 | +0.3% | HOLD | 25% |
-| **Base** | 42.8 | 10.40% | 1.115x | **$40.32** | **-12.1%** | **SELL** | **60%** |
-| **Bear** | 60 | 9.31% | 0.961x | $34.75 | -24.3% | SELL | 15% |
+| Scenario | NCO (bps) | ROTE | P/TBV | Target | vs Spot | Prob |
+|----------|-----------|------|-------|--------|---------|------|
+| **Bull** | 25 | 11.52% | 1.273x | $46.02 | +0.3% | 25% |
+| **Base** | 42.8 | 10.40% | 1.115x | **$40.32** | **-12.1%** | **60%** |
+| **Bear** | 60 | 9.31% | 0.961x | $34.75 | -24.3% | 15% |
+
+**Final Rating:** HOLD at Expected Price **$51.97 (+13.3%)**, calculated as Wilson 95% probability-weighted average:
+- 74% × Bull/Regression ($56.42) + 26% × Base/Normalization ($40.32) = **$51.97**
+- Expected return +13.3% falls within HOLD band (-10% to +15%)
 
 ## 🔧 Technical Details
 

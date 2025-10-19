@@ -1,6 +1,6 @@
 # EVIDENCE DOCUMENTATION - CATY EQUITY RESEARCH
 
-**Project:** Cathay General Bancorp (CATY) SELL Thesis
+**Project:** Cathay General Bancorp (CATY) Equity Research - HOLD Rating (Wilson 95% Framework)
 **Analyst:** Nirvan Chitnis
 **Last Updated:** October 19, 2025
 

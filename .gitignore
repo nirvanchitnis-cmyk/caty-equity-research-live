@@ -1,0 +1,30 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Backup files
+*.bak
+*.final
+*.final2
+*.tmp
+
+# Push scripts (keep in local only)
+push_*.sh
+*_push.sh
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Evidence archive (historical session docs)
+evidence/archive/
