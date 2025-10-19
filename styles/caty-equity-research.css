@@ -1257,3 +1257,52 @@ a:hover {
         margin: 20px 0;
     }
 }
+
+/* ============================================================
+   ACCESSIBILITY - Focus States
+   ============================================================ */
+
+/* Focus visible for all interactive elements */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+    outline: 2px solid var(--cathay-gold);
+    outline-offset: 2px;
+    border-radius: 3px;
+}
+
+/* Enhanced focus for theme and TOC toggle buttons */
+.theme-toggle:focus-visible,
+.toc-toggle-button:focus-visible {
+    outline: 3px solid var(--cathay-gold);
+    outline-offset: 3px;
+}
+
+/* Focus for links */
+a:focus-visible {
+    outline-color: var(--link-color);
+    text-decoration: underline;
+}
+
+/* Focus for module cards */
+.module-card-link:focus-visible,
+.dashboard-card:focus-visible {
+    outline: 2px solid var(--cathay-gold);
+    outline-offset: 4px;
+    transform: translateY(-2px);
+}
+
+/* Ensure focus is visible in dark mode */
+[data-theme="dark"] a:focus-visible,
+[data-theme="dark"] button:focus-visible,
+[data-theme="dark"] input:focus-visible {
+    outline-color: var(--cathay-gold);
+}
+
+/* Remove default outline (replaced by custom focus-visible) */
+*:focus:not(:focus-visible) {
+    outline: none;
+}

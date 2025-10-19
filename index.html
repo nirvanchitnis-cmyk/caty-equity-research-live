@@ -9,8 +9,9 @@
 </head>
 <body>
     <!-- Theme Toggle -->
-    <button class="theme-toggle" onclick="toggleTheme()">
-        <span id="theme-icon">🌙</span> <span id="theme-text">Dark Mode</span>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" aria-pressed="false">
+        <span id="theme-icon" aria-hidden="true">🌙</span>
+        <span id="theme-text">Dark Mode</span>
     </button>
 
     <!-- Table of Contents Navigation -->
@@ -36,7 +37,7 @@
     </nav>
 
     <!-- TOC Toggle Button -->
-    <button onclick="toggleTOC()" class="toc-toggle-button">
+    <button onclick="toggleTOC()" class="toc-toggle-button" aria-label="Toggle table of contents" aria-expanded="true">
         ☰
     </button>
 
