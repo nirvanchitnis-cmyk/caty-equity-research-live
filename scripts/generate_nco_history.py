@@ -30,8 +30,9 @@ with open(csv_path, 'r') as f:
 
         # Filter for post-2008
         if rep_date >= start_date:
-            # Convert to basis points (multiply by 10000)
-            nco_bps = nco_rate * 10000
+            # Convert to basis points (FDIC reports as percent, so multiply by 100)
+            # Example: 0.1813% → 18.13 bps
+            nco_bps = nco_rate * 100
 
             # Format date as YYYY-QX
             year = rep_date[:4]
