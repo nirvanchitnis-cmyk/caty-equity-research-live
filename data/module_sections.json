@@ -1,6 +1,729 @@
 {
   "modules": [
     {
+      "id": "CATY_08",
+      "file": "CATY_08_cre_exposure.html",
+      "data": {
+        "last_updated_display": "October 19, 2025"
+      },
+      "sections": [
+        {
+          "marker": "caty08-header-meta",
+          "type": "text",
+          "template": {
+            "template": "<p class=\"page-meta\">\n    Last Updated: {last_updated} |\n    Source: SEC 10-Q Q2 2025 Loan Schedule + Peer Analysis\n</p>",
+            "placeholders": {
+              "{last_updated}": {
+                "source": "module",
+                "path": "last_updated_display",
+                "format": "text"
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty08-executive-summary",
+          "type": "text",
+          "template": {
+            "template": "<div class=\"alert-box warning\">\n    <div class=\"alert-title\">⚠️ {risk_rating} CRE CONCENTRATION</div>\n    <div class=\"alert-text\">\n        <strong>CRE Total:</strong> {cre_total_pct} of total loans ({cre_total_amount})<br>\n        <strong>Total Loans:</strong> {total_loans_amount}<br>\n        <strong>Peer Median:</strong> {peer_median}<br>\n        <strong>Excess vs Median:</strong> +{excess_ppts} ppts<br>\n        <strong>Risk Rating:</strong> {risk_rationale}\n    </div>\n    <div class=\"alert-text\">\n        <strong>Mitigating Factors:</strong>\n        {mitigating_factors}\n    </div>\n</div>",
+            "placeholders": {
+              "{risk_rating}": {
+                "source": "caty08_tables",
+                "path": "executive_summary.risk_rating",
+                "format": "text"
+              },
+              "{cre_total_pct}": {
+                "source": "caty08_tables",
+                "path": "executive_summary.cre_total_pct",
+                "format": "percent",
+                "decimals": 1
+              },
+              "{cre_total_amount}": {
+                "source": "caty08_tables",
+                "path": "executive_summary.cre_total_billions",
+                "format": "currency_scale",
+                "scale": "billions",
+                "decimals": 2
+              },
+              "{total_loans_amount}": {
+                "source": "caty08_tables",
+                "path": "executive_summary.total_loans_billions",
+                "format": "currency_scale",
+                "scale": "billions",
+                "decimals": 2
+              },
+              "{peer_median}": {
+                "source": "caty08_tables",
+                "path": "executive_summary.peer_median_cre_pct",
+                "format": "percent",
+                "decimals": 1
+              },
+              "{excess_ppts}": {
+                "source": "caty08_tables",
+                "path": "executive_summary.excess_vs_peer_median_ppts",
+                "format": "decimal",
+                "decimals": 1
+              },
+              "{risk_rationale}": {
+                "source": "caty08_tables",
+                "path": "executive_summary.risk_rationale",
+                "format": "text"
+              },
+              "{mitigating_factors}": {
+                "source": "caty08_tables",
+                "path": "executive_summary.mitigating_factors_html",
+                "format": "text"
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty08-metric-cards",
+          "type": "cards",
+          "wrapper": {
+            "tag": "div",
+            "class": "metric-grid"
+          },
+          "defaults": {
+            "card_class": "metric-card",
+            "label_class": "metric-label",
+            "value_class": "metric-value",
+            "subtext_class": "metric-subtext"
+          },
+          "cards": [
+            {
+              "card_class": "metric-card elevated",
+              "label": "CRE Concentration",
+              "value": {
+                "source": "caty08_tables",
+                "path": "executive_summary.cre_total_pct",
+                "format": "percent",
+                "decimals": 1
+              },
+              "subtext": {
+                "template": "Peer median {peer}",
+                "placeholders": {
+                  "{peer}": {
+                    "source": "caty08_tables",
+                    "path": "executive_summary.peer_median_cre_pct",
+                    "format": "percent",
+                    "decimals": 1
+                  }
+                }
+              }
+            },
+            {
+              "label": "CRE Loans Outstanding",
+              "value": {
+                "source": "caty08_tables",
+                "path": "executive_summary.cre_total_billions",
+                "format": "currency_scale",
+                "scale": "billions",
+                "decimals": 2
+              },
+              "subtext": {
+                "template": "Total loans {total_loans}",
+                "placeholders": {
+                  "{total_loans}": {
+                    "source": "caty08_tables",
+                    "path": "executive_summary.total_loans_billions",
+                    "format": "currency_scale",
+                    "scale": "billions",
+                    "decimals": 2
+                  }
+                }
+              }
+            },
+            {
+              "label": "Office Exposure",
+              "value": {
+                "source": "caty08_tables",
+                "path": "office_tail_risk.office_pct_total",
+                "format": "percent",
+                "decimals": 1
+              },
+              "subtext": {
+                "template": "Peer median {peer}",
+                "placeholders": {
+                  "{peer}": {
+                    "source": "caty08_tables",
+                    "path": "office_tail_risk.peer_median_office_pct",
+                    "format": "percent",
+                    "decimals": 1
+                  }
+                }
+              }
+            },
+            {
+              "card_class": "metric-card warning",
+              "label": "Regulatory Status",
+              "value": {
+                "template": "{status}",
+                "placeholders": {
+                  "{status}": {
+                    "source": "caty08_tables",
+                    "path": "regulatory_framework.status",
+                    "format": "text"
+                  }
+                }
+              },
+              "subtext": {
+                "template": "Board reporting: {frequency}",
+                "placeholders": {
+                  "{frequency}": {
+                    "source": "caty08_tables",
+                    "path": "regulatory_framework.board_reporting_frequency",
+                    "format": "text"
+                  }
+                }
+              }
+            },
+            {
+              "label": "Climate COE Premium",
+              "value": {
+                "source": "caty08_tables",
+                "path": "climate_transition_risk.coe_climate_premium_bps",
+                "format": "bps",
+                "decimals": 0
+              },
+              "subtext": {
+                "template": "Valuation impact {impact}/share",
+                "placeholders": {
+                  "{impact}": {
+                    "source": "caty08_tables",
+                    "path": "climate_transition_risk.valuation_impact_per_share",
+                    "format": "currency",
+                    "decimals": 2
+                  }
+                }
+              }
+            },
+            {
+              "label": "Valuation Impact",
+              "value": {
+                "source": "caty08_tables",
+                "path": "valuation_implications.target_price_impact",
+                "format": "currency",
+                "decimals": 2
+              },
+              "subtext": {
+                "template": "Combined ESG + CRE {bps}",
+                "placeholders": {
+                  "{bps}": {
+                    "source": "caty08_tables",
+                    "path": "valuation_implications.combined_esg_cre_bps",
+                    "format": "bps",
+                    "decimals": 0
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "marker": "caty08-composition-table",
+          "type": "text",
+          "template": {
+            "template": "<table>\n    <thead>\n        <tr>\n            <th>Property Segment</th>\n            <th class=\"numeric\">% of Total Loans</th>\n            <th class=\"numeric\">Amount ($B)</th>\n            <th class=\"numeric\">% of CRE</th>\n            <th>Notes</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td><strong>Nonfarm Nonresidential</strong></td>\n            <td class=\"numeric\">{nonfarm_pct_total}</td>\n            <td class=\"numeric\">{nonfarm_amount}</td>\n            <td class=\"numeric\">{nonfarm_pct_cre}</td>\n            <td>Office {office_pct} ({office_amount}), Retail {retail_pct} ({retail_amount}), Industrial {industrial_pct} ({industrial_amount})</td>\n        </tr>\n        <tr>\n            <td><strong>Construction</strong></td>\n            <td class=\"numeric\">{construction_pct_total}</td>\n            <td class=\"numeric\">{construction_amount}</td>\n            <td class=\"numeric\">{construction_pct_cre}</td>\n            <td>{construction_note}</td>\n        </tr>\n        <tr>\n            <td><strong>Multifamily</strong></td>\n            <td class=\"numeric\">{multifamily_pct_total}</td>\n            <td class=\"numeric\">{multifamily_amount}</td>\n            <td class=\"numeric\">{multifamily_pct_cre}</td>\n            <td>{multifamily_note}</td>\n        </tr>\n    </tbody>\n</table>\n<p class=\"text-muted\">Geographic mix: CA {ca_pct}%, NY {ny_pct}%, TX {tx_pct}%, Other {other_pct}% | Diversification score: {diversification}</p>",
+            "placeholders": {
+              "{nonfarm_pct_total}": {
+                "source": "caty08_tables",
+                "path": "cre_composition.nonfarm_nonresidential_pct_total",
+                "format": "percent",
+                "decimals": 1
+              },
+              "{nonfarm_amount}": {
+                "source": "caty08_tables",
+                "path": "cre_composition.nonfarm_nonresidential_amount_billions",
+                "format": "currency_scale",
+                "scale": "billions",
+                "decimals": 2
+              },
+              "{nonfarm_pct_cre}": {
+                "source": "caty08_tables",
+                "path": "cre_composition.nonfarm_nonresidential_pct_cre",
+                "format": "percent",
+                "decimals": 1
+              },
+              "{office_pct}": {
+                "source": "caty08_tables",
+                "path": "cre_composition.nonfarm_subcategories.office_pct_total",
+                "format": "percent",
+                "decimals": 1
+              },
+              "{office_amount}": {
+                "source": "caty08_tables",
+                "path": "cre_composition.nonfarm_subcategories.office_amount_billions",
+                "format": "currency_scale",
+                "scale": "billions",
+                "decimals": 2
+              },
+              "{retail_pct}": {
+                "source": "caty08_tables",
+                "path": "cre_composition.nonfarm_subcategories.retail_pct_total",
+                "format": "percent",
+                "decimals": 1
+              },
+              "{retail_amount}": {
+                "source": "caty08_tables",
+                "path": "cre_composition.nonfarm_subcategories.retail_amount_billions",
+                "format": "currency_scale",
+                "scale": "billions",
+                "decimals": 2
+              },
+              "{industrial_pct}": {
+                "source": "caty08_tables",
+                "path": "cre_composition.nonfarm_subcategories.industrial_pct_total",
+                "format": "percent",
+                "decimals": 1
+              },
+              "{industrial_amount}": {
+                "source": "caty08_tables",
+                "path": "cre_composition.nonfarm_subcategories.industrial_amount_billions",
+                "format": "currency_scale",
+                "scale": "billions",
+                "decimals": 2
+              },
+              "{construction_pct_total}": {
+                "source": "caty08_tables",
+                "path": "cre_composition.construction_pct_total",
+                "format": "percent",
+                "decimals": 1
+              },
+              "{construction_amount}": {
+                "source": "caty08_tables",
+                "path": "cre_composition.construction_amount_billions",
+                "format": "currency_scale",
+                "scale": "billions",
+                "decimals": 2
+              },
+              "{construction_pct_cre}": {
+                "source": "caty08_tables",
+                "path": "cre_composition.construction_pct_cre",
+                "format": "percent",
+                "decimals": 1
+              },
+              "{construction_note}": {
+                "source": "caty08_tables",
+                "path": "cre_composition.construction_risk_note",
+                "format": "text"
+              },
+              "{multifamily_pct_total}": {
+                "source": "caty08_tables",
+                "path": "cre_composition.multifamily_pct_total",
+                "format": "percent",
+                "decimals": 1
+              },
+              "{multifamily_amount}": {
+                "source": "caty08_tables",
+                "path": "cre_composition.multifamily_amount_billions",
+                "format": "currency_scale",
+                "scale": "billions",
+                "decimals": 2
+              },
+              "{multifamily_pct_cre}": {
+                "source": "caty08_tables",
+                "path": "cre_composition.multifamily_pct_cre",
+                "format": "percent",
+                "decimals": 1
+              },
+              "{multifamily_note}": {
+                "source": "caty08_tables",
+                "path": "cre_composition.multifamily_risk_note",
+                "format": "text"
+              },
+              "{ca_pct}": {
+                "source": "caty08_tables",
+                "path": "geographic_concentration.california_pct",
+                "format": "percent",
+                "decimals": 0
+              },
+              "{ny_pct}": {
+                "source": "caty08_tables",
+                "path": "geographic_concentration.new_york_pct",
+                "format": "percent",
+                "decimals": 0
+              },
+              "{tx_pct}": {
+                "source": "caty08_tables",
+                "path": "geographic_concentration.texas_pct",
+                "format": "percent",
+                "decimals": 0
+              },
+              "{other_pct}": {
+                "source": "caty08_tables",
+                "path": "geographic_concentration.other_pct",
+                "format": "percent",
+                "decimals": 0
+              },
+              "{diversification}": {
+                "source": "caty08_tables",
+                "path": "geographic_concentration.diversification_score",
+                "format": "text"
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty08-office-detail",
+          "type": "text",
+          "template": {
+            "template": "<div class=\"highlight-box warning\">\n    <h4>Office Exposure Snapshot</h4>\n    <p><strong>Portfolio Share:</strong> {office_pct_total} of total loans ({office_amount}) | {office_pct_cre} of CRE portfolio</p>\n    <p><strong>Peer Median:</strong> {peer_median_office}</p>\n    <p><strong>Stress Scenario:</strong> {stress_label} → Portfolio impact {portfolio_impact} | ROTE impact {rote_impact}</p>\n    <div class=\"alert-text\"><strong>Risk Factors:</strong>{risk_factors}</div>\n    <div class=\"alert-text\"><strong>Mitigating Factors:</strong>{mitigating_factors}</div>\n    <p class=\"text-muted\">{valuation_impact}</p>\n</div>",
+            "placeholders": {
+              "{office_pct_total}": {
+                "source": "caty08_tables",
+                "path": "office_tail_risk.office_pct_total",
+                "format": "percent",
+                "decimals": 1
+              },
+              "{office_amount}": {
+                "source": "caty08_tables",
+                "path": "office_tail_risk.office_amount_billions",
+                "format": "currency_scale",
+                "scale": "billions",
+                "decimals": 2
+              },
+              "{office_pct_cre}": {
+                "source": "caty08_tables",
+                "path": "office_tail_risk.office_pct_cre",
+                "format": "percent",
+                "decimals": 1
+              },
+              "{peer_median_office}": {
+                "source": "caty08_tables",
+                "path": "office_tail_risk.peer_median_office_pct",
+                "format": "percent",
+                "decimals": 1
+              },
+              "{stress_label}": {
+                "source": "caty08_tables",
+                "path": "office_tail_risk.nco_sensitivity.scenario_label",
+                "format": "text"
+              },
+              "{portfolio_impact}": {
+                "source": "caty08_tables",
+                "path": "office_tail_risk.nco_sensitivity.portfolio_impact_bps",
+                "format": "bps",
+                "decimals": 1
+              },
+              "{rote_impact}": {
+                "source": "caty08_tables",
+                "path": "office_tail_risk.nco_sensitivity.rote_impact_bps",
+                "format": "bps",
+                "decimals": 0
+              },
+              "{risk_factors}": {
+                "source": "caty08_tables",
+                "path": "office_tail_risk.risk_factors_html",
+                "format": "text"
+              },
+              "{mitigating_factors}": {
+                "source": "caty08_tables",
+                "path": "office_tail_risk.mitigating_factors_html",
+                "format": "text"
+              },
+              "{valuation_impact}": {
+                "source": "caty08_tables",
+                "path": "office_tail_risk.nco_sensitivity.valuation_impact_text",
+                "format": "text"
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty08-peer-comparison-table",
+          "type": "table",
+          "headers": [
+            "Institution",
+            "Ticker",
+            "CRE % of Total Loans",
+            "Positioning"
+          ],
+          "columns": [
+            "institution",
+            "ticker",
+            "cre_pct",
+            "position"
+          ],
+          "column_classes": [
+            "",
+            "",
+            "numeric",
+            ""
+          ],
+          "rows_from_list": {
+            "source": "caty08_tables",
+            "list_path": "peer_comparison.peers",
+            "row_template": {
+              "institution": {
+                "template": "<strong>{name}</strong>"
+              },
+              "ticker": {
+                "template": "{ticker}"
+              },
+              "cre_pct": {
+                "template": "{cre_pct}%"
+              },
+              "position": {
+                "template": "{position}"
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty08-peer-distribution",
+          "type": "text",
+          "template": {
+            "template": "<div class=\"highlight-box info\">\n    <p><strong>Peer Distribution</strong></p>\n    <p>Min: {min}% | Median: {median}% | Max: {max}% | CATY Percentile: {percentile}th</p>\n    <p class=\"text-muted\">{interpretation}</p>\n</div>",
+            "placeholders": {
+              "{min}": {
+                "source": "caty08_tables",
+                "path": "peer_comparison.distribution.min_pct",
+                "format": "percent",
+                "decimals": 1
+              },
+              "{median}": {
+                "source": "caty08_tables",
+                "path": "peer_comparison.distribution.median_pct",
+                "format": "percent",
+                "decimals": 1
+              },
+              "{max}": {
+                "source": "caty08_tables",
+                "path": "peer_comparison.distribution.max_pct",
+                "format": "percent",
+                "decimals": 1
+              },
+              "{percentile}": {
+                "source": "caty08_tables",
+                "path": "peer_comparison.distribution.caty_percentile",
+                "format": "decimal",
+                "decimals": 0
+              },
+              "{interpretation}": {
+                "source": "caty08_tables",
+                "path": "peer_comparison.distribution.interpretation",
+                "format": "text"
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty08-climate-risk-framework",
+          "type": "text",
+          "template": {
+            "template": "<div class=\"alert-box info\">\n    <div class=\"alert-title\">Climate Transition Risk</div>\n    <div class=\"alert-text\">\n        <strong>Carbon Intensity:</strong> {carbon_intensity} ({carbon_rationale})<br>\n        <strong>Exposure:</strong> CATY {caty_pct} vs Peer Median {peer_pct} (+{excess} ppts)<br>\n        <strong>COE Premium:</strong> {premium}\n    </div>\n    <div class=\"alert-text\">\n        <strong>Mitigation Strategies:</strong>\n        {mitigations}\n    </div>\n</div>",
+            "placeholders": {
+              "{carbon_intensity}": {
+                "source": "caty08_tables",
+                "path": "climate_transition_risk.cre_carbon_intensity",
+                "format": "text_upper"
+              },
+              "{carbon_rationale}": {
+                "source": "caty08_tables",
+                "path": "climate_transition_risk.cre_carbon_rationale",
+                "format": "text"
+              },
+              "{caty_pct}": {
+                "source": "caty08_tables",
+                "path": "climate_transition_risk.caty_exposure_pct",
+                "format": "percent",
+                "decimals": 1
+              },
+              "{peer_pct}": {
+                "source": "caty08_tables",
+                "path": "climate_transition_risk.peer_median_exposure_pct",
+                "format": "percent",
+                "decimals": 1
+              },
+              "{excess}": {
+                "source": "caty08_tables",
+                "path": "climate_transition_risk.excess_exposure_ppts",
+                "format": "decimal",
+                "decimals": 1
+              },
+              "{premium}": {
+                "source": "caty08_tables",
+                "path": "climate_transition_risk.coe_climate_premium_bps",
+                "format": "bps",
+                "decimals": 0
+              },
+              "{mitigations}": {
+                "source": "caty08_tables",
+                "path": "climate_transition_risk.mitigation_strategies_html",
+                "format": "text"
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty08-regulatory-thresholds",
+          "type": "text",
+          "template": {
+            "template": "<table>\n    <thead>\n        <tr>\n            <th>Metric</th>\n            <th class=\"numeric\">Regulatory Threshold</th>\n            <th class=\"numeric\">CATY</th>\n            <th>Status / Response</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td>Total CRE / Risk-Based Capital</td>\n            <td class=\"numeric\">{threshold_total}%</td>\n            <td class=\"numeric\">{caty_total}%</td>\n            <td>{status_text}</td>\n        </tr>\n        <tr>\n            <td>Construction / Risk-Based Capital</td>\n            <td class=\"numeric\">{threshold_construction}%</td>\n            <td class=\"numeric\">{caty_construction}%</td>\n            <td>{response}</td>\n        </tr>\n        <tr>\n            <td>Supervision Level</td>\n            <td class=\"numeric\">—</td>\n            <td class=\"numeric\">{supervision}</td>\n            <td>Stress testing required: {stress}</td>\n        </tr>\n    </tbody>\n</table>",
+            "placeholders": {
+              "{threshold_total}": {
+                "source": "caty08_tables",
+                "path": "regulatory_framework.threshold_total_risk_capital_pct",
+                "format": "decimal",
+                "decimals": 0
+              },
+              "{caty_total}": {
+                "source": "caty08_tables",
+                "path": "regulatory_framework.caty_total_cre_risk_capital_pct",
+                "format": "decimal",
+                "decimals": 0
+              },
+              "{status_text}": {
+                "source": "caty08_tables",
+                "path": "regulatory_framework.status",
+                "format": "text"
+              },
+              "{threshold_construction}": {
+                "source": "caty08_tables",
+                "path": "regulatory_framework.threshold_construction_risk_capital_pct",
+                "format": "decimal",
+                "decimals": 0
+              },
+              "{caty_construction}": {
+                "source": "caty08_tables",
+                "path": "regulatory_framework.caty_construction_risk_capital_pct",
+                "format": "decimal",
+                "decimals": 0
+              },
+              "{response}": {
+                "source": "caty08_tables",
+                "path": "regulatory_framework.regulatory_response",
+                "format": "text"
+              },
+              "{supervision}": {
+                "source": "caty08_tables",
+                "path": "regulatory_framework.supervision_level",
+                "format": "text"
+              },
+              "{stress}": {
+                "source": "caty08_tables",
+                "path": "regulatory_framework.stress_testing_required",
+                "format": "text"
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty08-valuation-impact",
+          "type": "text",
+          "template": {
+            "template": "<table>\n    <thead>\n        <tr>\n            <th>Valuation Adjustment</th>\n            <th class=\"numeric\">Magnitude</th>\n            <th>Notes</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td>CRE concentration discount</td>\n            <td class=\"numeric\">{cre_discount}</td>\n            <td>{cre_rationale}</td>\n        </tr>\n        <tr>\n            <td>Combined ESG + CRE premium</td>\n            <td class=\"numeric\">{combined_premium}</td>\n            <td>Flows through COE used across valuation models</td>\n        </tr>\n        <tr>\n            <td>Total COE impact</td>\n            <td class=\"numeric\">{total_coe}</td>\n            <td>Includes 15 bps concentration + 20 bps climate</td>\n        </tr>\n        <tr>\n            <td>P/TBV multiple impact</td>\n            <td class=\"numeric\">{ptbv_impact}</td>\n            <td>Applied to Monte Carlo and residual income outputs</td>\n        </tr>\n        <tr>\n            <td>Target price impact</td>\n            <td class=\"numeric\">{price_impact}</td>\n            <td>{valuation_note}</td>\n        </tr>\n    </tbody>\n</table>",
+            "placeholders": {
+              "{cre_discount}": {
+                "source": "caty08_tables",
+                "path": "valuation_implications.cre_discount_bps",
+                "format": "bps",
+                "decimals": 0
+              },
+              "{cre_rationale}": {
+                "source": "caty08_tables",
+                "path": "valuation_implications.cre_discount_rationale",
+                "format": "text"
+              },
+              "{combined_premium}": {
+                "source": "caty08_tables",
+                "path": "valuation_implications.combined_esg_cre_bps",
+                "format": "bps",
+                "decimals": 0
+              },
+              "{total_coe}": {
+                "source": "caty08_tables",
+                "path": "valuation_implications.total_coe_impact_bps",
+                "format": "bps",
+                "decimals": 0
+              },
+              "{ptbv_impact}": {
+                "source": "caty08_tables",
+                "path": "valuation_implications.p_tbv_impact_multiple",
+                "format": "multiple",
+                "decimals": 2
+              },
+              "{price_impact}": {
+                "source": "caty08_tables",
+                "path": "valuation_implications.target_price_impact",
+                "format": "currency",
+                "decimals": 2
+              },
+              "{valuation_note}": {
+                "source": "caty08_tables",
+                "path": "valuation_implications.note",
+                "format": "text"
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty08-qa-checks",
+          "type": "table",
+          "headers": [
+            "Check ID",
+            "Description",
+            "Rule",
+            "Status"
+          ],
+          "columns": [
+            "id",
+            "description",
+            "rule",
+            "status"
+          ],
+          "rows_from_list": {
+            "source": "caty08_tables",
+            "list_path": "qa_checks",
+            "row_template": {
+              "id": {
+                "template": "<strong>{id}</strong>"
+              },
+              "description": {
+                "template": "{description}"
+              },
+              "rule": {
+                "template": "{rule}"
+              },
+              "status": {
+                "template": "<span class=\"verification-badge complete\">{status}</span>"
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty08-metadata-table",
+          "type": "text",
+          "template": {
+            "template": "<table>\n    <thead>\n        <tr>\n            <th>Field</th>\n            <th>Detail</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td><strong>Schema Version</strong></td>\n            <td>{schema}</td>\n        </tr>\n        <tr>\n            <td><strong>Prepared On</strong></td>\n            <td>{prepared}</td>\n        </tr>\n        <tr>\n            <td><strong>Primary Sources</strong></td>\n            <td>{sources}</td>\n        </tr>\n        <tr>\n            <td><strong>Analyst Notes</strong></td>\n            <td>{notes}</td>\n        </tr>\n    </tbody>\n</table>",
+            "placeholders": {
+              "{schema}": {
+                "source": "caty08_tables",
+                "path": "metadata.schema_version",
+                "format": "text"
+              },
+              "{prepared}": {
+                "source": "caty08_tables",
+                "path": "metadata.prepared_on",
+                "format": "text"
+              },
+              "{sources}": {
+                "source": "caty08_tables",
+                "path": "metadata.primary_sources",
+                "format": "text"
+              },
+              "{notes}": {
+                "source": "caty08_tables",
+                "path": "metadata.analyst_notes",
+                "format": "text"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
       "id": "CATY_10",
       "file": "CATY_10_capital_actions.html",
       "data": {

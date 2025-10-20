@@ -1,0 +1,136 @@
+{
+  "comment": "CATY_08 CRE Exposure Analysis - Concentration Risk Assessment",
+  "last_updated": "2025-10-19T23:55:00Z",
+  "data_source": "SEC 10-Q Q2 2025 Loan Schedule + CATY_07 Credit Quality + Peer Analysis",
+  "period": "Q2 2025",
+  "executive_summary": {
+    "cre_total_pct": 52.4,
+    "total_loans_billions": 19.79,
+    "cre_total_billions": 10.37,
+    "peer_median_cre_pct": 37.6,
+    "excess_vs_peer_median_ppts": 14.8,
+    "risk_rating": "ELEVATED",
+    "risk_rationale": "CRE 52.4% exceeds peer median 37.6% by 14.8 percentage points, exposing CATY to commercial real estate cycle downturns.",
+    "mitigating_factors_html": "<ul><li>Diversified across property types (no single type &gt; 35%)</li><li>Office exposure 8.7% (below peer median 12%)</li><li>Strong credit quality (criticized loans 2.14% of total)</li><li>Geographic diversification across CA, NY, and TX markets</li></ul>"
+  },
+  "cre_composition": {
+    "nonfarm_nonresidential_pct_total": 34.2,
+    "nonfarm_nonresidential_amount_billions": 6.77,
+    "nonfarm_nonresidential_pct_cre": 65.3,
+    "nonfarm_subcategories": {
+      "office_pct_total": 8.7,
+      "office_amount_billions": 1.72,
+      "retail_pct_total": 12.3,
+      "retail_amount_billions": 2.44,
+      "industrial_pct_total": 13.2,
+      "industrial_amount_billions": 2.61
+    },
+    "construction_pct_total": 5.1,
+    "construction_amount_billions": 1.01,
+    "construction_pct_cre": 9.7,
+    "construction_risk_note": "Higher risk; construction loans typically carry elevated loss rates compared with stabilized properties.",
+    "multifamily_pct_total": 13.1,
+    "multifamily_amount_billions": 2.59,
+    "multifamily_pct_cre": 25.0,
+    "multifamily_risk_note": "Residential rental exposure with lower volatility than nonfarm nonresidential."
+  },
+  "peer_comparison": {
+    "peers": [
+      {"name": "Cathay General Bancorp", "ticker": "CATY", "cre_pct": 52.4, "position": "Above median"},
+      {"name": "CVB Financial", "ticker": "CVBF", "cre_pct": 78.9, "position": "Outlier - Highest"},
+      {"name": "Hope Bancorp", "ticker": "HOPE", "cre_pct": 58.1, "position": "Above median"},
+      {"name": "Columbia Banking System", "ticker": "COLB", "cre_pct": 52.1, "position": "At CATY level"},
+      {"name": "East West Bancorp", "ticker": "EWBC", "cre_pct": 37.6, "position": "Median"},
+      {"name": "Hanmi Financial", "ticker": "HAFC", "cre_pct": 17.7, "position": "Below median"},
+      {"name": "WaFd, Inc.", "ticker": "WAFD", "cre_pct": 17.5, "position": "Below median"},
+      {"name": "Pacific Premier Bancorp", "ticker": "PPBI", "cre_pct": 17.5, "position": "Below median"},
+      {"name": "Banc of California", "ticker": "BANC", "cre_pct": 18.0, "position": "Below median"}
+    ],
+    "distribution": {
+      "min_pct": 17.5,
+      "median_pct": 37.6,
+      "max_pct": 78.9,
+      "caty_percentile": 67,
+      "interpretation": "CATY sits at the 67th percentile of the peer set, indicating above-average CRE concentration risk."
+    }
+  },
+  "office_tail_risk": {
+    "office_pct_total": 8.7,
+    "office_amount_billions": 1.72,
+    "office_pct_cre": 16.6,
+    "peer_median_office_pct": 12.0,
+    "risk_factors_html": "<ul><li>Remote work trends continue to reduce office demand</li><li>Urban office vacancy rates remain elevated post-COVID</li><li>Class B/C office inventory vulnerable to obsolescence</li></ul>",
+    "mitigating_factors_html": "<ul><li>Office exposure 8.7% is below peer median 12%</li><li>Geographic mix in high-growth CA, NY, and TX metros</li><li>Granular loan book with no single office loan &gt; $50M</li><li>Conservative underwriting with average LTV &lt; 65%</li></ul>",
+    "nco_sensitivity": {
+      "scenario_label": "Office NCO stress to 200 bps",
+      "portfolio_impact_bps": 17.4,
+      "rote_impact_bps": -35,
+      "valuation_impact_text": "Moderate valuation pressure; office book is 8.7% of loans, not a core concentration."
+    }
+  },
+  "climate_transition_risk": {
+    "cre_carbon_intensity": "HIGH",
+    "cre_carbon_rationale": "Commercial real estate faces energy efficiency mandates, carbon pricing, and stranded asset risk.",
+    "caty_exposure_pct": 52.4,
+    "peer_median_exposure_pct": 37.6,
+    "excess_exposure_ppts": 14.8,
+    "coe_climate_premium_bps": 20,
+    "valuation_impact_per_share": -0.62,
+    "mitigation_strategies_html": "<ul><li>Embed energy-efficiency standards into CRE underwriting</li><li>Focus on California markets with stringent green building codes</li><li>Multifamily 13.1% offers lower carbon intensity than office/retail</li><li>Industrial/warehouse 13.2% supported by e-commerce demand</li></ul>"
+  },
+  "regulatory_framework": {
+    "threshold_total_risk_capital_pct": 300,
+    "threshold_construction_risk_capital_pct": 100,
+    "caty_total_cre_risk_capital_pct": 414,
+    "caty_construction_risk_capital_pct": 40,
+    "status": "EXCEEDS total CRE threshold (414% > 300%)",
+    "regulatory_response": "Enhanced monitoring, board oversight, and quarterly stress testing required.",
+    "supervision_level": "Enhanced",
+    "stress_testing_required": "Yes – quarterly adverse/office stress",
+    "board_reporting_frequency": "Quarterly"
+  },
+  "geographic_concentration": {
+    "california_pct": 68,
+    "new_york_pct": 15,
+    "texas_pct": 10,
+    "other_pct": 7,
+    "diversification_score": "Moderate",
+    "california_risk": "High concentration in California (68%) exposes CATY to state-specific economic and climate risks.",
+    "california_mitigant": "Presence in Los Angeles, San Francisco Bay Area, and Orange County supports resilient demand."
+  },
+  "valuation_implications": {
+    "cre_discount_bps": 15,
+    "cre_discount_rationale": "Elevated CRE concentration warrants a modest valuation discount versus diversified peers.",
+    "combined_esg_cre_bps": 35,
+    "total_coe_impact_bps": 35,
+    "p_tbv_impact_multiple": -0.12,
+    "target_price_impact": -1.85,
+    "note": "Discount captured via 15 bps CRE concentration premium plus 20 bps climate premium already reflected in COE."
+  },
+  "qa_checks": [
+    {
+      "id": "CRE-QA001",
+      "description": "CRE components sum correctly",
+      "rule": "Nonfarm + construction + multifamily ≈ total CRE exposure",
+      "status": "PASSED"
+    },
+    {
+      "id": "CRE-QA002",
+      "description": "CRE exceeds regulatory threshold",
+      "rule": "CATY total CRE / risk capital = 414% > 300% threshold",
+      "status": "CONFIRMED"
+    },
+    {
+      "id": "CRE-QA003",
+      "description": "Office tail risk quantified",
+      "rule": "Office stress scenario modeled at 200 bps NCOs",
+      "status": "PASSED"
+    }
+  ],
+  "metadata": {
+    "schema_version": "1.0",
+    "prepared_on": "2025-10-19",
+    "primary_sources": "SEC 10-Q Q2 2025; data/caty07_credit_quality.json; data/caty11_peers_normalized.json; data/caty16_coe_triangulation.json",
+    "analyst_notes": "CRE concentration validated against regulatory guidance and peer benchmarking; climate premium aligned with COE model."
+  }
+}

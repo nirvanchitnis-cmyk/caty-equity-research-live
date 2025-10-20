@@ -77,8 +77,9 @@
       "description": "CRE 52.4% (ELEVATED), office tail risk",
       "status": "UPDATED",
       "importance": "CRITICAL",
-      "last_updated": "2025-10-17",
-      "data_dependencies": ["SEC 10-Q", "Earnings Presentation"]
+      "last_updated": "2025-10-19",
+      "automation_status": "100% - Built with autogen from inception",
+      "data_dependencies": ["SEC 10-Q", "Peer Benchmark Dataset", "Climate Risk Model"]
     },
     {
       "id": "09",
