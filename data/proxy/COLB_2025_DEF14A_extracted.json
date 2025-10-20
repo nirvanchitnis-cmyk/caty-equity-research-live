@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generated_at_utc": "2025-10-20T20:50:19Z",
+  "generated_at_utc": "2025-10-20T21:08:57Z",
   "company": {
     "name": "COLUMBIA BANKING SYSTEM, INC.",
     "ticker": "COLB",
@@ -53,7 +53,13 @@
   },
   "audit": {
     "auditor": "Deloitte & Touche LLP",
-    "fees": {}
+    "fees": {
+      "audit": 3169000,
+      "audit_related": 97000,
+      "tax": 92967,
+      "all_other": 2066,
+      "non_audit_pct": 5.7
+    }
   },
   "provenance": [
     {
@@ -127,6 +133,22 @@
       "page_range": null,
       "text_snippet": "pensation Table ($) (A) Median Total Annual Compensation of Our Associates ($) (B) Ratio of (A) to (B) 6,340,928 74,509 82 to 1 To identify our median associate, we used our entire associate population as of December 31, 2024 . We measured compens",
       "confidence_pct": 85,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/887343/000088734325000152/colb-20250403.htm",
+      "sha256": "2005b04b361e6bb5f11350b07a644ae28b1d4be62112413b979f2312fa29b7d9"
+    },
+    {
+      "section": "audit.fees",
+      "method": "table_detect",
+      "locators": [
+        "table search: Audit Fees",
+        "table row: Audit Fees",
+        "table row: Audit-Related Fees",
+        "table row: Tax Fees",
+        "table row: All Other Fees"
+      ],
+      "page_range": null,
+      "text_snippet": "Fee Category Fiscal 2024 % of Total Fiscal 2023 % of Total Audit Fees $ 3,169,000 94.3 % $ 6,129,552 93.7 % Audit-Related Fees 97,000 2.9 % 56,000 0.9 % Tax Fees 92,967 2.8 % 353,736 5.4 % All Other Fees 2,066 0.1 % 2,066 \u2014 % Total Fees $ 3,361,033 100 % $ 6,541,354 100 %",
+      "confidence_pct": 90,
       "source_url": "https://www.sec.gov/Archives/edgar/data/887343/000088734325000152/colb-20250403.htm",
       "sha256": "2005b04b361e6bb5f11350b07a644ae28b1d4be62112413b979f2312fa29b7d9"
     },

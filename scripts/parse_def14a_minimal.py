@@ -83,6 +83,11 @@ AUDITOR_PATTERNS: List[Tuple[re.Pattern[str], str]] = [
     (re.compile(r"crowe(?:\s+llp)?", re.IGNORECASE), "Crowe LLP"),
 ]
 
+AUDIT_FEES_HEADINGS = re.compile(
+    r"(principal accountant fees|audit(?: and)?(?:[^a-zA-Z]|&)*non-?audit fees|audit fees|independent registered public accounting firm fees|fees billed)",
+    re.IGNORECASE,
+)
+
 PAY_RATIO_HEADINGS = re.compile(r"pay\s+ratio", re.IGNORECASE)
 PAY_RATIO_REGEXES: List[Tuple[re.Pattern[str], str]] = [
     (re.compile(r"(\d[\d,\.]*)\s*:\s*1", re.IGNORECASE), "regex: (\\d+):1"),
@@ -481,6 +486,162 @@ def extract_auditor(text: str) -> Tuple[str, int, str, List[str], str]:
     raise ValueError("Auditor not identified in filing text.")
 
 
+
+
+def _normalize_fee_label(label: str) -> str:
+    cleaned = re.sub(r"\s+", " ", label).strip().lower()
+    cleaned = re.sub(r"\(\d+\)", "", cleaned)
+    cleaned = cleaned.replace("/", " ")
+    cleaned = cleaned.replace("-", " ")
+    cleaned = re.sub(r"[^a-z\s]", " ", cleaned)
+    return re.sub(r"\s+", " ", cleaned).strip()
+
+
+
+def _map_fee_label(normalized: str) -> Optional[str]:
+    normalized = normalized.strip()
+    if not normalized or "fee" not in normalized:
+        return None
+    if "committee" in normalized or "report" in normalized:
+        return None
+    if "audit and non audit" in normalized:
+        return None
+    if "audit related" in normalized:
+        return "audit_related"
+    if "audit fee" in normalized:
+        return "audit"
+    if "tax fee" in normalized or normalized.startswith("tax services"):
+        return "tax"
+    if "all other fee" in normalized or normalized.startswith("other fees") or normalized.endswith("other fees"):
+        return "all_other"
+    if "non audit fee" in normalized:
+        return "all_other"
+    return None
+
+
+def _parse_currency_value(raw: str) -> Optional[int]:
+    if not raw:
+        return None
+    value = raw.strip().replace(" ", " ")
+    if not value:
+        return None
+    lowered = value.lower()
+    if lowered in {"n/a", "na", "not applicable"}:
+        return 0
+    if re.fullmatch(r"[-–—]+", value):
+        return 0
+    value = value.replace("$", "")
+    value = value.replace(",", "")
+    value = value.replace(" ", "")
+    value = value.replace("−", "-")
+    if value.startswith("(") and value.endswith(")"):
+        value = "-" + value[1:-1]
+    value = re.sub(r"[^0-9.\-]", "", value)
+    if not value:
+        return None
+    if value in {"-", "--", "---"}:
+        return 0
+    try:
+        amount = float(value)
+    except ValueError:
+        return None
+    digits_only = re.sub(r"[^0-9]", "", raw)
+    if amount != 0 and len(digits_only) == 1 and "$" not in raw and "," not in raw and "." not in raw:
+        return None
+    return int(round(amount))
+
+
+def _first_currency_from_cells(cells: List[Tag]) -> Optional[int]:
+    for cell in cells:
+        text_value = cell.get_text(" ", strip=True)
+        if not text_value:
+            continue
+        amount = _parse_currency_value(text_value)
+        if amount is None:
+            continue
+        return amount
+    return None
+
+
+def _find_following_table(heading: Tag) -> Optional[Tag]:
+    for element in heading.next_elements:
+        if isinstance(element, Tag):
+            if element is heading:
+                continue
+            name = (element.name or "").lower()
+            if name in HEADING_TAGS and element is not heading:
+                break
+            if name == "table":
+                return element
+    return None
+
+
+def _parse_audit_fee_table(table: Tag) -> Tuple[Dict[str, int], List[str]]:
+    fees: Dict[str, int] = {}
+    locators: List[str] = []
+    for row in table.find_all("tr"):
+        cells = row.find_all(["td", "th"])
+        if len(cells) < 2:
+            continue
+        label_raw = cells[0].get_text(" ", strip=True)
+        if not label_raw:
+            continue
+        normalized = _normalize_fee_label(label_raw)
+        key = _map_fee_label(normalized)
+        if not key:
+            continue
+        amount = _first_currency_from_cells(cells[1:])
+        if amount is None:
+            continue
+        fees[key] = amount
+        locators.append(f"table row: {label_raw.strip()}")
+    if "audit" not in fees:
+        return {}, []
+    for fallback_key in ("audit_related", "tax", "all_other"):
+        fees.setdefault(fallback_key, 0)
+    return fees, locators
+
+
+def _augment_with_non_audit_pct(fees: Dict[str, int]) -> Dict[str, Any]:
+    audit_total = fees.get("audit", 0) or 0
+    audit_related = fees.get("audit_related", 0) or 0
+    tax = fees.get("tax", 0) or 0
+    all_other = fees.get("all_other", 0) or 0
+    total = audit_total + audit_related + tax + all_other
+    non_audit = audit_related + tax + all_other
+    result: Dict[str, Any] = dict(fees)
+    result["non_audit_pct"] = round((non_audit / total) * 100, 1) if total else 0.0
+    return result
+
+
+def extract_audit_fees(text: str, soup: BeautifulSoup) -> Tuple[Dict[str, Any], int, str, List[str], str]:
+    for heading in soup.find_all(HEADING_TAGS):
+        heading_text = heading.get_text(" ", strip=True)
+        if not heading_text or not AUDIT_FEES_HEADINGS.search(heading_text):
+            continue
+        table = _find_following_table(heading)
+        if table is None:
+            continue
+        fees, row_locators = _parse_audit_fee_table(table)
+        if not fees:
+            continue
+        enriched = _augment_with_non_audit_pct(fees)
+        snippet = table.get_text(" ", strip=True)[:500]
+        locators = [f"{heading.name}: {heading_text}", *row_locators]
+        return enriched, 90, "table_detect", locators, snippet
+
+    for table in soup.find_all("table"):
+        fees, row_locators = _parse_audit_fee_table(table)
+        if not fees:
+            continue
+        enriched = _augment_with_non_audit_pct(fees)
+        snippet = table.get_text(" ", strip=True)[:500]
+        locators = ["table search: Audit Fees", *row_locators]
+        return enriched, 90, "table_detect", locators, snippet
+
+    raise ValueError("Audit fee table not found.")
+
+
 def extract_ceo_pay_ratio(text: str, soup: BeautifulSoup) -> Tuple[int, int, str, List[str], str]:
     text_lower = text.lower()
 
@@ -713,6 +874,7 @@ def main() -> None:
             text, soup
         )
         auditor_name, auditor_conf, auditor_method, auditor_locators, auditor_snippet = extract_auditor(text)
+        audit_fees, audit_fees_conf, audit_fees_method, audit_fees_locators, audit_fees_snippet = extract_audit_fees(text, soup)
 
         company_info = build_company_info(soup, args.ticker, manifest_entry)
         filing_info = build_filing_info(manifest_entry, company_info["cik"])
@@ -735,6 +897,7 @@ def main() -> None:
         payload["compensation"]["ceo_pay_ratio_to_median"] = ceo_pay_ratio
         payload["compensation"]["say_on_pay_pct"] = say_on_pay_pct
         payload["audit"]["auditor"] = auditor_name
+        payload["audit"]["fees"] = audit_fees
         payload["provenance"] = [
             {
                 "section": "board.size",
@@ -793,6 +956,16 @@ def main() -> None:
                 "page_range": None,
                 "text_snippet": pay_ratio_snippet,
                 "confidence_pct": pay_ratio_conf,
+                "source_url": manifest_entry.get("def14a_url"),
+                "sha256": manifest_entry.get("sha256"),
+            },
+            {
+                "section": "audit.fees",
+                "method": audit_fees_method,
+                "locators": audit_fees_locators,
+                "page_range": None,
+                "text_snippet": audit_fees_snippet,
+                "confidence_pct": audit_fees_conf,
                 "source_url": manifest_entry.get("def14a_url"),
                 "sha256": manifest_entry.get("sha256"),
             },

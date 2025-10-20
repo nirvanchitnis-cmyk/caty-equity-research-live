@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generated_at_utc": "2025-10-20T20:50:12Z",
+  "generated_at_utc": "2025-10-20T21:08:49Z",
   "company": {
     "name": "CATHAY GENERAL BANCORP",
     "ticker": "CATY",
@@ -53,7 +53,13 @@
   },
   "audit": {
     "auditor": "KPMG LLP",
-    "fees": {}
+    "fees": {
+      "audit": 2236302,
+      "audit_related": 49668,
+      "tax": 10742,
+      "all_other": 0,
+      "non_audit_pct": 2.6
+    }
   },
   "provenance": [
     {
@@ -127,6 +133,22 @@
       "page_range": null,
       "text_snippet": "tion, for 2024, the ratio of Mr. Liu\u2019s Annual Total Compensation to our median employee\u2019s Annual Total Compensation was 56 to 1. We believe this ratio is a reasonable estimate calculated in a manner consistent with Item 402(u) of Regulation S-K us",
       "confidence_pct": 85,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/861842/000143774925011577/caty20250326_def14a.htm",
+      "sha256": "43e4b3f0e50309c5655842d10d47e4e38788709c7cfb7ff3e7a6986f53028873"
+    },
+    {
+      "section": "audit.fees",
+      "method": "table_detect",
+      "locators": [
+        "table search: Audit Fees",
+        "table row: Audit Fees 1/",
+        "table row: Audit-Related Fees 2/",
+        "table row: Tax Fees 3/",
+        "table row: All Other Fees"
+      ],
+      "page_range": null,
+      "text_snippet": "2024 2023 Audit Fees 1/ $ 2,236,302 $ 1,893,900 Audit-Related Fees 2/ 49,668 49,708 Tax Fees 3/ 10,742 14,885 All Other Fees \u2014 \u2014 Total Fees $ 2,296,712 $ 1,958,493",
+      "confidence_pct": 90,
       "source_url": "https://www.sec.gov/Archives/edgar/data/861842/000143774925011577/caty20250326_def14a.htm",
       "sha256": "43e4b3f0e50309c5655842d10d47e4e38788709c7cfb7ff3e7a6986f53028873"
     },

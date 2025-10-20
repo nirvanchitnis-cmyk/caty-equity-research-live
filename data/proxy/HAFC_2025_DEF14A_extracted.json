@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generated_at_utc": "2025-10-20T20:50:16Z",
+  "generated_at_utc": "2025-10-20T21:08:55Z",
   "company": {
     "name": "HANMI FINANCIAL CORPORATION",
     "ticker": "HAFC",
@@ -53,7 +53,13 @@
   },
   "audit": {
     "auditor": "Crowe LLP",
-    "fees": {}
+    "fees": {
+      "audit": 1413834,
+      "audit_related": 20000,
+      "tax": 0,
+      "all_other": 0,
+      "non_audit_pct": 1.4
+    }
   },
   "provenance": [
     {
@@ -127,6 +133,22 @@
       "page_range": null,
       "text_snippet": "for 2024 of the annual total compensation of our CEO to the median of the annual total compensation of all employees is 29 to 1. SEC rules allow us to identify our median employee once every three years unless there has been a change in our employ",
       "confidence_pct": 85,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1109242/000095017025054713/hafc-20250416.htm",
+      "sha256": "385a6cf4ccc02829890e015605fc84554b8a958f5fc820b396de0079c79649b2"
+    },
+    {
+      "section": "audit.fees",
+      "method": "table_detect",
+      "locators": [
+        "table search: Audit Fees",
+        "table row: Audit Fees (1)",
+        "table row: Audit-Related Fees (2)",
+        "table row: Tax Fees",
+        "table row: All Other Fees"
+      ],
+      "page_range": null,
+      "text_snippet": "2024 2023 Audit Fees (1) $ 1,413,834 $ 1,369,700 Audit-Related Fees (2) $ 20,000 $ 110,000 Tax Fees $ \u2014 $ \u2014 All Other Fees $ \u2014 $ \u2014 TOTAL $ 1,433,834 $ 1,479,700",
+      "confidence_pct": 90,
       "source_url": "https://www.sec.gov/Archives/edgar/data/1109242/000095017025054713/hafc-20250416.htm",
       "sha256": "385a6cf4ccc02829890e015605fc84554b8a958f5fc820b396de0079c79649b2"
     },

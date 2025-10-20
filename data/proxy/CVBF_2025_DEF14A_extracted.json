@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generated_at_utc": "2025-10-20T20:50:15Z",
+  "generated_at_utc": "2025-10-20T21:08:53Z",
   "company": {
     "name": "CVB FINANCIAL CORP.",
     "ticker": "CVBF",
@@ -53,7 +53,13 @@
   },
   "audit": {
     "auditor": "KPMG LLP",
-    "fees": {}
+    "fees": {
+      "audit": 1668000,
+      "audit_related": 0,
+      "tax": 0,
+      "all_other": 0,
+      "non_audit_pct": 0.0
+    }
   },
   "provenance": [
     {
@@ -127,6 +133,22 @@
       "page_range": null,
       "text_snippet": "ation Table above. Accordingly, for 2024, the ratio of our CEO\u2019s compensation to the median employee\u2019s compensation was 33.2 to 1. We believe that the pay ratio disclosed herein is a reasonable estimate calculated in a manner consistent with Item 40",
       "confidence_pct": 85,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/354647/000095017025051966/cvbf-20250405.htm",
+      "sha256": "fe2a2463104b9a524660a8f36d015ae961cc4243300fc123000fe08ce8693516"
+    },
+    {
+      "section": "audit.fees",
+      "method": "table_detect",
+      "locators": [
+        "table search: Audit Fees",
+        "table row: Audit Fees(1)",
+        "table row: Audit-related Fees(2)",
+        "table row: Tax Fees(3)",
+        "table row: All Other Fees(4)"
+      ],
+      "page_range": null,
+      "text_snippet": "2024 2023 ($) ($) Audit Fees(1) 1,668,000 1,662,420 Audit-related Fees(2) - - Tax Fees(3) - - All Other Fees(4) - - Total 1,668,000 1,662,420",
+      "confidence_pct": 90,
       "source_url": "https://www.sec.gov/Archives/edgar/data/354647/000095017025051966/cvbf-20250405.htm",
       "sha256": "fe2a2463104b9a524660a8f36d015ae961cc4243300fc123000fe08ce8693516"
     },

@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generated_at_utc": "2025-10-20T20:50:22Z",
+  "generated_at_utc": "2025-10-20T21:09:01Z",
   "company": {
     "name": "HOPE BANCORP, INC.",
     "ticker": "HOPE",
@@ -53,7 +53,13 @@
   },
   "audit": {
     "auditor": "Crowe LLP",
-    "fees": {}
+    "fees": {
+      "audit": 1934050,
+      "audit_related": 30500,
+      "tax": 0,
+      "all_other": 0,
+      "non_audit_pct": 1.6
+    }
   },
   "provenance": [
     {
@@ -127,6 +133,22 @@
       "page_range": null,
       "text_snippet": "CEO Total Compensation $ 3,314,768 Median Employee Annual Total Compensation $ 73,454 CEO to Median Employee Pay Ratio 45:1 Our Chief Executive Officer pay ratio is a reasonable estimate calculated in a manner consistent with SEC rules. Our me",
       "confidence_pct": 85,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1128361/000119312525078439/d888910ddef14a.htm",
+      "sha256": "a96d7c937da6dcf1bcffa0accd84c1a25b760e9197441c7ce500ab663e90bb58"
+    },
+    {
+      "section": "audit.fees",
+      "method": "table_detect",
+      "locators": [
+        "table search: Audit Fees",
+        "table row: Audit fees",
+        "table row: Audit-related fees",
+        "table row: Tax fees",
+        "table row: All other fees"
+      ],
+      "page_range": null,
+      "text_snippet": "2024 2023 Audit fees $ 1,934,050 $ 1,903,108 Audit-related fees 30,500 12,552 Tax fees \u2014 \u2014 All other fees \u2014 \u2014 Total fees $ 1,964,550 $ 1,915,660",
+      "confidence_pct": 90,
       "source_url": "https://www.sec.gov/Archives/edgar/data/1128361/000119312525078439/d888910ddef14a.htm",
       "sha256": "a96d7c937da6dcf1bcffa0accd84c1a25b760e9197441c7ce500ab663e90bb58"
     },
