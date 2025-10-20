@@ -32,6 +32,8 @@ VALUATION_OUTPUTS_PATH = ROOT / "data" / "valuation_outputs.json"
 # Helpers
 # ---------------------------------------------------------------------------
 
+NARRATIVE_PLACEHOLDER_PATTERN = re.compile(r"\{\{([a-zA-Z0-9_]+)\}\}")
+
 def load_json(path: Path) -> Dict[str, Any]:
     with path.open("r", encoding="utf-8") as fh:
         return json.load(fh)
@@ -50,6 +52,19 @@ def replace_placeholders(value: Any, replacements: Dict[str, str]) -> Any:
     return value
 
 
+def render_template_string(template: str | None, replacements: Dict[str, Any]) -> str:
+    if not template:
+        return ""
+
+    def _replace(match: re.Match[str]) -> str:
+        key = match.group(1)
+        if key not in replacements:
+            raise KeyError(f"Missing placeholder '{key}' in narrative template")
+        return str(replacements[key])
+
+    return NARRATIVE_PLACEHOLDER_PATTERN.sub(_replace, template)
+
+
 def render_timestamps() -> Dict[str, str]:
     data = load_json(ROOT / "data" / "market_data_current.json")
     metadata = data.get("report_metadata") or {}
@@ -65,6 +80,171 @@ def render_timestamps() -> Dict[str, str]:
         "last_updated_utc": generated_display,
         "generated_at_utc": generated_iso,
     }
+
+
+def build_narrative_replacements(market: Dict[str, Any], timestamps: Dict[str, str]) -> Dict[str, str]:
+    metrics = market.get("calculated_metrics", {})
+    metadata = market.get("report_metadata") or {}
+
+    def fmt_number(value: Any, *, decimals: int = 1, signed: bool = False, comma: bool = False) -> str:
+        if value in (None, "", "—"):
+            return "—"
+        try:
+            value_float = float(value)
+        except (TypeError, ValueError):
+            return "—"
+
+        fmt_spec = ""
+        if signed:
+            fmt_spec += "+"
+        if comma:
+            fmt_spec += ","
+        fmt_spec += f".{decimals}f"
+        return format(value_float, fmt_spec)
+
+    report_date_display = (
+        timestamps.get("report_date")
+        or metadata.get("report_date")
+        or format_date_value(market.get("price_date"), "long")
+        if market.get("price_date")
+        else ""
+    )
+
+    replacements: Dict[str, str] = {
+        "company": market.get("company", ""),
+        "ticker": market.get("ticker", ""),
+        "rating": metrics.get("rating", ""),
+        "price": fmt_number(market.get("price"), decimals=2, comma=True),
+        "price_date": report_date_display,
+        "price_date_iso": market.get("price_date", ""),
+        "report_date": report_date_display,
+        "last_updated_utc": timestamps.get("last_updated_utc", ""),
+        "target_wilson_95": fmt_number(metrics.get("target_wilson_95"), decimals=2, comma=True),
+        "target_regression": fmt_number(metrics.get("target_regression"), decimals=2, comma=True),
+        "target_normalized": fmt_number(metrics.get("target_normalized"), decimals=2, comma=True),
+        "target_irc_blended": fmt_number(metrics.get("target_irc_blended"), decimals=2, comma=True),
+        "return_wilson_95_pct": fmt_number(metrics.get("return_wilson_95_pct"), decimals=1, signed=True),
+        "return_regression_pct": fmt_number(metrics.get("return_regression_pct"), decimals=1, signed=True),
+        "return_normalized_pct": fmt_number(metrics.get("return_normalized_pct"), decimals=1, signed=True),
+        "return_irc_blended_pct": fmt_number(metrics.get("return_irc_blended_pct"), decimals=1, signed=True),
+        "current_ptbv": fmt_number(metrics.get("current_ptbv"), decimals=3),
+        "normalized_ptbv": fmt_number(metrics.get("normalized_ptbv"), decimals=3),
+        "rote_ltm_pct": fmt_number(metrics.get("rote_ltm_pct"), decimals=2),
+        "normalized_rote_pct": fmt_number(metrics.get("normalized_rote_pct"), decimals=2),
+        "through_cycle_nco_bps": fmt_number(metrics.get("through_cycle_nco_bps"), decimals=1),
+        "cre_loans_pct": fmt_number(metrics.get("cre_loans_pct"), decimals=1),
+        "brokered_deposit_pct": fmt_number(metrics.get("brokered_deposit_pct"), decimals=2),
+        "nco_rate_bps": fmt_number(metrics.get("nco_rate_bps"), decimals=1),
+        "tbvps": fmt_number(metrics.get("tbvps"), decimals=2, comma=True),
+    }
+
+    return replacements
+
+
+def render_investment_thesis(context: Dict[str, Any], replacements: Dict[str, str]) -> str:
+    narrative = context.get("narrative_prose") or {}
+    summary_template = narrative.get("investment_thesis_summary")
+    rationale_template = narrative.get("rating_rationale")
+
+    summary_text = render_template_string(summary_template, replacements) if summary_template else ""
+    if not summary_text:
+        fallback_template = (
+            "{{company}} ({{ticker}}) trades at ${{price}} ({{report_date}}) with expected return of "
+            "{{return_wilson_95_pct}}% to Wilson 95% target ${{target_wilson_95}}. Current P/TBV "
+            "{{current_ptbv}}x versus normalized {{normalized_ptbv}}x highlights multiple compression risk."
+        )
+        summary_text = render_template_string(fallback_template, replacements)
+
+    rationale_text = render_template_string(rationale_template, replacements) if rationale_template else ""
+    rating = replacements.get("rating", "")
+
+    parts = []
+    if rating:
+        parts.append(f"<strong>Rating: {rating}</strong>")
+    if summary_text:
+        parts.append(summary_text)
+    if rationale_text:
+        parts.append(rationale_text)
+
+    combined = " ".join(parts).strip()
+    return f"<p>{combined}</p>"
+
+
+def render_key_findings(replacements: Dict[str, str]) -> str:
+    bullets = [
+        (
+            "<li><strong>Empirical NCO Understated:</strong> {through_cycle_nco_bps} bps through-cycle average "
+            "(2008-2024) vs previous 25 bps assumption; GFC peak 306 bps shows tail risk</li>"
+        ),
+        (
+            "<li><strong>Overvaluation:</strong> Current P/TBV {current_ptbv}x vs normalized fair value "
+            "{normalized_ptbv}x; price ${price} vs normalized ${target_normalized} = {return_normalized_pct}% "
+            "expected move</li>"
+        ),
+        (
+            "<li><strong>Mid-Tier Profitability:</strong> Normalized ROTE {normalized_rote_pct}% trails "
+            "upper-quartile peers, limiting multiple expansion</li>"
+        ),
+        (
+            "<li><strong>CRE Concentration:</strong> {cre_loans_pct}% CRE exposure with {brokered_deposit_pct}% "
+            "brokered deposits elevates funding sensitivity</li>"
+        ),
+    ]
+
+    rendered = [bullet.format(**replacements) for bullet in bullets]
+    return "<ul>\n    " + "\n    ".join(rendered) + "\n</ul>"
+
+
+def render_price_target_caption(replacements: Dict[str, str]) -> str:
+    date_display = replacements.get("price_date") or replacements.get("report_date") or ""
+    return (
+        '<p class="text-secondary">'
+        f"Current price vs. triangulated target methodologies (data as of {date_display})"
+        "</p>"
+    )
+
+
+def render_price_target_grid(replacements: Dict[str, str]) -> str:
+    cards = [
+        {
+            "classes": "metric-card",
+            "label": "Current Price",
+            "value": f"${replacements.get('price', '—')}",
+            "subtext": f"As of {replacements.get('price_date', '—')}",
+        },
+        {
+            "classes": "metric-card metric-card-success",
+            "label": "Wilson 95%",
+            "value": f"${replacements.get('target_wilson_95', '—')}",
+            "subtext": f"{replacements.get('return_wilson_95_pct', '—')}% (HOLD band)",
+        },
+        {
+            "classes": "metric-card",
+            "label": "IRC Blended",
+            "value": f"${replacements.get('target_irc_blended', '—')}",
+            "subtext": f"{replacements.get('return_irc_blended_pct', '—')}% (60% RIM)",
+        },
+        {
+            "classes": "metric-card metric-card-success",
+            "label": "Regression",
+            "value": f"${replacements.get('target_regression', '—')}",
+            "subtext": f"{replacements.get('return_regression_pct', '—')}% (7-peer)",
+        },
+    ]
+
+    lines = ["<div class=\"price-target-grid price-target-grid-spaced\">"]
+    for card in cards:
+        lines.extend(
+            [
+                f'    <div class="{card["classes"]}">',
+                f'        <div class="metric-label">{card["label"]}</div>',
+                f'        <div class="metric-value">{card["value"]}</div>',
+                f'        <div class="metric-subtext">{card["subtext"]}</div>',
+                "    </div>",
+            ]
+        )
+    lines.append("</div>")
+    return "\n".join(lines)
 
 
 def render_report_meta(timestamps: Dict[str, str]) -> str:
@@ -824,6 +1004,8 @@ def main(test_mode: bool = False) -> int:
             "executive": exec_cfg,
             "valuation_outputs": valuation_outputs,
             "module_metadata": module_metadata,
+            "calculated_metrics": market.get("calculated_metrics", {}),
+            "narrative_prose": market.get("narrative_prose", {}),
             "caty01_tables": caty01_tables,
             "caty02_tables": caty02_tables,
             "caty03_tables": caty03_tables,
@@ -845,10 +1027,16 @@ def main(test_mode: bool = False) -> int:
 
         timestamps = render_timestamps()
         context.update(timestamps)
+        narrative_placeholders = build_narrative_replacements(market, timestamps)
+        context["narrative_placeholders"] = narrative_placeholders
 
         html = replace_section(html, "page-title", render_page_title(timestamps["report_date"]))
         html = replace_section(html, "report-meta", render_report_meta(timestamps))
         html = replace_section(html, "footer-timestamp", render_footer_timestamp(timestamps))
+        html = replace_section(html, "investment-thesis-summary", render_investment_thesis(context, narrative_placeholders))
+        html = replace_section(html, "key-findings-bullets", render_key_findings(narrative_placeholders))
+        html = replace_section(html, "valuation-framework-caption", render_price_target_caption(narrative_placeholders))
+        html = replace_section(html, "valuation-framework-grid", render_price_target_grid(narrative_placeholders))
 
         reconciliation_html = build_reconciliation_table()
         html = replace_section(html, "reconciliation-dashboard", reconciliation_html)
