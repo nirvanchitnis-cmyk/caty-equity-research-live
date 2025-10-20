@@ -8747,6 +8747,622 @@
           }
         }
       ]
+    },
+    {
+      "id": "CATY_14",
+      "file": "CATY_14_monte_carlo_valuation.html",
+      "data": {
+        "last_updated_display": "October 19, 2025"
+      },
+      "sections": [
+        {
+          "marker": "caty14-header-meta",
+          "type": "text",
+          "template": {
+            "template": "<p class=\"page-meta\">\n    {num_runs} Simulation Runs, Latin Hypercube Sampling |\n    Created: {created} |\n    Methodology: Stochastic Valuation Framework\n</p>",
+            "placeholders": {
+              "{num_runs}": {
+                "source": "caty14_tables",
+                "path": "simulation_summary.num_runs",
+                "format": "decimal",
+                "decimals": 0
+              },
+              "{created}": {
+                "source": "module",
+                "path": "last_updated_display",
+                "format": "text"
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty14-summary-highlight",
+          "type": "text",
+          "template": {
+            "template": "<div class=\"highlight-box critical\">\n    <h4>Monte Carlo Target Price (50th Percentile): {median_price} ({median_return} vs. {spot_price} spot)</h4>\n    <p class=\"text-large\">\n        <strong>{confidence_level} Confidence Interval:</strong> {ci_lower} to {ci_upper} (range: {ci_range}, {ci_range_pct} of spot)\n    </p>\n</div>",
+            "placeholders": {
+              "{median_price}": {
+                "source": "caty14_tables",
+                "path": "simulation_summary.target_median",
+                "format": "currency",
+                "decimals": 2
+              },
+              "{median_return}": {
+                "source": "caty14_tables",
+                "path": "simulation_summary.median_return_pct",
+                "format": "percent_signed",
+                "decimals": 1
+              },
+              "{spot_price}": {
+                "source": "caty14_tables",
+                "path": "simulation_summary.spot_price",
+                "format": "currency",
+                "decimals": 2
+              },
+              "{confidence_level}": {
+                "source": "caty14_tables",
+                "path": "confidence_interval.level",
+                "format": "text"
+              },
+              "{ci_lower}": {
+                "source": "caty14_tables",
+                "path": "confidence_interval.lower_price",
+                "format": "currency",
+                "decimals": 2
+              },
+              "{ci_upper}": {
+                "source": "caty14_tables",
+                "path": "confidence_interval.upper_price",
+                "format": "currency",
+                "decimals": 2
+              },
+              "{ci_range}": {
+                "source": "caty14_tables",
+                "path": "confidence_interval.range_dollars",
+                "format": "currency",
+                "decimals": 2
+              },
+              "{ci_range_pct}": {
+                "source": "caty14_tables",
+                "path": "confidence_interval.range_pct_of_spot",
+                "format": "percent",
+                "decimals": 1
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty14-key-findings",
+          "type": "text",
+          "template": {
+            "template": "{content}",
+            "placeholders": {
+              "{content}": {
+                "source": "caty14_tables",
+                "path": "narratives.key_findings_html",
+                "format": "text"
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty14-rating-implication",
+          "type": "text",
+          "template": {
+            "template": "{content}",
+            "placeholders": {
+              "{content}": {
+                "source": "caty14_tables",
+                "path": "narratives.rating_implication_html",
+                "format": "text"
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty14-parameter-distributions-table",
+          "type": "table",
+          "headers": [
+            "Parameter",
+            "Base Case",
+            "Distribution",
+            "Mean",
+            "Std Dev",
+            "Min",
+            "Max"
+          ],
+          "columns": [
+            "parameter",
+            "base_case",
+            "distribution",
+            "mean",
+            "std_dev",
+            "min",
+            "max"
+          ],
+          "column_classes": [
+            "",
+            "number",
+            "",
+            "number",
+            "number",
+            "number",
+            "number"
+          ],
+          "rows_from_list": {
+            "source": "caty14_tables",
+            "list_path": "tables.parameter_distributions",
+            "row_template": {
+              "parameter": {
+                "template": "{parameter}"
+              },
+              "base_case": {
+                "template": "{base_case}"
+              },
+              "distribution": {
+                "template": "{distribution}"
+              },
+              "mean": {
+                "template": "{mean}"
+              },
+              "std_dev": {
+                "template": "{std_dev}"
+              },
+              "min": {
+                "template": "{min}"
+              },
+              "max": {
+                "template": "{max}"
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty14-distribution-rationale",
+          "type": "text",
+          "template": {
+            "template": "{content}",
+            "placeholders": {
+              "{content}": {
+                "source": "caty14_tables",
+                "path": "narratives.distribution_rationale_html",
+                "format": "text"
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty14-descriptive-stats-table",
+          "type": "table",
+          "headers": [
+            "Statistic",
+            "Value"
+          ],
+          "columns": [
+            "label",
+            "value"
+          ],
+          "column_classes": [
+            "",
+            "number"
+          ],
+          "rows_from_list": {
+            "source": "caty14_tables",
+            "list_path": "tables.descriptive_statistics",
+            "row_template": {
+              "label": {
+                "template": "{label}"
+              },
+              "value": {
+                "template": "{value}"
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty14-descriptive-insight",
+          "type": "text",
+          "template": {
+            "template": "<div class=\"highlight-box\">\n    <h4>Interpretation</h4>\n{content}\n</div>",
+            "placeholders": {
+              "{content}": {
+                "source": "caty14_tables",
+                "path": "narratives.distribution_interpretation_html",
+                "format": "text"
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty14-percentile-table",
+          "type": "table",
+          "headers": [
+            "Percentile",
+            "Target Price",
+            "Return vs Spot",
+            "Scenario"
+          ],
+          "columns": [
+            "label",
+            "target_price",
+            "return",
+            "scenario"
+          ],
+          "column_classes": [
+            "",
+            "number",
+            "number",
+            ""
+          ],
+          "rows_from_list": {
+            "source": "caty14_tables",
+            "list_path": "tables.percentiles",
+            "row_template": {
+              "row_class": "{row_class}",
+              "label": {
+                "template": "{label}"
+              },
+              "target_price": {
+                "template": "{target_price}"
+              },
+              "return": {
+                "template": "{return}"
+              },
+              "scenario": {
+                "template": "{scenario}"
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty14-probability-bands-table",
+          "type": "table",
+          "headers": [
+            "Price Range",
+            "Probability",
+            "Range Definition",
+            "Interpretation"
+          ],
+          "columns": [
+            "label",
+            "probability",
+            "range",
+            "implication"
+          ],
+          "column_classes": [
+            "",
+            "number",
+            "",
+            ""
+          ],
+          "rows_from_list": {
+            "source": "caty14_tables",
+            "list_path": "tables.probability_bands",
+            "row_template": {
+              "label": {
+                "template": "{label}"
+              },
+              "probability": {
+                "template": "{probability}"
+              },
+              "range": {
+                "template": "{range}"
+              },
+              "implication": {
+                "template": "{implication}"
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty14-probability-highlight",
+          "type": "text",
+          "template": {
+            "template": "{content}",
+            "placeholders": {
+              "{content}": {
+                "source": "caty14_tables",
+                "path": "narratives.probability_highlight_html",
+                "format": "text"
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty14-probability-loss",
+          "type": "text",
+          "template": {
+            "template": "{content}",
+            "placeholders": {
+              "{content}": {
+                "source": "caty14_tables",
+                "path": "narratives.probability_of_loss_html",
+                "format": "text"
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty14-scenario-breakdown-table",
+          "type": "table",
+          "headers": [
+            "Scenario",
+            "Probability",
+            "Target Price",
+            "Return",
+            "ROTE",
+            "NCO",
+            "COE",
+            "Description"
+          ],
+          "columns": [
+            "scenario",
+            "probability",
+            "target_price",
+            "return",
+            "rote",
+            "nco",
+            "coe",
+            "description"
+          ],
+          "column_classes": [
+            "",
+            "number",
+            "number",
+            "number",
+            "number",
+            "number",
+            "number",
+            ""
+          ],
+          "rows_from_list": {
+            "source": "caty14_tables",
+            "list_path": "tables.scenario_breakdown",
+            "row_template": {
+              "scenario": {
+                "template": "{scenario}"
+              },
+              "probability": {
+                "template": "{probability}"
+              },
+              "target_price": {
+                "template": "{target_price}"
+              },
+              "return": {
+                "template": "{return}"
+              },
+              "rote": {
+                "template": "{rote}"
+              },
+              "nco": {
+                "template": "{nco}"
+              },
+              "coe": {
+                "template": "{coe}"
+              },
+              "description": {
+                "template": "{description}"
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty14-sensitivity-table",
+          "type": "table",
+          "headers": [
+            "Parameter",
+            "Base Median",
+            "-1 SD",
+            "Target (-1 SD)",
+            "+1 SD",
+            "Target (+1 SD)",
+            "Range",
+            "Rank"
+          ],
+          "columns": [
+            "parameter",
+            "base_value",
+            "minus_one_sd",
+            "target_minus_one_sd",
+            "plus_one_sd",
+            "target_plus_one_sd",
+            "range",
+            "rank"
+          ],
+          "column_classes": [
+            "",
+            "number",
+            "number",
+            "number",
+            "number",
+            "number",
+            "number",
+            ""
+          ],
+          "rows_from_list": {
+            "source": "caty14_tables",
+            "list_path": "tables.sensitivity",
+            "row_template": {
+              "row_class": "{row_class}",
+              "parameter": {
+                "template": "{parameter}"
+              },
+              "base_value": {
+                "template": "{base_value}"
+              },
+              "minus_one_sd": {
+                "template": "{minus_one_sd}"
+              },
+              "target_minus_one_sd": {
+                "template": "{target_minus_one_sd}"
+              },
+              "plus_one_sd": {
+                "template": "{plus_one_sd}"
+              },
+              "target_plus_one_sd": {
+                "template": "{target_plus_one_sd}"
+              },
+              "range": {
+                "template": "{range}"
+              },
+              "rank": {
+                "template": "{rank}"
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty14-sensitivity-highlight",
+          "type": "text",
+          "template": {
+            "template": "{content}",
+            "placeholders": {
+              "{content}": {
+                "source": "caty14_tables",
+                "path": "narratives.sensitivity_highlight_html",
+                "format": "text"
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty14-methodology-comparison-table",
+          "type": "table",
+          "headers": [
+            "Model",
+            "Target Price",
+            "Return vs Spot",
+            "Rating"
+          ],
+          "columns": [
+            "model",
+            "target_price",
+            "return",
+            "rating"
+          ],
+          "column_classes": [
+            "",
+            "number",
+            "number",
+            ""
+          ],
+          "rows_from_list": {
+            "source": "caty14_tables",
+            "list_path": "tables.methodology_comparison",
+            "row_template": {
+              "row_class": "{row_class}",
+              "model": {
+                "template": "{model}"
+              },
+              "target_price": {
+                "template": "{target_price}"
+              },
+              "return": {
+                "template": "{return}"
+              },
+              "rating": {
+                "template": "{rating}"
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty14-methodology-interpretation",
+          "type": "text",
+          "template": {
+            "template": "{content}",
+            "placeholders": {
+              "{content}": {
+                "source": "caty14_tables",
+                "path": "narratives.methodology_interpretation_html",
+                "format": "text"
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty14-var-analysis",
+          "type": "text",
+          "template": {
+            "template": "{content}",
+            "placeholders": {
+              "{content}": {
+                "source": "caty14_tables",
+                "path": "narratives.var_analysis_html",
+                "format": "text"
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty14-qa-intro",
+          "type": "text",
+          "template": {
+            "template": "{content}",
+            "placeholders": {
+              "{content}": {
+                "source": "caty14_tables",
+                "path": "narratives.qa_intro_html",
+                "format": "text"
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty14-qa-table",
+          "type": "table",
+          "headers": [
+            "Check ID",
+            "Description",
+            "Rule",
+            "Status"
+          ],
+          "columns": [
+            "id",
+            "description",
+            "rule",
+            "status"
+          ],
+          "column_classes": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "rows_from_list": {
+            "source": "caty14_tables",
+            "list_path": "tables.qa_checks",
+            "row_template": {
+              "id": {
+                "template": "{id}"
+              },
+              "description": {
+                "template": "{description}"
+              },
+              "rule": {
+                "template": "{rule}"
+              },
+              "status": {
+                "template": "{status_html}"
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty14-python-code",
+          "type": "text",
+          "template": {
+            "template": "{code}",
+            "placeholders": {
+              "{code}": {
+                "source": "caty14_tables",
+                "path": "narratives.python_code_html",
+                "format": "text"
+              }
+            }
+          }
+        }
+      ]
     }
   ]
 }
