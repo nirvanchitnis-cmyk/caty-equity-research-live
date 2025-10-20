@@ -1,9 +1,17 @@
 # CATY Equity Research Dashboard - CFA IRC-Level Automation Project
 
+⚠️ **ACTIVE MAINTENANCE - OCTOBER 20, 2025** ⚠️
+
+**PROJECT NUKE IN PROGRESS:** Converting index.html from hardcoded sections to 100% template-driven architecture. Site may show inconsistent data during this maintenance window (ETA: 3 hours). Live price integration complete ($47.00 Oct 20), now fixing all downstream instances.
+
+**CFA IRC Team:** Expect temporary outages. Core data pipelines (DEF14A, governance, peer analysis) remain operational.
+
+---
+
 **Fully automated, audit-grade equity research dashboard for Cathay General Bancorp (NASDAQ: CATY)** that meets CFA Institute Research Challenge (IRC) standards. Every numeric claim traces to primary source APIs with full provenance metadata (source, XBRL tag, accession, timestamp). Zero manual drift permitted.
 
-[![Live Site](https://img.shields.io/badge/Live%20Site-GitHub%20Pages-brightgreen)](https://nirvanchitnis-cmyk.github.io/caty-equity-research-live/)
-[![Automation](https://img.shields.io/badge/Automation-100%25-success)](#automation-status)
+[![Live Site](https://img.shields.io/badge/Live%20Site-MAINTENANCE-yellow)](https://nirvanchitnis-cmyk.github.io/caty-equity-research-live/)
+[![Automation](https://img.shields.io/badge/Status-Fixing%20Stale%20Data-red)](#automation-status)
 [![Modules](https://img.shields.io/badge/Modules-17%2F17%20Complete-blue)](#module-status)
 
 **Repository:** https://github.com/nirvanchitnis-cmyk/caty-equity-research-live
