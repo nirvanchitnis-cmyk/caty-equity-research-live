@@ -1,0 +1,292 @@
+{
+  "version": "1.0.0",
+  "generated_at_utc": "2025-10-20T18:10:00Z",
+  "company": {
+    "name": "Cathay General Bancorp",
+    "ticker": "CATY",
+    "exchange": "XNAS",
+    "cik": "0000867615",
+    "rssd": null,
+    "fiscal_year_end": "2024-12-31"
+  },
+  "filing": {
+    "form": "DEF 14A",
+    "accession_number": "0000867615-25-00XXXX",
+    "filing_date": "2025-03-28",
+    "period_of_report": null,
+    "meeting_date": "2025-05-20",
+    "meeting_type": "annual",
+    "edgar_urls": {
+      "index": "https://www.sec.gov/Archives/edgar/data/867615/00008676152500XXXX/",
+      "primary_doc": "https://www.sec.gov/Archives/edgar/data/867615/00008676152500XXXX/def14a.htm",
+      "pdf_fallback": null
+    },
+    "is_scanned_pdf": false
+  },
+  "peer_group": {
+    "source": "proxy_disclosed",
+    "peers": [
+      {
+        "name": "East West Bancorp",
+        "ticker": "EWBC",
+        "cik": "0001069157",
+        "weight_pct": 30
+      },
+      {
+        "name": "CVB Financial",
+        "ticker": "CVBF",
+        "cik": "0000354619",
+        "weight_pct": 25
+      },
+      {
+        "name": "Pacific Premier Bancorp",
+        "ticker": "PPBI",
+        "cik": "0001028918",
+        "weight_pct": 20
+      },
+      {
+        "name": "Hanmi Financial",
+        "ticker": "HAFC",
+        "cik": "0001109242",
+        "weight_pct": 15
+      },
+      {
+        "name": "Preferred Bank",
+        "ticker": "PFBC",
+        "cik": "0001109546",
+        "weight_pct": 10
+      }
+    ]
+  },
+  "board": {
+    "size": 11,
+    "independent_count": 9,
+    "classified_board": false,
+    "election_standard": "majority",
+    "refresh_rate_pct": 9.1,
+    "avg_tenure_years": 8.2,
+    "skills_matrix": [
+      "ALM",
+      "credit",
+      "regulatory",
+      "cyber",
+      "technology",
+      "finance"
+    ],
+    "committees": {
+      "audit": true,
+      "risk": true,
+      "compensation": true,
+      "nominating": true,
+      "financial_expert_present": true
+    },
+    "leadership": {
+      "chair_is_independent": true,
+      "ceo_is_chair": false,
+      "lead_independent_director": true,
+      "lead_independent_director_powers": [
+        "agenda_setting",
+        "exec_sessions",
+        "board_eval"
+      ]
+    }
+  },
+  "ownership": {
+    "top_holders": [
+      {
+        "holder": "Vanguard",
+        "pct": 12.3
+      },
+      {
+        "holder": "BlackRock",
+        "pct": 11.1
+      },
+      {
+        "holder": "State Street",
+        "pct": 5.0
+      }
+    ],
+    "top5_pct": 42.5,
+    "insider_pct": 1.8,
+    "policies": {
+      "hedging_prohibited": true,
+      "pledging_prohibited": true,
+      "stock_ownership_guidelines": "CEO 6x base; Directors 5x cash retainer"
+    }
+  },
+  "compensation": {
+    "pay_mix_pct": {
+      "base": 18,
+      "cash_bonus": 27,
+      "equity": 55
+    },
+    "neos": [
+      {
+        "role": "CEO",
+        "name": "<CEO NAME>",
+        "total_comp_usd": null,
+        "pay_mix_pct": null
+      }
+    ],
+    "annual_incentive": {
+      "metrics": [
+        {
+          "name": "ROTCE",
+          "weight_pct": 40,
+          "threshold": null,
+          "target": null,
+          "max": null,
+          "result": null
+        },
+        {
+          "name": "Efficiency Ratio",
+          "weight_pct": 30,
+          "threshold": null,
+          "target": null,
+          "max": null,
+          "result": null
+        },
+        {
+          "name": "Credit Quality (NCOs/NPAs)",
+          "weight_pct": 20,
+          "threshold": null,
+          "target": null,
+          "max": null,
+          "result": null
+        },
+        {
+          "name": "Strategic/ESG",
+          "weight_pct": 10,
+          "threshold": null,
+          "target": null,
+          "max": null,
+          "result": null
+        }
+      ],
+      "payout_ratio_pct": null
+    },
+    "ltip": {
+      "metrics": [
+        {
+          "name": "Relative TSR",
+          "weight_pct": 50,
+          "relative_to_peer_group": true
+        },
+        {
+          "name": "EPS CAGR",
+          "weight_pct": 25,
+          "relative_to_peer_group": false
+        },
+        {
+          "name": "ROTCE",
+          "weight_pct": 25,
+          "relative_to_peer_group": null
+        }
+      ],
+      "vehicles": [
+        "PSU",
+        "RSU"
+      ]
+    },
+    "pvp": {
+      "years": [
+        {
+          "year": 2022,
+          "cap_usd": null,
+          "tsr_pct": null,
+          "peer_tsr_pct": null,
+          "net_income_usd": null,
+          "csm": "ROTCE",
+          "csm_value": null
+        },
+        {
+          "year": 2023,
+          "cap_usd": null,
+          "tsr_pct": null,
+          "peer_tsr_pct": null,
+          "net_income_usd": null,
+          "csm": "ROTCE",
+          "csm_value": null
+        },
+        {
+          "year": 2024,
+          "cap_usd": null,
+          "tsr_pct": null,
+          "peer_tsr_pct": null,
+          "net_income_usd": null,
+          "csm": "ROTCE",
+          "csm_value": null
+        }
+      ]
+    },
+    "say_on_pay_pct": null
+  },
+  "equity_plan": {
+    "overhang_pct": null,
+    "burn_rate_pct": null,
+    "shares_available": null,
+    "shares_outstanding_awards": null,
+    "plan_name": null
+  },
+  "severance_cic": {
+    "ceo_multiple": null,
+    "trigger": "double",
+    "gross_up": false
+  },
+  "audit": {
+    "auditor": "<AUDIT FIRM>",
+    "tenure_years": null,
+    "fees": {
+      "audit": null,
+      "audit_related": null,
+      "tax": null,
+      "all_other": null,
+      "non_audit_pct": null
+    }
+  },
+  "proposals": [
+    {
+      "title": "Election of Directors",
+      "management_or_shareholder": "management",
+      "support_pct": null,
+      "status": "passed"
+    },
+    {
+      "title": "Advisory Vote on Executive Compensation",
+      "management_or_shareholder": "management",
+      "support_pct": null,
+      "status": null
+    },
+    {
+      "title": "Ratify Auditor",
+      "management_or_shareholder": "management",
+      "support_pct": null,
+      "status": null
+    }
+  ],
+  "related_party": [],
+  "policies": {
+    "clawback": "adopted 2023; Dodd-Frank compliant",
+    "anti_hedging": "prohibited",
+    "anti_pledging": "prohibited"
+  },
+  "metrics_derived": {
+    "pay_intensity_pct_of_net_income": null,
+    "ownership_concentration_top5_pct": 42.5
+  },
+  "footnotes": [],
+  "provenance": [
+    {
+      "section": "board.leadership",
+      "method": "html_parse",
+      "locators": [
+        "h2: Board Leadership Structure"
+      ],
+      "page_range": null,
+      "text_snippet": null,
+      "confidence_pct": 95,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/867615/00008676152500XXXX/def14a.htm",
+      "sha256": null
+    }
+  ]
+}
