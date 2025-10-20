@@ -31,3 +31,10 @@ evidence/archive/
 test_output/
 evidence/raw/*.pdf
 evidence/raw/*.htm
+
+# DEF14A HTML files (large, keep manifests/logs only)
+evidence/raw/def14a/runs/*/DEF14A_*.html
+evidence/raw/def14a/runs/*/DEF14A_*.xlsx
+# But keep manifests and logs for provenance
+!evidence/raw/def14a/runs/*/manifest_def14a.json
+!evidence/raw/def14a/runs/*/extraction.log

@@ -1,0 +1,67 @@
+{
+  "pipeline": "def14a",
+  "user_agent": "NirvanChitnis/nirvanchitnis@example.com",
+  "throttle_seconds": 1.8,
+  "generated_at_utc": "2025-10-20T18:05:30Z",
+  "run_dir": "/Users/nirvanchitnis/Desktop/CATY_Clean/evidence/raw/def14a/runs/20251020_180453_CATY_EWBC_CVBF_HAFC_COLB_WAFD_PPBI_BANC_HOPE",
+  "xlsx_path": "/Users/nirvanchitnis/Desktop/CATY_Clean/evidence/raw/def14a/runs/20251020_180453_CATY_EWBC_CVBF_HAFC_COLB_WAFD_PPBI_BANC_HOPE/DEF14A_Artifacts.xlsx",
+  "xlsx_sha256": "9436381bef9668bb239d768a2cbb0cb792118aaab0dbfdb36035042778dec7f8",
+  "http_provenance": {
+    "CATY": {
+      "def14a_url": "https://www.sec.gov/Archives/edgar/data/861842/000143774925011577/caty20250326_def14a.htm",
+      "sha256": "43e4b3f0e50309c5655842d10d47e4e38788709c7cfb7ff3e7a6986f53028873",
+      "accession_number": "0001437749-25-011577",
+      "filing_date": "2025-04-10",
+      "primary_document": "caty20250326_def14a.htm"
+    },
+    "EWBC": {
+      "def14a_url": "https://www.sec.gov/Archives/edgar/data/1069157/000117494725000556/ea0237505-def14a_eastwest.htm",
+      "sha256": "7811e2a8e4749a1a864f53d8ead65af4a54f9689552c8d4365b9b783bdf396a8",
+      "accession_number": "0001174947-25-000556",
+      "filing_date": "2025-04-10",
+      "primary_document": "ea0237505-def14a_eastwest.htm"
+    },
+    "CVBF": {
+      "def14a_url": "https://www.sec.gov/Archives/edgar/data/354647/000095017025051966/cvbf-20250405.htm",
+      "sha256": "fe2a2463104b9a524660a8f36d015ae961cc4243300fc123000fe08ce8693516",
+      "accession_number": "0000950170-25-051966",
+      "filing_date": "2025-04-08",
+      "primary_document": "cvbf-20250405.htm"
+    },
+    "HAFC": {
+      "def14a_url": "https://www.sec.gov/Archives/edgar/data/1109242/000095017025054713/hafc-20250416.htm",
+      "sha256": "385a6cf4ccc02829890e015605fc84554b8a958f5fc820b396de0079c79649b2",
+      "accession_number": "0000950170-25-054713",
+      "filing_date": "2025-04-16",
+      "primary_document": "hafc-20250416.htm"
+    },
+    "COLB": {
+      "def14a_url": "https://www.sec.gov/Archives/edgar/data/887343/000088734325000152/colb-20250403.htm",
+      "sha256": "2005b04b361e6bb5f11350b07a644ae28b1d4be62112413b979f2312fa29b7d9",
+      "accession_number": "0000887343-25-000152",
+      "filing_date": "2025-04-03",
+      "primary_document": "colb-20250403.htm"
+    },
+    "WAFD": {
+      "def14a_url": "https://www.sec.gov/Archives/edgar/data/936528/000093652825000036/wfsl-20250128.htm",
+      "sha256": "bea0c6255e3fb45f15eee88b817bfcd1b9b8bc7b2736359ca2000921c005cad6",
+      "accession_number": "0000936528-25-000036",
+      "filing_date": "2025-01-29",
+      "primary_document": "wfsl-20250128.htm"
+    },
+    "BANC": {
+      "def14a_url": "https://www.sec.gov/Archives/edgar/data/1169770/000116977025000015/banc-20250327.htm",
+      "sha256": "b38fd5eb7974c7bd1f0a8df5b2b4815fda7b5dda7b6ee8af1f13cc4c55e7a2dc",
+      "accession_number": "0001169770-25-000015",
+      "filing_date": "2025-03-27",
+      "primary_document": "banc-20250327.htm"
+    },
+    "HOPE": {
+      "def14a_url": "https://www.sec.gov/Archives/edgar/data/1128361/000119312525078439/d888910ddef14a.htm",
+      "sha256": "a96d7c937da6dcf1bcffa0accd84c1a25b760e9197441c7ce500ab663e90bb58",
+      "accession_number": "0001193125-25-078439",
+      "filing_date": "2025-04-11",
+      "primary_document": "d888910ddef14a.htm"
+    }
+  }
+}
