@@ -559,7 +559,10 @@ def main(test_mode: bool = False) -> int:
         valuation_outputs = load_json(VALUATION_OUTPUTS_PATH) if VALUATION_OUTPUTS_PATH.exists() else {}
 
         valuation_lookup = {"methods": {m["id"]: m for m in methods_cfg.get("methods", [])}, "config": methods_cfg}
+        caty02_tables = load_json(ROOT / "data" / "caty02_income_statement.json") if (ROOT / "data" / "caty02_income_statement.json").exists() else {}
+        caty03_tables = load_json(ROOT / "data" / "caty03_balance_sheet.json") if (ROOT / "data" / "caty03_balance_sheet.json").exists() else {}
         caty05_tables = load_json(ROOT / "data" / "caty05_calculated_tables.json") if (ROOT / "data" / "caty05_calculated_tables.json").exists() else {}
+        caty07_tables = load_json(ROOT / "data" / "caty07_credit_quality.json") if (ROOT / "data" / "caty07_credit_quality.json").exists() else {}
         caty12_tables = load_json(ROOT / "data" / "caty12_calculated_tables.json") if (ROOT / "data" / "caty12_calculated_tables.json").exists() else {}
 
         context = {
@@ -567,7 +570,10 @@ def main(test_mode: bool = False) -> int:
             "valuation": valuation_lookup,
             "executive": exec_cfg,
             "valuation_outputs": valuation_outputs,
+            "caty02_tables": caty02_tables,
+            "caty03_tables": caty03_tables,
             "caty05_tables": caty05_tables,
+            "caty07_tables": caty07_tables,
             "caty12_tables": caty12_tables,
         }
 

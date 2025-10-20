@@ -1,0 +1,101 @@
+{
+  "comment": "CATY_03 Balance Sheet - Q2 2025 assets, liabilities, equity",
+  "last_updated": "2025-10-19T23:50:00Z",
+  "data_source": "SEC 10-Q Q2 2025 (Accession 0001437749-25-025772)",
+  "period": "2025-06-30",
+  "snapshot_metrics": {
+    "total_assets_billions": 23.7,
+    "total_loans_billions": 19.8,
+    "total_deposits_billions": 20.0,
+    "tce_billions": 2.51,
+    "tbvps": 36.16,
+    "noninterest_bearing_deposits_billions": 3.4,
+    "afs_securities_billions": 1.65,
+    "tangible_common_equity_ratio_pct": 10.59,
+    "loan_to_deposit_ratio_pct": 98.0
+  },
+  "assets": {
+    "cash_due_from_banks_millions": 276.4,
+    "securities_afs_millions": 2389.5,
+    "securities_htm_millions": 428.7,
+    "loans_hfi_gross_millions": 19794.2,
+    "allowance_credit_losses_millions": -173.5,
+    "loans_hfi_net_millions": 19620.7,
+    "premises_equipment_millions": 104.3,
+    "goodwill_intangibles_millions": 0.0,
+    "other_assets_millions": 876.9,
+    "total_assets_millions": 23696.5
+  },
+  "liabilities": {
+    "deposits_millions": 19965.1,
+    "fhlb_borrowings_millions": 1200.0,
+    "subordinated_debt_millions": 123.7,
+    "other_liabilities_millions": 899.3,
+    "total_liabilities_millions": 22188.1
+  },
+  "equity": {
+    "common_stock_millions": 0.7,
+    "additional_paid_in_capital_millions": 1780.5,
+    "retained_earnings_millions": 1014.3,
+    "aoci_millions": -287.1,
+    "total_stockholders_equity_millions": 2508.4,
+    "less_goodwill_intangibles_millions": 0.0,
+    "tangible_common_equity_millions": 2508.4
+  },
+  "per_share_metrics": {
+    "shares_outstanding_millions": 69.36,
+    "book_value_per_share": 36.16,
+    "tangible_book_value_per_share": 36.16,
+    "price_to_book": 1.269,
+    "price_to_tangible_book": 1.269
+  },
+  "loan_composition_pct": {
+    "cre_nonfarm_nonresidential": 34.2,
+    "cre_construction": 5.1,
+    "cre_multifamily": 13.1,
+    "cre_total": 52.4,
+    "residential_1_4_family": 18.7,
+    "commercial_industrial": 24.3,
+    "other_loans": 4.6
+  },
+  "deposit_composition_pct": {
+    "demand_noninterest_bearing": 16.7,
+    "savings_money_market": 48.3,
+    "time_deposits": 29.4,
+    "brokered_deposits": 5.6
+  },
+  "q2_2025_detailed_table": {
+    "period_end": "2025-06-30",
+    "total_assets_millions": 23723.8,
+    "loans_hfi_millions": 19784.7,
+    "loans_hfs_millions": 13.3,
+    "afs_securities_millions": 1648.4,
+    "cash_millions": 1247.0,
+    "total_deposits_millions": 20006.3,
+    "noninterest_bearing_deposits_millions": 3381.4,
+    "interest_bearing_deposits_millions": 16624.9,
+    "fhlb_advances_millions": 412.0,
+    "subordinated_debt_millions": 119.1,
+    "total_equity_millions": 2886.3,
+    "goodwill_millions": 375.7,
+    "intangible_assets_millions": 2.9,
+    "aoci_millions": -69.2,
+    "aoci_abs_millions": 69.2,
+    "tce_millions": 2507.7,
+    "shares_outstanding_millions": 69.343,
+    "tbvps": 36.16
+  },
+  "q2_2025_deposit_mix": {
+    "total_pct": 100.0,
+    "noninterest_bearing_pct": 16.9,
+    "interest_bearing_pct": 83.1
+  },
+  "q2_2025_tce_calculation": {
+    "total_equity_millions": 2886.3,
+    "less_goodwill_millions": 375.7,
+    "less_intangibles_millions": 2.9,
+    "tangible_common_equity_millions": 2507.7,
+    "shares_outstanding_millions": 69.343,
+    "tbvps": 36.16
+  }
+}

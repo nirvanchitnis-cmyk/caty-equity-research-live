@@ -377,6 +377,387 @@
       ]
     },
     {
+      "id": "CATY_03",
+      "file": "CATY_03_balance_sheet.html",
+      "data": {
+        "metadata": {
+          "03": {
+            "last_updated_formatted": "October 17, 2025"
+          }
+        }
+      },
+      "sections": [
+        {
+          "marker": "caty03-header-meta",
+          "type": "text",
+          "template": {
+            "template": "<p class=\"page-meta\">\n    GAAP balance sheet with tangible equity |\n    Last Updated: {last_updated} |\n    Source: SEC EDGAR 10-Q Q2'25, 10-K FY2024\n</p>",
+            "placeholders": {
+              "{last_updated}": {
+                "source": "module",
+                "path": "metadata.03.last_updated_formatted",
+                "format": "text"
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty03-snapshot-grid",
+          "type": "cards",
+          "wrapper": {
+            "tag": "div",
+            "class": "metric-grid"
+          },
+          "defaults": {
+            "card_class": "metric-card",
+            "label_class": "metric-label",
+            "value_class": "metric-value",
+            "subtext_class": "metric-subtext"
+          },
+          "cards": [
+            {
+              "label": "Total Assets",
+              "value": {
+                "source": "caty03_tables",
+                "path": "snapshot_metrics.total_assets_billions",
+                "format": "currency_scale",
+                "scale": "billions",
+                "decimals": 1
+              },
+              "subtext": {
+                "template": "As of June 30, 2025"
+              }
+            },
+            {
+              "label": "Total Loans (HFI)",
+              "value": {
+                "source": "caty03_tables",
+                "path": "snapshot_metrics.total_loans_billions",
+                "format": "currency_scale",
+                "scale": "billions",
+                "decimals": 1
+              },
+              "subtext": {
+                "template": "Loans held for investment"
+              }
+            },
+            {
+              "label": "Total Deposits",
+              "value": {
+                "source": "caty03_tables",
+                "path": "snapshot_metrics.total_deposits_billions",
+                "format": "currency_scale",
+                "scale": "billions",
+                "decimals": 1
+              },
+              "subtext": {
+                "template": "Total customer deposits"
+              }
+            },
+            {
+              "label": "Noninterest-Bearing Deposits",
+              "value": {
+                "source": "caty03_tables",
+                "path": "snapshot_metrics.noninterest_bearing_deposits_billions",
+                "format": "currency_scale",
+                "scale": "billions",
+                "decimals": 1
+              },
+              "subtext": {
+                "template": "{pct}% of total deposits",
+                "placeholders": {
+                  "{pct}": {
+                    "source": "caty03_tables",
+                    "path": "q2_2025_deposit_mix.noninterest_bearing_pct",
+                    "format": "decimal",
+                    "decimals": 1
+                  }
+                }
+              }
+            },
+            {
+              "label": "Tangible Common Equity",
+              "value": {
+                "source": "caty03_tables",
+                "path": "snapshot_metrics.tce_billions",
+                "format": "currency_scale",
+                "scale": "billions",
+                "decimals": 2
+              },
+              "subtext": {
+                "template": "Total equity less goodwill and intangibles"
+              }
+            },
+            {
+              "label": "TBVPS",
+              "value": {
+                "source": "caty03_tables",
+                "path": "snapshot_metrics.tbvps",
+                "format": "currency",
+                "decimals": 2
+              },
+              "subtext": {
+                "template": "Tangible book value per share"
+              }
+            },
+            {
+              "label": "Shares Outstanding",
+              "value": {
+                "source": "caty03_tables",
+                "path": "per_share_metrics.shares_outstanding_millions",
+                "format": "decimal",
+                "decimals": 2,
+                "suffix": "M"
+              },
+              "subtext": {
+                "template": "End of period"
+              }
+            },
+            {
+              "label": "AFS Securities (FV)",
+              "value": {
+                "source": "caty03_tables",
+                "path": "snapshot_metrics.afs_securities_billions",
+                "format": "currency_scale",
+                "scale": "billions",
+                "decimals": 2
+              },
+              "subtext": {
+                "template": "Available-for-sale at fair value"
+              }
+            }
+          ]
+        },
+        {
+          "marker": "caty03-q2-detailed-table",
+          "type": "text",
+          "template": {
+            "template": "<table>\n    <thead>\n        <tr>\n            <th>Line Item</th>\n            <th class=\"numeric\">Q2'25 (USD Millions)</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td><strong>Period End</strong></td>\n            <td class=\"numeric\">{period_end}</td>\n        </tr>\n        <tr>\n            <td><strong>Total Assets</strong></td>\n            <td class=\"numeric\">{total_assets}</td>\n        </tr>\n        <tr>\n            <td>Loans Held for Investment</td>\n            <td class=\"numeric\">{loans_hfi}</td>\n        </tr>\n        <tr>\n            <td>Loans Held for Sale</td>\n            <td class=\"numeric\">{loans_hfs}</td>\n        </tr>\n        <tr>\n            <td>AFS Securities (Fair Value)</td>\n            <td class=\"numeric\">{afs_securities}</td>\n        </tr>\n        <tr>\n            <td>Cash</td>\n            <td class=\"numeric\">{cash}</td>\n        </tr>\n        <tr>\n            <td><strong>Total Deposits</strong></td>\n            <td class=\"numeric\">{total_deposits}</td>\n        </tr>\n        <tr>\n            <td>Noninterest-Bearing Deposits</td>\n            <td class=\"numeric\">{nib_deposits}</td>\n        </tr>\n        <tr>\n            <td>Interest-Bearing Deposits</td>\n            <td class=\"numeric\">{ib_deposits}</td>\n        </tr>\n        <tr>\n            <td>FHLB Advances</td>\n            <td class=\"numeric\">{fhlb}</td>\n        </tr>\n        <tr>\n            <td>Subordinated Debt</td>\n            <td class=\"numeric\">{sub_debt}</td>\n        </tr>\n        <tr>\n            <td><strong>Total Equity</strong></td>\n            <td class=\"numeric\">{total_equity}</td>\n        </tr>\n        <tr>\n            <td>Goodwill</td>\n            <td class=\"numeric\">{goodwill}</td>\n        </tr>\n        <tr>\n            <td>Intangible Assets</td>\n            <td class=\"numeric\">{intangibles}</td>\n        </tr>\n        <tr>\n            <td>AOCI</td>\n            <td class=\"numeric\">({aoci})</td>\n        </tr>\n        <tr>\n            <td><strong>Tangible Common Equity</strong></td>\n            <td class=\"numeric\">{tce}</td>\n        </tr>\n        <tr>\n            <td>Shares Outstanding (millions)</td>\n            <td class=\"numeric\">{shares}</td>\n        </tr>\n        <tr>\n            <td><strong>TBVPS (USD)</strong></td>\n            <td class=\"numeric\">{tbvps}</td>\n        </tr>\n    </tbody>\n</table>",
+            "placeholders": {
+              "{period_end}": {
+                "source": "caty03_tables",
+                "path": "q2_2025_detailed_table.period_end",
+                "format": "text"
+              },
+              "{total_assets}": {
+                "source": "caty03_tables",
+                "path": "q2_2025_detailed_table.total_assets_millions",
+                "format": "currency",
+                "decimals": 1
+              },
+              "{loans_hfi}": {
+                "source": "caty03_tables",
+                "path": "q2_2025_detailed_table.loans_hfi_millions",
+                "format": "currency",
+                "decimals": 1
+              },
+              "{loans_hfs}": {
+                "source": "caty03_tables",
+                "path": "q2_2025_detailed_table.loans_hfs_millions",
+                "format": "currency",
+                "decimals": 1
+              },
+              "{afs_securities}": {
+                "source": "caty03_tables",
+                "path": "q2_2025_detailed_table.afs_securities_millions",
+                "format": "currency",
+                "decimals": 1
+              },
+              "{cash}": {
+                "source": "caty03_tables",
+                "path": "q2_2025_detailed_table.cash_millions",
+                "format": "currency",
+                "decimals": 1
+              },
+              "{total_deposits}": {
+                "source": "caty03_tables",
+                "path": "q2_2025_detailed_table.total_deposits_millions",
+                "format": "currency",
+                "decimals": 1
+              },
+              "{nib_deposits}": {
+                "source": "caty03_tables",
+                "path": "q2_2025_detailed_table.noninterest_bearing_deposits_millions",
+                "format": "currency",
+                "decimals": 1
+              },
+              "{ib_deposits}": {
+                "source": "caty03_tables",
+                "path": "q2_2025_detailed_table.interest_bearing_deposits_millions",
+                "format": "currency",
+                "decimals": 1
+              },
+              "{fhlb}": {
+                "source": "caty03_tables",
+                "path": "q2_2025_detailed_table.fhlb_advances_millions",
+                "format": "currency",
+                "decimals": 1
+              },
+              "{sub_debt}": {
+                "source": "caty03_tables",
+                "path": "q2_2025_detailed_table.subordinated_debt_millions",
+                "format": "currency",
+                "decimals": 1
+              },
+              "{total_equity}": {
+                "source": "caty03_tables",
+                "path": "q2_2025_detailed_table.total_equity_millions",
+                "format": "currency",
+                "decimals": 1
+              },
+              "{goodwill}": {
+                "source": "caty03_tables",
+                "path": "q2_2025_detailed_table.goodwill_millions",
+                "format": "currency",
+                "decimals": 1
+              },
+              "{intangibles}": {
+                "source": "caty03_tables",
+                "path": "q2_2025_detailed_table.intangible_assets_millions",
+                "format": "currency",
+                "decimals": 1
+              },
+              "{aoci}": {
+                "source": "caty03_tables",
+                "path": "q2_2025_detailed_table.aoci_abs_millions",
+                "format": "currency",
+                "decimals": 1
+              },
+              "{tce}": {
+                "source": "caty03_tables",
+                "path": "q2_2025_detailed_table.tce_millions",
+                "format": "currency",
+                "decimals": 1
+              },
+              "{shares}": {
+                "source": "caty03_tables",
+                "path": "q2_2025_detailed_table.shares_outstanding_millions",
+                "format": "decimal",
+                "decimals": 3
+              },
+              "{tbvps}": {
+                "source": "caty03_tables",
+                "path": "q2_2025_detailed_table.tbvps",
+                "format": "currency",
+                "decimals": 2
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty03-q2-deposit-mix",
+          "type": "text",
+          "template": {
+            "template": "<table>\n    <thead>\n        <tr>\n            <th>Deposit Type</th>\n            <th class=\"numeric\">Amount (USD Millions)</th>\n            <th class=\"numeric\">% of Total</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td><strong>Total Deposits</strong></td>\n            <td class=\"numeric\">{total_amount}</td>\n            <td class=\"numeric\">{total_pct}</td>\n        </tr>\n        <tr>\n            <td>Noninterest-Bearing Deposits</td>\n            <td class=\"numeric\">{nib_amount}</td>\n            <td class=\"numeric\">{nib_pct}</td>\n        </tr>\n        <tr>\n            <td>Interest-Bearing Deposits</td>\n            <td class=\"numeric\">{ib_amount}</td>\n            <td class=\"numeric\">{ib_pct}</td>\n        </tr>\n    </tbody>\n</table>",
+            "placeholders": {
+              "{total_amount}": {
+                "source": "caty03_tables",
+                "path": "q2_2025_detailed_table.total_deposits_millions",
+                "format": "currency",
+                "decimals": 1
+              },
+              "{total_pct}": {
+                "source": "caty03_tables",
+                "path": "q2_2025_deposit_mix.total_pct",
+                "format": "percent",
+                "decimals": 1
+              },
+              "{nib_amount}": {
+                "source": "caty03_tables",
+                "path": "q2_2025_detailed_table.noninterest_bearing_deposits_millions",
+                "format": "currency",
+                "decimals": 1
+              },
+              "{nib_pct}": {
+                "source": "caty03_tables",
+                "path": "q2_2025_deposit_mix.noninterest_bearing_pct",
+                "format": "percent",
+                "decimals": 1
+              },
+              "{ib_amount}": {
+                "source": "caty03_tables",
+                "path": "q2_2025_detailed_table.interest_bearing_deposits_millions",
+                "format": "currency",
+                "decimals": 1
+              },
+              "{ib_pct}": {
+                "source": "caty03_tables",
+                "path": "q2_2025_deposit_mix.interest_bearing_pct",
+                "format": "percent",
+                "decimals": 1
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty03-q2-tce-calc",
+          "type": "text",
+          "template": {
+            "template": "<table>\n    <thead>\n        <tr>\n            <th>Component</th>\n            <th class=\"numeric\">Amount (USD Millions)</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td>Total Shareholders' Equity</td>\n            <td class=\"numeric\">{equity}</td>\n        </tr>\n        <tr>\n            <td>Less: Goodwill</td>\n            <td class=\"numeric\">({goodwill})</td>\n        </tr>\n        <tr>\n            <td>Less: Intangible Assets</td>\n            <td class=\"numeric\">({intangibles})</td>\n        </tr>\n        <tr>\n            <td><strong>Tangible Common Equity</strong></td>\n            <td class=\"numeric\">{tce}</td>\n        </tr>\n        <tr>\n            <td>Shares Outstanding (millions)</td>\n            <td class=\"numeric\">{shares}</td>\n        </tr>\n        <tr>\n            <td><strong>TBVPS</strong></td>\n            <td class=\"numeric\">{tbvps}</td>\n        </tr>\n    </tbody>\n</table>",
+            "placeholders": {
+              "{equity}": {
+                "source": "caty03_tables",
+                "path": "q2_2025_tce_calculation.total_equity_millions",
+                "format": "currency",
+                "decimals": 1
+              },
+              "{goodwill}": {
+                "source": "caty03_tables",
+                "path": "q2_2025_tce_calculation.less_goodwill_millions",
+                "format": "currency",
+                "decimals": 1
+              },
+              "{intangibles}": {
+                "source": "caty03_tables",
+                "path": "q2_2025_tce_calculation.less_intangibles_millions",
+                "format": "currency",
+                "decimals": 1
+              },
+              "{tce}": {
+                "source": "caty03_tables",
+                "path": "q2_2025_tce_calculation.tangible_common_equity_millions",
+                "format": "currency",
+                "decimals": 1
+              },
+              "{shares}": {
+                "source": "caty03_tables",
+                "path": "q2_2025_tce_calculation.shares_outstanding_millions",
+                "format": "decimal",
+                "decimals": 3
+              },
+              "{tbvps}": {
+                "source": "caty03_tables",
+                "path": "q2_2025_tce_calculation.tbvps",
+                "format": "currency",
+                "decimals": 2
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty03-fy2024-detailed-table",
+          "type": "text",
+          "template": {
+            "template": "<!-- TODO: Add FY2024 balance sheet automation once data is structured -->\n<table>\n    <thead>\n        <tr>\n            <th>Line Item</th>\n            <th class=\"numeric\">FY2024 (USD Millions)</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td><strong>Period End</strong></td>\n            <td class=\"numeric\">2024-12-31</td>\n        </tr>\n        <tr>\n            <td><strong>Total Assets</strong></td>\n            <td class=\"numeric\">$23,054.7</td>\n        </tr>\n        <tr>\n            <td>Loans Held for Investment</td>\n            <td class=\"numeric\">$19,376.0</td>\n        </tr>\n        <tr>\n            <td>Loans Held for Sale</td>\n            <td class=\"numeric\">$0.0</td>\n        </tr>\n        <tr>\n            <td>AFS Securities (Fair Value)</td>\n            <td class=\"numeric\">$1,547.1</td>\n        </tr>\n        <tr>\n            <td>Cash</td>\n            <td class=\"numeric\">$157.2</td>\n        </tr>\n        <tr>\n            <td><strong>Total Deposits</strong></td>\n            <td class=\"numeric\">$19,686.2</td>\n        </tr>\n        <tr>\n            <td>Noninterest-Bearing Deposits</td>\n            <td class=\"numeric\">$3,284.3</td>\n        </tr>\n        <tr>\n            <td>Interest-Bearing Deposits</td>\n            <td class=\"numeric\">$16,401.9</td>\n        </tr>\n        <tr>\n            <td>FHLB Advances</td>\n            <td class=\"numeric\">$0.0</td>\n        </tr>\n        <tr>\n            <td>Subordinated Debt</td>\n            <td class=\"numeric\">N/A</td>\n        </tr>\n        <tr>\n            <td><strong>Total Equity</strong></td>\n            <td class=\"numeric\">$2,845.7</td>\n        </tr>\n        <tr>\n            <td>Goodwill</td>\n            <td class=\"numeric\">$375.7</td>\n        </tr>\n        <tr>\n            <td>Intangible Assets</td>\n            <td class=\"numeric\">$3.3</td>\n        </tr>\n        <tr>\n            <td>AOCI</td>\n            <td class=\"numeric\">($85.6)</td>\n        </tr>\n        <tr>\n            <td><strong>Tangible Common Equity</strong></td>\n            <td class=\"numeric\">$2,466.7</td>\n        </tr>\n        <tr>\n            <td>Shares Outstanding (millions)</td>\n            <td class=\"numeric\">70.863</td>\n        </tr>\n        <tr>\n            <td><strong>TBVPS (USD)</strong></td>\n            <td class=\"numeric\">$34.81</td>\n        </tr>\n    </tbody>\n</table>"
+          }
+        },
+        {
+          "marker": "caty03-fy2024-deposit-mix",
+          "type": "text",
+          "template": {
+            "template": "<!-- TODO: Wire FY2024 deposit mix when data is extended -->\n<table>\n    <thead>\n        <tr>\n            <th>Deposit Type</th>\n            <th class=\"numeric\">Amount (USD Millions)</th>\n            <th class=\"numeric\">% of Total</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td><strong>Total Deposits</strong></td>\n            <td class=\"numeric\">$19,686.2</td>\n            <td class=\"numeric\">100.0%</td>\n        </tr>\n        <tr>\n            <td>Noninterest-Bearing Deposits</td>\n            <td class=\"numeric\">$3,284.3</td>\n            <td class=\"numeric\">16.7%</td>\n        </tr>\n        <tr>\n            <td>Interest-Bearing Deposits</td>\n            <td class=\"numeric\">$16,401.9</td>\n            <td class=\"numeric\">83.3%</td>\n        </tr>\n    </tbody>\n</table>"
+          }
+        },
+        {
+          "marker": "caty03-fy2024-tce-calc",
+          "type": "text",
+          "template": {
+            "template": "<!-- TODO: Add FY2024 TCE calculation automation when data source added -->\n<table>\n    <thead>\n        <tr>\n            <th>Component</th>\n            <th class=\"numeric\">Amount (USD Millions)</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td>Total Shareholders' Equity</td>\n            <td class=\"numeric\">$2,845.7</td>\n        </tr>\n        <tr>\n            <td>Less: Goodwill</td>\n            <td class=\"numeric\">($375.7)</td>\n        </tr>\n        <tr>\n            <td>Less: Intangible Assets</td>\n            <td class=\"numeric\">($3.3)</td>\n        </tr>\n        <tr>\n            <td><strong>Tangible Common Equity</strong></td>\n            <td class=\"numeric\">$2,466.7</td>\n        </tr>\n        <tr>\n            <td>Shares Outstanding (millions)</td>\n            <td class=\"numeric\">70.863</td>\n        </tr>\n        <tr>\n            <td><strong>TBVPS</strong></td>\n            <td class=\"numeric\">$34.81</td>\n        </tr>\n    </tbody>\n</table>"
+          }
+        }
+      ]
+    },
+    {
       "id": "CATY_05",
       "file": "CATY_05_nim_decomposition.html",
       "data": {
