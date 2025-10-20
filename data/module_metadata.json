@@ -9,7 +9,11 @@
       "importance": "STANDARD",
       "last_updated": "2025-10-19",
       "automation_status": "100% - Autogen company profile dataset",
-      "data_dependencies": ["SEC 10-K", "SEC 10-Q", "Market Data"]
+      "data_dependencies": ["SEC 10-K", "SEC 10-Q", "Market Data"],
+      "cfa_category": "Business Description",
+      "cfa_emoji": "🏢",
+      "cfa_points": 5,
+      "cfa_order": 1
     },
     {
       "id": "02",
@@ -19,7 +23,11 @@
       "status": "UPDATED",
       "importance": "STANDARD",
       "last_updated": "2025-10-18",
-      "data_dependencies": ["SEC 10-Q"]
+      "data_dependencies": ["SEC 10-Q"],
+      "cfa_category": "Financial Analysis",
+      "cfa_emoji": "📈",
+      "cfa_points": 20,
+      "cfa_order": 5
     },
     {
       "id": "03",
@@ -29,7 +37,11 @@
       "status": "UPDATED",
       "importance": "STANDARD",
       "last_updated": "2025-10-17",
-      "data_dependencies": ["SEC 10-Q"]
+      "data_dependencies": ["SEC 10-Q"],
+      "cfa_category": "Financial Analysis",
+      "cfa_emoji": "📈",
+      "cfa_points": 20,
+      "cfa_order": 5
     },
     {
       "id": "04",
@@ -40,7 +52,11 @@
       "importance": "STANDARD",
       "last_updated": "2025-10-19",
       "automation_status": "100% - Autogen cash flow statement",
-      "data_dependencies": ["SEC 10-Q", "SEC 10-K"]
+      "data_dependencies": ["SEC 10-Q", "SEC 10-K"],
+      "cfa_category": "Financial Analysis",
+      "cfa_emoji": "📈",
+      "cfa_points": 20,
+      "cfa_order": 5
     },
     {
       "id": "05",
@@ -50,7 +66,11 @@
       "status": "UPDATED",
       "importance": "KEY",
       "last_updated": "2025-10-17",
-      "data_dependencies": ["SEC 10-Q", "Earnings Presentation"]
+      "data_dependencies": ["SEC 10-Q", "Earnings Presentation"],
+      "cfa_category": "Financial Analysis",
+      "cfa_emoji": "📈",
+      "cfa_points": 20,
+      "cfa_order": 5
     },
     {
       "id": "06",
@@ -61,7 +81,11 @@
       "importance": "STANDARD",
       "last_updated": "2025-10-19",
       "automation_status": "100% - Deposits dataset autogen",
-      "data_dependencies": ["SEC 10-Q", "Call Report"]
+      "data_dependencies": ["SEC 10-Q", "Call Report"],
+      "cfa_category": "Financial Analysis",
+      "cfa_emoji": "📈",
+      "cfa_points": 20,
+      "cfa_order": 5
     },
     {
       "id": "07",
@@ -71,7 +95,11 @@
       "status": "UPDATED",
       "importance": "CRITICAL",
       "last_updated": "2025-10-18",
-      "data_dependencies": ["FDIC Call Reports", "SEC 10-Q"]
+      "data_dependencies": ["FDIC Call Reports", "SEC 10-Q"],
+      "cfa_category": "Investment Risks",
+      "cfa_emoji": "⚠️",
+      "cfa_points": 15,
+      "cfa_order": 6
     },
     {
       "id": "08",
@@ -82,7 +110,11 @@
       "importance": "CRITICAL",
       "last_updated": "2025-10-19",
       "automation_status": "100% - Built with autogen from inception",
-      "data_dependencies": ["SEC 10-Q", "Peer Benchmark Dataset", "Climate Risk Model"]
+      "data_dependencies": ["SEC 10-Q", "Peer Benchmark Dataset", "Climate Risk Model"],
+      "cfa_category": "Investment Risks",
+      "cfa_emoji": "⚠️",
+      "cfa_points": 15,
+      "cfa_order": 6
     },
     {
       "id": "09",
@@ -93,7 +125,11 @@
       "importance": "STANDARD",
       "last_updated": "2025-10-19",
       "automation_status": "100% - Capital & liquidity dataset",
-      "data_dependencies": ["SEC 10-Q", "Call Report"]
+      "data_dependencies": ["SEC 10-Q", "Call Report"],
+      "cfa_category": "Financial Analysis",
+      "cfa_emoji": "📈",
+      "cfa_points": 20,
+      "cfa_order": 5
     },
     {
       "id": "10",
@@ -103,7 +139,11 @@
       "status": "UPDATED",
       "importance": "STANDARD",
       "last_updated": "2025-10-17",
-      "data_dependencies": ["SEC 10-Q"]
+      "data_dependencies": ["SEC 10-Q"],
+      "cfa_category": "Financial Analysis",
+      "cfa_emoji": "📈",
+      "cfa_points": 20,
+      "cfa_order": 5
     },
     {
       "id": "11",
@@ -113,7 +153,11 @@
       "status": "UPDATED",
       "importance": "KEY",
       "last_updated": "2025-10-18",
-      "data_dependencies": ["SEC EDGAR (peers)", "FactSet"]
+      "data_dependencies": ["SEC EDGAR (peers)", "FactSet"],
+      "cfa_category": "Industry Overview & Competitive Positioning",
+      "cfa_emoji": "🏆",
+      "cfa_points": 10,
+      "cfa_order": 2
     },
     {
       "id": "12",
@@ -123,7 +167,11 @@
       "status": "UPDATED",
       "importance": "MOST_CRITICAL",
       "last_updated": "2025-10-18",
-      "data_dependencies": ["All above modules", "Python scripts"]
+      "data_dependencies": ["All above modules", "Python scripts"],
+      "cfa_category": "Investment Summary",
+      "cfa_emoji": "🎯",
+      "cfa_points": 15,
+      "cfa_order": 3
     },
     {
       "id": "13",
@@ -133,7 +181,11 @@
       "status": "UPDATED",
       "importance": "KEY",
       "last_updated": "2025-10-18",
-      "data_dependencies": ["Python scripts", "CATY_02/03"]
+      "data_dependencies": ["Python scripts", "CATY_02/03"],
+      "cfa_category": "Valuation",
+      "cfa_emoji": "💰",
+      "cfa_points": 20,
+      "cfa_order": 4
     },
     {
       "id": "14",
@@ -143,7 +195,11 @@
       "status": "UPDATED",
       "importance": "KEY",
       "last_updated": "2025-10-18",
-      "data_dependencies": ["Python scripts"]
+      "data_dependencies": ["Python scripts"],
+      "cfa_category": "Valuation",
+      "cfa_emoji": "💰",
+      "cfa_points": 20,
+      "cfa_order": 4
     },
     {
       "id": "15",
@@ -154,7 +210,11 @@
       "importance": "STANDARD",
       "last_updated": "2025-10-19",
       "automation_status": "100% - ESG materiality dataset",
-      "data_dependencies": ["ESG analysis", "CATY COE framework"]
+      "data_dependencies": ["ESG analysis", "CATY COE framework"],
+      "cfa_category": "Environmental, Social, Governance",
+      "cfa_emoji": "🌱",
+      "cfa_points": 15,
+      "cfa_order": 7
     },
     {
       "id": "16",
@@ -164,7 +224,11 @@
       "status": "UPDATED",
       "importance": "KEY",
       "last_updated": "2025-10-19",
-      "data_dependencies": ["Python scripts", "Market data"]
+      "data_dependencies": ["Python scripts", "Market data"],
+      "cfa_category": "Valuation",
+      "cfa_emoji": "💰",
+      "cfa_points": 20,
+      "cfa_order": 4
     },
     {
       "id": "17",
@@ -175,7 +239,11 @@
       "importance": "STANDARD",
       "last_updated": "2025-10-19",
       "automation_status": "100% - ESG KPI dataset",
-      "data_dependencies": ["ESG data warehouse", "Valuation outputs"]
+      "data_dependencies": ["ESG data warehouse", "Valuation outputs"],
+      "cfa_category": "Environmental, Social, Governance",
+      "cfa_emoji": "🌱",
+      "cfa_points": 15,
+      "cfa_order": 7
     }
   ],
   "last_refresh": "2025-10-19T13:40:00Z",

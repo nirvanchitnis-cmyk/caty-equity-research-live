@@ -551,41 +551,60 @@ def render_module_grid() -> str:
     metadata = load_json(ROOT / "data" / "module_metadata.json")
     modules = metadata.get("modules", [])
 
-    rows: list[str] = ["<div class=\"module-grid\">"]
+    # Sort modules by CFA order, then by ID
+    modules_sorted = sorted(modules, key=lambda m: (m.get("cfa_order", 999), int(m.get("id", "0"))))
 
-    for module in modules:
-        card_class, badge_class = card_classes(module.get("importance", "STANDARD"))
-        status = module.get("status", "UNKNOWN")
-        status_text = status.replace("_", " ")
-        badge_text = f"FILE {module['id']}"
-        imp_symbol = metadata.get("importance_legend", {}).get(module.get("importance", ""), "")
-        if imp_symbol:
-            badge_text += f" {imp_symbol}"
-        badge_text += f" • {status_text}"
-        description = module.get("description", "")
-        last_updated = module.get("last_updated")
-        if last_updated:
-            description += f" (updated {last_updated})"
+    # Group modules by CFA category
+    from itertools import groupby
+    grouped = groupby(modules_sorted, key=lambda m: (
+        m.get("cfa_category", "Uncategorized"),
+        m.get("cfa_emoji", ""),
+        m.get("cfa_points", 0),
+        m.get("cfa_order", 999)
+    ))
 
-        rows.append(
-            "    <a href=\"{href}\" class=\"{card_class}\" data-status=\"{status}\">\n"
-            "        <div class=\"{badge_class}\">{badge_text}</div>\n"
-            "        <div class=\"module-card-title{title_extra}\">{title}</div>\n"
-            "        <div class=\"module-card-description{desc_extra}\">{desc}</div>\n"
-            "    </a>".format(
-                href=module["file"],
-                card_class=card_class,
-                status=status,
-                badge_class=badge_class,
-                badge_text=badge_text,
-                title=module["title"],
-                title_extra=" module-card-title-danger" if card_class.endswith("critical") else "",
-                desc=description,
-                desc_extra=" module-card-description-primary" if card_class.endswith("critical") else ""
+    rows: list[str] = []
+
+    for (category, emoji, points, order), group_modules in grouped:
+        # Add category header
+        rows.append(f'<h3 class="cfa-category-header">{emoji} {category} ({points} points)</h3>')
+        rows.append('<div class="module-grid">')
+
+        # Add modules in this category
+        for module in group_modules:
+            card_class, badge_class = card_classes(module.get("importance", "STANDARD"))
+            status = module.get("status", "UNKNOWN")
+            status_text = status.replace("_", " ")
+            badge_text = f"FILE {module['id']}"
+            imp_symbol = metadata.get("importance_legend", {}).get(module.get("importance", ""), "")
+            if imp_symbol:
+                badge_text += f" {imp_symbol}"
+            badge_text += f" • {status_text}"
+            description = module.get("description", "")
+            last_updated = module.get("last_updated")
+            if last_updated:
+                description += f" (updated {last_updated})"
+
+            rows.append(
+                "    <a href=\"{href}\" class=\"{card_class}\" data-status=\"{status}\">\n"
+                "        <div class=\"{badge_class}\">{badge_text}</div>\n"
+                "        <div class=\"module-card-title{title_extra}\">{title}</div>\n"
+                "        <div class=\"module-card-description{desc_extra}\">{desc}</div>\n"
+                "    </a>".format(
+                    href=module["file"],
+                    card_class=card_class,
+                    status=status,
+                    badge_class=badge_class,
+                    badge_text=badge_text,
+                    title=module["title"],
+                    title_extra=" module-card-title-danger" if card_class.endswith("critical") else "",
+                    desc=description,
+                    desc_extra=" module-card-description-primary" if card_class.endswith("critical") else ""
+                )
             )
-        )
 
-    rows.append("</div>")
+        rows.append("</div>")
+
     return "\n".join(rows)
 
 

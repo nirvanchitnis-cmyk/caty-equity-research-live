@@ -472,10 +472,21 @@ a:hover {
     color: var(--text-primary);
 }
 
+.cfa-category-header {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--cathay-red);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--border-light);
+}
+
 .module-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 15px;
+    margin-bottom: 1.5rem;
 }
 
 /* ============================================================

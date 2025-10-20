@@ -234,3 +234,15 @@
 [2025-10-20 08:39:00 UTC] update_all_data.py: SUCCESS
 [2025-10-20 08:39:09 UTC] disconfirmer_monitor.py status=PASS alerts=0
 [2025-10-20 08:46:10 UTC] disconfirmer_monitor.py status=PASS alerts=0
+[2025-10-20 15:36:41 UTC] update_all_data.py: START
+[2025-10-20 15:36:46 UTC] fetch_sec_edgar.py: Fetched None None (period None)
+[2025-10-20 15:36:53 UTC] fetch_fdic_data.py: Fetched call report 20250630 (CERT 18503)
+[2025-10-20 15:37:12 UTC] fetch_peer_banks.py: Fetched 9 peers for Q2 2025
+[2025-10-20 15:37:16 UTC] generate_peer_snapshot.py: Rebuilt evidence/peer_snapshot_2025Q2.csv
+[2025-10-20 15:37:18 UTC] merge_data_sources.py: 2 conflicts logged
+[2025-10-20 15:44:28 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-20 15:44:40 UTC] disconfirmer_monitor.py status=PASS alerts=0
+[2025-10-20 16:08:22 UTC] disconfirmer_monitor.py status=PASS alerts=0
+[2025-10-20 16:08:30 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-20 16:11:25 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-20 16:11:47 UTC] disconfirmer_monitor.py status=PASS alerts=0
