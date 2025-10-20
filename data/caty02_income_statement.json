@@ -347,6 +347,26 @@
       "xbrl_tag": "us-gaap:ProvisionForLoanLossesExpensed"
     }
   },
+  "identity_verification_q2_2025": {
+    "pretax_income": {
+      "calculated_millions": 96.28,
+      "reported_millions": 96.28,
+      "difference_millions": 0.0,
+      "formula": "net_interest_income_after_provision + noninterest_income - noninterest_expense"
+    },
+    "net_income": {
+      "calculated_millions": 77.45,
+      "reported_millions": 77.45,
+      "difference_millions": 0.0,
+      "formula": "pretax_income - income_tax_expense"
+    },
+    "eps_diluted": {
+      "calculated": 1.1035,
+      "reported": 1.1035,
+      "difference": 0.0,
+      "formula": "net_income / diluted_shares"
+    }
+  },
   "qa_checks": {
     "checks": [
       {

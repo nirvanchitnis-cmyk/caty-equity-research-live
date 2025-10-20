@@ -464,6 +464,75 @@
                             }
                         }
                     }
+                },
+                {
+                    "marker": "caty02-identity-verification-q2",
+                    "type": "text",
+                    "template": {
+                        "template": "<h3>Identity Verification - Q2 2025</h3>\n<table>\n    <thead>\n        <tr>\n            <th>Identity Check</th>\n            <th class=\"number\">Calculated</th>\n            <th class=\"number\">Reported</th>\n            <th class=\"number\">Difference</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td class=\"label\">Pretax Income Check</td>\n            <td class=\"number\">{pretax_calc}</td>\n            <td class=\"number\">{pretax_reported}</td>\n            <td class=\"number\">{pretax_diff}</td>\n        </tr>\n        <tr>\n            <td class=\"label\">Net Income Check</td>\n            <td class=\"number\">{net_income_calc}</td>\n            <td class=\"number\">{net_income_reported}</td>\n            <td class=\"number\">{net_income_diff}</td>\n        </tr>\n        <tr>\n            <td class=\"label\">EPS Diluted Check</td>\n            <td class=\"number\">{eps_calc}</td>\n            <td class=\"number\">{eps_reported}</td>\n            <td class=\"number\">{eps_diff}</td>\n        </tr>\n    </tbody>\n</table>",
+                        "placeholders": {
+                            "{pretax_calc}": {
+                                "source": "caty02_tables",
+                                "path": "identity_verification_q2_2025.pretax_income.calculated_millions",
+                                "format": "currency_scale",
+                                "scale": "millions",
+                                "decimals": 2
+                            },
+                            "{pretax_reported}": {
+                                "source": "caty02_tables",
+                                "path": "identity_verification_q2_2025.pretax_income.reported_millions",
+                                "format": "currency_scale",
+                                "scale": "millions",
+                                "decimals": 2
+                            },
+                            "{pretax_diff}": {
+                                "source": "caty02_tables",
+                                "path": "identity_verification_q2_2025.pretax_income.difference_millions",
+                                "format": "currency_scale",
+                                "scale": "millions",
+                                "decimals": 2
+                            },
+                            "{net_income_calc}": {
+                                "source": "caty02_tables",
+                                "path": "identity_verification_q2_2025.net_income.calculated_millions",
+                                "format": "currency_scale",
+                                "scale": "millions",
+                                "decimals": 2
+                            },
+                            "{net_income_reported}": {
+                                "source": "caty02_tables",
+                                "path": "identity_verification_q2_2025.net_income.reported_millions",
+                                "format": "currency_scale",
+                                "scale": "millions",
+                                "decimals": 2
+                            },
+                            "{net_income_diff}": {
+                                "source": "caty02_tables",
+                                "path": "identity_verification_q2_2025.net_income.difference_millions",
+                                "format": "currency_scale",
+                                "scale": "millions",
+                                "decimals": 2
+                            },
+                            "{eps_calc}": {
+                                "source": "caty02_tables",
+                                "path": "identity_verification_q2_2025.eps_diluted.calculated",
+                                "format": "currency",
+                                "decimals": 4
+                            },
+                            "{eps_reported}": {
+                                "source": "caty02_tables",
+                                "path": "identity_verification_q2_2025.eps_diluted.reported",
+                                "format": "currency",
+                                "decimals": 4
+                            },
+                            "{eps_diff}": {
+                                "source": "caty02_tables",
+                                "path": "identity_verification_q2_2025.eps_diluted.difference",
+                                "format": "currency",
+                                "decimals": 4
+                            }
+                        }
+                    }
                 }
             ]
         },
@@ -3485,7 +3554,7 @@
                         "placeholders": {
                             "{assumed_beta}": {
                                 "source": "caty05_tables",
-                                "path": "down_cycle.assumed_beta_pct",
+                                "path": "beta_assumptions.down_cycle_beta_pct",
                                 "format": "decimal",
                                 "decimals": 0
                             }
@@ -3500,7 +3569,7 @@
                         "placeholders": {
                             "{assumed_beta}": {
                                 "source": "caty05_tables",
-                                "path": "down_cycle.assumed_beta_pct",
+                                "path": "beta_assumptions.down_cycle_beta_pct",
                                 "format": "decimal",
                                 "decimals": 0
                             },
@@ -3519,6 +3588,48 @@
                             "{prior_cycle}": {
                                 "source": "caty05_tables",
                                 "path": "down_cycle.prior_cycle_total_bps",
+                                "format": "decimal",
+                                "decimals": 0
+                            }
+                        }
+                    }
+                },
+                {
+                    "marker": "caty05-beta-asymmetry-note",
+                    "type": "text",
+                    "template": {
+                        "template": "If down-cycle beta < up-cycle beta (e.g., {sticky_beta}% vs {down_beta}%), deposit cost relief exceeds expectations.",
+                        "placeholders": {
+                            "{sticky_beta}": {
+                                "source": "caty05_tables",
+                                "path": "beta_assumptions.sticky_scenario_beta_pct",
+                                "format": "decimal",
+                                "decimals": 0
+                            },
+                            "{down_beta}": {
+                                "source": "caty05_tables",
+                                "path": "beta_assumptions.down_cycle_beta_pct",
+                                "format": "decimal",
+                                "decimals": 0
+                            }
+                        }
+                    }
+                },
+                {
+                    "marker": "caty05-dda-trend",
+                    "type": "text",
+                    "template": {
+                        "template": "If DDA balances stabilize or grow, all-in beta declines. However, DDA mix has trended down ({dda_start}% \u2192 {dda_end}% Q1'22 to Q2'25).",
+                        "placeholders": {
+                            "{dda_start}": {
+                                "source": "caty05_tables",
+                                "path": "beta_assumptions.dda_mix_trend.q1_2022_pct",
+                                "format": "decimal",
+                                "decimals": 0
+                            },
+                            "{dda_end}": {
+                                "source": "caty05_tables",
+                                "path": "beta_assumptions.dda_mix_trend.q2_2025_pct",
                                 "format": "decimal",
                                 "decimals": 0
                             }

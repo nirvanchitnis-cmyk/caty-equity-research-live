@@ -60,6 +60,17 @@
     "repricing_lag_high_bps": 80,
     "prior_cycle_total_bps": 225
   },
+  "beta_assumptions": {
+    "down_cycle_beta_pct": 60,
+    "up_cycle_beta_pct": 60,
+    "sticky_scenario_beta_pct": 40,
+    "dda_mix_trend": {
+      "q1_2022_pct": 24,
+      "q2_2025_pct": 17,
+      "change_ppts": -7,
+      "interpretation": "DDA balances have declined, increasing interest-bearing mix and elevating deposit beta sensitivity"
+    }
+  },
   "nim_bridge": {
     "q1_2025": {
       "nim_pct": 3.30,
