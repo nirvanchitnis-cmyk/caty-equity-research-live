@@ -1,0 +1,94 @@
+{
+  "version": "1.0.0",
+  "generated_at_utc": "2025-10-20T20:03:26Z",
+  "company": {
+    "name": "HOPE BANCORP, INC.",
+    "ticker": "HOPE",
+    "cik": "0001128361"
+  },
+  "filing": {
+    "form": "DEF 14A",
+    "accession_number": "0001193125-25-078439",
+    "filing_date": "2025-04-11",
+    "edgar_urls": {
+      "index": "https://www.sec.gov/Archives/edgar/data/1128361/000119312525078439/0001193125-25-078439-index.htm",
+      "primary_doc": "https://www.sec.gov/Archives/edgar/data/1128361/000119312525078439/d888910ddef14a.htm"
+    }
+  },
+  "board": {
+    "size": 12,
+    "independent_count": 12,
+    "leadership": {
+      "chair_is_independent": false,
+      "ceo_is_chair": false
+    }
+  },
+  "ownership": {
+    "top_holders": [],
+    "top5_pct": 0.0,
+    "insider_pct": 0.0,
+    "policies": {}
+  },
+  "compensation": {
+    "pay_mix_pct": {},
+    "neos": [
+      {
+        "role": "CEO",
+        "name": "Kevin S. Kim",
+        "total_comp_usd": null
+      }
+    ],
+    "annual_incentive": {},
+    "ltip": {},
+    "say_on_pay_pct": null
+  },
+  "equity_plan": {
+    "overhang_pct": null,
+    "burn_rate_pct": null,
+    "shares_available": null,
+    "shares_outstanding_awards": null,
+    "plan_name": null
+  },
+  "audit": {
+    "auditor": "Crowe LLP",
+    "fees": {}
+  },
+  "provenance": [
+    {
+      "section": "board.size",
+      "method": "regex",
+      "locators": [
+        "regex: board ... consists of (\\d+) directors"
+      ],
+      "page_range": null,
+      "text_snippet": "2 Table of Contents Proxy Statement Summary Corporate Governance (page 19) Director Nominees at the Annual Meeting Our Board currently consists of 12 directors, 11 of whom are standing for re-election. Director William J. Lewis has made the decision not to stand for re-election",
+      "confidence_pct": 90,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1128361/000119312525078439/d888910ddef14a.htm",
+      "sha256": "a96d7c937da6dcf1bcffa0accd84c1a25b760e9197441c7ce500ab663e90bb58"
+    },
+    {
+      "section": "compensation.neos[0].name",
+      "method": "html_parse",
+      "locators": [
+        "table header: Name and Principal Position"
+      ],
+      "page_range": null,
+      "text_snippet": "Kevin S. Kim Chairman, President\u00a0& Chief\u00a0Executive Officer 2024 $ 1,086,538 $ 189,700 $ 1,604,158 \u2014 $ 351,560 $ 6,699 $ 76,113 $ 3,314,768",
+      "confidence_pct": 95,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1128361/000119312525078439/d888910ddef14a.htm",
+      "sha256": "a96d7c937da6dcf1bcffa0accd84c1a25b760e9197441c7ce500ab663e90bb58"
+    },
+    {
+      "section": "audit.auditor",
+      "method": "regex",
+      "locators": [
+        "text contains: crowe(?:\\s+llp)?"
+      ],
+      "page_range": null,
+      "text_snippet": "serve on our Board of Directors until the 2026 annual meeting of stockholders. FOR ALL 2. To ratify the appointment of Crowe LLP as our independent auditor for 2025. FOR 3. To provide an advisory vote for approval of the 2024 compensation paid to o",
+      "confidence_pct": 90,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1128361/000119312525078439/d888910ddef14a.htm",
+      "sha256": "a96d7c937da6dcf1bcffa0accd84c1a25b760e9197441c7ce500ab663e90bb58"
+    }
+  ]
+}

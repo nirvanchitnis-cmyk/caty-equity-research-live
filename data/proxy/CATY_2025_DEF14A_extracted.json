@@ -1,0 +1,95 @@
+{
+  "version": "1.0.0",
+  "generated_at_utc": "2025-10-20T19:49:57Z",
+  "company": {
+    "name": "CATHAY GENERAL BANCORP",
+    "ticker": "CATY",
+    "cik": "0000861842"
+  },
+  "filing": {
+    "form": "DEF 14A",
+    "accession_number": "0001437749-25-011577",
+    "filing_date": "2025-04-10",
+    "edgar_urls": {
+      "index": "https://www.sec.gov/Archives/edgar/data/861842/000143774925011577/0001437749-25-011577-index.htm",
+      "primary_doc": "https://www.sec.gov/Archives/edgar/data/861842/000143774925011577/caty20250326_def14a.htm"
+    }
+  },
+  "board": {
+    "size": 14,
+    "independent_count": 14,
+    "leadership": {
+      "chair_is_independent": false,
+      "ceo_is_chair": false
+    }
+  },
+  "ownership": {
+    "top_holders": [],
+    "top5_pct": 0.0,
+    "insider_pct": 0.0,
+    "policies": {}
+  },
+  "compensation": {
+    "pay_mix_pct": {},
+    "neos": [
+      {
+        "role": "CEO",
+        "name": "Chang M. Liu",
+        "total_comp_usd": null
+      }
+    ],
+    "annual_incentive": {},
+    "ltip": {},
+    "say_on_pay_pct": null
+  },
+  "equity_plan": {
+    "overhang_pct": null,
+    "burn_rate_pct": null,
+    "shares_available": null,
+    "shares_outstanding_awards": null,
+    "plan_name": null
+  },
+  "audit": {
+    "auditor": "KPMG LLP",
+    "fees": {}
+  },
+  "provenance": [
+    {
+      "section": "board.size",
+      "method": "regex",
+      "locators": [
+        "regex: board ... consists of (\\d+) directors"
+      ],
+      "page_range": null,
+      "text_snippet": "hree and 25 directors, and the number of directors within this range may be changed from time to time by the Board. The Board currently consists of 14 directors, each of whom is also a director of Cathay Bank, a California-chartered bank and wholly-owned subsidiary of Bancorp. Th",
+      "confidence_pct": 90,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/861842/000143774925011577/caty20250326_def14a.htm",
+      "sha256": "43e4b3f0e50309c5655842d10d47e4e38788709c7cfb7ff3e7a6986f53028873"
+    },
+    {
+      "section": "compensation.neos[0].name",
+      "method": "html_parse",
+      "locators": [
+        "heading: Summary Compensation Table",
+        "table: first data row"
+      ],
+      "page_range": null,
+      "text_snippet": "Chang M. Liu President and Chief Executive Officer of Bancorp and Cathay Bank 2024 943,250 \u2014 1,901,973 \u2014 825,400 \u2014 17,250 3,687,873",
+      "confidence_pct": 95,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/861842/000143774925011577/caty20250326_def14a.htm",
+      "sha256": "43e4b3f0e50309c5655842d10d47e4e38788709c7cfb7ff3e7a6986f53028873"
+    },
+    {
+      "section": "audit.auditor",
+      "method": "regex",
+      "locators": [
+        "text contains: kpmg(?:\\s+llp)?"
+      ],
+      "page_range": null,
+      "text_snippet": "to vote on an advisory (non-binding) resolution to approve our executive compensation, and to ratify the appointment of KPMG LLP as our independent registered public accounting firm for the 2025 fiscal year, all as further described in the accompan",
+      "confidence_pct": 90,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/861842/000143774925011577/caty20250326_def14a.htm",
+      "sha256": "43e4b3f0e50309c5655842d10d47e4e38788709c7cfb7ff3e7a6986f53028873"
+    }
+  ]
+}

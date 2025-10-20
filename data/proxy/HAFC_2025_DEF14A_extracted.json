@@ -1,0 +1,94 @@
+{
+  "version": "1.0.0",
+  "generated_at_utc": "2025-10-20T19:58:50Z",
+  "company": {
+    "name": "HANMI FINANCIAL CORPORATION",
+    "ticker": "HAFC",
+    "cik": "0001109242"
+  },
+  "filing": {
+    "form": "DEF 14A",
+    "accession_number": "0000950170-25-054713",
+    "filing_date": "2025-04-16",
+    "edgar_urls": {
+      "index": "https://www.sec.gov/Archives/edgar/data/1109242/000095017025054713/0000950170-25-054713-index.htm",
+      "primary_doc": "https://www.sec.gov/Archives/edgar/data/1109242/000095017025054713/hafc-20250416.htm"
+    }
+  },
+  "board": {
+    "size": 11,
+    "independent_count": 11,
+    "leadership": {
+      "chair_is_independent": false,
+      "ceo_is_chair": false
+    }
+  },
+  "ownership": {
+    "top_holders": [],
+    "top5_pct": 0.0,
+    "insider_pct": 0.0,
+    "policies": {}
+  },
+  "compensation": {
+    "pay_mix_pct": {},
+    "neos": [
+      {
+        "role": "CEO",
+        "name": "Bonita I. Lee",
+        "total_comp_usd": null
+      }
+    ],
+    "annual_incentive": {},
+    "ltip": {},
+    "say_on_pay_pct": null
+  },
+  "equity_plan": {
+    "overhang_pct": null,
+    "burn_rate_pct": null,
+    "shares_available": null,
+    "shares_outstanding_awards": null,
+    "plan_name": null
+  },
+  "audit": {
+    "auditor": "Crowe LLP",
+    "fees": {}
+  },
+  "provenance": [
+    {
+      "section": "board.size",
+      "method": "regex",
+      "locators": [
+        "regex: elect (\\d+) directors (parenthetical)"
+      ],
+      "page_range": null,
+      "text_snippet": "virtually, via live webcast, on Wednesday, May 28, 2025 at 10:30 a.m., Pacific Time, for the following purposes: 1. To elect eleven (11) directors to serve for terms expiring at the 2026 Annual Meeting of Stockholders and until their successors are elected and quali",
+      "confidence_pct": 90,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1109242/000095017025054713/hafc-20250416.htm",
+      "sha256": "385a6cf4ccc02829890e015605fc84554b8a958f5fc820b396de0079c79649b2"
+    },
+    {
+      "section": "compensation.neos[0].name",
+      "method": "html_parse",
+      "locators": [
+        "table header: Name and Principal Position"
+      ],
+      "page_range": null,
+      "text_snippet": "Bonita I. Lee 2024 780,000 803,409 603,893 81,000 2,268,302",
+      "confidence_pct": 95,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1109242/000095017025054713/hafc-20250416.htm",
+      "sha256": "385a6cf4ccc02829890e015605fc84554b8a958f5fc820b396de0079c79649b2"
+    },
+    {
+      "section": "audit.auditor",
+      "method": "regex",
+      "locators": [
+        "text contains: crowe(?:\\s+llp)?"
+      ],
+      "page_range": null,
+      "text_snippet": "any as permitted by Delaware General Corporation Law (\u201cOfficer Exculpation Amendment\u201d); 4. To ratify the appointment of Crowe LLP as our independent registered public accounting firm for the fiscal year ending December 31, 2025; and 5. To consider a",
+      "confidence_pct": 90,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1109242/000095017025054713/hafc-20250416.htm",
+      "sha256": "385a6cf4ccc02829890e015605fc84554b8a958f5fc820b396de0079c79649b2"
+    }
+  ]
+}

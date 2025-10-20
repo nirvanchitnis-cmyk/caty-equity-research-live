@@ -1,0 +1,94 @@
+{
+  "version": "1.0.0",
+  "generated_at_utc": "2025-10-20T20:03:13Z",
+  "company": {
+    "name": "BANC OF CALIFORNIA, INC.",
+    "ticker": "BANC",
+    "cik": "0001169770"
+  },
+  "filing": {
+    "form": "DEF 14A",
+    "accession_number": "0001169770-25-000015",
+    "filing_date": "2025-03-27",
+    "edgar_urls": {
+      "index": "https://www.sec.gov/Archives/edgar/data/1169770/000116977025000015/0001169770-25-000015-index.htm",
+      "primary_doc": "https://www.sec.gov/Archives/edgar/data/1169770/000116977025000015/banc-20250327.htm"
+    }
+  },
+  "board": {
+    "size": 12,
+    "independent_count": 12,
+    "leadership": {
+      "chair_is_independent": false,
+      "ceo_is_chair": false
+    }
+  },
+  "ownership": {
+    "top_holders": [],
+    "top5_pct": 0.0,
+    "insider_pct": 0.0,
+    "policies": {}
+  },
+  "compensation": {
+    "pay_mix_pct": {},
+    "neos": [
+      {
+        "role": "CEO",
+        "name": "Jared Wolff",
+        "total_comp_usd": null
+      }
+    ],
+    "annual_incentive": {},
+    "ltip": {},
+    "say_on_pay_pct": null
+  },
+  "equity_plan": {
+    "overhang_pct": null,
+    "burn_rate_pct": null,
+    "shares_available": null,
+    "shares_outstanding_awards": null,
+    "plan_name": null
+  },
+  "audit": {
+    "auditor": "KPMG LLP",
+    "fees": {}
+  },
+  "provenance": [
+    {
+      "section": "board.size",
+      "method": "regex",
+      "locators": [
+        "regex: board ... consists of (\\d+) directors"
+      ],
+      "page_range": null,
+      "text_snippet": "ate. 5 Banc of California Annual Proxy Statement 2025 PROPOSAL I Election of Directors | Board Overview The Company\u2019s Board of Directors currently consists of 12 directors. At the unanimous recommendation of the Compensation, Nominating and Corporate Governance Committee (CNG Committee), th",
+      "confidence_pct": 90,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1169770/000116977025000015/banc-20250327.htm",
+      "sha256": "b38fd5eb7974c7bd1f0a8df5b2b4815fda7b5dda7b6ee8af1f13cc4c55e7a2dc"
+    },
+    {
+      "section": "compensation.neos[0].name",
+      "method": "html_parse",
+      "locators": [
+        "table header: Name and Principal Position"
+      ],
+      "page_range": null,
+      "text_snippet": "Jared Wolff (5)(6) 2024 $ 1,043,269 $ 2,200,000 $ 7,637,070 $ 1,181,250 $ 67,686 $ 12,129,275",
+      "confidence_pct": 95,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1169770/000116977025000015/banc-20250327.htm",
+      "sha256": "b38fd5eb7974c7bd1f0a8df5b2b4815fda7b5dda7b6ee8af1f13cc4c55e7a2dc"
+    },
+    {
+      "section": "audit.auditor",
+      "method": "regex",
+      "locators": [
+        "text contains: kpmg(?:\\s+llp)?"
+      ],
+      "page_range": null,
+      "text_snippet": "oposal II. Changes in Independent Registered Public Accounting Firm Resignation of Ernst & Young LLP and Appointment of KPMG as Independent Registered Public Accounting Firm for Year Ended December 31, 2023 As reported in the Current Report on",
+      "confidence_pct": 90,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1169770/000116977025000015/banc-20250327.htm",
+      "sha256": "b38fd5eb7974c7bd1f0a8df5b2b4815fda7b5dda7b6ee8af1f13cc4c55e7a2dc"
+    }
+  ]
+}

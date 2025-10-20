@@ -1,0 +1,94 @@
+{
+  "version": "1.0.0",
+  "generated_at_utc": "2025-10-20T20:02:39Z",
+  "company": {
+    "name": "COLUMBIA BANKING SYSTEM, INC.",
+    "ticker": "COLB",
+    "cik": "0000887343"
+  },
+  "filing": {
+    "form": "DEF 14A",
+    "accession_number": "0000887343-25-000152",
+    "filing_date": "2025-04-03",
+    "edgar_urls": {
+      "index": "https://www.sec.gov/Archives/edgar/data/887343/000088734325000152/0000887343-25-000152-index.htm",
+      "primary_doc": "https://www.sec.gov/Archives/edgar/data/887343/000088734325000152/colb-20250403.htm"
+    }
+  },
+  "board": {
+    "size": 11,
+    "independent_count": 11,
+    "leadership": {
+      "chair_is_independent": false,
+      "ceo_is_chair": false
+    }
+  },
+  "ownership": {
+    "top_holders": [],
+    "top5_pct": 0.0,
+    "insider_pct": 0.0,
+    "policies": {}
+  },
+  "compensation": {
+    "pay_mix_pct": {},
+    "neos": [
+      {
+        "role": "CEO",
+        "name": "Clint E. Stein",
+        "total_comp_usd": null
+      }
+    ],
+    "annual_incentive": {},
+    "ltip": {},
+    "say_on_pay_pct": null
+  },
+  "equity_plan": {
+    "overhang_pct": null,
+    "burn_rate_pct": null,
+    "shares_available": null,
+    "shares_outstanding_awards": null,
+    "plan_name": null
+  },
+  "audit": {
+    "auditor": "Deloitte & Touche LLP",
+    "fees": {}
+  },
+  "provenance": [
+    {
+      "section": "board.size",
+      "method": "regex",
+      "locators": [
+        "regex: board has nominated (\\d+) individuals"
+      ],
+      "page_range": null,
+      "text_snippet": "air role served by Cort O'Haver was no longer needed, and his service with the Company concluded on March 31, 2025. The Board has nominated 11 individuals for re-election at this year\u2019s annual meeting of shareholders, which will be held on Thursday, May 15, 2025 , at 10:00",
+      "confidence_pct": 90,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/887343/000088734325000152/colb-20250403.htm",
+      "sha256": "2005b04b361e6bb5f11350b07a644ae28b1d4be62112413b979f2312fa29b7d9"
+    },
+    {
+      "section": "compensation.neos[0].name",
+      "method": "html_parse",
+      "locators": [
+        "table header: Name and Principal Position"
+      ],
+      "page_range": null,
+      "text_snippet": "Clint E. Stein , President and Chief Executive Officer 2024 1,150,000 \u2014 3,173,878 1,711,200 31,524 274,326 6,340,928",
+      "confidence_pct": 95,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/887343/000088734325000152/colb-20250403.htm",
+      "sha256": "2005b04b361e6bb5f11350b07a644ae28b1d4be62112413b979f2312fa29b7d9"
+    },
+    {
+      "section": "audit.auditor",
+      "method": "regex",
+      "locators": [
+        "text contains: deloitte(?:\\s+&\\s+touche)?(?:\\s+llp)?"
+      ],
+      "page_range": null,
+      "text_snippet": "an advisory basis, the compensation of the Company\u2019s named executive officers. FOR 32 (3) To ratify the appointment of Deloitte & Touche LLP as the Company\u2019s independent registered public accounting firm for the fiscal year ending December 31, 2025 . FOR 84 NO",
+      "confidence_pct": 90,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/887343/000088734325000152/colb-20250403.htm",
+      "sha256": "2005b04b361e6bb5f11350b07a644ae28b1d4be62112413b979f2312fa29b7d9"
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "version": "1.0.0",
+  "generated_at_utc": "2025-10-20T19:51:15Z",
+  "company": {
+    "name": "EAST WEST BANCORP, INC.",
+    "ticker": "EWBC",
+    "cik": "0001069157"
+  },
+  "filing": {
+    "form": "DEF 14A",
+    "accession_number": "0001174947-25-000556",
+    "filing_date": "2025-04-10",
+    "edgar_urls": {
+      "index": "https://www.sec.gov/Archives/edgar/data/1069157/000117494725000556/0001174947-25-000556-index.htm",
+      "primary_doc": "https://www.sec.gov/Archives/edgar/data/1069157/000117494725000556/ea0237505-def14a_eastwest.htm"
+    }
+  },
+  "board": {
+    "size": 10,
+    "independent_count": 10,
+    "leadership": {
+      "chair_is_independent": false,
+      "ceo_is_chair": false
+    }
+  },
+  "ownership": {
+    "top_holders": [],
+    "top5_pct": 0.0,
+    "insider_pct": 0.0,
+    "policies": {}
+  },
+  "compensation": {
+    "pay_mix_pct": {},
+    "neos": [
+      {
+        "role": "CEO",
+        "name": "Dominic Ng",
+        "total_comp_usd": null
+      }
+    ],
+    "annual_incentive": {},
+    "ltip": {},
+    "say_on_pay_pct": null
+  },
+  "equity_plan": {
+    "overhang_pct": null,
+    "burn_rate_pct": null,
+    "shares_available": null,
+    "shares_outstanding_awards": null,
+    "plan_name": null
+  },
+  "audit": {
+    "auditor": "KPMG LLP",
+    "fees": {}
+  },
+  "provenance": [
+    {
+      "section": "board.size",
+      "method": "regex",
+      "locators": [
+        "regex: elect (\\d+) directors"
+      ],
+      "page_range": null,
+      "text_snippet": "y of Proxy Materials on your proxy card or the instructions that accompanied your proxy materials. ITEMS OF BUSINESS 1. Elect 10 directors to serve until the next annual meeting of stockholders and to serve until their",
+      "confidence_pct": 90,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1069157/000117494725000556/ea0237505-def14a_eastwest.htm",
+      "sha256": "7811e2a8e4749a1a864f53d8ead65af4a54f9689552c8d4365b9b783bdf396a8"
+    },
+    {
+      "section": "compensation.neos[0].name",
+      "method": "html_parse",
+      "locators": [
+        "heading: Summary Compensation Table",
+        "table: first data row"
+      ],
+      "page_range": null,
+      "text_snippet": "Dominic Ng Chairman and\n    Chief Executive Officer 2024 1,275,000 - 4,712,953 - 3,105,900 119,780 9,213,633",
+      "confidence_pct": 95,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1069157/000117494725000556/ea0237505-def14a_eastwest.htm",
+      "sha256": "7811e2a8e4749a1a864f53d8ead65af4a54f9689552c8d4365b9b783bdf396a8"
+    },
+    {
+      "section": "audit.auditor",
+      "method": "regex",
+      "locators": [
+        "text contains: kpmg(?:\\s+llp)?"
+      ],
+      "page_range": null,
+      "text_snippet": "\u2014 The Audit Committee and the Board believe that the continued retention of KPMG LLP to serve as the independent registered public accounting firm of the Compan",
+      "confidence_pct": 90,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1069157/000117494725000556/ea0237505-def14a_eastwest.htm",
+      "sha256": "7811e2a8e4749a1a864f53d8ead65af4a54f9689552c8d4365b9b783bdf396a8"
+    }
+  ]
+}
