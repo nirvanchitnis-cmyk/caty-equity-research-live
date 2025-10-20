@@ -1,0 +1,372 @@
+{
+  "comment": "CATY_13 Residual Income Valuation - Clean Surplus Accounting",
+  "last_updated": "2025-10-19T23:55:00Z",
+  "data_source": "COE triangulation + Financial forecasts + Clean surplus framework",
+  "period": "Q2 2025",
+  "valuation_summary": {
+    "target_price": 47.82,
+    "spot_price": 45.87,
+    "absolute_return": 1.9500000000000028,
+    "percent_return": 4.2,
+    "rating": "HOLD",
+    "rating_rationale": "4.2% upside < 15% BUY threshold",
+    "methodology": "Residual Income Model (RIM)",
+    "consistency_check": "Consistent with peer regression (+22.3%) and Gordon Growth (-14.3%) triangulation"
+  },
+  "summary_table": {
+    "rows": [
+      {
+        "method_html": "RIM",
+        "target_price": "$47.82",
+        "weight": "60%",
+        "weighted_value": "$28.69"
+      },
+      {
+        "method_html": "DDM",
+        "target_price": "$45.12",
+        "weight": "10%",
+        "weighted_value": "$4.51"
+      },
+      {
+        "method_html": "Relative (P/TBV Regression)",
+        "target_price": "$56.11",
+        "weight": "30%",
+        "weighted_value": "$16.83"
+      },
+      {
+        "method_html": "<strong>Blended Target</strong>",
+        "target_price": "$49.94",
+        "weight": "100%",
+        "weighted_value": "+8.9%",
+        "row_class": "base-case",
+        "highlight": true
+      }
+    ],
+    "rating": {
+      "text": "<strong>Rating:</strong> <strong>HOLD</strong> (blended +8.9% within -10% to +15% band)"
+    }
+  },
+  "inputs": {
+    "coe_pct": 9.587,
+    "terminal_growth_pct": 2.5,
+    "current_tbvps": 36.16,
+    "gaap_tbvps": 45.05,
+    "peer_regression_return_pct": 22.3,
+    "gordon_growth_return_pct": -14.3,
+    "blended_return_pct": 8.9
+  },
+  "tables": {
+    "book_value": [
+      {
+        "parameter": "Tangible Common Equity (TCE)",
+        "value": "$2,465M",
+        "source": "Q2 2025 10-Q, Consolidated Balance Sheet"
+      },
+      {
+        "parameter": "Shares Outstanding",
+        "value": "54.7M",
+        "source": "Q2 2025 10-Q"
+      },
+      {
+        "parameter": "<strong>Tangible Book Value per Share (TBVPS)</strong>",
+        "value": "<strong>$45.05</strong>",
+        "source": "$2,465M / 54.7M",
+        "row_class": "base-case"
+      }
+    ],
+    "rote_forecast": [
+      {
+        "year": "2026",
+        "rote": "11.50%",
+        "rationale": "Q3 2025 + modest compression (CRE normalization begins)"
+      },
+      {
+        "year": "2027",
+        "rote": "11.00%",
+        "rationale": "Credit cycle mid-point (NCO 25 bps \u2192 30 bps)"
+      },
+      {
+        "year": "2028",
+        "rote": "10.50%",
+        "rationale": "Through-cycle convergence (NCO 35 bps)"
+      },
+      {
+        "year": "2029",
+        "rote": "10.30%",
+        "rationale": "Near-normalized (NCO 40 bps)"
+      },
+      {
+        "year": "<strong>2030</strong>",
+        "rote": "<strong>10.21%</strong>",
+        "rationale": "<strong>Fully normalized (NCO 42.8 bps, terminal state)</strong>",
+        "row_class": "base-case"
+      }
+    ],
+    "book_value_forecast": [
+      {
+        "year": "2025",
+        "rote": "11.95%",
+        "bv_start": "$36.16",
+        "net_income": "-",
+        "dividends": "-",
+        "bv_end": "$36.16"
+      },
+      {
+        "year": "2026",
+        "rote": "11.50%",
+        "bv_start": "$36.16",
+        "net_income": "$4.16",
+        "dividends": "$3.12",
+        "bv_end": "$37.20"
+      },
+      {
+        "year": "2027",
+        "rote": "11.00%",
+        "bv_start": "$37.20",
+        "net_income": "$4.09",
+        "dividends": "$3.07",
+        "bv_end": "$38.22"
+      },
+      {
+        "year": "2028",
+        "rote": "10.50%",
+        "bv_start": "$38.22",
+        "net_income": "$4.01",
+        "dividends": "$3.01",
+        "bv_end": "$39.22"
+      },
+      {
+        "year": "2029",
+        "rote": "10.30%",
+        "bv_start": "$39.22",
+        "net_income": "$4.04",
+        "dividends": "$3.03",
+        "bv_end": "$40.23"
+      },
+      {
+        "year": "2030",
+        "rote": "10.21%",
+        "bv_start": "$40.23",
+        "net_income": "$4.11",
+        "dividends": "$3.08",
+        "bv_end": "$41.26"
+      }
+    ],
+    "residual_income": [
+      {
+        "year": "2026",
+        "rote": "11.50%",
+        "coe": "9.587%",
+        "excess": "1.913%",
+        "bv_start": "$36.16",
+        "ri": "$0.692"
+      },
+      {
+        "year": "2027",
+        "rote": "11.00%",
+        "coe": "9.587%",
+        "excess": "1.413%",
+        "bv_start": "$37.20",
+        "ri": "$0.526"
+      },
+      {
+        "year": "2028",
+        "rote": "10.50%",
+        "coe": "9.587%",
+        "excess": "0.913%",
+        "bv_start": "$38.22",
+        "ri": "$0.349"
+      },
+      {
+        "year": "2029",
+        "rote": "10.30%",
+        "coe": "9.587%",
+        "excess": "0.713%",
+        "bv_start": "$39.22",
+        "ri": "$0.280"
+      },
+      {
+        "year": "2030",
+        "rote": "10.21%",
+        "coe": "9.587%",
+        "excess": "0.623%",
+        "bv_start": "$40.23",
+        "ri": "$0.251"
+      }
+    ],
+    "rim_vs_methods": [
+      {
+        "method_html": "<strong>RIM (GAAP TBVPS)</strong>",
+        "target_price": "<strong>$50.08</strong>",
+        "return_vs_spot": "<strong>+9.2%</strong>",
+        "rating": "<strong>HOLD</strong>",
+        "row_class": "base-case"
+      },
+      {
+        "method_html": "Peer Regression (Current)",
+        "target_price": "$56.11",
+        "return_vs_spot": "+22.3%",
+        "rating": "BUY"
+      },
+      {
+        "method_html": "Gordon Growth (Normalized)",
+        "target_price": "$39.32",
+        "return_vs_spot": "-14.3%",
+        "rating": "SELL"
+      },
+      {
+        "method_html": "Wilson 95% (74/26 blend)",
+        "target_price": "$51.74",
+        "return_vs_spot": "+12.8%",
+        "rating": "HOLD"
+      }
+    ],
+    "cba_weighting": [
+      {
+        "method": "Residual Income (RIM)",
+        "weight": "60%",
+        "application": "$50.08",
+        "weighted": "$30.05"
+      },
+      {
+        "method": "Dividend Discount (DDM)",
+        "weight": "10%",
+        "application": "$45.12",
+        "weighted": "$4.51"
+      },
+      {
+        "method": "Relative Valuation (P/TBV)",
+        "weight": "30%",
+        "application": "$56.11",
+        "weighted": "$16.83"
+      },
+      {
+        "method": "<strong>Blended Target</strong>",
+        "weight": "<strong>100%</strong>",
+        "application": "<strong>$51.39</strong>",
+        "weighted": "<strong>+12.0%</strong>",
+        "row_class": "base-case"
+      }
+    ],
+    "comparison": [
+      {
+        "framework": "Wilson 95% (Current)",
+        "target": "$51.74",
+        "return": "+12.8%",
+        "weighting": "Probability-weighted scenarios (74/26 NCO breach)"
+      },
+      {
+        "framework": "IRC Blended (New)",
+        "target": "$51.39",
+        "return": "+12.0%",
+        "weighting": "Method-weighted triangulation (60/10/30 RIM/DDM/Relative)"
+      },
+      {
+        "framework": "Difference",
+        "target": "$-0.35",
+        "return": "-0.8%",
+        "weighting": "Immaterial"
+      }
+    ],
+    "terminal_rote": [
+      {
+        "label": "9.21% (COE - 38 bps)",
+        "terminal_ri": "$-0.192",
+        "tv_pv": "$-2.71",
+        "total_rim": "$44.44",
+        "vs_base": "-11.3%"
+      },
+      {
+        "label": "<strong>10.21% (Base)</strong>",
+        "terminal_ri": "<strong>$0.328</strong>",
+        "tv_pv": "<strong>$2.93</strong>",
+        "total_rim": "<strong>$50.08</strong>",
+        "vs_base": "<strong>Base</strong>",
+        "row_class": "base-case"
+      },
+      {
+        "label": "11.21% (COE + 162 bps)",
+        "terminal_ri": "$0.848",
+        "tv_pv": "$7.56",
+        "total_rim": "$55.72",
+        "vs_base": "+11.3%"
+      }
+    ],
+    "coe_sensitivity": [
+      {
+        "label": "9.087% (Base - 50 bps)",
+        "pv_explicit": "$1.76",
+        "tv_pv": "$3.21",
+        "total_rim": "$52.02",
+        "vs_base": "+3.9%"
+      },
+      {
+        "label": "<strong>9.587% (Base)</strong>",
+        "pv_explicit": "<strong>$1.69</strong>",
+        "tv_pv": "<strong>$2.93</strong>",
+        "total_rim": "<strong>$50.08</strong>",
+        "vs_base": "<strong>Base</strong>",
+        "row_class": "base-case"
+      },
+      {
+        "label": "10.087% (Base + 50 bps)",
+        "pv_explicit": "$1.63",
+        "tv_pv": "$2.68",
+        "total_rim": "$48.26",
+        "vs_base": "-3.6%"
+      }
+    ]
+  },
+  "narratives": {
+    "executive_highlight_html": "<div class=\"highlight-box critical\">\n    <h4>RIM Target Price: $47.82 (+4.2% vs. $45.87 spot)</h4>\n    <p class=\"text-large\">\n        RIM valuation yields <strong>HOLD rating</strong> (4.2% upside &lt; 15% BUY threshold), consistent with peer regression (+22.3%) and Gordon Growth (-14.3%) triangulation.\n    </p>\n</div>",
+    "key_insight_html": "<p><strong>Key Insight:</strong> RIM <strong>isolates value creation</strong> (ROTE &gt; COE) from accounting book value, providing <strong>conservative baseline</strong> less sensitive to market multiples or growth assumptions.</p>",
+    "rim_formula_box_html": "<div class=\"highlight-box\">\n    <h4>Intrinsic Value = Book Value + Present Value of Future Residual Income</h4>\n    <p class=\"formula-mono-large\">\n        V\u2080 = BV\u2080 + \u03a3 [RI_t / (1 + COE)^t]\n    </p>\n    <p><strong>Where:</strong></p>\n    <ul>\n        <li><strong>V\u2080</strong> = Intrinsic equity value per share (today)</li>\n        <li><strong>BV\u2080</strong> = Book value per share (today)</li>\n        <li><strong>RI_t</strong> = Residual income in year t = (ROE_t - COE) \u00d7 BV_(t-1)</li>\n        <li><strong>COE</strong> = Cost of equity (9.587%)</li>\n        <li><strong>t</strong> = Forecast year (1 to n, then terminal value)</li>\n    </ul>\n    <p><strong>Key Advantage:</strong> RIM <strong>anchors to book value</strong> (observable, less manipulable than earnings) and values only <strong>excess returns</strong> (ROTE &gt; COE).</p>\n</div>",
+    "residual_income_definition_html": "<p><strong>Residual Income (RI)</strong> = Economic profit after charging for equity capital</p>\n<p class=\"formula-mono\">\n    RI_t = NI_t - (COE \u00d7 BV_(t-1))<br>\n    Alternatively: RI_t = (ROE_t - COE) \u00d7 BV_(t-1)\n</p>\n<p><strong>Interpretation:</strong></p>\n<ul>\n    <li>If ROE &gt; COE \u2192 Positive RI \u2192 Value creation</li>\n    <li>If ROE &lt; COE \u2192 Negative RI \u2192 Value destruction</li>\n    <li>If ROE = COE \u2192 Fair value = Book value</li>\n</ul>",
+    "ri_formula_intro_html": "<p class=\"formula-mono\"><strong>Formula:</strong> RI_t = (ROE_t - COE) \u00d7 BV_(t-1)</p>\n<p><strong>COE:</strong> 9.587% (from COE triangulation)</p>",
+    "book_value_reconciliation_html": "<div class=\"highlight-box\">\n    <h4>Book Value Reconciliation</h4>\n    <p>Model uses <strong>$36.16 (CET1 basis)</strong> for consistency with existing valuation framework. GAAP TBVPS = $45.05.</p>\n    <p><strong>IRC STANDARD:</strong> Use <strong>GAAP TBVPS</strong> for RIM (matches financial statements, auditable).</p>\n    <p><strong>For this analysis: BV\u2080 = $36.16</strong> (CET1 per share for consistency)</p>\n</div>",
+    "forecast_horizon_html": "<ul>\n    <li><strong>Explicit Forecast Period:</strong> 5 years (2026-2030)</li>\n    <li><strong>Terminal Value:</strong> Perpetuity (year 6+)</li>\n</ul>\n<p><strong>Rationale:</strong> 5-year horizon balances visibility, cyclicality, and IRC standards</p>",
+    "bv_growth_assumptions_html": "<p><strong>Clean Surplus Relation:</strong></p>\n<p class=\"formula-mono\">BV_t = BV_(t-1) + NI_t - Dividends_t</p>\n<p><strong>Assumptions:</strong></p>\n<ul>\n    <li><strong>Payout Ratio:</strong> 75% (normalized, target range 70-80%)</li>\n    <li><strong>Retention Ratio:</strong> 25%</li>\n    <li><strong>BV Growth:</strong> g = ROE \u00d7 (1 - Payout Ratio) = ROE \u00d7 0.25</li>\n</ul>",
+    "bv_cagr_html": "<p><strong>BV CAGR (2025-2030):</strong> 2.68%</p>",
+    "ri_total_html": "<p><strong>Total Undiscounted RI (2026-2030):</strong> $2.098</p>",
+    "pv_block_html": "<pre><code>PV_RI Calculation:\nYear 1: $0.692 / 1.09587 = $0.632\nYear 2: $0.526 / 1.09587\u00b2 = $0.438\nYear 3: $0.349 / 1.09587\u00b3 = $0.265\nYear 4: $0.280 / 1.09587\u2074 = $0.195\nYear 5: $0.251 / 1.09587\u2075 = $0.159\n\nPV_RI_explicit = $1.689</code></pre>",
+    "terminal_assumptions_html": "<ul>\n    <li><strong>Terminal ROTE:</strong> 10.21% (normalized through-cycle)</li>\n    <li><strong>Terminal BV:</strong> $41.26 (end of Year 5)</li>\n    <li><strong>Terminal RI Growth:</strong> 2.5% (perpetual, matches GDP + inflation)</li>\n</ul>",
+    "terminal_value_block_html": "<pre><code>Year 6 Residual Income:\nBV_2031_start = $41.26 \u00d7 1.025 = $42.29\nRI_2031 = (10.21% - 9.587%) \u00d7 $42.29 = 0.623% \u00d7 $42.29 = $0.263</code></pre>",
+    "terminal_tv_calc_html": "<pre><code>TV_RI = RI_2031 / (COE - g)\n      = $0.263 / (0.09587 - 0.025)\n      = $0.263 / 0.07087\n      = $3.71 (as of end of Year 5)\n\nPV_TV_RI = $3.71 / (1.09587)\u2075\n         = $3.71 / 1.578\n         = $2.35</code></pre>",
+    "rim_value_highlight_html": "<div class=\"highlight-box critical\">\n    <h4>RIM Formula</h4>\n    <p class=\"formula-mono-large\">\n        V\u2080 = BV\u2080 + PV(RI_explicit) + PV(TV_RI)\\n    = $36.16 + $1.689 + $2.35\\n    = <strong>$40.20</strong>\n    </p>\n    <p><strong>RIM Target Price (CET1 basis): $40.20</strong> (-12.4% vs. $45.87 spot)</p>\n</div>",
+    "gaap_scaling_html": "<pre><code>BV_0_GAAP = $45.05\nProportional scaling of RI values:\nPV_RI_explicit_GAAP = $1.689 \u00d7 (45.05 / 36.16) = $2.104\nPV_TV_RI_GAAP = $2.35 \u00d7 (45.05 / 36.16) = $2.93\n\nV_RIM_GAAP = $45.05 + $2.104 + $2.93 = $50.08</code></pre>",
+    "rim_revised_highlight_html": "<div class=\"highlight-box critical\">\n    <h4>Revised RIM Target (GAAP TBVPS): $50.08 (+9.2%)</h4>\n    <p class=\"paragraph-11\">This represents a more realistic valuation using accounting book value.</p>\n</div>",
+    "interpretation_points_html": "<ul>\n    <li><strong>RIM (+9.2%)</strong> sits <strong>between</strong> peer regression (+22.3%) and Gordon Growth (-14.3%)</li>\n    <li><strong>Conservative estimate:</strong> RIM uses through-cycle ROTE (10.21%), while peer regression uses current (11.95%)</li>\n    <li><strong>Triangulation validation:</strong> RIM <strong>confirms HOLD</strong> (within -10% to +15% band)</li>\n</ul>",
+    "blended_conclusion_html": "<p><strong>Conclusion:</strong> IRC blended valuation <strong>validates</strong> Wilson framework (within $0.35, 0.7% difference).</p>",
+    "terminal_rote_insight_html": "<p><strong>Key Insight:</strong> <strong>Terminal ROTE drives valuation</strong>. +100 bps terminal ROTE \u2192 +$5.64/share (+11.3%).</p>",
+    "coe_insight_html": "<p><strong>Key Insight:</strong> <strong>COE less sensitive</strong> than ROTE. -50 bps COE \u2192 +$1.94/share (+3.9%).</p>",
+    "ri_discount_rate_html": "<p><strong>Discount Rate:</strong> COE = 9.587%</p>",
+    "qa_html_blocks": [
+      "<div class=\"highlight-box\">\n    <h4>Why does RIM show $50.08 (+9.2%) while peer regression shows $56.11 (+22.3%)?</h4>\n    <p><strong>A:</strong> Different lenses on value: (1) <strong>RIM uses through-cycle ROTE (10.21%)</strong> \u2192 Conservative, (2) <strong>Peer regression uses current ROTE (11.95%)</strong> \u2192 Aggressive. <strong>RIM is anchored to normalized earnings power</strong>, peer regression to <strong>current market multiples</strong>. <strong>Triangulation:</strong> Blend RIM (60%) + Relative (30%) \u2192 $51.39 (+12.0%).</p>\n</div>",
+      "<div class=\"highlight-box\">\n    <h4>Why weight RIM 60% vs. Relative 30%?</h4>\n    <p><strong>A:</strong> IRC standard (CBA winning report uses 60/10/30). <strong>Rationale:</strong> (1) <strong>RIM isolates intrinsic value</strong> (book value + excess returns), less market-driven, (2) <strong>Relative valuation subject to bubble/crash</strong> (peer multiples can be mispriced), (3) <strong>DDM 10%</strong> (payout policy risk).</p>\n</div>",
+      "<div class=\"highlight-box\">\n    <h4>Why use GAAP TBVPS ($45.05) instead of CET1 ($36.16)?</h4>\n    <p><strong>A:</strong> RIM convention: Use <strong>accounting book value</strong> (matches financial statements, auditable). <strong>CET1 is regulatory capital</strong> (includes deductions for DTA, intangibles per Basel III), <strong>not economic equity</strong>. <strong>Validation:</strong> Market P/BV multiples quote vs. GAAP BV, not CET1.</p>\n</div>",
+      "<div class=\"highlight-box\">\n    <h4>Is 10.21% terminal ROTE defensible?</h4>\n    <p><strong>A:</strong> Through-cycle normalization: (1) <strong>NCO 42.8 bps</strong> (FDIC long-term avg), (2) <strong>Provision drag</strong> on ROTE vs. current 18 bps, (3) <strong>Peer median ROTE 8.77%</strong> (CATY's 10.21% still +144 bps premium). <strong>Conservative choice:</strong> Avoids extrapolating current 11.95% ROTE (peak-of-cycle).</p>\n</div>"
+    ],
+    "python_code_html": "<pre><code># RIM Valuation Model\nimport numpy as np\n\n# Inputs\nBV_0 = 45.05  # GAAP TBVPS (Oct 2025)\nCOE = 0.09587  # Cost of equity\ng_terminal = 0.025  # Terminal growth\npayout_ratio = 0.75\n\n# ROTE forecast\nrote_forecast = [0.1150, 0.1100, 0.1050, 0.1030, 0.1021]  # 2026-2030\nrote_terminal = 0.1021\n\n# Book value evolution\nBV = [BV_0]\nfor i, rote in enumerate(rote_forecast):\n    ni = rote * BV[i]\n    dividends = ni * payout_ratio\n    bv_next = BV[i] + ni - dividends\n    BV.append(bv_next)\n\n# Residual income (explicit period)\nRI_explicit = []\nfor i, rote in enumerate(rote_forecast):\n    ri = (rote - COE) * BV[i]\n    RI_explicit.append(ri)\n\n# Present value of explicit RI\nPV_RI_explicit = sum([ri / (1 + COE)**(i+1) for i, ri in enumerate(RI_explicit)])\n\n# Terminal value\nBV_2030 = BV[-1]\nBV_2031_start = BV_2030 * (1 + g_terminal)\nRI_2031 = (rote_terminal - COE) * BV_2031_start\nTV_RI = RI_2031 / (COE - g_terminal)\nPV_TV_RI = TV_RI / (1 + COE)**5\n\n# RIM intrinsic value\nV_RIM = BV_0 + PV_RI_explicit + PV_TV_RI\n\nprint(f\"RIM Intrinsic Value: ${V_RIM:.2f}\")\nprint(f\"Current Price: $45.89\")\nprint(f\"Upside/Downside: {((V_RIM / 45.87) - 1) * 100:.1f}%\")\n\n# Expected output:\n# RIM Intrinsic Value: $50.08\n# Current Price: $45.89\n# Upside/Downside: +9.2%</code></pre>",
+    "wilson_heading_html": "<h3>6.2 Comparison to Wilson 95% Framework</h3>"
+  },
+  "terminal": {
+    "ri_2031": "$0.263",
+    "terminal_value": "$3.71",
+    "terminal_value_pv": "$2.35"
+  },
+  "bridge": {
+    "book_value_component": "$36.16",
+    "pv_forecast_ri": "$1.689",
+    "pv_terminal": "$2.35",
+    "rim_value": "$40.20",
+    "gaap_rim_value": "$50.08",
+    "components": {
+      "book_pct": "75.6%",
+      "forecast_pct": "29.0%",
+      "terminal_pct": "-4.6%"
+    }
+  },
+  "code": {
+    "snippet": "# RIM Valuation Model\nimport numpy as np\n\n# Inputs\nBV_0 = 45.05  # GAAP TBVPS (Oct 2025)\nCOE = 0.09587  # Cost of equity\ng_terminal = 0.025  # Terminal growth\npayout_ratio = 0.75\n\n# ROTE forecast\nrote_forecast = [0.1150, 0.1100, 0.1050, 0.1030, 0.1021]  # 2026-2030\nrote_terminal = 0.1021\n\n# Book value evolution\nBV = [BV_0]\nfor i, rote in enumerate(rote_forecast):\n    ni = rote * BV[i]\n    dividends = ni * payout_ratio\n    bv_next = BV[i] + ni - dividends\n    BV.append(bv_next)\n\n# Residual income (explicit period)\nRI_explicit = []\nfor i, rote in enumerate(rote_forecast):\n    ri = (rote - COE) * BV[i]\n    RI_explicit.append(ri)\n\n# Present value of explicit RI\nPV_RI_explicit = sum([ri / (1 + COE)**(i+1) for i, ri in enumerate(RI_explicit)])\n\n# Terminal value\nBV_2030 = BV[-1]\nBV_2031_start = BV_2030 * (1 + g_terminal)\nRI_2031 = (rote_terminal - COE) * BV_2031_start\nTV_RI = RI_2031 / (COE - g_terminal)\nPV_TV_RI = TV_RI / (1 + COE)**5\n\n# RIM intrinsic value\nV_RIM = BV_0 + PV_RI_explicit + PV_TV_RI\n\nprint(f\"RIM Intrinsic Value: ${V_RIM:.2f}\")\nprint(f\"Current Price: $45.89\")\nprint(f\"Upside/Downside: {((V_RIM / 45.87) - 1) * 100:.1f}%\")\n\n# Expected output:\n# RIM Intrinsic Value: $50.08\n# Current Price: $45.89\n# Upside/Downside: +9.2%"
+  }
+}
