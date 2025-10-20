@@ -196,6 +196,56 @@ def format_value(raw: Any, fmt: str, spec: Dict[str, Any]) -> str:
         text = str(raw).upper()
     elif fmt == "text":
         text = str(raw)
+    elif fmt == "list_to_table_rows":
+        if not isinstance(raw, list):
+            text = ""
+        else:
+            cols = spec.get("columns", [])
+            rows_html = []
+            for item in raw:
+                cells = [f"<td>{item.get(col, '')}</td>" if i > 0 else f"<td><strong>{item.get(col, '')}</strong></td>" for i, col in enumerate(cols)]
+                rows_html.append(f"<tr>{''.join(cells)}</tr>")
+            text = "\n".join(rows_html)
+        return text  # No prefix/suffix
+    elif fmt == "list_to_li":
+        if not isinstance(raw, list):
+            text = ""
+        else:
+            items = [f"        <li>{str(item)}</li>" for item in raw]
+            text = "\n".join(items)
+        return text  # No prefix/suffix
+    elif fmt == "list_to_advantage_cards":
+        if not isinstance(raw, list):
+            text = ""
+        else:
+            cards = []
+            for adv in raw:
+                sust = adv.get("sustainability", "MEDIUM").lower()
+                card_html = (
+                    f'<div class="advantage-card {sust}">\n'
+                    f'    <div class="advantage-title">{adv.get("advantage", "")}</div>\n'
+                    f'    <div class="advantage-evidence">{adv.get("evidence", "")}</div>\n'
+                    f'    <div class="advantage-sustainability">Sustainability: {adv.get("sustainability", "")}</div>\n'
+                    f'</div>'
+                )
+                cards.append(card_html)
+            text = "\n".join(cards)
+        return text  # No prefix/suffix
+    elif fmt == "list_to_timeline":
+        if not isinstance(raw, list):
+            text = ""
+        else:
+            items = []
+            for milestone in raw:
+                item_html = (
+                    f'<div class="timeline-item">\n'
+                    f'    <div class="timeline-year">{milestone.get("year", "")}</div>\n'
+                    f'    <div class="timeline-event">{milestone.get("event", "")}</div>\n'
+                    f'</div>'
+                )
+                items.append(item_html)
+            text = "\n".join(items)
+        return text  # No prefix/suffix
     else:
         text = str(raw)
 

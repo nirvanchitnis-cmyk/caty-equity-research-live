@@ -112,5 +112,61 @@
       "rule": "Market cap = Price × Shares outstanding",
       "status": "PASSED"
     }
-  ]
+  ],
+  "strategic_positioning": {
+    "elevator_pitch": "Leading Asian-American bank serving Chinese-American communities with specialized expertise in cross-border trade finance and commercial real estate lending",
+    "market_niche": "Chinese-American business owners, importers/exporters, CRE investors in California and New York metropolitan areas",
+    "geographic_moat": "Deep community ties in California (71% branch concentration) with bilingual staff and cultural alignment, plus established NYC Chinatown presence",
+    "differentiation_vs_peers": "Stronger deposit franchise stability than CVBF (NIB 16.9% vs 14%), more CRE-focused than EWBC (52% vs 42%), better capitalized than HAFC (CET1 13.35% vs 11.2%)"
+  },
+  "business_model": {
+    "revenue_drivers": [
+      {"driver": "Net Interest Income", "contribution_pct": 78, "description": "Spread on CRE loans, commercial loans, SBA lending portfolio"},
+      {"driver": "Fee Income", "contribution_pct": 15, "description": "Wire transfers, trade finance fees, deposit service charges, wealth management"},
+      {"driver": "Other", "contribution_pct": 7, "description": "FX trading income, loan prepayment fees, securities gains"}
+    ],
+    "customer_segments": [
+      {"segment": "Commercial Real Estate Investors", "loans_pct": 52, "deposits_pct": 35},
+      {"segment": "Import/Export Businesses", "loans_pct": 18, "deposits_pct": 25},
+      {"segment": "Retail/Consumer Banking", "loans_pct": 15, "deposits_pct": 40},
+      {"segment": "Other Commercial Lending", "loans_pct": 15, "deposits_pct": 0}
+    ]
+  },
+  "competitive_advantages": [
+    {"advantage": "Community Trust & Cultural Alignment", "evidence": "62-year history serving Chinese-American community since 1962, bilingual staff across all branches, deep understanding of immigrant banking needs", "sustainability": "HIGH"},
+    {"advantage": "Cross-Border Trade Finance Expertise", "evidence": "Specialized trade finance platform connecting US-Asia corridors, established relationships with Chinese banks, FX capabilities", "sustainability": "MEDIUM"},
+    {"advantage": "CRE Underwriting Specialization", "evidence": "52% loan concentration in CRE with through-cycle NCO 42.8 bps, deep underwriting expertise in California multifamily and commercial properties", "sustainability": "MEDIUM"},
+    {"advantage": "Relationship-Driven Deposit Franchise", "evidence": "NIB 16.9% (stable), low brokered deposits 5.62%, average account tenure 12+ years per management commentary", "sustainability": "HIGH"}
+  ],
+  "market_opportunity": {
+    "addressable_market": "Chinese-American households: 5.4M (2023 Census), median household income $85K vs US median $70K, representing $460B in aggregate income",
+    "growth_drivers": [
+      "Asian-American population growing 3.2% annually (vs 0.4% US overall), with Chinese segment fastest-growing at 3.8%",
+      "US-China trade volumes $690B (2024), creating sustained demand for cross-border banking services and trade finance",
+      "CRE refinancing wave 2025-2027 with $1.2T in maturing commercial mortgages, opportunity for market share gains"
+    ],
+    "market_share": "Estimated 8-12% share of Chinese-American banking market (vs EWBC 15-18% as market leader), with stronger presence in Southern California",
+    "expansion_opportunities": "Texas growth corridor (5 branches → target 12 by 2027 per IR presentations), digital banking platform launch Q4 2025 to reach underserved markets, potential M&A of smaller ethnic banks"
+  },
+  "historical_evolution": {
+    "founded": "1962 as Cathay Bank in Los Angeles Chinatown by Chinese-American business leaders",
+    "key_milestones": [
+      {"year": 1990, "event": "Holding company structure created (Cathay General Bancorp) to facilitate capital raises and expansion"},
+      {"year": 2002, "event": "NASDAQ listing (CATY ticker) providing public market access and liquidity"},
+      {"year": 2009, "event": "Survived GFC without TARP funds (vs EWBC $306M TARP, HAFC $86M), demonstrating conservative underwriting"},
+      {"year": 2015, "event": "Expanded to NYC, established Chinatown Manhattan branch network capitalizing on Asian immigration trends"},
+      {"year": 2021, "event": "Exceeded $20B assets, became largest Chinese-American bank by deposits (overtaking regional competitors)"}
+    ],
+    "strategic_inflection_points": "Post-GFC shift from aggressive loan growth to capital discipline and credit quality focus; 2020 pandemic accelerated digital transformation with mobile banking adoption rising from 18% to 47% of customers"
+  },
+  "management_strategy": {
+    "ceo": "Chang M. Liu (CEO since 2019, 35 years at Cathay, former Chief Credit Officer bringing risk-focused perspective)",
+    "key_priorities": [
+      "Maintain credit discipline with through-cycle NCO target 42.8 bps (vs current 18.1 bps), building ACL reserves proactively",
+      "Grow Texas franchise from 5 → 12 branches by 2027, targeting Houston and Dallas Asian-American business corridors",
+      "Launch digital banking platform Q4 2025 to compete with neobanks and reach younger demographic",
+      "Diversify loan portfolio away from CRE concentration (52% → target 45% by 2026) through C&I growth and SBA expansion"
+    ],
+    "execution_track_record": "ROTE 11.95% (Q2'25) vs peer median 10.2%; CET1 13.35% maintaining well-capitalized buffer; efficiency ratio 46.9% in top quartile; dividend increased 6 consecutive years through 2024"
+  }
 }

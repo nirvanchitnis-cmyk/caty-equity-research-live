@@ -281,6 +281,77 @@
               "{notes}": {"source": "caty01_tables", "path": "metadata.analyst_notes", "format": "text"}
             }
           }
+        },
+        {
+          "marker": "caty01-strategic-positioning",
+          "type": "text",
+          "template": {
+            "template": "<div class=\"narrative-box\">\n    <p><strong>Elevator Pitch:</strong> {elevator_pitch}</p>\n    <p><strong>Market Niche:</strong> {market_niche}</p>\n    <p><strong>Geographic Moat:</strong> {geographic_moat}</p>\n    <p><strong>vs. Peers:</strong> {differentiation}</p>\n</div>",
+            "placeholders": {
+              "{elevator_pitch}": {"source": "caty01_tables", "path": "strategic_positioning.elevator_pitch", "format": "text"},
+              "{market_niche}": {"source": "caty01_tables", "path": "strategic_positioning.market_niche", "format": "text"},
+              "{geographic_moat}": {"source": "caty01_tables", "path": "strategic_positioning.geographic_moat", "format": "text"},
+              "{differentiation}": {"source": "caty01_tables", "path": "strategic_positioning.differentiation_vs_peers", "format": "text"}
+            }
+          }
+        },
+        {
+          "marker": "caty01-business-model",
+          "type": "text",
+          "template": {
+            "template": "<h3>Revenue Drivers</h3>\n<table>\n    <thead><tr><th>Driver</th><th>Contribution %</th><th>Description</th></tr></thead>\n    <tbody>\n{revenue_rows}\n    </tbody>\n</table>\n<h3>Customer Segments</h3>\n<table>\n    <thead><tr><th>Segment</th><th>Loans %</th><th>Deposits %</th></tr></thead>\n    <tbody>\n{customer_rows}\n    </tbody>\n</table>",
+            "placeholders": {
+              "{revenue_rows}": {"source": "caty01_tables", "path": "business_model.revenue_drivers", "format": "list_to_table_rows", "columns": ["driver", "contribution_pct", "description"]},
+              "{customer_rows}": {"source": "caty01_tables", "path": "business_model.customer_segments", "format": "list_to_table_rows", "columns": ["segment", "loans_pct", "deposits_pct"]}
+            }
+          }
+        },
+        {
+          "marker": "caty01-competitive-advantages",
+          "type": "text",
+          "template": {
+            "template": "<div class=\"advantage-grid\">\n{advantage_cards}\n</div>",
+            "placeholders": {
+              "{advantage_cards}": {"source": "caty01_tables", "path": "competitive_advantages", "format": "list_to_advantage_cards"}
+            }
+          }
+        },
+        {
+          "marker": "caty01-market-opportunity",
+          "type": "text",
+          "template": {
+            "template": "<div class=\"market-box\">\n    <p><strong>Addressable Market:</strong> {tam}</p>\n    <p><strong>Market Share:</strong> {share}</p>\n    <h3>Growth Drivers</h3>\n    <ul>\n{drivers}\n    </ul>\n    <p><strong>Expansion Opportunities:</strong> {expansion}</p>\n</div>",
+            "placeholders": {
+              "{tam}": {"source": "caty01_tables", "path": "market_opportunity.addressable_market", "format": "text"},
+              "{share}": {"source": "caty01_tables", "path": "market_opportunity.market_share", "format": "text"},
+              "{drivers}": {"source": "caty01_tables", "path": "market_opportunity.growth_drivers", "format": "list_to_li"},
+              "{expansion}": {"source": "caty01_tables", "path": "market_opportunity.expansion_opportunities", "format": "text"}
+            }
+          }
+        },
+        {
+          "marker": "caty01-historical-evolution",
+          "type": "text",
+          "template": {
+            "template": "<p><strong>Founded:</strong> {founded}</p>\n<div class=\"timeline\">\n{milestones}\n</div>\n<div class=\"insight-box\">\n    <strong>Strategic Inflection Points:</strong> {inflection}\n</div>",
+            "placeholders": {
+              "{founded}": {"source": "caty01_tables", "path": "historical_evolution.founded", "format": "text"},
+              "{milestones}": {"source": "caty01_tables", "path": "historical_evolution.key_milestones", "format": "list_to_timeline"},
+              "{inflection}": {"source": "caty01_tables", "path": "historical_evolution.strategic_inflection_points", "format": "text"}
+            }
+          }
+        },
+        {
+          "marker": "caty01-management-strategy",
+          "type": "text",
+          "template": {
+            "template": "<p><strong>CEO:</strong> {ceo}</p>\n<h3>Key Priorities (2025-2027)</h3>\n<ul>\n{priorities}\n</ul>\n<div class=\"highlight-box success\">\n    <strong>Execution Track Record:</strong> {track_record}\n</div>",
+            "placeholders": {
+              "{ceo}": {"source": "caty01_tables", "path": "management_strategy.ceo", "format": "text"},
+              "{priorities}": {"source": "caty01_tables", "path": "management_strategy.key_priorities", "format": "list_to_li"},
+              "{track_record}": {"source": "caty01_tables", "path": "management_strategy.execution_track_record", "format": "text"}
+            }
+          }
         }
       ]
     },
