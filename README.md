@@ -314,26 +314,28 @@ Every numeric claim includes:
 
 ---
 
-## 🚀 Daily Workflow
+## 🚀 Automated Workflow
 
-### Pre-Market Update (Owner: Nirvan)
+### Full Pipeline Refresh (Agent-Executable)
 
 ```bash
-# 1. Update spot price and date
-vim data/market_data_current.json
+# Single command: Fetch all data, rebuild site, validate
+python3 scripts/update_all_data.py
 
-# 2. Regenerate site
-python3 scripts/build_site.py
+# Individual steps (if needed):
+python3 scripts/fetch_sec_edgar.py      # SEC EDGAR XBRL data
+python3 scripts/fetch_fdic_data.py      # FDIC Call Report data
+python3 scripts/build_site.py           # Regenerate HTML from JSON
+python3 analysis/reconciliation_guard.py  # Validate targets
+python3 analysis/disconfirmer_monitor.py  # Check driver thresholds
 
-# 3. Validate (all must exit 0)
-python3 analysis/reconciliation_guard.py
-python3 analysis/disconfirmer_monitor.py
-
-# 4. Commit and push (triggers GitHub Pages deploy)
+# Commit and deploy
 git add -A
-git commit -m "Daily update: $46.12 (Oct 21)"
+git commit -m "Automated update: $(date)"
 git push origin-live q3-prep-oct19:main
 ```
+
+**All agents (Claude, Codex, future LLMs) can run this end-to-end. No manual intervention required.**
 
 ### Post-Earnings Workflow (After Q3 on Oct 21)
 
@@ -524,7 +526,13 @@ All calculations verified and audited:
 
 | Date | Achievement |
 |------|-------------|
-| Oct 20, 2025 | ✅ **DEF14A Governance Pipeline** - 7/8 banks extracted (board, CEO, auditor, pay ratio) |
+| Oct 20, 2025 | ✅ **Social Sentiment Module** - Reddit analysis + brand confusion risk (ESG/Social) |
+| Oct 20, 2025 | ✅ **Human Collection Framework** - Excel template + student workflow for complex DEF14A fields |
+| Oct 20, 2025 | ✅ **DEF14A Phase 4** - Audit fees + non-audit % independence analysis (8 facts × 7 banks) |
+| Oct 20, 2025 | ✅ **DEF14A Phase 3** - Say-on-pay % + board independence % extracted |
+| Oct 20, 2025 | ✅ **DEF14A Phase 2** - CEO pay ratio inequality metrics |
+| Oct 20, 2025 | ✅ **DEF14A Governance Pipeline** - 7/8 banks extracted (board, CEO, auditor) |
+| Oct 20, 2025 | ✅ **DEF14A Schema** - Canonical governance factbase structure (schemas/def14a.schema.json) |
 | Oct 20, 2025 | ✅ **CATY_01 Visual Polish** - 2 charts + enhanced typography + strategic narrative |
 | Oct 20, 2025 | ✅ **CFA IRC Rubric Organization** - 17 modules mapped to official scoring categories |
 | Oct 20, 2025 | ✅ **README Architecture Docs** - Backend-ready production documentation |
@@ -566,7 +574,7 @@ git push origin-live q3-prep-oct19:main
 **Coverage:** Regional Banks / Asian-American Banking
 
 **README Generated:** October 20, 2025 13:15 UTC
-**README Last Updated:** October 20, 2025 13:15 UTC
+**README Last Updated:** October 20, 2025 19:15 UTC
 
 ---
 
