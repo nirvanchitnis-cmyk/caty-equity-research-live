@@ -1,0 +1,93 @@
+{
+  "comment": "CATY_10 Capital Actions - Dividends, Buybacks, and Capital Return Policy",
+  "last_updated": "2025-10-19T23:55:00Z",
+  "data_source": "SEC 10-Q/10-K + 8-K announcements",
+  "period": "Q2 2025",
+  "capital_return_metrics": {
+    "dividend_payout_ratio_pct": 32.1,
+    "retention_rate_pct": 67.9,
+    "organic_growth_capacity_pct": 8.1,
+    "buyback_authorization_millions": 150,
+    "quarterly_dividend": 0.38,
+    "annual_dividend": 1.52,
+    "dividend_yield_pct": 3.31,
+    "note": "Payout ratio = Dividends / Net Income; Retention = 1 - Payout; Organic Growth = ROTE × Retention"
+  },
+  "framework_context": {
+    "payout_ratio_range": "30-40%",
+    "payout_ratio_interpretation": "Industry typical range for banks",
+    "retention_rate_pct": 67.9,
+    "retention_interpretation": "Earnings reinvested in business",
+    "organic_growth_calculation": "ROTE × Retention Rate",
+    "organic_growth_example": "If ROTE = 12% and Retention = 68%, organic growth capacity = 8.1%",
+    "organic_growth_interpretation": "Equity can grow 8.1% annually from retained earnings alone"
+  },
+  "dividend_policy": {
+    "current_quarterly_dividend": 0.38,
+    "annual_dividend": 1.52,
+    "dividend_yield_pct": 3.31,
+    "payout_ratio_pct": 32.1,
+    "payout_target_range": "30-40%",
+    "policy_statement": "Quarterly cash dividends representing ~32% of earnings",
+    "last_increase_date": "2024-Q2",
+    "increase_amount": 0.03,
+    "consecutive_years_paid": 10
+  },
+  "buyback_program": {
+    "authorization_millions": 150,
+    "authorization_date": "2024-07-15",
+    "remaining_millions": 110,
+    "shares_repurchased_millions": 0.85,
+    "average_price": 47.12,
+    "total_cost_millions": 40,
+    "program_status": "Active",
+    "expiration_date": "2026-07-15",
+    "note": "Board authorized $150M share repurchase program"
+  },
+  "ltm_capital_return": {
+    "dividends_paid_millions": 118.6,
+    "buybacks_millions": 40.0,
+    "total_capital_returned_millions": 158.6,
+    "net_income_millions": 369.8,
+    "total_payout_ratio_pct": 42.9,
+    "note": "Total shareholder return = Dividends + Buybacks"
+  },
+  "sustainability_metrics": {
+    "current_rote_pct": 11.95,
+    "retention_rate_pct": 67.9,
+    "sustainable_growth_pct": 8.1,
+    "actual_equity_growth_pct": 7.2,
+    "excess_return_vs_sustainable": -0.9,
+    "interpretation": "Equity growth slightly below sustainable capacity, suggesting room for increased capital return"
+  },
+  "peer_comparison": {
+    "caty_payout_ratio_pct": 32.1,
+    "peer_median_payout_pct": 35.0,
+    "caty_dividend_yield_pct": 3.31,
+    "peer_median_yield_pct": 3.75,
+    "caty_position": "Below peer median (conservative payout policy)",
+    "implication": "Room to increase dividend payout to peer median levels"
+  },
+  "qa_checks": {
+    "checks": [
+      {
+        "id": "CAP-QA001",
+        "description": "Payout ratio calculation",
+        "rule": "Payout ratio = Dividends / Net Income",
+        "status": "PASSED"
+      },
+      {
+        "id": "CAP-QA002",
+        "description": "Retention rate identity",
+        "rule": "Retention rate = 1 - Payout ratio",
+        "status": "PASSED"
+      },
+      {
+        "id": "CAP-QA003",
+        "description": "Organic growth calculation",
+        "rule": "Organic growth = ROTE × Retention rate",
+        "status": "PASSED"
+      }
+    ]
+  }
+}

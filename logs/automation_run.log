@@ -158,3 +158,8 @@
 [2025-10-20 05:55:23 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
 [2025-10-20 05:58:08 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
 [2025-10-20 05:58:09 UTC] disconfirmer_monitor.py status=PASS alerts=0
+[2025-10-20 06:13:20 UTC] build_site.py FAILED: "Path 'capital_return_metrics.dividend_payout_ratio_pct' missing key 'capital_return_metrics'"
+[2025-10-20 06:15:00 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-20 06:15:38 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-20 06:23:45 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-20 06:26:14 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated

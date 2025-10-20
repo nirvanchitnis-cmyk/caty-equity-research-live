@@ -1,6 +1,553 @@
 {
   "modules": [
     {
+      "id": "CATY_10",
+      "file": "CATY_10_capital_actions.html",
+      "data": {
+        "last_updated_display": "October 17, 2025"
+      },
+      "sections": [
+        {
+          "marker": "caty10-header-meta",
+          "type": "text",
+          "template": {
+            "template": "<p class=\"page-meta\">\n    Dividends, Buybacks, and Capital Return Policy |\n    Last Updated: {last_updated} |\n    Source: SEC EDGAR 8-K, 10-Q, 10-K\n</p>",
+            "placeholders": {
+              "{last_updated}": {
+                "source": "module",
+                "path": "last_updated_display",
+                "format": "text"
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty10-metric-cards",
+          "type": "cards",
+          "wrapper": {
+            "tag": "div",
+            "class": "metric-grid"
+          },
+          "defaults": {
+            "card_class": "metric-card",
+            "label_class": "metric-label",
+            "value_class": "metric-value",
+            "subtext_class": "metric-subtext"
+          },
+          "cards": [
+            {
+              "label": "Dividend Payout Ratio",
+              "value": {
+                "source": "caty10_tables",
+                "path": "capital_return_metrics.dividend_payout_ratio_pct",
+                "format": "percent",
+                "decimals": 1
+              },
+              "subtext": {
+                "template": "Industry typical range: {range}",
+                "placeholders": {
+                  "{range}": {
+                    "source": "caty10_tables",
+                    "path": "framework_context.payout_ratio_range",
+                    "format": "text"
+                  }
+                }
+              }
+            },
+            {
+              "label": "Retention Rate",
+              "value": {
+                "source": "caty10_tables",
+                "path": "capital_return_metrics.retention_rate_pct",
+                "format": "percent",
+                "decimals": 1
+              },
+              "subtext": {
+                "template": "{text}",
+                "placeholders": {
+                  "{text}": {
+                    "source": "caty10_tables",
+                    "path": "framework_context.retention_interpretation",
+                    "format": "text"
+                  }
+                }
+              }
+            },
+            {
+              "label": "Organic Growth Capacity",
+              "value": {
+                "source": "caty10_tables",
+                "path": "capital_return_metrics.organic_growth_capacity_pct",
+                "format": "percent",
+                "decimals": 1
+              },
+              "subtext": {
+                "template": "{text}",
+                "placeholders": {
+                  "{text}": {
+                    "source": "caty10_tables",
+                    "path": "framework_context.organic_growth_interpretation",
+                    "format": "text"
+                  }
+                }
+              }
+            },
+            {
+              "label": "Buyback Authorization",
+              "value": {
+                "source": "caty10_tables",
+                "path": "capital_return_metrics.buyback_authorization_millions",
+                "format": "currency_scale",
+                "scale": "millions",
+                "decimals": 0
+              },
+              "subtext": {
+                "template": "Board authorization in place"
+              }
+            }
+          ]
+        },
+        {
+          "marker": "caty10-framework-context",
+          "type": "text",
+          "template": {
+            "template": "<div class=\"alert-box info\">\n    <div class=\"alert-title\">Banking Sector Context</div>\n    <div class=\"alert-text\">\n        Banks like Cathay General Bancorp return capital to shareholders through two primary mechanisms:<br><br>\n        <strong>1. Cash Dividends:</strong> Regular quarterly distributions representing a percentage of earnings<br>\n        <strong>2. Share Repurchases:</strong> Buyback programs authorized by the Board to reduce share count and enhance per-share metrics<br><br>\n        Key metrics for evaluating capital return include:<br>\n        <strong>• Dividend Payout Ratio:</strong> Dividends ÷ Net Income (current {payout_ratio} within {payout_range})<br>\n        <strong>• Retention Rate:</strong> 1 - Payout Ratio ({retention_rate} retained for growth)<br>\n        <strong>• Organic Growth Capacity:</strong> ROTE × Retention = {organic_growth} sustainable equity growth ({organic_example})<br>\n        <strong>• Total Shareholder Return:</strong> Dividend Yield {dividend_yield} + Share Price Appreciation\n    </div>\n</div>",
+            "placeholders": {
+              "{payout_ratio}": {
+                "source": "caty10_tables",
+                "path": "capital_return_metrics.dividend_payout_ratio_pct",
+                "format": "percent",
+                "decimals": 1
+              },
+              "{payout_range}": {
+                "source": "caty10_tables",
+                "path": "framework_context.payout_ratio_range",
+                "format": "text"
+              },
+              "{retention_rate}": {
+                "source": "caty10_tables",
+                "path": "capital_return_metrics.retention_rate_pct",
+                "format": "percent",
+                "decimals": 1
+              },
+              "{organic_growth}": {
+                "source": "caty10_tables",
+                "path": "capital_return_metrics.organic_growth_capacity_pct",
+                "format": "percent",
+                "decimals": 1
+              },
+              "{organic_example}": {
+                "source": "caty10_tables",
+                "path": "framework_context.organic_growth_example",
+                "format": "text"
+              },
+              "{dividend_yield}": {
+                "source": "caty10_tables",
+                "path": "capital_return_metrics.dividend_yield_pct",
+                "format": "percent",
+                "decimals": 2
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty10-dividend-policy",
+          "type": "text",
+          "template": {
+            "template": "<div class=\"metric-grid\">\n    <div class=\"metric-card\">\n        <div class=\"metric-label\">Q2 2025 Dividend</div>\n        <div class=\"metric-value\">{quarterly_dividend}/share</div>\n        <div class=\"metric-subtext\">Declared quarterly</div>\n    </div>\n    <div class=\"metric-card\">\n        <div class=\"metric-label\">Annual Dividend</div>\n        <div class=\"metric-value\">{annual_dividend}/share</div>\n        <div class=\"metric-subtext\">Trailing twelve months</div>\n    </div>\n    <div class=\"metric-card\">\n        <div class=\"metric-label\">Dividend Yield</div>\n        <div class=\"metric-value\">{dividend_yield}</div>\n        <div class=\"metric-subtext\">Based on current share price</div>\n    </div>\n    <div class=\"metric-card\">\n        <div class=\"metric-label\">Dividend Payout Ratio</div>\n        <div class=\"metric-value\">{payout_ratio}</div>\n        <div class=\"metric-subtext\">Dividends ÷ Net Income</div>\n    </div>\n</div>\n<p class=\"line-height-relaxed\">{policy_statement}</p>\n<p class=\"text-muted\">Target payout range: {payout_range}. Last increased in {last_increase} by {increase_amount} per share; {years_paid} consecutive years of dividends.</p>",
+            "placeholders": {
+              "{quarterly_dividend}": {
+                "source": "caty10_tables",
+                "path": "dividend_policy.current_quarterly_dividend",
+                "format": "currency",
+                "decimals": 2
+              },
+              "{annual_dividend}": {
+                "source": "caty10_tables",
+                "path": "dividend_policy.annual_dividend",
+                "format": "currency",
+                "decimals": 2
+              },
+              "{dividend_yield}": {
+                "source": "caty10_tables",
+                "path": "dividend_policy.dividend_yield_pct",
+                "format": "percent",
+                "decimals": 2
+              },
+              "{payout_ratio}": {
+                "source": "caty10_tables",
+                "path": "dividend_policy.payout_ratio_pct",
+                "format": "percent",
+                "decimals": 1
+              },
+              "{policy_statement}": {
+                "source": "caty10_tables",
+                "path": "dividend_policy.policy_statement",
+                "format": "text"
+              },
+              "{payout_range}": {
+                "source": "caty10_tables",
+                "path": "dividend_policy.payout_target_range",
+                "format": "text"
+              },
+              "{last_increase}": {
+                "source": "caty10_tables",
+                "path": "dividend_policy.last_increase_date",
+                "format": "text"
+              },
+              "{increase_amount}": {
+                "source": "caty10_tables",
+                "path": "dividend_policy.increase_amount",
+                "format": "currency",
+                "decimals": 2
+              },
+              "{years_paid}": {
+                "source": "caty10_tables",
+                "path": "dividend_policy.consecutive_years_paid",
+                "format": "decimal",
+                "decimals": 0
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty10-buyback-program",
+          "type": "text",
+          "template": {
+            "template": "<div class=\"metric-grid\">\n    <div class=\"metric-card\">\n        <div class=\"metric-label\">Program Authorization</div>\n        <div class=\"metric-value\">{authorization}</div>\n        <div class=\"metric-subtext\">Approved {authorization_date}</div>\n    </div>\n    <div class=\"metric-card\">\n        <div class=\"metric-label\">Remaining Authorization</div>\n        <div class=\"metric-value\">{remaining}</div>\n        <div class=\"metric-subtext\">Expires {expiration_date}</div>\n    </div>\n    <div class=\"metric-card\">\n        <div class=\"metric-label\">Shares Repurchased</div>\n        <div class=\"metric-value\">{shares_repurchased}</div>\n        <div class=\"metric-subtext\">Cumulative under program</div>\n    </div>\n    <div class=\"metric-card\">\n        <div class=\"metric-label\">Average Price Paid</div>\n        <div class=\"metric-value\">{average_price}</div>\n        <div class=\"metric-subtext\">Total cost {total_cost}</div>\n    </div>\n</div>\n<div class=\"alert-box info\">\n    <div class=\"alert-title\">Program Status</div>\n    <div class=\"alert-text\">\n        <strong>Status:</strong> {status}<br>\n        <strong>Summary:</strong> {note}\n    </div>\n</div>",
+            "placeholders": {
+              "{authorization}": {
+                "source": "caty10_tables",
+                "path": "buyback_program.authorization_millions",
+                "format": "currency_scale",
+                "scale": "millions",
+                "decimals": 0
+              },
+              "{authorization_date}": {
+                "source": "caty10_tables",
+                "path": "buyback_program.authorization_date",
+                "format": "text"
+              },
+              "{remaining}": {
+                "source": "caty10_tables",
+                "path": "buyback_program.remaining_millions",
+                "format": "currency_scale",
+                "scale": "millions",
+                "decimals": 0
+              },
+              "{expiration_date}": {
+                "source": "caty10_tables",
+                "path": "buyback_program.expiration_date",
+                "format": "text"
+              },
+              "{shares_repurchased}": {
+                "source": "caty10_tables",
+                "path": "buyback_program.shares_repurchased_millions",
+                "format": "number_scale",
+                "scale": "millions",
+                "decimals": 2
+              },
+              "{average_price}": {
+                "source": "caty10_tables",
+                "path": "buyback_program.average_price",
+                "format": "currency",
+                "decimals": 2
+              },
+              "{total_cost}": {
+                "source": "caty10_tables",
+                "path": "buyback_program.total_cost_millions",
+                "format": "currency_scale",
+                "scale": "millions",
+                "decimals": 0
+              },
+              "{status}": {
+                "source": "caty10_tables",
+                "path": "buyback_program.program_status",
+                "format": "text"
+              },
+              "{note}": {
+                "source": "caty10_tables",
+                "path": "buyback_program.note",
+                "format": "text"
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty10-ltm-capital-return",
+          "type": "text",
+          "template": {
+            "template": "<table>\n    <thead>\n        <tr>\n            <th>Metric</th>\n            <th class=\"number\">Amount ($M)</th>\n            <th>Notes</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td>Total dividends paid (LTM)</td>\n            <td class=\"number\">{dividends}</td>\n            <td>Payout ratio {dividend_ratio}</td>\n        </tr>\n        <tr>\n            <td>Total share repurchases (LTM)</td>\n            <td class=\"number\">{buybacks}</td>\n            <td>Remaining authorization {remaining}</td>\n        </tr>\n        <tr class=\"subtotal\">\n            <td>Total capital returned (LTM)</td>\n            <td class=\"number\">{total_return}</td>\n            <td>Total payout ratio {total_ratio}</td>\n        </tr>\n        <tr>\n            <td>Net income (LTM)</td>\n            <td class=\"number\">{net_income}</td>\n            <td>Base used for payout calculations</td>\n        </tr>\n    </tbody>\n</table>",
+            "placeholders": {
+              "{dividends}": {
+                "source": "caty10_tables",
+                "path": "ltm_capital_return.dividends_paid_millions",
+                "format": "currency_scale",
+                "scale": "millions",
+                "decimals": 1
+              },
+              "{dividend_ratio}": {
+                "source": "caty10_tables",
+                "path": "capital_return_metrics.dividend_payout_ratio_pct",
+                "format": "percent",
+                "decimals": 1
+              },
+              "{buybacks}": {
+                "source": "caty10_tables",
+                "path": "ltm_capital_return.buybacks_millions",
+                "format": "currency_scale",
+                "scale": "millions",
+                "decimals": 1
+              },
+              "{remaining}": {
+                "source": "caty10_tables",
+                "path": "buyback_program.remaining_millions",
+                "format": "currency_scale",
+                "scale": "millions",
+                "decimals": 0
+              },
+              "{total_return}": {
+                "source": "caty10_tables",
+                "path": "ltm_capital_return.total_capital_returned_millions",
+                "format": "currency_scale",
+                "scale": "millions",
+                "decimals": 1
+              },
+              "{total_ratio}": {
+                "source": "caty10_tables",
+                "path": "ltm_capital_return.total_payout_ratio_pct",
+                "format": "percent",
+                "decimals": 1
+              },
+              "{net_income}": {
+                "source": "caty10_tables",
+                "path": "ltm_capital_return.net_income_millions",
+                "format": "currency_scale",
+                "scale": "millions",
+                "decimals": 1
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty10-sustainability-cards",
+          "type": "cards",
+          "wrapper": {
+            "tag": "div",
+            "class": "metric-grid"
+          },
+          "defaults": {
+            "card_class": "metric-card",
+            "label_class": "metric-label",
+            "value_class": "metric-value",
+            "subtext_class": "metric-subtext"
+          },
+          "cards": [
+            {
+              "label": "Current ROTE",
+              "value": {
+                "source": "caty10_tables",
+                "path": "sustainability_metrics.current_rote_pct",
+                "format": "percent",
+                "decimals": 1
+              },
+              "subtext": {
+                "template": "Return on tangible equity"
+              }
+            },
+            {
+              "label": "Retention Rate",
+              "value": {
+                "source": "caty10_tables",
+                "path": "sustainability_metrics.retention_rate_pct",
+                "format": "percent",
+                "decimals": 1
+              },
+              "subtext": {
+                "template": "Earnings retained"
+              }
+            },
+            {
+              "label": "Sustainable Growth",
+              "value": {
+                "source": "caty10_tables",
+                "path": "sustainability_metrics.sustainable_growth_pct",
+                "format": "percent",
+                "decimals": 1
+              },
+              "subtext": {
+                "template": "ROTE × retention"
+              }
+            },
+            {
+              "label": "Actual Equity Growth",
+              "value": {
+                "source": "caty10_tables",
+                "path": "sustainability_metrics.actual_equity_growth_pct",
+                "format": "percent",
+                "decimals": 1
+              },
+              "subtext": {
+                "template": "YoY tangible book growth"
+              }
+            },
+            {
+              "label": "Excess vs Sustainable",
+              "value": {
+                "source": "caty10_tables",
+                "path": "sustainability_metrics.excess_return_vs_sustainable",
+                "format": "percent_signed",
+                "decimals": 1
+              },
+              "subtext": {
+                "template": "Actual minus sustainable growth"
+              }
+            }
+          ]
+        },
+        {
+          "marker": "caty10-sustainability-analysis",
+          "type": "text",
+          "template": {
+            "template": "<div class=\"alert-box info\">\n    <div class=\"alert-title\">Capital Return Analysis Framework</div>\n    <div class=\"alert-text\">\n        <strong>Sustainable growth check:</strong> {sustainable_growth} capacity vs {actual_growth} actual equity growth ({excess} spread).\n        Retained earnings at {retention_rate} support organic expansion without external capital raises.<br><br>\n        <strong>Interpretation:</strong> {interpretation}\n    </div>\n</div>",
+            "placeholders": {
+              "{sustainable_growth}": {
+                "source": "caty10_tables",
+                "path": "sustainability_metrics.sustainable_growth_pct",
+                "format": "percent",
+                "decimals": 1
+              },
+              "{actual_growth}": {
+                "source": "caty10_tables",
+                "path": "sustainability_metrics.actual_equity_growth_pct",
+                "format": "percent",
+                "decimals": 1
+              },
+              "{excess}": {
+                "source": "caty10_tables",
+                "path": "sustainability_metrics.excess_return_vs_sustainable",
+                "format": "percent_signed",
+                "decimals": 1
+              },
+              "{retention_rate}": {
+                "source": "caty10_tables",
+                "path": "sustainability_metrics.retention_rate_pct",
+                "format": "percent",
+                "decimals": 1
+              },
+              "{interpretation}": {
+                "source": "caty10_tables",
+                "path": "sustainability_metrics.interpretation",
+                "format": "text"
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty10-peer-comparison",
+          "type": "table",
+          "headers": [
+            "Metric",
+            "CATY",
+            "Peer Median",
+            "Interpretation"
+          ],
+          "columns": [
+            "metric",
+            "caty",
+            "peer",
+            "note"
+          ],
+          "column_classes": [
+            "",
+            "number",
+            "number",
+            ""
+          ],
+          "rows": [
+            {
+              "metric": {
+                "template": "Dividend payout ratio"
+              },
+              "caty": {
+                "source": "caty10_tables",
+                "path": "peer_comparison.caty_payout_ratio_pct",
+                "format": "percent",
+                "decimals": 1
+              },
+              "peer": {
+                "source": "caty10_tables",
+                "path": "peer_comparison.peer_median_payout_pct",
+                "format": "percent",
+                "decimals": 1
+              },
+              "note": {
+                "source": "caty10_tables",
+                "path": "peer_comparison.caty_position",
+                "format": "text"
+              }
+            },
+            {
+              "metric": {
+                "template": "Dividend yield"
+              },
+              "caty": {
+                "source": "caty10_tables",
+                "path": "peer_comparison.caty_dividend_yield_pct",
+                "format": "percent",
+                "decimals": 2
+              },
+              "peer": {
+                "source": "caty10_tables",
+                "path": "peer_comparison.peer_median_yield_pct",
+                "format": "percent",
+                "decimals": 2
+              },
+              "note": {
+                "source": "caty10_tables",
+                "path": "peer_comparison.implication",
+                "format": "text"
+              }
+            }
+          ]
+        },
+        {
+          "marker": "caty10-qa-checks",
+          "type": "table",
+          "headers": [
+            "Check ID",
+            "Description",
+            "Rule",
+            "Status"
+          ],
+          "columns": [
+            "id",
+            "description",
+            "rule",
+            "status"
+          ],
+          "rows_from_list": {
+            "source": "caty10_tables",
+            "list_path": "qa_checks.checks",
+            "row_template": {
+              "id": {
+                "template": "<strong>{id}</strong>"
+              },
+              "description": {
+                "template": "{description}"
+              },
+              "rule": {
+                "template": "{rule}"
+              },
+              "status": {
+                "template": "<span class=\"verification-badge complete\">{status}</span>"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
       "id": "CATY_02",
       "file": "CATY_02_income_statement.html",
       "data": {
