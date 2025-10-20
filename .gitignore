@@ -29,3 +29,5 @@ push_*.sh
 # Evidence archive (historical session docs)
 evidence/archive/
 test_output/
+evidence/raw/*.pdf
+evidence/raw/*.htm
