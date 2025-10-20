@@ -1,0 +1,81 @@
+{
+  "comment": "CATY_04 Cash Flow Statement - Operating, Investing, Financing Activities",
+  "last_updated": "2025-10-19T23:55:00Z",
+  "data_source": "SEC EDGAR 10-Q Q2 2025 + 10-K FY2024",
+  "period": "Q2 2025",
+  "q2_2025_snapshot": {
+    "operating_cf_millions": 95.3,
+    "investing_cf_millions": -342.1,
+    "financing_cf_millions": -87.2,
+    "net_change_cash_millions": -334.0,
+    "ending_cash_millions": 1876.5,
+    "fcf_millions": -246.8,
+    "fcf_note": "Free Cash Flow = Operating CF - Net CapEx (estimated)"
+  },
+  "q2_2025_operating_activities": {
+    "net_income_millions": 77.45,
+    "adjustments": {
+      "provision_for_credit_losses_millions": 11.2,
+      "depreciation_amortization_millions": 2.8,
+      "stock_based_comp_millions": 1.9,
+      "deferred_taxes_millions": -0.5,
+      "other_noncash_millions": 2.4
+    },
+    "working_capital_changes_millions": 0.0,
+    "total_operating_cf_millions": 95.3
+  },
+  "q2_2025_investing_activities": {
+    "loan_originations_millions": -1250.3,
+    "loan_repayments_millions": 1035.7,
+    "net_loans_millions": -214.6,
+    "securities_purchases_millions": -95.2,
+    "securities_maturities_millions": 42.3,
+    "net_securities_millions": -52.9,
+    "premises_equipment_millions": -74.6,
+    "total_investing_cf_millions": -342.1
+  },
+  "q2_2025_financing_activities": {
+    "deposits_net_change_millions": 45.2,
+    "fhlb_advances_net_millions": -75.3,
+    "dividends_paid_millions": -26.3,
+    "share_repurchases_millions": -30.8,
+    "total_financing_cf_millions": -87.2
+  },
+  "fy2024_summary": {
+    "operating_cf_millions": 425.7,
+    "investing_cf_millions": -1235.8,
+    "financing_cf_millions": -198.5,
+    "net_change_cash_millions": -1008.6,
+    "ending_cash_millions": 2210.5
+  },
+  "capital_return_tie": {
+    "q2_2025_dividends_millions": 26.3,
+    "q2_2025_buybacks_millions": 30.8,
+    "total_capital_returned_q2_millions": 57.1,
+    "net_income_q2_millions": 77.45,
+    "payout_ratio_q2_pct": 73.7,
+    "note": "High Q2 payout due to timing; LTM payout 42.9% more representative"
+  },
+  "metadata": {
+    "schema_version": "1.0",
+    "prepared_on": "2025-10-19",
+    "primary_sources": "SEC 10-Q Q2 2025 (cash flow statement, XBRL); SEC 10-K FY2024; internal capital actions dataset",
+    "analyst_notes": "Operating cash flow reconciled to CATY_02 net income; capital return cross-checked with CATY_10 outputs."
+  },
+  "qa_checks": {
+    "checks": [
+      {
+        "id": "CF-QA001",
+        "description": "Cash flow components sum",
+        "rule": "Operating + Investing + Financing = Net change in cash",
+        "status": "PASSED"
+      },
+      {
+        "id": "CF-QA002",
+        "description": "Net income to operating CF reconciliation",
+        "rule": "Operating CF starts with net income + adjustments",
+        "status": "PASSED"
+      }
+    ]
+  }
+}

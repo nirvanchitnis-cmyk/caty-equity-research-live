@@ -38,8 +38,9 @@
       "description": "Operating CF, investing, financing, capital returns",
       "status": "UPDATED",
       "importance": "STANDARD",
-      "last_updated": "2025-10-17",
-      "data_dependencies": ["SEC 10-Q"]
+      "last_updated": "2025-10-19",
+      "automation_status": "100% - Autogen cash flow statement",
+      "data_dependencies": ["SEC 10-Q", "SEC 10-K"]
     },
     {
       "id": "05",

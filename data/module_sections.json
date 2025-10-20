@@ -285,6 +285,256 @@
       ]
     },
     {
+      "id": "CATY_04",
+      "file": "CATY_04_cash_flow.html",
+      "data": {
+        "last_updated_display": "October 19, 2025"
+      },
+      "sections": [
+        {
+          "marker": "caty04-header-meta",
+          "type": "text",
+          "template": {
+            "template": "<p class=\"page-meta\">\n    Consolidated statement of cash flows (operating, investing, financing) |\n    Last Updated: {last_updated} |\n    Source: SEC 10-Q Q2 2025 + 10-K FY2024\n</p>",
+            "placeholders": {
+              "{last_updated}": {
+                "source": "module",
+                "path": "last_updated_display",
+                "format": "text"
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty04-snapshot-cards",
+          "type": "cards",
+          "wrapper": {
+            "tag": "div",
+            "class": "metric-grid"
+          },
+          "defaults": {
+            "card_class": "metric-card",
+            "label_class": "metric-label",
+            "value_class": "metric-value",
+            "subtext_class": "metric-subtext"
+          },
+          "cards": [
+            {
+              "card_class": "metric-card success",
+              "label": "Operating Cash Flow",
+              "value": {
+                "source": "caty04_tables",
+                "path": "q2_2025_snapshot.operating_cf_millions",
+                "format": "currency_scale",
+                "scale": "millions",
+                "decimals": 1
+              },
+              "subtext": {
+                "template": "Net income + non-cash adjustments"
+              }
+            },
+            {
+              "card_class": "metric-card warning",
+              "label": "Investing Cash Flow",
+              "value": {
+                "source": "caty04_tables",
+                "path": "q2_2025_snapshot.investing_cf_millions",
+                "format": "currency_scale",
+                "scale": "millions",
+                "decimals": 1
+              },
+              "subtext": {
+                "template": "Loan growth + securities flows"
+              }
+            },
+            {
+              "label": "Financing Cash Flow",
+              "value": {
+                "source": "caty04_tables",
+                "path": "q2_2025_snapshot.financing_cf_millions",
+                "format": "currency_scale",
+                "scale": "millions",
+                "decimals": 1
+              },
+              "subtext": {
+                "template": "Deposits, borrowings, capital returns"
+              }
+            },
+            {
+              "label": "Net Change in Cash",
+              "value": {
+                "source": "caty04_tables",
+                "path": "q2_2025_snapshot.net_change_cash_millions",
+                "format": "currency_scale",
+                "scale": "millions",
+                "decimals": 1
+              },
+              "subtext": {
+                "template": "Quarter-over-quarter change"
+              }
+            },
+            {
+              "label": "Ending Cash & Equivalents",
+              "value": {
+                "source": "caty04_tables",
+                "path": "q2_2025_snapshot.ending_cash_millions",
+                "format": "currency_scale",
+                "scale": "millions",
+                "decimals": 1
+              },
+              "subtext": {
+                "template": "Includes restricted cash"
+              }
+            },
+            {
+              "label": "Free Cash Flow",
+              "value": {
+                "source": "caty04_tables",
+                "path": "q2_2025_snapshot.fcf_millions",
+                "format": "currency_scale",
+                "scale": "millions",
+                "decimals": 1
+              },
+              "subtext": {
+                "template": "{note}",
+                "placeholders": {
+                  "{note}": {
+                    "source": "caty04_tables",
+                    "path": "q2_2025_snapshot.fcf_note",
+                    "format": "text"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "marker": "caty04-operating-table",
+          "type": "text",
+          "template": {
+            "template": "<table>\n    <thead>\n        <tr>\n            <th>Operating Activities (Q2 2025)</th>\n            <th class=\"numeric\">Amount ($M)</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr><td>Net income</td><td class=\"numeric\">{net_income}</td></tr>\n        <tr><td>Provision for credit losses</td><td class=\"numeric\">{pcl}</td></tr>\n        <tr><td>Depreciation &amp; amortization</td><td class=\"numeric\">{depr}</td></tr>\n        <tr><td>Stock-based compensation</td><td class=\"numeric\">{sbc}</td></tr>\n        <tr><td>Deferred taxes</td><td class=\"numeric\">{deferred}</td></tr>\n        <tr><td>Other non-cash items</td><td class=\"numeric\">{other}</td></tr>\n        <tr><td>Working capital changes</td><td class=\"numeric\">{wc}</td></tr>\n        <tr class=\"subtotal\"><td><strong>Total operating cash flow</strong></td><td class=\"numeric\"><strong>{total_operating}</strong></td></tr>\n    </tbody>\n</table>",
+            "placeholders": {
+              "{net_income}": {"source": "caty04_tables", "path": "q2_2025_operating_activities.net_income_millions", "format": "currency_scale", "scale": "millions", "decimals": 2},
+              "{pcl}": {"source": "caty04_tables", "path": "q2_2025_operating_activities.adjustments.provision_for_credit_losses_millions", "format": "currency_scale", "scale": "millions", "decimals": 1},
+              "{depr}": {"source": "caty04_tables", "path": "q2_2025_operating_activities.adjustments.depreciation_amortization_millions", "format": "currency_scale", "scale": "millions", "decimals": 1},
+              "{sbc}": {"source": "caty04_tables", "path": "q2_2025_operating_activities.adjustments.stock_based_comp_millions", "format": "currency_scale", "scale": "millions", "decimals": 1},
+              "{deferred}": {"source": "caty04_tables", "path": "q2_2025_operating_activities.adjustments.deferred_taxes_millions", "format": "currency_scale", "scale": "millions", "decimals": 1},
+              "{other}": {"source": "caty04_tables", "path": "q2_2025_operating_activities.adjustments.other_noncash_millions", "format": "currency_scale", "scale": "millions", "decimals": 1},
+              "{wc}": {"source": "caty04_tables", "path": "q2_2025_operating_activities.working_capital_changes_millions", "format": "currency_scale", "scale": "millions", "decimals": 1},
+              "{total_operating}": {"source": "caty04_tables", "path": "q2_2025_operating_activities.total_operating_cf_millions", "format": "currency_scale", "scale": "millions", "decimals": 1}
+            }
+          }
+        },
+        {
+          "marker": "caty04-investing-table",
+          "type": "text",
+          "template": {
+            "template": "<table>\n    <thead>\n        <tr>\n            <th>Investing Activities (Q2 2025)</th>\n            <th class=\"numeric\">Amount ($M)</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr><td>Loan originations</td><td class=\"numeric\">{loan_originations}</td></tr>\n        <tr><td>Loan repayments</td><td class=\"numeric\">{loan_repayments}</td></tr>\n        <tr><td>Net loan activity</td><td class=\"numeric\">{net_loans}</td></tr>\n        <tr><td>Securities purchases</td><td class=\"numeric\">{sec_purchases}</td></tr>\n        <tr><td>Securities maturities</td><td class=\"numeric\">{sec_maturities}</td></tr>\n        <tr><td>Net securities activity</td><td class=\"numeric\">{net_securities}</td></tr>\n        <tr><td>Premises &amp; equipment</td><td class=\"numeric\">{premises}</td></tr>\n        <tr class=\"subtotal\"><td><strong>Total investing cash flow</strong></td><td class=\"numeric\"><strong>{total_investing}</strong></td></tr>\n    </tbody>\n</table>",
+            "placeholders": {
+              "{loan_originations}": {"source": "caty04_tables", "path": "q2_2025_investing_activities.loan_originations_millions", "format": "currency_scale", "scale": "millions", "decimals": 1},
+              "{loan_repayments}": {"source": "caty04_tables", "path": "q2_2025_investing_activities.loan_repayments_millions", "format": "currency_scale", "scale": "millions", "decimals": 1},
+              "{net_loans}": {"source": "caty04_tables", "path": "q2_2025_investing_activities.net_loans_millions", "format": "currency_scale", "scale": "millions", "decimals": 1},
+              "{sec_purchases}": {"source": "caty04_tables", "path": "q2_2025_investing_activities.securities_purchases_millions", "format": "currency_scale", "scale": "millions", "decimals": 1},
+              "{sec_maturities}": {"source": "caty04_tables", "path": "q2_2025_investing_activities.securities_maturities_millions", "format": "currency_scale", "scale": "millions", "decimals": 1},
+              "{net_securities}": {"source": "caty04_tables", "path": "q2_2025_investing_activities.net_securities_millions", "format": "currency_scale", "scale": "millions", "decimals": 1},
+              "{premises}": {"source": "caty04_tables", "path": "q2_2025_investing_activities.premises_equipment_millions", "format": "currency_scale", "scale": "millions", "decimals": 1},
+              "{total_investing}": {"source": "caty04_tables", "path": "q2_2025_investing_activities.total_investing_cf_millions", "format": "currency_scale", "scale": "millions", "decimals": 1}
+            }
+          }
+        },
+        {
+          "marker": "caty04-financing-table",
+          "type": "text",
+          "template": {
+            "template": "<table>\n    <thead>\n        <tr>\n            <th>Financing Activities (Q2 2025)</th>\n            <th class=\"numeric\">Amount ($M)</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr><td>Net change in deposits</td><td class=\"numeric\">{deposits}</td></tr>\n        <tr><td>FHLB advances (net)</td><td class=\"numeric\">{fhlb}</td></tr>\n        <tr><td>Dividends paid</td><td class=\"numeric\">{dividends}</td></tr>\n        <tr><td>Share repurchases</td><td class=\"numeric\">{buybacks}</td></tr>\n        <tr class=\"subtotal\"><td><strong>Total financing cash flow</strong></td><td class=\"numeric\"><strong>{total_financing}</strong></td></tr>\n    </tbody>\n</table>",
+            "placeholders": {
+              "{deposits}": {"source": "caty04_tables", "path": "q2_2025_financing_activities.deposits_net_change_millions", "format": "currency_scale", "scale": "millions", "decimals": 1},
+              "{fhlb}": {"source": "caty04_tables", "path": "q2_2025_financing_activities.fhlb_advances_net_millions", "format": "currency_scale", "scale": "millions", "decimals": 1},
+              "{dividends}": {"source": "caty04_tables", "path": "q2_2025_financing_activities.dividends_paid_millions", "format": "currency_scale", "scale": "millions", "decimals": 1},
+              "{buybacks}": {"source": "caty04_tables", "path": "q2_2025_financing_activities.share_repurchases_millions", "format": "currency_scale", "scale": "millions", "decimals": 1},
+              "{total_financing}": {"source": "caty04_tables", "path": "q2_2025_financing_activities.total_financing_cf_millions", "format": "currency_scale", "scale": "millions", "decimals": 1}
+            }
+          }
+        },
+        {
+          "marker": "caty04-capital-return",
+          "type": "text",
+          "template": {
+            "template": "<div class=\"highlight-box info\">\n    <h4>Capital Return Tie-In (links to CATY_10)</h4>\n    <p><strong>Q2 2025 Dividends:</strong> {dividends} | <strong>Buybacks:</strong> {buybacks} | <strong>Total:</strong> {total}</p>\n    <p><strong>Net income:</strong> {net_income} → <strong>Payout ratio:</strong> {payout_ratio}</p>\n    <p class=\"text-muted\">{note}</p>\n</div>",
+            "placeholders": {
+              "{dividends}": {"source": "caty04_tables", "path": "capital_return_tie.q2_2025_dividends_millions", "format": "currency_scale", "scale": "millions", "decimals": 1},
+              "{buybacks}": {"source": "caty04_tables", "path": "capital_return_tie.q2_2025_buybacks_millions", "format": "currency_scale", "scale": "millions", "decimals": 1},
+              "{total}": {"source": "caty04_tables", "path": "capital_return_tie.total_capital_returned_q2_millions", "format": "currency_scale", "scale": "millions", "decimals": 1},
+              "{net_income}": {"source": "caty04_tables", "path": "capital_return_tie.net_income_q2_millions", "format": "currency_scale", "scale": "millions", "decimals": 2},
+              "{payout_ratio}": {"source": "caty04_tables", "path": "capital_return_tie.payout_ratio_q2_pct", "format": "percent", "decimals": 1},
+              "{note}": {"source": "caty04_tables", "path": "capital_return_tie.note", "format": "text"}
+            }
+          }
+        },
+        {
+          "marker": "caty04-fy2024-table",
+          "type": "text",
+          "template": {
+            "template": "<table>\n    <thead>\n        <tr>\n            <th>FY2024 Cash Flow Summary</th>\n            <th class=\"numeric\">Amount ($M)</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr><td>Operating cash flow</td><td class=\"numeric\">{operating}</td></tr>\n        <tr><td>Investing cash flow</td><td class=\"numeric\">{investing}</td></tr>\n        <tr><td>Financing cash flow</td><td class=\"numeric\">{financing}</td></tr>\n        <tr><td>Net change in cash</td><td class=\"numeric\">{net_change}</td></tr>\n        <tr class=\"subtotal\"><td><strong>Ending cash &amp; equivalents</strong></td><td class=\"numeric\"><strong>{ending_cash}</strong></td></tr>\n    </tbody>\n</table>",
+            "placeholders": {
+              "{operating}": {"source": "caty04_tables", "path": "fy2024_summary.operating_cf_millions", "format": "currency_scale", "scale": "millions", "decimals": 1},
+              "{investing}": {"source": "caty04_tables", "path": "fy2024_summary.investing_cf_millions", "format": "currency_scale", "scale": "millions", "decimals": 1},
+              "{financing}": {"source": "caty04_tables", "path": "fy2024_summary.financing_cf_millions", "format": "currency_scale", "scale": "millions", "decimals": 1},
+              "{net_change}": {"source": "caty04_tables", "path": "fy2024_summary.net_change_cash_millions", "format": "currency_scale", "scale": "millions", "decimals": 1},
+              "{ending_cash}": {"source": "caty04_tables", "path": "fy2024_summary.ending_cash_millions", "format": "currency_scale", "scale": "millions", "decimals": 1}
+            }
+          }
+        },
+        {
+          "marker": "caty04-qa-checks",
+          "type": "table",
+          "headers": [
+            "Check ID",
+            "Description",
+            "Rule",
+            "Status"
+          ],
+          "columns": [
+            "id",
+            "description",
+            "rule",
+            "status"
+          ],
+          "rows_from_list": {
+            "source": "caty04_tables",
+            "list_path": "qa_checks.checks",
+            "row_template": {
+              "id": {
+                "template": "<strong>{id}</strong>"
+              },
+              "description": {
+                "template": "{description}"
+              },
+              "rule": {
+                "template": "{rule}"
+              },
+              "status": {
+                "template": "<span class=\"verification-badge complete\">{status}</span>"
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty04-metadata-table",
+          "type": "text",
+          "template": {
+            "template": "<table>\n    <thead>\n        <tr>\n            <th>Field</th>\n            <th>Detail</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr><td><strong>Schema Version</strong></td><td>{schema}</td></tr>\n        <tr><td><strong>Prepared On</strong></td><td>{prepared}</td></tr>\n        <tr><td><strong>Primary Sources</strong></td><td>{sources}</td></tr>\n        <tr><td><strong>Analyst Notes</strong></td><td>{notes}</td></tr>\n    </tbody>\n</table>",
+            "placeholders": {
+              "{schema}": {"source": "caty04_tables", "path": "metadata.schema_version", "format": "text"},
+              "{prepared}": {"source": "caty04_tables", "path": "metadata.prepared_on", "format": "text"},
+              "{sources}": {"source": "caty04_tables", "path": "metadata.primary_sources", "format": "text"},
+              "{notes}": {"source": "caty04_tables", "path": "metadata.analyst_notes", "format": "text"}
+            }
+          }
+        }
+      ]
+    },
+    {
       "id": "CATY_08",
       "file": "CATY_08_cre_exposure.html",
       "data": {

@@ -685,6 +685,7 @@ def main(test_mode: bool = False) -> int:
         caty01_tables = load_json(ROOT / "data" / "caty01_company_profile.json") if (ROOT / "data" / "caty01_company_profile.json").exists() else {}
         caty02_tables = load_json(ROOT / "data" / "caty02_income_statement.json") if (ROOT / "data" / "caty02_income_statement.json").exists() else {}
         caty03_tables = load_json(ROOT / "data" / "caty03_balance_sheet.json") if (ROOT / "data" / "caty03_balance_sheet.json").exists() else {}
+        caty04_tables = load_json(ROOT / "data" / "caty04_cash_flow.json") if (ROOT / "data" / "caty04_cash_flow.json").exists() else {}
         caty05_tables = load_json(ROOT / "data" / "caty05_calculated_tables.json") if (ROOT / "data" / "caty05_calculated_tables.json").exists() else {}
         caty07_tables = load_json(ROOT / "data" / "caty07_credit_quality.json") if (ROOT / "data" / "caty07_credit_quality.json").exists() else {}
         caty08_tables = load_json(ROOT / "data" / "caty08_cre_exposure.json") if (ROOT / "data" / "caty08_cre_exposure.json").exists() else {}
@@ -703,6 +704,7 @@ def main(test_mode: bool = False) -> int:
             "caty01_tables": caty01_tables,
             "caty02_tables": caty02_tables,
             "caty03_tables": caty03_tables,
+            "caty04_tables": caty04_tables,
             "caty05_tables": caty05_tables,
             "caty07_tables": caty07_tables,
             "caty08_tables": caty08_tables,
