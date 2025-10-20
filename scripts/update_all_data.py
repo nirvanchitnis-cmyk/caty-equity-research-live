@@ -183,6 +183,11 @@ def main() -> int:
         format="%(asctime)s %(levelname)s %(message)s",
     )
 
+    # Step 0: Fetch live market price
+    print("Fetching live CATY price...")
+    subprocess.run(["python3", "scripts/fetch_live_price.py"], check=True)
+    print("✅ Market data updated")
+
     append_log("update_all_data.py: START")
 
     # Step 1: SEC EDGAR
@@ -253,4 +258,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     sys.exit(main())
-
