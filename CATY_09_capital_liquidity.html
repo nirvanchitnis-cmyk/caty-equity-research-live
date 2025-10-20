@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CATY - Capital & Liquidity | Regulatory Dashboard</title>
+    <link rel="stylesheet" href="styles/caty-equity-research.css">
+</head>
+<body>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" aria-pressed="false">
+        <span id="theme-icon" aria-hidden="true">🌙</span>
+        <span id="theme-text">Dark Mode</span>
+    </button>
+
+    <header>
+        <div class="header-content">
+            <h1>Cathay General Bancorp (NASDAQ: CATY)</h1>
+            <p class="page-subtitle">File 09: Capital & Liquidity</p>
+            <!-- BEGIN AUTOGEN: caty09-header-meta -->
+            <p class="page-meta">Regulatory ratios, AOCI reconciliation, and liquidity buffers | Last Updated: October 19, 2025 | Source: SEC 10-Q Q2 2025 + Call Report</p>
+            <!-- END AUTOGEN: caty09-header-meta -->
+        </div>
+    </header>
+
+    <div class="container">
+        <a href="index.html" class="back-button">← Back to Main Report</a>
+
+        <section id="capital-overview">
+            <h2>Regulatory Capital Position</h2>
+            <!-- BEGIN AUTOGEN: caty09-capital-cards -->
+            <div class="metric-grid">
+                    <div class="metric-card highlight">
+                        <div class="metric-label">CET1 Ratio</div>
+                        <div class="metric-value">13.35%</div>
+                        <div class="metric-subtext">6.85 ppts buffer vs 6.5% well-capitalized</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Tier 1 Ratio</div>
+                        <div class="metric-value">13.35%</div>
+                        <div class="metric-subtext">Regulatory status: Well Capitalized</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Total Capital Ratio</div>
+                        <div class="metric-value">14.52%</div>
+                        <div class="metric-subtext">Basel III numerator fully loaded</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Leverage Ratio</div>
+                        <div class="metric-value">9.87%</div>
+                        <div class="metric-subtext">Balance sheet leverage (Tier 1 / Avg Assets)</div>
+                    </div>
+            </div>
+            <!-- END AUTOGEN: caty09-capital-cards -->
+
+            <!-- BEGIN AUTOGEN: caty09-capital-table -->
+            <table>
+                <thead>
+                    <tr>
+                        <th>Capital Ratio</th>
+                        <th class="numeric">Q2 2025</th>
+                        <th class="numeric">Reg Minimum</th>
+                        <th class="numeric">Well-Capitalized</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>CET1</strong></td><td class="numeric">13.35%</td><td class="numeric">7.0%</td><td class="numeric">6.5%</td></tr>
+                    <tr><td>Tier 1</td><td class="numeric">13.35%</td><td class="numeric">—</td><td class="numeric">—</td></tr>
+                    <tr><td>Total Capital</td><td class="numeric">14.52%</td><td class="numeric">—</td><td class="numeric">—</td></tr>
+                    <tr><td>Leverage</td><td class="numeric">9.87%</td><td class="numeric">—</td><td class="numeric">—</td></tr>
+                </tbody>
+            </table>
+            <!-- END AUTOGEN: caty09-capital-table -->
+        </section>
+
+        <section id="aoci-impact">
+            <h2>AOCI Impact on Tangible Equity</h2>
+            <!-- BEGIN AUTOGEN: caty09-aoci-summary -->
+            <div class="alert-box warning">
+                <div class="alert-title">AOCI Drag on Tangible Equity</div>
+                <div class="alert-text">AOCI totals $-518.3M and reduces tangible book value by -7.48 per share, moving TBVPS from $43.64 to $36.16. AOCI primarily AFS unrealized losses from 2022-23 rate shock</div>
+            </div>
+            <!-- END AUTOGEN: caty09-aoci-summary -->
+
+            <!-- BEGIN AUTOGEN: caty09-aoci-table -->
+            <table>
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th class="numeric">Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>Tangible Equity ex-AOCI</strong></td><td class="numeric">$3,026.0M</td></tr>
+                    <tr><td>Tangible Equity incl AOCI</td><td class="numeric">$2,507.7M</td></tr>
+                    <tr><td>AOCI Balance</td><td class="numeric">$-518.3M</td></tr>
+                    <tr><td>AOCI as % of Equity</td><td class="numeric">-20.7%</td></tr>
+                    <tr><td>TBVPS ex-AOCI</td><td class="numeric">$43.64</td></tr>
+                    <tr><td>TBVPS incl AOCI</td><td class="numeric">$36.16</td></tr>
+                </tbody>
+            </table>
+            <!-- END AUTOGEN: caty09-aoci-table -->
+        </section>
+
+        <section id="liquidity-profile">
+            <h2>Liquidity Coverage</h2>
+            <!-- BEGIN AUTOGEN: caty09-liquidity-table -->
+            <table>
+                <thead>
+                    <tr>
+                        <th>Liquidity Metric</th>
+                        <th class="numeric">Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>Cash & Equivalents</strong></td><td class="numeric">$1.88B</td></tr>
+                    <tr><td>Unencumbered Securities</td><td class="numeric">$3.12B</td></tr>
+                    <tr><td>Total Liquid Assets</td><td class="numeric">$5.00B</td></tr>
+                    <tr><td>Liquid Assets / Total Assets</td><td class="numeric">21.1%</td></tr>
+                    <tr><td>Loan-to-Deposit Ratio</td><td class="numeric">98.9%</td></tr>
+                    <tr><td>Total Loans</td><td class="numeric">$19.79B</td></tr>
+                    <tr><td>Total Deposits</td><td class="numeric">$20.01B</td></tr>
+                </tbody>
+            </table>
+            <!-- END AUTOGEN: caty09-liquidity-table -->
+        </section>
+    </div>
+
+    <script src="scripts/theme-toggle.js"></script>
+</body>
+</html>

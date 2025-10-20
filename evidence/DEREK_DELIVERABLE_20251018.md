@@ -214,7 +214,7 @@ Post-Loss CET1 Ratio = 5.41%
 - Fallback: 4 alternative options documented
 
 **Capital Stress:**
-- Data Source: CATY_09_capital_liquidity_aoci.html (extracted Q2'25 metrics)
+- Data Source: CATY_09_capital_liquidity.html (extracted Q2'25 metrics)
 - Calculations: Python script executed (output logged)
 - Cross-check: CET1 capital = RWA × Ratio = $19,118.5M × 0.1335 = $2,552.3M ✓
 

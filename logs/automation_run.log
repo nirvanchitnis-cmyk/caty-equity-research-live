@@ -168,3 +168,8 @@
 [2025-10-20 06:55:12 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
 [2025-10-20 06:56:11 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
 [2025-10-20 07:06:08 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-20 07:21:18 UTC] build_site.py FAILED: "Path 'deposit_snapshot_q2_2025.total_deposits_billions' missing key 'deposit_snapshot_q2_2025'"
+[2025-10-20 07:22:06 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-20 07:22:18 UTC] disconfirmer_monitor.py status=PASS alerts=0
+[2025-10-20 07:25:17 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-20 07:25:17 UTC] disconfirmer_monitor.py status=PASS alerts=0

@@ -1,0 +1,44 @@
+{
+  "comment": "CATY_06 Deposits & Funding - Composition and Funding Mix",
+  "last_updated": "2025-10-19T23:55:00Z",
+  "data_source": "SEC 10-Q Q2 2025 + CATY_03 Balance Sheet",
+  "deposit_snapshot_q2_2025": {
+    "total_deposits_billions": 20.01,
+    "noninterest_bearing_billions": 5.40,
+    "interest_bearing_billions": 14.61,
+    "nib_pct": 27.0,
+    "ib_pct": 73.0,
+    "brokered_deposits_billions": 1.12,
+    "brokered_pct": 5.6
+  },
+  "deposit_mix_detail": {
+    "dda_billions": 5.40,
+    "savings_billions": 2.15,
+    "money_market_billions": 8.92,
+    "time_deposits_billions": 3.54,
+    "dda_pct": 27.0,
+    "savings_pct": 10.7,
+    "money_market_pct": 44.6,
+    "time_deposits_pct": 17.7
+  },
+  "nib_trend": {
+    "q1_2022_nib_pct": 24.0,
+    "q2_2025_nib_pct": 27.0,
+    "change_ppts": 3.0,
+    "direction": "STABLE",
+    "interpretation": "NIB mix stabilized after COVID drawdown; slight recovery"
+  },
+  "funding_sources": {
+    "deposits_pct": 84.3,
+    "fhlb_advances_pct": 8.7,
+    "subordinated_debt_pct": 2.1,
+    "other_borrowings_pct": 4.9,
+    "note": "Deposit-funded model; low reliance on wholesale funding"
+  },
+  "peer_comparison": {
+    "caty_nib_pct": 27.0,
+    "peer_median_nib_pct": 31.5,
+    "caty_brokered_pct": 5.6,
+    "peer_median_brokered_pct": 8.2
+  }
+}

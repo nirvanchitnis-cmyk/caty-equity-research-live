@@ -45,7 +45,7 @@ This is a **CFA-level institutional equity research report** for **Cathay Genera
 ├── CATY_06_deposits_funding.html (40K)        ← Deposit mix, brokered deposits
 ├── CATY_07_loans_credit_quality.html (41K)    ⭐⭐ CRITICAL: Through-cycle NCO (42.8 bps)
 ├── CATY_08_cre_exposure.html (40K)            ← CRE breakdown (52.4% of loans)
-├── CATY_09_capital_liquidity_aoci.html (43K)  ← Regulatory capital, AOCI
+├── CATY_09_capital_liquidity.html (2.2K)  ← Regulatory capital, AOCI
 ├── CATY_10_capital_actions.html (46K)         ← Dividends, buybacks
 ├── CATY_11_peers_normalized.html (63K)        ⭐ KEY: 4-peer regression (R²=0.9548)
 ├── CATY_12_valuation_model.html (61K)         ⭐⭐⭐ MOST CRITICAL: 3 scenarios, target price
@@ -339,7 +339,7 @@ Beta = (2.62% - 0.09%) / 5.00%
 ├── 06_deposits_funding.json
 ├── 07_loans_credit_quality.json
 ├── 08_cre_exposure.json
-├── 09_capital_liquidity_aoci.json
+├── caty09_capital_liquidity.json
 ├── 10_capital_actions.json
 ├── 11_peers_normalized.json
 └── 12_valuation_model.json
@@ -1386,7 +1386,7 @@ open https://nirvanchitnis-cmyk.github.io/caty-equity-research/
 ├── CATY_06_deposits_funding.html
 ├── CATY_07_loans_credit_quality.html
 ├── CATY_08_cre_exposure.html
-├── CATY_09_capital_liquidity_aoci.html
+├── CATY_09_capital_liquidity.html
 ├── CATY_10_capital_actions.html
 ├── CATY_11_peers_normalized.html
 └── CATY_12_valuation_model.html
@@ -1403,7 +1403,7 @@ open https://nirvanchitnis-cmyk.github.io/caty-equity-research/
 ├── 06_deposits_funding.json
 ├── 07_loans_credit_quality.json
 ├── 08_cre_exposure.json
-├── 09_capital_liquidity_aoci.json
+├── caty09_capital_liquidity.json
 ├── 10_capital_actions.json
 ├── 11_peers_normalized.json
 └── 12_valuation_model.json

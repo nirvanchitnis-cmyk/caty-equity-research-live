@@ -1,0 +1,29 @@
+{
+  "comment": "CATY_17 ESG KPI Dashboard - Quantified Metrics and Material Weaknesses",
+  "last_updated": "2025-10-19T23:55:00Z",
+  "data_source": "ESG analysis + Valuation integration",
+  "kpi_summary": {
+    "total_valuation_impact": -1.47,
+    "coe_adjustment_bps": 25,
+    "material_weaknesses_count": 2,
+    "material_opportunities_count": 1
+  },
+  "environmental_kpis": {
+    "cre_carbon_intensity_score": 7.5,
+    "cre_exposure_pct": 52.4,
+    "valuation_impact": -0.62,
+    "status": "Material Weakness"
+  },
+  "social_kpis": {
+    "community_impact_score": 8.2,
+    "sba_lending_millions": 450,
+    "valuation_impact": 0.77,
+    "status": "Material Opportunity"
+  },
+  "governance_kpis": {
+    "board_independence_pct": 40,
+    "peer_median_pct": 67,
+    "valuation_impact": -0.93,
+    "status": "Material Weakness"
+  }
+}

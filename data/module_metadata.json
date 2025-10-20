@@ -56,11 +56,12 @@
       "id": "06",
       "file": "CATY_06_deposits_funding.html",
       "title": "Deposits & Funding",
-      "description": "NIB 16.9%, brokered 5.62%, funding mix",
+      "description": "Relationship funding mix, NIB stability, brokered reliance",
       "status": "UPDATED",
       "importance": "STANDARD",
-      "last_updated": "2025-10-18",
-      "data_dependencies": ["SEC 10-Q"]
+      "last_updated": "2025-10-19",
+      "automation_status": "100% - Deposits dataset autogen",
+      "data_dependencies": ["SEC 10-Q", "Call Report"]
     },
     {
       "id": "07",
@@ -85,13 +86,14 @@
     },
     {
       "id": "09",
-      "file": "CATY_09_capital_liquidity_aoci.html",
+      "file": "CATY_09_capital_liquidity.html",
       "title": "Capital & Liquidity",
       "description": "CET1 13.35%, regulatory capital, AOCI",
       "status": "UPDATED",
       "importance": "STANDARD",
-      "last_updated": "2025-10-17",
-      "data_dependencies": ["SEC 10-Q"]
+      "last_updated": "2025-10-19",
+      "automation_status": "100% - Capital & liquidity dataset",
+      "data_dependencies": ["SEC 10-Q", "Call Report"]
     },
     {
       "id": "10",
@@ -151,7 +153,8 @@
       "status": "UPDATED",
       "importance": "STANDARD",
       "last_updated": "2025-10-19",
-      "data_dependencies": ["ESG data sources"]
+      "automation_status": "100% - ESG materiality dataset",
+      "data_dependencies": ["ESG analysis", "CATY COE framework"]
     },
     {
       "id": "16",
@@ -171,7 +174,8 @@
       "status": "UPDATED",
       "importance": "STANDARD",
       "last_updated": "2025-10-19",
-      "data_dependencies": ["evidence/esg_kpi_data.json"]
+      "automation_status": "100% - ESG KPI dataset",
+      "data_dependencies": ["ESG data warehouse", "Valuation outputs"]
     }
   ],
   "last_refresh": "2025-10-19T13:40:00Z",

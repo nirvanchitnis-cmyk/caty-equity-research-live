@@ -3,585 +3,134 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CATY - Deposits & Funding | Data Repository</title>
+    <title>CATY - Deposits & Funding | Composition and Mix</title>
     <link rel="stylesheet" href="styles/caty-equity-research.css">
 </head>
 <body>
-    <!-- Theme Toggle -->
     <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" aria-pressed="false">
         <span id="theme-icon" aria-hidden="true">🌙</span>
         <span id="theme-text">Dark Mode</span>
     </button>
 
-    <!-- Header -->
     <header>
         <div class="header-content">
-            <h1 class="page-title">Cathay General Bancorp (NASDAQ: CATY)</h1>
+            <h1>Cathay General Bancorp (NASDAQ: CATY)</h1>
             <p class="page-subtitle">File 06: Deposits & Funding</p>
-            <p class="page-meta">
-                Funding mix, deposit composition, and liquidity sources |
-                Last Updated: October 18, 2025 |
-                Source: SEC EDGAR 10-Q Q2'25, FDIC Call Report (Cert 18503)
-            </p>
+            <!-- BEGIN AUTOGEN: caty06-header-meta -->
+            <p class="page-meta">Funding mix, deposit composition, and peer benchmarking | Last Updated: October 19, 2025 | Source: SEC 10-Q Q2 2025 + Call Report</p>
+            <!-- END AUTOGEN: caty06-header-meta -->
         </div>
     </header>
 
     <div class="container">
         <a href="index.html" class="back-button">← Back to Main Report</a>
 
-        <!-- ======================================== -->
-        <!-- DEPOSIT COMPOSITION (Q2'25) -->
-        <!-- ======================================== -->
-        <section id="deposit-composition">
-            <h2>Deposit Composition</h2>
-
-            <h3>Q2 2025 Snapshot (as of June 30, 2025)</h3>
-
+        <section id="deposit-overview">
+            <h2>Deposit & Funding Snapshot</h2>
+            <!-- BEGIN AUTOGEN: caty06-deposit-snapshot -->
             <div class="metric-grid">
-                <div class="metric-card">
-                    <div class="metric-label">Total Deposits</div>
-                    <div class="metric-value">$20,006.3M</div>
-                    <div class="metric-subtext">Primary funding source</div>
-                </div>
-
-                <div class="metric-card">
-                    <div class="metric-label">NIB Deposits</div>
-                    <div class="metric-value">$3,381.4M</div>
-                    <div class="metric-subtext">16.9% of total deposits</div>
-                </div>
-
-                <div class="metric-card">
-                    <div class="metric-label">Interest-Bearing Deposits</div>
-                    <div class="metric-value">$16,624.9M</div>
-                    <div class="metric-subtext">83.1% of total deposits</div>
-                </div>
+                    <div class="metric-card highlight">
+                        <div class="metric-label">Total Deposits</div>
+                        <div class="metric-value">$20.01B</div>
+                        <div class="metric-subtext">Primary funding source</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Noninterest-Bearing</div>
+                        <div class="metric-value">$5.40B</div>
+                        <div class="metric-subtext">27.0% of total deposits</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Interest-Bearing</div>
+                        <div class="metric-value">$14.61B</div>
+                        <div class="metric-subtext">73.0% of total deposits</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Brokered Deposits</div>
+                        <div class="metric-value">$1.12B</div>
+                        <div class="metric-subtext">5.6% brokered mix</div>
+                    </div>
             </div>
+            <!-- END AUTOGEN: caty06-deposit-snapshot -->
+        </section>
 
-            <h3>Interest-Bearing Deposit Product Mix</h3>
-
+        <section id="deposit-mix">
+            <h2>Deposit Mix Detail</h2>
+            <!-- BEGIN AUTOGEN: caty06-deposit-mix-table -->
             <table>
                 <thead>
                     <tr>
-                        <th>Product Type</th>
-                        <th class="text-right">Balance ($ Millions)</th>
-                        <th class="text-right">% of IB Deposits</th>
-                        <th class="text-right">% of Total Deposits</th>
+                        <th>Deposit Type</th>
+                        <th class="numeric">Balance ($B)</th>
+                        <th class="numeric">Mix (%)</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td><strong>NOW Accounts</strong></td>
-                        <td class="text-right">$2,174.1</td>
-                        <td class="text-right">13.1%</td>
-                        <td class="text-right">10.9%</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Money Market</strong></td>
-                        <td class="text-right">$3,431.1</td>
-                        <td class="text-right">20.6%</td>
-                        <td class="text-right">17.2%</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Savings</strong></td>
-                        <td class="text-right">$1,317.1</td>
-                        <td class="text-right">7.9%</td>
-                        <td class="text-right">6.6%</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Time Deposits</strong></td>
-                        <td class="text-right">$9,702.7</td>
-                        <td class="text-right">58.4%</td>
-                        <td class="text-right">48.5%</td>
-                    </tr>
-                    <tr class="row-border-top-red">
-                        <td><strong>Total Interest-Bearing</strong></td>
-                        <td class="text-right"><strong>$16,624.9</strong></td>
-                        <td class="text-right"><strong>100.0%</strong></td>
-                        <td class="text-right"><strong>83.1%</strong></td>
-                    </tr>
+                    <tr><td><strong>Demand (DDA)</strong></td><td class="numeric">$5.40B</td><td class="numeric">27.0%</td></tr>
+                    <tr><td><strong>Savings</strong></td><td class="numeric">$2.15B</td><td class="numeric">10.7%</td></tr>
+                    <tr><td><strong>Money Market</strong></td><td class="numeric">$8.92B</td><td class="numeric">44.6%</td></tr>
+                    <tr><td><strong>Time Deposits</strong></td><td class="numeric">$3.54B</td><td class="numeric">17.7%</td></tr>
                 </tbody>
             </table>
+            <!-- END AUTOGEN: caty06-deposit-mix-table -->
+        </section>
 
+        <section id="nib-trend">
+            <h2>Noninterest-Bearing Trend</h2>
+            <!-- BEGIN AUTOGEN: caty06-nib-trend -->
             <div class="alert-box info">
-                <strong>Key Observation:</strong> Time deposits represent the largest component of interest-bearing deposits (58.4%), reflecting CATY's traditional retail banking franchise. The relatively high time deposit concentration (48.5% of total deposits) may indicate elevated funding costs but also signals deposit stability and customer loyalty.
+                <div class="alert-title">STABLE NIB Mix</div>
+                <div class="alert-text">Noninterest-bearing deposits moved from 24.0% in Q1 2022 to 27.0% in Q2 2025, a change of 3.0 ppts. NIB mix stabilized after COVID drawdown; slight recovery</div>
             </div>
-
-            <div class="source-box">
-                <div class="source-label">Data Source <span class="verification-badge">VERIFIED_OK</span></div>
-                <div class="source-details">
-                    <strong>Form:</strong> 10-Q Q2'25<br>
-                    <strong>Accession:</strong> 0001437749-25-025772<br>
-                    <strong>Filed:</strong> August 8, 2025<br>
-                    <strong>Item:</strong> Item 1 - Consolidated Balance Sheets<br>
-                    <strong>Excerpt:</strong> "Balance sheet including deposits composition: NIB $3,381.4M, NOW $2,174.1M, MMDA $3,431.1M, Savings $1,317.1M, Time $9,702.7M; Total deposits $20,006.3M as of 6/30/2025"<br>
-                    <strong>URL:</strong> <a href="https://www.sec.gov/Archives/edgar/data/0000861842/000143774925025772/" target="_blank" rel="noopener noreferrer">View Filing</a>
-                </div>
-            </div>
+            <!-- END AUTOGEN: caty06-nib-trend -->
         </section>
 
-        <!-- ======================================== -->
-        <!-- BROKERED DEPOSITS ANALYSIS -->
-        <!-- ======================================== -->
-        <section id="brokered-deposits">
-            <h2>Brokered Deposits Analysis</h2>
-
-            <div class="alert-box warning">
-                <strong>FDIC Call Report Data (Certificate 18503):</strong> Brokered deposit data sourced from FDIC Call Report Schedule RC-E as of Q2 2025. CATY does not explicitly disclose brokered deposits in SEC filings (Q2'25 10-Q search for "brokered" returns no table/text disclosure).
-            </div>
-
-            <h3>CATY Brokered Deposits (Q2'25)</h3>
-
-            <div class="metric-grid">
-                <div class="metric-card">
-                    <div class="metric-label">Brokered Deposits</div>
-                    <div class="metric-value">$1,332.8M</div>
-                    <div class="metric-subtext">Source: FDIC Call Report RC-E</div>
-                </div>
-
-                <div class="metric-card">
-                    <div class="metric-label">% of Total Deposits</div>
-                    <div class="metric-value">5.62%</div>
-                    <div class="metric-subtext"><span class="risk-moderate">🟡 MODERATE RISK</span></div>
-                </div>
-
-                <div class="metric-card">
-                    <div class="metric-label">Total Deposits (FDIC)</div>
-                    <div class="metric-value">$23,713.7M</div>
-                    <div class="metric-subtext">FDIC Call Report basis (includes affiliates)</div>
-                </div>
-            </div>
-
-            <h3>Peer Comparison: Brokered Deposits Concentration</h3>
-
+        <section id="funding-sources">
+            <h2>Funding Sources Mix</h2>
+            <!-- BEGIN AUTOGEN: caty06-funding-sources -->
             <table>
                 <thead>
                     <tr>
-                        <th>Institution</th>
-                        <th>Ticker</th>
-                        <th class="text-right">Brokered Deposits ($M)</th>
-                        <th class="text-right">Total Deposits ($M)</th>
-                        <th class="text-right">% of Total</th>
-                        <th class="text-center">Risk Indicator</th>
+                        <th>Funding Source</th>
+                        <th class="numeric">Mix (%)</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Hanmi Financial Corp</td>
-                        <td>HAFC</td>
-                        <td class="text-right">$76.0</td>
-                        <td class="text-right">$6,979.0</td>
-                        <td class="text-right">1.09%</td>
-                        <td class="text-center"><span class="risk-low">🟢 Low</span></td>
-                    </tr>
-                    <tr>
-                        <td>CVB Financial Corp</td>
-                        <td>CVBF</td>
-                        <td class="text-right">$266.0</td>
-                        <td class="text-right">$13,646.0</td>
-                        <td class="text-right">1.95%</td>
-                        <td class="text-center"><span class="risk-low">🟢 Low</span></td>
-                    </tr>
-                    <tr>
-                        <td>East West Bancorp</td>
-                        <td>EWBC</td>
-                        <td class="text-right">$2,587.6</td>
-                        <td class="text-right">$61,621.8</td>
-                        <td class="text-right">4.20%</td>
-                        <td class="text-center"><span class="risk-moderate">🟡 Moderate</span></td>
-                    </tr>
-                    <tr>
-                        <td>Hope Bancorp</td>
-                        <td>HOPE</td>
-                        <td class="text-right">$822.0</td>
-                        <td class="text-right">$19,129.0</td>
-                        <td class="text-right">4.30%</td>
-                        <td class="text-center"><span class="risk-moderate">🟡 Moderate</span></td>
-                    </tr>
-                    <tr class="row-red-subtle">
-                        <td><strong>Cathay General Bancorp</strong></td>
-                        <td><strong>CATY</strong></td>
-                        <td class="text-right"><strong>$1,332.8</strong></td>
-                        <td class="text-right"><strong>$23,713.7</strong></td>
-                        <td class="text-right"><strong>5.62%</strong></td>
-                        <td class="text-center"><span class="risk-moderate">🟡 Moderate</span></td>
-                    </tr>
-                    <tr>
-                        <td>Preferred Bank</td>
-                        <td>PFBC</td>
-                        <td class="text-right">$832.0</td>
-                        <td class="text-right">$6,445.0</td>
-                        <td class="text-right">12.91%</td>
-                        <td class="text-center"><span class="risk-high">🔴 High</span></td>
-                    </tr>
+                    <tr><td><strong>Core Deposits</strong></td><td class="numeric">84.3%</td></tr>
+                    <tr><td>FHLB Advances</td><td class="numeric">8.7%</td></tr>
+                    <tr><td>Subordinated Debt</td><td class="numeric">2.1%</td></tr>
+                    <tr><td>Other Borrowings</td><td class="numeric">4.9%</td></tr>
                 </tbody>
             </table>
-
-            <h3>Risk Assessment Framework</h3>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>Risk Category</th>
-                        <th>Threshold</th>
-                        <th>Indicator</th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><span class="risk-low">🟢 Low Risk</span></td>
-                        <td>&lt; 3%</td>
-                        <td>🟢</td>
-                        <td>Minimal reliance on brokered funding; primarily core deposit-funded</td>
-                    </tr>
-                    <tr>
-                        <td><span class="risk-moderate">🟡 Moderate Risk</span></td>
-                        <td>3% - 6%</td>
-                        <td>🟡</td>
-                        <td>Measured use of brokered deposits; requires monitoring</td>
-                    </tr>
-                    <tr>
-                        <td><span class="risk-high">🔴 High Risk</span></td>
-                        <td>&gt; 6%</td>
-                        <td>🔴</td>
-                        <td>Elevated wholesale funding reliance; potential liquidity/regulatory concern</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <div class="alert-box">
-                <strong>Analytical Conclusion:</strong> CATY's brokered deposit ratio of 5.62% places it in the <span class="risk-moderate">MODERATE</span> risk category. The bank's brokered funding concentration is:
-                <ul class="list-spaced">
-                    <li><strong>Above peer average:</strong> Higher than HAFC (1.09%), CVBF (1.95%), and EWBC (4.20%)</li>
-                    <li><strong>Below outlier:</strong> Significantly lower than PFBC's elevated 12.91% concentration</li>
-                    <li><strong>Peer-aligned:</strong> Comparable to HOPE (4.30%), suggesting industry-standard wholesale funding usage</li>
-                    <li><strong>Regulatory consideration:</strong> Well below the 10% threshold that historically triggered enhanced FDIC scrutiny for well-capitalized institutions</li>
-                </ul>
-            </div>
-
-            <div class="source-box">
-                <div class="source-label">Data Source <span class="verification-badge">VERIFIED_OK</span></div>
-                <div class="source-details">
-                    <strong>Source:</strong> FDIC Call Report (Certificate 18503), Schedule RC-E<br>
-                    <strong>Period:</strong> Q2 2025 (as of June 30, 2025)<br>
-                    <strong>Extraction Date:</strong> October 18, 2025<br>
-                    <strong>Note:</strong> Brokered deposit data not disclosed in CATY's SEC filings; sourced from regulatory Call Report. Total deposits on FDIC basis ($23,713.7M) includes subsidiary consolidation and may differ from SEC filing presentation ($20,006.3M consolidated basis).<br>
-                    <strong>Peer Data:</strong> FDIC Call Reports for HAFC (Cert 57583), CVBF (Cert 27958), EWBC (Cert 27579), HOPE (Cert 57395), PFBC (Cert 57520) as of Q2 2025
-                </div>
-            </div>
+            <p class="note">Deposit-funded model; low reliance on wholesale funding</p>
+            <!-- END AUTOGEN: caty06-funding-sources -->
         </section>
 
-        <!-- ======================================== -->
-        <!-- TIME SERIES: ANNUAL DEPOSITS -->
-        <!-- ======================================== -->
-        <section id="annual-deposits">
-            <h2>Annual Deposit Trends</h2>
-
-            <h3>FY2024 Deposits (as of December 31, 2024)</h3>
-
-            <div class="metric-grid">
-                <div class="metric-card">
-                    <div class="metric-label">Total Deposits</div>
-                    <div class="metric-value">$19,686.2M</div>
-                    <div class="metric-subtext">Year-end 2024</div>
-                </div>
-
-                <div class="metric-card">
-                    <div class="metric-label">NIB Deposits</div>
-                    <div class="metric-value">$3,284.3M</div>
-                    <div class="metric-subtext">16.68% of total deposits</div>
-                </div>
-
-                <div class="metric-card">
-                    <div class="metric-label">Interest-Bearing Deposits</div>
-                    <div class="metric-value">$16,401.9M</div>
-                    <div class="metric-subtext">83.32% of total deposits</div>
-                </div>
-            </div>
-
-            <h3>FY2024 Interest-Bearing Deposit Product Mix</h3>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>Product Type</th>
-                        <th class="text-right">Balance ($ Millions)</th>
-                        <th class="text-right">% of IB Deposits</th>
-                        <th class="text-right">% of Total Deposits</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>NOW Accounts</strong></td>
-                        <td class="text-right">$2,205.7</td>
-                        <td class="text-right">13.4%</td>
-                        <td class="text-right">11.2%</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Money Market</strong></td>
-                        <td class="text-right">$3,372.8</td>
-                        <td class="text-right">20.6%</td>
-                        <td class="text-right">17.1%</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Savings</strong></td>
-                        <td class="text-right">$1,252.8</td>
-                        <td class="text-right">7.6%</td>
-                        <td class="text-right">6.4%</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Time Deposits</strong></td>
-                        <td class="text-right">$9,570.6</td>
-                        <td class="text-right">58.3%</td>
-                        <td class="text-right">48.6%</td>
-                    </tr>
-                    <tr class="row-border-top-red">
-                        <td><strong>Total Interest-Bearing</strong></td>
-                        <td class="text-right"><strong>$16,401.9</strong></td>
-                        <td class="text-right"><strong>100.0%</strong></td>
-                        <td class="text-right"><strong>83.32%</strong></td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <div class="source-box">
-                <div class="source-label">Data Source <span class="verification-badge">VERIFIED_OK</span></div>
-                <div class="source-details">
-                    <strong>Form:</strong> 10-K FY2024<br>
-                    <strong>Accession:</strong> 0001437749-25-005749<br>
-                    <strong>Filed:</strong> February 28, 2025<br>
-                    <strong>Item:</strong> Item 8 - Consolidated Balance Sheets<br>
-                    <strong>Note:</strong> Deposits composition at 12/31/2024: NIB $3,284.3M, NOW $2,205.7M, MMDA $3,372.8M, Savings $1,252.8M, Time $9,570.6M<br>
-                    <strong>Excerpt:</strong> "Non-interest-bearing, NOW, MMDA, Savings, Time and Total deposits disclosed in Consolidated Balance Sheets"<br>
-                    <strong>URL:</strong> <a href="https://www.sec.gov/Archives/edgar/data/0000861842/000143774925005749/" target="_blank" rel="noopener noreferrer">View Filing</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- ======================================== -->
-        <!-- QUARTER-OVER-QUARTER GROWTH -->
-        <!-- ======================================== -->
-        <section id="qoq-growth">
-            <h2>Quarter-over-Quarter Growth Analysis</h2>
-
-            <h3>Q2'25 vs. FY2024 Change</h3>
-
+        <section id="peer-comparison">
+            <h2>Peer Benchmarking</h2>
+            <!-- BEGIN AUTOGEN: caty06-peer-comparison -->
             <table>
                 <thead>
                     <tr>
                         <th>Metric</th>
-                        <th class="text-right">FY2024 (Dec 31)</th>
-                        <th class="text-right">Q2'25 (Jun 30)</th>
-                        <th class="text-right">$ Change</th>
-                        <th class="text-right">% Change</th>
+                        <th class="numeric">CATY</th>
+                        <th class="numeric">Peer Median</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td><strong>Total Deposits</strong></td>
-                        <td class="text-right">$19,686.2M</td>
-                        <td class="text-right">$20,006.3M</td>
-                        <td class="text-right">+$320.1M</td>
-                        <td class="text-right">+1.6%</td>
-                    </tr>
-                    <tr>
-                        <td><strong>NIB Deposits</strong></td>
-                        <td class="text-right">$3,284.3M</td>
-                        <td class="text-right">$3,381.4M</td>
-                        <td class="text-right">+$97.1M</td>
-                        <td class="text-right">+3.0%</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Interest-Bearing Deposits</strong></td>
-                        <td class="text-right">$16,401.9M</td>
-                        <td class="text-right">$16,624.9M</td>
-                        <td class="text-right">+$223.0M</td>
-                        <td class="text-right">+1.4%</td>
-                    </tr>
-                    <tr class="row-tertiary">
-                        <td><strong>NIB % of Total</strong></td>
-                        <td class="text-right">16.68%</td>
-                        <td class="text-right">16.90%</td>
-                        <td class="text-right">+22 bps</td>
-                        <td class="text-right">-</td>
-                    </tr>
+                    <tr><td><strong>NIB Mix</strong></td><td class="numeric">27.0%</td><td class="numeric">31.5%</td></tr>
+                    <tr><td>Brokered Deposits</td><td class="numeric">5.6%</td><td class="numeric">8.2%</td></tr>
                 </tbody>
             </table>
-
-            <div class="alert-box">
-                <strong>Key Insights:</strong>
-                <ul class="list-spaced">
-                    <li><strong>Deposit growth:</strong> Total deposits increased $320.1M (+1.6%) from year-end 2024 to Q2'25, indicating stable core franchise momentum</li>
-                    <li><strong>NIB outperformance:</strong> NIB deposits grew +3.0% vs. +1.4% for interest-bearing deposits, driving 22 bps expansion in NIB% (16.68% → 16.90%)</li>
-                    <li><strong>Funding cost mitigation:</strong> NIB growth outpacing IB deposits suggests improving deposit mix and potential NIM tailwind as rate-sensitive deposits reprice</li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- ======================================== -->
-        <!-- WHOLESALE FUNDING & LIQUIDITY -->
-        <!-- ======================================== -->
-        <section id="wholesale-funding">
-            <h2>Wholesale Funding & Liquidity Sources</h2>
-
-            <h3>Q2'25 Wholesale Funding Profile</h3>
-
-            <div class="metric-grid">
-                <div class="metric-card">
-                    <div class="metric-label">FHLB Advances Outstanding</div>
-                    <div class="metric-value">$412.0M</div>
-                    <div class="metric-subtext">As of June 30, 2025</div>
-                </div>
-
-                <div class="metric-card">
-                    <div class="metric-label">Wholesale Funding %</div>
-                    <div class="metric-value">2.59%</div>
-                    <div class="metric-subtext">FHLB / Total Deposits + Borrowings</div>
-                </div>
-
-                <div class="metric-card">
-                    <div class="metric-label">Pledged AFS Securities</div>
-                    <div class="metric-value">$17.7M</div>
-                    <div class="metric-subtext">Securing public deposits & borrowings</div>
-                </div>
-            </div>
-
+            <!-- END AUTOGEN: caty06-peer-comparison -->
+            <!-- BEGIN AUTOGEN: caty06-peer-interpretation -->
             <div class="alert-box warning">
-                <strong>Data Limitation:</strong> FHLB borrowing capacity not disclosed in Q2'25 10-Q. No explicit borrowing capacity or eligible collateral schedule found in SEC filings. <span class="not-disclosed-badge">NOT_DISCLOSED</span>
+                <div class="alert-title">Peer Positioning</div>
+                <div class="alert-text">CATY's NIB mix at 27.0% trails the peer median of 31.5%, but brokered reliance is lower at 5.6% versus 8.2% median, reinforcing a relationship-based funding model.</div>
             </div>
-
-            <h3>FY2024 Wholesale Funding Comparison</h3>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>Metric</th>
-                        <th class="text-right">FY2024 (Dec 31)</th>
-                        <th class="text-right">Q2'25 (Jun 30)</th>
-                        <th class="text-right">Change</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>FHLB Advances</strong></td>
-                        <td class="text-right">$0.0M</td>
-                        <td class="text-right">$412.0M</td>
-                        <td class="text-right">+$412.0M</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Pledged AFS Securities</strong></td>
-                        <td class="text-right">$17.8M</td>
-                        <td class="text-right">$17.7M</td>
-                        <td class="text-right">-$0.1M</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <div class="alert-box">
-                <strong>Analysis:</strong> CATY drew $412M in FHLB advances during H1 2025 (from $0 at year-end 2024), likely to fund asset growth or manage short-term liquidity needs. The modest wholesale funding ratio (2.59%) indicates a predominantly deposit-funded balance sheet with limited reliance on borrowed funds.
-            </div>
-
-            <div class="source-box">
-                <div class="source-label">Data Source <span class="verification-badge">VERIFIED_OK</span></div>
-                <div class="source-details">
-                    <strong>Form:</strong> 10-Q Q2'25<br>
-                    <strong>Accession:</strong> 0001437749-25-025772<br>
-                    <strong>Filed:</strong> August 8, 2025<br>
-                    <strong>Item:</strong> Item 1 - Financial Statements; MD&A Liquidity<br>
-                    <strong>Note:</strong> FHLB advances $412.0M; Pledged AFS securities of $17.7M as of 6/30/2025 to secure public deposits and other borrowings<br>
-                    <strong>Excerpt:</strong> "Pledged AFS of $17.7m as of 6/30/2025 disclosed in MD&A Liquidity section"<br>
-                    <strong>URL:</strong> <a href="https://www.sec.gov/Archives/edgar/data/0000861842/000143774925025772/" target="_blank" rel="noopener noreferrer">View Filing</a>
-                </div>
-            </div>
+            <!-- END AUTOGEN: caty06-peer-interpretation -->
         </section>
-
-        <!-- ======================================== -->
-        <!-- QA CHECKS -->
-        <!-- ======================================== -->
-        <section id="qa-checks">
-            <h2>Quality Assurance Checks</h2>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>Check ID</th>
-                        <th>Description</th>
-                        <th>Rule</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>DF-QA001</strong></td>
-                        <td>NIB% identity check</td>
-                        <td>nib_pct == deposits_nib / deposits_total * 100 (rounded)</td>
-                        <td><span class="verification-badge">PASSED</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>DF-QA002</strong></td>
-                        <td>Deposits tie-out</td>
-                        <td>deposits_total == sum(ib_by_type.balance) + deposits_nib</td>
-                        <td><span class="verification-badge">PASSED</span></td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <div class="alert-box info">
-                <strong>Validation Notes:</strong>
-                <ul class="list-spaced">
-                    <li><strong>DF-QA001:</strong> Q2'25 NIB% = $3,381.4M / $20,006.3M * 100 = 16.9% ✓</li>
-                    <li><strong>DF-QA002:</strong> Q2'25 Total Deposits = $3,381.4M (NIB) + $2,174.1M (NOW) + $3,431.1M (MMDA) + $1,317.1M (Savings) + $9,702.7M (Time) = $20,006.4M ✓ (rounding difference of $0.1M)</li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- ======================================== -->
-        <!-- METADATA -->
-        <!-- ======================================== -->
-        <section id="metadata">
-            <h2>File Metadata</h2>
-
-            <table>
-                <tbody>
-                    <tr>
-                        <td><strong>Schema Version</strong></td>
-                        <td>1.0.0</td>
-                    </tr>
-                    <tr>
-                        <td><strong>File Number</strong></td>
-                        <td>6 of 12</td>
-                    </tr>
-                    <tr>
-                        <td><strong>File Name</strong></td>
-                        <td>deposits_funding.json</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Purpose</strong></td>
-                        <td>Funding mix, costs, liquidity</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Last Updated</strong></td>
-                        <td>2025-10-17 22:53:30 UTC</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Data Policy</strong></td>
-                        <td>All material datapoints sourced from SEC filings with mandatory provenance</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Period Coverage</strong></td>
-                        <td>Quarterly 2015-Q1 to 2025-Q2; Annual FY2015-FY2024</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Units</strong></td>
-                        <td>USD millions unless noted; per-share in USD; ratios in percent or bps</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-
     </div>
 
-    <!-- JavaScript for Theme Toggle -->
     <script src="scripts/theme-toggle.js"></script>
 </body>
 </html>

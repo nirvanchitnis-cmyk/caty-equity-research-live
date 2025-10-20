@@ -687,14 +687,18 @@ def main(test_mode: bool = False) -> int:
         caty03_tables = load_json(ROOT / "data" / "caty03_balance_sheet.json") if (ROOT / "data" / "caty03_balance_sheet.json").exists() else {}
         caty04_tables = load_json(ROOT / "data" / "caty04_cash_flow.json") if (ROOT / "data" / "caty04_cash_flow.json").exists() else {}
         caty05_tables = load_json(ROOT / "data" / "caty05_calculated_tables.json") if (ROOT / "data" / "caty05_calculated_tables.json").exists() else {}
+        caty06_tables = load_json(ROOT / "data" / "caty06_deposits_funding.json") if (ROOT / "data" / "caty06_deposits_funding.json").exists() else {}
         caty07_tables = load_json(ROOT / "data" / "caty07_credit_quality.json") if (ROOT / "data" / "caty07_credit_quality.json").exists() else {}
         caty08_tables = load_json(ROOT / "data" / "caty08_cre_exposure.json") if (ROOT / "data" / "caty08_cre_exposure.json").exists() else {}
+        caty09_tables = load_json(ROOT / "data" / "caty09_capital_liquidity.json") if (ROOT / "data" / "caty09_capital_liquidity.json").exists() else {}
         caty10_tables = load_json(ROOT / "data" / "caty10_capital_actions.json") if (ROOT / "data" / "caty10_capital_actions.json").exists() else {}
         caty12_tables = load_json(ROOT / "data" / "caty12_calculated_tables.json") if (ROOT / "data" / "caty12_calculated_tables.json").exists() else {}
         caty11_tables = load_json(ROOT / "data" / "caty11_peers_normalized.json") if (ROOT / "data" / "caty11_peers_normalized.json").exists() else {}
         caty13_tables = load_json(ROOT / "data" / "caty13_residual_income.json") if (ROOT / "data" / "caty13_residual_income.json").exists() else {}
         caty14_tables = load_json(ROOT / "data" / "caty14_monte_carlo.json") if (ROOT / "data" / "caty14_monte_carlo.json").exists() else {}
         caty16_tables = load_json(ROOT / "data" / "caty16_coe_triangulation.json") if (ROOT / "data" / "caty16_coe_triangulation.json").exists() else {}
+        caty15_tables = load_json(ROOT / "data" / "caty15_esg_materiality.json") if (ROOT / "data" / "caty15_esg_materiality.json").exists() else {}
+        caty17_tables = load_json(ROOT / "data" / "caty17_esg_kpi.json") if (ROOT / "data" / "caty17_esg_kpi.json").exists() else {}
 
         context = {
             "market": market,
@@ -706,14 +710,18 @@ def main(test_mode: bool = False) -> int:
             "caty03_tables": caty03_tables,
             "caty04_tables": caty04_tables,
             "caty05_tables": caty05_tables,
+            "caty06_tables": caty06_tables,
             "caty07_tables": caty07_tables,
             "caty08_tables": caty08_tables,
+            "caty09_tables": caty09_tables,
             "caty10_tables": caty10_tables,
             "caty12_tables": caty12_tables,
             "caty11_tables": caty11_tables,
             "caty13_tables": caty13_tables,
             "caty14_tables": caty14_tables,
             "caty16_tables": caty16_tables,
+            "caty15_tables": caty15_tables,
+            "caty17_tables": caty17_tables,
         }
 
         reconciliation_html = build_reconciliation_table()

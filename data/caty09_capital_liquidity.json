@@ -1,0 +1,34 @@
+{
+  "comment": "CATY_09 Capital & Liquidity - Regulatory Metrics and AOCI",
+  "last_updated": "2025-10-19T23:55:00Z",
+  "data_source": "SEC 10-Q Q2 2025 + Call Report",
+  "regulatory_capital_q2_2025": {
+    "cet1_ratio_pct": 13.35,
+    "tier1_ratio_pct": 13.35,
+    "total_capital_ratio_pct": 14.52,
+    "leverage_ratio_pct": 9.87,
+    "regulatory_minimum_cet1_pct": 7.0,
+    "well_capitalized_cet1_pct": 6.5,
+    "buffer_vs_well_capitalized_ppts": 6.85,
+    "status": "Well Capitalized"
+  },
+  "aoci_impact": {
+    "aoci_millions": -518.3,
+    "aoci_as_pct_of_equity_pct": -20.7,
+    "tangible_equity_ex_aoci_millions": 3026.0,
+    "tangible_equity_incl_aoci_millions": 2507.7,
+    "tbvps_ex_aoci": 43.64,
+    "tbvps_incl_aoci": 36.16,
+    "aoci_impact_on_tbvps": -7.48,
+    "note": "AOCI primarily AFS unrealized losses from 2022-23 rate shock"
+  },
+  "liquidity_metrics": {
+    "cash_billions": 1.88,
+    "unencumbered_securities_billions": 3.12,
+    "total_liquid_assets_billions": 5.00,
+    "liquid_assets_pct_of_assets": 21.1,
+    "loan_to_deposit_ratio_pct": 98.9,
+    "loans_billions": 19.79,
+    "deposits_billions": 20.01
+  }
+}

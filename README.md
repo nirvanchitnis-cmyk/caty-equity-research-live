@@ -27,7 +27,7 @@ All three steps must succeed (exit code 0) before pushing to `origin-live/main` 
 6. [Deposits & Funding](CATY_06_deposits_funding.html) (CATY_06) - Deposit mix (NIB 16.9%), brokered deposits
 7. [Loans & Credit Quality](CATY_07_loans_credit_quality.html) (CATY_07) ⭐⭐ **CRITICAL** - Through-cycle NCO 42.8 bps
 8. [CRE Exposure](CATY_08_cre_exposure.html) (CATY_08) - CRE 52.4% of loans
-9. [Capital & Liquidity](CATY_09_capital_liquidity_aoci.html) (CATY_09) - Regulatory capital, AOCI
+9. [Capital & Liquidity](CATY_09_capital_liquidity.html) (CATY_09) - Regulatory capital, AOCI
 10. [Capital Actions](CATY_10_capital_actions.html) (CATY_10) - Dividends, buybacks
 11. [Peer Analysis](CATY_11_peers_normalized.html) (CATY_11) ⭐ **KEY FILE** - Seven-peer regression inputs, Cook's Distance diagnostics
 12. [Valuation Model](CATY_12_valuation_model.html) (CATY_12) ⭐⭐⭐ **MOST CRITICAL** - Scenario stack, Monte Carlo, Wilson tracking
@@ -120,7 +120,7 @@ All three steps must succeed (exit code 0) before pushing to `origin-live/main` 
 ├── CATY_06_deposits_funding.html (40K)
 ├── CATY_07_loans_credit_quality.html (41K)
 ├── CATY_08_cre_exposure.html (40K)
-├── CATY_09_capital_liquidity_aoci.html (43K)
+├── CATY_09_capital_liquidity.html (2.2K)
 ├── CATY_10_capital_actions.html (46K)
 ├── CATY_11_peers_normalized.html (63K)
 ├── CATY_12_valuation_model.html (61K)

@@ -3,428 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CATY - ESG Materiality Matrix | IRC Appendix</title>
+    <title>CATY - ESG Materiality | COE Adjustments</title>
     <link rel="stylesheet" href="styles/caty-equity-research.css">
 </head>
 <body>
-    <button class="theme-toggle" onclick="toggleTheme()">
-        <span id="theme-icon">🌙</span>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" aria-pressed="false">
+        <span id="theme-icon" aria-hidden="true">🌙</span>
         <span id="theme-text">Dark Mode</span>
     </button>
 
     <header>
         <div class="header-content">
-            <h1 class="page-title">Cathay General Bancorp (NASDAQ: CATY)</h1>
-            <p class="page-subtitle">Appendix 15: ESG Materiality Matrix</p>
-            <p class="page-meta">
-                SASB Financials / TCFD / GRI Standards |
-                Created: October 19, 2025 |
-                Framework: ESG-Integrated Equity Analysis
-            </p>
+            <h1>Cathay General Bancorp (NASDAQ: CATY)</h1>
+            <p class="page-subtitle">File 15: ESG Materiality Matrix</p>
+            <!-- BEGIN AUTOGEN: caty15-header-meta -->
+            <p class="page-meta">Environmental, social, and governance drivers of cost of equity | Last Updated: October 19, 2025 | Source: ESG assessment + CATY COE framework</p>
+            <!-- END AUTOGEN: caty15-header-meta -->
         </div>
     </header>
 
     <div class="container">
         <a href="index.html" class="back-button">← Back to Main Report</a>
 
-        <section id="executive-summary">
-            <h2>Executive Summary</h2>
-            <p>CATY's ESG profile presents <strong>moderate financial materiality</strong> with <strong>high social differentiation</strong>. Key findings:</p>
-            <ol>
-                <li><strong>Environmental (E)</strong>: CRE portfolio exposure (52.4%) creates <strong>material climate transition risk</strong> under 2°C scenario (estimated -3.2% NAV impact)</li>
-                <li><strong>Social (S)</strong>: Asian-American community banking mission represents <strong>competitive moat</strong> (customer stickiness, lower CAC) but lacks quantified CRA metrics</li>
-                <li><strong>Governance (G)</strong>: <strong>Material weakness</strong> - insufficient board independence (40% vs. 67% peer median), elevated compensation ratio (1.8x peer median)</li>
-            </ol>
-            <div class="highlight-box critical">
-                <h4>ESG Valuation Impact</h4>
-                <p><strong>ESG-Adjusted COE:</strong> +25 bps governance premium → COE 9.587% vs. 9.337% peer-adjusted</p>
-                <p><strong>Valuation Impact:</strong> ESG-adjusted Gordon Growth target $39.32 vs. $41.12 governance-neutral (-4.4%)</p>
+        <section id="esg-summary">
+            <h2>ESG Valuation Summary</h2>
+            <!-- BEGIN AUTOGEN: caty15-esg-summary -->
+            <div class="metric-grid">
+                    <div class="metric-card highlight">
+                        <div class="metric-label">Total ESG COE Premium</div>
+                        <div class="metric-value">25 bps</div>
+                        <div class="metric-subtext">Applied to cost of equity</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Valuation Impact per Share</div>
+                        <div class="metric-value">$-1.47</div>
+                        <div class="metric-subtext">Discount embedded in target value</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">P/TBV Impact</div>
+                        <div class="metric-value">-0.04</div>
+                        <div class="metric-subtext">Multiple delta (x)</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Rating Impact</div>
+                        <div class="metric-value">Neutral (ESG risks already priced in)</div>
+                        <div class="metric-subtext">Alignment with investment thesis</div>
+                    </div>
             </div>
-        </section>
-
-        <section id="materiality-matrix">
-            <h2>1. ESG Materiality Matrix (2x2 Framework)</h2>
-            <pre class="pre-mono">
-                          ┌─────────────────────────────────────────┐
-                          │  HIGH FINANCIAL IMPACT                  │
-                          │                                         │
-         STAKEHOLDER      │  [E] Climate Risk on CRE                │
-         IMPORTANCE       │      ├─ Transition risk: -3.2% NAV     │
-                HIGH      │      └─ Physical risk: Negligible      │
-                          │                                         │
-                          │  [G] Board Independence Gap             │
-                          │      ├─ 40% independent (vs 67% peers) │
-                          │      └─ +25 bps governance risk premium│
-                          ├─────────────────────────────────────────┤
-                          │  [S] Asian-American Banking Mission     │
-                          │      ├─ Customer stickiness moat        │
-                          │      └─ CRA Outstanding rating          │
-                          │                                         │
-                          │  [E] Financed Emissions                 │
-                          │      └─ Industry standard disclosure gap│
-                          └─────────────────────────────────────────┘
-                                    LOW ← FINANCIAL IMPACT → HIGH
-            </pre>
-            <p><strong>Quadrant Prioritization:</strong></p>
-            <ul>
-                <li><strong>High Impact / High Stakeholder:</strong> Climate risk (CRE), Board independence</li>
-                <li><strong>Low Impact / High Stakeholder:</strong> Social mission, Financed emissions disclosure</li>
-            </ul>
+            <!-- END AUTOGEN: caty15-esg-summary -->
         </section>
 
         <section id="environmental">
-            <h2>2. Environmental (E) - Material Factors</h2>
-            <h3>E.1: Climate Transition Risk on CRE Portfolio</h3>
-            <p><strong>Materiality:</strong> 🔴 <strong>HIGH</strong> - CRE represents <strong>52.4% of loan book</strong> ($10.2B / $19.4B total loans)</p>
-            
-            <h4>Quantitative Impact (2°C Scenario)</h4>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Parameter</th>
-                        <th class="number">Base Case</th>
-                        <th class="number">2°C Scenario</th>
-                        <th class="number">Delta</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>CRE Office (% of CRE)</td>
-                        <td class="number">28.3%</td>
-                        <td class="number">28.3%</td>
-                        <td class="number">-</td>
-                    </tr>
-                    <tr>
-                        <td>Office Exposure ($M)</td>
-                        <td class="number">$2,886</td>
-                        <td class="number">$2,886</td>
-                        <td class="number">-</td>
-                    </tr>
-                    <tr>
-                        <td>Energy-Inefficient (% of office)</td>
-                        <td class="number">60%</td>
-                        <td class="number">60%</td>
-                        <td class="number">-</td>
-                    </tr>
-                    <tr>
-                        <td>Value Impairment (stranded assets)</td>
-                        <td class="number">0%</td>
-                        <td class="number">15%</td>
-                        <td class="number">-15%</td>
-                    </tr>
-                    <tr>
-                        <td>Loss Given Default (LGD)</td>
-                        <td class="number">40%</td>
-                        <td class="number">55%</td>
-                        <td class="number">+15%</td>
-                    </tr>
-                    <tr class="base-case">
-                        <td><strong>Expected Loss ($M)</strong></td>
-                        <td class="number">$9.2</td>
-                        <td class="number">$238.8</td>
-                        <td class="number"><strong>+$229.6</strong></td>
-                    </tr>
-                    <tr class="base-case">
-                        <td><strong>NAV Impact (post-tax)</strong></td>
-                        <td class="number">-</td>
-                        <td class="number"><strong>-3.2%</strong></td>
-                        <td class="number"><strong>-3.2%</strong></td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <p><strong>Assumptions:</strong></p>
-            <ul>
-                <li>60% of CRE office stock built pre-2010 (energy-inefficient per ENERGY STAR data)</li>
-                <li>15% value impairment under carbon pricing (TCFD guidance)</li>
-                <li>LGD increases 15% due to stranded asset discounts</li>
-            </ul>
-
-            <div class="highlight-box">
-                <h4>Valuation Linkage</h4>
-                <ul>
-                    <li>Gordon Growth COE adjustment: +20 bps climate risk premium</li>
-                    <li>Normalized NCO: 42.8 bps → 45.8 bps (includes +3.0 bps CRE climate buffer)</li>
-                </ul>
+            <h2>Environmental Pillar</h2>
+            <!-- BEGIN AUTOGEN: caty15-environmental -->
+            <div class="alert-box warning">
+                <div class="alert-title">Climate Transition Risk: HIGH</div>
+                <div class="alert-text">CRE exposure of 52.4% drives a 20 bps bps COE premium. CRE concentration 52.4% exposes to energy efficiency mandates, carbon pricing, stranded asset risk
+                    <br><em>Mitigation: Energy-efficient underwriting, CA green building codes, multifamily focus (lower carbon)</em></div>
             </div>
+            <!-- END AUTOGEN: caty15-environmental -->
         </section>
 
         <section id="social">
-            <h2>3. Social (S) - Material Factors</h2>
-            <h3>S.1: Asian-American Community Banking Mission (Competitive Moat)</h3>
-            <p><strong>Materiality:</strong> 🟢 <strong>MEDIUM-HIGH</strong> - Differentiated business model, quantifiable advantages</p>
-            
-            <p><strong>Thesis:</strong> CATY's Asian-American community focus creates <strong>social capital moat</strong>:</p>
-            <ol>
-                <li><strong>Cultural Alignment</strong> → Higher customer trust → Lower customer acquisition cost (CAC)</li>
-                <li><strong>Language Services</strong> → Mandarin/Cantonese capabilities → Sticky deposit base</li>
-                <li><strong>Network Effects</strong> → Community referrals → Lower marketing spend vs. peers</li>
-            </ol>
-
-            <h4>Quantitative Evidence</h4>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Metric</th>
-                        <th class="number">CATY</th>
-                        <th class="number">Peer Median</th>
-                        <th class="number">CATY Advantage</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Deposit Mix (% non-interest bearing)</td>
-                        <td class="number">27%</td>
-                        <td class="number">24%</td>
-                        <td class="number">+3 ppts</td>
-                    </tr>
-                    <tr>
-                        <td>Deposit Beta (rate sensitivity)</td>
-                        <td class="number">0.35</td>
-                        <td class="number">0.42</td>
-                        <td class="number">-7 ppts (stickier)</td>
-                    </tr>
-                    <tr>
-                        <td>Branch Deposits per Branch ($M)</td>
-                        <td class="number">$285</td>
-                        <td class="number">$210</td>
-                        <td class="number">+36% efficiency</td>
-                    </tr>
-                    <tr class="base-case">
-                        <td><strong>Marketing Expense / Revenue</strong></td>
-                        <td class="number"><strong>0.8%</strong></td>
-                        <td class="number">1.2%</td>
-                        <td class="number"><strong>-40 bps (lower CAC)</strong></td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <div class="highlight-box">
-                <h4>Valuation Linkage</h4>
-                <ul>
-                    <li><strong>NIM Advantage:</strong> Lower deposit costs → +5 bps NIM vs. peers (partially explains 2.10% NIM vs. 2.05% peer median)</li>
-                    <li><strong>Efficiency Ratio:</strong> Community model → Lower marketing spend → CTI 42.3% vs. 45.1% peers</li>
-                </ul>
+            <h2>Social Pillar</h2>
+            <!-- BEGIN AUTOGEN: caty15-social -->
+            <div class="alert-box success">
+                <div class="alert-title">Community Banking Strength</div>
+                <div class="alert-text">Community banking franchise serves Asian-American communities (positive social impact)
+                    <br><strong>COE Adjustment:</strong> -25 bps
+                    <br><em>Metrics:</em> SBA lending, affordable housing, financial inclusion programs</div>
             </div>
-
-            <p><strong>CRA Rating:</strong> <strong>Outstanding</strong> (last exam 2023) - validates social impact commitment</p>
+            <!-- END AUTOGEN: caty15-social -->
         </section>
 
         <section id="governance">
-            <h2>4. Governance (G) - Material Factors</h2>
-            <h3>G.1: Board Independence Gap (Material Weakness)</h3>
-            <p><strong>Materiality:</strong> 🔴 <strong>HIGH</strong> - Governance risk premium embedded in COE</p>
+            <h2>Governance Pillar</h2>
+            <!-- BEGIN AUTOGEN: caty15-governance -->
+            <div class="alert-box warning">
+                <div class="alert-title">Governance Gap</div>
+                <div class="alert-text">Board independence at 40% versus 67% peer median results in a 30 bps premium. Board independence 40% below peer median 67%; governance risk premium
+                    <br><em>Improvement Actions:</em> Increase independent directors, enhance committee structures</div>
+            </div>
+            <!-- END AUTOGEN: caty15-governance -->
+        </section>
 
-            <h4>Current State (2024 Proxy)</h4>
-            <ul>
-                <li><strong>Board Composition:</strong> 10 directors, <strong>4 independent (40%)</strong></li>
-                <li><strong>Audit Committee:</strong> 3 members, 100% independent ✅</li>
-                <li><strong>Compensation Committee:</strong> 3 members, 100% independent ✅</li>
-                <li><strong>CEO/Chairman Split:</strong> ✅ Separate roles (best practice)</li>
-            </ul>
-
-            <h4>Peer Comparison</h4>
+        <section id="materiality-matrix">
+            <h2>COE Adjustment Matrix</h2>
+            <!-- BEGIN AUTOGEN: caty15-materiality-table -->
             <table>
                 <thead>
                     <tr>
-                        <th>Bank</th>
-                        <th class="number">Board Size</th>
-                        <th class="number">Independent %</th>
-                        <th class="number">Governance Score (ISS)</th>
+                        <th>Pillar</th>
+                        <th class="numeric">COE Adjustment</th>
+                        <th class="numeric">Materiality</th>
+                        <th>Narrative</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>EWBC</td>
-                        <td class="number">11</td>
-                        <td class="number">73%</td>
-                        <td class="number">8/10</td>
-                    </tr>
-                    <tr>
-                        <td>CVBF</td>
-                        <td class="number">9</td>
-                        <td class="number">67%</td>
-                        <td class="number">7/10</td>
-                    </tr>
-                    <tr>
-                        <td>HAFC</td>
-                        <td class="number">8</td>
-                        <td class="number">63%</td>
-                        <td class="number">6/10</td>
-                    </tr>
-                    <tr class="base-case">
-                        <td><strong>CATY</strong></td>
-                        <td class="number">10</td>
-                        <td class="number"><strong>40%</strong></td>
-                        <td class="number"><strong>4/10</strong></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Peer Median</strong></td>
-                        <td class="number">9</td>
-                        <td class="number"><strong>67%</strong></td>
-                        <td class="number"><strong>7/10</strong></td>
-                    </tr>
+                    <tr><td><strong>Environmental</strong></td><td class="numeric">20 bps</td><td class="numeric">Material</td><td>CRE concentration 52.4% exposes to energy efficiency mandates, carbon pricing, stranded asset risk</td></tr>
+                    <tr><td>Social</td><td class="numeric">-25 bps</td><td class="numeric">Material</td><td>Community banking franchise serves Asian-American communities (positive social impact)</td></tr>
+                    <tr><td>Governance</td><td class="numeric">30 bps</td><td class="numeric">Material</td><td>Board independence 40% below peer median 67%; governance risk premium</td></tr>
                 </tbody>
             </table>
-
-            <div class="highlight-box critical">
-                <h4>Financial Impact</h4>
-                <p><strong>Governance Risk Premium:</strong> +25 bps added to COE (9.587% vs. 9.337% governance-neutral)</p>
-                <p><strong>Valuation Impact:</strong> Gordon Growth target $39.32 vs. $41.12 if governance-neutral (-4.4%)</p>
-            </div>
-
-            <h4>Calculation</h4>
-            <pre><code># Governance-neutral COE
-coe_base = 9.337  # CAPM (no governance premium)
-
-# Governance risk premium
-governance_gap_bps = (67 - 40) * 0.926  # 27 ppts gap × 0.926 bps/ppt (ISS model)
-governance_premium = 25  # bps
-
-coe_actual = coe_base + governance_premium / 100
-# coe_actual = 9.587%
-
-# Gordon Growth valuation
-normalized_rote = 10.21
-g = 2.5
-justified_ptbv_neutral = (normalized_rote - g) / (coe_base - g)
-# justified_ptbv_neutral = 1.137x → Target $41.12
-
-justified_ptbv_actual = (normalized_rote - g) / (coe_actual - g)
-# justified_ptbv_actual = 1.087x → Target $39.32
-
-# Governance discount: ($41.12 - $39.32) / $41.12 = -4.4%</code></pre>
+            <!-- END AUTOGEN: caty15-materiality-table -->
         </section>
-
-        <section id="esg-valuation">
-            <h2>5. ESG-Adjusted Valuation Framework</h2>
-
-            <h3>Adjustments to Gordon Growth Model</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Case</th>
-                        <th class="number">COE</th>
-                        <th class="number">ROTE</th>
-                        <th class="number">g</th>
-                        <th class="number">P/TBV</th>
-                        <th class="number">Target</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Base Case (ESG-Neutral)</td>
-                        <td class="number">9.337%</td>
-                        <td class="number">10.21%</td>
-                        <td class="number">2.5%</td>
-                        <td class="number">1.128x</td>
-                        <td class="number">$40.79</td>
-                    </tr>
-                    <tr class="base-case">
-                        <td><strong>ESG-Adjusted Case (Current)</strong></td>
-                        <td class="number"><strong>9.587%</strong></td>
-                        <td class="number">10.21%</td>
-                        <td class="number">2.5%</td>
-                        <td class="number"><strong>1.087x</strong></td>
-                        <td class="number"><strong>$39.32</strong></td>
-                    </tr>
-                    <tr>
-                        <td><strong>ESG Discount</strong></td>
-                        <td class="number">+25 bps</td>
-                        <td class="number">-</td>
-                        <td class="number">-</td>
-                        <td class="number">-0.041x</td>
-                        <td class="number"><strong>-3.6%</strong></td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-
-        <section id="esg-scenarios">
-            <h2>6. ESG Risk Scenarios</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Scenario</th>
-                        <th>Trigger</th>
-                        <th class="number">COE Impact</th>
-                        <th class="number">Target Price</th>
-                        <th class="number">vs. Base</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="base-case">
-                        <td><strong>Base Case</strong></td>
-                        <td>Current ESG profile</td>
-                        <td class="number">9.587%</td>
-                        <td class="number">$39.32</td>
-                        <td class="number">-</td>
-                    </tr>
-                    <tr>
-                        <td>Governance Improvement</td>
-                        <td>Add 3 independent directors</td>
-                        <td class="number">-15 bps</td>
-                        <td class="number">$40.15</td>
-                        <td class="number">+2.1%</td>
-                    </tr>
-                    <tr>
-                        <td>Climate Stress (2°C)</td>
-                        <td>Carbon pricing $100/ton</td>
-                        <td class="number">+40 bps</td>
-                        <td class="number">$37.92</td>
-                        <td class="number">-3.6%</td>
-                    </tr>
-                    <tr>
-                        <td>Social Moat Erosion</td>
-                        <td>Asian-American community shift</td>
-                        <td class="number">+10 bps</td>
-                        <td class="number">$38.95</td>
-                        <td class="number">-0.9%</td>
-                    </tr>
-                    <tr>
-                        <td>ESG Best-in-Class</td>
-                        <td>Governance + TCFD + Net-Zero</td>
-                        <td class="number">-45 bps</td>
-                        <td class="number">$41.52</td>
-                        <td class="number">+5.6%</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <p><strong>Key Insight:</strong> Governance improvement offers <strong>highest ROI</strong> for valuation uplift (+2.1% for board restructuring)</p>
-        </section>
-
-        <section id="recommendations">
-            <h2>8. Recommendations for Management</h2>
-
-            <div class="highlight-box">
-                <h4>Priority 1 (High Impact): Board Independence</h4>
-                <ul>
-                    <li><strong>Action:</strong> Recruit 3 independent directors (target: financial services expertise, ESG credentials)</li>
-                    <li><strong>Timeline:</strong> 2026 proxy</li>
-                    <li><strong>Valuation Impact:</strong> +2.1% (+$0.83/share)</li>
-                </ul>
-            </div>
-
-            <div class="highlight-box">
-                <h4>Priority 2 (Medium Impact): TCFD Disclosure</h4>
-                <ul>
-                    <li><strong>Action:</strong> Publish climate risk report (CRE portfolio scenario analysis)</li>
-                    <li><strong>Timeline:</strong> 2026 ESG report</li>
-                    <li><strong>Valuation Impact:</strong> -20 bps climate risk premium → +$0.47/share</li>
-                </ul>
-            </div>
-
-            <div class="highlight-box">
-                <h4>Priority 3 (Low Impact): Executive Compensation Alignment</h4>
-                <ul>
-                    <li><strong>Action:</strong> Reduce CEO comp ratio to 1.2% of NI (peer 25th percentile)</li>
-                    <li><strong>Timeline:</strong> 2026 proxy</li>
-                    <li><strong>Valuation Impact:</strong> Minimal (reputational benefit)</li>
-                </ul>
-            </div>
-        </section>
-
     </div>
 
     <script src="scripts/theme-toggle.js"></script>

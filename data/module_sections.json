@@ -12080,6 +12080,1109 @@
           }
         }
       ]
+    },
+    {
+      "id": "CATY_06",
+      "file": "CATY_06_deposits_funding.html",
+      "data": {
+        "last_updated_display": "October 19, 2025"
+      },
+      "sections": [
+        {
+          "marker": "caty06-header-meta",
+          "type": "text",
+          "template": {
+            "template": "<p class=\"page-meta\">Funding mix, deposit composition, and peer benchmarking | Last Updated: {last_updated} | Source: SEC 10-Q Q2 2025 + Call Report</p>",
+            "placeholders": {
+              "{last_updated}": {
+                "source": "module",
+                "path": "last_updated_display",
+                "format": "text"
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty06-deposit-snapshot",
+          "type": "cards",
+          "wrapper": {
+            "tag": "div",
+            "class": "metric-grid"
+          },
+          "defaults": {
+            "card_class": "metric-card",
+            "label_class": "metric-label",
+            "value_class": "metric-value",
+            "subtext_class": "metric-subtext"
+          },
+          "cards": [
+            {
+              "label": "Total Deposits",
+              "card_class": "metric-card highlight",
+              "value": {
+                "source": "caty06_tables",
+                "path": "deposit_snapshot_q2_2025.total_deposits_billions",
+                "format": "number_scale",
+                "scale": "billions",
+                "decimals": 2,
+                "prefix": "$"
+              },
+              "subtext": {
+                "template": "Primary funding source"
+              }
+            },
+            {
+              "label": "Noninterest-Bearing",
+              "value": {
+                "source": "caty06_tables",
+                "path": "deposit_snapshot_q2_2025.noninterest_bearing_billions",
+                "format": "number_scale",
+                "scale": "billions",
+                "decimals": 2,
+                "prefix": "$"
+              },
+              "subtext": {
+                "template": "{share}% of total deposits",
+                "placeholders": {
+                  "{share}": {
+                    "source": "caty06_tables",
+                    "path": "deposit_snapshot_q2_2025.nib_pct",
+                    "format": "decimal",
+                    "decimals": 1
+                  }
+                }
+              }
+            },
+            {
+              "label": "Interest-Bearing",
+              "value": {
+                "source": "caty06_tables",
+                "path": "deposit_snapshot_q2_2025.interest_bearing_billions",
+                "format": "number_scale",
+                "scale": "billions",
+                "decimals": 2,
+                "prefix": "$"
+              },
+              "subtext": {
+                "template": "{share}% of total deposits",
+                "placeholders": {
+                  "{share}": {
+                    "source": "caty06_tables",
+                    "path": "deposit_snapshot_q2_2025.ib_pct",
+                    "format": "decimal",
+                    "decimals": 1
+                  }
+                }
+              }
+            },
+            {
+              "label": "Brokered Deposits",
+              "value": {
+                "source": "caty06_tables",
+                "path": "deposit_snapshot_q2_2025.brokered_deposits_billions",
+                "format": "number_scale",
+                "scale": "billions",
+                "decimals": 2,
+                "prefix": "$"
+              },
+              "subtext": {
+                "template": "{share}% brokered mix",
+                "placeholders": {
+                  "{share}": {
+                    "source": "caty06_tables",
+                    "path": "deposit_snapshot_q2_2025.brokered_pct",
+                    "format": "decimal",
+                    "decimals": 1
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "marker": "caty06-deposit-mix-table",
+          "type": "text",
+          "template": {
+            "template": "<table>\n    <thead>\n        <tr>\n            <th>Deposit Type</th>\n            <th class=\"numeric\">Balance ($B)</th>\n            <th class=\"numeric\">Mix (%)</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr><td><strong>Demand (DDA)</strong></td><td class=\"numeric\">{dda_balance}</td><td class=\"numeric\">{dda_pct}%</td></tr>\n        <tr><td><strong>Savings</strong></td><td class=\"numeric\">{savings_balance}</td><td class=\"numeric\">{savings_pct}%</td></tr>\n        <tr><td><strong>Money Market</strong></td><td class=\"numeric\">{mm_balance}</td><td class=\"numeric\">{mm_pct}%</td></tr>\n        <tr><td><strong>Time Deposits</strong></td><td class=\"numeric\">{time_balance}</td><td class=\"numeric\">{time_pct}%</td></tr>\n    </tbody>\n</table>",
+            "placeholders": {
+              "{dda_balance}": {
+                "source": "caty06_tables",
+                "path": "deposit_mix_detail.dda_billions",
+                "format": "number_scale",
+                "scale": "billions",
+                "decimals": 2,
+                "prefix": "$"
+              },
+              "{dda_pct}": {
+                "source": "caty06_tables",
+                "path": "deposit_mix_detail.dda_pct",
+                "format": "decimal",
+                "decimals": 1
+              },
+              "{savings_balance}": {
+                "source": "caty06_tables",
+                "path": "deposit_mix_detail.savings_billions",
+                "format": "number_scale",
+                "scale": "billions",
+                "decimals": 2,
+                "prefix": "$"
+              },
+              "{savings_pct}": {
+                "source": "caty06_tables",
+                "path": "deposit_mix_detail.savings_pct",
+                "format": "decimal",
+                "decimals": 1
+              },
+              "{mm_balance}": {
+                "source": "caty06_tables",
+                "path": "deposit_mix_detail.money_market_billions",
+                "format": "number_scale",
+                "scale": "billions",
+                "decimals": 2,
+                "prefix": "$"
+              },
+              "{mm_pct}": {
+                "source": "caty06_tables",
+                "path": "deposit_mix_detail.money_market_pct",
+                "format": "decimal",
+                "decimals": 1
+              },
+              "{time_balance}": {
+                "source": "caty06_tables",
+                "path": "deposit_mix_detail.time_deposits_billions",
+                "format": "number_scale",
+                "scale": "billions",
+                "decimals": 2,
+                "prefix": "$"
+              },
+              "{time_pct}": {
+                "source": "caty06_tables",
+                "path": "deposit_mix_detail.time_deposits_pct",
+                "format": "decimal",
+                "decimals": 1
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty06-nib-trend",
+          "type": "text",
+          "template": {
+            "template": "<div class=\"alert-box info\">\n    <div class=\"alert-title\">{direction} NIB Mix</div>\n    <div class=\"alert-text\">Noninterest-bearing deposits moved from {start}% in Q1 2022 to {end}% in Q2 2025, a change of {change} ppts. {interpretation}</div>\n</div>",
+            "placeholders": {
+              "{direction}": {
+                "source": "caty06_tables",
+                "path": "nib_trend.direction",
+                "format": "text"
+              },
+              "{start}": {
+                "source": "caty06_tables",
+                "path": "nib_trend.q1_2022_nib_pct",
+                "format": "decimal",
+                "decimals": 1
+              },
+              "{end}": {
+                "source": "caty06_tables",
+                "path": "nib_trend.q2_2025_nib_pct",
+                "format": "decimal",
+                "decimals": 1
+              },
+              "{change}": {
+                "source": "caty06_tables",
+                "path": "nib_trend.change_ppts",
+                "format": "decimal",
+                "decimals": 1
+              },
+              "{interpretation}": {
+                "source": "caty06_tables",
+                "path": "nib_trend.interpretation",
+                "format": "text"
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty06-funding-sources",
+          "type": "text",
+          "template": {
+            "template": "<table>\n    <thead>\n        <tr>\n            <th>Funding Source</th>\n            <th class=\"numeric\">Mix (%)</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr><td><strong>Core Deposits</strong></td><td class=\"numeric\">{deposits_pct}%</td></tr>\n        <tr><td>FHLB Advances</td><td class=\"numeric\">{fhlb_pct}%</td></tr>\n        <tr><td>Subordinated Debt</td><td class=\"numeric\">{subdebt_pct}%</td></tr>\n        <tr><td>Other Borrowings</td><td class=\"numeric\">{other_pct}%</td></tr>\n    </tbody>\n</table>\n<p class=\"note\">{note}</p>",
+            "placeholders": {
+              "{deposits_pct}": {
+                "source": "caty06_tables",
+                "path": "funding_sources.deposits_pct",
+                "format": "decimal",
+                "decimals": 1
+              },
+              "{fhlb_pct}": {
+                "source": "caty06_tables",
+                "path": "funding_sources.fhlb_advances_pct",
+                "format": "decimal",
+                "decimals": 1
+              },
+              "{subdebt_pct}": {
+                "source": "caty06_tables",
+                "path": "funding_sources.subordinated_debt_pct",
+                "format": "decimal",
+                "decimals": 1
+              },
+              "{other_pct}": {
+                "source": "caty06_tables",
+                "path": "funding_sources.other_borrowings_pct",
+                "format": "decimal",
+                "decimals": 1
+              },
+              "{note}": {
+                "source": "caty06_tables",
+                "path": "funding_sources.note",
+                "format": "text"
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty06-peer-comparison",
+          "type": "text",
+          "template": {
+            "template": "<table>\n    <thead>\n        <tr>\n            <th>Metric</th>\n            <th class=\"numeric\">CATY</th>\n            <th class=\"numeric\">Peer Median</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr><td><strong>NIB Mix</strong></td><td class=\"numeric\">{caty_nib}%</td><td class=\"numeric\">{peer_nib}%</td></tr>\n        <tr><td>Brokered Deposits</td><td class=\"numeric\">{caty_brokered}%</td><td class=\"numeric\">{peer_brokered}%</td></tr>\n    </tbody>\n</table>",
+            "placeholders": {
+              "{caty_nib}": {
+                "source": "caty06_tables",
+                "path": "peer_comparison.caty_nib_pct",
+                "format": "decimal",
+                "decimals": 1
+              },
+              "{peer_nib}": {
+                "source": "caty06_tables",
+                "path": "peer_comparison.peer_median_nib_pct",
+                "format": "decimal",
+                "decimals": 1
+              },
+              "{caty_brokered}": {
+                "source": "caty06_tables",
+                "path": "peer_comparison.caty_brokered_pct",
+                "format": "decimal",
+                "decimals": 1
+              },
+              "{peer_brokered}": {
+                "source": "caty06_tables",
+                "path": "peer_comparison.peer_median_brokered_pct",
+                "format": "decimal",
+                "decimals": 1
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty06-peer-interpretation",
+          "type": "text",
+          "template": {
+            "template": "<div class=\"alert-box warning\">\n    <div class=\"alert-title\">Peer Positioning</div>\n    <div class=\"alert-text\">CATY's NIB mix at {caty_nib}% trails the peer median of {peer_nib}%, but brokered reliance is lower at {caty_brokered}% versus {peer_brokered}% median, reinforcing a relationship-based funding model.</div>\n</div>",
+            "placeholders": {
+              "{caty_nib}": {
+                "source": "caty06_tables",
+                "path": "peer_comparison.caty_nib_pct",
+                "format": "decimal",
+                "decimals": 1
+              },
+              "{peer_nib}": {
+                "source": "caty06_tables",
+                "path": "peer_comparison.peer_median_nib_pct",
+                "format": "decimal",
+                "decimals": 1
+              },
+              "{caty_brokered}": {
+                "source": "caty06_tables",
+                "path": "peer_comparison.caty_brokered_pct",
+                "format": "decimal",
+                "decimals": 1
+              },
+              "{peer_brokered}": {
+                "source": "caty06_tables",
+                "path": "peer_comparison.peer_median_brokered_pct",
+                "format": "decimal",
+                "decimals": 1
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "CATY_09",
+      "file": "CATY_09_capital_liquidity.html",
+      "data": {
+        "last_updated_display": "October 19, 2025"
+      },
+      "sections": [
+        {
+          "marker": "caty09-header-meta",
+          "type": "text",
+          "template": {
+            "template": "<p class=\"page-meta\">Regulatory ratios, AOCI reconciliation, and liquidity buffers | Last Updated: {last_updated} | Source: SEC 10-Q Q2 2025 + Call Report</p>",
+            "placeholders": {
+              "{last_updated}": {
+                "source": "module",
+                "path": "last_updated_display",
+                "format": "text"
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty09-capital-cards",
+          "type": "cards",
+          "wrapper": {
+            "tag": "div",
+            "class": "metric-grid"
+          },
+          "defaults": {
+            "card_class": "metric-card",
+            "label_class": "metric-label",
+            "value_class": "metric-value",
+            "subtext_class": "metric-subtext"
+          },
+          "cards": [
+            {
+              "label": "CET1 Ratio",
+              "card_class": "metric-card highlight",
+              "value": {
+                "source": "caty09_tables",
+                "path": "regulatory_capital_q2_2025.cet1_ratio_pct",
+                "format": "percent",
+                "decimals": 2
+              },
+              "subtext": {
+                "template": "{buffer} ppts buffer vs 6.5% well-capitalized",
+                "placeholders": {
+                  "{buffer}": {
+                    "source": "caty09_tables",
+                    "path": "regulatory_capital_q2_2025.buffer_vs_well_capitalized_ppts",
+                    "format": "decimal",
+                    "decimals": 2
+                  }
+                }
+              }
+            },
+            {
+              "label": "Tier 1 Ratio",
+              "value": {
+                "source": "caty09_tables",
+                "path": "regulatory_capital_q2_2025.tier1_ratio_pct",
+                "format": "percent",
+                "decimals": 2
+              },
+              "subtext": {
+                "template": "Regulatory status: {status}",
+                "placeholders": {
+                  "{status}": {
+                    "source": "caty09_tables",
+                    "path": "regulatory_capital_q2_2025.status",
+                    "format": "text"
+                  }
+                }
+              }
+            },
+            {
+              "label": "Total Capital Ratio",
+              "value": {
+                "source": "caty09_tables",
+                "path": "regulatory_capital_q2_2025.total_capital_ratio_pct",
+                "format": "percent",
+                "decimals": 2
+              },
+              "subtext": {
+                "template": "Basel III numerator fully loaded"
+              }
+            },
+            {
+              "label": "Leverage Ratio",
+              "value": {
+                "source": "caty09_tables",
+                "path": "regulatory_capital_q2_2025.leverage_ratio_pct",
+                "format": "percent",
+                "decimals": 2
+              },
+              "subtext": {
+                "template": "Balance sheet leverage (Tier 1 / Avg Assets)"
+              }
+            }
+          ]
+        },
+        {
+          "marker": "caty09-capital-table",
+          "type": "text",
+          "template": {
+            "template": "<table>\n    <thead>\n        <tr>\n            <th>Capital Ratio</th>\n            <th class=\"numeric\">Q2 2025</th>\n            <th class=\"numeric\">Reg Minimum</th>\n            <th class=\"numeric\">Well-Capitalized</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr><td><strong>CET1</strong></td><td class=\"numeric\">{cet1}%</td><td class=\"numeric\">{reg_min}%</td><td class=\"numeric\">{well_cap}%</td></tr>\n        <tr><td>Tier 1</td><td class=\"numeric\">{tier1}%</td><td class=\"numeric\">—</td><td class=\"numeric\">—</td></tr>\n        <tr><td>Total Capital</td><td class=\"numeric\">{total}%</td><td class=\"numeric\">—</td><td class=\"numeric\">—</td></tr>\n        <tr><td>Leverage</td><td class=\"numeric\">{leverage}%</td><td class=\"numeric\">—</td><td class=\"numeric\">—</td></tr>\n    </tbody>\n</table>",
+            "placeholders": {
+              "{cet1}": {
+                "source": "caty09_tables",
+                "path": "regulatory_capital_q2_2025.cet1_ratio_pct",
+                "format": "decimal",
+                "decimals": 2
+              },
+              "{reg_min}": {
+                "source": "caty09_tables",
+                "path": "regulatory_capital_q2_2025.regulatory_minimum_cet1_pct",
+                "format": "decimal",
+                "decimals": 1
+              },
+              "{well_cap}": {
+                "source": "caty09_tables",
+                "path": "regulatory_capital_q2_2025.well_capitalized_cet1_pct",
+                "format": "decimal",
+                "decimals": 1
+              },
+              "{tier1}": {
+                "source": "caty09_tables",
+                "path": "regulatory_capital_q2_2025.tier1_ratio_pct",
+                "format": "decimal",
+                "decimals": 2
+              },
+              "{total}": {
+                "source": "caty09_tables",
+                "path": "regulatory_capital_q2_2025.total_capital_ratio_pct",
+                "format": "decimal",
+                "decimals": 2
+              },
+              "{leverage}": {
+                "source": "caty09_tables",
+                "path": "regulatory_capital_q2_2025.leverage_ratio_pct",
+                "format": "decimal",
+                "decimals": 2
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty09-aoci-summary",
+          "type": "text",
+          "template": {
+            "template": "<div class=\"alert-box warning\">\n    <div class=\"alert-title\">AOCI Drag on Tangible Equity</div>\n    <div class=\"alert-text\">AOCI totals {aoci} and reduces tangible book value by {impact} per share, moving TBVPS from {tbv_ex} to {tbv_incl}. {note}</div>\n</div>",
+            "placeholders": {
+              "{aoci}": {
+                "source": "caty09_tables",
+                "path": "aoci_impact.aoci_millions",
+                "format": "currency_scale",
+                "scale": "millions",
+                "decimals": 1
+              },
+              "{impact}": {
+                "source": "caty09_tables",
+                "path": "aoci_impact.aoci_impact_on_tbvps",
+                "format": "decimal",
+                "decimals": 2
+              },
+              "{tbv_ex}": {
+                "source": "caty09_tables",
+                "path": "aoci_impact.tbvps_ex_aoci",
+                "format": "currency",
+                "decimals": 2
+              },
+              "{tbv_incl}": {
+                "source": "caty09_tables",
+                "path": "aoci_impact.tbvps_incl_aoci",
+                "format": "currency",
+                "decimals": 2
+              },
+              "{note}": {
+                "source": "caty09_tables",
+                "path": "aoci_impact.note",
+                "format": "text"
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty09-aoci-table",
+          "type": "text",
+          "template": {
+            "template": "<table>\n    <thead>\n        <tr>\n            <th>Metric</th>\n            <th class=\"numeric\">Value</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr><td><strong>Tangible Equity ex-AOCI</strong></td><td class=\"numeric\">{te_ex}</td></tr>\n        <tr><td>Tangible Equity incl AOCI</td><td class=\"numeric\">{te_incl}</td></tr>\n        <tr><td>AOCI Balance</td><td class=\"numeric\">{aoci_balance}</td></tr>\n        <tr><td>AOCI as % of Equity</td><td class=\"numeric\">{aoci_pct}%</td></tr>\n        <tr><td>TBVPS ex-AOCI</td><td class=\"numeric\">{tbv_ex}</td></tr>\n        <tr><td>TBVPS incl AOCI</td><td class=\"numeric\">{tbv_incl}</td></tr>\n    </tbody>\n</table>",
+            "placeholders": {
+              "{te_ex}": {
+                "source": "caty09_tables",
+                "path": "aoci_impact.tangible_equity_ex_aoci_millions",
+                "format": "currency_scale",
+                "scale": "millions",
+                "decimals": 1
+              },
+              "{te_incl}": {
+                "source": "caty09_tables",
+                "path": "aoci_impact.tangible_equity_incl_aoci_millions",
+                "format": "currency_scale",
+                "scale": "millions",
+                "decimals": 1
+              },
+              "{aoci_balance}": {
+                "source": "caty09_tables",
+                "path": "aoci_impact.aoci_millions",
+                "format": "currency_scale",
+                "scale": "millions",
+                "decimals": 1
+              },
+              "{aoci_pct}": {
+                "source": "caty09_tables",
+                "path": "aoci_impact.aoci_as_pct_of_equity_pct",
+                "format": "decimal",
+                "decimals": 1
+              },
+              "{tbv_ex}": {
+                "source": "caty09_tables",
+                "path": "aoci_impact.tbvps_ex_aoci",
+                "format": "currency",
+                "decimals": 2
+              },
+              "{tbv_incl}": {
+                "source": "caty09_tables",
+                "path": "aoci_impact.tbvps_incl_aoci",
+                "format": "currency",
+                "decimals": 2
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty09-liquidity-table",
+          "type": "text",
+          "template": {
+            "template": "<table>\n    <thead>\n        <tr>\n            <th>Liquidity Metric</th>\n            <th class=\"numeric\">Value</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr><td><strong>Cash & Equivalents</strong></td><td class=\"numeric\">{cash}</td></tr>\n        <tr><td>Unencumbered Securities</td><td class=\"numeric\">{securities}</td></tr>\n        <tr><td>Total Liquid Assets</td><td class=\"numeric\">{liquid}</td></tr>\n        <tr><td>Liquid Assets / Total Assets</td><td class=\"numeric\">{liquid_pct}%</td></tr>\n        <tr><td>Loan-to-Deposit Ratio</td><td class=\"numeric\">{ltd}%</td></tr>\n        <tr><td>Total Loans</td><td class=\"numeric\">{loans}</td></tr>\n        <tr><td>Total Deposits</td><td class=\"numeric\">{deposits}</td></tr>\n    </tbody>\n</table>",
+            "placeholders": {
+              "{cash}": {
+                "source": "caty09_tables",
+                "path": "liquidity_metrics.cash_billions",
+                "format": "number_scale",
+                "scale": "billions",
+                "decimals": 2,
+                "prefix": "$"
+              },
+              "{securities}": {
+                "source": "caty09_tables",
+                "path": "liquidity_metrics.unencumbered_securities_billions",
+                "format": "number_scale",
+                "scale": "billions",
+                "decimals": 2,
+                "prefix": "$"
+              },
+              "{liquid}": {
+                "source": "caty09_tables",
+                "path": "liquidity_metrics.total_liquid_assets_billions",
+                "format": "number_scale",
+                "scale": "billions",
+                "decimals": 2,
+                "prefix": "$"
+              },
+              "{liquid_pct}": {
+                "source": "caty09_tables",
+                "path": "liquidity_metrics.liquid_assets_pct_of_assets",
+                "format": "decimal",
+                "decimals": 1
+              },
+              "{ltd}": {
+                "source": "caty09_tables",
+                "path": "liquidity_metrics.loan_to_deposit_ratio_pct",
+                "format": "decimal",
+                "decimals": 1
+              },
+              "{loans}": {
+                "source": "caty09_tables",
+                "path": "liquidity_metrics.loans_billions",
+                "format": "number_scale",
+                "scale": "billions",
+                "decimals": 2,
+                "prefix": "$"
+              },
+              "{deposits}": {
+                "source": "caty09_tables",
+                "path": "liquidity_metrics.deposits_billions",
+                "format": "number_scale",
+                "scale": "billions",
+                "decimals": 2,
+                "prefix": "$"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "CATY_15",
+      "file": "CATY_15_esg_materiality_matrix.html",
+      "data": {
+        "last_updated_display": "October 19, 2025"
+      },
+      "sections": [
+        {
+          "marker": "caty15-header-meta",
+          "type": "text",
+          "template": {
+            "template": "<p class=\"page-meta\">Environmental, social, and governance drivers of cost of equity | Last Updated: {last_updated} | Source: ESG assessment + CATY COE framework</p>",
+            "placeholders": {
+              "{last_updated}": {
+                "source": "module",
+                "path": "last_updated_display",
+                "format": "text"
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty15-esg-summary",
+          "type": "cards",
+          "wrapper": {
+            "tag": "div",
+            "class": "metric-grid"
+          },
+          "defaults": {
+            "card_class": "metric-card",
+            "label_class": "metric-label",
+            "value_class": "metric-value",
+            "subtext_class": "metric-subtext"
+          },
+          "cards": [
+            {
+              "label": "Total ESG COE Premium",
+              "card_class": "metric-card highlight",
+              "value": {
+                "source": "caty15_tables",
+                "path": "esg_summary.total_esg_coe_premium_bps",
+                "format": "bps",
+                "decimals": 0
+              },
+              "subtext": {
+                "template": "Applied to cost of equity"
+              }
+            },
+            {
+              "label": "Valuation Impact per Share",
+              "value": {
+                "source": "caty15_tables",
+                "path": "esg_summary.valuation_impact_per_share",
+                "format": "currency",
+                "decimals": 2
+              },
+              "subtext": {
+                "template": "Discount embedded in target value"
+              }
+            },
+            {
+              "label": "P/TBV Impact",
+              "value": {
+                "source": "caty15_tables",
+                "path": "esg_summary.p_tbv_impact",
+                "format": "decimal",
+                "decimals": 2
+              },
+              "subtext": {
+                "template": "Multiple delta (x)"
+              }
+            },
+            {
+              "label": "Rating Impact",
+              "value": {
+                "source": "caty15_tables",
+                "path": "esg_summary.rating_impact",
+                "format": "text"
+              },
+              "subtext": {
+                "template": "Alignment with investment thesis"
+              }
+            }
+          ]
+        },
+        {
+          "marker": "caty15-environmental",
+          "type": "text",
+          "template": {
+            "template": "<div class=\"alert-box warning\">\n    <div class=\"alert-title\">Climate Transition Risk: {risk_level}</div>\n    <div class=\"alert-text\">CRE exposure of {cre_pct}% drives a {coe_premium} bps COE premium. {rationale}\n        <br><em>Mitigation: {mitigation}</em></div>\n</div>",
+            "placeholders": {
+              "{risk_level}": {
+                "source": "caty15_tables",
+                "path": "environmental_score.climate_transition_risk",
+                "format": "text"
+              },
+              "{cre_pct}": {
+                "source": "caty15_tables",
+                "path": "environmental_score.cre_carbon_exposure_pct",
+                "format": "decimal",
+                "decimals": 1
+              },
+              "{coe_premium}": {
+                "source": "caty15_tables",
+                "path": "environmental_score.coe_premium_bps",
+                "format": "bps",
+                "decimals": 0
+              },
+              "{rationale}": {
+                "source": "caty15_tables",
+                "path": "environmental_score.rationale",
+                "format": "text"
+              },
+              "{mitigation}": {
+                "source": "caty15_tables",
+                "path": "environmental_score.mitigation",
+                "format": "text"
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty15-social",
+          "type": "text",
+          "template": {
+            "template": "<div class=\"alert-box success\">\n    <div class=\"alert-title\">Community Banking Strength</div>\n    <div class=\"alert-text\">{rationale}\n        <br><strong>COE Adjustment:</strong> {coe_adjust} bps\n        <br><em>Metrics:</em> {metrics}</div>\n</div>",
+            "placeholders": {
+              "{rationale}": {
+                "source": "caty15_tables",
+                "path": "social_score.rationale",
+                "format": "text"
+              },
+              "{coe_adjust}": {
+                "source": "caty15_tables",
+                "path": "social_score.coe_discount_bps",
+                "format": "decimal",
+                "decimals": 0
+              },
+              "{metrics}": {
+                "source": "caty15_tables",
+                "path": "social_score.metrics",
+                "format": "text"
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty15-governance",
+          "type": "text",
+          "template": {
+            "template": "<div class=\"alert-box warning\">\n    <div class=\"alert-title\">Governance Gap</div>\n    <div class=\"alert-text\">Board independence at {board_independence}% versus {peer_independence}% peer median results in a {coe_premium} bps premium. {rationale}\n        <br><em>Improvement Actions:</em> {actions}</div>\n</div>",
+            "placeholders": {
+              "{board_independence}": {
+                "source": "caty15_tables",
+                "path": "governance_score.board_independence_pct",
+                "format": "decimal",
+                "decimals": 0
+              },
+              "{peer_independence}": {
+                "source": "caty15_tables",
+                "path": "governance_score.peer_median_independence_pct",
+                "format": "decimal",
+                "decimals": 0
+              },
+              "{coe_premium}": {
+                "source": "caty15_tables",
+                "path": "governance_score.coe_premium_bps",
+                "format": "decimal",
+                "decimals": 0
+              },
+              "{rationale}": {
+                "source": "caty15_tables",
+                "path": "governance_score.rationale",
+                "format": "text"
+              },
+              "{actions}": {
+                "source": "caty15_tables",
+                "path": "governance_score.improvement_actions",
+                "format": "text"
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty15-materiality-table",
+          "type": "text",
+          "template": {
+            "template": "<table>\n    <thead>\n        <tr>\n            <th>Pillar</th>\n            <th class=\"numeric\">COE Adjustment</th>\n            <th class=\"numeric\">Materiality</th>\n            <th>Narrative</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr><td><strong>Environmental</strong></td><td class=\"numeric\">{env_adjust} bps</td><td class=\"numeric\">{env_materiality}</td><td>{env_rationale}</td></tr>\n        <tr><td>Social</td><td class=\"numeric\">{soc_adjust} bps</td><td class=\"numeric\">{soc_materiality}</td><td>{soc_rationale}</td></tr>\n        <tr><td>Governance</td><td class=\"numeric\">{gov_adjust} bps</td><td class=\"numeric\">{gov_materiality}</td><td>{gov_rationale}</td></tr>\n    </tbody>\n</table>",
+            "placeholders": {
+              "{env_adjust}": {
+                "source": "caty15_tables",
+                "path": "environmental_score.coe_premium_bps",
+                "format": "decimal",
+                "decimals": 0
+              },
+              "{env_materiality}": {
+                "source": "caty15_tables",
+                "path": "environmental_score.materiality",
+                "format": "text"
+              },
+              "{env_rationale}": {
+                "source": "caty15_tables",
+                "path": "environmental_score.rationale",
+                "format": "text"
+              },
+              "{soc_adjust}": {
+                "source": "caty15_tables",
+                "path": "social_score.coe_discount_bps",
+                "format": "decimal",
+                "decimals": 0
+              },
+              "{soc_materiality}": {
+                "source": "caty15_tables",
+                "path": "social_score.materiality",
+                "format": "text"
+              },
+              "{soc_rationale}": {
+                "source": "caty15_tables",
+                "path": "social_score.rationale",
+                "format": "text"
+              },
+              "{gov_adjust}": {
+                "source": "caty15_tables",
+                "path": "governance_score.coe_premium_bps",
+                "format": "decimal",
+                "decimals": 0
+              },
+              "{gov_materiality}": {
+                "source": "caty15_tables",
+                "path": "governance_score.materiality",
+                "format": "text"
+              },
+              "{gov_rationale}": {
+                "source": "caty15_tables",
+                "path": "governance_score.rationale",
+                "format": "text"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "CATY_17",
+      "file": "CATY_17_esg_kpi_dashboard.html",
+      "data": {
+        "last_updated_display": "October 19, 2025"
+      },
+      "sections": [
+        {
+          "marker": "caty17-header-meta",
+          "type": "text",
+          "template": {
+            "template": "<p class=\"page-meta\">Quantified ESG metrics and valuation linkage | Last Updated: {last_updated} | Source: ESG data warehouse + valuation integration</p>",
+            "placeholders": {
+              "{last_updated}": {
+                "source": "module",
+                "path": "last_updated_display",
+                "format": "text"
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty17-kpi-summary",
+          "type": "cards",
+          "wrapper": {
+            "tag": "div",
+            "class": "metric-grid"
+          },
+          "defaults": {
+            "card_class": "metric-card",
+            "label_class": "metric-label",
+            "value_class": "metric-value",
+            "subtext_class": "metric-subtext"
+          },
+          "cards": [
+            {
+              "label": "Total Valuation Impact",
+              "card_class": "metric-card highlight",
+              "value": {
+                "source": "caty17_tables",
+                "path": "kpi_summary.total_valuation_impact",
+                "format": "currency",
+                "decimals": 2
+              },
+              "subtext": {
+                "template": "Aggregate per-share effect"
+              }
+            },
+            {
+              "label": "COE Adjustment",
+              "value": {
+                "source": "caty17_tables",
+                "path": "kpi_summary.coe_adjustment_bps",
+                "format": "bps",
+                "decimals": 0
+              },
+              "subtext": {
+                "template": "Applied to discount rate"
+              }
+            },
+            {
+              "label": "Material Weaknesses",
+              "value": {
+                "source": "caty17_tables",
+                "path": "kpi_summary.material_weaknesses_count",
+                "format": "decimal",
+                "decimals": 0
+              },
+              "subtext": {
+                "template": "Environmental + Governance"
+              }
+            },
+            {
+              "label": "Material Opportunities",
+              "value": {
+                "source": "caty17_tables",
+                "path": "kpi_summary.material_opportunities_count",
+                "format": "decimal",
+                "decimals": 0
+              },
+              "subtext": {
+                "template": "Social franchise impact"
+              }
+            }
+          ]
+        },
+        {
+          "marker": "caty17-environmental",
+          "type": "text",
+          "template": {
+            "template": "<div class=\"alert-box warning\">\n    <div class=\"alert-title\">Environmental KPI Status: {status}</div>\n    <div class=\"alert-text\">CRE carbon intensity score {score} with exposure {cre_pct}% translates to valuation impact of {impact}. Elevated carbon footprint underpins climate premium in COE.</div>\n</div>",
+            "placeholders": {
+              "{status}": {
+                "source": "caty17_tables",
+                "path": "environmental_kpis.status",
+                "format": "text"
+              },
+              "{score}": {
+                "source": "caty17_tables",
+                "path": "environmental_kpis.cre_carbon_intensity_score",
+                "format": "decimal",
+                "decimals": 1
+              },
+              "{cre_pct}": {
+                "source": "caty17_tables",
+                "path": "environmental_kpis.cre_exposure_pct",
+                "format": "decimal",
+                "decimals": 1
+              },
+              "{impact}": {
+                "source": "caty17_tables",
+                "path": "environmental_kpis.valuation_impact",
+                "format": "currency",
+                "decimals": 2
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty17-social",
+          "type": "text",
+          "template": {
+            "template": "<div class=\"alert-box success\">\n    <div class=\"alert-title\">Social KPI Status: {status}</div>\n    <div class=\"alert-text\">Community impact score {score} supported by SBA lending of {sba} and delivers valuation uplift of {impact}. Franchise reach offsets environmental/governance drags.</div>\n</div>",
+            "placeholders": {
+              "{status}": {
+                "source": "caty17_tables",
+                "path": "social_kpis.status",
+                "format": "text"
+              },
+              "{score}": {
+                "source": "caty17_tables",
+                "path": "social_kpis.community_impact_score",
+                "format": "decimal",
+                "decimals": 1
+              },
+              "{sba}": {
+                "source": "caty17_tables",
+                "path": "social_kpis.sba_lending_millions",
+                "format": "currency_scale",
+                "scale": "millions",
+                "decimals": 0
+              },
+              "{impact}": {
+                "source": "caty17_tables",
+                "path": "social_kpis.valuation_impact",
+                "format": "currency",
+                "decimals": 2
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty17-governance",
+          "type": "text",
+          "template": {
+            "template": "<div class=\"alert-box warning\">\n    <div class=\"alert-title\">Governance KPI Status: {status}</div>\n    <div class=\"alert-text\">Board independence at {board_pct}% versus {peer_pct}% peer median drives valuation impact of {impact}. Governance modernization remains a priority.</div>\n</div>",
+            "placeholders": {
+              "{status}": {
+                "source": "caty17_tables",
+                "path": "governance_kpis.status",
+                "format": "text"
+              },
+              "{board_pct}": {
+                "source": "caty17_tables",
+                "path": "governance_kpis.board_independence_pct",
+                "format": "decimal",
+                "decimals": 0
+              },
+              "{peer_pct}": {
+                "source": "caty17_tables",
+                "path": "governance_kpis.peer_median_pct",
+                "format": "decimal",
+                "decimals": 0
+              },
+              "{impact}": {
+                "source": "caty17_tables",
+                "path": "governance_kpis.valuation_impact",
+                "format": "currency",
+                "decimals": 2
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty17-valuation-bridge",
+          "type": "text",
+          "template": {
+            "template": "<table>\n    <thead>\n        <tr>\n            <th>Component</th>\n            <th class=\"numeric\">Valuation Impact ($)</th>\n            <th class=\"numeric\">Status</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr><td><strong>Environmental</strong></td><td class=\"numeric\">{env_impact}</td><td class=\"numeric\">{env_status}</td></tr>\n        <tr><td>Social</td><td class=\"numeric\">{soc_impact}</td><td class=\"numeric\">{soc_status}</td></tr>\n        <tr><td>Governance</td><td class=\"numeric\">{gov_impact}</td><td class=\"numeric\">{gov_status}</td></tr>\n        <tr class=\"row-border-top\"><td><strong>Total ESG Impact</strong></td><td class=\"numeric\">{total_impact}</td><td class=\"numeric\">COE Adj: {coe_adjust}</td></tr>\n    </tbody>\n</table>",
+            "placeholders": {
+              "{env_impact}": {
+                "source": "caty17_tables",
+                "path": "environmental_kpis.valuation_impact",
+                "format": "currency",
+                "decimals": 2
+              },
+              "{env_status}": {
+                "source": "caty17_tables",
+                "path": "environmental_kpis.status",
+                "format": "text"
+              },
+              "{soc_impact}": {
+                "source": "caty17_tables",
+                "path": "social_kpis.valuation_impact",
+                "format": "currency",
+                "decimals": 2
+              },
+              "{soc_status}": {
+                "source": "caty17_tables",
+                "path": "social_kpis.status",
+                "format": "text"
+              },
+              "{gov_impact}": {
+                "source": "caty17_tables",
+                "path": "governance_kpis.valuation_impact",
+                "format": "currency",
+                "decimals": 2
+              },
+              "{gov_status}": {
+                "source": "caty17_tables",
+                "path": "governance_kpis.status",
+                "format": "text"
+              },
+              "{total_impact}": {
+                "source": "caty17_tables",
+                "path": "kpi_summary.total_valuation_impact",
+                "format": "currency",
+                "decimals": 2
+              },
+              "{coe_adjust}": {
+                "source": "caty17_tables",
+                "path": "kpi_summary.coe_adjustment_bps",
+                "format": "bps",
+                "decimals": 0
+              }
+            }
+          }
+        }
+      ]
     }
   ]
 }
