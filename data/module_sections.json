@@ -1,6 +1,382 @@
 {
   "modules": [
     {
+      "id": "CATY_02",
+      "file": "CATY_02_income_statement.html",
+      "data": {
+        "last_updated_display": "October 18, 2025"
+      },
+      "sections": [
+        {
+          "marker": "caty02-header-meta",
+          "type": "text",
+          "template": {
+            "template": "<p class=\"page-meta\">\n    GAAP income statement with core adjustments and derived metrics (NIM, efficiency ratio, EPS) |\n    Last Updated: {last_updated} |\n    Source: SEC EDGAR 10-K FY2024, 10-Q Q2 2025\n</p>",
+            "placeholders": {
+              "{last_updated}": {
+                "source": "module",
+                "path": "last_updated_display",
+                "format": "text"
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty02-q2-snapshot-grid",
+          "type": "cards",
+          "wrapper": {
+            "tag": "div",
+            "class": "metric-grid"
+          },
+          "defaults": {
+            "card_class": "metric-card",
+            "label_class": "metric-label",
+            "value_class": "metric-value",
+            "subtext_class": "metric-subtext"
+          },
+          "cards": [
+            {
+              "label": "Net Interest Income",
+              "value": {
+                "source": "caty02_tables",
+                "path": "q2_2025_snapshot.nii_millions",
+                "format": "currency_scale",
+                "scale": "millions",
+                "decimals": 1
+              },
+              "subtext": {
+                "template": "Q2 2025"
+              }
+            },
+            {
+              "label": "Net Interest Margin",
+              "value": {
+                "source": "caty02_tables",
+                "path": "q2_2025_snapshot.nim_pct",
+                "format": "percent",
+                "decimals": 2
+              },
+              "subtext": {
+                "template": "Annualized"
+              }
+            },
+            {
+              "label": "Net Income",
+              "value": {
+                "source": "caty02_tables",
+                "path": "q2_2025_snapshot.net_income_millions",
+                "format": "currency_scale",
+                "scale": "millions",
+                "decimals": 1
+              },
+              "subtext": {
+                "template": "Q2 2025"
+              }
+            },
+            {
+              "label": "Efficiency Ratio",
+              "value": {
+                "source": "caty02_tables",
+                "path": "q2_2025_snapshot.efficiency_ratio_pct",
+                "format": "percent",
+                "decimals": 2
+              },
+              "subtext": {
+                "template": "Noninterest expense / (NII + Noninterest income)"
+              }
+            },
+            {
+              "label": "Diluted EPS",
+              "value": {
+                "source": "caty02_tables",
+                "path": "q2_2025_snapshot.diluted_eps",
+                "format": "currency",
+                "decimals": 2
+              },
+              "subtext": {
+                "template": "Q2 2025"
+              }
+            },
+            {
+              "label": "Provision for Credit Losses",
+              "value": {
+                "source": "caty02_tables",
+                "path": "q2_2025_snapshot.provision_millions",
+                "format": "currency_scale",
+                "scale": "millions",
+                "decimals": 1
+              },
+              "subtext": {
+                "template": "CECL methodology"
+              }
+            },
+            {
+              "label": "Effective Tax Rate",
+              "value": {
+                "source": "caty02_tables",
+                "path": "q2_2025_snapshot.effective_tax_rate_pct",
+                "format": "percent",
+                "decimals": 2
+              },
+              "subtext": {
+                "template": "Income tax expense / Pretax income"
+              }
+            },
+            {
+              "label": "Average Earning Assets",
+              "value": {
+                "source": "caty02_tables",
+                "path": "q2_2025_snapshot.average_earning_assets_millions",
+                "format": "currency_scale",
+                "scale": "millions",
+                "decimals": 0
+              },
+              "subtext": {
+                "template": "Period average"
+              }
+            }
+          ]
+        },
+        {
+          "marker": "caty02-q2-income-statement",
+          "type": "text",
+          "template": {
+            "template": "<table>\n    <thead>\n        <tr>\n            <th>Line Item</th>\n            <th class=\"number\">Amount (USD Millions)</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td class=\"label\">Interest Income</td>\n            <td class=\"number\">&#36;{interest_income}</td>\n        </tr>\n        <tr>\n            <td class=\"label\">Interest Expense</td>\n            <td class=\"number\">(&#36;{interest_expense})</td>\n        </tr>\n        <tr class=\"subtotal\">\n            <td class=\"label\">Net Interest Income</td>\n            <td class=\"number\">&#36;{nii}</td>\n        </tr>\n        <tr>\n            <td class=\"label\">Provision for Credit Losses</td>\n            <td class=\"number\">(&#36;{provision})</td>\n        </tr>\n        <tr class=\"subtotal\">\n            <td class=\"label\">Net Interest Income After Provision</td>\n            <td class=\"number\">&#36;{nii_after_prov}</td>\n        </tr>\n        <tr>\n            <td class=\"label\">Noninterest Income</td>\n            <td class=\"number\">&#36;{nonii}</td>\n        </tr>\n        <tr>\n            <td class=\"label\">Noninterest Expense</td>\n            <td class=\"number\">(&#36;{noninterest_exp})</td>\n        </tr>\n        <tr class=\"subtotal\">\n            <td class=\"label\">Pretax Income</td>\n            <td class=\"number\">&#36;{pretax}</td>\n        </tr>\n        <tr>\n            <td class=\"label\">Income Tax Expense</td>\n            <td class=\"number\">(&#36;{tax})</td>\n        </tr>\n        <tr class=\"total\">\n            <td class=\"label\">Net Income</td>\n            <td class=\"number\">&#36;{net_income}</td>\n        </tr>\n    </tbody>\n</table>",
+            "placeholders": {
+              "{interest_income}": {
+                "source": "caty02_tables",
+                "path": "income_statement_q2_2025.interest_income_millions",
+                "format": "decimal",
+                "decimals": 2
+              },
+              "{interest_expense}": {
+                "source": "caty02_tables",
+                "path": "income_statement_q2_2025.interest_expense_millions",
+                "format": "decimal",
+                "decimals": 2
+              },
+              "{nii}": {
+                "source": "caty02_tables",
+                "path": "income_statement_q2_2025.net_interest_income_millions",
+                "format": "decimal",
+                "decimals": 2
+              },
+              "{provision}": {
+                "source": "caty02_tables",
+                "path": "income_statement_q2_2025.provision_credit_losses_millions",
+                "format": "decimal",
+                "decimals": 2
+              },
+              "{nii_after_prov}": {
+                "source": "caty02_tables",
+                "path": "income_statement_q2_2025.nii_after_provision_millions",
+                "format": "decimal",
+                "decimals": 2
+              },
+              "{nonii}": {
+                "source": "caty02_tables",
+                "path": "income_statement_q2_2025.noninterest_income_millions",
+                "format": "decimal",
+                "decimals": 2
+              },
+              "{noninterest_exp}": {
+                "source": "caty02_tables",
+                "path": "income_statement_q2_2025.noninterest_expense_millions",
+                "format": "decimal",
+                "decimals": 2
+              },
+              "{pretax}": {
+                "source": "caty02_tables",
+                "path": "income_statement_q2_2025.pretax_income_millions",
+                "format": "decimal",
+                "decimals": 2
+              },
+              "{tax}": {
+                "source": "caty02_tables",
+                "path": "income_statement_q2_2025.income_tax_expense_millions",
+                "format": "decimal",
+                "decimals": 2
+              },
+              "{net_income}": {
+                "source": "caty02_tables",
+                "path": "income_statement_q2_2025.net_income_millions",
+                "format": "decimal",
+                "decimals": 2
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty02-q2-derived-metrics",
+          "type": "text",
+          "template": {
+            "template": "<table>\n    <thead>\n        <tr>\n            <th>Metric</th>\n            <th class=\"number\">Value</th>\n            <th>Calculation Method</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td class=\"label\">Net Interest Margin (NIM)</td>\n            <td class=\"number\">{nim}%</td>\n            <td>Net interest income / Avg earning assets (annualized)</td>\n        </tr>\n        <tr>\n            <td class=\"label\">Efficiency Ratio</td>\n            <td class=\"number\">{efficiency}%</td>\n            <td>Noninterest expense / (NII + Noninterest income)</td>\n        </tr>\n        <tr>\n            <td class=\"label\">Effective Tax Rate</td>\n            <td class=\"number\">{tax_rate}%</td>\n            <td>Income tax expense / Pretax income</td>\n        </tr>\n        <tr>\n            <td class=\"label\">Diluted EPS</td>\n            <td class=\"number\">&#36;{eps}</td>\n            <td>Net income / Weighted avg diluted shares</td>\n        </tr>\n        <tr>\n            <td class=\"label\">ROE (Return on Equity)</td>\n            <td class=\"number\">{roe}%</td>\n            <td>Net income (annualized) / Avg shareholders' equity</td>\n        </tr>\n        <tr>\n            <td class=\"label\">ROTE (Return on Tangible Equity)</td>\n            <td class=\"number\">{rote}%</td>\n            <td>Net income (annualized) / Avg tangible common equity</td>\n        </tr>\n    </tbody>\n</table>",
+            "placeholders": {
+              "{nim}": {
+                "source": "caty02_tables",
+                "path": "derived_metrics.nim_pct",
+                "format": "decimal",
+                "decimals": 2
+              },
+              "{efficiency}": {
+                "source": "caty02_tables",
+                "path": "derived_metrics.efficiency_ratio_pct",
+                "format": "decimal",
+                "decimals": 2
+              },
+              "{tax_rate}": {
+                "source": "caty02_tables",
+                "path": "derived_metrics.effective_tax_rate_pct",
+                "format": "decimal",
+                "decimals": 2
+              },
+              "{eps}": {
+                "source": "caty02_tables",
+                "path": "q2_2025_snapshot.diluted_eps",
+                "format": "decimal",
+                "decimals": 2
+              },
+              "{roe}": {
+                "source": "caty02_tables",
+                "path": "derived_metrics.roe_pct",
+                "format": "decimal",
+                "decimals": 2
+              },
+              "{rote}": {
+                "source": "caty02_tables",
+                "path": "derived_metrics.rote_pct",
+                "format": "decimal",
+                "decimals": 2
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty02-fy2024-income-statement",
+          "type": "text",
+          "template": {
+            "template": "<!-- TODO: Add FY2024 data when available -->\n<table>\n    <thead>\n        <tr>\n            <th>Line Item</th>\n            <th class=\"number\">Amount (USD Millions)</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td class=\"label\">Interest Income</td>\n            <td class=\"number\">&#36;1,334.98</td>\n        </tr>\n        <tr>\n            <td class=\"label\">Interest Expense</td>\n            <td class=\"number\">(&#36;660.92)</td>\n        </tr>\n        <tr class=\"subtotal\">\n            <td class=\"label\">Net Interest Income</td>\n            <td class=\"number\">&#36;674.06</td>\n        </tr>\n        <tr>\n            <td class=\"label\">Provision for Credit Losses</td>\n            <td class=\"number\">(&#36;37.50)</td>\n        </tr>\n        <tr>\n            <td class=\"label\">Noninterest Income</td>\n            <td class=\"number\">&#36;55.66</td>\n        </tr>\n        <tr>\n            <td class=\"label\">Noninterest Expense</td>\n            <td class=\"number\">(&#36;374.68)</td>\n        </tr>\n        <tr class=\"subtotal\">\n            <td class=\"label\">Pretax Income</td>\n            <td class=\"number\">&#36;317.54</td>\n        </tr>\n        <tr>\n            <td class=\"label\">Income Tax Expense</td>\n            <td class=\"number\">(&#36;31.56)</td>\n        </tr>\n        <tr class=\"total\">\n            <td class=\"label\">Net Income</td>\n            <td class=\"number\">&#36;285.98</td>\n        </tr>\n    </tbody>\n</table>"
+          }
+        },
+        {
+          "marker": "caty02-fy2024-derived-metrics",
+          "type": "text",
+          "template": {
+            "template": "<!-- TODO: Add FY2024 derived metrics when data is available -->\n<table>\n    <thead>\n        <tr>\n            <th>Metric</th>\n            <th class=\"number\">Value</th>\n            <th>Calculation Method</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td class=\"label\">Diluted EPS</td>\n            <td class=\"number\">&#36;3.95</td>\n            <td>Net income / Diluted shares (72.33M shares)</td>\n        </tr>\n        <tr>\n            <td class=\"label\">Net Interest Margin (NIM)</td>\n            <td class=\"number\">N/A</td>\n            <td>Not available in annual summary (requires average balance data)</td>\n        </tr>\n        <tr>\n            <td class=\"label\">Efficiency Ratio</td>\n            <td class=\"number\">N/A</td>\n            <td>Not calculated for annual (requires quarterly granularity)</td>\n        </tr>\n        <tr>\n            <td class=\"label\">Effective Tax Rate</td>\n            <td class=\"number\">N/A</td>\n            <td>Not calculated for annual (see quarterly data)</td>\n        </tr>\n    </tbody>\n</table>"
+          }
+        },
+        {
+          "marker": "caty02-qa-checks-table",
+          "type": "text",
+          "template": {
+            "template": "<table>\n    <thead>\n        <tr>\n            <th>Check ID</th>\n            <th>Description</th>\n            <th>Rule</th>\n            <th>Tolerance</th>\n            <th>Status</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td><strong>{qa1_id}</strong></td>\n            <td>{qa1_desc}</td>\n            <td>{qa1_rule}</td>\n            <td>{qa1_tol}</td>\n            <td><span class=\"verification-badge\">{qa1_status}</span></td>\n        </tr>\n        <tr>\n            <td><strong>{qa2_id}</strong></td>\n            <td>{qa2_desc}</td>\n            <td>{qa2_rule}</td>\n            <td>{qa2_tol}</td>\n            <td><span class=\"verification-badge\">{qa2_status}</span></td>\n        </tr>\n        <tr>\n            <td><strong>{qa3_id}</strong></td>\n            <td>{qa3_desc}</td>\n            <td>{qa3_rule}</td>\n            <td>{qa3_tol}</td>\n            <td><span class=\"verification-badge\">{qa3_status}</span></td>\n        </tr>\n        <tr>\n            <td><strong>{qa4_id}</strong></td>\n            <td>{qa4_desc}</td>\n            <td>{qa4_rule}</td>\n            <td>{qa4_tol}</td>\n            <td><span class=\"verification-badge\">{qa4_status}</span></td>\n        </tr>\n    </tbody>\n</table>",
+            "placeholders": {
+              "{qa1_id}": {
+                "source": "caty02_tables",
+                "path": "qa_checks.checks.0.id",
+                "format": "text"
+              },
+              "{qa1_desc}": {
+                "source": "caty02_tables",
+                "path": "qa_checks.checks.0.description",
+                "format": "text"
+              },
+              "{qa1_rule}": {
+                "source": "caty02_tables",
+                "path": "qa_checks.checks.0.rule",
+                "format": "text"
+              },
+              "{qa1_tol}": {
+                "source": "caty02_tables",
+                "path": "qa_checks.checks.0.tolerance",
+                "format": "text"
+              },
+              "{qa1_status}": {
+                "source": "caty02_tables",
+                "path": "qa_checks.checks.0.status",
+                "format": "text"
+              },
+              "{qa2_id}": {
+                "source": "caty02_tables",
+                "path": "qa_checks.checks.1.id",
+                "format": "text"
+              },
+              "{qa2_desc}": {
+                "source": "caty02_tables",
+                "path": "qa_checks.checks.1.description",
+                "format": "text"
+              },
+              "{qa2_rule}": {
+                "source": "caty02_tables",
+                "path": "qa_checks.checks.1.rule",
+                "format": "text"
+              },
+              "{qa2_tol}": {
+                "source": "caty02_tables",
+                "path": "qa_checks.checks.1.tolerance",
+                "format": "text"
+              },
+              "{qa2_status}": {
+                "source": "caty02_tables",
+                "path": "qa_checks.checks.1.status",
+                "format": "text"
+              },
+              "{qa3_id}": {
+                "source": "caty02_tables",
+                "path": "qa_checks.checks.2.id",
+                "format": "text"
+              },
+              "{qa3_desc}": {
+                "source": "caty02_tables",
+                "path": "qa_checks.checks.2.description",
+                "format": "text"
+              },
+              "{qa3_rule}": {
+                "source": "caty02_tables",
+                "path": "qa_checks.checks.2.rule",
+                "format": "text"
+              },
+              "{qa3_tol}": {
+                "source": "caty02_tables",
+                "path": "qa_checks.checks.2.tolerance",
+                "format": "text"
+              },
+              "{qa3_status}": {
+                "source": "caty02_tables",
+                "path": "qa_checks.checks.2.status",
+                "format": "text"
+              },
+              "{qa4_id}": {
+                "source": "caty02_tables",
+                "path": "qa_checks.checks.3.id",
+                "format": "text"
+              },
+              "{qa4_desc}": {
+                "source": "caty02_tables",
+                "path": "qa_checks.checks.3.description",
+                "format": "text"
+              },
+              "{qa4_rule}": {
+                "source": "caty02_tables",
+                "path": "qa_checks.checks.3.rule",
+                "format": "text"
+              },
+              "{qa4_tol}": {
+                "source": "caty02_tables",
+                "path": "qa_checks.checks.3.tolerance",
+                "format": "text"
+              },
+              "{qa4_status}": {
+                "source": "caty02_tables",
+                "path": "qa_checks.checks.3.status",
+                "format": "text"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
       "id": "CATY_05",
       "file": "CATY_05_nim_decomposition.html",
       "data": {

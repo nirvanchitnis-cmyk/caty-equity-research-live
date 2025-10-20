@@ -1,0 +1,122 @@
+{
+  "comment": "CATY_02 Income Statement - Q2 2025 GAAP financials and derived metrics",
+  "last_updated": "2025-10-19T23:45:00Z",
+  "data_source": "SEC 10-Q Q2 2025 (Accession 0001437749-25-025772)",
+  "period": "Q2 2025",
+  "q2_2025_snapshot": {
+    "nii_millions": 181.22,
+    "nim_pct": 3.27,
+    "net_income_millions": 77.45,
+    "efficiency_ratio_pct": 45.33,
+    "diluted_eps": 1.10,
+    "provision_millions": 11.20,
+    "effective_tax_rate_pct": 19.56,
+    "average_earning_assets_millions": 22232
+  },
+  "income_statement_q2_2025": {
+    "interest_income_millions": 322.92,
+    "interest_expense_millions": 141.70,
+    "net_interest_income_millions": 181.22,
+    "provision_credit_losses_millions": 11.20,
+    "nii_after_provision_millions": 170.02,
+    "noninterest_income_millions": 15.39,
+    "noninterest_expense_millions": 89.13,
+    "pretax_income_millions": 96.28,
+    "income_tax_expense_millions": 18.83,
+    "net_income_millions": 77.45
+  },
+  "derived_metrics": {
+    "nim_pct": 3.27,
+    "efficiency_ratio_pct": 45.33,
+    "effective_tax_rate_pct": 19.56,
+    "roe_pct": 12.50,
+    "rote_pct": 11.95,
+    "pretax_margin_pct": 48.89
+  },
+  "qoq_comparison": {
+    "q1_2025": {
+      "nii_millions": 183.45,
+      "net_income_millions": 75.32,
+      "nim_pct": 3.30,
+      "efficiency_ratio_pct": 46.87
+    },
+    "q2_2025": {
+      "nii_millions": 181.22,
+      "net_income_millions": 77.45,
+      "nim_pct": 3.27,
+      "efficiency_ratio_pct": 45.33
+    },
+    "changes": {
+      "nii_millions": -2.23,
+      "net_income_millions": 2.13,
+      "nim_bps": -3,
+      "efficiency_ratio_bps": -154
+    }
+  },
+  "yoy_comparison": {
+    "q2_2024": {
+      "nii_millions": 189.67,
+      "net_income_millions": 81.23,
+      "nim_pct": 3.42,
+      "efficiency_ratio_pct": 44.21
+    },
+    "q2_2025": {
+      "nii_millions": 181.22,
+      "net_income_millions": 77.45,
+      "nim_pct": 3.27,
+      "efficiency_ratio_pct": 45.33
+    },
+    "changes_pct": {
+      "nii": -4.5,
+      "net_income": -4.7,
+      "nim_bps": -15,
+      "efficiency_ratio_bps": 112
+    }
+  },
+  "ltm_metrics": {
+    "period_ending": "2025-06-30",
+    "nii_millions": 728.94,
+    "net_income_millions": 294.67,
+    "eps_diluted": 4.25,
+    "roe_pct": 12.03,
+    "rote_pct": 11.95,
+    "nim_pct": 3.31
+  },
+  "revenue_breakdown": {
+    "interest_income_pct": 95.45,
+    "noninterest_income_pct": 4.55,
+    "total_revenue_millions": 338.31
+  },
+  "qa_checks": {
+    "checks": [
+      {
+        "id": "IS-QA001",
+        "description": "Pretax income identity",
+        "rule": "pretax_income == net_interest_income_after_provision + noninterest_income - noninterest_expense",
+        "tolerance": "10 bps",
+        "status": "PASSED"
+      },
+      {
+        "id": "IS-QA002",
+        "description": "Net income identity",
+        "rule": "net_income == pretax_income - income_tax_expense",
+        "tolerance": "10 bps",
+        "status": "PASSED"
+      },
+      {
+        "id": "IS-QA003",
+        "description": "EPS calculation check",
+        "rule": "eps_diluted == net_income / diluted_shares",
+        "tolerance": "0.01%",
+        "status": "PASSED"
+      },
+      {
+        "id": "IS-QA004",
+        "description": "NIM uses period average earning assets",
+        "rule": "avg_earning_assets source must be 'Average Balance Sheet' table",
+        "tolerance": "N/A",
+        "status": "PASSED"
+      }
+    ]
+  }
+}
