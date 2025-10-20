@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generated_at_utc": "2025-10-20T19:58:50Z",
+  "generated_at_utc": "2025-10-20T20:16:51Z",
   "company": {
     "name": "HANMI FINANCIAL CORPORATION",
     "ticker": "HAFC",
@@ -40,6 +40,7 @@
     ],
     "annual_incentive": {},
     "ltip": {},
+    "ceo_pay_ratio_to_median": 29,
     "say_on_pay_pct": null
   },
   "equity_plan": {
@@ -75,6 +76,19 @@
       "page_range": null,
       "text_snippet": "Bonita I. Lee 2024 780,000 803,409 603,893 81,000 2,268,302",
       "confidence_pct": 95,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1109242/000095017025054713/hafc-20250416.htm",
+      "sha256": "385a6cf4ccc02829890e015605fc84554b8a958f5fc820b396de0079c79649b2"
+    },
+    {
+      "section": "compensation.ceo_pay_ratio_to_median",
+      "method": "regex",
+      "locators": [
+        "regex context search",
+        "regex: (\\d+) to 1"
+      ],
+      "page_range": null,
+      "text_snippet": "for 2024 of the annual total compensation of our CEO to the median of the annual total compensation of all employees is 29 to 1. SEC rules allow us to identify our median employee once every three years unless there has been a change in our employ",
+      "confidence_pct": 85,
       "source_url": "https://www.sec.gov/Archives/edgar/data/1109242/000095017025054713/hafc-20250416.htm",
       "sha256": "385a6cf4ccc02829890e015605fc84554b8a958f5fc820b396de0079c79649b2"
     },

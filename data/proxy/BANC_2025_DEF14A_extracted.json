@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generated_at_utc": "2025-10-20T20:03:13Z",
+  "generated_at_utc": "2025-10-20T20:16:52Z",
   "company": {
     "name": "BANC OF CALIFORNIA, INC.",
     "ticker": "BANC",
@@ -40,6 +40,7 @@
     ],
     "annual_incentive": {},
     "ltip": {},
+    "ceo_pay_ratio_to_median": 132,
     "say_on_pay_pct": null
   },
   "equity_plan": {
@@ -75,6 +76,19 @@
       "page_range": null,
       "text_snippet": "Jared Wolff (5)(6) 2024 $ 1,043,269 $ 2,200,000 $ 7,637,070 $ 1,181,250 $ 67,686 $ 12,129,275",
       "confidence_pct": 95,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1169770/000116977025000015/banc-20250327.htm",
+      "sha256": "b38fd5eb7974c7bd1f0a8df5b2b4815fda7b5dda7b6ee8af1f13cc4c55e7a2dc"
+    },
+    {
+      "section": "compensation.ceo_pay_ratio_to_median",
+      "method": "regex",
+      "locators": [
+        "regex context search",
+        "regex: (\\d+):1"
+      ],
+      "page_range": null,
+      "text_snippet": "he ratio of the annual total compensation of Mr. Wolff to the median annual total compensation of all our employees was 132:1. (1) Includes: (i) Stockholder Value Creation Award equity award with grant date fair value of approximately $4.8 milli",
+      "confidence_pct": 85,
       "source_url": "https://www.sec.gov/Archives/edgar/data/1169770/000116977025000015/banc-20250327.htm",
       "sha256": "b38fd5eb7974c7bd1f0a8df5b2b4815fda7b5dda7b6ee8af1f13cc4c55e7a2dc"
     },

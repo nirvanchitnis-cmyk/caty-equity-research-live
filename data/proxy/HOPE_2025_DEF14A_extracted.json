@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generated_at_utc": "2025-10-20T20:03:26Z",
+  "generated_at_utc": "2025-10-20T20:16:52Z",
   "company": {
     "name": "HOPE BANCORP, INC.",
     "ticker": "HOPE",
@@ -40,6 +40,7 @@
     ],
     "annual_incentive": {},
     "ltip": {},
+    "ceo_pay_ratio_to_median": 45,
     "say_on_pay_pct": null
   },
   "equity_plan": {
@@ -75,6 +76,19 @@
       "page_range": null,
       "text_snippet": "Kevin S. Kim Chairman, President\u00a0& Chief\u00a0Executive Officer 2024 $ 1,086,538 $ 189,700 $ 1,604,158 \u2014 $ 351,560 $ 6,699 $ 76,113 $ 3,314,768",
       "confidence_pct": 95,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1128361/000119312525078439/d888910ddef14a.htm",
+      "sha256": "a96d7c937da6dcf1bcffa0accd84c1a25b760e9197441c7ce500ab663e90bb58"
+    },
+    {
+      "section": "compensation.ceo_pay_ratio_to_median",
+      "method": "regex",
+      "locators": [
+        "regex context search",
+        "regex: (\\d+):1"
+      ],
+      "page_range": null,
+      "text_snippet": "CEO Total Compensation $ 3,314,768 Median Employee Annual Total Compensation $ 73,454 CEO to Median Employee Pay Ratio 45:1 Our Chief Executive Officer pay ratio is a reasonable estimate calculated in a manner consistent with SEC rules. Our me",
+      "confidence_pct": 85,
       "source_url": "https://www.sec.gov/Archives/edgar/data/1128361/000119312525078439/d888910ddef14a.htm",
       "sha256": "a96d7c937da6dcf1bcffa0accd84c1a25b760e9197441c7ce500ab663e90bb58"
     },

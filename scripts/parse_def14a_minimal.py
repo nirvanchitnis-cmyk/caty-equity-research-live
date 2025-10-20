@@ -83,6 +83,16 @@ AUDITOR_PATTERNS: List[Tuple[re.Pattern[str], str]] = [
     (re.compile(r"crowe(?:\s+llp)?", re.IGNORECASE), "Crowe LLP"),
 ]
 
+PAY_RATIO_HEADINGS = re.compile(r"pay\s+ratio", re.IGNORECASE)
+PAY_RATIO_REGEXES: List[Tuple[re.Pattern[str], str]] = [
+    (re.compile(r"(\d[\d,\.]*)\s*:\s*1", re.IGNORECASE), "regex: (\\d+):1"),
+    (re.compile(r"1\s*:\s*(\d[\d,\.]*)", re.IGNORECASE), "regex: 1:(\\d+)"),
+    (re.compile(r"(\d[\d,\.]*)\s*(?:to|–|-|—)\s*1", re.IGNORECASE), "regex: (\\d+) to 1"),
+    (re.compile(r"1\s*(?:to|–|-|—)\s*(\d[\d,\.]*)", re.IGNORECASE), "regex: 1 to (\\d+)"),
+    (re.compile(r"(\d[\d,\.]*)\s+(?:times|x)\b", re.IGNORECASE), "regex: (\\d+) times"),
+]
+HEADING_TAGS = {"h1", "h2", "h3", "h4", "h5", "h6"}
+
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
@@ -167,6 +177,32 @@ def make_snippet(text: str, start: int, end: int, radius: int = 120) -> str:
     return snippet[:500]
 
 
+def _collect_section_text(tag: Any, max_chars: int = 4000) -> str:
+    pieces: List[str] = []
+    initial = tag.get_text(" ", strip=True)
+    if initial:
+        pieces.append(initial)
+    consumed = sum(len(part) for part in pieces)
+    for sibling in tag.next_siblings:
+        if consumed >= max_chars:
+            break
+        if isinstance(sibling, NavigableString):
+            text_value = str(sibling).strip()
+            if not text_value:
+                continue
+            pieces.append(text_value)
+            consumed += len(text_value)
+            continue
+        name = getattr(sibling, "name", "")
+        if name and name.lower() in HEADING_TAGS:
+            break
+        text_value = sibling.get_text(" ", strip=True)
+        if text_value:
+            pieces.append(text_value)
+            consumed += len(text_value)
+    return " ".join(pieces)
+
+
 def extract_board_size(text: str, soup: BeautifulSoup) -> Tuple[int, int, str, List[str], str]:
     for pattern, locator in BOARD_SIZE_REGEXES:
         match = pattern.search(text)
@@ -191,11 +227,12 @@ def extract_ceo_name(soup: BeautifulSoup) -> Tuple[str, int, str, List[str], str
     summary_table = None
     for table in soup.find_all("table"):
         header_rows = table.find_all("tr", limit=8)
-        header_text = " ".join(
-            cell.get_text(" ", strip=True).lower()
+        header_text_raw = " ".join(
+            cell.get_text(" ", strip=True)
             for row in header_rows
             for cell in row.find_all(["td", "th"])
         )
+        header_text = re.sub(r"\s+", " ", header_text_raw.replace(" ", " ")).lower()
         if "name and principal" in header_text and "salary" in header_text:
             summary_table = table
             break
@@ -249,6 +286,64 @@ def extract_auditor(text: str) -> Tuple[str, int, str, List[str], str]:
             if "independent registered public accounting firm" in context or "independent auditor" in context or "independent auditors" in context:
                 return canonical, 90, "regex", [f"text contains: {pattern.pattern}"], snippet
     raise ValueError("Auditor not identified in filing text.")
+
+
+def extract_ceo_pay_ratio(text: str, soup: BeautifulSoup) -> Tuple[int, int, str, List[str], str]:
+    text_lower = text.lower()
+
+    def parse_ratio(raw: str) -> int:
+        clean = raw.replace(",", "")
+        try:
+            value = float(clean)
+        except ValueError as exc:
+            raise ValueError(f"Unable to parse CEO pay ratio value: {raw}") from exc
+        return int(round(value))
+
+    def snippet_for_match(match_text: str, start: int, end: int) -> str:
+        return make_snippet(text, start, end)
+
+    for heading in soup.find_all(HEADING_TAGS):
+        heading_text = heading.get_text(" ", strip=True)
+        if not heading_text or not PAY_RATIO_HEADINGS.search(heading_text):
+            continue
+        section_text = _collect_section_text(heading)
+        if not section_text:
+            continue
+        section_lower = section_text.lower()
+        for pattern, locator in PAY_RATIO_REGEXES:
+            match = pattern.search(section_text)
+            if not match:
+                continue
+            context_ok = "pay ratio" in section_lower or (
+                "median" in section_lower
+                and ("employee" in section_lower or "associates" in section_lower)
+                and ("ceo" in section_lower or "chief executive" in section_lower)
+            )
+            if not context_ok:
+                continue
+            ratio = parse_ratio(match.group(1))
+            match_text = match.group(0)
+            locate = text_lower.find(match_text.lower())
+            if locate != -1:
+                snippet = snippet_for_match(match_text, locate, locate + len(match_text))
+            else:
+                snippet = section_text[:500]
+            locators = [f"{heading.name}: {heading_text}", locator]
+            return ratio, 85, "regex", locators, snippet
+
+    for pattern, locator in PAY_RATIO_REGEXES:
+        for match in pattern.finditer(text):
+            context = text_lower[max(0, match.start() - 200) : min(len(text_lower), match.end() + 200)]
+            if "median" in context and ("employee" in context or "associates" in context) and (
+                "ceo" in context or "chief executive" in context or "pay ratio" in context or "ratio" in context
+            ):
+                ratio = parse_ratio(match.group(1))
+                snippet = snippet_for_match(match.group(0), match.start(), match.end())
+                locators = ["regex context search", locator]
+                confidence = 85
+                return ratio, confidence, "regex", locators, snippet
+
+    raise ValueError("CEO pay ratio disclosure not found.")
 
 
 def build_company_info(
@@ -314,6 +409,7 @@ def build_output_skeleton() -> Dict[str, Any]:
             "neos": [],
             "annual_incentive": {},
             "ltip": {},
+            "ceo_pay_ratio_to_median": None,
             "say_on_pay_pct": None,
         },
         "equity_plan": {
@@ -358,6 +454,7 @@ def main() -> None:
 
         board_size, board_conf, board_method, board_locators, board_snippet = extract_board_size(text, soup)
         ceo_name, ceo_conf, ceo_method, ceo_locators, ceo_snippet = extract_ceo_name(soup)
+        ceo_pay_ratio, pay_ratio_conf, pay_ratio_method, pay_ratio_locators, pay_ratio_snippet = extract_ceo_pay_ratio(text, soup)
         auditor_name, auditor_conf, auditor_method, auditor_locators, auditor_snippet = extract_auditor(text)
 
         company_info = build_company_info(soup, args.ticker, manifest_entry)
@@ -377,6 +474,7 @@ def main() -> None:
         payload["compensation"]["neos"] = [
             {"role": "CEO", "name": ceo_name, "total_comp_usd": None}
         ]
+        payload["compensation"]["ceo_pay_ratio_to_median"] = ceo_pay_ratio
         payload["audit"]["auditor"] = auditor_name
         payload["provenance"] = [
             {
@@ -396,6 +494,16 @@ def main() -> None:
                 "page_range": None,
                 "text_snippet": ceo_snippet,
                 "confidence_pct": ceo_conf,
+                "source_url": manifest_entry.get("def14a_url"),
+                "sha256": manifest_entry.get("sha256"),
+            },
+            {
+                "section": "compensation.ceo_pay_ratio_to_median",
+                "method": pay_ratio_method,
+                "locators": pay_ratio_locators,
+                "page_range": None,
+                "text_snippet": pay_ratio_snippet,
+                "confidence_pct": pay_ratio_conf,
                 "source_url": manifest_entry.get("def14a_url"),
                 "sha256": manifest_entry.get("sha256"),
             },

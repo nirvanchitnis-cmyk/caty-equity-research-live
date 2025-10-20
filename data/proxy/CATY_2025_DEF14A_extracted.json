@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generated_at_utc": "2025-10-20T19:49:57Z",
+  "generated_at_utc": "2025-10-20T20:16:49Z",
   "company": {
     "name": "CATHAY GENERAL BANCORP",
     "ticker": "CATY",
@@ -40,6 +40,7 @@
     ],
     "annual_incentive": {},
     "ltip": {},
+    "ceo_pay_ratio_to_median": 56,
     "say_on_pay_pct": null
   },
   "equity_plan": {
@@ -70,12 +71,24 @@
       "section": "compensation.neos[0].name",
       "method": "html_parse",
       "locators": [
-        "heading: Summary Compensation Table",
-        "table: first data row"
+        "table header: Name and Principal Position"
       ],
       "page_range": null,
       "text_snippet": "Chang M. Liu President and Chief Executive Officer of Bancorp and Cathay Bank 2024 943,250 \u2014 1,901,973 \u2014 825,400 \u2014 17,250 3,687,873",
       "confidence_pct": 95,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/861842/000143774925011577/caty20250326_def14a.htm",
+      "sha256": "43e4b3f0e50309c5655842d10d47e4e38788709c7cfb7ff3e7a6986f53028873"
+    },
+    {
+      "section": "compensation.ceo_pay_ratio_to_median",
+      "method": "regex",
+      "locators": [
+        "regex context search",
+        "regex: (\\d+) to 1"
+      ],
+      "page_range": null,
+      "text_snippet": "tion, for 2024, the ratio of Mr. Liu\u2019s Annual Total Compensation to our median employee\u2019s Annual Total Compensation was 56 to 1. We believe this ratio is a reasonable estimate calculated in a manner consistent with Item 402(u) of Regulation S-K us",
+      "confidence_pct": 85,
       "source_url": "https://www.sec.gov/Archives/edgar/data/861842/000143774925011577/caty20250326_def14a.htm",
       "sha256": "43e4b3f0e50309c5655842d10d47e4e38788709c7cfb7ff3e7a6986f53028873"
     },

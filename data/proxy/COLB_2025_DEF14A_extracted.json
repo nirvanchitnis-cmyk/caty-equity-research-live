@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generated_at_utc": "2025-10-20T20:02:39Z",
+  "generated_at_utc": "2025-10-20T20:16:51Z",
   "company": {
     "name": "COLUMBIA BANKING SYSTEM, INC.",
     "ticker": "COLB",
@@ -40,6 +40,7 @@
     ],
     "annual_incentive": {},
     "ltip": {},
+    "ceo_pay_ratio_to_median": 82,
     "say_on_pay_pct": null
   },
   "equity_plan": {
@@ -75,6 +76,19 @@
       "page_range": null,
       "text_snippet": "Clint E. Stein , President and Chief Executive Officer 2024 1,150,000 \u2014 3,173,878 1,711,200 31,524 274,326 6,340,928",
       "confidence_pct": 95,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/887343/000088734325000152/colb-20250403.htm",
+      "sha256": "2005b04b361e6bb5f11350b07a644ae28b1d4be62112413b979f2312fa29b7d9"
+    },
+    {
+      "section": "compensation.ceo_pay_ratio_to_median",
+      "method": "regex",
+      "locators": [
+        "regex context search",
+        "regex: (\\d+) to 1"
+      ],
+      "page_range": null,
+      "text_snippet": "pensation Table ($) (A) Median Total Annual Compensation of Our Associates ($) (B) Ratio of (A) to (B) 6,340,928 74,509 82 to 1 To identify our median associate, we used our entire associate population as of December 31, 2024 . We measured compens",
+      "confidence_pct": 85,
       "source_url": "https://www.sec.gov/Archives/edgar/data/887343/000088734325000152/colb-20250403.htm",
       "sha256": "2005b04b361e6bb5f11350b07a644ae28b1d4be62112413b979f2312fa29b7d9"
     },
