@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>CATY - Balance Sheet | Data Repository</title>
     <link rel="stylesheet" href="styles/caty-equity-research.css">
 </head>
@@ -93,6 +93,7 @@
                     <strong>URL:</strong> <a href="https://www.sec.gov/Archives/edgar/data/0000861842/000143774925025772/" target="_blank" rel="noopener noreferrer">View Filing</a>
                 </div>
             </div>
+            <!-- END AUTOGEN: caty03-qa-metric-grid -->
         </section>
 
         <!-- ======================================== -->
@@ -134,7 +135,7 @@
                     </tr>
                     <tr>
                         <td>Cash</td>
-                        <td class="numeric">$1,247.0</td>
+                        <td class="numeric">$190.0</td>
                     </tr>
                     <tr>
                         <td><strong>Total Deposits</strong></td>
@@ -198,6 +199,7 @@
                     <strong>URL:</strong> <a href="https://www.sec.gov/Archives/edgar/data/0000861842/000143774925025772/" target="_blank" rel="noopener noreferrer">View Filing</a>
                 </div>
             </div>
+            <!-- END AUTOGEN: caty03-qa-metric-grid -->
         </section>
 
         <!-- ======================================== -->
@@ -209,7 +211,6 @@
             <h3>Fiscal Year 2024</h3>
 
             <!-- BEGIN AUTOGEN: caty03-fy2024-detailed-table -->
-            <!-- TODO: Add FY2024 balance sheet automation once data is structured -->
             <table>
                 <thead>
                     <tr>
@@ -260,7 +261,7 @@
                     </tr>
                     <tr>
                         <td>Subordinated Debt</td>
-                        <td class="numeric">N/A</td>
+                        <td class="numeric">$0.0</td>
                     </tr>
                     <tr>
                         <td><strong>Total Equity</strong></td>
@@ -306,6 +307,7 @@
                     <strong>URL:</strong> <a href="https://www.sec.gov/Archives/edgar/data/0000861842/000143774925005749/" target="_blank" rel="noopener noreferrer">View Filing</a>
                 </div>
             </div>
+            <!-- END AUTOGEN: caty03-qa-metric-grid -->
         </section>
 
         <!-- ======================================== -->
@@ -348,7 +350,6 @@
             <h3>FY2024 Deposit Mix</h3>
 
             <!-- BEGIN AUTOGEN: caty03-fy2024-deposit-mix -->
-            <!-- TODO: Wire FY2024 deposit mix when data is extended -->
             <table>
                 <thead>
                     <tr>
@@ -426,7 +427,6 @@
             <h3>TCE Calculation - FY2024</h3>
 
             <!-- BEGIN AUTOGEN: caty03-fy2024-tce-calc -->
-            <!-- TODO: Add FY2024 TCE calculation automation when data source added -->
             <table>
                 <thead>
                     <tr>
@@ -447,7 +447,7 @@
                         <td>Less: Intangible Assets</td>
                         <td class="numeric">($3.3)</td>
                     </tr>
-                    <tr>
+                    <tr class="subtotal">
                         <td><strong>Tangible Common Equity</strong></td>
                         <td class="numeric">$2,466.7</td>
                     </tr>
@@ -455,7 +455,7 @@
                         <td>Shares Outstanding (millions)</td>
                         <td class="numeric">70.863</td>
                     </tr>
-                    <tr>
+                    <tr class="total">
                         <td><strong>TBVPS</strong></td>
                         <td class="numeric">$34.81</td>
                     </tr>
@@ -532,6 +532,7 @@
         <section id="qa-checks">
             <h2>Quality Assurance Checks</h2>
 
+            <!-- BEGIN AUTOGEN: caty03-qa-checks-table -->
             <table>
                 <thead>
                     <tr>
@@ -552,21 +553,23 @@
                     </tr>
                 </tbody>
             </table>
+            <!-- END AUTOGEN: caty03-qa-checks-table -->
 
             <h3>Verification Results</h3>
+            <!-- BEGIN AUTOGEN: caty03-qa-metric-grid -->
             <div class="metric-grid">
-                <div class="metric-card">
-                    <div class="metric-label">Q2'25 TBVPS Verification</div>
-                    <div class="metric-value">$36.16</div>
-                    <div class="metric-subtext">Calculated: $2,507.7M / 69.343M = $36.16 ✓</div>
-                </div>
-
-                <div class="metric-card">
-                    <div class="metric-label">FY2024 TBVPS Verification</div>
-                    <div class="metric-value">$34.81</div>
-                    <div class="metric-subtext">Calculated: $2,466.7M / 70.863M = $34.81 ✓</div>
-                </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Q2'25 TBVPS Verification</div>
+                        <div class="metric-value">$36.16</div>
+                        <div class="metric-subtext">Calculated: $2507.7M / 69.343M = $$36.16 ✓</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">FY2024 TBVPS Verification</div>
+                        <div class="metric-value">$34.81</div>
+                        <div class="metric-subtext">Calculated: $2466.7M / 70.863M = $$34.81 ✓</div>
+                    </div>
             </div>
+            <!-- END AUTOGEN: caty03-qa-metric-grid -->
         </section>
 
         <!-- ======================================== -->
@@ -579,7 +582,7 @@
                 <tbody>
                     <tr>
                         <td><strong>Schema Version</strong></td>
-                        <td>1.0.0</td>
+                        <td>Version One</td>
                     </tr>
                     <tr>
                         <td><strong>File Number</strong></td>

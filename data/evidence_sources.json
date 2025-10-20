@@ -59,7 +59,7 @@
       "status": "VERIFIED_OK"
     },
     {
-      "accession": "0001437749-25-025772",
+      "accession": null,
       "description": "SEC EDGAR companyfacts API payload for CATY",
       "id": "sec_edgar_api",
       "last_verified": "2025-10-19",

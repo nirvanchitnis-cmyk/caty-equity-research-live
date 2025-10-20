@@ -43,11 +43,17 @@ TAG_MAP: Dict[str, str] = {
     "LoansAndLeasesReceivableNetOfDeferredIncome": "us-gaap:LoansAndLeasesReceivableNetOfDeferredIncome",
     "AllowanceForLoanAndLeaseLosses": "us-gaap:AllowanceForLoanAndLeaseLosses",
     "Deposits": "us-gaap:Deposits",
+    "InterestBearingDepositLiabilities": "us-gaap:InterestBearingDepositLiabilities",
     "StockholdersEquity": "us-gaap:StockholdersEquity",
     "Goodwill": "us-gaap:Goodwill",
     "IntangibleAssetsNetExcludingGoodwill": "us-gaap:IntangibleAssetsNetExcludingGoodwill",
     "AccumulatedOtherComprehensiveIncomeLossNetOfTax": "us-gaap:AccumulatedOtherComprehensiveIncomeLossNetOfTax",
     "CommonStockSharesOutstanding": "us-gaap:CommonStockSharesOutstanding",
+    "CashAndDueFromBanks": "us-gaap:CashAndDueFromBanks",
+    "AvailableForSaleSecurities": "us-gaap:AvailableForSaleSecurities",
+    "LoansHeldForSaleFairValueDisclosure": "us-gaap:LoansHeldForSaleFairValueDisclosure",
+    "FederalHomeLoanBankAdvances": "us-gaap:FederalHomeLoanBankAdvances",
+    "SubordinatedDebt": "us-gaap:SubordinatedDebt",
 }
 
 
@@ -70,7 +76,7 @@ def _http_get_json(url: str) -> Dict[str, Any]:
     return resp.json()
 
 
-def find_recent_filings(limit: int = 2) -> list[Dict[str, Any]]:
+def find_recent_filings(limit: int = 10) -> list[Dict[str, Any]]:
     submissions = _http_get_json(SUBMISSIONS_URL)
     recent = submissions.get("filings", {}).get("recent", {})
     forms = recent.get("form", [])
@@ -219,7 +225,7 @@ def build_payload(
             accession,
             prior_accession,
             latest_filing.get("period_end"),
-            prefer_quarterly=True,
+            prefer_quarterly=latest_filing["form_type"] != "10-K",
         )
         if fact is None:
             missing_tags.append(tag)
@@ -260,17 +266,38 @@ def main() -> int:
         format="%(asctime)s %(levelname)s %(message)s",
     )
     try:
-        filings = find_recent_filings(limit=2)
-        latest_filing = filings[0]
-        prior_filing = filings[1] if len(filings) > 1 else None
-        logging.info(
-            "Latest filing: %s accession=%s period_end=%s",
-            latest_filing["form_type"],
-            latest_filing["accession"],
-            latest_filing["period_end"],
-        )
-        facts = load_company_facts()
-        payload = build_payload(latest_filing, prior_filing, facts.get("facts", {}))
+        filings = find_recent_filings(limit=10)
+        latest_10q = next((f for f in filings if f["form_type"] == "10-Q"), None)
+        latest_10k = next((f for f in filings if f["form_type"] == "10-K"), None)
+        if not latest_10q and not latest_10k:
+            raise RuntimeError("Unable to locate latest 10-Q or 10-K filings in submissions feed.")
+
+        facts_response = load_company_facts()
+        facts = facts_response.get("facts", {})
+
+        payload: Dict[str, Any] = {
+            "source": "SEC EDGAR",
+            "fetch_timestamp": _now_utc_iso(),
+            "cik": CIK,
+            "ticker": "CATY",
+        }
+
+        if latest_10q:
+            logging.info(
+                "Processing 10-Q accession=%s period_end=%s",
+                latest_10q["accession"],
+                latest_10q.get("period_end"),
+            )
+            payload["q2_2025"] = build_payload(latest_10q, None, facts)
+
+        if latest_10k:
+            logging.info(
+                "Processing 10-K accession=%s period_end=%s",
+                latest_10k["accession"],
+                latest_10k.get("period_end"),
+            )
+            payload["fy2024"] = build_payload(latest_10k, None, facts)
+
         write_json(OUTPUT_PATH, payload)
         logging.info("Wrote %s", OUTPUT_PATH.relative_to(ROOT))
         return 0
