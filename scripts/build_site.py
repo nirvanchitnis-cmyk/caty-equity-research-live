@@ -135,6 +135,9 @@ def build_narrative_replacements(market: Dict[str, Any], timestamps: Dict[str, s
         "cre_loans_pct": fmt_number(metrics.get("cre_loans_pct"), decimals=1),
         "brokered_deposit_pct": fmt_number(metrics.get("brokered_deposit_pct"), decimals=2),
         "nco_rate_bps": fmt_number(metrics.get("nco_rate_bps"), decimals=1),
+        "acl_amount_millions": fmt_number(metrics.get("acl_amount_millions"), decimals=1, comma=True),
+        "deposit_beta_interest_bearing": fmt_number(metrics.get("deposit_beta_interest_bearing"), decimals=3),
+        "nib_pct": fmt_number(metrics.get("nib_pct"), decimals=1),
         "tbvps": fmt_number(metrics.get("tbvps"), decimals=2, comma=True),
     }
 
@@ -245,6 +248,69 @@ def render_price_target_grid(replacements: Dict[str, str]) -> str:
         )
     lines.append("</div>")
     return "\n".join(lines)
+
+
+def render_recent_developments_section(developments: Dict[str, Any], replacements: Dict[str, str]) -> str:
+    if not developments:
+        return "<h2>Recent Developments</h2>\n<p>No recent developments available.</p>"
+
+    time_window = developments.get("time_window")
+    heading = "<h2>Recent Developments</h2>"
+    if time_window:
+        heading = f"<h2>Recent Developments ({time_window})</h2>"
+
+    items: list[str] = []
+    for item in developments.get("developments", []):
+        date_raw = item.get("date")
+        formatted_date = format_date_value(date_raw, "long") if date_raw else str(item.get("date_display", ""))
+        event = item.get("event", "")
+        time = item.get("time")
+        if time:
+            event = f"{event} ({time})" if event else time
+
+        details_parts = []
+        for key in ("impact", "description", "context"):
+            value = item.get(key)
+            if value:
+                details_parts.append(value)
+        details = " - ".join(details_parts)
+
+        bullet = f"<li><strong>{formatted_date}:</strong>"
+        if event:
+            bullet += f" {event}"
+        if details:
+            separator = " - " if event else " "
+            bullet += f"{separator}{details}"
+        bullet += "</li>"
+        items.append(bullet)
+
+    list_html = "<ul>\n    " + "\n    ".join(items) + "\n</ul>" if items else "<ul></ul>"
+    return "\n".join([heading, list_html])
+
+
+def render_investment_risks_section(context: Dict[str, Any], replacements: Dict[str, str]) -> str:
+    narrative = context.get("narrative_prose") or {}
+    risks = narrative.get("investment_risks") or []
+
+    if not risks:
+        return "<h2>Investment Risks</h2>\n<p>No material risks identified.</p>"
+
+    bullets = []
+    for risk in risks:
+        risk_name = risk.get("risk", "")
+        severity = risk.get("severity", "")
+        label = risk_name
+        if risk_name and severity:
+            label = f"{risk_name} ({severity})"
+        elif severity:
+            label = severity
+
+        description_template = risk.get("description")
+        description = render_template_string(description_template, replacements) if description_template else ""
+        bullets.append(f"<li><strong>{label}:</strong> {description}</li>")
+
+    list_html = "<ul>\n    " + "\n    ".join(bullets) + "\n</ul>"
+    return "\n".join(["<h2>Investment Risks</h2>", list_html])
 
 
 def render_report_meta(timestamps: Dict[str, str]) -> str:
@@ -997,6 +1063,7 @@ def main(test_mode: bool = False) -> int:
         caty16_tables = load_json(ROOT / "data" / "caty16_coe_triangulation.json") if (ROOT / "data" / "caty16_coe_triangulation.json").exists() else {}
         caty15_tables = load_json(ROOT / "data" / "caty15_esg_materiality.json") if (ROOT / "data" / "caty15_esg_materiality.json").exists() else {}
         caty17_tables = load_json(ROOT / "data" / "caty17_esg_kpi.json") if (ROOT / "data" / "caty17_esg_kpi.json").exists() else {}
+        recent_developments = load_json(ROOT / "data" / "recent_developments.json") if (ROOT / "data" / "recent_developments.json").exists() else {}
 
         context = {
             "market": market,
@@ -1006,6 +1073,7 @@ def main(test_mode: bool = False) -> int:
             "module_metadata": module_metadata,
             "calculated_metrics": market.get("calculated_metrics", {}),
             "narrative_prose": market.get("narrative_prose", {}),
+            "recent_developments": recent_developments,
             "caty01_tables": caty01_tables,
             "caty02_tables": caty02_tables,
             "caty03_tables": caty03_tables,
@@ -1037,6 +1105,8 @@ def main(test_mode: bool = False) -> int:
         html = replace_section(html, "key-findings-bullets", render_key_findings(narrative_placeholders))
         html = replace_section(html, "valuation-framework-caption", render_price_target_caption(narrative_placeholders))
         html = replace_section(html, "valuation-framework-grid", render_price_target_grid(narrative_placeholders))
+        html = replace_section(html, "recent-developments-section", render_recent_developments_section(recent_developments, narrative_placeholders))
+        html = replace_section(html, "investment-risks-bullets", render_investment_risks_section(context, narrative_placeholders))
 
         reconciliation_html = build_reconciliation_table()
         html = replace_section(html, "reconciliation-dashboard", reconciliation_html)

@@ -1,0 +1,18 @@
+{
+  "time_window": "Last 90 Days (July 20 - October 20, 2025)",
+  "developments": [
+    {
+      "date": "2025-10-21",
+      "event": "Q3 Earnings Call",
+      "time": "3:00 PM ET",
+      "impact": "Monitor for loan growth, NIM guidance, CRE updates",
+      "importance": "HIGH"
+    },
+    {
+      "date": "2025-10-20",
+      "event": "Stock Price Update",
+      "description": "CATY closed at $47.00, down from 52-week high $55.29",
+      "context": "Pullback reflects broader regional bank sector weakness"
+    }
+  ]
+}

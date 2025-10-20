@@ -58,6 +58,23 @@
   },
   "narrative_prose": {
     "investment_thesis_summary": "{{company}} ({{ticker}}) trades at ${{price}} ({{price_date}}) with expected return of {{return_wilson_95_pct}}% to Wilson 95% target ${{target_wilson_95}}. Current P/TBV {{current_ptbv}}x represents premium to normalized {{normalized_ptbv}}x, driven by current earnings (ROTE {{rote_ltm_pct}}%) vs through-cycle assumptions (NCO {{through_cycle_nco_bps}} bps).",
-    "rating_rationale": "{{rating}} rating reflects {{return_wilson_95_pct}}% expected return within -10% to +15% threshold."
+    "rating_rationale": "{{rating}} rating reflects {{return_wilson_95_pct}}% expected return within -10% to +15% threshold.",
+    "investment_risks": [
+      {
+        "risk": "CRE Concentration",
+        "severity": "HIGH",
+        "description": "CRE {{cre_loans_pct}}% of loans, above peer median ~41%. Office exposure tail risk if values decline 20% = $500M loss vs ${{acl_amount_millions}}M ACL."
+      },
+      {
+        "risk": "Through-Cycle NCO Normalization",
+        "severity": "MEDIUM",
+        "description": "Current NCO {{nco_rate_bps}} bps below through-cycle {{through_cycle_nco_bps}} bps. Normalizing provision reduces ROTE from {{rote_ltm_pct}}% to {{normalized_rote_pct}}%."
+      },
+      {
+        "risk": "NIM Compression",
+        "severity": "MEDIUM",
+        "description": "IB-Only Beta {{deposit_beta_interest_bearing}}, 100 bps Fed cuts → ~50 bps NIM impact. NIB mix {{nib_pct}}% provides limited cushion."
+      }
+    ]
   }
 }
