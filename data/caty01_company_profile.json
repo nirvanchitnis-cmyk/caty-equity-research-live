@@ -168,5 +168,28 @@
       "Diversify loan portfolio away from CRE concentration (52% → target 45% by 2026) through C&I growth and SBA expansion"
     ],
     "execution_track_record": "ROTE 11.95% (Q2'25) vs peer median 10.2%; CET1 13.35% maintaining well-capitalized buffer; efficiency ratio 46.9% in top quartile; dividend increased 6 consecutive years through 2024"
+  },
+  "charts": {
+    "revenue_breakdown": {
+      "chart_id": "caty01-revenue-chart",
+      "chart_type": "doughnut",
+      "title": "Revenue Composition",
+      "data": {
+        "labels": ["Net Interest Income", "Fee Income", "Other"],
+        "values": [78, 15, 7],
+        "colors": ["#C41E3A", "#D4AF37", "#8B7355"]
+      }
+    },
+    "geographic_footprint": {
+      "chart_id": "caty01-geography-chart",
+      "chart_type": "bar",
+      "title": "Branch Network by Region",
+      "data": {
+        "labels": ["California", "New York", "Texas", "Other"],
+        "values": [44, 9, 5, 4],
+        "percentages": [71, 15, 8, 6],
+        "colors": ["#C41E3A", "#D4AF37", "#8B7355", "#1C1C1C"]
+      }
+    }
   }
 }

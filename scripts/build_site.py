@@ -203,7 +203,20 @@ def format_value(raw: Any, fmt: str, spec: Dict[str, Any]) -> str:
             cols = spec.get("columns", [])
             rows_html = []
             for item in raw:
-                cells = [f"<td>{item.get(col, '')}</td>" if i > 0 else f"<td><strong>{item.get(col, '')}</strong></td>" for i, col in enumerate(cols)]
+                cells = []
+                for i, col in enumerate(cols):
+                    val = item.get(col, '')
+                    # First column gets bold
+                    if i == 0:
+                        cells.append(f"<td><strong>{val}</strong></td>")
+                    # Percentage columns get highlight styling
+                    elif '_pct' in col or col == 'contribution_pct':
+                        cells.append(f"<td class=\"numeric highlight-number\">{val}%</td>")
+                    # Other numeric columns
+                    elif col in ['loans_pct', 'deposits_pct']:
+                        cells.append(f"<td class=\"numeric\">{val}%</td>")
+                    else:
+                        cells.append(f"<td>{val}</td>")
                 rows_html.append(f"<tr>{''.join(cells)}</tr>")
             text = "\n".join(rows_html)
         return text  # No prefix/suffix

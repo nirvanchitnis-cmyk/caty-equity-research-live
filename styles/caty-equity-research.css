@@ -1506,6 +1506,11 @@ a:focus-visible {
     color: var(--danger);
 }
 
+.highlight-number {
+    font-weight: 700;
+    color: var(--cathay-red);
+}
+
 /* Source box variants */
 .source-label-mono {
     font-size: 1.2em;

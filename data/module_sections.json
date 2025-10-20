@@ -177,7 +177,7 @@
           "marker": "caty01-branch-network",
           "type": "text",
           "template": {
-            "template": "<table>\n    <thead>\n        <tr>\n            <th>Region</th>\n            <th class=\"numeric\">Branches</th>\n            <th class=\"numeric\">Portfolio Share</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr><td><strong>Total Network</strong></td><td class=\"numeric\">{total}</td><td class=\"numeric\">100%</td></tr>\n        <tr><td>California</td><td class=\"numeric\">{ca_count}</td><td class=\"numeric\">{ca_pct}%</td></tr>\n        <tr><td>New York</td><td class=\"numeric\">{ny_count}</td><td class=\"numeric\">{ny_pct}%</td></tr>\n        <tr><td>Texas</td><td class=\"numeric\">{tx_count}</td><td class=\"numeric\">{tx_pct}%</td></tr>\n        <tr><td>Other</td><td class=\"numeric\">{other_count}</td><td class=\"numeric\">{other_pct}%</td></tr>\n    </tbody>\n</table>",
+            "template": "<div class=\"chart-container\">\n    <canvas id=\"caty01-geography-chart\"></canvas>\n</div>\n<table>\n    <thead>\n        <tr>\n            <th>Region</th>\n            <th class=\"numeric\">Branches</th>\n            <th class=\"numeric\">Portfolio Share</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr><td><strong>Total Network</strong></td><td class=\"numeric highlight-number\">{total}</td><td class=\"numeric\">100%</td></tr>\n        <tr><td>California</td><td class=\"numeric highlight-number\">{ca_count}</td><td class=\"numeric highlight-number\">{ca_pct}%</td></tr>\n        <tr><td>New York</td><td class=\"numeric\">{ny_count}</td><td class=\"numeric\">{ny_pct}%</td></tr>\n        <tr><td>Texas</td><td class=\"numeric\">{tx_count}</td><td class=\"numeric\">{tx_pct}%</td></tr>\n        <tr><td>Other</td><td class=\"numeric\">{other_count}</td><td class=\"numeric\">{other_pct}%</td></tr>\n    </tbody>\n</table>",
             "placeholders": {
               "{total}": {"source": "caty01_tables", "path": "branch_network.total_branches", "format": "decimal", "decimals": 0},
               "{ca_count}": {"source": "caty01_tables", "path": "branch_network.california_branches", "format": "decimal", "decimals": 0},
@@ -299,7 +299,7 @@
           "marker": "caty01-business-model",
           "type": "text",
           "template": {
-            "template": "<h3>Revenue Drivers</h3>\n<table>\n    <thead><tr><th>Driver</th><th>Contribution %</th><th>Description</th></tr></thead>\n    <tbody>\n{revenue_rows}\n    </tbody>\n</table>\n<h3>Customer Segments</h3>\n<table>\n    <thead><tr><th>Segment</th><th>Loans %</th><th>Deposits %</th></tr></thead>\n    <tbody>\n{customer_rows}\n    </tbody>\n</table>",
+            "template": "<div class=\"chart-container\">\n    <canvas id=\"caty01-revenue-chart\"></canvas>\n</div>\n<h3>Revenue Drivers</h3>\n<table>\n    <thead><tr><th>Driver</th><th>Contribution %</th><th>Description</th></tr></thead>\n    <tbody>\n{revenue_rows}\n    </tbody>\n</table>\n<h3>Customer Segments</h3>\n<table>\n    <thead><tr><th>Segment</th><th>Loans %</th><th>Deposits %</th></tr></thead>\n    <tbody>\n{customer_rows}\n    </tbody>\n</table>",
             "placeholders": {
               "{revenue_rows}": {"source": "caty01_tables", "path": "business_model.revenue_drivers", "format": "list_to_table_rows", "columns": ["driver", "contribution_pct", "description"]},
               "{customer_rows}": {"source": "caty01_tables", "path": "business_model.customer_segments", "format": "list_to_table_rows", "columns": ["segment", "loans_pct", "deposits_pct"]}

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CATY - Company Profile | Corporate Overview</title>
     <link rel="stylesheet" href="styles/caty-equity-research.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 </head>
 <body>
     <!-- Theme Toggle -->
@@ -167,23 +168,26 @@
         <section id="business-model">
             <h2>Business Model & Revenue Drivers</h2>
             <!-- BEGIN AUTOGEN: caty01-business-model -->
+            <div class="chart-container">
+                <canvas id="caty01-revenue-chart"></canvas>
+            </div>
             <h3>Revenue Drivers</h3>
             <table>
                 <thead><tr><th>Driver</th><th>Contribution %</th><th>Description</th></tr></thead>
                 <tbody>
-            <tr><td><strong>Net Interest Income</strong></td><td>78</td><td>Spread on CRE loans, commercial loans, SBA lending portfolio</td></tr>
-            <tr><td><strong>Fee Income</strong></td><td>15</td><td>Wire transfers, trade finance fees, deposit service charges, wealth management</td></tr>
-            <tr><td><strong>Other</strong></td><td>7</td><td>FX trading income, loan prepayment fees, securities gains</td></tr>
+            <tr><td><strong>Net Interest Income</strong></td><td class="numeric highlight-number">78%</td><td>Spread on CRE loans, commercial loans, SBA lending portfolio</td></tr>
+            <tr><td><strong>Fee Income</strong></td><td class="numeric highlight-number">15%</td><td>Wire transfers, trade finance fees, deposit service charges, wealth management</td></tr>
+            <tr><td><strong>Other</strong></td><td class="numeric highlight-number">7%</td><td>FX trading income, loan prepayment fees, securities gains</td></tr>
                 </tbody>
             </table>
             <h3>Customer Segments</h3>
             <table>
                 <thead><tr><th>Segment</th><th>Loans %</th><th>Deposits %</th></tr></thead>
                 <tbody>
-            <tr><td><strong>Commercial Real Estate Investors</strong></td><td>52</td><td>35</td></tr>
-            <tr><td><strong>Import/Export Businesses</strong></td><td>18</td><td>25</td></tr>
-            <tr><td><strong>Retail/Consumer Banking</strong></td><td>15</td><td>40</td></tr>
-            <tr><td><strong>Other Commercial Lending</strong></td><td>15</td><td>0</td></tr>
+            <tr><td><strong>Commercial Real Estate Investors</strong></td><td class="numeric highlight-number">52%</td><td class="numeric highlight-number">35%</td></tr>
+            <tr><td><strong>Import/Export Businesses</strong></td><td class="numeric highlight-number">18%</td><td class="numeric highlight-number">25%</td></tr>
+            <tr><td><strong>Retail/Consumer Banking</strong></td><td class="numeric highlight-number">15%</td><td class="numeric highlight-number">40%</td></tr>
+            <tr><td><strong>Other Commercial Lending</strong></td><td class="numeric highlight-number">15%</td><td class="numeric highlight-number">0%</td></tr>
                 </tbody>
             </table>
             <!-- END AUTOGEN: caty01-business-model -->
@@ -292,6 +296,9 @@
             <h2>Branch Network</h2>
 
             <!-- BEGIN AUTOGEN: caty01-branch-network -->
+            <div class="chart-container">
+                <canvas id="caty01-geography-chart"></canvas>
+            </div>
             <table>
                 <thead>
                     <tr>
@@ -301,8 +308,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr><td><strong>Total Network</strong></td><td class="numeric">62</td><td class="numeric">100%</td></tr>
-                    <tr><td>California</td><td class="numeric">44</td><td class="numeric">71%</td></tr>
+                    <tr><td><strong>Total Network</strong></td><td class="numeric highlight-number">62</td><td class="numeric">100%</td></tr>
+                    <tr><td>California</td><td class="numeric highlight-number">44</td><td class="numeric highlight-number">71%</td></tr>
                     <tr><td>New York</td><td class="numeric">9</td><td class="numeric">15%</td></tr>
                     <tr><td>Texas</td><td class="numeric">5</td><td class="numeric">8%</td></tr>
                     <tr><td>Other</td><td class="numeric">4</td><td class="numeric">6%</td></tr>
@@ -420,5 +427,106 @@
     </footer>
 
     <script src="scripts/theme-toggle.js"></script>
+    <script>
+        // CATY_01 Charts - Data-driven from caty01_company_profile.json
+        document.addEventListener('DOMContentLoaded', function() {
+            // Chart 1: Revenue Breakdown (Doughnut)
+            const revenueCtx = document.getElementById('caty01-revenue-chart');
+            if (revenueCtx) {
+                new Chart(revenueCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Net Interest Income', 'Fee Income', 'Other'],
+                        datasets: [{
+                            data: [78, 15, 7],
+                            backgroundColor: ['#C41E3A', '#D4AF37', '#8B7355'],
+                            borderWidth: 0
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: true,
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'Revenue Composition',
+                                font: { size: 16, weight: '600' },
+                                color: getComputedStyle(document.documentElement).getPropertyValue('--text-primary').trim()
+                            },
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                    color: getComputedStyle(document.documentElement).getPropertyValue('--text-primary').trim(),
+                                    font: { size: 12 }
+                                }
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        return context.label + ': ' + context.parsed + '%';
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            // Chart 2: Geographic Footprint (Bar)
+            const geoCtx = document.getElementById('caty01-geography-chart');
+            if (geoCtx) {
+                new Chart(geoCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['California', 'New York', 'Texas', 'Other'],
+                        datasets: [{
+                            label: 'Branches',
+                            data: [44, 9, 5, 4],
+                            backgroundColor: ['#C41E3A', '#D4AF37', '#8B7355', '#1C1C1C'],
+                            borderWidth: 0
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: true,
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'Branch Network by Region (62 Total)',
+                                font: { size: 16, weight: '600' },
+                                color: getComputedStyle(document.documentElement).getPropertyValue('--text-primary').trim()
+                            },
+                            legend: { display: false },
+                            tooltip: {
+                                callbacks: {
+                                    afterLabel: function(context) {
+                                        const percentages = [71, 15, 8, 6];
+                                        return percentages[context.dataIndex] + '% of network';
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                ticks: {
+                                    color: getComputedStyle(document.documentElement).getPropertyValue('--text-secondary').trim()
+                                },
+                                grid: {
+                                    color: getComputedStyle(document.documentElement).getPropertyValue('--border-light').trim()
+                                }
+                            },
+                            x: {
+                                ticks: {
+                                    color: getComputedStyle(document.documentElement).getPropertyValue('--text-secondary').trim()
+                                },
+                                grid: { display: false }
+                            }
+                        }
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>
