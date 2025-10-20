@@ -44,11 +44,11 @@
       "composition": "25% Bull + 60% Base + 15% Bear"
     },
     "irc_blended": {
-      "target_price": 51.39,
+      "target_price": 51.51,
       "composition": "60% RIM + 10% DDM + 30% Relative"
     },
     "wilson_95": {
-      "target_price": 51.74,
+      "target_price": 52.03,
       "composition": "74% Current + 26% Normalized"
     }
   },

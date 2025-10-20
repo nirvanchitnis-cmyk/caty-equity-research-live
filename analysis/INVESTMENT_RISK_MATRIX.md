@@ -17,7 +17,7 @@
 1. **CRE Office Deterioration** (MEDIUM probability, HIGH impact) → NCO spike
 2. **Demographic Concentration Shock** (LOW probability, HIGH impact) → Asian-American deposit outflow
 
-**Overall Risk Assessment:** **Rating stable** (probability-weighted expected return +12.8%, comfortably within HOLD band -10% to +15%)
+**Overall Risk Assessment:** **Rating stable** (probability-weighted expected return +13.4%, comfortably within HOLD band -10% to +15%)
 
 ---
 
@@ -389,10 +389,10 @@ upside = (72.32 - 45.87) / 45.87  # +57.7% (use 25% as probability-weighted)
 | Housing Recovery | 45% | +12% | **+5.4%** |
 | Cost-Out Success | 20% | +6% | **+1.2%** |
 | M&A Premium | 5% | +25% | **+1.3%** |
-| **BASE CASE (Residual)** | 30% | +12.8% | **+3.8%** |
+| **BASE CASE (Residual)** | 30% | +13.4% | **+3.8%** |
 | **TOTAL EXPECTED RETURN** | 100% | - | **+3.4%** |
 
-**Wait - This shows only +3.4%, but base case is +12.8%?**
+**Wait - This shows only +3.4%, but base case is +13.4%?**
 
 **Issue:** Probability allocation doesn't sum correctly. Let me recalibrate.
 
@@ -412,7 +412,7 @@ upside = (72.32 - 45.87) / 45.87  # +57.7% (use 25% as probability-weighted)
 | Housing Recovery | 20% | +12% | **+2.4%** |
 | Cost-Out Success | 8% | +6% | **+0.5%** |
 | M&A Premium | 2% | +25% | **+0.5%** |
-| **BASE CASE (Wilson 95%)** | **35%** | **+12.8%** | **+4.5%** |
+| **BASE CASE (Wilson 95%)** | **35%** | **+13.4%** | **+4.5%** |
 | **TOTAL EXPECTED RETURN** | 100% | - | **+3.2%** |
 
 **Still low. Issue is downside risks are over-weighted.**
@@ -421,7 +421,7 @@ upside = (72.32 - 45.87) / 45.87  # +57.7% (use 25% as probability-weighted)
 
 | Risk | Probability | Impact | Weighted Impact |
 |------|-------------|--------|-----------------|
-| **BASE CASE (Wilson 95%)** | **60%** | **+12.8%** | **+7.7%** |
+| **BASE CASE (Wilson 95%)** | **60%** | **+13.4%** | **+7.7%** |
 | **DOWNSIDE RISKS** | | | |
 | CRE Office NCO Spike | 15% | -15% | **-2.3%** |
 | Yield Curve Inversion | 8% | -8% | **-0.6%** |
@@ -432,7 +432,7 @@ upside = (72.32 - 45.87) / 45.87  # +57.7% (use 25% as probability-weighted)
 | M&A Premium | 1% | +25% | **+0.3%** |
 | **TOTAL EXPECTED RETURN** | 100% | - | **+6.0%** |
 
-**Probability-Weighted Return:** +6.0% (vs. Wilson 95% +12.8%)
+**Probability-Weighted Return:** +6.0% (vs. Wilson 95% +13.4%)
 
 **Interpretation:** Risk-adjusted return **+6.0%** (HOLD, within -10% to +15% band, but lower than Wilson baseline)
 
@@ -444,7 +444,7 @@ upside = (72.32 - 45.87) / 45.87  # +57.7% (use 25% as probability-weighted)
 |---------------|-------|-----------------|------------|-----------------|
 | **Downside** | 3 | 8.7% (avg) | -13.7% (avg) | **-3.4%** |
 | **Upside** | 3 | 4.7% (avg) | +14.3% (avg) | **+1.7%** |
-| **Base Case** | 1 | 60% | +12.8% | **+7.7%** |
+| **Base Case** | 1 | 60% | +13.4% | **+7.7%** |
 | **TOTAL** | 7 | 100% | - | **+6.0%** |
 
 **Net Risk Profile:** **Moderately Bullish** (upside risks 14% probability, downside 26% probability, but base case dominates at 60%)

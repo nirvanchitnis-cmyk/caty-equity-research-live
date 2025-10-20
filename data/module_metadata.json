@@ -70,7 +70,7 @@
       "description": "Through-cycle NCO: 42.8 bps (2008-2024 FDIC data)",
       "status": "UPDATED",
       "importance": "CRITICAL",
-      "last_updated": "2025-10-17",
+      "last_updated": "2025-10-18",
       "data_dependencies": ["FDIC Call Reports", "SEC 10-Q"]
     },
     {
@@ -119,7 +119,7 @@
       "id": "12",
       "file": "CATY_12_valuation_model.html",
       "title": "Valuation Model",
-      "description": "3 scenarios, Expected $51.74 (Wilson weighted), probabilities",
+      "description": "3 scenarios, Expected $52.03 (Wilson weighted), probabilities",
       "status": "UPDATED",
       "importance": "MOST_CRITICAL",
       "last_updated": "2025-10-18",
@@ -129,7 +129,7 @@
       "id": "13",
       "file": "CATY_13_residual_income_valuation.html",
       "title": "Residual Income Valuation",
-      "description": "RIM intrinsic value $50.08, IRC blended $51.39 (60% weight)",
+      "description": "RIM intrinsic value $50.08, IRC blended $51.51 (60% weight)",
       "status": "UPDATED",
       "importance": "KEY",
       "last_updated": "2025-10-18",

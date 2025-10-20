@@ -34,7 +34,7 @@ All three steps must succeed (exit code 0) before pushing to `origin-live/main` 
 
 ## 🎯 Investment Thesis
 
-### **HOLD Rating** - Expected Price: **$51.74 (+12.8%)**
+### **HOLD Rating** - Expected Price: **$52.03 (+13.4%)**
 
 **Current Price:** $45.89 (October 18, 2025)
 **Wilson 95% Bounds:** 74/26 probability split validates HOLD
@@ -69,12 +69,12 @@ All three steps must succeed (exit code 0) before pushing to `origin-live/main` 
 #### Wilson 95% Probability-Weighted Framework:
 | Scenario | NCO (bps) | ROTE | P/TBV | Target | vs Spot | Wilson Prob |
 |----------|-----------|------|-------|--------|---------|-------------|
-| **Regression (Current Earnings)** | 18 | 11.95% | 1.558x | **$56.11** | **+22.3%** | **74%** |
+| **Regression (Current Earnings)** | 18 | 12.35% | 1.563x | **$56.50** | **+23.1%** | **74%** |
 | **Normalization (Through-Cycle)** | 42.8 | 10.21% | 1.087x | **$39.32** | **-14.3%** | **26%** |
 
-**Final Rating:** HOLD at Expected Price **$51.74 (+12.8%)**, supported by multiple independent frameworks:
-- **Wilson 95%:** 74% × $56.11 + 26% × $39.32 = **$51.74** (+12.8% vs $45.89 spot)
-- **IRC Triangulation:** 60% RIM ($50.08) + 10% Gordon Growth ($39.32) + 30% Relative ($56.11) = **$51.39** (+12.0%)
+**Final Rating:** HOLD at Expected Price **$52.03 (+13.4%)**, supported by multiple independent frameworks:
+- **Wilson 95%:** 74% × $56.50 + 26% × $39.32 = **$52.03** (+13.4% vs $45.89 spot)
+- **IRC Triangulation:** 60% RIM ($50.08) + 10% Gordon Growth ($39.32) + 30% Relative ($56.50) = **$51.51** (+12.2%)
 - **Monte Carlo Median:** **$48.92** (+6.6%), 95% CI $37.21-$62.18 with 32.1% downside probability
 
 ## 🔧 Technical Details
@@ -164,11 +164,11 @@ Total: 14 files (~648K)
 |--------|-------|--------|
 | **Valuation** | | |
 | Current Price | $45.89 | Oct 18, 2025 |
-| Wilson Expected Price | $51.74 | Wilson 95% (74/26) |
-| IRC Blended Target | $51.39 | 60% RIM / 10% Gordon / 30% Relative |
+| Wilson Expected Price | $52.03 | Wilson 95% (74/26) |
+| IRC Blended Target | $51.51 | 60% RIM / 10% Gordon / 30% Relative |
 | RIM Target | $50.08 | Residual Income Model |
 | Monte Carlo Median | $48.92 | 10,000-path simulation |
-| Expected Return | +12.8% | HOLD threshold (-10% to +15%) |
+| Expected Return | +13.4% | HOLD threshold (-10% to +15%) |
 | P/TBV | 1.269x | Current |
 | Target P/TBV | 1.087x | Normalized (Gordon Growth) |
 | **Profitability** | | |

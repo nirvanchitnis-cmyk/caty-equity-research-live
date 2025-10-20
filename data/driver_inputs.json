@@ -28,7 +28,7 @@
       "cooks_d": 4.03,
       "action": "RETAINED",
       "rationale": "Substantive outlier (Vancouver premium), not data error. Excluding → n=3 insufficient. Including provides conservative bias (lowers CATY fitted P/TBV).",
-      "sensitivity": "CATY $56.11 with COLB vs $57.50 without (-2.5%)",
+      "sensitivity": "CATY $56.50 with COLB vs $57.50 without (-1.7%)",
       "override_by": "Nirvan",
       "override_date": "2025-10-19"
     },

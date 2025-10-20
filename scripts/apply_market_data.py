@@ -8,7 +8,7 @@ Reads data/market_data_current.json and CAREFULLY updates ONLY:
 3. Report generation dates
 
 DOES NOT touch:
-- Target prices ($51.74, $56.11, $39.32, etc.)
+- Target prices ($52.03, $56.50, $39.32, etc.)
 - Scenario prices
 - Valuation outputs
 

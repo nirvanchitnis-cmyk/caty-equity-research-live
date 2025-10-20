@@ -168,7 +168,7 @@
     ]
   },
   "ddm_implied": {
-    "current_price": 45.87,
+    "current_price": 45.89,
     "expected_dividend": 1.9,
     "dividend_yield_pct": 4.14,
     "long_term_growth_pct": 5.0,
@@ -177,7 +177,7 @@
     "inputs_table": [
       {
         "parameter": "Current price (P\u2080)",
-        "value": "$45.87",
+        "value": "$45.89",
         "source": "Market close (Oct 18, 2025)"
       },
       {
@@ -358,7 +358,7 @@
     "coe_pct": 9.587,
     "implied_ptbv": 1.333,
     "actual_ptbv": 1.269,
-    "price": 45.87,
+    "price": 45.89,
     "tbvps": 36.16,
     "difference_pct": 5.0,
     "market_implied_coe_pct": 9.947,

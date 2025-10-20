@@ -2,7 +2,7 @@
   "date": "2025-10-19",
   "source": "NASDAQ/NYSE official close",
   "prices": {
-    "CATY": 45.87,
+      "CATY": 45.89,
     "EWBC": 110.25,
     "CVBF": 19.75,
     "HAFC": 25.6,

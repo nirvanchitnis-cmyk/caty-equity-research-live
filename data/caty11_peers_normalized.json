@@ -37,17 +37,17 @@
         "p_value": 0.023,
         "t_stat": 6.5,
         "sample_size": 4,
-        "interpretation_html": "<strong>CATY Valuation Context:</strong> CATY's actual P/TBV of 1.269x is 0.068x below fitted value of 1.337x based on ROTE 11.95%.\nThis -5.1% residual suggests CATY is slightly undervalued relative to peers on a ROTE basis, though within normal variation.<br><br>\n\n<strong>Key Insight:</strong> CATY's normalized ROTE (10.40% at 42.8 bps NCO) implies fitted P/TBV of 1.145x (= -0.1483 + 0.1244 \u00d7 10.40),\n suggesting current P/TBV 1.269x already reflects ~40 bps of credit normalization premium.<br><br>\n\n<strong>Statistical Caveat:</strong> Small sample size (n=4) limits statistical power. Regression significant at 5% level (p = 0.023) but wide confidence intervals.\n Results should be supplemented with qualitative peer analysis and fundamental valuation methods.",
-        "scatter_caption_html": "<strong>Interpretation:</strong> Scatter plot shows strong positive linear relationship between ROTE and P/TBV. CATY (gold dot) sits slightly below regression line at current ROTE 11.95%, suggesting modest undervaluation vs peers. Regression line: P/TBV = -0.1483 + 0.1244 \u00d7 ROTE (each 1% ROTE increase \u2192 0.124x P/TBV increase).",
+        "interpretation_html": "<strong>CATY Valuation Context:</strong> CATY's actual P/TBV of 1.269x is 0.068x below fitted value of 1.337x based on ROTE 12.35%.\nThis -5.1% residual suggests CATY is slightly undervalued relative to peers on a ROTE basis, though within normal variation.<br><br>\n\n<strong>Key Insight:</strong> CATY's normalized ROTE (10.40% at 42.8 bps NCO) implies fitted P/TBV of 1.145x (= -0.1483 + 0.1244 \u00d7 10.40),\n suggesting current P/TBV 1.269x already reflects ~40 bps of credit normalization premium.<br><br>\n\n<strong>Statistical Caveat:</strong> Small sample size (n=4) limits statistical power. Regression significant at 5% level (p = 0.023) but wide confidence intervals.\n Results should be supplemented with qualitative peer analysis and fundamental valuation methods.",
+        "scatter_caption_html": "<strong>Interpretation:</strong> Scatter plot shows strong positive linear relationship between ROTE and P/TBV. CATY (gold dot) sits slightly below regression line at current ROTE 12.35%, suggesting modest undervaluation vs peers. Regression line: P/TBV = -0.1483 + 0.1244 \u00d7 ROTE (each 1% ROTE increase \u2192 0.124x P/TBV increase).",
         "scatter_summary_html": "n=4 clean cohort (CATY, EWBC, CVBF, HAFC) - Cook's Distance filtered | R\u00b2=0.9548, Slope=0.1244"
     },
     "peer_data": {
         "CATY": {
             "name": "Cathay General Bancorp",
-            "price": 45.87,
+            "price": 45.89,
             "tbvps": 36.16,
             "p_tbv": 1.269,
-            "rote_pct": 11.95,
+            "rote_pct": 12.35,
             "cre_pct": 52.4,
             "mkt_cap_millions": 2507.0,
             "fitted_p_tbv": 1.337,
@@ -59,7 +59,7 @@
             "price": 110.25,
             "tbvps": 56.13,
             "p_tbv": 1.964,
-            "rote_pct": 15.84,
+            "rote_pct": 16.10,
             "cre_pct": 37.6,
             "mkt_cap_millions": 15800.0,
             "fitted_p_tbv": 1.823,
@@ -157,7 +157,7 @@
     "distribution_analysis": {
         "rote_pct": {
             "min": -5.72,
-            "max": 15.84,
+            "max": 16.10,
             "median": 8.77,
             "min_ticker": "HOPE",
             "max_ticker": "EWBC",
@@ -211,7 +211,7 @@
         "core_cohort_display": "CATY, EWBC, CVBF, HAFC",
         "key_finding": {
             "caty_p_tbv": 1.269,
-            "caty_rote_pct": 11.95,
+            "caty_rote_pct": 12.35,
             "peer_median_p_tbv": 1.23,
             "peer_median_cre_pct": 27.8,
             "caty_cre_pct": 52.4,
@@ -221,7 +221,7 @@
             "normalized_fitted_p_tbv": 1.115,
             "normalized_fair_value_price": 39.6,
             "regression_r_squared_display": 0.955,
-            "highlight_html": "CATY trades at <strong>1.269x P/TBV</strong> with <strong>11.95% ROTE</strong>, versus the updated <strong>peer median of 1.23x P/TBV</strong> and <strong>27.8% CRE concentration.</strong> CATY now screens as a high-CRE outlier (+24.6 ppts) rather than a conservative lender.\n<br><br>\n<strong>Valuation Context:</strong> Regression (n=4 core peers) still shows a tight ROTE/P&T BV relationship (R\u00b2 = 0.955, p = 0.023),\n but the broader eight-bank dataset resets the comparable benchmark lower. Normalizing CATY to 10.40% ROTE (42.8 bps NCO) implies\n fair value near <strong>1.115x P/TBV ($39.6)</strong>, reinforcing the HOLD target."
+            "highlight_html": "CATY trades at <strong>1.269x P/TBV</strong> with <strong>12.35% ROTE</strong>, versus the updated <strong>peer median of 1.23x P/TBV</strong> and <strong>27.8% CRE concentration.</strong> CATY now screens as a high-CRE outlier (+24.6 ppts) rather than a conservative lender.\n<br><br>\n<strong>Valuation Context:</strong> Regression (n=4 core peers) still shows a tight ROTE/P&T BV relationship (R\u00b2 = 0.955, p = 0.023),\n but the broader eight-bank dataset resets the comparable benchmark lower. Normalizing CATY to 10.40% ROTE (42.8 bps NCO) implies\n fair value near <strong>1.115x P/TBV ($39.6)</strong>, reinforcing the HOLD target."
         },
         "peer_universe_members_display": "EWBC, CVBF, HAFC, HOPE, COLB, WAFD, PPBI, BANC"
     },
@@ -229,13 +229,13 @@
         "credit_snapshot": [
             {
                 "metric_html": "<strong>LTM ROTE (%)</strong>",
-                "caty_text": "11.95",
+                "caty_text": "12.35",
                 "caty_class": "numeric caty-highlight",
                 "peer_median_text": "8.77",
                 "peer_median_class": "numeric middle-performer",
                 "peer_low_text": "-5.72 (HOPE)",
                 "peer_low_class": "numeric",
-                "peer_high_text": "15.84 (EWBC)",
+                "peer_high_text": "16.10 (EWBC)",
                 "peer_high_class": "numeric"
             },
             {
@@ -301,7 +301,7 @@
             {
                 "ticker": "CATY",
                 "row_class": "caty-highlight",
-                "rote_text": "11.95",
+                "rote_text": "12.35",
                 "rote_class": "numeric",
                 "actual_ptbv_text": "1.269",
                 "actual_ptbv_class": "numeric",
@@ -353,7 +353,7 @@
             {
                 "ticker": "CATY",
                 "row_class": "caty-highlight",
-                "rote_text": "11.95",
+                "rote_text": "12.35",
                 "rote_class": "numeric",
                 "ptbv_text": "1.269",
                 "ptbv_class": "numeric",
@@ -449,7 +449,7 @@
             {
                 "ticker": "CATY",
                 "row_class": "",
-                "rote_text": "11.95",
+                "rote_text": "12.35",
                 "rote_class": "numeric",
                 "ptbv_text": "1.269",
                 "ptbv_class": "numeric",
@@ -665,7 +665,7 @@
         {
             "title": "COLB - One-Time Gains",
             "box_class": "source-box border-left-warning",
-            "content_html": "<strong>LTM ROTE:</strong> 33.43% (2.8x peer median 11.95%)<br>\n<strong>Quarterly NI Diagnostic:</strong> Q4'24 $425M spike, Q2'25 $378M, FY2024 $581M (vs typical quarters ~$140M)<br>\n<strong>Cook's Distance:</strong> 4.030 (destroying regression fit)<br>\n<strong>Impact:</strong> With COLB included (n=7), Adj R\u00b2 = -0.077 (model worse than mean). Without COLB (n=4), Adj R\u00b2 = 0.932 (strong fit).<br>\n<strong>Interpretation:</strong> Large quarterly spikes suggest non-recurring gains (securities sales, loan sale gains, merger items). ROTE 33% not representative of through-cycle profitability."
+            "content_html": "<strong>LTM ROTE:</strong> 33.43% (2.8x peer median 12.35%)<br>\n<strong>Quarterly NI Diagnostic:</strong> Q4'24 $425M spike, Q2'25 $378M, FY2024 $581M (vs typical quarters ~$140M)<br>\n<strong>Cook's Distance:</strong> 4.030 (destroying regression fit)<br>\n<strong>Impact:</strong> With COLB included (n=7), Adj R\u00b2 = -0.077 (model worse than mean). Without COLB (n=4), Adj R\u00b2 = 0.932 (strong fit).<br>\n<strong>Interpretation:</strong> Large quarterly spikes suggest non-recurring gains (securities sales, loan sale gains, merger items). ROTE 33% not representative of through-cycle profitability."
         },
         {
             "title": "HOPE - Distressed Performance",
@@ -674,7 +674,7 @@
         }
     ],
     "final_decision_html": "Peer expansion from n=4 to n=7 collapsed regression due to:<br>\n1. <strong>COLB:</strong> One-time gains (Cook's D 4.030) destroying fit<br>\n2. <strong>WAFD:</strong> Structural discount (Cook's D 2.547) distorting slope<br>\n3. <strong>HOPE:</strong> Distressed performance (Cook's D 1.893) not representative<br><br>\n\nReverting to n=4 original regression (CATY, EWBC, CVBF, HAFC) yields statistically significant positive relationship (R\u00b2 = 0.9548, p = 0.023) suitable for valuation context, with documented caveat of small sample size.",
-    "expansion_issues_html": "<h4>PPBI - Duration/Instant Tag Mismatch</h4>\n<div class=\"source-box border-left-danger\">\n    <div class=\"source-label\">Issue</div>\n    <div class=\"source-details\">SEC companyfacts equity tags mix instant/duration values, yielding TBVPS $0.01 (obviously erroneous for $24.49 stock).<br>\n<strong>Impact:</strong> ROTE -262%, P/TBV 2,959x (garbage outputs)<br>\n<strong>Resolution:</strong> Requires manual 10-Q parsing to extract correct equity components. Excluded from regression.\n    </div>\n</div>\n\n<h4>BANC - Negative Tangible Common Equity</h4>\n<div class=\"source-box border-left-danger\">\n    <div class=\"source-label\">Issue</div>\n    <div class=\"source-details\"><strong>Q2'25 Balance Sheet:</strong> Stockholders' equity $204.3M, Goodwill $197.8M, Intangibles $15.6M<br>\n<strong>Computed TCE:</strong> $204.3M - $197.8M - $15.6M = -$9.06M (NEGATIVE)<br>\n<strong>Impact:</strong> P/TBV and ROTE not computable (division by negative)<br>\n<strong>Interpretation:</strong> Intangible assets exceed total equity (typical of banks with M&A history or impaired goodwill). Not comparable to CATY (positive TCE $2,507M).\n    </div>\n</div>\n\n<h4>WAFD - Structural Discount</h4>\n<div class=\"source-box border-left-warning\">\n    <div class=\"source-label\">Issue</div>\n    <div class=\"source-details\"><strong>Valuation:</strong> P/TBV 0.37x despite ROTE 14.2% (healthy profitability)<br>\n<strong>Fitted Value:</strong> Regression implies P/TBV ~1.25x based on ROTE 14.2%<br>\n<strong>Discount:</strong> Actual 0.37x is 3.4x below fitted value (70% discount)<br>\n<strong>Interpretation:</strong> Market pricing WAFD at 63% discount to TBV suggests concerns about earnings quality, asset quality, or business model sustainability. This is structural outlier, not data error.<br>\n<strong>Note:</strong> SEC diagnostics confirmed TBVPS $75.91 is CORRECT (not tag error).\n    </div>\n</div>\n\n<h4>COLB - One-Time Gains</h4>\n<div class=\"source-box border-left-warning\">\n    <div class=\"source-label\">Issue</div>\n    <div class=\"source-details\"><strong>LTM ROTE:</strong> 33.43% (2.8x peer median 11.95%)<br>\n<strong>Quarterly NI Diagnostic:</strong> Q4'24 $425M spike, Q2'25 $378M, FY2024 $581M (vs typical quarters ~$140M)<br>\n<strong>Cook's Distance:</strong> 4.030 (destroying regression fit)<br>\n<strong>Impact:</strong> With COLB included (n=7), Adj R\u00b2 = -0.077 (model worse than mean). Without COLB (n=4), Adj R\u00b2 = 0.932 (strong fit).<br>\n<strong>Interpretation:</strong> Large quarterly spikes suggest non-recurring gains (securities sales, loan sale gains, merger items). ROTE 33% not representative of through-cycle profitability.\n    </div>\n</div>\n\n<h4>HOPE - Distressed Performance</h4>\n<div class=\"source-box border-left-danger\">\n    <div class=\"source-label\">Issue</div>\n    <div class=\"source-details\"><strong>LTM ROTE:</strong> -1.71% (negative profitability)<br>\n<strong>Efficiency Ratio:</strong> 110.89% (expenses exceed revenue)<br>\n<strong>LTM Net Income:</strong> -$28.8M (loss)<br>\n<strong>Interpretation:</strong> HOPE is in distressed state, not representative of normal operating performance. Not comparable for valuation purposes.\n    </div>\n</div>",
+    "expansion_issues_html": "<h4>PPBI - Duration/Instant Tag Mismatch</h4>\n<div class=\"source-box border-left-danger\">\n    <div class=\"source-label\">Issue</div>\n    <div class=\"source-details\">SEC companyfacts equity tags mix instant/duration values, yielding TBVPS $0.01 (obviously erroneous for $24.49 stock).<br>\n<strong>Impact:</strong> ROTE -262%, P/TBV 2,959x (garbage outputs)<br>\n<strong>Resolution:</strong> Requires manual 10-Q parsing to extract correct equity components. Excluded from regression.\n    </div>\n</div>\n\n<h4>BANC - Negative Tangible Common Equity</h4>\n<div class=\"source-box border-left-danger\">\n    <div class=\"source-label\">Issue</div>\n    <div class=\"source-details\"><strong>Q2'25 Balance Sheet:</strong> Stockholders' equity $204.3M, Goodwill $197.8M, Intangibles $15.6M<br>\n<strong>Computed TCE:</strong> $204.3M - $197.8M - $15.6M = -$9.06M (NEGATIVE)<br>\n<strong>Impact:</strong> P/TBV and ROTE not computable (division by negative)<br>\n<strong>Interpretation:</strong> Intangible assets exceed total equity (typical of banks with M&A history or impaired goodwill). Not comparable to CATY (positive TCE $2,507M).\n    </div>\n</div>\n\n<h4>WAFD - Structural Discount</h4>\n<div class=\"source-box border-left-warning\">\n    <div class=\"source-label\">Issue</div>\n    <div class=\"source-details\"><strong>Valuation:</strong> P/TBV 0.37x despite ROTE 14.2% (healthy profitability)<br>\n<strong>Fitted Value:</strong> Regression implies P/TBV ~1.25x based on ROTE 14.2%<br>\n<strong>Discount:</strong> Actual 0.37x is 3.4x below fitted value (70% discount)<br>\n<strong>Interpretation:</strong> Market pricing WAFD at 63% discount to TBV suggests concerns about earnings quality, asset quality, or business model sustainability. This is structural outlier, not data error.<br>\n<strong>Note:</strong> SEC diagnostics confirmed TBVPS $75.91 is CORRECT (not tag error).\n    </div>\n</div>\n\n<h4>COLB - One-Time Gains</h4>\n<div class=\"source-box border-left-warning\">\n    <div class=\"source-label\">Issue</div>\n    <div class=\"source-details\"><strong>LTM ROTE:</strong> 33.43% (2.8x peer median 12.35%)<br>\n<strong>Quarterly NI Diagnostic:</strong> Q4'24 $425M spike, Q2'25 $378M, FY2024 $581M (vs typical quarters ~$140M)<br>\n<strong>Cook's Distance:</strong> 4.030 (destroying regression fit)<br>\n<strong>Impact:</strong> With COLB included (n=7), Adj R\u00b2 = -0.077 (model worse than mean). Without COLB (n=4), Adj R\u00b2 = 0.932 (strong fit).<br>\n<strong>Interpretation:</strong> Large quarterly spikes suggest non-recurring gains (securities sales, loan sale gains, merger items). ROTE 33% not representative of through-cycle profitability.\n    </div>\n</div>\n\n<h4>HOPE - Distressed Performance</h4>\n<div class=\"source-box border-left-danger\">\n    <div class=\"source-label\">Issue</div>\n    <div class=\"source-details\"><strong>LTM ROTE:</strong> -1.71% (negative profitability)<br>\n<strong>Efficiency Ratio:</strong> 110.89% (expenses exceed revenue)<br>\n<strong>LTM Net Income:</strong> -$28.8M (loss)<br>\n<strong>Interpretation:</strong> HOPE is in distressed state, not representative of normal operating performance. Not comparable for valuation purposes.\n    </div>\n</div>",
     "metadata_table": [
         {
             "label": "<strong>Schema Version</strong>",

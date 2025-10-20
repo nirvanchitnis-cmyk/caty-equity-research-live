@@ -297,7 +297,7 @@ python3 analysis/disconfirmer_monitor.py
 **Today's Date:** October 19, 2025 (Saturday)
 **Market Data Through:** October 18, 2025 (Friday close)
 **Spot Price:** $45.89
-**Rating:** HOLD (+12.8% Wilson 95%)
+**Rating:** HOLD (+13.4% Wilson 95%)
 **Next Event:** Oct 21 Q3 Earnings (EWBC 2pm PT, CATY 3pm PT)
 
 **CIO/MD Feedback That Drove This:**
@@ -387,9 +387,9 @@ python3 analysis/disconfirmer_monitor.py
 
 ### **Key Metrics:**
 - Spot: $45.89
-- Wilson 95%: $51.74 (+12.8%)
-- IRC Blended: $51.39 (+12.0%)
-- Regression: $56.11 (+22.3%)
+- Wilson 95%: $52.03 (+13.4%)
+- IRC Blended: $51.51 (+12.2%)
+- Regression: $56.50 (+23.1%)
 - Normalized: $39.32 (-14.3%)
 - Market-Implied: 60.9% / 39.1%
 

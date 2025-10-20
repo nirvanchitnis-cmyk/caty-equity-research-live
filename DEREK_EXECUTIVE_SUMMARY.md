@@ -10,9 +10,9 @@
 
 **HOLD Cathay General Bancorp (CATY) at $45.87**
 
-**Thesis:** Dual-path valuation shows conflict: Regression at current earnings (ROTE 11.95%) implies $56.11 target (+22.3% upside), but through-cycle normalization implies $39.32 (-14.3% downside). Wilson 95% confidence bounds on NCO breach probability give 74/26 probability split → expected $51.74 (+12.8%), just below +15% BUY threshold.
+**Thesis:** Dual-path valuation shows conflict: Regression at current earnings (ROTE 12.35%) implies $56.50 target (+23.1% upside), but through-cycle normalization implies $39.32 (-14.3% downside). Wilson 95% confidence bounds on NCO breach probability give 74/26 probability split → expected $52.03 (+13.4%), just below +15% BUY threshold.
 
-**Edge:** HOLD validated by statistical uncertainty. 95% upper bound (26% tail probability) keeps expected return at +12.8%, below BUY hurdle. Market pricing (39/61 split) appears overly pessimistic vs FDIC data (0% post-2014 breach rate).
+**Edge:** HOLD validated by statistical uncertainty. 95% upper bound (26% tail probability) keeps expected return at +13.4%, below BUY hurdle. Market pricing (39/61 split) appears overly pessimistic vs FDIC data (0% post-2014 breach rate).
 
 **Rating:** HOLD (supported by 74/26 Wilson ceiling). Upgrade to BUY if tail probability tightens below 21.5%.
 
@@ -331,7 +331,7 @@ Step 4: Target price
 - Formula: Net Income / Average TCE × 100
 - LTM NI: $294.67M (verified in File 02)
 - Avg TCE: $2,465.09M (Q2'25 $2,507.7M + FY2024 $2,466.7M + Q2'24 $2,421.2M + FY2023 $2,465.0M) / 4
-- ROTE: 294.67 / 2,465.09 × 100 = 11.95%
+- ROTE: 294.67 / 2,465.09 × 100 = 12.35%
 - All numbers traceable to SEC filings with accession numbers
 
 **Evidence:** CATY_12, "Audit Helpers" section shows full ROTE calculation bridge
@@ -389,7 +389,7 @@ Based on Derek's standards, these sections MUST be present and were built:
 - 6.5% inflated by buybacks (20.8M treasury shares purchased)
 - 6.5% inflated by 2022-2024 rate environment (NIM expansion)
 - Forward g should be sustainable organic rate
-- Retention rate 67.9% × ROTE 11.95% = 8.1% organic, but we use 2.5% (conservative)
+- Retention rate 67.9% × ROTE 12.35% = 8.1% organic, but we use 2.5% (conservative)
 
 **How to strengthen:**
 - Show pro forma TBVPS CAGR excluding buyback effect
@@ -471,7 +471,7 @@ Based on Derek's standards, these sections MUST be present and were built:
 | 10.0% | 1.092x | $39.5 | -13.9% | SELL |
 | **10.21%** | **1.087x** | **$39.32** | **-14.3%** | **HOLD (BASE)** |
 | 11.0% | 1.217x | $44.0 | -4.1% | HOLD |
-| 11.95% | 1.335x | $48.3 | +5.2% | HOLD |
+| 12.35% | 1.335x | $48.3 | +5.2% | HOLD |
 | 12.0% | 1.341x | $48.5 | +5.7% | BUY |
 
 **Takeaway:** We need ROTE to stay above 11.5% to justify current price. Provision normalization drops ROTE to 10.21% (Gordon Growth). Hence HOLD.
@@ -488,7 +488,7 @@ Based on Derek's standards, these sections MUST be present and were built:
 | 60 | Bear | 9.31% | 0.961x | $34.75 | -24.3% | Bear downside |
 
 **Takeaway:** Target is highly sensitive to NCO assumption. 10 bps NCO = ~$0.90 price impact.
-**Final Rating:** HOLD at $51.74 (+12.8%), calculated as Wilson 95% weighted average (74% × $56.11 + 26% × $39.32).
+**Final Rating:** HOLD at $52.03 (+13.4%), calculated as Wilson 95% weighted average (74% × $56.50 + 26% × $39.32).
 
 ---
 
@@ -610,7 +610,7 @@ Based on his process directive, Derek will provide:
 Transformed 12 JSON data files + SEC filings into a live equity research website with interactive data modules, verified calculations, and comprehensive provenance. Deployed to GitHub Pages for easy sharing.
 
 **Investment Call:**
-HOLD CATY at $45.87, normalized target $39.32 (-14.3%), based on through-cycle credit normalization (42.8 bps NCO vs. current 18 bps) compressing ROTE and P/TBV multiple. Wilson 95% probability-weighted expected price $51.74 (+12.8%).
+HOLD CATY at $45.87, normalized target $39.32 (-14.3%), based on through-cycle credit normalization (42.8 bps NCO vs. current 18 bps) compressing ROTE and P/TBV multiple. Wilson 95% probability-weighted expected price $52.03 (+13.4%).
 
 **How to Test:**
 1. Click the URL

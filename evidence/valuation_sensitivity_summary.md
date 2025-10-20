@@ -1,6 +1,6 @@
 # Valuation Sensitivity Summary
 
-Baseline implied price (regression path): $56.11
+Baseline implied price (regression path): $56.50
 
 ## Net charge-off shocks
 

@@ -327,7 +327,7 @@ A: **Direct measurement unavailable** (CATY doesn't disclose customer acquisitio
 A: **Concentration = Double-edged sword.** **Upside:** Moat value +$1.15-1.50/share (+2.5-3.3%). **Downside:** Mild shock (5-10% deposit outflow) = -$0.23-0.46 EPS (-4.6% to -9.3%). **Net present value:** Moat value (+$1.50) > Probability-weighted downside risk (30% × -$0.46 = -$0.14) → **Moat adds +$1.36/share**.
 
 **Q: Why doesn't CATY trade at a premium multiple if social moat is quantifiable?**
-A: **Market inefficiency hypothesis:** (1) ESG investors focus on **E (climate) & G (governance)**, underweight **S (social)**, (2) Regional bank investors skeptical of "soft moats" (cultural alignment), prefer hard moats (scale, switching costs), (3) **Value opportunity:** Social moat underpriced → Embedded in HOLD thesis (+12.8% expected return).
+A: **Market inefficiency hypothesis:** (1) ESG investors focus on **E (climate) & G (governance)**, underweight **S (social)**, (2) Regional bank investors skeptical of "soft moats" (cultural alignment), prefer hard moats (scale, switching costs), (3) **Value opportunity:** Social moat underpriced → Embedded in HOLD thesis (+13.4% expected return).
 
 ---
 

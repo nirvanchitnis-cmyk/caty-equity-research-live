@@ -9738,20 +9738,19 @@
         "last_updated_display": "October 19, 2025"
       },
       "sections": [
-        {
-          "marker": "caty13-header-meta",
-          "type": "text",
-          "template": {
-            "template": "<p class=\"page-meta\">\n    Excess Return Framework (Residual Income) |\n    Created: {created} |\n    Methodology: RIM (Ohlson 1995, Feltham-Ohlson 1996)\n</p>",
-            "placeholders": {
-              "{created}": {
-                "source": "module",
-                "path": "last_updated_display",
-                "format": "text"
-              }
-            }
+    {
+      "marker": "caty13-header-meta",
+      "type": "text_spec",
+      "template": {
+        "template": "Last Updated: {last_updated} | Source: COE Triangulation + Financial Forecasts",
+        "placeholders": {
+          "{last_updated}": {
+            "source": "module_metadata",
+            "path": "modules.12.last_updated_formatted"
           }
-        },
+        }
+      }
+    },
         {
           "marker": "caty13-executive-summary-intro",
           "type": "text",
@@ -10561,20 +10560,13 @@
       "sections": [
         {
           "marker": "caty14-header-meta",
-          "type": "text",
+          "type": "text_spec",
           "template": {
-            "template": "<p class=\"page-meta\">\n    {num_runs} Simulation Runs, Latin Hypercube Sampling |\n    Created: {created} |\n    Methodology: Stochastic Valuation Framework\n</p>",
+            "template": "Last Updated: {last_updated} | Source: Monte Carlo Simulation (10K runs)",
             "placeholders": {
-              "{num_runs}": {
-                "source": "caty14_tables",
-                "path": "simulation_summary.num_runs",
-                "format": "decimal",
-                "decimals": 0
-              },
-              "{created}": {
-                "source": "module",
-                "path": "last_updated_display",
-                "format": "text"
+              "{last_updated}": {
+                "source": "module_metadata",
+                "path": "modules.13.last_updated_formatted"
               }
             }
           }

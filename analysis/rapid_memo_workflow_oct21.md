@@ -118,7 +118,7 @@ CATY Call Question #3 (if needed):
 
 | EWBC NCO | EWBC NIM | EWBC Deposits | Recommended Tail | Wilson Target | Rating |
 |----------|----------|---------------|------------------|---------------|--------|
-| <30 bps | >-10 bps | >-2% | **Keep 26%** | $51.74 | **HOLD** |
+| <30 bps | >-10 bps | >-2% | **Keep 26%** | $52.03 | **HOLD** |
 | 30-50 bps | -10 to -15 bps | -2% to -3% | **Increase to 30%** | ~$50.50 | **HOLD** |
 | >50 bps | <-15 bps | <-3% | **Increase to 35%** | ~$49.00 | **HOLD/SELL** |
 

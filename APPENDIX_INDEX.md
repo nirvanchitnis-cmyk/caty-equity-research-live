@@ -23,10 +23,10 @@
 | File | Lines | Key Content | IRC Standard |
 |------|-------|-------------|--------------|
 | **analysis/RESIDUAL_INCOME_VALUATION.md** | 546 | RIM intrinsic value $50.08 (+9.2%), 60% weight | ✅ Primary method |
-| **analysis/valuation_bridge_final.py** | 51 | 7-peer regression $56.11 (+22.3%), 30% weight | ✅ Relative valuation |
-| **analysis/probability_weighted_valuation.py** | 45 | Wilson 95% $51.74 (+12.8%), probability framework | ✅ Scenario analysis |
+| **analysis/valuation_bridge_final.py** | 51 | 7-peer regression $56.50 (+23.1%), 30% weight | ✅ Relative valuation |
+| **analysis/probability_weighted_valuation.py** | 45 | Wilson 95% $52.03 (+13.4%), probability framework | ✅ Scenario analysis |
 
-**Blended IRC Target:** $51.39 (+12.0%) = 60% RIM + 10% DDM + 30% Relative
+**Blended IRC Target:** $51.51 (+12.2%) = 60% RIM + 10% DDM + 30% Relative
 
 ---
 
@@ -50,7 +50,7 @@
 | **analysis/INVESTMENT_RISK_MATRIX.md** | 473 | 2×2 probability × impact, +6.0% risk-adjusted return | ✅ Risk quantification |
 | **evidence/WILSON_WINDOW_METHODOLOGY.md** | 280 | 74/26 probability split, post-2008 vs post-2014 defense | ✅ Statistical framework |
 
-**Key Finding:** Risk-adjusted return +6.0% (vs. +12.8% base) accounts for tail risks
+**Key Finding:** Risk-adjusted return +6.0% (vs. +13.4% base) accounts for tail risks
 
 ---
 
@@ -246,7 +246,7 @@
 ## IX. Document Lineage (Git History)
 
 **Key Commits (Oct 18-19, 2025):**
-1. `d18d466` - Fix hardcode alignment ($56.42 → $56.11, Wilson $51.74)
+1. `d18d466` - Fix hardcode alignment ($56.42 → $56.50, Wilson $52.03)
 2. `68baa51` - Peer regression methodology (7-peer production)
 3. `0bbcac9` - ESG materiality matrix (E/S/G quantified)
 4. `7bea9e6` - Climate risk appendix (TCFD scenario)

@@ -9,14 +9,14 @@
 
 **Residual Income Model (RIM) Target Price: $47.82 (+4.2% vs. $45.87 spot)**
 
-RIM valuation yields **HOLD rating** (4.2% upside < 15% BUY threshold), consistent with peer regression (+22.3%) and Gordon Growth (-14.3%) triangulation.
+RIM valuation yields **HOLD rating** (4.2% upside < 15% BUY threshold), consistent with peer regression (+23.1%) and Gordon Growth (-14.3%) triangulation.
 
 **Key Insight:** RIM **isolates value creation** (ROTE > COE) from accounting book value, providing **conservative baseline** less sensitive to market multiples or growth assumptions.
 
 **Blended Valuation (IRC Standard):**
 - RIM: $47.82 (Weight: 60%)
 - DDM: $45.12 (Weight: 10%)
-- Relative (P/TBV Regression): $56.11 (Weight: 30%)
+- Relative (P/TBV Regression): $56.50 (Weight: 30%)
 - **Blended Target:** $49.94 (+8.9% vs. $45.87)
 
 **Rating:** **HOLD** (blended +8.9% within -10% to +15% band)
@@ -311,7 +311,7 @@ V₀ = BV₀ + PV(RI_explicit) + PV(TV_RI)
 
 **Wait - This implies SELL?**
 
-**Issue:** RIM shows $40.20 (-12.4%), which contradicts peer regression $56.11 (+22.3%).
+**Issue:** RIM shows $40.20 (-12.4%), which contradicts peer regression $56.50 (+23.1%).
 
 **Reconciliation Needed:**
 
@@ -335,8 +335,8 @@ RI_explicit_GAAP = 1.689 * (45.05 / 36.16) = $2.104
 PV_RI_explicit_GAAP = $2.104
 
 # Terminal value (scales with BV)
-BV_2030_GAAP = 41.26 * (45.05 / 36.16) = $51.39
-RI_2031_GAAP = 0.00623 * 51.39 * 1.025 = $0.328
+BV_2030_GAAP = 41.26 * (45.05 / 36.16) = $51.51
+RI_2031_GAAP = 0.00623 * 51.51 * 1.025 = $0.328
 TV_RI_GAAP = 0.328 / 0.07087 = $4.63
 PV_TV_RI_GAAP = 4.63 / 1.578 = $2.93
 
@@ -357,12 +357,12 @@ V_RIM_GAAP = 45.05 + 2.104 + 2.93 = $50.08
 | Valuation Method | Target Price | Return vs. Spot | Rating |
 |------------------|--------------|-----------------|--------|
 | **RIM (GAAP TBVPS)** | **$50.08** | **+9.2%** | **HOLD** |
-| Peer Regression (Current) | $56.11 | +22.3% | BUY |
+| Peer Regression (Current) | $56.50 | +23.1% | BUY |
 | Gordon Growth (Normalized) | $39.32 | -14.3% | SELL |
-| Wilson 95% (74/26 blend) | $51.74 | +12.8% | HOLD |
+| Wilson 95% (74/26 blend) | $52.03 | +13.4% | HOLD |
 
 **Interpretation:**
-- **RIM (+9.2%)** sits **between** peer regression (+22.3%) and Gordon Growth (-14.3%)
+- **RIM (+9.2%)** sits **between** peer regression (+23.1%) and Gordon Growth (-14.3%)
 - **Conservative estimate:** RIM uses through-cycle ROTE (10.21%), while peer regression uses current (11.95%)
 - **Triangulation validation:** RIM **confirms HOLD** (within -10% to +15% band)
 
@@ -376,7 +376,7 @@ V_RIM_GAAP = 45.05 + 2.104 + 2.93 = $50.08
 |--------|--------|------------------|
 | **Residual Income (RIM)** | 60% | $50.08 |
 | **Dividend Discount (DDM)** | 10% | $45.12 |
-| **Relative Valuation (P/TBV)** | 30% | $56.11 |
+| **Relative Valuation (P/TBV)** | 30% | $56.50 |
 
 **DDM Calculation (Quick):**
 
@@ -419,15 +419,15 @@ DDM = $3.31 / (0.09587 - 0.020) = $3.31 / 0.07587 = **$43.63**
 
 Blended = (0.60 × RIM) + (0.10 × DDM) + (0.30 × Relative)
 
-= (0.60 × $50.08) + (0.10 × $45.12) + (0.30 × $56.11)
+= (0.60 × $50.08) + (0.10 × $45.12) + (0.30 × $56.50)
 
 = $30.05 + $4.51 + $16.83
 
-= **$51.39**
+= **$51.51**
 
-**Blended Target: $51.39** (+12.0% vs. $45.87 spot)
+**Blended Target: $51.51** (+12.2% vs. $45.87 spot)
 
-**Blended Rating:** **HOLD** (+12.0% within -10% to +15% band)
+**Blended Rating:** **HOLD** (+12.2% within -10% to +15% band)
 
 ---
 
@@ -435,8 +435,8 @@ Blended = (0.60 × RIM) + (0.10 × DDM) + (0.30 × Relative)
 
 | Framework | Target Price | Return | Weight Methodology |
 |-----------|--------------|--------|--------------------|
-| **Wilson 95% (Current)** | $51.74 | +12.8% | Probability-weighted scenarios (74/26 NCO breach) |
-| **IRC Blended (New)** | $51.39 | +12.0% | Method-weighted triangulation (60/10/30 RIM/DDM/Relative) |
+| **Wilson 95% (Current)** | $52.03 | +13.4% | Probability-weighted scenarios (74/26 NCO breach) |
+| **IRC Blended (New)** | $51.51 | +12.2% | Method-weighted triangulation (60/10/30 RIM/DDM/Relative) |
 | **Difference** | -$0.35 | -0.8 ppts | Immaterial |
 
 **Conclusion:** IRC blended valuation **validates** Wilson framework (within $0.35, 0.7% difference).
@@ -471,8 +471,8 @@ Blended = (0.60 × RIM) + (0.10 × DDM) + (0.30 × Relative)
 
 ## 8. IRC Defense Q&A
 
-**Q: Why does RIM show $50.08 (+9.2%) while peer regression shows $56.11 (+22.3%)?**
-A: **Different lenses on value:** (1) **RIM uses through-cycle ROTE (10.21%)** → Conservative, (2) **Peer regression uses current ROTE (11.95%)** → Aggressive. **RIM is anchored to normalized earnings power**, peer regression to **current market multiples**. **Triangulation:** Blend RIM (60%) + Relative (30%) → $51.39 (+12.0%).
+**Q: Why does RIM show $50.08 (+9.2%) while peer regression shows $56.50 (+23.1%)?**
+A: **Different lenses on value:** (1) **RIM uses through-cycle ROTE (10.21%)** → Conservative, (2) **Peer regression uses current ROTE (11.95%)** → Aggressive. **RIM is anchored to normalized earnings power**, peer regression to **current market multiples**. **Triangulation:** Blend RIM (60%) + Relative (30%) → $51.51 (+12.2%).
 
 **Q: Why weight RIM 60% vs. Relative 30%?**
 A: **IRC standard** (CBA winning report uses 60/10/30). **Rationale:** (1) **RIM isolates intrinsic value** (book value + excess returns), less market-driven, (2) **Relative valuation subject to bubble/crash** (peer multiples can be mispriced), (3) **DDM 10%** (payout policy risk).

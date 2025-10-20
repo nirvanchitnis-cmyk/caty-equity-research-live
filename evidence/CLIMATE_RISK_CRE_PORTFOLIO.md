@@ -360,7 +360,7 @@ A: **Compounding risk:** WFH reduces office demand → Vacancy pressure → Owne
 | **COE Premium** | +20 bps | +10 bps | +35 bps |
 | **Target Price Impact** | -$1.20 | -$0.60 | -$2.10 |
 
-**Key Insight:** Even in downside scenario (-1.2% NAV), climate risk does **not** change HOLD rating (expected return +12.8% → +11.6%, still within HOLD band).
+**Key Insight:** Even in downside scenario (-1.2% NAV), climate risk does **not** change HOLD rating (expected return +13.4% → +11.6%, still within HOLD band).
 
 ---
 

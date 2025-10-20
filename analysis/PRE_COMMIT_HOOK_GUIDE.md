@@ -32,7 +32,7 @@ python3 analysis/disconfirmer_monitor.py
 
 2. **Conservative Bias**
    - Including COLB **lowers** fitted P/TBV for CATY (makes valuation conservative)
-   - CATY target $56.11 with COLB vs $57.50 without (sensitivity tested)
+   - CATY target $56.50 with COLB vs $57.50 without (sensitivity tested)
    - Conservative bias appropriate for HOLD rating
 
 3. **Cook's Distance Interpretation**

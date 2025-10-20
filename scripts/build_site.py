@@ -422,6 +422,8 @@ def render_module_section(section_cfg: Dict[str, Any], context: Dict[str, Any]) 
                 attrs += f' {attr_name}="{attr_value}"'
             return f"<{tag}{attrs}>{text}</{tag}>"
         return text
+    if section_type == "text_spec":
+        return render_text_spec(section_cfg.get("template"), context)
     if section_type == "table":
         return render_table(section_cfg, context)
 
@@ -679,6 +681,11 @@ def main(test_mode: bool = False) -> int:
         methods_cfg = load_json(ROOT / "data" / "valuation_methods.json")
         exec_cfg = load_json(EXEC_METRICS_PATH)
         module_cfg = load_json(MODULE_SECTIONS_PATH) if MODULE_SECTIONS_PATH.exists() else {"modules": []}
+        module_metadata = load_json(ROOT / "data" / "module_metadata.json") if (ROOT / "data" / "module_metadata.json").exists() else {"modules": []}
+        for module in module_metadata.get("modules", []):
+            last_updated = module.get("last_updated")
+            if last_updated:
+                module["last_updated_formatted"] = format_date_value(last_updated, "long")
         valuation_outputs = load_json(VALUATION_OUTPUTS_PATH) if VALUATION_OUTPUTS_PATH.exists() else {}
 
         valuation_lookup = {"methods": {m["id"]: m for m in methods_cfg.get("methods", [])}, "config": methods_cfg}
@@ -705,6 +712,7 @@ def main(test_mode: bool = False) -> int:
             "valuation": valuation_lookup,
             "executive": exec_cfg,
             "valuation_outputs": valuation_outputs,
+            "module_metadata": module_metadata,
             "caty01_tables": caty01_tables,
             "caty02_tables": caty02_tables,
             "caty03_tables": caty03_tables,
