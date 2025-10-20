@@ -28,7 +28,10 @@ LOG_PATH = ROOT / "logs" / "automation_run.log"
 
 SEC_RAW_PATH = DATA_DIR / "sec_edgar_raw.json"
 FDIC_RAW_PATH = DATA_DIR / "fdic_raw.json"
+PEER_RAW_PATH = DATA_DIR / "peer_data_raw.json"
+
 DQ_REPORT_PATH = DATA_DIR / "data_quality_report.json"
+PEER_SNAPSHOT_PATH = ROOT / "evidence" / "peer_snapshot_2025Q2.csv"
 EVIDENCE_PATH = DATA_DIR / "evidence_sources.json"
 
 SCRIPTS = ROOT / "scripts"
@@ -40,7 +43,6 @@ def append_log(message: str) -> None:
     LOG_PATH.parent.mkdir(parents=True, exist_ok=True)
     with LOG_PATH.open("a", encoding="utf-8") as fh:
         fh.write(line)
-
 
 def run_step(cmd: list[str], step_name: str, allow_failure: bool = False) -> subprocess.CompletedProcess[str]:
     logging.info("Running %s: %s", step_name, " ".join(cmd))
@@ -68,13 +70,19 @@ def load_json(path: Path) -> Dict[str, Any]:
         return json.load(fh)
 
 
-def update_evidence_sources(sec_payload: Dict[str, Any], fdic_payload: Dict[str, Any]) -> None:
+
+
+def update_evidence_sources(
+    sec_payload: Dict[str, Any],
+    fdic_payload: Dict[str, Any],
+    peer_payload: Optional[Dict[str, Any]] = None,
+) -> None:
     if not EVIDENCE_PATH.exists():
         logging.warning("Evidence metadata file missing: %s", EVIDENCE_PATH)
         return
     data = load_json(EVIDENCE_PATH)
     today = dt.date.today().isoformat()
-    updated_ids = set()
+    updated_ids: set[str] = set()
 
     for source in data.get("sources", []):
         source_id = source.get("id")
@@ -93,12 +101,21 @@ def update_evidence_sources(sec_payload: Dict[str, Any], fdic_payload: Dict[str,
                 source["accession"] = accession
             source["status"] = "VERIFIED_OK"
             updated_ids.add(source_id)
+        elif source_id == "peer_metrics" and peer_payload:
+            source["last_verified"] = today
+            source["status"] = "VERIFIED_OK"
+            snapshot_period = peer_payload.get("period")
+            if snapshot_period:
+                source["accession"] = snapshot_period
+            fetch_ts = peer_payload.get("fetch_timestamp")
+            if fetch_ts:
+                source["note"] = f"Auto-generated via peer API fetch {fetch_ts}"
+            updated_ids.add(source_id)
 
-    # Create or refresh API provenance entries
     def ensure_entry(entry_id: str, template: Dict[str, Any]) -> None:
-        for source in data.get("sources", []):
-            if source.get("id") == entry_id:
-                source.update(template)
+        for entry in data.get("sources", []):
+            if entry.get("id") == entry_id:
+                entry.update(template)
                 updated_ids.add(entry_id)
                 return
         data.setdefault("sources", []).append(template)
@@ -130,12 +147,25 @@ def update_evidence_sources(sec_payload: Dict[str, Any], fdic_payload: Dict[str,
             "status": "VERIFIED_OK",
         },
     )
+    if peer_payload:
+        ensure_entry(
+            "peer_metrics",
+            {
+                "id": "peer_metrics",
+                "description": "Peer regression snapshot generated from SEC EDGAR API",
+                "path": str(PEER_SNAPSHOT_PATH.relative_to(ROOT)),
+                "accession": peer_payload.get("period"),
+                "last_verified": today,
+                "owner": "Peer Analytics",
+                "refresh_frequency": "Quarterly",
+                "status": "VERIFIED_OK",
+            },
+        )
 
     with EVIDENCE_PATH.open("w", encoding="utf-8") as fh:
         json.dump(data, fh, indent=2, sort_keys=True)
         fh.write("\n")
     logging.info("Updated evidence sources for ids: %s", ", ".join(sorted(updated_ids)))
-
 
 def load_payload_safely(path: Path) -> Optional[Dict[str, Any]]:
     if not path.exists():
@@ -183,20 +213,37 @@ def main() -> int:
     else:
         append_log("fetch_fdic_data.py: WARNING - fetch failed, using cached payload")
 
-    # Step 3: Merge
+    # Step 3: Peer bank metrics
+    peer_result = run_step([sys.executable, str(SCRIPTS / "fetch_peer_banks.py")], "fetch_peer_banks", allow_failure=True)
+    peer_payload = load_payload_safely(PEER_RAW_PATH)
+    if peer_payload is None:
+        append_log("fetch_peer_banks.py: ERROR (no payload available)")
+        return 1
+    if peer_result.returncode == 0:
+        peer_count = len(peer_payload.get("banks", {}))
+        append_log(
+            f"fetch_peer_banks.py: Fetched {peer_count} peers for {peer_payload.get('period', 'unknown period')}"
+        )
+    else:
+        append_log("fetch_peer_banks.py: WARNING - fetch failed, using cached payload")
+
+    run_step([sys.executable, str(SCRIPTS / "generate_peer_snapshot.py")], "generate_peer_snapshot")
+    append_log("generate_peer_snapshot.py: Rebuilt evidence/peer_snapshot_2025Q2.csv")
+
+    # Step 4: Merge
     run_step([sys.executable, str(SCRIPTS / "merge_data_sources.py")], "merge_data_sources")
     dq_payload = load_payload_safely(DQ_REPORT_PATH) or {}
     conflict_count = len(dq_payload.get("conflicts", []))
     append_log(f"merge_data_sources.py: {conflict_count} conflicts logged")
 
-    # Step 4: Evidence metadata
-    update_evidence_sources(sec_payload, fdic_payload)
+    # Step 5: Evidence metadata
+    update_evidence_sources(sec_payload, fdic_payload, peer_payload)
 
-    # Step 5: Rebuild site
+    # Step 6: Rebuild site
     run_step([sys.executable, str(SCRIPTS / "build_site.py")], "build_site")
     append_log("build_site.py: Rebuilt modules successfully")
 
-    # Step 6: Validation
+    # Step 7: Validation
     run_step([sys.executable, str(ROOT / "analysis" / "reconciliation_guard.py")], "reconciliation_guard")
     append_log("reconciliation_guard.py: PASS")
 

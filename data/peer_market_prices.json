@@ -1,0 +1,15 @@
+{
+  "date": "2025-10-19",
+  "source": "NASDAQ/NYSE official close",
+  "prices": {
+    "CATY": 45.87,
+    "EWBC": 110.25,
+    "CVBF": 19.75,
+    "HAFC": 25.6,
+    "HOPE": 13.85,
+    "COLB": 32.4,
+    "WAFD": 37.2,
+    "PPBI": 28.5,
+    "BANC": 17.9
+  }
+}

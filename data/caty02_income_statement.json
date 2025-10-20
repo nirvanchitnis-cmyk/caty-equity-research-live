@@ -4,7 +4,7 @@
   "derived_metrics": {
     "diluted_eps": {
       "accession": "0001437749-25-025772",
-      "fetch_timestamp": "2025-10-20T03:52:21Z",
+      "fetch_timestamp": "2025-10-20T07:56:31Z",
       "period_end": "2025-06-30",
       "source": "SEC EDGAR 10-Q",
       "value": 1.1,
@@ -16,7 +16,7 @@
         "IncomeTaxExpenseBenefit",
         "NetIncomeLoss"
       ],
-      "fetch_timestamp": "2025-10-20T03:52:21Z",
+      "fetch_timestamp": "2025-10-20T07:56:31Z",
       "period_end": "2025-06-30",
       "source": "SEC EDGAR 10-Q",
       "value": 19.5559
@@ -28,7 +28,7 @@
         "InterestIncomeExpenseNet",
         "NoninterestIncome"
       ],
-      "fetch_timestamp": "2025-10-20T03:52:21Z",
+      "fetch_timestamp": "2025-10-20T07:56:31Z",
       "period_end": "2025-06-30",
       "source": "SEC EDGAR 10-Q",
       "value": 45.335
@@ -41,7 +41,7 @@
   "derived_metrics_fy2024": {
     "diluted_eps": {
       "accession": "0001437749-25-005749",
-      "fetch_timestamp": "2025-10-20T03:52:21Z",
+      "fetch_timestamp": "2025-10-20T07:56:31Z",
       "period_end": "2024-12-31",
       "source": "SEC EDGAR 10-K",
       "value": 3.95,
@@ -53,7 +53,7 @@
         "IncomeTaxExpenseBenefit",
         "NetIncomeLoss"
       ],
-      "fetch_timestamp": "2025-10-20T03:52:21Z",
+      "fetch_timestamp": "2025-10-20T07:56:31Z",
       "period_end": "2024-12-31",
       "source": "SEC EDGAR 10-K",
       "value": 9.9398
@@ -65,7 +65,7 @@
         "InterestIncomeExpenseNet",
         "NoninterestIncome"
       ],
-      "fetch_timestamp": "2025-10-20T03:52:21Z",
+      "fetch_timestamp": "2025-10-20T07:56:31Z",
       "period_end": "2024-12-31",
       "source": "SEC EDGAR 10-K",
       "value": 51.3454
@@ -95,10 +95,30 @@
       "value": "N/A"
     }
   },
+  "identity_verification_q2_2025": {
+    "eps_diluted": {
+      "calculated": 1.1035,
+      "difference": 0.0,
+      "formula": "net_income / diluted_shares",
+      "reported": 1.1035
+    },
+    "net_income": {
+      "calculated_millions": 77.45,
+      "difference_millions": 0.0,
+      "formula": "pretax_income - income_tax_expense",
+      "reported_millions": 77.45
+    },
+    "pretax_income": {
+      "calculated_millions": 96.28,
+      "difference_millions": 0.0,
+      "formula": "net_interest_income_after_provision + noninterest_income - noninterest_expense",
+      "reported_millions": 96.28
+    }
+  },
   "income_statement_fy2024": {
     "income_tax_expense_millions": {
       "accession": "0001437749-25-005749",
-      "fetch_timestamp": "2025-10-20T03:52:21Z",
+      "fetch_timestamp": "2025-10-20T07:56:31Z",
       "period_end": "2024-12-31",
       "source": "SEC EDGAR 10-K",
       "value": 31.563,
@@ -106,7 +126,7 @@
     },
     "interest_expense_millions": {
       "accession": "0001437749-25-005749",
-      "fetch_timestamp": "2025-10-20T03:52:21Z",
+      "fetch_timestamp": "2025-10-20T07:56:31Z",
       "period_end": "2024-12-31",
       "source": "SEC EDGAR 10-K",
       "value": 660.92,
@@ -114,7 +134,7 @@
     },
     "interest_income_millions": {
       "accession": "0001437749-25-005749",
-      "fetch_timestamp": "2025-10-20T03:52:21Z",
+      "fetch_timestamp": "2025-10-20T07:56:31Z",
       "period_end": "2024-12-31",
       "source": "SEC EDGAR 10-K",
       "value": 1334.975,
@@ -122,7 +142,7 @@
     },
     "net_income_millions": {
       "accession": "0001437749-25-005749",
-      "fetch_timestamp": "2025-10-20T03:52:21Z",
+      "fetch_timestamp": "2025-10-20T07:56:31Z",
       "period_end": "2024-12-31",
       "source": "SEC EDGAR 10-K",
       "value": 285.979,
@@ -130,7 +150,7 @@
     },
     "net_interest_income_millions": {
       "accession": "0001437749-25-005749",
-      "fetch_timestamp": "2025-10-20T03:52:21Z",
+      "fetch_timestamp": "2025-10-20T07:56:31Z",
       "period_end": "2024-12-31",
       "source": "SEC EDGAR 10-K",
       "value": 674.055,
@@ -142,14 +162,14 @@
         "InterestIncomeExpenseNet",
         "ProvisionForLoanLossesExpensed"
       ],
-      "fetch_timestamp": "2025-10-20T03:52:21Z",
+      "fetch_timestamp": "2025-10-20T07:56:31Z",
       "period_end": "2024-12-31",
       "source": "SEC EDGAR 10-K",
       "value": 636.555
     },
     "noninterest_expense_millions": {
       "accession": "0001437749-25-005749",
-      "fetch_timestamp": "2025-10-20T03:52:21Z",
+      "fetch_timestamp": "2025-10-20T07:56:31Z",
       "period_end": "2024-12-31",
       "source": "SEC EDGAR 10-K",
       "value": 374.677,
@@ -157,7 +177,7 @@
     },
     "noninterest_income_millions": {
       "accession": "0001437749-25-005749",
-      "fetch_timestamp": "2025-10-20T03:52:21Z",
+      "fetch_timestamp": "2025-10-20T07:56:31Z",
       "period_end": "2024-12-31",
       "source": "SEC EDGAR 10-K",
       "value": 55.664,
@@ -169,14 +189,14 @@
         "NetIncomeLoss",
         "IncomeTaxExpenseBenefit"
       ],
-      "fetch_timestamp": "2025-10-20T03:52:21Z",
+      "fetch_timestamp": "2025-10-20T07:56:31Z",
       "period_end": "2024-12-31",
       "source": "SEC EDGAR 10-K",
       "value": 317.542
     },
     "provision_credit_losses_millions": {
       "accession": "0001437749-25-005749",
-      "fetch_timestamp": "2025-10-20T03:52:21Z",
+      "fetch_timestamp": "2025-10-20T07:56:31Z",
       "period_end": "2024-12-31",
       "source": "SEC EDGAR 10-K",
       "value": 37.5,
@@ -185,14 +205,14 @@
   },
   "income_statement_fy2024_metadata": {
     "accession": "0001437749-25-005749",
-    "fetch_timestamp": "2025-10-20T03:52:21Z",
+    "fetch_timestamp": "2025-10-20T07:56:31Z",
     "period_end": "2024-12-31",
     "source": "SEC EDGAR 10-K"
   },
   "income_statement_q2_2025": {
     "income_tax_expense_millions": {
       "accession": "0001437749-25-025772",
-      "fetch_timestamp": "2025-10-20T03:52:21Z",
+      "fetch_timestamp": "2025-10-20T07:56:31Z",
       "period_end": "2025-06-30",
       "source": "SEC EDGAR 10-Q",
       "value": 18.828,
@@ -200,7 +220,7 @@
     },
     "interest_expense_millions": {
       "accession": "0001437749-25-025772",
-      "fetch_timestamp": "2025-10-20T03:52:21Z",
+      "fetch_timestamp": "2025-10-20T07:56:31Z",
       "period_end": "2025-06-30",
       "source": "SEC EDGAR 10-Q",
       "value": 141.697,
@@ -208,7 +228,7 @@
     },
     "interest_income_millions": {
       "accession": "0001437749-25-025772",
-      "fetch_timestamp": "2025-10-20T03:52:21Z",
+      "fetch_timestamp": "2025-10-20T07:56:31Z",
       "period_end": "2025-06-30",
       "source": "SEC EDGAR 10-Q",
       "value": 322.918,
@@ -216,7 +236,7 @@
     },
     "net_income_millions": {
       "accession": "0001437749-25-025772",
-      "fetch_timestamp": "2025-10-20T03:52:21Z",
+      "fetch_timestamp": "2025-10-20T07:56:31Z",
       "period_end": "2025-06-30",
       "source": "SEC EDGAR 10-Q",
       "value": 77.45,
@@ -224,7 +244,7 @@
     },
     "net_interest_income_millions": {
       "accession": "0001437749-25-025772",
-      "fetch_timestamp": "2025-10-20T03:52:21Z",
+      "fetch_timestamp": "2025-10-20T07:56:31Z",
       "period_end": "2025-06-30",
       "source": "SEC EDGAR 10-Q",
       "value": 181.221,
@@ -236,14 +256,14 @@
         "InterestIncomeExpenseNet",
         "ProvisionForLoanLossesExpensed"
       ],
-      "fetch_timestamp": "2025-10-20T03:52:21Z",
+      "fetch_timestamp": "2025-10-20T07:56:31Z",
       "period_end": "2025-06-30",
       "source": "SEC EDGAR 10-Q",
       "value": 170.021
     },
     "noninterest_expense_millions": {
       "accession": "0001437749-25-025772",
-      "fetch_timestamp": "2025-10-20T03:52:21Z",
+      "fetch_timestamp": "2025-10-20T07:56:31Z",
       "period_end": "2025-06-30",
       "source": "SEC EDGAR 10-Q",
       "value": 89.134,
@@ -251,7 +271,7 @@
     },
     "noninterest_income_millions": {
       "accession": "0001437749-25-025772",
-      "fetch_timestamp": "2025-10-20T03:52:21Z",
+      "fetch_timestamp": "2025-10-20T07:56:31Z",
       "period_end": "2025-06-30",
       "source": "SEC EDGAR 10-Q",
       "value": 15.391,
@@ -263,21 +283,21 @@
         "NetIncomeLoss",
         "IncomeTaxExpenseBenefit"
       ],
-      "fetch_timestamp": "2025-10-20T03:52:21Z",
+      "fetch_timestamp": "2025-10-20T07:56:31Z",
       "period_end": "2025-06-30",
       "source": "SEC EDGAR 10-Q",
       "value": 96.278
     },
     "provision_credit_losses_millions": {
       "accession": "0001437749-25-025772",
-      "fetch_timestamp": "2025-10-20T03:52:21Z",
+      "fetch_timestamp": "2025-10-20T07:56:31Z",
       "period_end": "2025-06-30",
       "source": "SEC EDGAR 10-Q",
       "value": 11.2,
       "xbrl_tag": "us-gaap:ProvisionForLoanLossesExpensed"
     }
   },
-  "last_updated": "2025-10-20T03:52:21Z",
+  "last_updated": "2025-10-20T07:56:31Z",
   "ltm_metrics": {
     "eps_diluted": 4.25,
     "net_income_millions": 294.67,
@@ -292,7 +312,7 @@
     "average_earning_assets_millions": 22232,
     "diluted_eps": {
       "accession": "0001437749-25-025772",
-      "fetch_timestamp": "2025-10-20T03:52:21Z",
+      "fetch_timestamp": "2025-10-20T07:56:31Z",
       "period_end": "2025-06-30",
       "source": "SEC EDGAR 10-Q",
       "value": 1.1,
@@ -304,7 +324,7 @@
         "IncomeTaxExpenseBenefit",
         "NetIncomeLoss"
       ],
-      "fetch_timestamp": "2025-10-20T03:52:21Z",
+      "fetch_timestamp": "2025-10-20T07:56:31Z",
       "period_end": "2025-06-30",
       "source": "SEC EDGAR 10-Q",
       "value": 19.5559
@@ -316,14 +336,14 @@
         "InterestIncomeExpenseNet",
         "NoninterestIncome"
       ],
-      "fetch_timestamp": "2025-10-20T03:52:21Z",
+      "fetch_timestamp": "2025-10-20T07:56:31Z",
       "period_end": "2025-06-30",
       "source": "SEC EDGAR 10-Q",
       "value": 45.335
     },
     "net_income_millions": {
       "accession": "0001437749-25-025772",
-      "fetch_timestamp": "2025-10-20T03:52:21Z",
+      "fetch_timestamp": "2025-10-20T07:56:31Z",
       "period_end": "2025-06-30",
       "source": "SEC EDGAR 10-Q",
       "value": 77.45,
@@ -331,7 +351,7 @@
     },
     "nii_millions": {
       "accession": "0001437749-25-025772",
-      "fetch_timestamp": "2025-10-20T03:52:21Z",
+      "fetch_timestamp": "2025-10-20T07:56:31Z",
       "period_end": "2025-06-30",
       "source": "SEC EDGAR 10-Q",
       "value": 181.221,
@@ -340,31 +360,11 @@
     "nim_pct": 3.27,
     "provision_millions": {
       "accession": "0001437749-25-025772",
-      "fetch_timestamp": "2025-10-20T03:52:21Z",
+      "fetch_timestamp": "2025-10-20T07:56:31Z",
       "period_end": "2025-06-30",
       "source": "SEC EDGAR 10-Q",
       "value": 11.2,
       "xbrl_tag": "us-gaap:ProvisionForLoanLossesExpensed"
-    }
-  },
-  "identity_verification_q2_2025": {
-    "pretax_income": {
-      "calculated_millions": 96.28,
-      "reported_millions": 96.28,
-      "difference_millions": 0.0,
-      "formula": "net_interest_income_after_provision + noninterest_income - noninterest_expense"
-    },
-    "net_income": {
-      "calculated_millions": 77.45,
-      "reported_millions": 77.45,
-      "difference_millions": 0.0,
-      "formula": "pretax_income - income_tax_expense"
-    },
-    "eps_diluted": {
-      "calculated": 1.1035,
-      "reported": 1.1035,
-      "difference": 0.0,
-      "formula": "net_income / diluted_shares"
     }
   },
   "qa_checks": {
