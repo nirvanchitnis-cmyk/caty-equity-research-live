@@ -1,0 +1,136 @@
+{
+  "metadata": {
+    "generated_at_utc": "2025-10-20T13:30:00Z",
+    "data_source": "Reddit API (social listening, 12-month lookback)",
+    "collection_period": "2024-10-20 to 2025-10-20",
+    "entity": "Cathay General Bancorp (NASDAQ: CATY)",
+    "methodology": "Manual social listening + Reddit JSON API",
+    "limitations": "Small sample size (1 relevant post), brand confusion with Cathay Pacific airline and Cathay United Bank Taiwan"
+  },
+  "summary": {
+    "total_posts_analyzed": 5,
+    "relevant_to_caty_us_bank": 1,
+    "overall_sentiment": "POSITIVE",
+    "confidence": "LOW",
+    "brand_confusion_risk": "HIGH"
+  },
+  "relevant_posts": [
+    {
+      "post_id": "1jjx13d",
+      "subreddit": "r/asianamerican",
+      "title": "Anyone use a Asian/Asian American bank here in the US?",
+      "author": "poly_bob",
+      "created_utc": 1742943524,
+      "created_date": "2025-01-26",
+      "score": 18,
+      "upvote_ratio": 0.88,
+      "num_comments": 8,
+      "url": "https://www.reddit.com/r/asianamerican/comments/1jjx13d/anyone_use_a_asianasian_american_bank_here_in_the/",
+      "sentiment": "POSITIVE",
+      "themes": [
+        "Community support",
+        "Local business lending",
+        "Cultural alignment",
+        "Chinese enclave banking"
+      ],
+      "caty_mentions": [
+        {
+          "text": "Cathy and East West started in LA where I am located. I like the idea that they are local.",
+          "author": "poly_bob",
+          "sentiment": "POSITIVE",
+          "context": "Comparing CATY vs EWBC, noting local roots"
+        },
+        {
+          "text": "Cathay Bank? I use it for my physical banking needs with an online HYSA.",
+          "author": "[deleted]",
+          "sentiment": "NEUTRAL",
+          "context": "User confirms usage, pairs with online savings"
+        }
+      ],
+      "competitive_context": {
+        "ewbc_sentiment": "POSITIVE",
+        "ewbc_quote": "I have a good impression of East West. They seem to actually care about local and Asian community.",
+        "ctbc_sentiment": "POSITIVE",
+        "ctbc_quote": "CTBC is great for local small businesses. Customer service seems to be top notch."
+      },
+      "community_banking_narrative": {
+        "key_quote": "I want to support my community and I already do this by renting here, and shop at local small businesses. But I can take it a step further by banking with local banks as well.",
+        "abacus_reference": "Abacus Federal Savings Bank... was the only U.S. bank prosecuted in relation to the 2008 financial crisis... Chinese community being discriminated against by big US banks",
+        "social_moat_evidence": "Users view AA banks as supporting community through local business lending"
+      }
+    }
+  ],
+  "brand_confusion_posts": [
+    {
+      "post_id": "1homusq",
+      "subreddit": "r/awardtravel",
+      "title": "Cathay account deactivated - a cautionary tale",
+      "entity": "Cathay Pacific AIRLINE (NOT CATY bank)",
+      "score": 195,
+      "sentiment": "NEGATIVE",
+      "risk_note": "High-visibility negative post about Cathay Pacific airline, NOT Cathay General Bancorp. Brand confusion risk."
+    },
+    {
+      "post_id": "1lugdpt",
+      "subreddit": "r/taiwan",
+      "title": "Should I sign up for an international bank, like HSBC or Cathay in my home country",
+      "entity": "Cathay United Bank TAIWAN (NOT CATY US)",
+      "score": 8,
+      "sentiment": "NEUTRAL",
+      "note": "Discusses Cathay United Bank Taiwan, separate entity"
+    },
+    {
+      "post_id": "1m74mt3",
+      "subreddit": "r/taiwan",
+      "title": "Any Cathay United/ Banking Pros tell me what 'agreed transfer' is",
+      "entity": "Cathay United Bank TAIWAN",
+      "score": 1,
+      "sentiment": "NEUTRAL",
+      "note": "Technical banking question, Taiwan entity"
+    },
+    {
+      "post_id": "1kv0ls1",
+      "subreddit": "r/taiwan",
+      "title": "E.Sun vs Cathay credit card",
+      "entity": "Cathay United Bank TAIWAN",
+      "score": 6,
+      "sentiment": "NEUTRAL",
+      "note": "Credit card comparison, Taiwan market"
+    }
+  ],
+  "irc_assessment": {
+    "strengths": [
+      "Positive community support narrative validates strategic positioning",
+      "Users view AA banks as aligned with community values",
+      "Local roots (LA 1962 founding) cited as competitive advantage"
+    ],
+    "weaknesses": [
+      "Very limited social media presence (1 post in 12 months)",
+      "Brand confusion with Cathay Pacific (airline) and Cathay Taiwan",
+      "EWBC perceived as stronger community engagement by some users",
+      "No CATY-specific brand advocacy visible in sample"
+    ],
+    "recommendations": [
+      "Expand social listening (Twitter/X, Glassdoor, Yelp, Google Reviews)",
+      "Monitor brand confusion with Cathay Pacific negative sentiment",
+      "Consider IR communications to strengthen brand differentiation"
+    ],
+    "esg_integration": {
+      "social_pillar_score": "MODERATE",
+      "evidence_quality": "LOW (small sample)",
+      "strategic_fit": "Aligns with community banking moat thesis (CATY_01)",
+      "risk_disclosure": "Brand confusion = reputational risk factor"
+    }
+  },
+  "provenance": [
+    {
+      "source": "Reddit JSON API",
+      "method": "manual_collection",
+      "query": "Cathay bank OR Cathy bank (misspelling common)",
+      "date_range": "2024-10-20 to 2025-10-20",
+      "total_results": 5,
+      "relevant_results": 1,
+      "confidence": "LOW (limited sample size)"
+    }
+  ]
+}
