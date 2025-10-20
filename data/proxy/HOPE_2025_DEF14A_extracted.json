@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generated_at_utc": "2025-10-20T20:16:52Z",
+  "generated_at_utc": "2025-10-20T20:50:22Z",
   "company": {
     "name": "HOPE BANCORP, INC.",
     "ticker": "HOPE",
@@ -18,6 +18,7 @@
   "board": {
     "size": 12,
     "independent_count": 12,
+    "independence_pct": 100.0,
     "leadership": {
       "chair_is_independent": false,
       "ceo_is_chair": false
@@ -41,7 +42,7 @@
     "annual_incentive": {},
     "ltip": {},
     "ceo_pay_ratio_to_median": 45,
-    "say_on_pay_pct": null
+    "say_on_pay_pct": 97.0
   },
   "equity_plan": {
     "overhang_pct": null,
@@ -68,6 +69,30 @@
       "sha256": "a96d7c937da6dcf1bcffa0accd84c1a25b760e9197441c7ce500ab663e90bb58"
     },
     {
+      "section": "board.independent_count",
+      "method": "html_parse",
+      "locators": [
+        "count: Independent Director mentions"
+      ],
+      "page_range": null,
+      "text_snippet": "Lead Independent Director",
+      "confidence_pct": 80,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1128361/000119312525078439/d888910ddef14a.htm",
+      "sha256": "a96d7c937da6dcf1bcffa0accd84c1a25b760e9197441c7ce500ab663e90bb58"
+    },
+    {
+      "section": "board.independence_pct",
+      "method": "html_parse",
+      "locators": [
+        "derived from board.independent_count / board.size"
+      ],
+      "page_range": null,
+      "text_snippet": "independent_count=12, board_size=12, independence_pct=100.0",
+      "confidence_pct": 80,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1128361/000119312525078439/d888910ddef14a.htm",
+      "sha256": "a96d7c937da6dcf1bcffa0accd84c1a25b760e9197441c7ce500ab663e90bb58"
+    },
+    {
       "section": "compensation.neos[0].name",
       "method": "html_parse",
       "locators": [
@@ -76,6 +101,19 @@
       "page_range": null,
       "text_snippet": "Kevin S. Kim Chairman, President\u00a0& Chief\u00a0Executive Officer 2024 $ 1,086,538 $ 189,700 $ 1,604,158 \u2014 $ 351,560 $ 6,699 $ 76,113 $ 3,314,768",
       "confidence_pct": 95,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1128361/000119312525078439/d888910ddef14a.htm",
+      "sha256": "a96d7c937da6dcf1bcffa0accd84c1a25b760e9197441c7ce500ab663e90bb58"
+    },
+    {
+      "section": "compensation.say_on_pay_pct",
+      "method": "regex",
+      "locators": [
+        "regex context search",
+        "regex: (\\d+)% ... votes/shares ... for"
+      ],
+      "page_range": null,
+      "text_snippet": "value of the Company. 2024 Say-on-Pay Compensation Decisions At our 2024 annual meeting of stockholders, approximately 97% of the votes cast for say-on-pay approved our executive compensation decisions. Stockholders made it clear that they are pleased with the sig",
+      "confidence_pct": 80,
       "source_url": "https://www.sec.gov/Archives/edgar/data/1128361/000119312525078439/d888910ddef14a.htm",
       "sha256": "a96d7c937da6dcf1bcffa0accd84c1a25b760e9197441c7ce500ab663e90bb58"
     },

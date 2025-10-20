@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generated_at_utc": "2025-10-20T20:16:49Z",
+  "generated_at_utc": "2025-10-20T20:50:12Z",
   "company": {
     "name": "EAST WEST BANCORP, INC.",
     "ticker": "EWBC",
@@ -18,6 +18,7 @@
   "board": {
     "size": 10,
     "independent_count": 10,
+    "independence_pct": 100.0,
     "leadership": {
       "chair_is_independent": false,
       "ceo_is_chair": false
@@ -41,7 +42,7 @@
     "annual_incentive": {},
     "ltip": {},
     "ceo_pay_ratio_to_median": 88,
-    "say_on_pay_pct": null
+    "say_on_pay_pct": 98.7
   },
   "equity_plan": {
     "overhang_pct": null,
@@ -62,8 +63,32 @@
         "regex: elect (\\d+) directors"
       ],
       "page_range": null,
-      "text_snippet": "y of Proxy Materials on your proxy card or the instructions that accompanied your proxy materials. ITEMS OF BUSINESS 1. Elect 10 directors to serve until the next annual meeting of stockholders and to serve until their",
+      "text_snippet": "y of Proxy Materials on your proxy card or the instructions that accompanied your proxy materials. ITEMS OF BUSINESS 1. Elect 10 directors to serve until the next annual meeting of stockholders and to serve until their successors are duly elected and qualifi",
       "confidence_pct": 90,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1069157/000117494725000556/ea0237505-def14a_eastwest.htm",
+      "sha256": "7811e2a8e4749a1a864f53d8ead65af4a54f9689552c8d4365b9b783bdf396a8"
+    },
+    {
+      "section": "board.independent_count",
+      "method": "regex",
+      "locators": [
+        "regex: Sussman 70 2015 Lead independent directors"
+      ],
+      "page_range": null,
+      "text_snippet": "Dominic Ng 66 1991 CEO E (Chair) Chairman of the Board and CEO of East West Bancorp, Inc. and East West Bank Lester M. Sussman 70 2015 Lead Independent Director A (FE and Chair), C, E, R (RE) Retired Partner, Deloitte & Touche A = Audit Committee; C = Compensation Committee; E =",
+      "confidence_pct": 95,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1069157/000117494725000556/ea0237505-def14a_eastwest.htm",
+      "sha256": "7811e2a8e4749a1a864f53d8ead65af4a54f9689552c8d4365b9b783bdf396a8"
+    },
+    {
+      "section": "board.independence_pct",
+      "method": "regex",
+      "locators": [
+        "derived from board.independent_count / board.size"
+      ],
+      "page_range": null,
+      "text_snippet": "independent_count=10, board_size=10, independence_pct=100.0",
+      "confidence_pct": 95,
       "source_url": "https://www.sec.gov/Archives/edgar/data/1069157/000117494725000556/ea0237505-def14a_eastwest.htm",
       "sha256": "7811e2a8e4749a1a864f53d8ead65af4a54f9689552c8d4365b9b783bdf396a8"
     },
@@ -76,6 +101,19 @@
       "page_range": null,
       "text_snippet": "Dominic Ng Chairman and\n    Chief Executive Officer 2024 1,275,000 - 4,712,953 - 3,105,900 119,780 9,213,633",
       "confidence_pct": 95,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1069157/000117494725000556/ea0237505-def14a_eastwest.htm",
+      "sha256": "7811e2a8e4749a1a864f53d8ead65af4a54f9689552c8d4365b9b783bdf396a8"
+    },
+    {
+      "section": "compensation.say_on_pay_pct",
+      "method": "regex",
+      "locators": [
+        "regex context search",
+        "regex: (\\d+)% ... votes/shares ... for"
+      ],
+      "page_range": null,
+      "text_snippet": "ued by proxy advisory firms, and the results of the most recent annual \u201cSay-on-Pay\u201d vote by stockholders. Approximately 98.7% of the votes cast at our 2024 annual meeting of stockholders approved the Company\u2019s 2023 executive compensation. The Compensation Committee views the high approval percentage as an indicati",
+      "confidence_pct": 80,
       "source_url": "https://www.sec.gov/Archives/edgar/data/1069157/000117494725000556/ea0237505-def14a_eastwest.htm",
       "sha256": "7811e2a8e4749a1a864f53d8ead65af4a54f9689552c8d4365b9b783bdf396a8"
     },
@@ -99,7 +137,7 @@
         "text contains: kpmg(?:\\s+llp)?"
       ],
       "page_range": null,
-      "text_snippet": "\u2014 The Audit Committee and the Board believe that the continued retention of KPMG LLP to serve as the independent registered public accounting firm of the Compan",
+      "text_snippet": "nding advisory basis, the compensation of the Company\u2019s named executive officers for 2024. 3. Ratify the appointment of KPMG LLP as the Company\u2019s independent registered public accounting firm for the year ending December 31, 2025. 4. Transact such",
       "confidence_pct": 90,
       "source_url": "https://www.sec.gov/Archives/edgar/data/1069157/000117494725000556/ea0237505-def14a_eastwest.htm",
       "sha256": "7811e2a8e4749a1a864f53d8ead65af4a54f9689552c8d4365b9b783bdf396a8"

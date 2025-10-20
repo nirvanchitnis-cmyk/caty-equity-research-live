@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generated_at_utc": "2025-10-20T20:16:52Z",
+  "generated_at_utc": "2025-10-20T20:50:20Z",
   "company": {
     "name": "BANC OF CALIFORNIA, INC.",
     "ticker": "BANC",
@@ -17,7 +17,8 @@
   },
   "board": {
     "size": 12,
-    "independent_count": 12,
+    "independent_count": 11,
+    "independence_pct": 91.7,
     "leadership": {
       "chair_is_independent": false,
       "ceo_is_chair": false
@@ -41,7 +42,7 @@
     "annual_incentive": {},
     "ltip": {},
     "ceo_pay_ratio_to_median": 132,
-    "say_on_pay_pct": null
+    "say_on_pay_pct": 96.0
   },
   "equity_plan": {
     "overhang_pct": null,
@@ -62,8 +63,32 @@
         "regex: board ... consists of (\\d+) directors"
       ],
       "page_range": null,
-      "text_snippet": "ate. 5 Banc of California Annual Proxy Statement 2025 PROPOSAL I Election of Directors | Board Overview The Company\u2019s Board of Directors currently consists of 12 directors. At the unanimous recommendation of the Compensation, Nominating and Corporate Governance Committee (CNG Committee), th",
+      "text_snippet": "date. 5 Banc of California Annual Proxy Statement 2025 PROPOSAL I Election of Directors | Board Overview The Company\u2019s Board of Directors currently consists of 12 directors. At the unanimous recommendation of the Compensation, Nominating and Corporate Governance Committee (CNG Committee), th",
       "confidence_pct": 90,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1169770/000116977025000015/banc-20250327.htm",
+      "sha256": "b38fd5eb7974c7bd1f0a8df5b2b4815fda7b5dda7b6ee8af1f13cc4c55e7a2dc"
+    },
+    {
+      "section": "board.independent_count",
+      "method": "html_parse",
+      "locators": [
+        "count: Independent Director mentions"
+      ],
+      "page_range": null,
+      "text_snippet": "Independent Director Age: 59 Director Since: 2019",
+      "confidence_pct": 80,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1169770/000116977025000015/banc-20250327.htm",
+      "sha256": "b38fd5eb7974c7bd1f0a8df5b2b4815fda7b5dda7b6ee8af1f13cc4c55e7a2dc"
+    },
+    {
+      "section": "board.independence_pct",
+      "method": "html_parse",
+      "locators": [
+        "derived from board.independent_count / board.size"
+      ],
+      "page_range": null,
+      "text_snippet": "independent_count=11, board_size=12, independence_pct=91.7",
+      "confidence_pct": 80,
       "source_url": "https://www.sec.gov/Archives/edgar/data/1169770/000116977025000015/banc-20250327.htm",
       "sha256": "b38fd5eb7974c7bd1f0a8df5b2b4815fda7b5dda7b6ee8af1f13cc4c55e7a2dc"
     },
@@ -76,6 +101,19 @@
       "page_range": null,
       "text_snippet": "Jared Wolff (5)(6) 2024 $ 1,043,269 $ 2,200,000 $ 7,637,070 $ 1,181,250 $ 67,686 $ 12,129,275",
       "confidence_pct": 95,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1169770/000116977025000015/banc-20250327.htm",
+      "sha256": "b38fd5eb7974c7bd1f0a8df5b2b4815fda7b5dda7b6ee8af1f13cc4c55e7a2dc"
+    },
+    {
+      "section": "compensation.say_on_pay_pct",
+      "method": "regex",
+      "locators": [
+        "regex context search",
+        "regex: (\\d+)% ... votes/shares ... for"
+      ],
+      "page_range": null,
+      "text_snippet": "ry, non-binding basis with respect to compensation paid to our NEOs for the year ended December 31, 2023. Approximately 96% of the votes cast voted in favor of the Say-on-Pay proposal at our 2024 annual meeting. For the Annual Meeting, the advisory non-binding Say-on-Pay vote",
+      "confidence_pct": 80,
       "source_url": "https://www.sec.gov/Archives/edgar/data/1169770/000116977025000015/banc-20250327.htm",
       "sha256": "b38fd5eb7974c7bd1f0a8df5b2b4815fda7b5dda7b6ee8af1f13cc4c55e7a2dc"
     },

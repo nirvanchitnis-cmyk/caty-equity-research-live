@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generated_at_utc": "2025-10-20T20:16:51Z",
+  "generated_at_utc": "2025-10-20T20:50:16Z",
   "company": {
     "name": "HANMI FINANCIAL CORPORATION",
     "ticker": "HAFC",
@@ -17,7 +17,8 @@
   },
   "board": {
     "size": 11,
-    "independent_count": 11,
+    "independent_count": 7,
+    "independence_pct": 63.6,
     "leadership": {
       "chair_is_independent": false,
       "ceo_is_chair": false
@@ -41,7 +42,7 @@
     "annual_incentive": {},
     "ltip": {},
     "ceo_pay_ratio_to_median": 29,
-    "say_on_pay_pct": null
+    "say_on_pay_pct": 94.6
   },
   "equity_plan": {
     "overhang_pct": null,
@@ -68,6 +69,30 @@
       "sha256": "385a6cf4ccc02829890e015605fc84554b8a958f5fc820b396de0079c79649b2"
     },
     {
+      "section": "board.independent_count",
+      "method": "html_parse",
+      "locators": [
+        "count: Independent Director mentions"
+      ],
+      "page_range": null,
+      "text_snippet": "* = Independent Director; FE = Audit Committee Financial Expert",
+      "confidence_pct": 80,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1109242/000095017025054713/hafc-20250416.htm",
+      "sha256": "385a6cf4ccc02829890e015605fc84554b8a958f5fc820b396de0079c79649b2"
+    },
+    {
+      "section": "board.independence_pct",
+      "method": "html_parse",
+      "locators": [
+        "derived from board.independent_count / board.size"
+      ],
+      "page_range": null,
+      "text_snippet": "independent_count=7, board_size=11, independence_pct=63.6",
+      "confidence_pct": 80,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1109242/000095017025054713/hafc-20250416.htm",
+      "sha256": "385a6cf4ccc02829890e015605fc84554b8a958f5fc820b396de0079c79649b2"
+    },
+    {
       "section": "compensation.neos[0].name",
       "method": "html_parse",
       "locators": [
@@ -76,6 +101,19 @@
       "page_range": null,
       "text_snippet": "Bonita I. Lee 2024 780,000 803,409 603,893 81,000 2,268,302",
       "confidence_pct": 95,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1109242/000095017025054713/hafc-20250416.htm",
+      "sha256": "385a6cf4ccc02829890e015605fc84554b8a958f5fc820b396de0079c79649b2"
+    },
+    {
+      "section": "compensation.say_on_pay_pct",
+      "method": "regex",
+      "locators": [
+        "regex context search",
+        "regex: (\\d+)% ... votes/shares ... for"
+      ],
+      "page_range": null,
+      "text_snippet": "pany seeks a non-binding advisory stockholder vote to approve the compensation of its NEOs. At our 2024 annual meeting, 94.6% of the stockholder vote cast in favor of the advisory say-on-pay proposal thereby approving the compensation of our NEOs. The CHR Committee viewed the approv",
+      "confidence_pct": 80,
       "source_url": "https://www.sec.gov/Archives/edgar/data/1109242/000095017025054713/hafc-20250416.htm",
       "sha256": "385a6cf4ccc02829890e015605fc84554b8a958f5fc820b396de0079c79649b2"
     },

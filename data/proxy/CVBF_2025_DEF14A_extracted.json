@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generated_at_utc": "2025-10-20T20:16:50Z",
+  "generated_at_utc": "2025-10-20T20:50:15Z",
   "company": {
     "name": "CVB FINANCIAL CORP.",
     "ticker": "CVBF",
@@ -17,7 +17,8 @@
   },
   "board": {
     "size": 8,
-    "independent_count": 8,
+    "independent_count": 5,
+    "independence_pct": 62.5,
     "leadership": {
       "chair_is_independent": false,
       "ceo_is_chair": false
@@ -41,7 +42,7 @@
     "annual_incentive": {},
     "ltip": {},
     "ceo_pay_ratio_to_median": 33,
-    "say_on_pay_pct": null
+    "say_on_pay_pct": 91.75
   },
   "equity_plan": {
     "overhang_pct": null,
@@ -68,6 +69,30 @@
       "sha256": "fe2a2463104b9a524660a8f36d015ae961cc4243300fc123000fe08ce8693516"
     },
     {
+      "section": "board.independent_count",
+      "method": "html_parse",
+      "locators": [
+        "count: Independent Director mentions"
+      ],
+      "page_range": null,
+      "text_snippet": "Corporate Governance Principles and Guidelines Our Board of Directors is committed to good business practices, transparency in financial reporting and strong corporate governance. To that end, the Board of Directors has adopted Corporate Governance Guidelines, which among other things, provide for: \u2022 Annual director elections; \u2022 At least a majority of independent directors; \u2022 Non-executive, independent chair of the Board of Directors; \u2022 Audit, compensation and nominating and corporate governance",
+      "confidence_pct": 80,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/354647/000095017025051966/cvbf-20250405.htm",
+      "sha256": "fe2a2463104b9a524660a8f36d015ae961cc4243300fc123000fe08ce8693516"
+    },
+    {
+      "section": "board.independence_pct",
+      "method": "html_parse",
+      "locators": [
+        "derived from board.independent_count / board.size"
+      ],
+      "page_range": null,
+      "text_snippet": "independent_count=5, board_size=8, independence_pct=62.5",
+      "confidence_pct": 80,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/354647/000095017025051966/cvbf-20250405.htm",
+      "sha256": "fe2a2463104b9a524660a8f36d015ae961cc4243300fc123000fe08ce8693516"
+    },
+    {
       "section": "compensation.neos[0].name",
       "method": "html_parse",
       "locators": [
@@ -76,6 +101,19 @@
       "page_range": null,
       "text_snippet": "David A. Brager 2024 879,039 686,250 1,237,496 - 237,900 - 76,530 3,117,215",
       "confidence_pct": 95,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/354647/000095017025051966/cvbf-20250405.htm",
+      "sha256": "fe2a2463104b9a524660a8f36d015ae961cc4243300fc123000fe08ce8693516"
+    },
+    {
+      "section": "compensation.say_on_pay_pct",
+      "method": "regex",
+      "locators": [
+        "regex context search",
+        "regex: support of (\\d+)% "
+      ],
+      "page_range": null,
+      "text_snippet": "nsideration of 2024 Say-On-Pay Results At our 2024 annual meeting of shareholders, our Say-On-Pay proposal received the support of approximately 91.75% of the total shareholder votes cast. In view of this positive vote and other relevant considerations, the Compensation",
+      "confidence_pct": 80,
       "source_url": "https://www.sec.gov/Archives/edgar/data/354647/000095017025051966/cvbf-20250405.htm",
       "sha256": "fe2a2463104b9a524660a8f36d015ae961cc4243300fc123000fe08ce8693516"
     },

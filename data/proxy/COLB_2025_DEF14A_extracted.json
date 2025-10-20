@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generated_at_utc": "2025-10-20T20:16:51Z",
+  "generated_at_utc": "2025-10-20T20:50:19Z",
   "company": {
     "name": "COLUMBIA BANKING SYSTEM, INC.",
     "ticker": "COLB",
@@ -17,7 +17,8 @@
   },
   "board": {
     "size": 11,
-    "independent_count": 11,
+    "independent_count": 9,
+    "independence_pct": 81.8,
     "leadership": {
       "chair_is_independent": false,
       "ceo_is_chair": false
@@ -41,7 +42,7 @@
     "annual_incentive": {},
     "ltip": {},
     "ceo_pay_ratio_to_median": 82,
-    "say_on_pay_pct": null
+    "say_on_pay_pct": 55.0
   },
   "equity_plan": {
     "overhang_pct": null,
@@ -68,6 +69,30 @@
       "sha256": "2005b04b361e6bb5f11350b07a644ae28b1d4be62112413b979f2312fa29b7d9"
     },
     {
+      "section": "board.independent_count",
+      "method": "html_parse",
+      "locators": [
+        "assumption: board.size - 2 (insufficient explicit indicators)"
+      ],
+      "page_range": null,
+      "text_snippet": "Independent markers detected (2) lacked explicit counts; assuming 9 independent directors from board size 11.",
+      "confidence_pct": 65,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/887343/000088734325000152/colb-20250403.htm",
+      "sha256": "2005b04b361e6bb5f11350b07a644ae28b1d4be62112413b979f2312fa29b7d9"
+    },
+    {
+      "section": "board.independence_pct",
+      "method": "html_parse",
+      "locators": [
+        "derived from board.independent_count / board.size"
+      ],
+      "page_range": null,
+      "text_snippet": "independent_count=9, board_size=11, independence_pct=81.8",
+      "confidence_pct": 65,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/887343/000088734325000152/colb-20250403.htm",
+      "sha256": "2005b04b361e6bb5f11350b07a644ae28b1d4be62112413b979f2312fa29b7d9"
+    },
+    {
       "section": "compensation.neos[0].name",
       "method": "html_parse",
       "locators": [
@@ -76,6 +101,19 @@
       "page_range": null,
       "text_snippet": "Clint E. Stein , President and Chief Executive Officer 2024 1,150,000 \u2014 3,173,878 1,711,200 31,524 274,326 6,340,928",
       "confidence_pct": 95,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/887343/000088734325000152/colb-20250403.htm",
+      "sha256": "2005b04b361e6bb5f11350b07a644ae28b1d4be62112413b979f2312fa29b7d9"
+    },
+    {
+      "section": "compensation.say_on_pay_pct",
+      "method": "regex",
+      "locators": [
+        "regex context search",
+        "regex: favorable vote from (\\d+)% of shares/votes"
+      ],
+      "page_range": null,
+      "text_snippet": "ng into account business context and market practices. Our say-on-pay proposal at last year\u2019s annual meeting received a favorable vote from 55% of the shares voted, compared to over 97% the prior year. After the 2024 say-on-pay advisory vote result, the Compensation Committee discu",
+      "confidence_pct": 80,
       "source_url": "https://www.sec.gov/Archives/edgar/data/887343/000088734325000152/colb-20250403.htm",
       "sha256": "2005b04b361e6bb5f11350b07a644ae28b1d4be62112413b979f2312fa29b7d9"
     },

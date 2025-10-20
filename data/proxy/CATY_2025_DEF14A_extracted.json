@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generated_at_utc": "2025-10-20T20:16:49Z",
+  "generated_at_utc": "2025-10-20T20:50:12Z",
   "company": {
     "name": "CATHAY GENERAL BANCORP",
     "ticker": "CATY",
@@ -17,7 +17,8 @@
   },
   "board": {
     "size": 14,
-    "independent_count": 14,
+    "independent_count": 10,
+    "independence_pct": 71.4,
     "leadership": {
       "chair_is_independent": false,
       "ceo_is_chair": false
@@ -41,7 +42,7 @@
     "annual_incentive": {},
     "ltip": {},
     "ceo_pay_ratio_to_median": 56,
-    "say_on_pay_pct": null
+    "say_on_pay_pct": 94.22
   },
   "equity_plan": {
     "overhang_pct": null,
@@ -68,6 +69,30 @@
       "sha256": "43e4b3f0e50309c5655842d10d47e4e38788709c7cfb7ff3e7a6986f53028873"
     },
     {
+      "section": "board.independent_count",
+      "method": "regex",
+      "locators": [
+        "regex: following ten of current members are independent"
+      ],
+      "page_range": null,
+      "text_snippet": "sclosed below under \u201cTransactions with Related Persons, Promoters and Certain Control Persons,\u201d and determined that the following ten of its current 14 members are \u201cindependent\u201d as defined in the Nasdaq Stock Market Rules: Kelly L. Chan (who will not stand for reelection this year), Nelson Chung",
+      "confidence_pct": 95,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/861842/000143774925011577/caty20250326_def14a.htm",
+      "sha256": "43e4b3f0e50309c5655842d10d47e4e38788709c7cfb7ff3e7a6986f53028873"
+    },
+    {
+      "section": "board.independence_pct",
+      "method": "regex",
+      "locators": [
+        "derived from board.independent_count / board.size"
+      ],
+      "page_range": null,
+      "text_snippet": "independent_count=10, board_size=14, independence_pct=71.4",
+      "confidence_pct": 95,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/861842/000143774925011577/caty20250326_def14a.htm",
+      "sha256": "43e4b3f0e50309c5655842d10d47e4e38788709c7cfb7ff3e7a6986f53028873"
+    },
+    {
       "section": "compensation.neos[0].name",
       "method": "html_parse",
       "locators": [
@@ -76,6 +101,19 @@
       "page_range": null,
       "text_snippet": "Chang M. Liu President and Chief Executive Officer of Bancorp and Cathay Bank 2024 943,250 \u2014 1,901,973 \u2014 825,400 \u2014 17,250 3,687,873",
       "confidence_pct": 95,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/861842/000143774925011577/caty20250326_def14a.htm",
+      "sha256": "43e4b3f0e50309c5655842d10d47e4e38788709c7cfb7ff3e7a6986f53028873"
+    },
+    {
+      "section": "compensation.say_on_pay_pct",
+      "method": "regex",
+      "locators": [
+        "regex context search",
+        "regex: (\\d+)% ... votes/shares ... for"
+      ],
+      "page_range": null,
+      "text_snippet": "to approve, on an advisory (nonbinding) basis, our executive compensation. At the 2024 annual meeting of stockholders, 94.22% of the votes cast were in favor of approving this proposal. The Compensation Committee was aware of and considered the results of the advisory vote on",
+      "confidence_pct": 80,
       "source_url": "https://www.sec.gov/Archives/edgar/data/861842/000143774925011577/caty20250326_def14a.htm",
       "sha256": "43e4b3f0e50309c5655842d10d47e4e38788709c7cfb7ff3e7a6986f53028873"
     },

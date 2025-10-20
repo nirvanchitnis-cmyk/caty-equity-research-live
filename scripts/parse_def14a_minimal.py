@@ -14,7 +14,7 @@ from glob import glob
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
-from bs4 import BeautifulSoup, XMLParsedAsHTMLWarning  # type: ignore
+from bs4 import BeautifulSoup, NavigableString, XMLParsedAsHTMLWarning  # type: ignore
 from jsonschema import Draft7Validator  # type: ignore
 
 import warnings
@@ -91,7 +91,117 @@ PAY_RATIO_REGEXES: List[Tuple[re.Pattern[str], str]] = [
     (re.compile(r"1\s*(?:to|–|-|—)\s*(\d[\d,\.]*)", re.IGNORECASE), "regex: 1 to (\\d+)"),
     (re.compile(r"(\d[\d,\.]*)\s+(?:times|x)\b", re.IGNORECASE), "regex: (\\d+) times"),
 ]
+SAY_ON_PAY_HEADINGS = re.compile(
+    r"(say-?on-?pay|advisory vote on executive compensation|executive compensation advisory vote)",
+    re.IGNORECASE,
+)
+SAY_ON_PAY_REGEXES: List[Tuple[re.Pattern[str], str]] = [
+    (
+        re.compile(
+            r"(\d{1,3}(?:\.\d+)?)%\s+(?:of\s+)?(?:the\s+)?(?:[A-Za-z]+\s+){0,2}(?:votes?|vote|shares|ballots|votes cast|vote cast|shares present).{0,120}?(?:for|in favor|support|supported|approval|approved)",
+            re.IGNORECASE,
+        ),
+        "regex: (\\d+)% ... votes/shares ... for",
+    ),
+    (
+        re.compile(
+            r"(?:received|garnered|with|approximately)\s+(\d{1,3}(?:\.\d+)?)%\s+(?:support|approval)",
+            re.IGNORECASE,
+        ),
+        "regex: received (\\d+)% support",
+    ),
+    (
+        re.compile(
+            r"(\d{1,3}(?:\.\d+)?)%\s+(?:approval|support)",
+            re.IGNORECASE,
+        ),
+        "regex: (\\d+)% approval/support",
+    ),
+    (
+        re.compile(
+            r"(?:support|approval)\s+of\s+(?:approximately\s+)?(\d{1,3}(?:\.\d+)?)%",
+            re.IGNORECASE,
+        ),
+        "regex: support of (\\d+)% ",
+    ),
+    (
+        re.compile(
+            r"favorable\s+vote\s+from\s+(?:approximately\s+)?(\d{1,3}(?:\.\d+)?)%\s+(?:of\s+)?(?:the\s+)?(?:[A-Za-z]+\s+){0,2}(?:votes?|vote|shares|ballots|votes cast|vote cast|shares present)",
+            re.IGNORECASE,
+        ),
+        "regex: favorable vote from (\\d+)% of shares/votes",
+    ),
+]
+INDEPENDENT_COUNT_REGEXES: List[Tuple[re.Pattern[str], str, int]] = [
+    (
+        re.compile(
+            r"(?P<count>[A-Za-z0-9\-]+(?:\s+[A-Za-z0-9\-]+)*)\s+independent\s+directors?",
+            re.IGNORECASE,
+        ),
+        "regex: {count} independent directors",
+        95,
+    ),
+    (
+        re.compile(
+            r"following\s+(?P<count>[A-Za-z0-9\-]+(?:\s+[A-Za-z0-9\-]+)*)\s+of\s+(?:its|our)\s+current\s+(?P<total>[A-Za-z0-9\-]+(?:\s+[A-Za-z0-9\-]+)*)\s+(?:members|directors|nominees)[^.]{0,160}?\bare\b[^.]{0,40}?\bindependent",
+            re.IGNORECASE,
+        ),
+        "regex: following {count} of current members are independent",
+        95,
+    ),
+    (
+        re.compile(
+            r"(?P<count>[A-Za-z0-9\-]+(?:\s+[A-Za-z0-9\-]+)*)\s+of\s+(?:our|the)\s+(?:board|directors|nominees)[^.]{0,80}?\b(?:are|is|were|will be)\b[^.]{0,40}?\bindependent",
+            re.IGNORECASE,
+        ),
+        "regex: {count} of our directors ... independent",
+        90,
+    ),
+    (
+        re.compile(
+            r"(?P<count>[A-Za-z0-9\-]+(?:\s+[A-Za-z0-9\-]+)*)\s+independent\s+members?\s+of\s+the\s+board",
+            re.IGNORECASE,
+        ),
+        "regex: {count} independent members of the board",
+        90,
+    ),
+    (
+        re.compile(
+            r"(?P<count>[A-Za-z0-9\-]+(?:\s+[A-Za-z0-9\-]+)*)\s+independent\s+nominees?",
+            re.IGNORECASE,
+        ),
+        "regex: {count} independent nominees",
+        85,
+    ),
+]
 HEADING_TAGS = {"h1", "h2", "h3", "h4", "h5", "h6"}
+
+SMALL_NUMBER_WORDS = {
+    "zero": 0,
+    "one": 1,
+    "two": 2,
+    "three": 3,
+    "four": 4,
+    "five": 5,
+    "six": 6,
+    "seven": 7,
+    "eight": 8,
+    "nine": 9,
+    "ten": 10,
+    "eleven": 11,
+    "twelve": 12,
+    "thirteen": 13,
+    "fourteen": 14,
+    "fifteen": 15,
+    "sixteen": 16,
+    "seventeen": 17,
+    "eighteen": 18,
+    "nineteen": 19,
+}
+TENS_NUMBER_WORDS = {
+    "twenty": 20,
+    "thirty": 30,
+}
 
 
 def parse_args() -> argparse.Namespace:
@@ -223,6 +333,89 @@ def extract_board_size(text: str, soup: BeautifulSoup) -> Tuple[int, int, str, L
     raise ValueError("Board size not found via regex or fallback heuristics.")
 
 
+def _parse_numeric_token(raw: str) -> Optional[int]:
+    if not raw:
+        return None
+    digit_match = re.search(r"\d+", raw)
+    if digit_match:
+        return int(digit_match.group(0))
+    cleaned = re.sub(r"[^a-zA-Z\\s-]", " ", raw.lower())
+    cleaned = cleaned.replace("-", " ")
+    parts = [part for part in cleaned.split() if part and part != "and"]
+    if not parts:
+        return None
+    total = 0
+    for part in parts:
+        if part in SMALL_NUMBER_WORDS:
+            total += SMALL_NUMBER_WORDS[part]
+        elif part in TENS_NUMBER_WORDS:
+            total += TENS_NUMBER_WORDS[part]
+        else:
+            return None
+    if total == 0 and parts[0] != "zero":
+        return None
+    return total
+
+
+def extract_independent_director_count(
+    text: str,
+    soup: BeautifulSoup,
+    board_size: int,
+) -> Tuple[int, int, str, List[str], str]:
+    search_text = text.replace("“", '"').replace("”", '"').replace("\u00a0", " ")
+    for pattern, locator, confidence in INDEPENDENT_COUNT_REGEXES:
+        match = pattern.search(search_text)
+        if not match:
+            continue
+        raw_value = match.group("count")
+        count = _parse_numeric_token(raw_value)
+        if count is None:
+            continue
+        if board_size and count > board_size:
+            count = board_size
+        snippet = make_snippet(text, match.start(), match.end())
+        locator_formatted = locator.format(count=raw_value.strip())
+        return count, confidence, "regex", [locator_formatted], snippet
+
+    hits: List[str] = []
+    seen_norm: set[str] = set()
+    for tag in soup.find_all(["p", "li", "td"]):
+        tag_text = tag.get_text(" ", strip=True)
+        if not tag_text:
+            continue
+        if "independent director" not in tag_text.lower():
+            continue
+        norm = re.sub(r"\s+", " ", tag_text.lower())
+        if norm in seen_norm:
+            continue
+        seen_norm.add(norm)
+        hits.append(tag_text)
+    count = len(hits)
+    if count > 0:
+        if board_size and count > board_size:
+            count = board_size
+        has_numeric = any(re.search(r"\d", entry) for entry in hits)
+        if board_size and (
+            (board_size >= 4 and count < max(board_size // 2, 1))
+            or not has_numeric
+        ):
+            assumed = max(board_size - 2, 0)
+            snippet = (
+                f"Independent markers detected ({count}) lacked explicit counts; assuming {assumed} independent directors from board size {board_size}."
+            )
+            return assumed, 65, "html_parse", ["assumption: board.size - 2 (insufficient explicit indicators)"], snippet
+        snippet = hits[0][:500]
+        return count, 80, "html_parse", ["count: Independent Director mentions"], snippet
+
+    assumed = max(board_size - 2, 0) if board_size else 0
+    snippet = (
+        f"Assumed independent directors = board size ({board_size}) - 2 (management members)."
+        if board_size
+        else "Assumed independent directors due to missing disclosure."
+    )
+    return assumed, 70, "html_parse", ["assumption: board.size - 2"], snippet
+
+
 def extract_ceo_name(soup: BeautifulSoup) -> Tuple[str, int, str, List[str], str]:
     summary_table = None
     for table in soup.find_all("table"):
@@ -346,6 +539,62 @@ def extract_ceo_pay_ratio(text: str, soup: BeautifulSoup) -> Tuple[int, int, str
     raise ValueError("CEO pay ratio disclosure not found.")
 
 
+def extract_say_on_pay_pct(text: str, soup: BeautifulSoup) -> Tuple[float, int, str, List[str], str]:
+    text_lower = text.lower()
+
+    def parse_pct(raw: str) -> float:
+        clean = raw.replace(",", "")
+        try:
+            value = float(clean)
+        except ValueError as exc:
+            raise ValueError(f"Unable to parse Say-on-Pay percentage: {raw}") from exc
+        return value
+
+    for heading in soup.find_all(HEADING_TAGS):
+        heading_text = heading.get_text(" ", strip=True)
+        if not heading_text or not SAY_ON_PAY_HEADINGS.search(heading_text):
+            continue
+        section_text = _collect_section_text(heading)
+        if not section_text:
+            continue
+        section_lower = section_text.lower()
+        if "say" not in section_lower and "advisory" not in section_lower and "executive compensation" not in section_lower:
+            continue
+        for pattern, locator in SAY_ON_PAY_REGEXES:
+            match = pattern.search(section_text)
+            if not match:
+                continue
+            pct_value = parse_pct(match.group(1))
+            match_text = match.group(0)
+            locate = text_lower.find(match_text.lower())
+            if locate != -1:
+                snippet = make_snippet(text, locate, locate + len(match_text))
+            else:
+                snippet = section_text[:500]
+            locators = [f"{heading.name}: {heading_text}", locator]
+            return pct_value, 85, "regex", locators, snippet
+
+    for pattern, locator in SAY_ON_PAY_REGEXES:
+        for match in pattern.finditer(text):
+            context_start = max(0, match.start() - 160)
+            context_end = min(len(text_lower), match.end() + 160)
+            context = text_lower[context_start:context_end]
+            if not (
+                "say-on-pay" in context
+                or "say on pay" in context
+                or "advisory vote on executive compensation" in context
+                or "advisory vote" in context
+                or "executive compensation" in context
+            ):
+                continue
+            pct_value = parse_pct(match.group(1))
+            snippet = make_snippet(text, match.start(), match.end())
+            locators = ["regex context search", locator]
+            return pct_value, 80, "regex", locators, snippet
+
+    raise ValueError("Say-on-Pay voting result not found.")
+
+
 def build_company_info(
     soup: BeautifulSoup, ticker: str, manifest_entry: Dict[str, Any]
 ) -> Dict[str, Any]:
@@ -450,11 +699,19 @@ def main() -> None:
         manifest = load_manifest(manifest_path)
         manifest_entry = get_manifest_entry(manifest, args.ticker)
         soup = load_soup(html_path)
-        text = soup.get_text(" ", strip=True)
+        raw_text = soup.get_text(" ", strip=True)
+        text = re.sub(r"\s+", " ", raw_text)
 
         board_size, board_conf, board_method, board_locators, board_snippet = extract_board_size(text, soup)
+        independent_count, indep_conf, indep_method, indep_locators, indep_snippet = extract_independent_director_count(
+            text, soup, board_size
+        )
+        independence_pct = round((independent_count / board_size) * 100, 1) if board_size else None
+        say_on_pay_pct, say_conf, say_method, say_locators, say_snippet = extract_say_on_pay_pct(text, soup)
         ceo_name, ceo_conf, ceo_method, ceo_locators, ceo_snippet = extract_ceo_name(soup)
-        ceo_pay_ratio, pay_ratio_conf, pay_ratio_method, pay_ratio_locators, pay_ratio_snippet = extract_ceo_pay_ratio(text, soup)
+        ceo_pay_ratio, pay_ratio_conf, pay_ratio_method, pay_ratio_locators, pay_ratio_snippet = extract_ceo_pay_ratio(
+            text, soup
+        )
         auditor_name, auditor_conf, auditor_method, auditor_locators, auditor_snippet = extract_auditor(text)
 
         company_info = build_company_info(soup, args.ticker, manifest_entry)
@@ -465,7 +722,8 @@ def main() -> None:
         payload["filing"] = filing_info
         payload["board"] = {
             "size": board_size,
-            "independent_count": board_size,
+            "independent_count": independent_count,
+            "independence_pct": independence_pct,
             "leadership": {
                 "chair_is_independent": False,
                 "ceo_is_chair": False,
@@ -475,6 +733,7 @@ def main() -> None:
             {"role": "CEO", "name": ceo_name, "total_comp_usd": None}
         ]
         payload["compensation"]["ceo_pay_ratio_to_median"] = ceo_pay_ratio
+        payload["compensation"]["say_on_pay_pct"] = say_on_pay_pct
         payload["audit"]["auditor"] = auditor_name
         payload["provenance"] = [
             {
@@ -488,12 +747,42 @@ def main() -> None:
                 "sha256": manifest_entry.get("sha256"),
             },
             {
+                "section": "board.independent_count",
+                "method": indep_method,
+                "locators": indep_locators,
+                "page_range": None,
+                "text_snippet": indep_snippet,
+                "confidence_pct": indep_conf,
+                "source_url": manifest_entry.get("def14a_url"),
+                "sha256": manifest_entry.get("sha256"),
+            },
+            {
+                "section": "board.independence_pct",
+                "method": indep_method,
+                "locators": ["derived from board.independent_count / board.size"],
+                "page_range": None,
+                "text_snippet": f"independent_count={independent_count}, board_size={board_size}, independence_pct={independence_pct}",
+                "confidence_pct": indep_conf if independence_pct is not None else 0,
+                "source_url": manifest_entry.get("def14a_url"),
+                "sha256": manifest_entry.get("sha256"),
+            },
+            {
                 "section": "compensation.neos[0].name",
                 "method": ceo_method,
                 "locators": ceo_locators,
                 "page_range": None,
                 "text_snippet": ceo_snippet,
                 "confidence_pct": ceo_conf,
+                "source_url": manifest_entry.get("def14a_url"),
+                "sha256": manifest_entry.get("sha256"),
+            },
+            {
+                "section": "compensation.say_on_pay_pct",
+                "method": say_method,
+                "locators": say_locators,
+                "page_range": None,
+                "text_snippet": say_snippet,
+                "confidence_pct": say_conf,
                 "source_url": manifest_entry.get("def14a_url"),
                 "sha256": manifest_entry.get("sha256"),
             },
