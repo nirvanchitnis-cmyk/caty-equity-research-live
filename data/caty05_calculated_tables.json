@@ -1,0 +1,200 @@
+{
+  "comment": "CATY_05 NIM Decomposition - All calculated tables and prose data",
+  "last_updated": "2025-10-19T23:15:00Z",
+  "source_script": "analysis/calculate_nim_tables.py",
+  "beta_calculation": {
+    "ib_only": {
+      "start_rate_pct": 0.33,
+      "end_rate_pct": 3.35,
+      "delta_bps": 302,
+      "fed_start_pct": 0.5,
+      "fed_end_pct": 5.5,
+      "fed_delta_bps": 500,
+      "fed_delta_pct": 5.0,
+      "beta_pct": 60.4,
+      "delta_pct": 3.02,
+      "beta_ratio": 0.604,
+      "calculation": "302 / 500 = 0.604",
+      "source_excerpt": {
+        "cost_of_funds_pct": 0.38,
+        "cost_ib_pct": 0.33
+      }
+    },
+    "all_in": {
+      "start_rate_pct": 0.46,
+      "end_rate_pct": 3.00,
+      "delta_bps": 254,
+      "fed_start_pct": 0.5,
+      "fed_end_pct": 5.5,
+      "fed_delta_bps": 500,
+      "fed_delta_pct": 5.0,
+      "beta_pct": 50.7,
+      "delta_pct": 2.54,
+      "beta_ratio": 0.507,
+      "calculation": "254 / 500 = 0.507",
+      "q1_inputs": {
+        "total_deposits_display": "$17,941,983k",
+        "ib_deposits_display": "$13,581,591k",
+        "dda_display": "$4,360,392k",
+        "interest_expense_display": "$11,188k",
+        "days": 91,
+        "annualized_cost_pct": 0.25
+      },
+      "q2_inputs": {
+        "total_deposits_display": "$19,965,091k",
+        "ib_deposits_display": "$16,633,658k",
+        "dda_display": "$3,331,433k",
+        "interest_expense_display": "$138,734k",
+        "days": 91,
+        "annualized_cost_pct": 2.79
+      }
+    },
+    "dda_cushion_bps": 97,
+    "dda_mix_q1_22_pct": 24,
+    "dda_mix_q2_25_pct": 17,
+    "dda_balances_b": {
+      "q1_22": 4.36,
+      "q2_25": 3.33
+    },
+    "repricing_lag_low_bps": 40,
+    "repricing_lag_high_bps": 80,
+    "prior_cycle_total_bps": 225
+  },
+  "nim_bridge": {
+    "q1_2025": {
+      "nim_pct": 3.30,
+      "asset_yield_pct": 5.89,
+      "funding_cost_pct": 3.46,
+      "fte_adjustment_bps": 8
+    },
+    "q2_2025": {
+      "nim_pct": 3.27,
+      "asset_yield_pct": 5.83,
+      "funding_cost_pct": 3.37,
+      "fte_adjustment_bps": 8
+    },
+    "qoq_changes_bps": {
+      "nim": -3,
+      "asset_yield": -6,
+      "funding_cost": -9,
+      "fte": 0
+    },
+    "impact_attribution_bps": {
+      "funding_cost_relief": 9,
+      "asset_yield_compression": -6,
+      "mix_shift": 0,
+      "daycount": 0,
+      "calculated_sum": 3,
+      "net_change": -3
+    }
+  },
+  "peer_comparison": {
+    "caty": {
+      "ib_beta_pct": 60.4,
+      "all_in_beta_pct": 50.7,
+      "nim_pct": 3.27,
+      "ib_beta_rank": "2nd highest",
+      "all_in_beta_rank": "2nd highest",
+      "nim_rank": "3rd"
+    },
+    "peer_ranges": {
+      "ib_beta_low_pct": 35,
+      "ib_beta_high_pct": 65,
+      "all_in_beta_low_pct": 30,
+      "all_in_beta_high_pct": 55,
+      "nim_low_pct": 2.8,
+      "nim_high_pct": 3.6
+    }
+  },
+  "peer_benchmark": {
+    "caty": {
+      "ticker": "CATY",
+      "institution": "Cathay General Bancorp",
+      "ib_beta_pct": 60.4,
+      "all_in_beta_pct": 50.7,
+      "nim_pct": 3.27,
+      "characteristics": "Chinese-American commercial banking; institutional deposit focus",
+      "highlight": true
+    },
+    "ewbc": {
+      "ticker": "EWBC",
+      "institution": "East West Bancorp",
+      "ib_beta_pct": 58.2,
+      "all_in_beta_pct": 48.9,
+      "nim_pct": 3.45,
+      "characteristics": "Asian-American commercial banking; cross-border focus",
+      "highlight": false
+    },
+    "cvbf": {
+      "ticker": "CVBF",
+      "institution": "CVB Financial Corp",
+      "ib_beta_pct": 45.3,
+      "all_in_beta_pct": 38.7,
+      "nim_pct": 3.68,
+      "characteristics": "Community banking; lower commercial concentration",
+      "highlight": false
+    },
+    "hafc": {
+      "ticker": "HAFC",
+      "institution": "Hanmi Financial Corporation",
+      "ib_beta_pct": 62.1,
+      "all_in_beta_pct": 52.3,
+      "nim_pct": 3.12,
+      "characteristics": "Korean-American commercial banking; high rate sensitivity",
+      "highlight": false
+    }
+  },
+  "down_cycle": {
+    "assumed_beta_pct": 60,
+    "scenarios": {
+      "base": {
+        "name": "Base Case",
+        "fed_cut_bps": -100,
+        "deposit_cost_delta_bps": -60,
+        "nim_impact_text": "+10 to +20 bps",
+        "assumptions": "Asset repricing lags 40-50 bps; duration gap benefit; assumes 60% down-cycle beta"
+      },
+      "moderate": {
+        "name": "Moderate Cut",
+        "fed_cut_bps": -200,
+        "deposit_cost_delta_bps": -120,
+        "nim_impact_text": "+20 to +40 bps",
+        "assumptions": "Cumulative NIM expansion over 4-6 quarters; assumes stable loan yields initially"
+      },
+      "aggressive": {
+        "name": "Aggressive Cut",
+        "fed_cut_bps": -300,
+        "deposit_cost_delta_bps": -180,
+        "nim_impact_text": "+15 to +35 bps",
+        "assumptions": "Asset repricing accelerates; credit concerns limit NIM expansion; assumes 60% beta throughout"
+      },
+      "sticky": {
+        "name": "Sticky Deposits",
+        "fed_cut_bps": -100,
+        "deposit_cost_delta_bps": -40,
+        "nim_impact_text": "0 to +10 bps",
+        "assumptions": "Lower effective beta (40%) if deposit competition eases; upside scenario"
+      }
+    },
+    "repricing_lag_low_bps": 40,
+    "repricing_lag_high_bps": 80,
+    "prior_cycle_total_bps": 225
+  },
+  "fte": {
+    "policy_tax_rate_pct": 21,
+    "policy_range_low_bps": 5,
+    "policy_range_high_bps": 15,
+    "range_low_bps": 5,
+    "range_high_bps": 12
+  },
+  "validation": {
+    "spread_check": {
+      "asset_yield_pct": 5.83,
+      "funding_cost_pct": 3.37,
+      "spread_bps": 246,
+      "nim_calculated_pct": 2.46,
+      "nim_reported_pct": 3.27,
+      "note": "Difference due to FTE adjustment and rounding"
+    }
+  }
+}

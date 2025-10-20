@@ -20,3 +20,41 @@
 [2025-10-19 22:54:03 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target updated
 [2025-10-19 22:58:20 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target updated
 [2025-10-19 22:58:21 UTC] disconfirmer_monitor.py status=PASS alerts=0
+[2025-10-19 23:20:55 UTC] manual entry: CATY 2025Q2 10-Q PDF captured via headless Chrome -> evidence/raw/CATY_2025Q2_10Q.pdf
+[2025-10-19 23:20:55 UTC] manual entry: CATY 2024 10-K PDF captured via headless Chrome -> evidence/raw/CATY_2024_10K.pdf
+[2025-10-19 23:21:07 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-19 23:21:15 UTC] disconfirmer_monitor.py status=PASS alerts=0
+[2025-10-19 23:22:16 UTC] print_validation completed: 2/2 passed
+[2025-10-19 23:25:24 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-19 23:25:25 UTC] disconfirmer_monitor.py status=PASS alerts=0
+[2025-10-19 23:29:02 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-19 23:29:34 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-19 23:33:27 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-19 23:45:23 UTC] build_site.py FAILED: Expecting property name enclosed in double quotes: line 32 column 9 (char 809)
+[2025-10-19 23:46:36 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-19 23:46:58 UTC] disconfirmer_monitor.py status=PASS alerts=0
+[2025-10-19 23:48:14 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-19 23:48:17 UTC] disconfirmer_monitor.py status=PASS alerts=0
+[2025-10-19 23:56:40 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-19 23:58:53 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-20 00:08:58 UTC] build_site.py FAILED: "Path 'peer_benchmark.0.ticker' missing key '0'"
+[2025-10-20 00:09:33 UTC] build_site.py FAILED: "Path 'down_cycle.scenarios.0.name' missing key '0'"
+[2025-10-20 00:09:57 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-20 00:21:13 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-20 00:21:39 UTC] disconfirmer_monitor.py status=PASS alerts=0
+[2025-10-20 00:23:37 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-20 00:25:23 UTC] disconfirmer_monitor.py status=PASS alerts=0
+[2025-10-20 00:52:56 UTC] build_site.py FAILED: "Path 'nco_metrics.0.class_suffix' missing key '0'"
+[2025-10-20 00:53:32 UTC] build_site.py FAILED: Marker 'caty12-growth-metric-grid' not found in HTML
+[2025-10-20 00:54:00 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-20 00:54:13 UTC] disconfirmer_monitor.py status=PASS alerts=0
+[2025-10-20 00:55:50 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-20 00:56:14 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-20 00:56:35 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-20 00:56:52 UTC] disconfirmer_monitor.py status=PASS alerts=0
+[2025-10-20 00:58:42 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-20 00:59:16 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-20 01:01:15 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-20 01:02:05 UTC] disconfirmer_monitor.py status=PASS alerts=0
+[2025-10-20 01:03:52 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-20 01:03:55 UTC] disconfirmer_monitor.py status=PASS alerts=0

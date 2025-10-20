@@ -10,12 +10,13 @@ import platform
 import shutil
 from pathlib import Path
 from datetime import datetime, timezone
+from typing import Optional
 
 # Paths
 base_dir = Path(__file__).parent.parent
 log_path = base_dir / 'logs' / 'automation_run.log'
 
-def find_chrome() -> str | None:
+def find_chrome() -> Optional[str]:
     """
     Find Chrome executable across different platforms
     Returns None if Chrome is not found

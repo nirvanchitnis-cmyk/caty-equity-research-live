@@ -29,10 +29,10 @@
       "accession": "0001437749-25-025772",
       "owner": "Financial Reporting",
       "refresh_frequency": "Quarterly",
-      "status": "VERIFIED_AVAILABLE_EDGAR",
-      "sha256": null,
+      "status": "VERIFIED_OK",
+      "sha256": "e2129a54f3b3bb12357df6bbb490ac5f9edd0a5b1b76c377e0f4e8e84caa90bf",
       "last_verified": "2025-10-19",
-      "note": "Verified at https://www.sec.gov/cgi-bin/viewer?action=view&cik=861842&accession_number=0001437749-25-025772 (SEC blocks automated download, manual download available)"
+      "note": "Headless Chrome (macOS) print-to-PDF of SEC iXBRL primary document caty20250630_10q.htm (accession 0001437749-25-025772)"
     },
     {
       "id": "caty_10k_2024",
@@ -41,10 +41,10 @@
       "accession": "0001437749-25-005749",
       "owner": "Financial Reporting",
       "refresh_frequency": "Annual",
-      "status": "VERIFIED_AVAILABLE_EDGAR",
-      "sha256": null,
+      "status": "VERIFIED_OK",
+      "sha256": "44ad6cd3bf086809709e5a59dcb46169215de392c76063893db517be87cc6710",
       "last_verified": "2025-10-19",
-      "note": "Available at https://www.sec.gov/cgi-bin/viewer?action=view&cik=861842&accession_number=0001437749-25-005749 (SEC blocks automated download, manual download available)"
+      "note": "Headless Chrome (macOS) print-to-PDF of SEC iXBRL primary document caty20241231_10k.htm (accession 0001437749-25-005749)"
     },
     {
       "id": "peer_metrics",

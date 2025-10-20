@@ -25,6 +25,8 @@ ROOT = Path(__file__).resolve().parents[1]
 INDEX_PATH = ROOT / "index.html"
 LOG_PATH = ROOT / "logs" / "automation_run.log"
 EXEC_METRICS_PATH = ROOT / "data" / "executive_metrics.json"
+MODULE_SECTIONS_PATH = ROOT / "data" / "module_sections.json"
+VALUATION_OUTPUTS_PATH = ROOT / "data" / "valuation_outputs.json"
 
 # ---------------------------------------------------------------------------
 # Helpers
@@ -65,9 +67,19 @@ def format_timestamp(ts: dt.datetime | None) -> str:
 def resolve_path(data: Dict[str, Any], path: str) -> Any:
     current: Any = data
     for part in path.split('.'):
-        if part not in current:
-            raise KeyError(f"Path '{path}' missing key '{part}'")
-        current = current[part]
+        if isinstance(current, list):
+            try:
+                index = int(part)
+            except ValueError as exc:  # noqa: PERF203
+                raise KeyError(f"Path '{path}' expected integer index for list access, got '{part}'") from exc
+            try:
+                current = current[index]
+            except IndexError as exc:  # noqa: PERF203
+                raise KeyError(f"Path '{path}' index '{index}' out of range") from exc
+        else:
+            if part not in current:
+                raise KeyError(f"Path '{path}' missing key '{part}'")
+            current = current[part]
     return current
 
 
@@ -99,7 +111,7 @@ def format_date_value(value: Any, style: str) -> str:
 
 
 def format_value(raw: Any, fmt: str, spec: Dict[str, Any]) -> str:
-    if raw in (None, ""):
+    if raw in (None, "") and not spec.get("allow_blank", False):
         return "—"
 
     prefix = spec.get("prefix", "")
@@ -215,18 +227,31 @@ def render_value_spec(spec: Any, context: Dict[str, Any]) -> str:
     return format_value(raw, fmt, spec)
 
 
+def indent_block(text: str, indent: str) -> str:
+    lines = text.splitlines()
+    return "\n".join(f"{indent}{line}" if line else "" for line in lines)
+
+
 def render_cards(section_cfg: Dict[str, Any], context: Dict[str, Any]) -> str:
     defaults = section_cfg.get("defaults", {})
     lines: list[str] = []
 
+    def resolve_class(spec: Any, default_value: str) -> str:
+        if spec is None:
+            return default_value
+        if isinstance(spec, dict):
+            return render_text_spec(spec, context)
+        return str(spec)
+
     for card in section_cfg.get("cards", []):
-        card_class = card.get("card_class", defaults.get("card_class", "dashboard-card"))
-        label_class = card.get("label_class", defaults.get("label_class", "dashboard-label"))
-        value_class = card.get("value_class", defaults.get("value_class", "dashboard-value"))
+        card_class = resolve_class(card.get("card_class"), defaults.get("card_class", "dashboard-card"))
+        label_class = resolve_class(card.get("label_class"), defaults.get("label_class", "dashboard-label"))
+        value_class = resolve_class(card.get("value_class"), defaults.get("value_class", "dashboard-value"))
         subtext_cfg = card.get("subtext")
 
         lines.append(f'    <div class="{card_class}">')
-        lines.append(f'        <div class="{label_class}">{card["label"]}</div>')
+        label_text = render_text_spec(card.get("label"), context)
+        lines.append(f'        <div class="{label_class}">{label_text}</div>')
         value_text = render_value_spec(card.get("value"), context)
         lines.append(f'        <div class="{value_class}">{value_text}</div>')
 
@@ -239,6 +264,45 @@ def render_cards(section_cfg: Dict[str, Any], context: Dict[str, Any]) -> str:
         lines.append("    </div>")
 
     return "\n".join(lines)
+
+
+def render_module_section(section_cfg: Dict[str, Any], context: Dict[str, Any]) -> str:
+    section_type = section_cfg.get("type", "cards")
+
+    if section_type == "cards":
+        wrapper_cfg = section_cfg.get("wrapper")
+        cards_html = render_cards(section_cfg, context)
+
+        if wrapper_cfg:
+            tag = wrapper_cfg.get("tag", "div")
+            classes = wrapper_cfg.get("class")
+            attrs = ""
+            if classes:
+                attrs = f' class="{classes}"'
+            extra_attrs = wrapper_cfg.get("attrs", {})
+            for attr_name, attr_value in extra_attrs.items():
+                attrs += f' {attr_name}="{attr_value}"'
+            indented_cards = indent_block(cards_html, "    ")
+            return f"<{tag}{attrs}>\n{indented_cards}\n</{tag}>"
+
+        return cards_html
+
+    if section_type == "text":
+        text = render_text_spec(section_cfg.get("template"), context)
+        wrapper_cfg = section_cfg.get("wrapper")
+        if wrapper_cfg:
+            tag = wrapper_cfg.get("tag", "div")
+            classes = wrapper_cfg.get("class")
+            attrs = ""
+            if classes:
+                attrs = f' class="{classes}"'
+            extra_attrs = wrapper_cfg.get("attrs", {})
+            for attr_name, attr_value in extra_attrs.items():
+                attrs += f' {attr_name}="{attr_value}"'
+            return f"<{tag}{attrs}>{text}</{tag}>"
+        return text
+
+    raise ValueError(f"Unsupported section type '{section_type}' for module automation")
 
 
 def build_reconciliation_table() -> str:
@@ -491,9 +555,21 @@ def main(test_mode: bool = False) -> int:
         market = load_json(ROOT / "data" / "market_data_current.json")
         methods_cfg = load_json(ROOT / "data" / "valuation_methods.json")
         exec_cfg = load_json(EXEC_METRICS_PATH)
+        module_cfg = load_json(MODULE_SECTIONS_PATH) if MODULE_SECTIONS_PATH.exists() else {"modules": []}
+        valuation_outputs = load_json(VALUATION_OUTPUTS_PATH) if VALUATION_OUTPUTS_PATH.exists() else {}
 
         valuation_lookup = {"methods": {m["id"]: m for m in methods_cfg.get("methods", [])}, "config": methods_cfg}
-        context = {"market": market, "valuation": valuation_lookup, "executive": exec_cfg}
+        caty05_tables = load_json(ROOT / "data" / "caty05_calculated_tables.json") if (ROOT / "data" / "caty05_calculated_tables.json").exists() else {}
+        caty12_tables = load_json(ROOT / "data" / "caty12_calculated_tables.json") if (ROOT / "data" / "caty12_calculated_tables.json").exists() else {}
+
+        context = {
+            "market": market,
+            "valuation": valuation_lookup,
+            "executive": exec_cfg,
+            "valuation_outputs": valuation_outputs,
+            "caty05_tables": caty05_tables,
+            "caty12_tables": caty12_tables,
+        }
 
         reconciliation_html = build_reconciliation_table()
         html = replace_section(html, "reconciliation-dashboard", reconciliation_html)
@@ -515,8 +591,24 @@ def main(test_mode: bool = False) -> int:
             html = replace_section(html, price_target_cfg["marker"], price_html)
 
         INDEX_PATH.write_text(html, encoding="utf-8")
+
+        for module_entry in module_cfg.get("modules", []):
+            module_path = ROOT / module_entry["file"]
+            if not module_path.exists():
+                raise FileNotFoundError(f"Module file '{module_entry['file']}' not found")
+
+            module_html = module_path.read_text(encoding="utf-8")
+            module_context = dict(context)
+            module_context["module"] = module_entry.get("data", {})
+
+            for module_section in module_entry.get("sections", []):
+                rendered_section = render_module_section(module_section, module_context)
+                module_html = replace_section(module_html, module_section["marker"], rendered_section)
+
+            module_path.write_text(module_html, encoding="utf-8")
+
         append_log(
-            "build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target updated",
+            "build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated",
             test_mode=test_mode
         )
         return 0

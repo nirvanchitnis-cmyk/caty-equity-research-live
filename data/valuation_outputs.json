@@ -1,0 +1,65 @@
+{
+  "last_updated": "2025-10-19T20:45:00Z",
+  "scenarios": {
+    "bull": {
+      "probability_pct": 25,
+      "rating": "HOLD",
+      "target_price": 46.02,
+      "return_pct": 0.3,
+      "return_label": "Upside",
+      "return_value_class": "scenario-metric-value",
+      "ptbv": 1.273,
+      "rote_pct": 11.52,
+      "nco_bps": 25,
+      "tbvps": 36.16
+    },
+    "base": {
+      "probability_pct": 60,
+      "rating": "HOLD",
+      "target_price": 39.32,
+      "return_pct": -14.3,
+      "return_label": "Downside",
+      "return_value_class": "scenario-metric-value text-danger",
+      "ptbv": 1.087,
+      "rote_pct": 10.21,
+      "nco_bps": 42.8,
+      "tbvps": 36.16
+    },
+    "bear": {
+      "probability_pct": 15,
+      "rating": "HOLD",
+      "target_price": 34.75,
+      "return_pct": -24.3,
+      "return_label": "Downside",
+      "return_value_class": "scenario-metric-value text-danger-dark",
+      "ptbv": 0.961,
+      "rote_pct": 9.31,
+      "nco_bps": 60,
+      "tbvps": 36.16
+    }
+  },
+  "frameworks": {
+    "probability_weighted": {
+      "target_price": 40.47,
+      "composition": "25% Bull + 60% Base + 15% Bear"
+    },
+    "irc_blended": {
+      "target_price": 51.39,
+      "composition": "60% RIM + 10% DDM + 30% Relative"
+    },
+    "wilson_95": {
+      "target_price": 51.74,
+      "composition": "74% Current + 26% Normalized"
+    }
+  },
+  "assumptions": {
+    "cost_of_equity_pct": 9.587,
+    "growth_rate_pct": 2.5,
+    "tax_rate_pct": 20.0,
+    "through_cycle_nco_bps": 42.8,
+    "gfc_peak_nco_bps": 234,
+    "tbvps_cagr_pct": 6.54,
+    "dividend_payout_pct": 32.1,
+    "current_nco_bps": 18.1
+  }
+}

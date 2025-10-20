@@ -1,0 +1,639 @@
+{
+  "comment": "CATY_12 Valuation Model - All sensitivity tables and scenario data",
+  "last_updated": "2025-10-19T23:15:00Z",
+  "source_script": "analysis/calculate_valuation_tables.py",
+  "nco_metrics": [
+    {
+      "label": "Current NCO (Q2 2025)",
+      "value_type": "bps",
+      "value": 18.1,
+      "subtext": "Below through-cycle average",
+      "card_class": "metric-card"
+    },
+    {
+      "label": "Through-Cycle NCO",
+      "value_type": "bps",
+      "value": 42.8,
+      "subtext": "2008-2025 FDIC average",
+      "card_class": "metric-card metric-card-gold"
+    },
+    {
+      "label": "GFC Peak (2009-Q4)",
+      "value_type": "bps",
+      "value": 234.0,
+      "subtext": "Severe stress scenario",
+      "card_class": "metric-card metric-card-danger"
+    },
+    {
+      "label": "Sample Size",
+      "value_text": "70 qtrs",
+      "subtext": "17+ years of data",
+      "card_class": "metric-card"
+    }
+  ],
+  "nco_sensitivity": {
+    "comment": "Provision normalization sensitivity to through-cycle NCO assumptions",
+    "base_case_nco_bps": 42.8,
+    "scenarios": [
+      {
+        "nco_bps": 20.0,
+        "delta_provision_m": 3.6,
+        "tax_effect_m": 2.9,
+        "normalized_net_income_m": 291.8,
+        "rote_pct": 11.84,
+        "ptbv_multiple": 1.317,
+        "target_price": null,
+        "scenario_text": "Very optimistic",
+        "row_class": "",
+        "row_class_attr": ""
+      },
+      {
+        "nco_bps": 25.0,
+        "delta_provision_m": 13.4,
+        "tax_effect_m": 10.7,
+        "normalized_net_income_m": 284.0,
+        "rote_pct": 11.52,
+        "ptbv_multiple": 1.273,
+        "target_price": 46.02,
+        "scenario_text": "<strong>BULL CASE</strong>",
+        "row_class": "",
+        "row_class_attr": ""
+      },
+      {
+        "nco_bps": 30.0,
+        "delta_provision_m": 23.1,
+        "tax_effect_m": 18.5,
+        "normalized_net_income_m": 276.2,
+        "rote_pct": 11.2,
+        "ptbv_multiple": 1.228,
+        "target_price": null,
+        "scenario_text": "Moderate optimism",
+        "row_class": "",
+        "row_class_attr": ""
+      },
+      {
+        "nco_bps": 42.8,
+        "delta_provision_m": 48.0,
+        "tax_effect_m": 38.4,
+        "normalized_net_income_m": 256.3,
+        "rote_pct": 10.21,
+        "ptbv_multiple": 1.087,
+        "target_price": 39.32,
+        "scenario_text": "<strong>BASE CASE - GORDON GROWTH</strong>",
+        "row_class": "base-case",
+        "row_class_attr": " class=\"base-case\""
+      },
+      {
+        "nco_bps": 60.0,
+        "delta_provision_m": 81.4,
+        "tax_effect_m": 65.1,
+        "normalized_net_income_m": 229.5,
+        "rote_pct": 9.31,
+        "ptbv_multiple": 0.961,
+        "target_price": 34.75,
+        "scenario_text": "<strong>BEAR CASE</strong>",
+        "row_class": "",
+        "row_class_attr": ""
+      }
+    ]
+  },
+  "normalization_inputs": {
+    "ltm_net_income_m": 294.7,
+    "average_tce_m": 2465.1,
+    "average_loans_m": 19449.0,
+    "ltm_nco_bps": 18.13,
+    "tax_rate_pct": 20.0,
+    "gfc_peak_nco_bps": 234.0,
+    "sample_size_quarters": 70,
+    "sample_years_text": "17 years of empirical FDIC data",
+    "fdic_range_text": "2008-2024 FDIC average NCO",
+    "history_years_phrase": "17 years of history"
+  },
+  "coe_sensitivity_matrix": {
+    "coe_columns_pct": [
+      9.0,
+      9.5,
+      10.0,
+      10.5,
+      11.0
+    ],
+    "rows": [
+      {
+        "growth_rate_pct": 2.0,
+        "ptbv_values": [
+          1.36,
+          1.269,
+          1.19,
+          1.12,
+          1.058
+        ],
+        "row_class": "",
+        "note": "",
+        "row_class_attr": ""
+      },
+      {
+        "growth_rate_pct": 2.5,
+        "ptbv_values": [
+          1.388,
+          1.289,
+          1.203,
+          1.127,
+          1.061
+        ],
+        "row_class": "row-highlight-yellow",
+        "note": "(Base)",
+        "row_class_attr": " class=\"row-highlight-yellow\""
+      },
+      {
+        "growth_rate_pct": 3.0,
+        "ptbv_values": [
+          1.42,
+          1.311,
+          1.217,
+          1.136,
+          1.065
+        ],
+        "row_class": "",
+        "note": "",
+        "row_class_attr": ""
+      }
+    ]
+  },
+  "growth_rate_sensitivity": {
+    "comment": "Terminal growth rate sensitivity (base: 2.5%)",
+    "base_nco_bps": 42.8,
+    "delta_target_price_per_50bps": 0.3,
+    "scenarios": [
+      {
+        "growth_rate_pct": 2.0,
+        "target_ptbv": 1.107,
+        "target_price": 40.04,
+        "impact_text": "Lower g \u2192 slightly lower target",
+        "row_class": "",
+        "label_html": "2.0%",
+        "label_suffix": "",
+        "row_class_attr": "",
+        "label_display": "2.0%"
+      },
+      {
+        "growth_rate_pct": 2.5,
+        "target_ptbv": 1.087,
+        "target_price": 39.32,
+        "impact_text": "<strong>BASE CASE (Gordon Growth)</strong>",
+        "row_class": "row-highlight-red",
+        "label_html": "<strong>2.5%</strong>",
+        "label_suffix": " (Base)",
+        "row_class_attr": " class=\"row-highlight-red\"",
+        "label_display": "<strong>2.5%</strong> (Base)"
+      },
+      {
+        "growth_rate_pct": 3.0,
+        "target_ptbv": 1.123,
+        "target_price": 40.61,
+        "impact_text": "Higher g \u2192 slightly higher target",
+        "row_class": "",
+        "label_html": "3.0%",
+        "label_suffix": "",
+        "row_class_attr": "",
+        "label_display": "3.0%"
+      }
+    ]
+  },
+  "monte_carlo": {
+    "probabilities": {
+      "bull_pct": 25.0,
+      "base_pct": 60.0,
+      "bear_pct": 15.0,
+      "prob_below_spot_pct": 60.9,
+      "prob_above_spot_pct": 39.1,
+      "wilson_tail_pct": 26.0
+    },
+    "summary_metrics": {
+      "mean_target_price": 40.47,
+      "median_target_price": 40.16,
+      "percentile_5_price": 26.06,
+      "percentile_95_price": 56.36,
+      "spot_price": 45.89
+    },
+    "probability_weights_text": "25% Bull, 60% Base, 15% Bear",
+    "probability_weights_compact": "25/60/15",
+    "metric_cards": [
+      {
+        "label": "Mean Target Price",
+        "value": 40.47,
+        "value_type": "currency",
+        "decimals": 2,
+        "subtext": "Expected value across scenarios",
+        "card_class": "border-left-gold"
+      },
+      {
+        "label": "Median Target Price",
+        "value": 40.16,
+        "value_type": "currency",
+        "decimals": 2,
+        "subtext": "50th percentile",
+        "card_class": "border-left-gold"
+      },
+      {
+        "label": "5th Percentile",
+        "value": 26.06,
+        "value_type": "currency",
+        "decimals": 2,
+        "subtext": "Downside tail risk",
+        "card_class": "border-left-info"
+      },
+      {
+        "label": "95th Percentile",
+        "value": 56.36,
+        "value_type": "currency",
+        "decimals": 2,
+        "subtext": "Upside tail potential",
+        "card_class": "border-left-info"
+      }
+    ],
+    "statistics_table": [
+      {
+        "label": "Mean",
+        "value": 40.47,
+        "interpretation": "Probability-weighted average across all scenarios",
+        "row_class": "",
+        "value_type": "currency",
+        "row_class_attr": ""
+      },
+      {
+        "label": "Median",
+        "value": 40.16,
+        "interpretation": "50th percentile; close to base case ($39.32)",
+        "row_class": "",
+        "value_type": "currency",
+        "row_class_attr": ""
+      },
+      {
+        "label": "5th Percentile",
+        "value": 26.06,
+        "interpretation": "Severe downside scenario (worse than bear case)",
+        "row_class": "",
+        "value_type": "currency",
+        "row_class_attr": ""
+      },
+      {
+        "label": "95th Percentile",
+        "value": 56.36,
+        "interpretation": "Optimistic scenario with elevated growth/multiples",
+        "row_class": "",
+        "value_type": "currency",
+        "row_class_attr": ""
+      },
+      {
+        "label": "Pr(Overvalued)",
+        "value": 60.9,
+        "interpretation": "Probability that fair value < spot price",
+        "row_class": "base-case",
+        "value_type": "percent",
+        "row_class_attr": " class=\"base-case\""
+      },
+      {
+        "label": "Pr(Upside > Spot)",
+        "value": 39.1,
+        "interpretation": "Probability of upside above current price",
+        "row_class": "",
+        "value_type": "percent",
+        "row_class_attr": ""
+      }
+    ]
+  },
+  "regression_diagnostics": {
+    "comment": "Peer regression P/TBV vs ROTE (n=4)",
+    "statistics": {
+      "slope": 0.1244,
+      "intercept": -0.1483,
+      "r_squared": 0.9548,
+      "r_squared_pct": 95.48,
+      "sample_size": 4,
+      "slope_note": "Each 1% increase in ROTE adds ~0.12x P/TBV",
+      "intercept_note": "Constant term",
+      "r_squared_note": "Excellent model fit",
+      "peer_summary": "EWBC, CVBF, HAFC, CATY"
+    },
+    "peers": [
+      {
+        "ticker": "EWBC",
+        "rote_pct": 16.38,
+        "ptbv_actual": 1.83,
+        "ptbv_fitted": 1.889,
+        "residual": -0.059,
+        "note": "Slight undervaluation vs regression",
+        "row_class": "",
+        "row_class_attr": ""
+      },
+      {
+        "ticker": "CVBF",
+        "rote_pct": 14.1,
+        "ptbv_actual": 1.73,
+        "ptbv_fitted": 1.605,
+        "residual": 0.125,
+        "note": "Premium to regression (quality/franchise?)",
+        "row_class": "",
+        "row_class_attr": ""
+      },
+      {
+        "ticker": "HAFC",
+        "rote_pct": 8.65,
+        "ptbv_actual": 0.93,
+        "ptbv_fitted": 0.927,
+        "residual": 0.003,
+        "note": "Perfectly priced by regression",
+        "row_class": "",
+        "row_class_attr": ""
+      },
+      {
+        "ticker": "CATY",
+        "rote_pct": 11.95,
+        "ptbv_actual": 1.269,
+        "ptbv_fitted": 1.338,
+        "residual": -0.069,
+        "note": "6.9% undervalued vs raw ROTE regression",
+        "row_class": "base-case",
+        "row_class_attr": " class=\"base-case\""
+      }
+    ],
+    "residual_analysis": {
+      "ptbv_actual": 1.269,
+      "ptbv_fitted": 1.338,
+      "discount_multiple": 0.069,
+      "normalized_rote_pct": 10.21,
+      "normalized_ptbv": 1.087,
+      "predicted_ptbv_mean_coe": 1.333,
+      "mean_coe_discount_multiple": 0.048
+    }
+  },
+  "implied_coe": {
+    "growth_rate_pct": 2.5,
+    "peers": [
+      {
+        "ticker": "EWBC",
+        "rote_pct": 16.38,
+        "ptbv": 1.83,
+        "implied_coe_pct": 10.085,
+        "interpretation": "Highest implied COE (largest bank, most liquid)",
+        "row_class": "",
+        "row_class_attr": ""
+      },
+      {
+        "ticker": "CVBF",
+        "rote_pct": 14.1,
+        "ptbv": 1.73,
+        "implied_coe_pct": 9.205,
+        "interpretation": "Mid-range implied COE",
+        "row_class": "",
+        "row_class_attr": ""
+      },
+      {
+        "ticker": "HAFC",
+        "rote_pct": 8.65,
+        "ptbv": 0.93,
+        "implied_coe_pct": 9.113,
+        "interpretation": "Lowest implied COE (smallest, least liquid)",
+        "row_class": "",
+        "row_class_attr": ""
+      },
+      {
+        "ticker": "CATY",
+        "rote_pct": 11.95,
+        "ptbv": 1.269,
+        "implied_coe_pct": 9.947,
+        "interpretation": "Current market-implied COE",
+        "row_class": "",
+        "row_class_attr": ""
+      }
+    ],
+    "mean_coe_pct": 9.587,
+    "mean_label": "Mean COE (All 4 Peers)",
+    "mean_ptbv_display": "-",
+    "mean_note": "Used as base case COE assumption"
+  },
+  "qa_checks": [
+    {
+      "id": "VAL-QA001",
+      "description": "No PT until dependencies met",
+      "rule": "target_price absent while blocking_level >= 3",
+      "status": "PASSED"
+    },
+    {
+      "id": "VAL-QA002",
+      "description": "COE within reasonable range",
+      "rule": "9.0% <= COE <= 12.0%",
+      "status": "PASSED"
+    },
+    {
+      "id": "VAL-QA003",
+      "description": "Growth rate anchored to empirical",
+      "rule": "g <= empirical TBVPS CAGR",
+      "status": "PASSED"
+    },
+    {
+      "id": "VAL-QA004",
+      "description": "Base case NCO empirically supported",
+      "rule": "NCO = 42.8 bps from FDIC 2008-2024",
+      "status": "PASSED"
+    },
+    {
+      "id": "VAL-QA005",
+      "description": "Regression R\u00b2 indicates good fit",
+      "rule": "R\u00b2 >= 0.90",
+      "status": "PASSED"
+    }
+  ],
+  "key_inputs": [
+    {
+      "label": "LTM Net Income",
+      "value_type": "currency",
+      "value": 294.7,
+      "suffix": "M",
+      "source": "File 02 (Income Statement)",
+      "status": "VERIFIED_OK"
+    },
+    {
+      "label": "Average TCE",
+      "value_type": "currency",
+      "value": 2465.1,
+      "suffix": "M",
+      "source": "File 03 (Balance Sheet)",
+      "status": "VERIFIED_OK"
+    },
+    {
+      "label": "Average Loans",
+      "value_type": "currency",
+      "value": 19449.0,
+      "suffix": "M",
+      "source": "File 07 (Loans & Credit Quality)",
+      "status": "VERIFIED_OK"
+    },
+    {
+      "label": "LTM NCO (bps)",
+      "value_type": "bps",
+      "value": 18.13,
+      "source": "File 07 (Loans & Credit Quality)",
+      "status": "VERIFIED_OK"
+    },
+    {
+      "label": "TBVPS (Dec 31, 2024)",
+      "value_type": "currency",
+      "value": 36.16,
+      "suffix": "",
+      "source": "File 03 (Balance Sheet)",
+      "status": "VERIFIED_OK"
+    },
+    {
+      "label": "Spot Price (October 18, 2025)",
+      "value_type": "currency",
+      "value": 45.89,
+      "suffix": "",
+      "source": "Market Data",
+      "status": "VERIFIED_OK"
+    }
+  ],
+  "formula_audit": {
+    "through_cycle_nco_bps": 42.8,
+    "ltm_nco_bps": 18.13,
+    "average_loans_m": 19449.0,
+    "delta_provision_m": 48.0,
+    "tax_rate_pct": 20.0,
+    "tax_effect_m": 9.6,
+    "after_tax_delta_m": 38.4,
+    "ltm_net_income_m": 294.7,
+    "normalized_net_income_m": 256.3,
+    "average_tce_m": 2465.1,
+    "normalized_rote_reported_pct": 10.4,
+    "normalized_rote_adjusted_pct": 10.21,
+    "coe_pct": 9.587,
+    "growth_rate_pct": 2.5,
+    "normalized_ptbv": 1.087,
+    "tbvps": 36.16,
+    "target_price": 39.32
+  },
+  "dependencies": [
+    {
+      "id": "01_company_profile",
+      "status": "VERIFIED_OK",
+      "blocking_level": 0
+    },
+    {
+      "id": "02_income_statement",
+      "status": "VERIFIED_OK",
+      "blocking_level": 0
+    },
+    {
+      "id": "03_balance_sheet",
+      "status": "VERIFIED_OK",
+      "blocking_level": 0
+    },
+    {
+      "id": "04_cash_flow",
+      "status": "VERIFIED_OK",
+      "blocking_level": 0
+    },
+    {
+      "id": "05_nim_decomposition",
+      "status": "VERIFIED_OK",
+      "blocking_level": 0
+    },
+    {
+      "id": "06_deposits_funding",
+      "status": "VERIFIED_OK",
+      "blocking_level": 0
+    },
+    {
+      "id": "07_loans_credit_quality",
+      "status": "VERIFIED_OK",
+      "blocking_level": 0
+    },
+    {
+      "id": "08_cre_exposure",
+      "status": "VERIFIED_OK",
+      "blocking_level": 0
+    },
+    {
+      "id": "09_capital_liquidity_aoci",
+      "status": "VERIFIED_OK",
+      "blocking_level": 0
+    },
+    {
+      "id": "10_capital_actions",
+      "status": "VERIFIED_OK",
+      "blocking_level": 0
+    },
+    {
+      "id": "11_peers_normalized",
+      "status": "VERIFIED_OK",
+      "blocking_level": 0
+    }
+  ],
+  "status_box": {
+    "status_label": "Valuation Model Status",
+    "badge_text": "READY",
+    "dependencies_text": "Files 1-11 are VERIFIED_OK",
+    "framework_text": "P/TBV mapping with through-cycle NCO normalization",
+    "data_sources_text": "SEC EDGAR (companyfacts, 10-Ks), FDIC Call Reports 2008-2024, Bloomberg peer data",
+    "confidence_text": "High on base case; Medium on bull/bear scenarios (judgment-based)",
+    "last_updated_display": "2025-10-18 06:40:00 UTC"
+  },
+  "metadata": {
+    "schema_version": "1.0.0",
+    "file_name": "valuation_model.json",
+    "purpose": "Valuation logic, scenarios, and PT bridge (blocked until dependencies met)",
+    "last_updated_iso": "2025-10-18T06:40:00Z",
+    "data_policy": "No valuation outputs until files 1-11 are VERIFIED_OK or ESTIMATED_FLAGGED with documented methods",
+    "loader_rule": "REFUSE to compute target_price if any dependency blocking_level >= 3 or peer metrics not VERIFIED_OK",
+    "units": "USD millions unless noted; per-share in USD; ratios in percent or bps"
+  },
+  "growth_metrics": {
+    "cards": [
+      {
+        "label": "TBVPS CAGR (2015-2024)",
+        "value_pct": 6.54,
+        "subtext": "Long-term historical growth"
+      },
+      {
+        "label": "TBVPS CAGR (2019-2024)",
+        "value_pct": 9.57,
+        "subtext": "Recent 5-year growth"
+      },
+      {
+        "label": "TBVPS CAGR (2021-2024)",
+        "value_pct": 9.03,
+        "subtext": "Post-COVID growth"
+      },
+      {
+        "label": "Average Dividend Payout",
+        "value_pct": 32.1,
+        "retention_pct": 67.9,
+        "subtext_prefix": "Retention rate: "
+      }
+    ]
+  },
+  "ptbv_assumptions": {
+    "growth_cagr_pct": 6.54
+  },
+  "ptbv_sources": {
+    "label": "Data Source",
+    "status": "VERIFIED_OK",
+    "tbvps_history": "SEC EDGAR XBRL companyfacts API, CIK 0000861842",
+    "nco_history": "FDIC Call Reports 2008-2024",
+    "peer_data": "Bloomberg, company 10-Ks (EWBC, CVBF, HAFC)",
+    "confidence": "High on historical CAGRs/payouts; Medium on forward g (judgment-based)"
+  },
+  "nco_history": {
+    "range_display": "2008-Q1 to 2025-Q2",
+    "quarters_text": "70 quarters",
+    "years_span": "2008 to 2025",
+    "through_cycle_label": "42.8 basis points"
+  },
+  "scenario_notes": {
+    "base_history_years": "17 years of history",
+    "bear_nco_bps": 60.0
+  },
+  "methodology": {
+    "return_range_text": "+12.0-12.8%"
+  }
+}
