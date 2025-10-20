@@ -1,0 +1,64 @@
+{
+  "comment": "CATY_07 Credit Quality & NCO Analysis - Through-cycle normalization",
+  "last_updated": "2025-10-19T23:55:00Z",
+  "data_source": "FDIC Call Reports 2008-2025 + SEC 10-Q Q2 2025",
+  "period": "Q2 2025",
+  "snapshot_metrics": {
+    "nco_rate_ltm_bps": 18.1,
+    "through_cycle_nco_bps": 42.8,
+    "acl_loans_pct": 0.88,
+    "acl_amount_millions": 173.5,
+    "npa_assets_pct": 0.30,
+    "npa_amount_millions": 71.2,
+    "criticized_loans_pct": 2.14,
+    "nonaccrual_loans_millions": 58.7
+  },
+  "through_cycle_nco": {
+    "period": "2008-Q1 through 2025-Q2",
+    "quarters": 70,
+    "mean_bps": 42.8,
+    "median_bps": 21.5,
+    "gfc_peak_bps": 234.0,
+    "gfc_peak_quarter": "2009-Q4",
+    "covid_peak_bps": 12.3,
+    "covid_peak_quarter": "2020-Q2",
+    "recent_4q_avg_bps": 18.1,
+    "data_source": "data/fdic_nco_history.json"
+  },
+  "acl_coverage": {
+    "total_loans_millions": 19794.2,
+    "acl_millions": 173.5,
+    "acl_loans_pct": 0.88,
+    "acl_nco_coverage_years": 4.9,
+    "peer_median_acl_loans_pct": 1.02
+  },
+  "npa_breakdown": {
+    "nonaccrual_loans_millions": 58.7,
+    "oreo_millions": 12.5,
+    "total_npa_millions": 71.2,
+    "npa_acl_pct": 41.0,
+    "npa_tce_pct": 2.84
+  },
+  "loan_quality_metrics": {
+    "30_89_days_past_due_millions": 23.4,
+    "90_plus_days_past_due_millions": 14.2,
+    "criticized_loans_millions": 423.7,
+    "classified_loans_millions": 187.3,
+    "special_mention_millions": 236.4
+  },
+  "cre_concentration": {
+    "cre_total_pct": 52.4,
+    "cre_nonfarm_nonresidential_pct": 34.2,
+    "cre_construction_pct": 5.1,
+    "cre_multifamily_pct": 13.1,
+    "office_cre_pct": 8.7,
+    "retail_cre_pct": 12.3,
+    "industrial_warehouse_cre_pct": 13.2
+  },
+  "provision_expense": {
+    "q2_2025_millions": 11.2,
+    "q1_2025_millions": 8.9,
+    "q2_2024_millions": 7.5,
+    "ltm_millions": 38.6
+  }
+}

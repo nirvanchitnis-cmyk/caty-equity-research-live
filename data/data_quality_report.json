@@ -1,0 +1,20 @@
+{
+  "conflict_threshold_pct": 1.0,
+  "conflicts": [
+    {
+      "diff_pct": 2.8666,
+      "fdic_value": 2969.033,
+      "field": "us-gaap:StockholdersEquity",
+      "resolution": "Use SEC EDGAR (primary GAAP source)",
+      "sec_value": 2886.295
+    },
+    {
+      "diff_pct": 2.8666,
+      "fdic_value": 2969.033,
+      "field": "us-gaap:StockholdersEquity",
+      "resolution": "Use SEC EDGAR (primary GAAP source)",
+      "sec_value": 2886.295
+    }
+  ],
+  "generated_at": "2025-10-20T02:28:55Z"
+}

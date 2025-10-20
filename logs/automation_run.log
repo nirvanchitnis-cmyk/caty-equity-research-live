@@ -58,3 +58,50 @@
 [2025-10-20 01:02:05 UTC] disconfirmer_monitor.py status=PASS alerts=0
 [2025-10-20 01:03:52 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
 [2025-10-20 01:03:55 UTC] disconfirmer_monitor.py status=PASS alerts=0
+[2025-10-20 01:05:48 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-20 01:05:49 UTC] disconfirmer_monitor.py status=PASS alerts=0
+[2025-10-20 01:09:04 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-20 01:09:05 UTC] disconfirmer_monitor.py status=PASS alerts=0
+[2025-10-20 01:23:46 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-20 01:26:47 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-20 01:29:53 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-20 01:34:18 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-20 01:35:55 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-20 01:38:57 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-20 01:40:30 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-20 01:50:26 UTC] build_site.py FAILED: Marker 'caty03-q2-deposit-mix' not found in HTML
+[2025-10-20 01:54:17 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-20 01:57:52 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-20 02:22:04 UTC] update_all_data.py: START
+[2025-10-20 02:22:06 UTC] fetch_sec_edgar.py: Fetched 10-Q 0001437749-25-025772 (period 2025-06-30)
+[2025-10-20 02:22:08 UTC] fetch_fdic_data.py: Fetched call report 20250630 (CERT 18503)
+[2025-10-20 02:22:08 UTC] merge_data_sources.py: 6 conflicts logged
+[2025-10-20 02:22:08 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-20 02:22:08 UTC] build_site.py: Rebuilt modules successfully
+[2025-10-20 02:22:09 UTC] reconciliation_guard.py: PASS
+[2025-10-20 02:22:09 UTC] update_all_data.py: SUCCESS
+[2025-10-20 02:23:45 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-20 02:26:19 UTC] update_all_data.py: START
+[2025-10-20 02:26:21 UTC] fetch_sec_edgar.py: Fetched 10-Q 0001437749-25-025772 (period 2025-06-30)
+[2025-10-20 02:26:22 UTC] fetch_fdic_data.py: WARNING - fetch failed, using cached payload
+[2025-10-20 02:26:22 UTC] merge_data_sources.py: 6 conflicts logged
+[2025-10-20 02:26:22 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-20 02:26:22 UTC] build_site.py: Rebuilt modules successfully
+[2025-10-20 02:26:23 UTC] reconciliation_guard.py: PASS
+[2025-10-20 02:26:23 UTC] update_all_data.py: SUCCESS
+[2025-10-20 02:27:34 UTC] update_all_data.py: START
+[2025-10-20 02:27:36 UTC] fetch_sec_edgar.py: Fetched 10-Q 0001437749-25-025772 (period 2025-06-30)
+[2025-10-20 02:27:38 UTC] fetch_fdic_data.py: Fetched call report 20250630 (CERT 18503)
+[2025-10-20 02:27:38 UTC] merge_data_sources.py: 6 conflicts logged
+[2025-10-20 02:27:39 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-20 02:27:39 UTC] build_site.py: Rebuilt modules successfully
+[2025-10-20 02:27:40 UTC] reconciliation_guard.py: PASS
+[2025-10-20 02:27:40 UTC] update_all_data.py: SUCCESS
+[2025-10-20 02:28:51 UTC] update_all_data.py: START
+[2025-10-20 02:28:52 UTC] fetch_sec_edgar.py: Fetched 10-Q 0001437749-25-025772 (period 2025-06-30)
+[2025-10-20 02:28:55 UTC] fetch_fdic_data.py: Fetched call report 20250630 (CERT 18503)
+[2025-10-20 02:28:55 UTC] merge_data_sources.py: 2 conflicts logged
+[2025-10-20 02:28:56 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-20 02:28:56 UTC] build_site.py: Rebuilt modules successfully
+[2025-10-20 02:28:56 UTC] reconciliation_guard.py: PASS
+[2025-10-20 02:28:56 UTC] update_all_data.py: SUCCESS

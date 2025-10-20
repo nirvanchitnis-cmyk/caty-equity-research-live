@@ -1,62 +1,82 @@
 {
   "sources": [
     {
-      "id": "fdic_nco",
-      "path": "evidence/raw/fdic_CATY_NTLNLSCOQR_timeseries.csv",
-      "description": "FDIC Call Report NCO timeseries (CATY)",
       "accession": "FDIC API (NTLNLSCOQR)",
+      "description": "FDIC Call Report NCO timeseries (CATY)",
+      "id": "fdic_nco",
+      "last_verified": "2025-10-19",
       "owner": "Credit Analytics",
+      "path": "evidence/raw/fdic_CATY_NTLNLSCOQR_timeseries.csv",
       "refresh_frequency": "Quarterly",
-      "status": "VERIFIED_OK",
       "sha256": "8c3c4d488823df90a61aefcbfccdedf91f891bf27dcf241d56cab4b2622cb5e3",
-      "last_verified": "2025-10-19"
+      "status": "VERIFIED_OK"
     },
     {
-      "id": "fdic_financials",
-      "path": "evidence/raw/fdic_CATY_20250630_financials.json",
+      "accession": "FDIC API (Quarter 20250630)",
       "description": "FDIC Call Report Q2 2025 financials (CATY)",
-      "accession": "FDIC API (Quarterly)",
+      "id": "fdic_financials",
+      "last_verified": "2025-10-19",
       "owner": "Credit Analytics",
+      "path": "evidence/raw/fdic_CATY_20250630_financials.json",
       "refresh_frequency": "Quarterly",
-      "status": "VERIFIED_OK",
       "sha256": "8b57e0e0fc92b67fb69b801e44be0b99126663755f605cf3215529b2a50003bc",
-      "last_verified": "2025-10-19"
+      "status": "VERIFIED_OK"
     },
     {
-      "id": "caty_10q_q2_2025",
-      "path": "evidence/raw/CATY_2025Q2_10Q.pdf",
-      "description": "CATY 10-Q Q2 2025",
       "accession": "0001437749-25-025772",
+      "description": "CATY 10-Q Q2 2025",
+      "id": "caty_10q_q2_2025",
+      "last_verified": "2025-10-19",
+      "note": "Local file exists (8.4MB), excluded from GitHub push due to size. Available via SEC EDGAR: https://www.sec.gov/cgi-bin/viewer?action=view&cik=861842&accession_number=0001437749-25-025772",
       "owner": "Financial Reporting",
+      "path": "evidence/raw/CATY_2025Q2_10Q.pdf",
       "refresh_frequency": "Quarterly",
-      "status": "VERIFIED_LOCAL_EXCLUDED_FROM_REPO",
       "sha256": "e2129a54f3b3bb12357df6bbb490ac5f9edd0a5b1b76c377e0f4e8e84caa90bf",
-      "last_verified": "2025-10-19",
-      "note": "Local file exists (8.4MB), excluded from GitHub push due to size. Available via SEC EDGAR: https://www.sec.gov/cgi-bin/viewer?action=view&cik=861842&accession_number=0001437749-25-025772"
+      "status": "VERIFIED_OK"
     },
     {
-      "id": "caty_10k_2024",
-      "path": "evidence/raw/CATY_2024_10K.pdf",
-      "description": "CATY 10-K FY 2024",
       "accession": "0001437749-25-005749",
-      "owner": "Financial Reporting",
-      "refresh_frequency": "Annual",
-      "status": "VERIFIED_LOCAL_EXCLUDED_FROM_REPO",
-      "sha256": "44ad6cd3bf086809709e5a59dcb46169215de392c76063893db517be87cc6710",
+      "description": "CATY 10-K FY 2024",
+      "id": "caty_10k_2024",
       "last_verified": "2025-10-19",
-      "note": "Local file exists (11MB), excluded from GitHub push due to size. Available via SEC EDGAR: https://www.sec.gov/cgi-bin/viewer?action=view&cik=861842&accession_number=0001437749-25-005749"
+      "note": "Local file exists (11MB), excluded from GitHub push due to size. Available via SEC EDGAR: https://www.sec.gov/cgi-bin/viewer?action=view&cik=861842&accession_number=0001437749-25-005749",
+      "owner": "Financial Reporting",
+      "path": "evidence/raw/CATY_2024_10K.pdf",
+      "refresh_frequency": "Annual",
+      "sha256": "44ad6cd3bf086809709e5a59dcb46169215de392c76063893db517be87cc6710",
+      "status": "VERIFIED_LOCAL_EXCLUDED_FROM_REPO"
     },
     {
-      "id": "peer_metrics",
-      "path": "evidence/peer_snapshot_2025Q2.csv",
-      "description": "Peer regression inputs (CATY, EWBC, CVBF, HAFC + 3 others)",
       "accession": "Internal extract from SEC 10-Qs",
-      "owner": "Peer Analytics",
-      "refresh_frequency": "Quarterly",
-      "status": "VERIFIED_OK",
-      "sha256": "576b7b73f0c8aefffcdc2c91600cd00f9f7f181210b95803f237e14cf358964f",
+      "description": "Peer regression inputs (CATY, EWBC, CVBF, HAFC + 3 others)",
+      "id": "peer_metrics",
       "last_verified": "2025-10-19",
-      "note": "Located at evidence/peer_snapshot_2025Q2.csv (not evidence/raw/)"
+      "note": "Located at evidence/peer_snapshot_2025Q2.csv (not evidence/raw/)",
+      "owner": "Peer Analytics",
+      "path": "evidence/peer_snapshot_2025Q2.csv",
+      "refresh_frequency": "Quarterly",
+      "sha256": "576b7b73f0c8aefffcdc2c91600cd00f9f7f181210b95803f237e14cf358964f",
+      "status": "VERIFIED_OK"
+    },
+    {
+      "accession": "0001437749-25-025772",
+      "description": "SEC EDGAR companyfacts API payload for CATY",
+      "id": "sec_edgar_api",
+      "last_verified": "2025-10-19",
+      "owner": "Financial Reporting",
+      "path": "data/sec_edgar_raw.json",
+      "refresh_frequency": "Quarterly",
+      "status": "VERIFIED_OK"
+    },
+    {
+      "accession": "18503",
+      "description": "FDIC Call Report API payload for CATHAY BANK",
+      "id": "fdic_call_report_api",
+      "last_verified": "2025-10-19",
+      "owner": "Credit Analytics",
+      "path": "data/fdic_raw.json",
+      "refresh_frequency": "Quarterly",
+      "status": "VERIFIED_OK"
     }
   ]
 }

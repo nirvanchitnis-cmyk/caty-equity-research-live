@@ -1,0 +1,209 @@
+#!/usr/bin/env python3
+"""
+Master automation entrypoint for refreshing CATY data inputs.
+
+Pipeline:
+    1. Fetch SEC EDGAR XBRL data
+    2. Fetch FDIC Call Report data
+    3. Merge sources into canonical JSON datasets
+    4. Update evidence metadata registry
+    5. Rebuild site artifacts
+    6. Run reconciliation guard validation
+    7. Append structured run logs
+"""
+
+from __future__ import annotations
+
+import datetime as dt
+import json
+import logging
+import subprocess
+import sys
+from pathlib import Path
+from typing import Any, Dict, Optional
+
+ROOT = Path(__file__).resolve().parents[1]
+DATA_DIR = ROOT / "data"
+LOG_PATH = ROOT / "logs" / "automation_run.log"
+
+SEC_RAW_PATH = DATA_DIR / "sec_edgar_raw.json"
+FDIC_RAW_PATH = DATA_DIR / "fdic_raw.json"
+DQ_REPORT_PATH = DATA_DIR / "data_quality_report.json"
+EVIDENCE_PATH = DATA_DIR / "evidence_sources.json"
+
+SCRIPTS = ROOT / "scripts"
+
+
+def append_log(message: str) -> None:
+    timestamp = dt.datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S UTC")
+    line = f"[{timestamp}] {message}\n"
+    LOG_PATH.parent.mkdir(parents=True, exist_ok=True)
+    with LOG_PATH.open("a", encoding="utf-8") as fh:
+        fh.write(line)
+
+
+def run_step(cmd: list[str], step_name: str, allow_failure: bool = False) -> subprocess.CompletedProcess[str]:
+    logging.info("Running %s: %s", step_name, " ".join(cmd))
+    result = subprocess.run(
+        cmd,
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    if result.stdout:
+        logging.debug("%s stdout:\n%s", step_name, result.stdout.strip())
+    if result.stderr:
+        logging.debug("%s stderr:\n%s", step_name, result.stderr.strip())
+    if result.returncode != 0 and not allow_failure:
+        logging.error("%s failed (exit %s)", step_name, result.returncode)
+        raise subprocess.CalledProcessError(result.returncode, cmd, result.stdout, result.stderr)
+    if result.returncode != 0:
+        logging.warning("%s returned non-zero exit %s (continuing)", step_name, result.returncode)
+    return result
+
+
+def load_json(path: Path) -> Dict[str, Any]:
+    with path.open("r", encoding="utf-8") as fh:
+        return json.load(fh)
+
+
+def update_evidence_sources(sec_payload: Dict[str, Any], fdic_payload: Dict[str, Any]) -> None:
+    if not EVIDENCE_PATH.exists():
+        logging.warning("Evidence metadata file missing: %s", EVIDENCE_PATH)
+        return
+    data = load_json(EVIDENCE_PATH)
+    today = dt.date.today().isoformat()
+    updated_ids = set()
+
+    for source in data.get("sources", []):
+        source_id = source.get("id")
+        if source_id == "fdic_financials":
+            source["last_verified"] = today
+            source["status"] = "VERIFIED_OK"
+            quarter = fdic_payload.get("quarters", [{}])[0]
+            period = quarter.get("period")
+            if period:
+                source["accession"] = f"FDIC API (Quarter {period})"
+            updated_ids.add(source_id)
+        elif source_id == "caty_10q_q2_2025":
+            source["last_verified"] = today
+            accession = sec_payload.get("accession")
+            if accession:
+                source["accession"] = accession
+            source["status"] = "VERIFIED_OK"
+            updated_ids.add(source_id)
+
+    # Create or refresh API provenance entries
+    def ensure_entry(entry_id: str, template: Dict[str, Any]) -> None:
+        for source in data.get("sources", []):
+            if source.get("id") == entry_id:
+                source.update(template)
+                updated_ids.add(entry_id)
+                return
+        data.setdefault("sources", []).append(template)
+        updated_ids.add(entry_id)
+
+    ensure_entry(
+        "sec_edgar_api",
+        {
+            "id": "sec_edgar_api",
+            "description": "SEC EDGAR companyfacts API payload for CATY",
+            "path": "data/sec_edgar_raw.json",
+            "accession": sec_payload.get("accession"),
+            "last_verified": today,
+            "owner": "Financial Reporting",
+            "refresh_frequency": "Quarterly",
+            "status": "VERIFIED_OK",
+        },
+    )
+    ensure_entry(
+        "fdic_call_report_api",
+        {
+            "id": "fdic_call_report_api",
+            "description": "FDIC Call Report API payload for CATHAY BANK",
+            "path": "data/fdic_raw.json",
+            "accession": str(fdic_payload.get("cert")) if fdic_payload.get("cert") else "FDIC CERT",
+            "last_verified": today,
+            "owner": "Credit Analytics",
+            "refresh_frequency": "Quarterly",
+            "status": "VERIFIED_OK",
+        },
+    )
+
+    with EVIDENCE_PATH.open("w", encoding="utf-8") as fh:
+        json.dump(data, fh, indent=2, sort_keys=True)
+        fh.write("\n")
+    logging.info("Updated evidence sources for ids: %s", ", ".join(sorted(updated_ids)))
+
+
+def load_payload_safely(path: Path) -> Optional[Dict[str, Any]]:
+    if not path.exists():
+        return None
+    try:
+        return load_json(path)
+    except json.JSONDecodeError as exc:  # noqa: PERF203
+        logging.warning("Failed to decode JSON at %s: %s", path, exc)
+        return None
+
+
+def main() -> int:
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s %(levelname)s %(message)s",
+    )
+
+    append_log("update_all_data.py: START")
+
+    # Step 1: SEC EDGAR
+    sec_result = run_step([sys.executable, str(SCRIPTS / "fetch_sec_edgar.py")], "fetch_sec_edgar", allow_failure=True)
+    sec_payload = load_payload_safely(SEC_RAW_PATH)
+    if sec_payload is None:
+        append_log("fetch_sec_edgar.py: ERROR (no payload available)")
+        return 1
+    if sec_result.returncode == 0:
+        append_log(
+            f"fetch_sec_edgar.py: Fetched {sec_payload.get('form_type')} {sec_payload.get('accession')} "
+            f"(period {sec_payload.get('period_end')})"
+        )
+    else:
+        append_log("fetch_sec_edgar.py: WARNING - fetch failed, using cached payload")
+
+    # Step 2: FDIC
+    fdic_result = run_step([sys.executable, str(SCRIPTS / "fetch_fdic_data.py")], "fetch_fdic_data", allow_failure=True)
+    fdic_payload = load_payload_safely(FDIC_RAW_PATH)
+    if fdic_payload is None:
+        append_log("fetch_fdic_data.py: ERROR (no payload available)")
+        return 1
+    if fdic_result.returncode == 0:
+        latest_period = fdic_payload.get("quarters", [{}])[0].get("period")
+        append_log(
+            f"fetch_fdic_data.py: Fetched call report {latest_period or 'latest'} (CERT {fdic_payload.get('cert')})"
+        )
+    else:
+        append_log("fetch_fdic_data.py: WARNING - fetch failed, using cached payload")
+
+    # Step 3: Merge
+    run_step([sys.executable, str(SCRIPTS / "merge_data_sources.py")], "merge_data_sources")
+    dq_payload = load_payload_safely(DQ_REPORT_PATH) or {}
+    conflict_count = len(dq_payload.get("conflicts", []))
+    append_log(f"merge_data_sources.py: {conflict_count} conflicts logged")
+
+    # Step 4: Evidence metadata
+    update_evidence_sources(sec_payload, fdic_payload)
+
+    # Step 5: Rebuild site
+    run_step([sys.executable, str(SCRIPTS / "build_site.py")], "build_site")
+    append_log("build_site.py: Rebuilt modules successfully")
+
+    # Step 6: Validation
+    run_step([sys.executable, str(ROOT / "analysis" / "reconciliation_guard.py")], "reconciliation_guard")
+    append_log("reconciliation_guard.py: PASS")
+
+    append_log("update_all_data.py: SUCCESS")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
+

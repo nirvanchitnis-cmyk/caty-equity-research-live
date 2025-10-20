@@ -220,6 +220,8 @@ def render_value_spec(spec: Any, context: Dict[str, Any]) -> str:
         if data is None:
             raise KeyError(f"Unknown data source '{source}'")
         raw = resolve_path(data, spec["path"])
+        if isinstance(raw, dict) and "value" in raw:
+            raw = raw["value"]
     else:
         raw = spec.get("value")
 

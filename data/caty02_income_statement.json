@@ -1,122 +1,268 @@
 {
   "comment": "CATY_02 Income Statement - Q2 2025 GAAP financials and derived metrics",
-  "last_updated": "2025-10-19T23:45:00Z",
-  "data_source": "SEC 10-Q Q2 2025 (Accession 0001437749-25-025772)",
-  "period": "Q2 2025",
-  "q2_2025_snapshot": {
-    "nii_millions": 181.22,
+  "data_source": "SEC EDGAR 10-Q (Accession 0001437749-25-025772)",
+  "derived_metrics": {
+    "effective_tax_rate_pct": {
+      "accession": "0001437749-25-025772",
+      "computed_from": [
+        "IncomeTaxExpenseBenefit",
+        "NetIncomeLoss"
+      ],
+      "fetch_timestamp": "2025-10-20T02:28:52Z",
+      "period_end": "2025-06-30",
+      "source": "SEC EDGAR 10-Q",
+      "value": 19.5559
+    },
+    "efficiency_ratio_pct": {
+      "accession": "0001437749-25-025772",
+      "computed_from": [
+        "NoninterestExpense",
+        "InterestIncomeExpenseNet",
+        "NoninterestIncome"
+      ],
+      "fetch_timestamp": "2025-10-20T02:28:52Z",
+      "period_end": "2025-06-30",
+      "source": "SEC EDGAR 10-Q",
+      "value": 45.335
+    },
     "nim_pct": 3.27,
-    "net_income_millions": 77.45,
-    "efficiency_ratio_pct": 45.33,
-    "diluted_eps": 1.10,
-    "provision_millions": 11.20,
-    "effective_tax_rate_pct": 19.56,
-    "average_earning_assets_millions": 22232
+    "pretax_margin_pct": 48.89,
+    "roe_pct": 12.5,
+    "rote_pct": 11.95
   },
   "income_statement_q2_2025": {
-    "interest_income_millions": 322.92,
-    "interest_expense_millions": 141.70,
-    "net_interest_income_millions": 181.22,
-    "provision_credit_losses_millions": 11.20,
-    "nii_after_provision_millions": 170.02,
-    "noninterest_income_millions": 15.39,
-    "noninterest_expense_millions": 89.13,
-    "pretax_income_millions": 96.28,
-    "income_tax_expense_millions": 18.83,
-    "net_income_millions": 77.45
+    "income_tax_expense_millions": {
+      "accession": "0001437749-25-025772",
+      "fetch_timestamp": "2025-10-20T02:28:52Z",
+      "period_end": "2025-06-30",
+      "source": "SEC EDGAR 10-Q",
+      "value": 18.828,
+      "xbrl_tag": "us-gaap:IncomeTaxExpenseBenefit"
+    },
+    "interest_expense_millions": {
+      "accession": "0001437749-25-025772",
+      "fetch_timestamp": "2025-10-20T02:28:52Z",
+      "period_end": "2025-06-30",
+      "source": "SEC EDGAR 10-Q",
+      "value": 141.697,
+      "xbrl_tag": "us-gaap:InterestExpense"
+    },
+    "interest_income_millions": {
+      "accession": "0001437749-25-025772",
+      "fetch_timestamp": "2025-10-20T02:28:52Z",
+      "period_end": "2025-06-30",
+      "source": "SEC EDGAR 10-Q",
+      "value": 322.918,
+      "xbrl_tag": "us-gaap:InterestAndDividendIncomeOperating"
+    },
+    "net_income_millions": {
+      "accession": "0001437749-25-025772",
+      "fetch_timestamp": "2025-10-20T02:28:52Z",
+      "period_end": "2025-06-30",
+      "source": "SEC EDGAR 10-Q",
+      "value": 77.45,
+      "xbrl_tag": "us-gaap:NetIncomeLoss"
+    },
+    "net_interest_income_millions": {
+      "accession": "0001437749-25-025772",
+      "fetch_timestamp": "2025-10-20T02:28:52Z",
+      "period_end": "2025-06-30",
+      "source": "SEC EDGAR 10-Q",
+      "value": 181.221,
+      "xbrl_tag": "us-gaap:InterestIncomeExpenseNet"
+    },
+    "nii_after_provision_millions": {
+      "accession": "0001437749-25-025772",
+      "computed_from": [
+        "InterestIncomeExpenseNet",
+        "ProvisionForLoanLossesExpensed"
+      ],
+      "fetch_timestamp": "2025-10-20T02:28:52Z",
+      "period_end": "2025-06-30",
+      "source": "SEC EDGAR 10-Q",
+      "value": 170.021
+    },
+    "noninterest_expense_millions": {
+      "accession": "0001437749-25-025772",
+      "fetch_timestamp": "2025-10-20T02:28:52Z",
+      "period_end": "2025-06-30",
+      "source": "SEC EDGAR 10-Q",
+      "value": 89.134,
+      "xbrl_tag": "us-gaap:NoninterestExpense"
+    },
+    "noninterest_income_millions": {
+      "accession": "0001437749-25-025772",
+      "fetch_timestamp": "2025-10-20T02:28:52Z",
+      "period_end": "2025-06-30",
+      "source": "SEC EDGAR 10-Q",
+      "value": 15.391,
+      "xbrl_tag": "us-gaap:NoninterestIncome"
+    },
+    "pretax_income_millions": {
+      "accession": "0001437749-25-025772",
+      "computed_from": [
+        "NetIncomeLoss",
+        "IncomeTaxExpenseBenefit"
+      ],
+      "fetch_timestamp": "2025-10-20T02:28:52Z",
+      "period_end": "2025-06-30",
+      "source": "SEC EDGAR 10-Q",
+      "value": 96.278
+    },
+    "provision_credit_losses_millions": {
+      "accession": "0001437749-25-025772",
+      "fetch_timestamp": "2025-10-20T02:28:52Z",
+      "period_end": "2025-06-30",
+      "source": "SEC EDGAR 10-Q",
+      "value": 11.2,
+      "xbrl_tag": "us-gaap:ProvisionForLoanLossesExpensed"
+    }
   },
-  "derived_metrics": {
+  "last_updated": "2025-10-20T02:28:52Z",
+  "ltm_metrics": {
+    "eps_diluted": 4.25,
+    "net_income_millions": 294.67,
+    "nii_millions": 728.94,
+    "nim_pct": 3.31,
+    "period_ending": "2025-06-30",
+    "roe_pct": 12.03,
+    "rote_pct": 11.95
+  },
+  "period": "2025-06-30",
+  "q2_2025_snapshot": {
+    "average_earning_assets_millions": 22232,
+    "diluted_eps": {
+      "accession": "0001437749-25-025772",
+      "fetch_timestamp": "2025-10-20T02:28:52Z",
+      "period_end": "2025-06-30",
+      "source": "SEC EDGAR 10-Q",
+      "value": 1.1,
+      "xbrl_tag": "us-gaap:EarningsPerShareDiluted"
+    },
+    "effective_tax_rate_pct": {
+      "accession": "0001437749-25-025772",
+      "computed_from": [
+        "IncomeTaxExpenseBenefit",
+        "NetIncomeLoss"
+      ],
+      "fetch_timestamp": "2025-10-20T02:28:52Z",
+      "period_end": "2025-06-30",
+      "source": "SEC EDGAR 10-Q",
+      "value": 19.5559
+    },
+    "efficiency_ratio_pct": {
+      "accession": "0001437749-25-025772",
+      "computed_from": [
+        "NoninterestExpense",
+        "InterestIncomeExpenseNet",
+        "NoninterestIncome"
+      ],
+      "fetch_timestamp": "2025-10-20T02:28:52Z",
+      "period_end": "2025-06-30",
+      "source": "SEC EDGAR 10-Q",
+      "value": 45.335
+    },
+    "net_income_millions": {
+      "accession": "0001437749-25-025772",
+      "fetch_timestamp": "2025-10-20T02:28:52Z",
+      "period_end": "2025-06-30",
+      "source": "SEC EDGAR 10-Q",
+      "value": 77.45,
+      "xbrl_tag": "us-gaap:NetIncomeLoss"
+    },
+    "nii_millions": {
+      "accession": "0001437749-25-025772",
+      "fetch_timestamp": "2025-10-20T02:28:52Z",
+      "period_end": "2025-06-30",
+      "source": "SEC EDGAR 10-Q",
+      "value": 181.221,
+      "xbrl_tag": "us-gaap:InterestIncomeExpenseNet"
+    },
     "nim_pct": 3.27,
-    "efficiency_ratio_pct": 45.33,
-    "effective_tax_rate_pct": 19.56,
-    "roe_pct": 12.50,
-    "rote_pct": 11.95,
-    "pretax_margin_pct": 48.89
+    "provision_millions": {
+      "accession": "0001437749-25-025772",
+      "fetch_timestamp": "2025-10-20T02:28:52Z",
+      "period_end": "2025-06-30",
+      "source": "SEC EDGAR 10-Q",
+      "value": 11.2,
+      "xbrl_tag": "us-gaap:ProvisionForLoanLossesExpensed"
+    }
+  },
+  "qa_checks": {
+    "checks": [
+      {
+        "description": "Pretax income identity",
+        "id": "IS-QA001",
+        "rule": "pretax_income == net_interest_income_after_provision + noninterest_income - noninterest_expense",
+        "status": "PASSED",
+        "tolerance": "10 bps"
+      },
+      {
+        "description": "Net income identity",
+        "id": "IS-QA002",
+        "rule": "net_income == pretax_income - income_tax_expense",
+        "status": "PASSED",
+        "tolerance": "10 bps"
+      },
+      {
+        "description": "EPS calculation check",
+        "id": "IS-QA003",
+        "rule": "eps_diluted == net_income / diluted_shares",
+        "status": "PASSED",
+        "tolerance": "0.01%"
+      },
+      {
+        "description": "NIM uses period average earning assets",
+        "id": "IS-QA004",
+        "rule": "avg_earning_assets source must be 'Average Balance Sheet' table",
+        "status": "PASSED",
+        "tolerance": "N/A"
+      }
+    ]
   },
   "qoq_comparison": {
-    "q1_2025": {
-      "nii_millions": 183.45,
-      "net_income_millions": 75.32,
-      "nim_pct": 3.30,
-      "efficiency_ratio_pct": 46.87
-    },
-    "q2_2025": {
-      "nii_millions": 181.22,
-      "net_income_millions": 77.45,
-      "nim_pct": 3.27,
-      "efficiency_ratio_pct": 45.33
-    },
     "changes": {
-      "nii_millions": -2.23,
+      "efficiency_ratio_bps": -154,
       "net_income_millions": 2.13,
-      "nim_bps": -3,
-      "efficiency_ratio_bps": -154
-    }
-  },
-  "yoy_comparison": {
-    "q2_2024": {
-      "nii_millions": 189.67,
-      "net_income_millions": 81.23,
-      "nim_pct": 3.42,
-      "efficiency_ratio_pct": 44.21
+      "nii_millions": -2.23,
+      "nim_bps": -3
+    },
+    "q1_2025": {
+      "efficiency_ratio_pct": 46.87,
+      "net_income_millions": 75.32,
+      "nii_millions": 183.45,
+      "nim_pct": 3.3
     },
     "q2_2025": {
-      "nii_millions": 181.22,
+      "efficiency_ratio_pct": 45.33,
       "net_income_millions": 77.45,
-      "nim_pct": 3.27,
-      "efficiency_ratio_pct": 45.33
-    },
-    "changes_pct": {
-      "nii": -4.5,
-      "net_income": -4.7,
-      "nim_bps": -15,
-      "efficiency_ratio_bps": 112
+      "nii_millions": 181.22,
+      "nim_pct": 3.27
     }
-  },
-  "ltm_metrics": {
-    "period_ending": "2025-06-30",
-    "nii_millions": 728.94,
-    "net_income_millions": 294.67,
-    "eps_diluted": 4.25,
-    "roe_pct": 12.03,
-    "rote_pct": 11.95,
-    "nim_pct": 3.31
   },
   "revenue_breakdown": {
     "interest_income_pct": 95.45,
     "noninterest_income_pct": 4.55,
     "total_revenue_millions": 338.31
   },
-  "qa_checks": {
-    "checks": [
-      {
-        "id": "IS-QA001",
-        "description": "Pretax income identity",
-        "rule": "pretax_income == net_interest_income_after_provision + noninterest_income - noninterest_expense",
-        "tolerance": "10 bps",
-        "status": "PASSED"
-      },
-      {
-        "id": "IS-QA002",
-        "description": "Net income identity",
-        "rule": "net_income == pretax_income - income_tax_expense",
-        "tolerance": "10 bps",
-        "status": "PASSED"
-      },
-      {
-        "id": "IS-QA003",
-        "description": "EPS calculation check",
-        "rule": "eps_diluted == net_income / diluted_shares",
-        "tolerance": "0.01%",
-        "status": "PASSED"
-      },
-      {
-        "id": "IS-QA004",
-        "description": "NIM uses period average earning assets",
-        "rule": "avg_earning_assets source must be 'Average Balance Sheet' table",
-        "tolerance": "N/A",
-        "status": "PASSED"
-      }
-    ]
+  "yoy_comparison": {
+    "changes_pct": {
+      "efficiency_ratio_bps": 112,
+      "net_income": -4.7,
+      "nii": -4.5,
+      "nim_bps": -15
+    },
+    "q2_2024": {
+      "efficiency_ratio_pct": 44.21,
+      "net_income_millions": 81.23,
+      "nii_millions": 189.67,
+      "nim_pct": 3.42
+    },
+    "q2_2025": {
+      "efficiency_ratio_pct": 45.33,
+      "net_income_millions": 77.45,
+      "nii_millions": 181.22,
+      "nim_pct": 3.27
+    }
   }
 }
