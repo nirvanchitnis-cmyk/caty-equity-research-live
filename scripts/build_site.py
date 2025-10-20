@@ -690,6 +690,7 @@ def main(test_mode: bool = False) -> int:
         caty11_tables = load_json(ROOT / "data" / "caty11_peers_normalized.json") if (ROOT / "data" / "caty11_peers_normalized.json").exists() else {}
         caty13_tables = load_json(ROOT / "data" / "caty13_residual_income.json") if (ROOT / "data" / "caty13_residual_income.json").exists() else {}
         caty14_tables = load_json(ROOT / "data" / "caty14_monte_carlo.json") if (ROOT / "data" / "caty14_monte_carlo.json").exists() else {}
+        caty16_tables = load_json(ROOT / "data" / "caty16_coe_triangulation.json") if (ROOT / "data" / "caty16_coe_triangulation.json").exists() else {}
 
         context = {
             "market": market,
@@ -704,6 +705,7 @@ def main(test_mode: bool = False) -> int:
             "caty11_tables": caty11_tables,
             "caty13_tables": caty13_tables,
             "caty14_tables": caty14_tables,
+            "caty16_tables": caty16_tables,
         }
 
         reconciliation_html = build_reconciliation_table()

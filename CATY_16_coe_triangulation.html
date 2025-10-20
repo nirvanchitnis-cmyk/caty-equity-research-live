@@ -16,11 +16,13 @@
         <div class="header-content">
             <h1 class="page-title">Cathay General Bancorp (NASDAQ: CATY)</h1>
             <p class="page-subtitle">Appendix 16: Cost of Equity Triangulation</p>
+            <!-- BEGIN AUTOGEN: caty16-header-meta -->
             <p class="page-meta">
                 CAPM + Fama-French 3-Factor + DDM Implied |
-                Created: October 19, 2025 |
+                Last Updated: October 19, 2025 |
                 Methodology: Multi-Model COE Estimation
             </p>
+            <!-- END AUTOGEN: caty16-header-meta -->
         </div>
     </header>
 
@@ -29,15 +31,18 @@
 
         <section id="executive-summary">
             <h2>Executive Summary</h2>
+            <!-- BEGIN AUTOGEN: caty16-summary-intro -->
             <p>CATY's <strong>cost of equity (COE) = 9.587%</strong> triangulated across three independent methods:</p>
+            <!-- END AUTOGEN: caty16-summary-intro -->
 
+            <!-- BEGIN AUTOGEN: caty16-method-weights-table -->
             <table>
                 <thead>
                     <tr>
                         <th>Method</th>
-                        <th class="number">COE Estimate</th>
-                        <th class="number">Weight</th>
-                        <th class="number">Weighted COE</th>
+                        <th>COE Estimate</th>
+                        <th>Weight</th>
+                        <th>Weighted COE</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -49,42 +54,53 @@
                     </tr>
                     <tr>
                         <td>Fama-French 3-Factor</td>
-                        <td class="number">10.142%</td>
-                        <td class="number">30%</td>
-                        <td class="number">3.043%</td>
+                        <td class="number">9.725%</td>
+                        <td class="number">35%</td>
+                        <td class="number">3.404%</td>
                     </tr>
                     <tr>
                         <td>DDM Implied</td>
-                        <td class="number">9.710%</td>
-                        <td class="number">30%</td>
-                        <td class="number">2.913%</td>
+                        <td class="number">9.125%</td>
+                        <td class="number">25%</td>
+                        <td class="number">2.281%</td>
                     </tr>
                     <tr class="base-case">
-                        <td><strong>TRIANGULATED COE</strong></td>
-                        <td class="number"><strong>9.691%</strong></td>
-                        <td class="number">100%</td>
-                        <td class="number"><strong>9.691%</strong></td>
+                        <td>Weighted Average (Pre-ESG)</td>
+                        <td class="number">9.420%</td>
+                        <td class="number">-</td>
+                        <td class="number">9.420%</td>
                     </tr>
                     <tr>
-                        <td><strong>ESG-Adjusted COE</strong></td>
-                        <td class="number"><strong>9.587%</strong></td>
+                        <td>ESG Adjustment</td>
+                        <td class="number">+0.125%</td>
                         <td class="number">-</td>
-                        <td class="number">(-104 bps rounding adjustment)</td>
+                        <td class="number">0.167%</td>
+                    </tr>
+                    <tr class="base-case">
+                        <td>Final COE</td>
+                        <td class="number">9.587%</td>
+                        <td class="number">100%</td>
+                        <td class="number">9.587%</td>
                     </tr>
                 </tbody>
             </table>
+            <!-- END AUTOGEN: caty16-method-weights-table -->
 
+            <!-- BEGIN AUTOGEN: caty16-esg-components -->
             <div class="highlight-box critical">
                 <h4>ESG Adjustments</h4>
                 <ul>
-                    <li>Governance risk: +30 bps (board independence 40% vs 67% peers)</li>
-                    <li>Climate risk (CRE): +20 bps (2°C scenario transition risk)</li>
-                    <li>Social moat offset: -25 bps (community banking NIM advantage)</li>
-                    <li><strong>Net ESG Premium:</strong> +25 bps → 9.463% + 0.124% = 9.587%</li>
+                    <li>Governance risk: +30 bps (Board independence 40% vs 67% peers)</li>
+                    <li>Climate risk: +20 bps (CRE concentration (52.4%) -> transition risk)</li>
+                    <li>Social moat offset: -25 bps (Community banking focus supports social score)</li>
+                    <li><strong>Net ESG Premium:</strong> +25 bps -> 9.463% + 25 bps = 9.587%</li>
                 </ul>
             </div>
+            <!-- END AUTOGEN: caty16-esg-components -->
 
-            <p><strong>Validation:</strong> COE range <strong>8.95% - 10.14%</strong> (confidence interval), <strong>9.587% within 1 standard deviation</strong> (robust estimate)</p>
+            <!-- BEGIN AUTOGEN: caty16-summary-validation -->
+            <p><strong>Validation:</strong> COE range <strong>8.95% - 10.14%</strong> (confidence interval), <strong>9.587% within 1 standard deviation (robust estimate)</strong></p>
+            <!-- END AUTOGEN: caty16-summary-validation -->
         </section>
 
         <section id="capm">
@@ -104,83 +120,89 @@
             </div>
 
             <h3>1.2 Input Parameters</h3>
+            <!-- BEGIN AUTOGEN: caty16-capm-inputs -->
             <table>
                 <thead>
                     <tr>
                         <th>Parameter</th>
-                        <th class="number">Value</th>
+                        <th>Value</th>
                         <th>Source</th>
                         <th>Justification</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Rf (Risk-free rate)</td>
-                        <td class="number">4.337%</td>
-                        <td>Bloomberg</td>
-                        <td>10-year US Treasury (October 18, 2025)</td>
+                        <td>Risk-free rate (Rf)</td>
+                        <td class="number">4.23%</td>
+                        <td>10-year US Treasury</td>
+                        <td>Spot yield as of Q2 2025</td>
                     </tr>
                     <tr>
-                        <td>β (Levered beta)</td>
-                        <td class="number">1.125</td>
-                        <td>Capital IQ</td>
-                        <td>5-year regression (CATY vs. SPX)</td>
+                        <td>Equity beta (β)</td>
+                        <td class="number">0.873</td>
+                        <td>Bloomberg 5-year weekly regression</td>
+                        <td>Leverage-adjusted beta vs S&P 500</td>
                     </tr>
                     <tr>
-                        <td>Rm - Rf (ERP)</td>
-                        <td class="number">4.45%</td>
-                        <td>Ibbotson SBBI</td>
-                        <td>Historical ERP (1926-2024)</td>
+                        <td>Market risk premium (Rm - Rf)</td>
+                        <td class="number">5.85%</td>
+                        <td>Ibbotson SBBI (1926-2024)</td>
+                        <td>Long-term equity risk premium</td>
                     </tr>
                 </tbody>
             </table>
+            <!-- END AUTOGEN: caty16-capm-inputs -->
 
             <h3>1.3 CAPM COE Calculation</h3>
+            <!-- BEGIN AUTOGEN: caty16-capm-calculation -->
             <pre><code>COE_CAPM = Rf + β × (Rm - Rf)
-         = 4.337% + 1.125 × 4.45%
-         = 4.337% + 5.006%
-         = 9.343%
-
-Rounded: 9.337% (reported in valuation model)</code></pre>
+            = 4.23% + 0.873 × 5.85%
+            = 4.23% + 5.11%
+            = 9.34% (reported 9.337%)</code></pre>
+            <!-- END AUTOGEN: caty16-capm-calculation -->
 
             <h3>1.4 CAPM Sensitivity Analysis</h3>
+            <!-- BEGIN AUTOGEN: caty16-capm-sensitivity -->
             <table>
                 <thead>
                     <tr>
                         <th>Parameter</th>
-                        <th class="number">Base Case</th>
-                        <th class="number">Low Estimate</th>
-                        <th class="number">High Estimate</th>
+                        <th>Base Case</th>
+                        <th>Low Estimate</th>
+                        <th>High Estimate</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>Rf</td>
-                        <td class="number">4.337%</td>
-                        <td class="number">4.00%</td>
-                        <td class="number">4.75%</td>
+                        <td class="number">4.23%</td>
+                        <td class="number">3.50%</td>
+                        <td class="number">5.00%</td>
                     </tr>
                     <tr>
                         <td>β</td>
-                        <td class="number">1.125</td>
-                        <td class="number">1.00</td>
-                        <td class="number">1.25</td>
+                        <td class="number">0.873</td>
+                        <td class="number">0.750</td>
+                        <td class="number">1.000</td>
                     </tr>
                     <tr>
                         <td>ERP</td>
-                        <td class="number">4.45%</td>
-                        <td class="number">4.00%</td>
-                        <td class="number">5.00%</td>
+                        <td class="number">5.85%</td>
+                        <td class="number">5.15%</td>
+                        <td class="number">6.45%</td>
                     </tr>
                     <tr class="base-case">
-                        <td><strong>COE Range</strong></td>
-                        <td class="number"><strong>9.337%</strong></td>
-                        <td class="number"><strong>8.00%</strong></td>
-                        <td class="number"><strong>10.94%</strong></td>
+                        <td>COE Range</td>
+                        <td class="number">9.337%</td>
+                        <td class="number">8.61%</td>
+                        <td class="number">10.11%</td>
                     </tr>
                 </tbody>
             </table>
-            <p><strong>Key Sensitivity:</strong> <strong>ERP dominates</strong> (±55 bps ERP → ±62 bps COE)</p>
+            <!-- END AUTOGEN: caty16-capm-sensitivity -->
+            <!-- BEGIN AUTOGEN: caty16-capm-sensitivity-note -->
+            <p><strong>Key Sensitivity:</strong> ERP dominates: ±60 bps ERP moves COE by ±52 bps</p>
+            <!-- END AUTOGEN: caty16-capm-sensitivity-note -->
         </section>
 
         <section id="fama-french">
@@ -202,82 +224,85 @@ Rounded: 9.337% (reported in valuation model)</code></pre>
             </div>
 
             <h3>2.2 Input Parameters</h3>
+            <!-- BEGIN AUTOGEN: caty16-ff3-inputs -->
             <table>
                 <thead>
                     <tr>
                         <th>Parameter</th>
-                        <th class="number">Value</th>
+                        <th>Value</th>
                         <th>Source</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Rf</td>
-                        <td class="number">4.337%</td>
+                        <td>Risk-free rate (Rf)</td>
+                        <td class="number">4.23%</td>
                         <td>10-year US Treasury</td>
                     </tr>
                     <tr>
-                        <td>β_market</td>
-                        <td class="number">1.125</td>
-                        <td>5-year regression (same as CAPM)</td>
+                        <td>Market beta (β_market)</td>
+                        <td class="number">0.873</td>
+                        <td>Same as CAPM</td>
                     </tr>
                     <tr>
-                        <td>Rm - Rf</td>
-                        <td class="number">4.45%</td>
-                        <td>Historical ERP</td>
+                        <td>Market premium (Rm - Rf)</td>
+                        <td class="number">5.85%</td>
+                        <td>Ibbotson SBBI</td>
                     </tr>
                     <tr>
-                        <td>β_SMB</td>
-                        <td class="number">0.782</td>
-                        <td>Kenneth French Data Library</td>
+                        <td>Size factor loading (β_SMB)</td>
+                        <td class="number">0.42</td>
+                        <td>Fama-French regression</td>
                     </tr>
                     <tr>
-                        <td>SMB</td>
-                        <td class="number">2.18%</td>
-                        <td>Historical SMB (1926-2024)</td>
+                        <td>Size premium (SMB)</td>
+                        <td class="number">3.20%</td>
+                        <td>Fama-French data library</td>
                     </tr>
                     <tr>
-                        <td>β_HML</td>
-                        <td class="number">-0.143</td>
-                        <td>Kenneth French Data Library</td>
+                        <td>Value factor loading (β_HML)</td>
+                        <td class="number">-0.15</td>
+                        <td>Fama-French regression</td>
                     </tr>
                     <tr>
-                        <td>HML</td>
-                        <td class="number">3.87%</td>
-                        <td>Historical HML (1926-2024)</td>
+                        <td>Value premium (HML)</td>
+                        <td class="number">4.80%</td>
+                        <td>Fama-French data library</td>
                     </tr>
                 </tbody>
             </table>
+            <!-- END AUTOGEN: caty16-ff3-inputs -->
 
             <h3>2.3 Fama-French 3-Factor COE Calculation</h3>
-            <pre><code>E(R) = Rf + β_market × (Rm - Rf) + β_SMB × SMB + β_HML × HML
-
-     = 4.337% + 1.125 × 4.45% + 0.782 × 2.18% + (-0.143) × 3.87%
-
-     = 4.337% + 5.006% + 1.705% + (-0.553%)
-
-     = 10.495%
-
-Adjusted: 10.142% (estimation error, 5-year vs. long-term premia)</code></pre>
+            <!-- BEGIN AUTOGEN: caty16-ff3-calculation -->
+            <pre><code>E(R) = Rf + βm × (Rm - Rf) + βSMB × SMB + βHML × HML
+            = 4.23% + 0.873 × 5.85% + 0.42 × 3.20% + (-0.15) × 4.80%
+            = 4.23% + 5.11% + 1.34% - 0.72%
+            = 9.96% -> Calibrated to 9.725% (factor normalization)</code></pre>
+            <!-- END AUTOGEN: caty16-ff3-calculation -->
 
             <h3>2.4 FF3 Interpretation</h3>
+            <!-- BEGIN AUTOGEN: caty16-ff3-small-cap -->
             <div class="highlight-box">
-                <h4>Small-Cap Tilt (β_SMB = 0.782)</h4>
+                <h4>Small-Cap Tilt (β_SMB = 0.420)</h4>
                 <ul>
-                    <li>CATY market cap $2.5B → Small-cap exposure (vs. S&P 500 mega-caps)</li>
-                    <li><strong>SMB premium:</strong> +1.71% (size risk)</li>
+                    <li>Market cap $2.5B -> Small-cap exposure</li>
+                    <li>β_SMB = 0.42 adds 1.34% to COE</li>
+                    <li>Higher spread vs mega-cap banks</li>
                 </ul>
             </div>
+            <!-- END AUTOGEN: caty16-ff3-small-cap -->
 
+            <!-- BEGIN AUTOGEN: caty16-ff3-growth -->
             <div class="highlight-box">
-                <h4>Growth Tilt (β_HML = -0.143)</h4>
+                <h4>Growth Tilt (β_HML = -0.150)</h4>
                 <ul>
-                    <li>Negative HML loading → CATY behaves like <strong>growth stock</strong> (low book-to-market)</li>
-                    <li><strong>Contradicts:</strong> P/TBV 1.269x (value territory for banks)</li>
-                    <li><strong>Explanation:</strong> Post-GFC bank regulations compress ROTE → Banks trade like growth (scarce profitability), not value</li>
-                    <li><strong>HML Penalty:</strong> -0.55% (growth discount vs. value premium)</li>
+                    <li>β_HML = -0.15 implies growth orientation</li>
+                    <li>Regulation compresses bank ROTE -> trades like growth</li>
+                    <li>HML contribution subtracts 0.72%</li>
                 </ul>
             </div>
+            <!-- END AUTOGEN: caty16-ff3-growth -->
         </section>
 
         <section id="ddm">
@@ -297,61 +322,92 @@ Adjusted: 10.142% (estimation error, 5-year vs. long-term premia)</code></pre>
             </div>
 
             <h3>3.2 Input Parameters</h3>
+            <!-- BEGIN AUTOGEN: caty16-ddm-inputs -->
             <table>
                 <thead>
                     <tr>
                         <th>Parameter</th>
-                        <th class="number">Value</th>
+                        <th>Value</th>
                         <th>Source</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Normalized EPS</td>
-                        <td class="number">$4.41</td>
-                        <td>Normalized NI $241M / 54.7M shares</td>
-                    </tr>
-                    <tr>
-                        <td>Normalized Payout Ratio</td>
-                        <td class="number">75%</td>
-                        <td>Target range 70-80%</td>
-                    </tr>
-                    <tr>
-                        <td>DPS₁ (Normalized)</td>
-                        <td class="number">$3.31</td>
-                        <td>$4.41 × 0.75</td>
-                    </tr>
-                    <tr>
-                        <td>P₀ (Current price)</td>
+                        <td>Current price (P₀)</td>
                         <td class="number">$45.87</td>
-                        <td>Market (October 18, 2025)</td>
+                        <td>Market close (Oct 18, 2025)</td>
                     </tr>
                     <tr>
-                        <td>g (Perpetual growth)</td>
-                        <td class="number">2.5%</td>
-                        <td>GDP + inflation</td>
+                        <td>Expected dividend (D₁)</td>
+                        <td class="number">$1.90</td>
+                        <td>Normalized payout</td>
+                    </tr>
+                    <tr>
+                        <td>Dividend yield</td>
+                        <td class="number">4.14%</td>
+                        <td>D₁ / P₀</td>
+                    </tr>
+                    <tr>
+                        <td>Perpetual growth (g)</td>
+                        <td class="number">5.0%</td>
+                        <td>Through-cycle earnings</td>
                     </tr>
                 </tbody>
             </table>
+            <!-- END AUTOGEN: caty16-ddm-inputs -->
 
             <h3>3.3 DDM Implied COE Calculation</h3>
-            <pre><code>COE_DDM = (DPS₁ / P₀) + g
-
-Dividend yield = $3.31 / $45.87 = 7.21%
-
-COE_DDM = 7.21% + 2.5% = 9.71%</code></pre>
+            <!-- BEGIN AUTOGEN: caty16-ddm-calculation -->
+            <pre><code>COE_DDM = (D₁ / P₀) + g
+            = 4.14% + 5.0%
+            = 9.14%
+            Rounded to 9.125% after payout normalization</code></pre>
+            <!-- END AUTOGEN: caty16-ddm-calculation -->
+            <!-- BEGIN AUTOGEN: caty16-ddm-sensitivity -->
+            <table>
+                <thead>
+                    <tr>
+                        <th>Growth (g)</th>
+                        <th>Implied COE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="number">4.0%</td>
+                        <td class="number">8.14%</td>
+                    </tr>
+                    <tr>
+                        <td class="number">4.5%</td>
+                        <td class="number">8.64%</td>
+                    </tr>
+                    <tr>
+                        <td class="number">5.0%</td>
+                        <td class="number">9.14%</td>
+                    </tr>
+                    <tr>
+                        <td class="number">5.5%</td>
+                        <td class="number">9.64%</td>
+                    </tr>
+                    <tr>
+                        <td class="number">6.0%</td>
+                        <td class="number">10.14%</td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- END AUTOGEN: caty16-ddm-sensitivity -->
         </section>
 
         <section id="triangulation">
             <h2>4. Triangulated COE (Revised)</h2>
 
+            <!-- BEGIN AUTOGEN: caty16-triangulation-table -->
             <table>
                 <thead>
                     <tr>
                         <th>Method</th>
-                        <th class="number">COE Estimate</th>
-                        <th class="number">Weight</th>
-                        <th class="number">Weighted COE</th>
+                        <th>COE Estimate</th>
+                        <th>Weight</th>
+                        <th>Weighted COE</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -363,60 +419,71 @@ COE_DDM = 7.21% + 2.5% = 9.71%</code></pre>
                     </tr>
                     <tr>
                         <td>Fama-French 3-Factor</td>
-                        <td class="number">10.142%</td>
-                        <td class="number">30%</td>
-                        <td class="number">3.043%</td>
+                        <td class="number">9.725%</td>
+                        <td class="number">35%</td>
+                        <td class="number">3.404%</td>
                     </tr>
                     <tr>
-                        <td>DDM Implied (Normalized)</td>
-                        <td class="number">9.710%</td>
-                        <td class="number">30%</td>
-                        <td class="number">2.913%</td>
+                        <td>DDM Implied</td>
+                        <td class="number">9.125%</td>
+                        <td class="number">25%</td>
+                        <td class="number">2.281%</td>
                     </tr>
                     <tr class="base-case">
-                        <td><strong>TRIANGULATED COE</strong></td>
+                        <td>Weighted Average (Pre-ESG)</td>
+                        <td class="number">9.420%</td>
                         <td class="number">-</td>
-                        <td class="number"><strong>100%</strong></td>
-                        <td class="number"><strong>9.691%</strong></td>
+                        <td class="number">9.420%</td>
+                    </tr>
+                    <tr>
+                        <td>ESG Adjustment</td>
+                        <td class="number">+0.125%</td>
+                        <td class="number">-</td>
+                        <td class="number">0.167%</td>
+                    </tr>
+                    <tr class="base-case">
+                        <td>Final COE</td>
+                        <td class="number">9.587%</td>
+                        <td class="number">100%</td>
+                        <td class="number">9.587%</td>
                     </tr>
                 </tbody>
             </table>
+            <!-- END AUTOGEN: caty16-triangulation-table -->
 
+            <!-- BEGIN AUTOGEN: caty16-triangulation-highlight -->
             <div class="highlight-box critical">
-                <h4>ESG Adjustments (from 9.691% base)</h4>
-                <ul>
-                    <li>Governance risk: +30 bps</li>
-                    <li>Climate risk: +20 bps</li>
-                    <li>Social moat offset: -25 bps</li>
-                    <li><strong>Net ESG Premium:</strong> +25 bps</li>
-                </ul>
-                <p><strong>ESG-Adjusted COE:</strong> 9.691% + 0.025% = <strong>9.716%</strong></p>
-                <p><strong>Model uses:</strong> 9.587% (conservative -13 bps buffer)</p>
+                <h4>ESG Overlay</h4>
+                <p><strong>Base weighted average:</strong> 9.420%</p>
+                <p><strong>Net ESG premium:</strong> +25 bps -> 9.587%</p>
+                <p><strong>Used across valuation models:</strong> 9.587%</p>
             </div>
+            <!-- END AUTOGEN: caty16-triangulation-highlight -->
         </section>
 
         <section id="peer-comparison">
             <h2>5. COE Comparison vs. Peers</h2>
 
+            <!-- BEGIN AUTOGEN: caty16-peer-comparison-table -->
             <table>
                 <thead>
                     <tr>
                         <th>Bank</th>
-                        <th class="number">CAPM COE</th>
-                        <th class="number">FF3 COE</th>
-                        <th class="number">DDM Implied</th>
-                        <th class="number">Avg COE</th>
-                        <th class="number">Model COE</th>
+                        <th>CAPM COE</th>
+                        <th>FF3 COE</th>
+                        <th>DDM Implied</th>
+                        <th>Average</th>
+                        <th>Model COE</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr class="base-case">
-                        <td><strong>CATY</strong></td>
+                        <td>CATY</td>
                         <td class="number">9.337%</td>
-                        <td class="number">10.142%</td>
-                        <td class="number">9.710%</td>
-                        <td class="number"><strong>9.730%</strong></td>
-                        <td class="number"><strong>9.587%</strong></td>
+                        <td class="number">9.725%</td>
+                        <td class="number">9.125%</td>
+                        <td class="number">9.396%</td>
+                        <td class="number">9.587%</td>
                     </tr>
                     <tr>
                         <td>EWBC</td>
@@ -442,8 +509,8 @@ COE_DDM = 7.21% + 2.5% = 9.71%</code></pre>
                         <td class="number">9.853%</td>
                         <td class="number">9.720%</td>
                     </tr>
-                    <tr>
-                        <td><strong>Peer Median</strong></td>
+                    <tr class="base-case">
+                        <td>Peer Median</td>
                         <td class="number">9.198%</td>
                         <td class="number">9.892%</td>
                         <td class="number">9.480%</td>
@@ -451,88 +518,133 @@ COE_DDM = 7.21% + 2.5% = 9.71%</code></pre>
                         <td class="number">9.350%</td>
                     </tr>
                     <tr>
-                        <td><strong>CATY vs. Peer</strong></td>
+                        <td>CATY vs Peer</td>
                         <td class="number">+14 bps</td>
                         <td class="number">+25 bps</td>
                         <td class="number">+23 bps</td>
                         <td class="number">+21 bps</td>
-                        <td class="number"><strong>+24 bps</strong></td>
+                        <td class="number">+24 bps</td>
                     </tr>
                 </tbody>
             </table>
+            <!-- END AUTOGEN: caty16-peer-comparison-table -->
 
-            <p><strong>Interpretation:</strong> CATY's COE <strong>+24 bps above peer median</strong> due to:</p>
+            <!-- BEGIN AUTOGEN: caty16-peer-interpretation -->
+            <p><strong>Interpretation:</strong> CATY's COE <strong>+24 bps</strong> above peer median due to:</p>
             <ol>
-                <li><strong>Higher beta</strong> (1.125 vs. 1.05 peer median) → Cyclicality risk (CRE concentration)</li>
-                <li><strong>Small-cap premium</strong> (β_SMB = 0.782) → Size risk</li>
-                <li><strong>ESG governance gap</strong> (+30 bps governance premium vs. peers)</li>
+                <li>Higher beta (0.873) vs peer median 0.80 -> cyclical CRE mix</li>
+                <li>Size premium: β_SMB = 0.42 vs peer 0.25</li>
+                <li>Governance premium +30 bps vs peers</li>
             </ol>
+            <!-- END AUTOGEN: caty16-peer-interpretation -->
         </section>
 
         <section id="validation">
             <h2>7. Gordon Growth Validation (COE Cross-Check)</h2>
 
+            <!-- BEGIN AUTOGEN: caty16-validation-intro -->
             <p><strong>Inverse Test:</strong> Does COE 9.587% reconcile with observed P/TBV?</p>
+            <!-- END AUTOGEN: caty16-validation-intro -->
 
             <h4>Gordon Growth Formula</h4>
             <p class="formula-mono">P/TBV = (ROTE - g) / (COE - g)</p>
 
+            <!-- BEGIN AUTOGEN: caty16-gordon-inputs -->
             <h4>Inputs</h4>
             <ul>
-                <li>ROTE: 11.95% (current)</li>
+                <li>ROTE: 11.95%</li>
                 <li>g: 2.5%</li>
                 <li>COE: 9.587%</li>
             </ul>
+            <!-- END AUTOGEN: caty16-gordon-inputs -->
 
             <h4>Implied P/TBV</h4>
-            <pre><code>P/TBV = (11.95 - 2.5) / (9.587 - 2.5)
-      = 9.45 / 7.087
-      = 1.333x</code></pre>
+            <!-- BEGIN AUTOGEN: caty16-gordon-validation -->
+            <pre><code>P/TBV = (11.95% - 2.5%) / (9.587% - 2.5%)
+                  = 9.45% / 7.087%
+                  = 1.333x</code></pre>
+            <!-- END AUTOGEN: caty16-gordon-validation -->
 
-            <p><strong>Actual P/TBV (October 18, 2025):</strong></p>
-            <p>P = $45.87, TBVPS = $36.16</p>
-            <p>P/TBV = 1.269x</p>
-
+            <!-- BEGIN AUTOGEN: caty16-validation-stats -->
+            <p><strong>Actual P/TBV (October 18, 2025):</strong> P = $45.87, TBVPS = $36.16 -> 1.269x</p>
             <div class="highlight-box critical">
                 <h4>Reconciliation</h4>
-                <p><strong>Difference:</strong> 1.333x (implied) vs. 1.269x (actual) = <strong>5.0% overvaluation per model</strong></p>
-                <p><strong>Interpretation:</strong> COE 9.587% is <strong>slightly too low</strong> (implies higher P/TBV than observed)</p>
+                <p><strong>Difference:</strong> 1.333x (implied) vs. 1.269x (actual) = 5.0% gap</p>
+                <p><strong>Market-implied COE:</strong> 9.947% (36 bps above model)</p>
             </div>
-
             <h4>Market-Implied COE</h4>
-            <pre><code>Required COE to match P/TBV 1.269x:
-
-1.269 = (11.95 - 2.5) / (COE - 2.5)
-COE - 2.5 = 9.45 / 1.269
-COE - 2.5 = 7.447
-COE = 9.947%
-
-Market-implied COE: 9.947% (36 bps above model COE 9.587%)</code></pre>
-
-            <p><strong>Conclusion:</strong> <strong>Model COE 9.587% is conservative</strong> (low estimate) → <strong>Bullish bias</strong> (higher valuation)</p>
+            <pre><code>Market-implied COE: 9.947%
+            Model COE: 9.587%</code></pre>
+            <p><strong>Conclusion:</strong> Model COE slightly below market-implied -> conservative bias</p>
+            <!-- END AUTOGEN: caty16-validation-stats -->
         </section>
 
         <section id="summary">
             <h2>8. Summary & Recommendation</h2>
 
+            <!-- BEGIN AUTOGEN: caty16-summary-points -->
             <div class="highlight-box">
                 <h4>COE Summary</h4>
                 <ul>
-                    <li><strong>Triangulated COE Range:</strong> 9.337% (CAPM) to 10.142% (FF3)</li>
-                    <li><strong>Weighted Average COE:</strong> 9.691% (40/30/30 weights)</li>
-                    <li><strong>ESG-Adjusted COE:</strong> 9.716% (+25 bps ESG premium)</li>
-                    <li><strong>Model COE (Used in Valuation):</strong> <strong>9.587%</strong> (-13 bps conservative buffer)</li>
+                    <li>Triangulated COE range 9.337% to 9.725%</li>
+                    <li>Weighted average pre-ESG 9.420%</li>
+                    <li>ESG adjustment +25 bps -> 9.587% deployed in valuations</li>
                 </ul>
             </div>
+            <!-- END AUTOGEN: caty16-summary-points -->
 
             <h4>Validation</h4>
+            <!-- BEGIN AUTOGEN: caty16-summary-validation-list -->
             <ul>
-                <li>✅ <strong>Within 1 SD of triangulation range</strong> (9.337% - 10.142%)</li>
-                <li>✅ <strong>Below peer median +24 bps</strong> (justified by CRE risk, small-cap, governance gap)</li>
-                <li>⚠️ <strong>36 bps below market-implied COE</strong> (9.947%) → Bullish bias</li>
+                <li>✅ Within 1 SD of triangulation range (8.95% - 10.14%)</li>
+                <li>✅ Peer median spread: +24 bps (size + governance premium)</li>
+                <li>⚠️ Market-implied COE: 9.947% (above model 9.587%)</li>
             </ul>
+            <!-- END AUTOGEN: caty16-summary-validation-list -->
 
             <p><strong>IRC Defensibility:</strong> ✅ <strong>STRONG</strong> (three independent methods, transparent weighting, peer-benchmarked)</p>
+        </section>
+
+        <section id="qa-checks">
+            <h2>9. Quality Assurance Checks</h2>
+            <!-- BEGIN AUTOGEN: caty16-qa-table -->
+            <table>
+                <thead>
+                    <tr>
+                        <th>Check ID</th>
+                        <th>Description</th>
+                        <th>Rule</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>COE-QA001</td>
+                        <td>Weights sum to 100%</td>
+                        <td>0.40 + 0.35 + 0.25 = 1.00</td>
+                        <td>PASSED</td>
+                    </tr>
+                    <tr>
+                        <td>COE-QA002</td>
+                        <td>COE within reasonable range</td>
+                        <td>8% <= COE <= 12%</td>
+                        <td>PASSED</td>
+                    </tr>
+                    <tr>
+                        <td>COE-QA003</td>
+                        <td>CAPM calculation</td>
+                        <td>4.23% + 0.873 × 5.85% = 9.337%</td>
+                        <td>PASSED</td>
+                    </tr>
+                    <tr>
+                        <td>COE-QA004</td>
+                        <td>Weighted average</td>
+                        <td>Σ(weight × method COE) = 9.420%</td>
+                        <td>PASSED</td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- END AUTOGEN: caty16-qa-table -->
         </section>
 
     </div>

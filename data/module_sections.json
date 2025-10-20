@@ -9363,6 +9363,919 @@
           }
         }
       ]
+    },
+    {
+      "id": "CATY_16",
+      "file": "CATY_16_coe_triangulation.html",
+      "data": {
+        "last_updated_display": "October 19, 2025"
+      },
+      "sections": [
+        {
+          "marker": "caty16-header-meta",
+          "type": "text",
+          "template": {
+            "template": "<p class=\"page-meta\">\n    CAPM + Fama-French 3-Factor + DDM Implied |\n    Last Updated: {last_updated} |\n    Methodology: Multi-Model COE Estimation\n</p>",
+            "placeholders": {
+              "{last_updated}": {
+                "source": "module",
+                "path": "last_updated_display",
+                "format": "text"
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty16-summary-intro",
+          "type": "text",
+          "template": {
+            "template": "<p>CATY's <strong>cost of equity (COE) = {final_coe}</strong> triangulated across three independent methods:</p>",
+            "placeholders": {
+              "{final_coe}": {
+                "source": "caty16_tables",
+                "path": "coe_summary.final_coe_pct",
+                "format": "percent",
+                "decimals": 3
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty16-method-weights-table",
+          "type": "table",
+          "headers": [
+            "Method",
+            "COE Estimate",
+            "Weight",
+            "Weighted COE"
+          ],
+          "columns": [
+            "method",
+            "coe",
+            "weight",
+            "contribution"
+          ],
+          "column_classes": [
+            "",
+            "number",
+            "number",
+            "number"
+          ],
+          "rows_from_list": {
+            "source": "caty16_tables",
+            "list_path": "triangulation_table.rows",
+            "row_template": {
+              "method": {
+                "template": "{method}"
+              },
+              "coe": {
+                "template": "{coe}"
+              },
+              "weight": {
+                "template": "{weight}"
+              },
+              "contribution": {
+                "template": "{contribution}"
+              },
+              "row_class": "{row_class}"
+            }
+          }
+        },
+        {
+          "marker": "caty16-esg-components",
+          "type": "text",
+          "template": {
+            "template": "<div class=\"highlight-box critical\">\n    <h4>ESG Adjustments</h4>\n    <ul>\n        <li>Governance risk: +{gov_bps} ({gov_note})</li>\n        <li>Climate risk: +{climate_bps} ({climate_note})</li>\n        <li>Social moat offset: {social_bps} ({social_note})</li>\n        <li><strong>Net ESG Premium:</strong> +{net_bps} -> {pre_esg} + {net_bps} = {post_esg}</li>\n    </ul>\n</div>",
+            "placeholders": {
+              "{gov_bps}": {
+                "source": "caty16_tables",
+                "path": "esg_adjustment.governance_premium_bps",
+                "format": "bps",
+                "decimals": 0
+              },
+              "{gov_note}": {
+                "source": "caty16_tables",
+                "path": "esg_adjustment.governance_rationale",
+                "format": "text"
+              },
+              "{climate_bps}": {
+                "source": "caty16_tables",
+                "path": "esg_adjustment.climate_premium_bps",
+                "format": "bps",
+                "decimals": 0
+              },
+              "{climate_note}": {
+                "source": "caty16_tables",
+                "path": "esg_adjustment.climate_rationale",
+                "format": "text"
+              },
+              "{social_bps}": {
+                "source": "caty16_tables",
+                "path": "esg_adjustment.social_discount_bps",
+                "format": "bps",
+                "decimals": 0
+              },
+              "{social_note}": {
+                "source": "caty16_tables",
+                "path": "esg_adjustment.social_rationale",
+                "format": "text"
+              },
+              "{net_bps}": {
+                "source": "caty16_tables",
+                "path": "esg_adjustment.net_esg_premium_bps",
+                "format": "bps",
+                "decimals": 0
+              },
+              "{pre_esg}": {
+                "source": "caty16_tables",
+                "path": "coe_summary.pre_esg_coe_pct",
+                "format": "percent",
+                "decimals": 3
+              },
+              "{post_esg}": {
+                "source": "caty16_tables",
+                "path": "coe_summary.post_esg_coe_pct",
+                "format": "percent",
+                "decimals": 3
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty16-summary-validation",
+          "type": "text",
+          "template": {
+            "template": "<p><strong>Validation:</strong> COE range <strong>{ci_lower} - {ci_upper}</strong> (confidence interval), <strong>{validation_text}</strong></p>",
+            "placeholders": {
+              "{ci_lower}": {
+                "source": "caty16_tables",
+                "path": "coe_summary.confidence_interval_lower_pct",
+                "format": "percent",
+                "decimals": 2
+              },
+              "{ci_upper}": {
+                "source": "caty16_tables",
+                "path": "coe_summary.confidence_interval_upper_pct",
+                "format": "percent",
+                "decimals": 2
+              },
+              "{validation_text}": {
+                "source": "caty16_tables",
+                "path": "coe_summary.validation",
+                "format": "text"
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty16-capm-inputs",
+          "type": "table",
+          "headers": [
+            "Parameter",
+            "Value",
+            "Source",
+            "Justification"
+          ],
+          "columns": [
+            "parameter",
+            "value",
+            "source",
+            "justification"
+          ],
+          "column_classes": [
+            "",
+            "number",
+            "",
+            ""
+          ],
+          "rows_from_list": {
+            "source": "caty16_tables",
+            "list_path": "capm.inputs_table",
+            "row_template": {
+              "parameter": {
+                "template": "{parameter}"
+              },
+              "value": {
+                "template": "{value}"
+              },
+              "source": {
+                "template": "{source}"
+              },
+              "justification": {
+                "template": "{justification}"
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty16-capm-calculation",
+          "type": "text",
+          "template": {
+            "template": "<pre><code>{step1}\n{step2}\n{step3}\n{step4}</code></pre>",
+            "placeholders": {
+              "{step1}": {
+                "source": "caty16_tables",
+                "path": "capm.calculation_lines.0",
+                "format": "text"
+              },
+              "{step2}": {
+                "source": "caty16_tables",
+                "path": "capm.calculation_lines.1",
+                "format": "text"
+              },
+              "{step3}": {
+                "source": "caty16_tables",
+                "path": "capm.calculation_lines.2",
+                "format": "text"
+              },
+              "{step4}": {
+                "source": "caty16_tables",
+                "path": "capm.calculation_lines.3",
+                "format": "text"
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty16-capm-sensitivity",
+          "type": "table",
+          "headers": [
+            "Parameter",
+            "Base Case",
+            "Low Estimate",
+            "High Estimate"
+          ],
+          "columns": [
+            "parameter",
+            "base",
+            "low",
+            "high"
+          ],
+          "column_classes": [
+            "",
+            "number",
+            "number",
+            "number"
+          ],
+          "rows_from_list": {
+            "source": "caty16_tables",
+            "list_path": "capm.sensitivity_rows",
+            "row_template": {
+              "parameter": {
+                "template": "{parameter}"
+              },
+              "base": {
+                "template": "{base}"
+              },
+              "low": {
+                "template": "{low}"
+              },
+              "high": {
+                "template": "{high}"
+              },
+              "row_class": "{row_class}"
+            }
+          }
+        },
+        {
+          "marker": "caty16-capm-sensitivity-note",
+          "type": "text",
+          "template": {
+            "template": "<p><strong>Key Sensitivity:</strong> {note}</p>",
+            "placeholders": {
+              "{note}": {
+                "source": "caty16_tables",
+                "path": "capm.sensitivity_comment",
+                "format": "text"
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty16-ff3-inputs",
+          "type": "table",
+          "headers": [
+            "Parameter",
+            "Value",
+            "Source"
+          ],
+          "columns": [
+            "parameter",
+            "value",
+            "source"
+          ],
+          "column_classes": [
+            "",
+            "number",
+            ""
+          ],
+          "rows_from_list": {
+            "source": "caty16_tables",
+            "list_path": "fama_french_3factor.inputs_table",
+            "row_template": {
+              "parameter": {
+                "template": "{parameter}"
+              },
+              "value": {
+                "template": "{value}"
+              },
+              "source": {
+                "template": "{source}"
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty16-ff3-calculation",
+          "type": "text",
+          "template": {
+            "template": "<pre><code>{line1}\n{line2}\n{line3}\n{line4}</code></pre>",
+            "placeholders": {
+              "{line1}": {
+                "source": "caty16_tables",
+                "path": "fama_french_3factor.calculation_lines.0",
+                "format": "text"
+              },
+              "{line2}": {
+                "source": "caty16_tables",
+                "path": "fama_french_3factor.calculation_lines.1",
+                "format": "text"
+              },
+              "{line3}": {
+                "source": "caty16_tables",
+                "path": "fama_french_3factor.calculation_lines.2",
+                "format": "text"
+              },
+              "{line4}": {
+                "source": "caty16_tables",
+                "path": "fama_french_3factor.calculation_lines.3",
+                "format": "text"
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty16-ff3-small-cap",
+          "type": "text",
+          "template": {
+            "template": "<div class=\"highlight-box\">\n    <h4>Small-Cap Tilt (\u03b2_SMB = {beta_smb})</h4>\n    <ul>\n        <li>{point1}</li>\n        <li>{point2}</li>\n        <li>{point3}</li>\n    </ul>\n</div>",
+            "placeholders": {
+              "{beta_smb}": {
+                "source": "caty16_tables",
+                "path": "fama_french_3factor.beta_smb",
+                "format": "decimal",
+                "decimals": 3
+              },
+              "{point1}": {
+                "source": "caty16_tables",
+                "path": "fama_french_3factor.small_cap_points.0",
+                "format": "text"
+              },
+              "{point2}": {
+                "source": "caty16_tables",
+                "path": "fama_french_3factor.small_cap_points.1",
+                "format": "text"
+              },
+              "{point3}": {
+                "source": "caty16_tables",
+                "path": "fama_french_3factor.small_cap_points.2",
+                "format": "text"
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty16-ff3-growth",
+          "type": "text",
+          "template": {
+            "template": "<div class=\"highlight-box\">\n    <h4>Growth Tilt (\u03b2_HML = {beta_hml})</h4>\n    <ul>\n        <li>{point1}</li>\n        <li>{point2}</li>\n        <li>{point3}</li>\n    </ul>\n</div>",
+            "placeholders": {
+              "{beta_hml}": {
+                "source": "caty16_tables",
+                "path": "fama_french_3factor.beta_hml",
+                "format": "decimal",
+                "decimals": 3
+              },
+              "{point1}": {
+                "source": "caty16_tables",
+                "path": "fama_french_3factor.growth_tilt_points.0",
+                "format": "text"
+              },
+              "{point2}": {
+                "source": "caty16_tables",
+                "path": "fama_french_3factor.growth_tilt_points.1",
+                "format": "text"
+              },
+              "{point3}": {
+                "source": "caty16_tables",
+                "path": "fama_french_3factor.growth_tilt_points.2",
+                "format": "text"
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty16-ddm-inputs",
+          "type": "table",
+          "headers": [
+            "Parameter",
+            "Value",
+            "Source"
+          ],
+          "columns": [
+            "parameter",
+            "value",
+            "source"
+          ],
+          "column_classes": [
+            "",
+            "number",
+            ""
+          ],
+          "rows_from_list": {
+            "source": "caty16_tables",
+            "list_path": "ddm_implied.inputs_table",
+            "row_template": {
+              "parameter": {
+                "template": "{parameter}"
+              },
+              "value": {
+                "template": "{value}"
+              },
+              "source": {
+                "template": "{source}"
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty16-ddm-calculation",
+          "type": "text",
+          "template": {
+            "template": "<pre><code>{line1}\n{line2}\n{line3}\n{line4}</code></pre>",
+            "placeholders": {
+              "{line1}": {
+                "source": "caty16_tables",
+                "path": "ddm_implied.calculation_lines.0",
+                "format": "text"
+              },
+              "{line2}": {
+                "source": "caty16_tables",
+                "path": "ddm_implied.calculation_lines.1",
+                "format": "text"
+              },
+              "{line3}": {
+                "source": "caty16_tables",
+                "path": "ddm_implied.calculation_lines.2",
+                "format": "text"
+              },
+              "{line4}": {
+                "source": "caty16_tables",
+                "path": "ddm_implied.calculation_lines.3",
+                "format": "text"
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty16-ddm-sensitivity",
+          "type": "table",
+          "headers": [
+            "Growth (g)",
+            "Implied COE"
+          ],
+          "columns": [
+            "growth",
+            "coe"
+          ],
+          "column_classes": [
+            "number",
+            "number"
+          ],
+          "rows_from_list": {
+            "source": "caty16_tables",
+            "list_path": "ddm_implied.sensitivity_rows",
+            "row_template": {
+              "growth": {
+                "template": "{growth}"
+              },
+              "coe": {
+                "template": "{coe}"
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty16-triangulation-table",
+          "type": "table",
+          "headers": [
+            "Method",
+            "COE Estimate",
+            "Weight",
+            "Weighted COE"
+          ],
+          "columns": [
+            "method",
+            "coe",
+            "weight",
+            "contribution"
+          ],
+          "column_classes": [
+            "",
+            "number",
+            "number",
+            "number"
+          ],
+          "rows_from_list": {
+            "source": "caty16_tables",
+            "list_path": "triangulation_table.rows",
+            "row_template": {
+              "method": {
+                "template": "{method}"
+              },
+              "coe": {
+                "template": "{coe}"
+              },
+              "weight": {
+                "template": "{weight}"
+              },
+              "contribution": {
+                "template": "{contribution}"
+              },
+              "row_class": "{row_class}"
+            }
+          }
+        },
+        {
+          "marker": "caty16-triangulation-highlight",
+          "type": "text",
+          "template": {
+            "template": "<div class=\"highlight-box critical\">\n    <h4>ESG Overlay</h4>\n    <p><strong>Base weighted average:</strong> {pre_esg}</p>\n    <p><strong>Net ESG premium:</strong> +{net_bps} -> {post_esg}</p>\n    <p><strong>Used across valuation models:</strong> {final_coe}</p>\n</div>",
+            "placeholders": {
+              "{pre_esg}": {
+                "source": "caty16_tables",
+                "path": "coe_summary.pre_esg_weighted_avg_pct",
+                "format": "percent",
+                "decimals": 3
+              },
+              "{net_bps}": {
+                "source": "caty16_tables",
+                "path": "esg_adjustment.net_esg_premium_bps",
+                "format": "bps",
+                "decimals": 0
+              },
+              "{post_esg}": {
+                "source": "caty16_tables",
+                "path": "coe_summary.post_esg_coe_pct",
+                "format": "percent",
+                "decimals": 3
+              },
+              "{final_coe}": {
+                "source": "caty16_tables",
+                "path": "coe_summary.final_coe_pct",
+                "format": "percent",
+                "decimals": 3
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty16-peer-comparison-table",
+          "type": "table",
+          "headers": [
+            "Bank",
+            "CAPM COE",
+            "FF3 COE",
+            "DDM Implied",
+            "Average",
+            "Model COE"
+          ],
+          "columns": [
+            "bank",
+            "capm",
+            "ff3",
+            "ddm",
+            "avg",
+            "model"
+          ],
+          "column_classes": [
+            "",
+            "number",
+            "number",
+            "number",
+            "number",
+            "number"
+          ],
+          "rows_from_list": {
+            "source": "caty16_tables",
+            "list_path": "peer_comparison.rows",
+            "row_template": {
+              "bank": {
+                "template": "{bank}"
+              },
+              "capm": {
+                "template": "{capm}"
+              },
+              "ff3": {
+                "template": "{ff3}"
+              },
+              "ddm": {
+                "template": "{ddm}"
+              },
+              "avg": {
+                "template": "{avg}"
+              },
+              "model": {
+                "template": "{model}"
+              },
+              "row_class": "{row_class}"
+            }
+          }
+        },
+        {
+          "marker": "caty16-peer-interpretation",
+          "type": "text",
+          "template": {
+            "template": "<p><strong>Interpretation:</strong> CATY's COE <strong>+{peer_spread}</strong> above peer median due to:</p>\n<ol>\n    <li>{point1}</li>\n    <li>{point2}</li>\n    <li>{point3}</li>\n</ol>",
+            "placeholders": {
+              "{point1}": {
+                "source": "caty16_tables",
+                "path": "peer_comparison.interpretation_points.0",
+                "format": "text"
+              },
+              "{point2}": {
+                "source": "caty16_tables",
+                "path": "peer_comparison.interpretation_points.1",
+                "format": "text"
+              },
+              "{point3}": {
+                "source": "caty16_tables",
+                "path": "peer_comparison.interpretation_points.2",
+                "format": "text"
+              },
+              "{peer_spread}": {
+                "source": "caty16_tables",
+                "path": "coe_summary.median_peer_spread_bps",
+                "format": "bps",
+                "decimals": 0
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty16-validation-intro",
+          "type": "text",
+          "template": {
+            "template": "<p><strong>Inverse Test:</strong> Does COE {final_coe} reconcile with observed P/TBV?</p>",
+            "placeholders": {
+              "{final_coe}": {
+                "source": "caty16_tables",
+                "path": "coe_summary.final_coe_pct",
+                "format": "percent",
+                "decimals": 3
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty16-gordon-inputs",
+          "type": "text",
+          "template": {
+            "template": "<h4>Inputs</h4>\n<ul>\n    <li>ROTE: {rote}</li>\n    <li>g: {growth}</li>\n    <li>COE: {coe}</li>\n</ul>",
+            "placeholders": {
+              "{rote}": {
+                "source": "caty16_tables",
+                "path": "validation.rote_pct",
+                "format": "percent",
+                "decimals": 2
+              },
+              "{growth}": {
+                "source": "caty16_tables",
+                "path": "validation.growth_pct",
+                "format": "percent",
+                "decimals": 1
+              },
+              "{coe}": {
+                "source": "caty16_tables",
+                "path": "validation.coe_pct",
+                "format": "percent",
+                "decimals": 3
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty16-gordon-validation",
+          "type": "text",
+          "template": {
+            "template": "<pre><code>P/TBV = ({rote} - {growth}) / ({coe} - {growth})\n      = {numerator} / {denominator}\n      = {implied}x</code></pre>",
+            "placeholders": {
+              "{rote}": {
+                "source": "caty16_tables",
+                "path": "validation.rote_pct",
+                "format": "percent",
+                "decimals": 2
+              },
+              "{growth}": {
+                "source": "caty16_tables",
+                "path": "validation.growth_pct",
+                "format": "percent",
+                "decimals": 1
+              },
+              "{coe}": {
+                "source": "caty16_tables",
+                "path": "validation.coe_pct",
+                "format": "percent",
+                "decimals": 3
+              },
+              "{numerator}": {
+                "source": "caty16_tables",
+                "path": "validation.numerator_pct",
+                "format": "decimal",
+                "decimals": 2,
+                "suffix": "%"
+              },
+              "{denominator}": {
+                "source": "caty16_tables",
+                "path": "validation.denominator_pct",
+                "format": "decimal",
+                "decimals": 3,
+                "suffix": "%"
+              },
+              "{implied}": {
+                "source": "caty16_tables",
+                "path": "validation.implied_ptbv",
+                "format": "decimal",
+                "decimals": 3
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty16-validation-stats",
+          "type": "text",
+          "template": {
+            "template": "<p><strong>Actual P/TBV ({price_date}):</strong> P = {price}, TBVPS = {tbvps} -> {actual}x</p>\n<div class=\"highlight-box critical\">\n    <h4>Reconciliation</h4>\n    <p><strong>Difference:</strong> {implied}x (implied) vs. {actual}x (actual) = {diff} gap</p>\n    <p><strong>Market-implied COE:</strong> {market_coe} ({market_premium} above model)</p>\n</div>\n<h4>Market-Implied COE</h4>\n<pre><code>Market-implied COE: {market_coe}\nModel COE: {final_coe}</code></pre>\n<p><strong>Conclusion:</strong> {conclusion}</p>",
+            "placeholders": {
+              "{price_date}": {
+                "source": "caty16_tables",
+                "path": "validation.price_as_of_display",
+                "format": "text"
+              },
+              "{price}": {
+                "source": "caty16_tables",
+                "path": "validation.price",
+                "format": "currency",
+                "decimals": 2
+              },
+              "{tbvps}": {
+                "source": "caty16_tables",
+                "path": "validation.tbvps",
+                "format": "currency",
+                "decimals": 2
+              },
+              "{actual}": {
+                "source": "caty16_tables",
+                "path": "validation.actual_ptbv",
+                "format": "decimal",
+                "decimals": 3
+              },
+              "{implied}": {
+                "source": "caty16_tables",
+                "path": "validation.implied_ptbv",
+                "format": "decimal",
+                "decimals": 3
+              },
+              "{diff}": {
+                "source": "caty16_tables",
+                "path": "validation.difference_pct",
+                "format": "percent",
+                "decimals": 1
+              },
+              "{market_coe}": {
+                "source": "caty16_tables",
+                "path": "validation.market_implied_coe_pct",
+                "format": "percent",
+                "decimals": 3
+              },
+              "{market_premium}": {
+                "source": "caty16_tables",
+                "path": "validation.market_implied_prem_bps",
+                "format": "bps",
+                "decimals": 0
+              },
+              "{conclusion}": {
+                "source": "caty16_tables",
+                "path": "validation.conclusion",
+                "format": "text"
+              },
+              "{final_coe}": {
+                "source": "caty16_tables",
+                "path": "coe_summary.final_coe_pct",
+                "format": "percent",
+                "decimals": 3
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty16-summary-points",
+          "type": "text",
+          "template": {
+            "template": "<div class=\"highlight-box\">\n    <h4>COE Summary</h4>\n    <ul>\n        <li>{point1}</li>\n        <li>{point2}</li>\n        <li>{point3}</li>\n    </ul>\n</div>",
+            "placeholders": {
+              "{point1}": {
+                "source": "caty16_tables",
+                "path": "summary_points.0",
+                "format": "text"
+              },
+              "{point2}": {
+                "source": "caty16_tables",
+                "path": "summary_points.1",
+                "format": "text"
+              },
+              "{point3}": {
+                "source": "caty16_tables",
+                "path": "summary_points.2",
+                "format": "text"
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty16-summary-validation-list",
+          "type": "text",
+          "template": {
+            "template": "<ul>\n    <li>\u2705 Within 1 SD of triangulation range ({ci_lower} - {ci_upper})</li>\n    <li>\u2705 Peer median spread: +{peer_spread} (size + governance premium)</li>\n    <li>\u26a0\ufe0f Market-implied COE: {market_coe} (above model {final_coe})</li>\n</ul>",
+            "placeholders": {
+              "{ci_lower}": {
+                "source": "caty16_tables",
+                "path": "coe_summary.confidence_interval_lower_pct",
+                "format": "percent",
+                "decimals": 2
+              },
+              "{ci_upper}": {
+                "source": "caty16_tables",
+                "path": "coe_summary.confidence_interval_upper_pct",
+                "format": "percent",
+                "decimals": 2
+              },
+              "{peer_spread}": {
+                "source": "caty16_tables",
+                "path": "coe_summary.median_peer_spread_bps",
+                "format": "bps",
+                "decimals": 0
+              },
+              "{market_coe}": {
+                "source": "caty16_tables",
+                "path": "validation.market_implied_coe_pct",
+                "format": "percent",
+                "decimals": 3
+              },
+              "{final_coe}": {
+                "source": "caty16_tables",
+                "path": "coe_summary.final_coe_pct",
+                "format": "percent",
+                "decimals": 3
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty16-qa-table",
+          "type": "table",
+          "headers": [
+            "Check ID",
+            "Description",
+            "Rule",
+            "Status"
+          ],
+          "columns": [
+            "id",
+            "description",
+            "rule",
+            "status"
+          ],
+          "rows_from_list": {
+            "source": "caty16_tables",
+            "list_path": "qa_checks.checks",
+            "row_template": {
+              "id": {
+                "template": "{id}"
+              },
+              "description": {
+                "template": "{description}"
+              },
+              "rule": {
+                "template": "{rule}"
+              },
+              "status": {
+                "template": "{status}"
+              }
+            }
+          }
+        }
+      ]
     }
   ]
 }
