@@ -49,5 +49,11 @@
     "dividend_annual": 1.52
   },
   "version": "1.0",
-  "schema_url": "data/market_data_schema.json"
+  "schema_url": "data/market_data_schema.json",
+  "report_metadata": {
+    "report_date": "October 20, 2025",
+    "report_date_iso": "2025-10-20",
+    "last_updated_utc": "2025-10-20T22:45:00Z",
+    "generated_at_display": "October 20, 2025 22:45 UTC"
+  }
 }

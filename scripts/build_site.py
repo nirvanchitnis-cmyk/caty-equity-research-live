@@ -50,6 +50,35 @@ def replace_placeholders(value: Any, replacements: Dict[str, str]) -> Any:
     return value
 
 
+def render_timestamps() -> Dict[str, str]:
+    data = load_json(ROOT / "data" / "market_data_current.json")
+    metadata = data.get("report_metadata") or {}
+
+    report_date = metadata.get("report_date") or data.get("price_date") or ""
+    report_date_iso = metadata.get("report_date_iso") or data.get("price_date") or ""
+    generated_display = metadata.get("generated_at_display") or metadata.get("last_updated_utc") or data.get("report_generated") or ""
+    generated_iso = metadata.get("last_updated_utc") or data.get("report_generated") or ""
+
+    return {
+        "report_date": report_date,
+        "report_date_iso": report_date_iso,
+        "last_updated_utc": generated_display,
+        "generated_at_utc": generated_iso,
+    }
+
+
+def render_report_meta(timestamps: Dict[str, str]) -> str:
+    return f"Report Date: {timestamps['report_date']} | Last Updated: {timestamps['last_updated_utc']}"
+
+
+def render_footer_timestamp(timestamps: Dict[str, str]) -> str:
+    return f"<p>Report Date: {timestamps['report_date']} | Report Generated: {timestamps['generated_at_utc']}</p>"
+
+
+def render_page_title(report_date: str) -> str:
+    return f"<title>Cathay General Bancorp (CATY) - Institutional Equity Research | {report_date}</title>"
+
+
 def format_money(value: float) -> str:
     return f"${value:,.2f}" if value is not None else "—"
 
@@ -813,6 +842,13 @@ def main(test_mode: bool = False) -> int:
             "caty15_tables": caty15_tables,
             "caty17_tables": caty17_tables,
         }
+
+        timestamps = render_timestamps()
+        context.update(timestamps)
+
+        html = replace_section(html, "page-title", render_page_title(timestamps["report_date"]))
+        html = replace_section(html, "report-meta", render_report_meta(timestamps))
+        html = replace_section(html, "footer-timestamp", render_footer_timestamp(timestamps))
 
         reconciliation_html = build_reconciliation_table()
         html = replace_section(html, "reconciliation-dashboard", reconciliation_html)
