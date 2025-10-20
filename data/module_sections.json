@@ -7031,6 +7031,901 @@
             "data": {
                 "last_updated_display": "October 18, 2025"
             }
+        },
+        {
+            "id": "CATY_11",
+            "file": "CATY_11_peers_normalized.html",
+            "data": {
+                "last_updated_display": "October 18, 2025"
+            },
+            "sections": [
+                {
+                    "marker": "caty11-header-meta",
+                    "type": "text",
+                    "template": {
+                        "template": "<p class=\"page-meta\">\n    Apples-to-apples peer comparisons (LTM through Q2'25) with regression analysis |\n    Last Updated: {last_updated} |\n    Source: SEC EDGAR 10-K/10-Q, FDIC Call Reports\n</p>",
+                        "placeholders": {
+                            "{last_updated}": {
+                                "source": "module",
+                                "path": "last_updated_display",
+                                "format": "text"
+                            }
+                        }
+                    }
+                },
+                {
+                    "marker": "caty11-summary-grid",
+                    "type": "cards",
+                    "wrapper": {
+                        "tag": "div",
+                        "class": "metric-grid"
+                    },
+                    "defaults": {
+                        "card_class": "metric-card",
+                        "label_class": "metric-label",
+                        "value_class": "metric-value",
+                        "subtext_class": "metric-subtext"
+                    },
+                    "cards": [
+                        {
+                            "label": "Peer Universe",
+                            "value": {
+                                "template": "{count} Peers",
+                                "placeholders": {
+                                    "{count}": {
+                                        "source": "caty11_tables",
+                                        "path": "summary.peer_universe_count",
+                                        "format": "decimal",
+                                        "decimals": 0
+                                    }
+                                }
+                            },
+                            "subtext": {
+                                "template": "{peer_list}",
+                                "placeholders": {
+                                    "{peer_list}": {
+                                        "source": "caty11_tables",
+                                        "path": "summary.peer_universe_members_display",
+                                        "format": "text"
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "label": "Regression R\u00b2",
+                            "value": {
+                                "source": "caty11_tables",
+                                "path": "regression_stats.r_squared",
+                                "format": "decimal",
+                                "decimals": 4
+                            },
+                            "subtext": {
+                                "template": "Adj R\u00b2 = {adj} ({fit})",
+                                "placeholders": {
+                                    "{adj}": {
+                                        "source": "caty11_tables",
+                                        "path": "regression_stats.adj_r_squared",
+                                        "format": "decimal",
+                                        "decimals": 3
+                                    },
+                                    "{fit}": {
+                                        "source": "caty11_tables",
+                                        "path": "regression_stats.fit_quality",
+                                        "format": "text"
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "label": "P/TBV Slope",
+                            "value": {
+                                "source": "caty11_tables",
+                                "path": "regression_stats.slope",
+                                "format": "decimal",
+                                "decimals": 4,
+                                "suffix": "x"
+                            },
+                            "subtext": {
+                                "template": "Per 1% ROTE increase"
+                            }
+                        },
+                        {
+                            "label": "Statistical Significance",
+                            "value": {
+                                "template": "p = {pval}",
+                                "placeholders": {
+                                    "{pval}": {
+                                        "source": "caty11_tables",
+                                        "path": "regression_stats.p_value",
+                                        "format": "decimal",
+                                        "decimals": 3
+                                    }
+                                }
+                            },
+                            "subtext": {
+                                "template": "t-stat = {tstat} (sig. at 5%)",
+                                "placeholders": {
+                                    "{tstat}": {
+                                        "source": "caty11_tables",
+                                        "path": "regression_stats.t_stat",
+                                        "format": "decimal",
+                                        "decimals": 1
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "marker": "caty11-key-finding-box",
+                    "type": "text",
+                    "template": {
+                        "template": "<div class=\"source-box\">\n    <div class=\"source-label\">Key Finding</div>\n    <div class=\"source-details\">{key_text}\n    </div>\n</div>",
+                        "placeholders": {
+                            "{key_text}": {
+                                "source": "caty11_tables",
+                                "path": "summary.key_finding.highlight_html",
+                                "format": "text"
+                            }
+                        }
+                    }
+                },
+                {
+                    "marker": "caty11-core-peer-table",
+                    "type": "table",
+                    "headers": [
+                        "Ticker",
+                        "CIK",
+                        "Rationale",
+                        "Verification Status"
+                    ],
+                    "columns": [
+                        "ticker",
+                        "cik",
+                        "rationale",
+                        "verification"
+                    ],
+                    "column_classes": [
+                        "",
+                        "",
+                        "",
+                        "numeric"
+                    ],
+                    "rows_from_list": {
+                        "source": "caty11_tables",
+                        "list_path": "peer_set.core",
+                        "row_template": {
+                            "row_class": "{row_class}",
+                            "ticker": {
+                                "template": "<strong>{ticker}</strong>"
+                            },
+                            "cik": {
+                                "template": "{cik}"
+                            },
+                            "rationale": {
+                                "template": "{rationale}"
+                            },
+                            "verification": {
+                                "class": "numeric",
+                                "template": "<span class=\"{verification_class}\">{verification_label}</span>"
+                            }
+                        }
+                    }
+                },
+                {
+                    "marker": "caty11-extended-peer-table",
+                    "type": "table",
+                    "headers": [
+                        "Ticker",
+                        "Inclusion Rationale",
+                        "Verification"
+                    ],
+                    "columns": [
+                        "ticker",
+                        "rationale",
+                        "verification"
+                    ],
+                    "column_classes": [
+                        "",
+                        "",
+                        "numeric"
+                    ],
+                    "rows_from_list": {
+                        "source": "caty11_tables",
+                        "list_path": "peer_set.extended",
+                        "row_template": {
+                            "ticker": {
+                                "template": "<strong>{ticker}</strong>"
+                            },
+                            "rationale": {
+                                "template": "{rationale}"
+                            },
+                            "verification": {
+                                "class": "numeric",
+                                "template": "<span class=\"{verification_class}\">{verification_label}</span>"
+                            }
+                        }
+                    }
+                },
+                {
+                    "marker": "caty11-peer-policy-box",
+                    "type": "text",
+                    "template": {
+                        "template": "<div class=\"source-box\">\n    <div class=\"source-label\">Peer Selection Policy</div>\n    <div class=\"source-details\">{policy_html}\n    </div>\n</div>",
+                        "placeholders": {
+                            "{policy_html}": {
+                                "source": "caty11_tables",
+                                "path": "peer_policy_html",
+                                "format": "text"
+                            }
+                        }
+                    }
+                },
+                {
+                    "marker": "caty11-credit-snapshot-table",
+                    "type": "table",
+                    "headers": [
+                        "Metric",
+                        "CATY",
+                        "Peer Median<br>(n = 8)",
+                        "Peer Low<br>(Ticker)",
+                        "Peer High<br>(Ticker)"
+                    ],
+                    "columns": [
+                        "metric",
+                        "caty",
+                        "peer_median",
+                        "peer_low",
+                        "peer_high"
+                    ],
+                    "column_classes": [
+                        "",
+                        "numeric",
+                        "numeric",
+                        "numeric",
+                        "numeric"
+                    ],
+                    "rows_from_list": {
+                        "source": "caty11_tables",
+                        "list_path": "tables.credit_snapshot",
+                        "row_template": {
+                            "metric": {
+                                "template": "{metric_html}"
+                            },
+                            "caty": {
+                                "class": "{caty_class}",
+                                "template": "{caty_text}"
+                            },
+                            "peer_median": {
+                                "class": "{peer_median_class}",
+                                "template": "{peer_median_text}"
+                            },
+                            "peer_low": {
+                                "class": "{peer_low_class}",
+                                "template": "{peer_low_text}"
+                            },
+                            "peer_high": {
+                                "class": "{peer_high_class}",
+                                "template": "{peer_high_text}"
+                            }
+                        }
+                    }
+                },
+                {
+                    "marker": "caty11-valuation-metrics-table",
+                    "type": "table",
+                    "headers": [
+                        "Metric",
+                        "CATY",
+                        "Peer Median<br>(n = 8)",
+                        "Peer Low<br>(Ticker)",
+                        "Peer High<br>(Ticker)"
+                    ],
+                    "columns": [
+                        "metric",
+                        "caty",
+                        "peer_median",
+                        "peer_low",
+                        "peer_high"
+                    ],
+                    "column_classes": [
+                        "",
+                        "numeric",
+                        "numeric",
+                        "numeric",
+                        "numeric"
+                    ],
+                    "rows_from_list": {
+                        "source": "caty11_tables",
+                        "list_path": "tables.valuation_metrics",
+                        "row_template": {
+                            "metric": {
+                                "template": "{metric_html}"
+                            },
+                            "caty": {
+                                "class": "{caty_class}",
+                                "template": "{caty_text}"
+                            },
+                            "peer_median": {
+                                "class": "{peer_median_class}",
+                                "template": "{peer_median_text}"
+                            },
+                            "peer_low": {
+                                "class": "{peer_low_class}",
+                                "template": "{peer_low_text}"
+                            },
+                            "peer_high": {
+                                "class": "{peer_high_class}",
+                                "template": "{peer_high_text}"
+                            }
+                        }
+                    }
+                },
+                {
+                    "marker": "caty11-comparison-data-source",
+                    "type": "text",
+                    "template": {
+                        "template": "<div class=\"source-box\">\n    <div class=\"source-label\">Data Source <span class=\"verification-badge badge-partial\">VERIFIED_OK</span></div>\n    <div class=\"source-details\">{source_html}\n    </div>\n</div>",
+                        "placeholders": {
+                            "{source_html}": {
+                                "source": "caty11_tables",
+                                "path": "comparison_data_source_html",
+                                "format": "text"
+                            }
+                        }
+                    }
+                },
+                {
+                    "marker": "caty11-regression-grid",
+                    "type": "cards",
+                    "wrapper": {
+                        "tag": "div",
+                        "class": "metric-grid"
+                    },
+                    "defaults": {
+                        "card_class": "metric-card",
+                        "label_class": "metric-label",
+                        "value_class": "metric-value",
+                        "subtext_class": "metric-subtext"
+                    },
+                    "cards": [
+                        {
+                            "label": "Sample Size",
+                            "value": {
+                                "template": "n = {n}",
+                                "placeholders": {
+                                    "{n}": {
+                                        "source": "caty11_tables",
+                                        "path": "regression_stats.sample_size",
+                                        "format": "decimal",
+                                        "decimals": 0
+                                    }
+                                }
+                            },
+                            "subtext": {
+                                "template": "{cohort}",
+                                "placeholders": {
+                                    "{cohort}": {
+                                        "source": "caty11_tables",
+                                        "path": "summary.core_cohort_display",
+                                        "format": "text"
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "label": "R-Squared",
+                            "value": {
+                                "source": "caty11_tables",
+                                "path": "regression_stats.r_squared",
+                                "format": "decimal",
+                                "decimals": 4
+                            },
+                            "subtext": {
+                                "template": "Adj R\u00b2 = {adj}",
+                                "placeholders": {
+                                    "{adj}": {
+                                        "source": "caty11_tables",
+                                        "path": "regression_stats.adj_r_squared",
+                                        "format": "decimal",
+                                        "decimals": 3
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "label": "Slope Coefficient",
+                            "value": {
+                                "source": "caty11_tables",
+                                "path": "regression_stats.slope",
+                                "format": "decimal",
+                                "decimals": 4
+                            },
+                            "subtext": {
+                                "template": "0.124x P/TBV per 1% ROTE"
+                            }
+                        },
+                        {
+                            "label": "Statistical Significance",
+                            "value": {
+                                "template": "p = {pval}",
+                                "placeholders": {
+                                    "{pval}": {
+                                        "source": "caty11_tables",
+                                        "path": "regression_stats.p_value",
+                                        "format": "decimal",
+                                        "decimals": 3
+                                    }
+                                }
+                            },
+                            "subtext": {
+                                "template": "t-stat = {tstat} (sig. at 5%)",
+                                "placeholders": {
+                                    "{tstat}": {
+                                        "source": "caty11_tables",
+                                        "path": "regression_stats.t_stat",
+                                        "format": "decimal",
+                                        "decimals": 1
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "marker": "caty11-regression-equation",
+                    "type": "text",
+                    "template": {
+                        "template": "<div class=\"source-box border-left-gold\">\n    <div class=\"source-label source-label-mono\">P/TBV = {intercept} + {slope} \u00d7 ROTE</div>\n    <div class=\"source-details\">\n        <strong>Interpretation:</strong> Each 1 percentage point increase in ROTE is associated with a {slope_value} increase in P/TBV multiple.<br>\n        <strong>Intercept:</strong> {intercept_value} (negative intercept reflects floor valuation dynamic; not economically meaningful at ROTE = 0)<br>\n        <strong>Statistical Quality:</strong> Strong fit (R\u00b2 = {r2}), statistically significant (p = {pval} < 0.05), but limited by small sample (n={n})\n    </div>\n</div>",
+                        "placeholders": {
+                            "{intercept}": {
+                                "source": "caty11_tables",
+                                "path": "regression_stats.intercept",
+                                "format": "decimal",
+                                "decimals": 4
+                            },
+                            "{slope}": {
+                                "source": "caty11_tables",
+                                "path": "regression_stats.slope",
+                                "format": "decimal",
+                                "decimals": 4
+                            },
+                            "{slope_value}": {
+                                "source": "caty11_tables",
+                                "path": "regression_stats.slope",
+                                "format": "multiple",
+                                "decimals": 4
+                            },
+                            "{intercept_value}": {
+                                "source": "caty11_tables",
+                                "path": "regression_stats.intercept",
+                                "format": "decimal",
+                                "decimals": 4
+                            },
+                            "{r2}": {
+                                "source": "caty11_tables",
+                                "path": "regression_stats.r_squared",
+                                "format": "decimal",
+                                "decimals": 4
+                            },
+                            "{pval}": {
+                                "source": "caty11_tables",
+                                "path": "regression_stats.p_value",
+                                "format": "decimal",
+                                "decimals": 3
+                            },
+                            "{n}": {
+                                "source": "caty11_tables",
+                                "path": "regression_stats.sample_size",
+                                "format": "decimal",
+                                "decimals": 0
+                            }
+                        }
+                    }
+                },
+                {
+                    "marker": "caty11-regression-table",
+                    "type": "table",
+                    "headers": [
+                        "Ticker",
+                        "ROTE (%)",
+                        "Actual P/TBV (x)",
+                        "Fitted P/TBV (x)",
+                        "Residual (x)"
+                    ],
+                    "columns": [
+                        "ticker",
+                        "rote",
+                        "actual",
+                        "fitted",
+                        "residual"
+                    ],
+                    "column_classes": [
+                        "",
+                        "numeric",
+                        "numeric",
+                        "numeric",
+                        "numeric"
+                    ],
+                    "rows_from_list": {
+                        "source": "caty11_tables",
+                        "list_path": "tables.regression_points",
+                        "row_template": {
+                            "row_class": "{row_class}",
+                            "ticker": {
+                                "template": "<strong>{ticker}</strong>"
+                            },
+                            "rote": {
+                                "class": "{rote_class}",
+                                "template": "{rote_text}"
+                            },
+                            "actual": {
+                                "class": "{actual_ptbv_class}",
+                                "template": "{actual_ptbv_text}"
+                            },
+                            "fitted": {
+                                "class": "{fitted_ptbv_class}",
+                                "template": "{fitted_ptbv_text}"
+                            },
+                            "residual": {
+                                "class": "{residual_class}",
+                                "template": "{residual_text}"
+                            }
+                        }
+                    }
+                },
+                {
+                    "marker": "caty11-scatter-summary",
+                    "type": "text",
+                    "template": {
+                        "template": "<p class=\"text-secondary\">{summary}</p>",
+                        "placeholders": {
+                            "{summary}": {
+                                "source": "caty11_tables",
+                                "path": "regression_stats.scatter_summary_html",
+                                "format": "text"
+                            }
+                        }
+                    }
+                },
+                {
+                    "marker": "caty11-regression-interpretation",
+                    "type": "text",
+                    "template": {
+                        "template": "<div class=\"source-box\">\n    <div class=\"source-label\">Regression Interpretation</div>\n    <div class=\"source-details\">{interpretation}\n    </div>\n</div>",
+                        "placeholders": {
+                            "{interpretation}": {
+                                "source": "caty11_tables",
+                                "path": "regression_stats.interpretation_html",
+                                "format": "text"
+                            }
+                        }
+                    }
+                },
+                {
+                    "marker": "caty11-scatter-caption",
+                    "type": "text",
+                    "template": {
+                        "template": "<p class=\"text-secondary-tiny text-align-center\">{caption}</p>",
+                        "placeholders": {
+                            "{caption}": {
+                                "source": "caty11_tables",
+                                "path": "regression_stats.scatter_caption_html",
+                                "format": "text"
+                            }
+                        }
+                    }
+                },
+                {
+                    "marker": "caty11-coe-table",
+                    "type": "table",
+                    "headers": [
+                        "Ticker",
+                        "ROTE (%)",
+                        "P/TBV (x)",
+                        "Payout Ratio",
+                        "Growth (g)",
+                        "Implied COE (%)"
+                    ],
+                    "columns": [
+                        "ticker",
+                        "rote",
+                        "ptbv",
+                        "payout",
+                        "growth",
+                        "coe"
+                    ],
+                    "column_classes": [
+                        "",
+                        "numeric",
+                        "numeric",
+                        "numeric",
+                        "numeric",
+                        "numeric"
+                    ],
+                    "rows_from_list": {
+                        "source": "caty11_tables",
+                        "list_path": "tables.coe_analysis",
+                        "row_template": {
+                            "row_class": "{row_class}",
+                            "ticker": {
+                                "template": "<strong>{ticker}</strong>"
+                            },
+                            "rote": {
+                                "class": "{rote_class}",
+                                "template": "{rote_text}"
+                            },
+                            "ptbv": {
+                                "class": "{ptbv_class}",
+                                "template": "{ptbv_text}"
+                            },
+                            "payout": {
+                                "class": "{payout_class}",
+                                "template": "{payout_text}"
+                            },
+                            "growth": {
+                                "class": "{growth_class}",
+                                "template": "{growth_text}"
+                            },
+                            "coe": {
+                                "class": "{coe_class}",
+                                "template": "{coe_text}"
+                            }
+                        }
+                    }
+                },
+                {
+                    "marker": "caty11-coe-methodology",
+                    "type": "text",
+                    "template": {
+                        "template": "<div class=\"source-box\">\n    <div class=\"source-label\">COE Calculation Methodology</div>\n    <div class=\"source-details\">{coe_html}\n    </div>\n</div>",
+                        "placeholders": {
+                            "{coe_html}": {
+                                "source": "caty11_tables",
+                                "path": "coe_methodology_html",
+                                "format": "text"
+                            }
+                        }
+                    }
+                },
+                {
+                    "marker": "caty11-expansion-summary-table",
+                    "type": "table",
+                    "headers": [
+                        "Target",
+                        "Status",
+                        "Outcome"
+                    ],
+                    "columns": [
+                        "target",
+                        "status",
+                        "outcome"
+                    ],
+                    "column_classes": [
+                        "",
+                        "",
+                        ""
+                    ],
+                    "rows_from_list": {
+                        "source": "caty11_tables",
+                        "list_path": "tables.expansion_summary",
+                        "row_template": {
+                            "target": {
+                                "template": "{target_text}"
+                            },
+                            "status": {
+                                "template": "{status_text}"
+                            },
+                            "outcome": {
+                                "template": "{outcome_text}"
+                            }
+                        }
+                    }
+                },
+                {
+                    "marker": "caty11-expansion-intro",
+                    "type": "text",
+                    "template": {
+                        "template": "<p class=\"text-secondary-margin\">{intro}</p>",
+                        "placeholders": {
+                            "{intro}": {
+                                "source": "caty11_tables",
+                                "path": "expansion_intro_html",
+                                "format": "text"
+                            }
+                        }
+                    }
+                },
+                {
+                    "marker": "caty11-cooks-distance-table",
+                    "type": "table",
+                    "headers": [
+                        "Ticker",
+                        "ROTE (%)",
+                        "P/TBV (x)",
+                        "Cook's Distance",
+                        "Diagnosis"
+                    ],
+                    "columns": [
+                        "ticker",
+                        "rote",
+                        "ptbv",
+                        "cook",
+                        "diagnosis"
+                    ],
+                    "column_classes": [
+                        "",
+                        "numeric",
+                        "numeric",
+                        "numeric",
+                        ""
+                    ],
+                    "rows_from_list": {
+                        "source": "caty11_tables",
+                        "list_path": "tables.cooks_distance",
+                        "row_template": {
+                            "row_class": "{row_class}",
+                            "ticker": {
+                                "template": "<strong>{ticker}</strong>"
+                            },
+                            "rote": {
+                                "class": "{rote_class}",
+                                "template": "{rote_text}"
+                            },
+                            "ptbv": {
+                                "class": "{ptbv_class}",
+                                "template": "{ptbv_text}"
+                            },
+                            "cook": {
+                                "class": "{cook_class}",
+                                "template": "{cook_text}"
+                            },
+                            "diagnosis": {
+                                "template": "{diagnosis_html}"
+                            }
+                        }
+                    }
+                },
+                {
+                    "marker": "caty11-expansion-issues",
+                    "type": "text",
+                    "template": {
+                        "template": "{issues}",
+                        "placeholders": {
+                            "{issues}": {
+                                "source": "caty11_tables",
+                                "path": "expansion_issues_html",
+                                "format": "text"
+                            }
+                        }
+                    }
+                },
+                {
+                    "marker": "caty11-regression-comparison-table",
+                    "type": "table",
+                    "headers": [
+                        "Statistic",
+                        "n=7 (All Peers)",
+                        "n=4 (Clean Peers)",
+                        "Interpretation"
+                    ],
+                    "columns": [
+                        "metric",
+                        "n7",
+                        "n4",
+                        "notes"
+                    ],
+                    "column_classes": [
+                        "",
+                        "numeric",
+                        "numeric",
+                        ""
+                    ],
+                    "rows_from_list": {
+                        "source": "caty11_tables",
+                        "list_path": "tables.regression_comparison",
+                        "row_template": {
+                            "metric": {
+                                "template": "{metric_html}"
+                            },
+                            "n7": {
+                                "class": "{n7_class}",
+                                "template": "{n7_text}"
+                            },
+                            "n4": {
+                                "class": "{n4_class}",
+                                "template": "{n4_text}"
+                            },
+                            "notes": {
+                                "template": "{notes_html}"
+                            }
+                        }
+                    }
+                },
+                {
+                    "marker": "caty11-final-decision",
+                    "type": "text",
+                    "template": {
+                        "template": "<div class=\"source-box\">\n    <div class=\"source-label\">Final Decision Rationale</div>\n    <div class=\"source-details\">{final_html}\n    </div>\n</div>",
+                        "placeholders": {
+                            "{final_html}": {
+                                "source": "caty11_tables",
+                                "path": "final_decision_html",
+                                "format": "text"
+                            }
+                        }
+                    }
+                },
+                {
+                    "marker": "caty11-qa-table",
+                    "type": "table",
+                    "headers": [
+                        "Check ID",
+                        "Description",
+                        "Rule",
+                        "Status"
+                    ],
+                    "columns": [
+                        "id",
+                        "description",
+                        "rule",
+                        "status"
+                    ],
+                    "column_classes": [
+                        "",
+                        "",
+                        "",
+                        "numeric"
+                    ],
+                    "rows_from_list": {
+                        "source": "caty11_tables",
+                        "list_path": "tables.qa_checks",
+                        "row_template": {
+                            "id": {
+                                "template": "{check_id}"
+                            },
+                            "description": {
+                                "template": "{description}"
+                            },
+                            "rule": {
+                                "template": "{rule}"
+                            },
+                            "status": {
+                                "class": "numeric",
+                                "template": "{status_html}"
+                            }
+                        }
+                    }
+                },
+                {
+                    "marker": "caty11-metadata-table",
+                    "type": "table",
+                    "headers": [
+                        "Field",
+                        "Value"
+                    ],
+                    "columns": [
+                        "label",
+                        "value"
+                    ],
+                    "column_classes": [
+                        "",
+                        ""
+                    ],
+                    "rows_from_list": {
+                        "source": "caty11_tables",
+                        "list_path": "metadata_table",
+                        "row_template": {
+                            "label": {
+                                "template": "{label}"
+                            },
+                            "value": {
+                                "template": "{value}"
+                            }
+                        }
+                    }
+                }
+            ]
         }
     ]
 }

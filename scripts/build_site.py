@@ -37,6 +37,19 @@ def load_json(path: Path) -> Dict[str, Any]:
         return json.load(fh)
 
 
+def replace_placeholders(value: Any, replacements: Dict[str, str]) -> Any:
+    if isinstance(value, str):
+        result = value
+        for key, repl in replacements.items():
+            result = result.replace(key, repl)
+        return result
+    if isinstance(value, list):
+        return [replace_placeholders(item, replacements) for item in value]
+    if isinstance(value, dict):
+        return {key: replace_placeholders(val, replacements) for key, val in value.items()}
+    return value
+
+
 def format_money(value: float) -> str:
     return f"${value:,.2f}" if value is not None else "—"
 
@@ -268,6 +281,112 @@ def render_cards(section_cfg: Dict[str, Any], context: Dict[str, Any]) -> str:
     return "\n".join(lines)
 
 
+def render_table_cell(cell_spec: Any, context: Dict[str, Any]) -> tuple[str, str | None, str]:
+    tag = "td"
+    cell_class: str | None = None
+    spec_for_value = cell_spec
+
+    if isinstance(cell_spec, dict):
+        if "tag" in cell_spec:
+            tag = str(cell_spec["tag"])
+        if "class" in cell_spec:
+            # Copy to avoid mutating original configuration
+            spec_for_value = dict(cell_spec)
+            cell_class = str(spec_for_value.pop("class"))
+            tag = str(spec_for_value.pop("tag", tag))
+        if "html" in cell_spec:
+            html_value = str(cell_spec["html"])
+            return html_value, cell_class, tag
+
+    text = render_text_spec(spec_for_value, context)
+    return text, cell_class, tag
+
+
+def render_table(section_cfg: Dict[str, Any], context: Dict[str, Any]) -> str:
+    headers_cfg = section_cfg.get("headers", [])
+    columns = section_cfg.get("columns")
+    if not columns:
+        raise ValueError("Table section requires 'columns' definition for consistent rendering")
+
+    def normalize_headers() -> list[str]:
+        headers: list[str] = []
+        for header in headers_cfg:
+            headers.append(render_text_spec(header, context))
+        return headers
+
+    rows: list[tuple[str | None, Dict[str, Any]]] = []
+    for row_cfg in section_cfg.get("rows", []):
+        row_class = row_cfg.get("row_class")
+        cells = {key: value for key, value in row_cfg.items() if key != "row_class"}
+        rows.append((row_class, cells))
+
+    rows_from_list_cfg = section_cfg.get("rows_from_list")
+    if rows_from_list_cfg:
+        source = rows_from_list_cfg["source"]
+        list_path = rows_from_list_cfg["list_path"]
+        source_data = context.get(source)
+        if source_data is None:
+            raise KeyError(f"Unknown data source '{source}' for table rows")
+        list_items = resolve_path(source_data, list_path)
+        if not isinstance(list_items, list):
+            raise ValueError(f"Expected list at path '{list_path}', got {type(list_items).__name__}")
+        row_template = rows_from_list_cfg["row_template"]
+        start_index = rows_from_list_cfg.get("start_index", 0)
+        for idx, item in enumerate(list_items, start=start_index):
+            replacements = {
+                "{index}": str(idx),
+                "{index0}": str(idx),
+                "{index1}": str(idx + 1),
+            }
+            if isinstance(item, dict):
+                for key, value in item.items():
+                    replacements[f"{{{key}}}"] = str(value)
+            else:
+                replacements["{item}"] = str(item)
+                replacements["{peer}"] = str(item)
+            row_spec = replace_placeholders(row_template, replacements)
+            row_class = row_spec.get("row_class")
+            cells = {key: value for key, value in row_spec.items() if key != "row_class"}
+            rows.append((row_class, cells))
+
+    column_classes_cfg = section_cfg.get("column_classes")
+
+    def resolve_column_class(column: str, index: int) -> str:
+        if isinstance(column_classes_cfg, dict):
+            return str(column_classes_cfg.get(column, ""))
+        if isinstance(column_classes_cfg, list):
+            if index < len(column_classes_cfg):
+                return str(column_classes_cfg[index])
+        return ""
+
+    lines: list[str] = ["<table>"]
+    if headers_cfg:
+        headers = normalize_headers()
+        lines.append("    <thead>")
+        lines.append("        <tr>")
+        for header in headers:
+            lines.append(f"            <th>{header}</th>")
+        lines.append("        </tr>")
+        lines.append("    </thead>")
+
+    lines.append("    <tbody>")
+    for row_class, cell_map in rows:
+        row_class_attr = f' class="{row_class}"' if row_class else ""
+        lines.append(f"        <tr{row_class_attr}>")
+        for index, column in enumerate(columns):
+            cell_spec = cell_map.get(column, "")
+            cell_text, cell_class_override, tag = render_table_cell(cell_spec, context)
+            column_class = resolve_column_class(column, index)
+            cell_class = cell_class_override or column_class
+            class_attr = f' class="{cell_class}"' if cell_class else ""
+            lines.append(f"            <{tag}{class_attr}>{cell_text}</{tag}>")
+        lines.append("        </tr>")
+    lines.append("    </tbody>")
+    lines.append("</table>")
+
+    return "\n".join(lines)
+
+
 def render_module_section(section_cfg: Dict[str, Any], context: Dict[str, Any]) -> str:
     section_type = section_cfg.get("type", "cards")
 
@@ -303,6 +422,8 @@ def render_module_section(section_cfg: Dict[str, Any], context: Dict[str, Any]) 
                 attrs += f' {attr_name}="{attr_value}"'
             return f"<{tag}{attrs}>{text}</{tag}>"
         return text
+    if section_type == "table":
+        return render_table(section_cfg, context)
 
     raise ValueError(f"Unsupported section type '{section_type}' for module automation")
 
@@ -566,6 +687,7 @@ def main(test_mode: bool = False) -> int:
         caty05_tables = load_json(ROOT / "data" / "caty05_calculated_tables.json") if (ROOT / "data" / "caty05_calculated_tables.json").exists() else {}
         caty07_tables = load_json(ROOT / "data" / "caty07_credit_quality.json") if (ROOT / "data" / "caty07_credit_quality.json").exists() else {}
         caty12_tables = load_json(ROOT / "data" / "caty12_calculated_tables.json") if (ROOT / "data" / "caty12_calculated_tables.json").exists() else {}
+        caty11_tables = load_json(ROOT / "data" / "caty11_peers_normalized.json") if (ROOT / "data" / "caty11_peers_normalized.json").exists() else {}
 
         context = {
             "market": market,
@@ -577,6 +699,7 @@ def main(test_mode: bool = False) -> int:
             "caty05_tables": caty05_tables,
             "caty07_tables": caty07_tables,
             "caty12_tables": caty12_tables,
+            "caty11_tables": caty11_tables,
         }
 
         reconciliation_html = build_reconciliation_table()
