@@ -7,8 +7,9 @@
       "description": "Entity metadata, CIK, auditor (KPMG), segments",
       "status": "UPDATED",
       "importance": "STANDARD",
-      "last_updated": "2025-10-18",
-      "data_dependencies": ["SEC 10-Q", "Proxy Statement"]
+      "last_updated": "2025-10-19",
+      "automation_status": "100% - Autogen company profile dataset",
+      "data_dependencies": ["SEC 10-K", "SEC 10-Q", "Market Data"]
     },
     {
       "id": "02",

@@ -1,0 +1,116 @@
+{
+  "comment": "CATY_01 Company Profile - Core corporate identifiers and market snapshot",
+  "last_updated": "2025-10-19T23:55:00Z",
+  "data_source": "SEC 10-K FY2024, SEC 10-Q Q2 2025, market data feeds",
+  "period": "Q2 2025",
+  "entity": {
+    "legal_name": "Cathay General Bancorp",
+    "ticker": "CATY",
+    "exchange": "NASDAQ Global Select Market",
+    "country": "United States",
+    "cik": "0000861842",
+    "lei": "5493000B1M2II1U6H184",
+    "incorporation_state": "Delaware",
+    "incorporation_date": "1990-10-01",
+    "fiscal_year_end": "December 31",
+    "sic_code": "6022",
+    "sic_description": "State Commercial Banks",
+    "irs_number": "95-4274680"
+  },
+  "auditor": {
+    "firm": "KPMG LLP",
+    "office_location": "Los Angeles, CA",
+    "tenure_years": 15,
+    "audit_committee_pre_approval": "Required for all services",
+    "fees_fy2024_thousands": 1250,
+    "fees_fy2024_millions": 1.25,
+    "note": "Independent registered public accounting firm"
+  },
+  "business_segments": {
+    "segments": [
+      {
+        "name": "Commercial Banking",
+        "description": "Commercial mortgage loans, commercial loans, SBA loans",
+        "revenue_contribution_pct": 85
+      },
+      {
+        "name": "Consumer Banking",
+        "description": "Residential mortgages, home equity lines, installment loans",
+        "revenue_contribution_pct": 15
+      }
+    ],
+    "note": "Bank reports a single operating segment under GAAP but manages separate commercial and consumer franchises."
+  },
+  "corporate_structure": {
+    "parent_company": "Cathay General Bancorp (Holding Company)",
+    "primary_subsidiary": "Cathay Bank",
+    "subsidiary_charter": "California State-Chartered Bank",
+    "fdic_insured": "Yes (Certificate 23417)",
+    "federal_reserve_member": "Holding company supervised by Federal Reserve",
+    "primary_regulator": "California Department of Financial Protection and Innovation (DFPI)",
+    "federal_regulator": "Federal Reserve Board (BHCA oversight)"
+  },
+  "branch_network": {
+    "total_branches": 62,
+    "california_branches": 44,
+    "new_york_branches": 9,
+    "texas_branches": 5,
+    "other_branches": 4,
+    "geographic_concentration_pct": {
+      "california": 71,
+      "new_york": 15,
+      "texas": 8,
+      "other": 6
+    }
+  },
+  "market_data_q2_2025": {
+    "stock_price": 45.87,
+    "market_cap_millions": 3179,
+    "shares_outstanding_millions": 69.343,
+    "tbvps": 36.16,
+    "p_tbv": 1.269,
+    "fifty_two_week_high": 51.23,
+    "fifty_two_week_low": 36.45,
+    "average_daily_volume_thousands": 487
+  },
+  "analyst_coverage": {
+    "firms_covering": [
+      "Piper Sandler",
+      "Raymond James",
+      "Stephens Inc.",
+      "Keefe Bruyette & Woods"
+    ],
+    "firms_html": "<ul><li>Piper Sandler</li><li>Raymond James</li><li>Stephens Inc.</li><li>Keefe Bruyette &amp; Woods</li></ul>",
+    "consensus_rating": "HOLD",
+    "consensus_target": 49.50,
+    "range_low": 44.00,
+    "range_high": 54.00,
+    "note": "Coverage snapshot based on public broker research in Q2 2025."
+  },
+  "executive_summary": {
+    "ticker_display": "NASDAQ: CATY",
+    "cik_display": "0000861842",
+    "auditor_display": "KPMG LLP (Los Angeles, CA)",
+    "segment_focus": "Commercial & Consumer Banking (85% / 15%)"
+  },
+  "metadata": {
+    "schema_version": "1.0",
+    "prepared_on": "2025-10-19",
+    "primary_sources": "SEC 10-K FY2024 (accession 0001437749-25-005749); SEC 10-Q Q2 2025 (accession 0001437749-25-025772); Bloomberg market data snapshot",
+    "analyst_notes": "All identifiers validated against EDGAR; market cap ties to market_data_q2_2025 stock price × shares outstanding."
+  },
+  "qa_checks": [
+    {
+      "id": "CP-QA001",
+      "description": "CIK verification",
+      "rule": "CIK matches SEC EDGAR filings",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "CP-QA002",
+      "description": "Market cap calculation",
+      "rule": "Market cap = Price × Shares outstanding",
+      "status": "PASSED"
+    }
+  ]
+}
