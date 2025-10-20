@@ -66,6 +66,9 @@ python3 scripts/update_all_data.py
 | `scripts/merge_data_sources.py` | Reconciliation engine, conflict detection (>1% threshold) | Multiple JSON sources | Merged JSON + warnings |
 | `scripts/update_all_data.py` | Master orchestrator | — | Updates all data + rebuilds site |
 | `scripts/build_site.py` | Template rendering engine | JSON files → HTML autogen sections | index.html + CATY_##_*.html |
+| `scripts/sec_def14a_deterministic.py` | SEC EDGAR DEF14A fetcher (proxy statements) | 9 bank tickers | DEF14A HTML + manifest + provenance |
+| `scripts/parse_def14a_minimal.py` | DEF14A governance fact extractor | DEF14A HTML files | `data/proxy/*_extracted.json` |
+| `scripts/derek_def14a_verifier.py` | DEF14A audit verification (7-point checklist) | Run directory | Exit code 0/2 |
 
 ### Validation Stack
 
@@ -128,6 +131,50 @@ python3 analysis/disconfirmer_monitor.py
 
 ---
 
+## 📋 DEF14A Governance Pipeline (NEW - Oct 20, 2025)
+
+**Objective:** Extract governance facts from proxy statements for CATY + peers to populate ESG/governance modules.
+
+### Download Pipeline
+
+```bash
+python3 scripts/sec_def14a_deterministic.py \
+  --tickers "CATY EWBC CVBF HAFC COLB WAFD BANC HOPE" \
+  --user-agent "YourName/email@example.com" \
+  --throttle 1.8
+```
+
+**Output:** DEF14A HTML files + manifest with SHA256 provenance
+
+### Extraction Pipeline
+
+```bash
+python3 scripts/parse_def14a_minimal.py \
+  --ticker CATY \
+  --html evidence/raw/def14a/runs/.../DEF14A_CATY_*.html \
+  --manifest evidence/raw/def14a/runs/.../manifest_def14a.json \
+  --output data/proxy/CATY_2025_DEF14A_extracted.json
+```
+
+**Extracted Facts (7/8 banks, 87.5% success):**
+
+| Bank | Board Size | CEO | Auditor | Pay Ratio |
+|------|------------|-----|---------|-----------|
+| CATY | 14 | Chang M. Liu | KPMG LLP | 56:1 |
+| EWBC | 10 | Dominic Ng | KPMG LLP | 88:1 |
+| CVBF | 8 | David A. Brager | KPMG LLP | 33:1 |
+| HAFC | 11 | Bonita I. Lee | Crowe LLP | 29:1 |
+| COLB | 11 | Clint E. Stein | Deloitte | 82:1 |
+| BANC | 12 | Jared Wolff | KPMG LLP | 132:1 |
+| HOPE | 12 | Kevin S. Kim | Crowe LLP | 45:1 |
+
+**Schema:** `schemas/def14a.schema.json` (comprehensive governance structure)
+**Confidence:** Board 90%, CEO 95%, Auditor 90%, Pay Ratio 85%
+
+**Derek Audit:** ✅ 7/7 checks passed (User-Agent, throttle policy, SHA256 verification)
+
+---
+
 ## 📁 File Structure
 
 ```
@@ -162,11 +209,21 @@ python3 analysis/disconfirmer_monitor.py
 │   ├── validate_print_pdf.py           # Headless Chrome PDF validation
 │   ├── charts.js                       # Chart.js wrappers (theme-aware)
 │   ├── theme-toggle.js                 # Dark mode + ARIA states
+│   ├── sec_def14a_deterministic.py     # DEF14A fetcher (proxy statements)
+│   ├── parse_def14a_minimal.py         # DEF14A governance extractor
+│   ├── derek_def14a_verifier.py        # DEF14A audit verification
 │   └── tests/
 │       ├── test_build_site_snapshots.py
 │       └── snapshots/                  # 8 golden HTML fragments
 │
+├── schemas/
+│   └── def14a.schema.json              # DEF14A governance fact schema (JSON Schema Draft 2020-12)
+│
 ├── data/
+│   ├── proxy/
+│   │   ├── CATY_2025_DEF14A.json       # Sample schema instance
+│   │   ├── CATY_2025_DEF14A.ndjson     # Fact stream format
+│   │   └── *_extracted.json            # Parsed governance facts (7 banks)
 │   ├── market_data_current.json        # ⭐ SINGLE SOURCE OF TRUTH (spot price, targets)
 │   ├── driver_inputs.json              # Disconfirmer thresholds (NCO, beta, Cook's D)
 │   ├── executive_metrics.json          # Dashboard hero metrics
@@ -210,6 +267,11 @@ python3 analysis/disconfirmer_monitor.py
 │
 ├── evidence/
 │   ├── raw/
+│   │   ├── def14a/
+│   │   │   └── runs/                   # DEF14A proxy statements (8 banks)
+│   │   │       ├── manifest_def14a.json    # SHA256 provenance (committed)
+│   │   │       ├── extraction.log          # Audit trail (committed)
+│   │   │       └── DEF14A_*.html           # 18MB HTML files (gitignored)
 │   │   ├── CATY_2025Q2_10Q.pdf         # 8.4MB (excluded from git)
 │   │   ├── CATY_2024_10K.pdf           # 11MB (excluded from git)
 │   │   └── fdic_CATY_NTLNLSCOQR_timeseries.csv  # 70 quarters NCO
@@ -462,6 +524,10 @@ All calculations verified and audited:
 
 | Date | Achievement |
 |------|-------------|
+| Oct 20, 2025 | ✅ **DEF14A Governance Pipeline** - 7/8 banks extracted (board, CEO, auditor, pay ratio) |
+| Oct 20, 2025 | ✅ **CATY_01 Visual Polish** - 2 charts + enhanced typography + strategic narrative |
+| Oct 20, 2025 | ✅ **CFA IRC Rubric Organization** - 17 modules mapped to official scoring categories |
+| Oct 20, 2025 | ✅ **README Architecture Docs** - Backend-ready production documentation |
 | Oct 20, 2025 | ✅ **17/17 Modules Complete** - 100% CFA IRC automation |
 | Oct 19, 2025 | ✅ **Peer API Integration** - 9-bank auto-fetch from SEC EDGAR |
 | Oct 19, 2025 | ✅ **Board-Ready Polish** - All inconsistencies fixed |
@@ -498,8 +564,9 @@ git push origin-live q3-prep-oct19:main
 
 **Analyst:** Nirvan Chitnis
 **Coverage:** Regional Banks / Asian-American Banking
-**Generated:** October 20, 2025
-**Last Updated:** October 20, 2025
+
+**README Generated:** October 20, 2025 13:15 UTC
+**README Last Updated:** October 20, 2025 13:15 UTC
 
 ---
 
