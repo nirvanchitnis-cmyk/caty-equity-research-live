@@ -2769,7 +2769,8 @@ def main(test_mode: bool = False) -> int:
         valuation_outputs = load_json(VALUATION_OUTPUTS_PATH) if VALUATION_OUTPUTS_PATH.exists() else {}
 
         valuation_lookup = {"methods": {m["id"]: m for m in methods_cfg.get("methods", [])}, "config": methods_cfg}
-        caty01_tables = load_json(ROOT / "data" / "caty01_company_profile.json") if (ROOT / "data" / "caty01_company_profile.json").exists() else {}
+        caty01_path = ROOT / "data" / "caty01_company_profile.json"
+        caty01_tables = load_json(caty01_path) if caty01_path.exists() else {}
         caty02_tables = load_json(ROOT / "data" / "caty02_income_statement.json") if (ROOT / "data" / "caty02_income_statement.json").exists() else {}
         caty03_tables = load_json(ROOT / "data" / "caty03_balance_sheet.json") if (ROOT / "data" / "caty03_balance_sheet.json").exists() else {}
         caty04_tables = load_json(ROOT / "data" / "caty04_cash_flow.json") if (ROOT / "data" / "caty04_cash_flow.json").exists() else {}
@@ -2797,6 +2798,38 @@ def main(test_mode: bool = False) -> int:
         industry_analysis = load_json(industry_path) if industry_path.exists() else {}
         esg_path = ROOT / "data" / "esg_assessment.json"
         esg_assessment = load_json(esg_path) if esg_path.exists() else {}
+
+        report_metadata = market.get("report_metadata") or {}
+        caty01_changed = False
+        prepared_on = report_metadata.get("report_date")
+        last_updated_ts = report_metadata.get("last_updated_utc") or market.get("report_generated")
+        if caty01_tables:
+            caty01_meta = caty01_tables.setdefault("metadata", {})
+            if prepared_on and caty01_meta.get("prepared_on") != prepared_on:
+                caty01_meta["prepared_on"] = prepared_on
+                caty01_changed = True
+            if last_updated_ts and caty01_tables.get("last_updated") != last_updated_ts:
+                caty01_tables["last_updated"] = last_updated_ts
+                caty01_changed = True
+        if caty01_changed and caty01_path.exists():
+            original_text = caty01_path.read_text(encoding="utf-8")
+            updated_text = original_text
+            if prepared_on:
+                updated_text = re.sub(
+                    r'("prepared_on":\s*")[^"]+(")',
+                    r'\g<1>' + prepared_on + r'\g<2>',
+                    updated_text,
+                    count=1,
+                )
+            if last_updated_ts:
+                updated_text = re.sub(
+                    r'("last_updated":\s*")[^"]+(")',
+                    r'\g<1>' + last_updated_ts + r'\g<2>',
+                    updated_text,
+                    count=1,
+                )
+            if updated_text != original_text:
+                caty01_path.write_text(updated_text, encoding="utf-8")
 
         context = {
             "market": market,

@@ -3,9 +3,7 @@
     {
       "id": "CATY_01",
       "file": "CATY_01_company_profile.html",
-      "data": {
-        "last_updated_display": "October 19, 2025"
-      },
+      "data": {},
       "sections": [
         {
           "marker": "caty01-header-meta",
@@ -14,8 +12,8 @@
             "template": "<p class=\"page-meta\">\n    Corporate identifiers and market snapshot |\n    Last Updated: {last_updated} |\n    Source: SEC 10-K FY2024 + SEC 10-Q Q2 2025\n</p>",
             "placeholders": {
               "{last_updated}": {
-                "source": "module",
-                "path": "last_updated_display",
+                "source": "market",
+                "path": "report_metadata.report_date",
                 "format": "text"
               }
             }

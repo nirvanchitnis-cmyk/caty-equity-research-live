@@ -1,6 +1,6 @@
 {
   "comment": "CATY_01 Company Profile - Core corporate identifiers and market snapshot",
-  "last_updated": "2025-10-19T23:55:00Z",
+  "last_updated": "2025-10-21T16:31:45.596444+00:00",
   "data_source": "SEC 10-K FY2024, SEC 10-Q Q2 2025, market data feeds",
   "period": "Q2 2025",
   "entity": {
@@ -95,7 +95,7 @@
   },
   "metadata": {
     "schema_version": "1.0",
-    "prepared_on": "2025-10-19",
+    "prepared_on": "October 20, 2025",
     "primary_sources": "SEC 10-K FY2024 (accession 0001437749-25-005749); SEC 10-Q Q2 2025 (accession 0001437749-25-025772); Bloomberg market data snapshot",
     "analyst_notes": "All identifiers validated against EDGAR; market cap ties to market_data_q2_2025 stock price × shares outstanding."
   },
