@@ -1,7 +1,7 @@
 # PROJECT NUKE: Template Conversion Inventory
 
-**Status:** In Progress (13/60 sections completed ~22%)
-**Last Updated:** October 21, 2025 01:40 UTC
+**Status:** In Progress (14/60 sections completed ~23%)
+**Last Updated:** October 21, 2025 02:45 UTC
 
 ---
 
@@ -18,12 +18,13 @@
 | 630+ | Recent Developments | data/recent_developments.json | ✅ DONE |
 | 643-667 | Company Overview | data/catalysts.json → company_overview | ✅ DONE |
 | 829-869 | Valuation Deep Dive | market_data_current.json → calculated_metrics | ✅ DONE |
+| 866-952 | Peer Positioning | data/caty11_peers_normalized.json → peers | ✅ DONE |
 | 871-913 | Scenario Analysis Table | market_data_current.json → calculated_metrics | ✅ DONE |
 | 1599-1730 | Positive Catalysts | data/catalysts.json → positive_catalysts | ✅ DONE |
 | 1710+ | Investment Risks | market_data_current.json → investment_risks | ✅ DONE |
 | 2201-2206 | Footer Timestamp | market_data_current.json → report_metadata | ✅ DONE |
 
-**Total: 13 sections auto-generate from JSON**
+**Total: 14 sections auto-generate from JSON**
 
 ---
 
@@ -33,8 +34,7 @@
 
 | Line Range | Section | Hardcoded Facts | JSON Source Needed | Priority |
 |------------|---------|-----------------|-------------------|----------|
-| ~1400-1600 | Peer Positioning | Peer metrics comparison | data/caty11_peers_normalized.json | HIGH |
-| ~1650-1800 | Historical Context | Past performance, inflection points | data/historical_context.json (NEW) | LOW |
+| ~1650-1800 | Historical Context | Past performance, inflection points | data/historical_context.json (NEW) | MEDIUM |
 | ~1950-2100 | Appendix / Methodology | Formula explanations | Static (OK to keep hardcoded) | LOW |
 
 ### Pure Commentary (Can Stay Hardcoded):
@@ -77,12 +77,13 @@
 - Renderers: render_company_overview(), render_positive_catalysts()
 - Completed: October 21, 2025 (Codex delivery)
 
-### Phase 6: Peer Positioning (Next)
-- Lines ~1400-1600
-- Use existing data/caty11_peers_normalized.json
-- Est: 1 hour (Codex)
+### Phase 6: Peer Positioning ✅ COMPLETE
+- Lines 866-952 (peer comparison table + insights)
+- Wired to existing data/caty11_peers_normalized.json
+- Renderer: render_peer_positioning()
+- Completed: October 21, 2025 (Codex delivery)
 
-### Phase 7: Historical Context
+### Phase 7: Historical Context (Next)
 - Lines 1650-1800
 - Create data/historical_context.json
 - Est: 45 min (Codex)
@@ -92,7 +93,7 @@
 - Full end-to-end test
 - Est: 30 min
 
-**Total Remaining: ~2.5 hours**
+**Total Remaining: ~1.5 hours**
 
 ---
 
@@ -121,4 +122,4 @@ python3 scripts/update_all_data.py
 
 ---
 
-**Current State: 22% complete (13/60 sections). Phases 4-5 delivered by Codex. Momentum excellent. ~2.5 hours to 100%.**
+**Current State: 23% complete (14/60 sections). Phases 4-6 delivered by Codex. Final stretch. ~1.5 hours to 100%.**

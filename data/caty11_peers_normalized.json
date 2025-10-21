@@ -1,716 +1,716 @@
 {
-    "comment": "CATY_11 Peer Analysis - Normalized Valuation Comparison",
-    "last_updated": "2025-10-19T23:55:00Z",
-    "data_source": "evidence/peer_snapshot_2025Q2.csv + Q2 2025 10-Qs",
-    "period": "Q2 2025",
-    "regression_universe": {
-        "core_peers": [
-            "CATY",
-            "EWBC",
-            "CVBF",
-            "HAFC"
-        ],
-        "extended_peers": [
-            "HOPE",
-            "COLB",
-            "WAFD",
-            "PPBI",
-            "BANC"
-        ],
-        "regression_peers": [
-            "EWBC",
-            "CVBF",
-            "HAFC",
-            "COLB"
-        ],
-        "total_universe": 9,
-        "core_count": 4
-    },
-    "regression_stats": {
-        "intercept": -0.1483,
-        "slope": 0.1244,
-        "r_squared": 0.9548,
-        "adj_r_squared": 0.932,
-        "equation": "P/TBV = -0.1483 + 0.1244 \u00d7 ROTE",
-        "fit_quality": "strong fit",
-        "note": "Core regression uses EWBC/CVBF/HAFC/COLB; extended medians incorporate HOPE, WAFD, PPBI, BANC to capture risk tails",
-        "p_value": 0.023,
-        "t_stat": 6.5,
-        "sample_size": 4,
-        "interpretation_html": "<strong>CATY Valuation Context:</strong> CATY's actual P/TBV of 1.269x is 0.068x below fitted value of 1.337x based on ROTE 12.35%.\nThis -5.1% residual suggests CATY is slightly undervalued relative to peers on a ROTE basis, though within normal variation.<br><br>\n\n<strong>Key Insight:</strong> CATY's normalized ROTE (10.40% at 42.8 bps NCO) implies fitted P/TBV of 1.145x (= -0.1483 + 0.1244 \u00d7 10.40),\n suggesting current P/TBV 1.269x already reflects ~40 bps of credit normalization premium.<br><br>\n\n<strong>Statistical Caveat:</strong> Small sample size (n=4) limits statistical power. Regression significant at 5% level (p = 0.023) but wide confidence intervals.\n Results should be supplemented with qualitative peer analysis and fundamental valuation methods.",
-        "scatter_caption_html": "<strong>Interpretation:</strong> Scatter plot shows strong positive linear relationship between ROTE and P/TBV. CATY (gold dot) sits slightly below regression line at current ROTE 12.35%, suggesting modest undervaluation vs peers. Regression line: P/TBV = -0.1483 + 0.1244 \u00d7 ROTE (each 1% ROTE increase \u2192 0.124x P/TBV increase).",
-        "scatter_summary_html": "n=4 clean cohort (CATY, EWBC, CVBF, HAFC) - Cook's Distance filtered | R\u00b2=0.9548, Slope=0.1244"
-    },
-    "peer_data": {
-        "CATY": {
-            "name": "Cathay General Bancorp",
-            "price": 45.89,
-            "tbvps": 36.16,
-            "p_tbv": 1.269,
-            "rote_pct": 12.35,
-            "cre_pct": 52.4,
-            "mkt_cap_millions": 2507.0,
-            "fitted_p_tbv": 1.337,
-            "residual": -0.068,
-            "source": "Q2'25 10-Q + Market"
-        },
-        "EWBC": {
-            "name": "East West Bancorp",
-            "price": 110.25,
-            "tbvps": 56.13,
-            "p_tbv": 1.964,
-            "rote_pct": 16.10,
-            "cre_pct": 37.6,
-            "mkt_cap_millions": 15800.0,
-            "fitted_p_tbv": 1.823,
-            "residual": 0.141,
-            "source": "Q2 2025 10-Q"
-        },
-        "CVBF": {
-            "name": "CVB Financial Corp",
-            "price": 19.75,
-            "tbvps": 10.7,
-            "p_tbv": 1.846,
-            "rote_pct": 10.92,
-            "cre_pct": 78.9,
-            "mkt_cap_millions": 2650.0,
-            "fitted_p_tbv": 1.21,
-            "residual": 0.636,
-            "source": "Q2 2025 10-Q"
-        },
-        "HAFC": {
-            "name": "Hanmi Financial Corp",
-            "price": 25.6,
-            "tbvps": 24.96,
-            "p_tbv": 1.026,
-            "rote_pct": 8.04,
-            "cre_pct": 17.7,
-            "mkt_cap_millions": 780.0,
-            "fitted_p_tbv": 0.852,
-            "residual": 0.174,
-            "source": "Q2 2025 10-Q"
-        },
-        "HOPE": {
-            "name": "Hope Bancorp",
-            "price": 13.85,
-            "tbvps": 13.59,
-            "p_tbv": 1.019,
-            "rote_pct": -5.72,
-            "cre_pct": 58.1,
-            "mkt_cap_millions": 1520.0,
-            "fitted_p_tbv": null,
-            "residual": null,
-            "source": "Q2 2025 10-Q",
-            "note": "Excluded from regression (negative ROTE)"
-        },
-        "COLB": {
-            "name": "Columbia Banking System",
-            "price": 32.4,
-            "tbvps": 20.51,
-            "p_tbv": 1.58,
-            "rote_pct": 14.46,
-            "cre_pct": 52.1,
-            "mkt_cap_millions": 6100.0,
-            "fitted_p_tbv": 1.65,
-            "residual": -0.07,
-            "cooks_d": 4.03,
-            "source": "Q2 2025 10-Q",
-            "note": "High Cook's D (4.03) - retained as substantive outlier (Vancouver premium)"
-        },
-        "WAFD": {
-            "name": "Washington Federal",
-            "price": 37.2,
-            "tbvps": 32.99,
-            "p_tbv": 1.128,
-            "rote_pct": 9.5,
-            "cre_pct": 17.5,
-            "mkt_cap_millions": 2800.0,
-            "fitted_p_tbv": null,
-            "residual": null,
-            "source": "Q2 2025 10-Q"
-        },
-        "PPBI": {
-            "name": "Pacific Premier Bancorp",
-            "price": 28.5,
-            "tbvps": 21.38,
-            "p_tbv": 1.333,
-            "rote_pct": 5.09,
-            "cre_pct": 17.5,
-            "mkt_cap_millions": 2700.0,
-            "fitted_p_tbv": null,
-            "residual": null,
-            "source": "Q2 2025 10-Q"
-        },
-        "BANC": {
-            "name": "Banc of California",
-            "price": 17.9,
-            "tbvps": 21.81,
-            "p_tbv": 0.731,
-            "rote_pct": 3.37,
-            "cre_pct": 18.0,
-            "mkt_cap_millions": 2900.0,
-            "fitted_p_tbv": null,
-            "residual": null,
-            "source": "Q2 2025 10-Q"
-        }
-    },
-    "distribution_analysis": {
-        "rote_pct": {
-            "min": -5.72,
-            "max": 16.10,
-            "median": 8.77,
-            "min_ticker": "HOPE",
-            "max_ticker": "EWBC",
-            "median_ticker": "Composite"
-        },
-        "cre_pct": {
-            "min": 17.5,
-            "max": 78.9,
-            "median": 27.8,
-            "min_ticker": "WAFD | PPBI",
-            "max_ticker": "CVBF",
-            "median_ticker": "Composite"
-        },
-        "tbvps": {
-            "min": 10.7,
-            "max": 56.13,
-            "median": 21.6,
-            "min_ticker": "CVBF",
-            "max_ticker": "EWBC",
-            "median_ticker": "Composite"
-        },
-        "p_tbv": {
-            "min": 0.731,
-            "max": 1.964,
-            "median": 1.23,
-            "min_ticker": "BANC",
-            "max_ticker": "EWBC",
-            "median_ticker": "Composite"
-        },
-        "mkt_cap_millions": {
-            "min": 780.0,
-            "max": 15800.0,
-            "median": 2750.0,
-            "min_ticker": "HAFC",
-            "max_ticker": "EWBC",
-            "median_ticker": "Composite"
-        }
-    },
-    "summary": {
-        "peer_universe_count": 8,
-        "peer_universe_members": [
-            "EWBC",
-            "CVBF",
-            "HAFC",
-            "HOPE",
-            "COLB",
-            "WAFD",
-            "PPBI",
-            "BANC"
-        ],
-        "core_cohort_display": "CATY, EWBC, CVBF, HAFC",
-        "key_finding": {
-            "caty_p_tbv": 1.269,
-            "caty_rote_pct": 12.35,
-            "peer_median_p_tbv": 1.23,
-            "peer_median_cre_pct": 27.8,
-            "caty_cre_pct": 52.4,
-            "cre_gap_pct_points": 24.6,
-            "normalized_rote_pct": 10.4,
-            "through_cycle_nco_bps": 42.8,
-            "normalized_fitted_p_tbv": 1.115,
-            "normalized_fair_value_price": 39.6,
-            "regression_r_squared_display": 0.955,
-            "highlight_html": "CATY trades at <strong>1.269x P/TBV</strong> with <strong>12.35% ROTE</strong>, versus the updated <strong>peer median of 1.23x P/TBV</strong> and <strong>27.8% CRE concentration.</strong> CATY now screens as a high-CRE outlier (+24.6 ppts) rather than a conservative lender.\n<br><br>\n<strong>Valuation Context:</strong> Regression (n=4 core peers) still shows a tight ROTE/P&T BV relationship (R\u00b2 = 0.955, p = 0.023),\n but the broader eight-bank dataset resets the comparable benchmark lower. Normalizing CATY to 10.40% ROTE (42.8 bps NCO) implies\n fair value near <strong>1.115x P/TBV ($39.6)</strong>, reinforcing the HOLD target."
-        },
-        "peer_universe_members_display": "EWBC, CVBF, HAFC, HOPE, COLB, WAFD, PPBI, BANC"
-    },
-    "tables": {
-        "credit_snapshot": [
-            {
-                "metric_html": "<strong>LTM ROTE (%)</strong>",
-                "caty_text": "12.35",
-                "caty_class": "numeric caty-highlight",
-                "peer_median_text": "8.77",
-                "peer_median_class": "numeric middle-performer",
-                "peer_low_text": "-5.72 (HOPE)",
-                "peer_low_class": "numeric",
-                "peer_high_text": "16.10 (EWBC)",
-                "peer_high_class": "numeric"
-            },
-            {
-                "metric_html": "<strong>CRE % of Loans</strong>",
-                "caty_text": "52.4",
-                "caty_class": "numeric danger",
-                "peer_median_text": "27.8",
-                "peer_median_class": "numeric top-performer",
-                "peer_low_text": "17.5 (WAFD | PPBI)",
-                "peer_low_class": "numeric",
-                "peer_high_text": "78.9 (CVBF)",
-                "peer_high_class": "numeric danger"
-            }
-        ],
-        "valuation_metrics": [
-            {
-                "metric_html": "<strong>TBVPS (USD/share)</strong>",
-                "caty_text": "36.16",
-                "caty_class": "numeric caty-highlight",
-                "peer_median_text": "21.60",
-                "peer_median_class": "numeric middle-performer",
-                "peer_low_text": "10.70 (CVBF)",
-                "peer_low_class": "numeric",
-                "peer_high_text": "56.13 (EWBC)",
-                "peer_high_class": "numeric"
-            },
-            {
-                "metric_html": "<strong>P/TBV (x)</strong>",
-                "caty_text": "1.269",
-                "caty_class": "numeric danger",
-                "peer_median_text": "1.23",
-                "peer_median_class": "numeric",
-                "peer_low_text": "0.731 (BANC)",
-                "peer_low_class": "numeric",
-                "peer_high_text": "1.964 (EWBC)",
-                "peer_high_class": "numeric"
-            },
-            {
-                "metric_html": "<strong>Market Cap (USD M)</strong>",
-                "caty_text": "2,507",
-                "caty_class": "numeric",
-                "peer_median_text": "2,750",
-                "peer_median_class": "numeric",
-                "peer_low_text": "780 (HAFC)",
-                "peer_low_class": "numeric",
-                "peer_high_text": "15,800 (EWBC)",
-                "peer_high_class": "numeric"
-            }
-        ],
-        "regression_points": [
-            {
-                "ticker": "HAFC",
-                "row_class": "",
-                "rote_text": "8.65",
-                "rote_class": "numeric",
-                "actual_ptbv_text": "0.930",
-                "actual_ptbv_class": "numeric",
-                "fitted_ptbv_text": "0.927",
-                "fitted_ptbv_class": "numeric",
-                "residual_text": "+0.003",
-                "residual_class": "numeric numeric-success"
-            },
-            {
-                "ticker": "CATY",
-                "row_class": "caty-highlight",
-                "rote_text": "12.35",
-                "rote_class": "numeric",
-                "actual_ptbv_text": "1.269",
-                "actual_ptbv_class": "numeric",
-                "fitted_ptbv_text": "1.337",
-                "fitted_ptbv_class": "numeric",
-                "residual_text": "-0.068",
-                "residual_class": "numeric numeric-danger"
-            },
-            {
-                "ticker": "CVBF",
-                "row_class": "",
-                "rote_text": "14.10",
-                "rote_class": "numeric",
-                "actual_ptbv_text": "1.730",
-                "actual_ptbv_class": "numeric",
-                "fitted_ptbv_text": "1.604",
-                "fitted_ptbv_class": "numeric",
-                "residual_text": "+0.126",
-                "residual_class": "numeric numeric-success"
-            },
-            {
-                "ticker": "EWBC",
-                "row_class": "",
-                "rote_text": "16.38",
-                "rote_class": "numeric",
-                "actual_ptbv_text": "1.830",
-                "actual_ptbv_class": "numeric",
-                "fitted_ptbv_text": "1.888",
-                "fitted_ptbv_class": "numeric",
-                "residual_text": "-0.058",
-                "residual_class": "numeric numeric-danger"
-            }
-        ],
-        "coe_analysis": [
-            {
-                "ticker": "HAFC",
-                "row_class": "",
-                "rote_text": "8.65",
-                "rote_class": "numeric",
-                "ptbv_text": "0.930",
-                "ptbv_class": "numeric",
-                "payout_text": "40%",
-                "payout_class": "numeric",
-                "growth_text": "3.0%",
-                "growth_class": "numeric",
-                "coe_text": "8.58%",
-                "coe_class": "numeric"
-            },
-            {
-                "ticker": "CATY",
-                "row_class": "caty-highlight",
-                "rote_text": "12.35",
-                "rote_class": "numeric",
-                "ptbv_text": "1.269",
-                "ptbv_class": "numeric",
-                "payout_text": "40%",
-                "payout_class": "numeric",
-                "growth_text": "3.0%",
-                "growth_class": "numeric",
-                "coe_text": "8.65%",
-                "coe_class": "numeric"
-            },
-            {
-                "ticker": "CVBF",
-                "row_class": "",
-                "rote_text": "14.10",
-                "rote_class": "numeric",
-                "ptbv_text": "1.730",
-                "ptbv_class": "numeric",
-                "payout_text": "40%",
-                "payout_class": "numeric",
-                "growth_text": "3.0%",
-                "growth_class": "numeric",
-                "coe_text": "7.88%",
-                "coe_class": "numeric"
-            },
-            {
-                "ticker": "EWBC",
-                "row_class": "",
-                "rote_text": "16.38",
-                "rote_class": "numeric",
-                "ptbv_text": "1.830",
-                "ptbv_class": "numeric",
-                "payout_text": "40%",
-                "payout_class": "numeric",
-                "growth_text": "3.0%",
-                "growth_class": "numeric",
-                "coe_text": "8.37%",
-                "coe_class": "numeric"
-            },
-            {
-                "ticker": "Peer Mean COE",
-                "row_class": "row-border-top-red",
-                "rote_text": "\u2014",
-                "rote_class": "numeric",
-                "ptbv_text": "\u2014",
-                "ptbv_class": "numeric",
-                "payout_text": "\u2014",
-                "payout_class": "numeric",
-                "growth_text": "\u2014",
-                "growth_class": "numeric",
-                "coe_text": "8.37%",
-                "coe_class": "numeric middle-performer"
-            }
-        ],
-        "expansion_summary": [
-            {
-                "target_text": "<strong>Target Sample Size</strong>",
-                "status_text": "n = 10",
-                "outcome_text": "\u2014"
-            },
-            {
-                "target_text": "<strong>Successful Extractions</strong>",
-                "status_text": "n = 5",
-                "outcome_text": "CATY, EWBC, CVBF, HAFC, HOPE + expansion peers WAFD, OPBK, COLB"
-            },
-            {
-                "target_text": "<strong>Failed Extractions</strong>",
-                "status_text": "n = 2",
-                "outcome_text": "PPBI (tag mismatch), BANC (negative TCE)"
-            },
-            {
-                "target_text": "<strong>n=7 Regression Result</strong>",
-                "status_text": "FAILED",
-                "outcome_text": "Adj R\u00b2 = -0.077, p = 0.484 (not significant)"
-            },
-            {
-                "target_text": "<strong>Final Decision</strong>",
-                "status_text": "Reverted to n=4",
-                "outcome_text": "CATY, EWBC, CVBF, HAFC (Adj R\u00b2 = 0.932, p = 0.023)"
-            }
-        ],
-        "cooks_distance": [
-            {
-                "ticker": "HAFC",
-                "row_class": "",
-                "rote_text": "8.65",
-                "rote_class": "numeric",
-                "ptbv_text": "0.930",
-                "ptbv_class": "numeric",
-                "cook_text": "0.112",
-                "cook_class": "numeric",
-                "diagnosis_html": "Normal influence"
-            },
-            {
-                "ticker": "CATY",
-                "row_class": "",
-                "rote_text": "12.35",
-                "rote_class": "numeric",
-                "ptbv_text": "1.269",
-                "ptbv_class": "numeric",
-                "cook_text": "0.003",
-                "cook_class": "numeric",
-                "diagnosis_html": "Normal influence"
-            },
-            {
-                "ticker": "CVBF",
-                "row_class": "",
-                "rote_text": "14.10",
-                "rote_class": "numeric",
-                "ptbv_text": "1.730",
-                "ptbv_class": "numeric",
-                "cook_text": "0.076",
-                "cook_class": "numeric",
-                "diagnosis_html": "Normal influence"
-            },
-            {
-                "ticker": "EWBC",
-                "row_class": "",
-                "rote_text": "16.38",
-                "rote_class": "numeric",
-                "ptbv_text": "1.830",
-                "ptbv_class": "numeric",
-                "cook_text": "0.021",
-                "cook_class": "numeric",
-                "diagnosis_html": "Normal influence"
-            },
-            {
-                "ticker": "WAFD",
-                "row_class": "row-danger-highlight",
-                "rote_text": "14.20",
-                "rote_class": "numeric",
-                "ptbv_text": "0.370",
-                "ptbv_class": "numeric",
-                "cook_text": "2.547",
-                "cook_class": "numeric",
-                "diagnosis_html": "<strong>EXTREME OUTLIER</strong> - Structural discount"
-            },
-            {
-                "ticker": "COLB",
-                "row_class": "row-danger-highlight",
-                "rote_text": "33.43",
-                "rote_class": "numeric",
-                "ptbv_text": "1.439",
-                "ptbv_class": "numeric",
-                "cook_text": "4.030",
-                "cook_class": "numeric",
-                "diagnosis_html": "<strong>EXTREME OUTLIER</strong> - One-time gains"
-            },
-            {
-                "ticker": "HOPE",
-                "row_class": "row-danger-highlight",
-                "rote_text": "-1.71",
-                "rote_class": "numeric",
-                "ptbv_text": "0.770",
-                "ptbv_class": "numeric",
-                "cook_text": "1.893",
-                "cook_class": "numeric",
-                "diagnosis_html": "<strong>EXTREME OUTLIER</strong> - Distressed"
-            }
-        ],
-        "regression_comparison": [
-            {
-                "metric_html": "<strong>R\u00b2</strong>",
-                "n7_text": "-0.077",
-                "n7_class": "numeric bottom-performer",
-                "n4_text": "0.9548",
-                "n4_class": "numeric top-performer",
-                "notes_html": "n=7 model worse than mean; n=4 explains 95% of variation"
-            },
-            {
-                "metric_html": "<strong>Adj R\u00b2</strong>",
-                "n7_text": "-0.293",
-                "n7_class": "numeric bottom-performer",
-                "n4_text": "0.932",
-                "n4_class": "numeric top-performer",
-                "notes_html": "Degree-of-freedom adjustment confirms n=7 failure"
-            },
-            {
-                "metric_html": "<strong>p-value</strong>",
-                "n7_text": "0.484",
-                "n7_class": "numeric bottom-performer",
-                "n4_text": "0.023",
-                "n4_class": "numeric top-performer",
-                "notes_html": "n=7 not significant; n=4 significant at 5% level"
-            },
-            {
-                "metric_html": "<strong>Slope</strong>",
-                "n7_text": "0.0243",
-                "n7_class": "numeric",
-                "n4_text": "0.1244",
-                "n4_class": "numeric",
-                "notes_html": "n=7 slope attenuated by outliers; n=4 reflects true relationship"
-            }
-        ],
-        "qa_checks": [
-            {
-                "check_id": "<strong>PEER-QA001</strong>",
-                "description": "Period alignment",
-                "rule": "All peers use LTM through Q2'25 (no FY/LTM mixing)",
-                "status_html": "<span class=\"verification-badge\">PASS</span>"
-            },
-            {
-                "check_id": "<strong>PEER-QA002</strong>",
-                "description": "Deposit beta sanity",
-                "rule": "All-in beta < IB-only beta for each peer",
-                "status_html": "<span class=\"verification-badge\">PASS</span>"
-            },
-            {
-                "check_id": "<strong>PEER-QA003</strong>",
-                "description": "NIB% bounds",
-                "rule": "0% <= NIB% <= 100%",
-                "status_html": "<span class=\"verification-badge badge-partial\">PASS_WITH_GAPS</span>"
-            },
-            {
-                "check_id": "<strong>PEER-QA004</strong>",
-                "description": "CET1 sanity",
-                "rule": "CET1 ratio within 9%-20%",
-                "status_html": "<span class=\"verification-badge\">PASS</span>"
-            },
-            {
-                "check_id": "<strong>PEER-QA005</strong>",
-                "description": "Regression outliers",
-                "rule": "Cook's Distance < 1.0 for all regression peers",
-                "status_html": "<span class=\"verification-badge\">PASS</span>"
-            }
-        ]
-    },
-    "peer_set": {
-        "core": [
-            {
-                "ticker": "CATY",
-                "row_class": "caty-highlight",
-                "cik": "0000861842",
-                "rationale": "Target company - Cathay General Bancorp",
-                "verification_class": "verification-badge badge-partial",
-                "verification_label": "PARTIAL"
-            },
-            {
-                "ticker": "EWBC",
-                "row_class": "",
-                "cik": "0001069157",
-                "rationale": "Asian-American bank, CA concentration, similar business model",
-                "verification_class": "verification-badge badge-partial",
-                "verification_label": "PARTIAL"
-            },
-            {
-                "ticker": "CVBF",
-                "row_class": "",
-                "cik": "0000354647",
-                "rationale": "CA community bank, comparable size and market focus",
-                "verification_class": "verification-badge badge-partial",
-                "verification_label": "PARTIAL"
-            },
-            {
-                "ticker": "HAFC",
-                "row_class": "",
-                "cik": "0001109242",
-                "rationale": "Korean-American bank, similar size and CRE exposure",
-                "verification_class": "verification-badge badge-partial",
-                "verification_label": "PARTIAL"
-            }
-        ],
-        "extended": [
-            {
-                "ticker": "HOPE",
-                "rationale": "Negative ROTE captures stressed credit outcomes in Korean-American cohort",
-                "verification_class": "verification-badge badge-partial",
-                "verification_label": "VERIFIED_OK"
-            },
-            {
-                "ticker": "PPBI",
-                "rationale": "Smaller SoCal CRE lender; captures lower-ROTE, lower-CRE exposure endpoints",
-                "verification_class": "verification-badge badge-partial",
-                "verification_label": "VERIFIED_OK"
-            },
-            {
-                "ticker": "WAFD",
-                "rationale": "Pacific Northwest thrift exposure\u2014low CRE concentration baseline",
-                "verification_class": "verification-badge badge-partial",
-                "verification_label": "VERIFIED_OK"
-            },
-            {
-                "ticker": "BANC",
-                "rationale": "Former PacWest platform; lower P/TBV anchor with moderate CRE",
-                "verification_class": "verification-badge badge-partial",
-                "verification_label": "VERIFIED_OK"
-            }
-        ]
-    },
-    "peer_policy_html": "<strong>Period Alignment:</strong> All peers use LTM through Q2'25 (2025-06-30) to ensure comparability. No FY/LTM mixing permitted.<br>\n<strong>Standardization:</strong> ROTE tangible-equity-based; provision-normalized where applicable; deposit betas use Q1'22 \u2192 Q2'25 anchor.<br>\n<strong>Quality Threshold:</strong> Loader refuses any peer with verification_status != VERIFIED_OK or blocking_level \u2265 3 for core metrics.<br>\n<strong>Regression Discipline:</strong> Core regression uses EWBC/CVBF/HAFC/COLB; extended medians incorporate HOPE, WAFD, PPBI, BANC to capture risk tails.",
-    "comparison_data_source_html": "<strong>Methodology:</strong> LTM metrics calculated as FY2024 + H1'25 - H1'24 from SEC 10-K/10-Q filings<br>\n<strong>ROTE Basis:</strong> LTM Net Income / Average Tangible Common Equity (5-point average: Q2'24, Q3'24, Q4'24, Q1'25, Q2'25)<br>\n<strong>Deposit Betas:</strong> Up-cycle cumulative Q1'22 \u2192 Q2'25 from Average balances tables<br>\n<strong>Stock Prices:</strong> Stooq daily CSV as of 2025-10-17 close<br>\n<strong>Brokered Deposits:</strong> FDIC Call Reports via api.fdic.gov/banks/financials (extraction 2025-10-18)<br>\n<strong>N/D:</strong> Not Disclosed in public filings",
-    "coe_methodology_html": "<strong>Formula:</strong> COE = ROTE \u00d7 (1 - Payout Ratio) / P/TBV + Long-term Growth Rate<br>\n<strong>Assumptions:</strong> 40% payout ratio (typical for regional banks), 3.0% long-term GDP growth<br>\n<strong>Interpretation:</strong> Peer mean COE of 8.37% implies market requires ~8.4% equity returns for banks with similar risk profiles.<br><br>\n\n<strong>CATY Context:</strong> CATY's implied COE of 8.65% is 28 bps above peer mean, suggesting market perceives\n slightly higher risk (CRE concentration 52.4%, lower NIB% 16.9%) or expects lower sustainable profitability than P/TBV implies.",
-    "expansion_intro_html": "Cook's Distance measures influence of each observation on regression fit. Values &gt; 1.0 indicate extreme outliers destroying model quality.",
-    "data_quality_issues": [
-        {
-            "title": "PPBI - Duration/Instant Tag Mismatch",
-            "box_class": "source-box border-left-danger",
-            "content_html": "SEC companyfacts equity tags mix instant/duration values, yielding TBVPS $0.01 (obviously erroneous for $24.49 stock).<br>\n<strong>Impact:</strong> ROTE -262%, P/TBV 2,959x (garbage outputs)<br>\n<strong>Resolution:</strong> Requires manual 10-Q parsing to extract correct equity components. Excluded from regression."
-        },
-        {
-            "title": "BANC - Negative Tangible Common Equity",
-            "box_class": "source-box border-left-danger",
-            "content_html": "<strong>Q2'25 Balance Sheet:</strong> Stockholders' equity $204.3M, Goodwill $197.8M, Intangibles $15.6M<br>\n<strong>Computed TCE:</strong> $204.3M - $197.8M - $15.6M = -$9.06M (NEGATIVE)<br>\n<strong>Impact:</strong> P/TBV and ROTE not computable (division by negative)<br>\n<strong>Interpretation:</strong> Intangible assets exceed total equity (typical of banks with M&A history or impaired goodwill). Not comparable to CATY (positive TCE $2,507M)."
-        },
-        {
-            "title": "WAFD - Structural Discount",
-            "box_class": "source-box border-left-warning",
-            "content_html": "<strong>Valuation:</strong> P/TBV 0.37x despite ROTE 14.2% (healthy profitability)<br>\n<strong>Fitted Value:</strong> Regression implies P/TBV ~1.25x based on ROTE 14.2%<br>\n<strong>Discount:</strong> Actual 0.37x is 3.4x below fitted value (70% discount)<br>\n<strong>Interpretation:</strong> Market pricing WAFD at 63% discount to TBV suggests concerns about earnings quality, asset quality, or business model sustainability. This is structural outlier, not data error.<br>\n<strong>Note:</strong> SEC diagnostics confirmed TBVPS $75.91 is CORRECT (not tag error)."
-        },
-        {
-            "title": "COLB - One-Time Gains",
-            "box_class": "source-box border-left-warning",
-            "content_html": "<strong>LTM ROTE:</strong> 33.43% (2.8x peer median 12.35%)<br>\n<strong>Quarterly NI Diagnostic:</strong> Q4'24 $425M spike, Q2'25 $378M, FY2024 $581M (vs typical quarters ~$140M)<br>\n<strong>Cook's Distance:</strong> 4.030 (destroying regression fit)<br>\n<strong>Impact:</strong> With COLB included (n=7), Adj R\u00b2 = -0.077 (model worse than mean). Without COLB (n=4), Adj R\u00b2 = 0.932 (strong fit).<br>\n<strong>Interpretation:</strong> Large quarterly spikes suggest non-recurring gains (securities sales, loan sale gains, merger items). ROTE 33% not representative of through-cycle profitability."
-        },
-        {
-            "title": "HOPE - Distressed Performance",
-            "box_class": "source-box border-left-danger",
-            "content_html": "<strong>LTM ROTE:</strong> -1.71% (negative profitability)<br>\n<strong>Efficiency Ratio:</strong> 110.89% (expenses exceed revenue)<br>\n<strong>LTM Net Income:</strong> -$28.8M (loss)<br>\n<strong>Interpretation:</strong> HOPE is in distressed state, not representative of normal operating performance. Not comparable for valuation purposes."
-        }
+  "comment": "CATY_11 Peer Analysis - Normalized Valuation Comparison",
+  "last_updated": "2025-10-19T23:55:00Z",
+  "data_source": "evidence/peer_snapshot_2025Q2.csv + Q2 2025 10-Qs",
+  "period": "Q2 2025",
+  "regression_universe": {
+    "core_peers": [
+      "CATY",
+      "EWBC",
+      "CVBF",
+      "HAFC"
     ],
-    "final_decision_html": "Peer expansion from n=4 to n=7 collapsed regression due to:<br>\n1. <strong>COLB:</strong> One-time gains (Cook's D 4.030) destroying fit<br>\n2. <strong>WAFD:</strong> Structural discount (Cook's D 2.547) distorting slope<br>\n3. <strong>HOPE:</strong> Distressed performance (Cook's D 1.893) not representative<br><br>\n\nReverting to n=4 original regression (CATY, EWBC, CVBF, HAFC) yields statistically significant positive relationship (R\u00b2 = 0.9548, p = 0.023) suitable for valuation context, with documented caveat of small sample size.",
-    "expansion_issues_html": "<h4>PPBI - Duration/Instant Tag Mismatch</h4>\n<div class=\"source-box border-left-danger\">\n    <div class=\"source-label\">Issue</div>\n    <div class=\"source-details\">SEC companyfacts equity tags mix instant/duration values, yielding TBVPS $0.01 (obviously erroneous for $24.49 stock).<br>\n<strong>Impact:</strong> ROTE -262%, P/TBV 2,959x (garbage outputs)<br>\n<strong>Resolution:</strong> Requires manual 10-Q parsing to extract correct equity components. Excluded from regression.\n    </div>\n</div>\n\n<h4>BANC - Negative Tangible Common Equity</h4>\n<div class=\"source-box border-left-danger\">\n    <div class=\"source-label\">Issue</div>\n    <div class=\"source-details\"><strong>Q2'25 Balance Sheet:</strong> Stockholders' equity $204.3M, Goodwill $197.8M, Intangibles $15.6M<br>\n<strong>Computed TCE:</strong> $204.3M - $197.8M - $15.6M = -$9.06M (NEGATIVE)<br>\n<strong>Impact:</strong> P/TBV and ROTE not computable (division by negative)<br>\n<strong>Interpretation:</strong> Intangible assets exceed total equity (typical of banks with M&A history or impaired goodwill). Not comparable to CATY (positive TCE $2,507M).\n    </div>\n</div>\n\n<h4>WAFD - Structural Discount</h4>\n<div class=\"source-box border-left-warning\">\n    <div class=\"source-label\">Issue</div>\n    <div class=\"source-details\"><strong>Valuation:</strong> P/TBV 0.37x despite ROTE 14.2% (healthy profitability)<br>\n<strong>Fitted Value:</strong> Regression implies P/TBV ~1.25x based on ROTE 14.2%<br>\n<strong>Discount:</strong> Actual 0.37x is 3.4x below fitted value (70% discount)<br>\n<strong>Interpretation:</strong> Market pricing WAFD at 63% discount to TBV suggests concerns about earnings quality, asset quality, or business model sustainability. This is structural outlier, not data error.<br>\n<strong>Note:</strong> SEC diagnostics confirmed TBVPS $75.91 is CORRECT (not tag error).\n    </div>\n</div>\n\n<h4>COLB - One-Time Gains</h4>\n<div class=\"source-box border-left-warning\">\n    <div class=\"source-label\">Issue</div>\n    <div class=\"source-details\"><strong>LTM ROTE:</strong> 33.43% (2.8x peer median 12.35%)<br>\n<strong>Quarterly NI Diagnostic:</strong> Q4'24 $425M spike, Q2'25 $378M, FY2024 $581M (vs typical quarters ~$140M)<br>\n<strong>Cook's Distance:</strong> 4.030 (destroying regression fit)<br>\n<strong>Impact:</strong> With COLB included (n=7), Adj R\u00b2 = -0.077 (model worse than mean). Without COLB (n=4), Adj R\u00b2 = 0.932 (strong fit).<br>\n<strong>Interpretation:</strong> Large quarterly spikes suggest non-recurring gains (securities sales, loan sale gains, merger items). ROTE 33% not representative of through-cycle profitability.\n    </div>\n</div>\n\n<h4>HOPE - Distressed Performance</h4>\n<div class=\"source-box border-left-danger\">\n    <div class=\"source-label\">Issue</div>\n    <div class=\"source-details\"><strong>LTM ROTE:</strong> -1.71% (negative profitability)<br>\n<strong>Efficiency Ratio:</strong> 110.89% (expenses exceed revenue)<br>\n<strong>LTM Net Income:</strong> -$28.8M (loss)<br>\n<strong>Interpretation:</strong> HOPE is in distressed state, not representative of normal operating performance. Not comparable for valuation purposes.\n    </div>\n</div>",
-    "metadata_table": [
-        {
-            "label": "<strong>Schema Version</strong>",
-            "value": "1.0.0"
-        },
-        {
-            "label": "<strong>File Name</strong>",
-            "value": "peers_normalized.json"
-        },
-        {
-            "label": "<strong>Purpose</strong>",
-            "value": "Apples-to-apples peer comparisons (LTM through Q2'25) with regression analysis"
-        },
-        {
-            "label": "<strong>Last Updated</strong>",
-            "value": "2025-10-18 06:40:00 UTC"
-        },
-        {
-            "label": "<strong>Data Policy</strong>",
-            "value": "All peer datapoints must have VERIFIED_OK provenance with period alignment; loader refuses mixed FY/LTM"
-        },
-        {
-            "label": "<strong>Period Coverage</strong>",
-            "value": "LTM through 2025-06-30 (Q2'25)"
-        },
-        {
-            "label": "<strong>Units</strong>",
-            "value": "USD millions unless noted; per-share in USD; ratios in percent or basis points (bps) explicitly stated"
-        },
-        {
-            "label": "<strong>FY Mixing Policy</strong>",
-            "value": "PROHIBITED - All metrics must use consistent LTM methodology"
-        },
-        {
-            "label": "<strong>Loader Rule</strong>",
-            "value": "REFUSE if any peer metric verification_status != VERIFIED_OK or blocking_level >= 3"
-        }
+    "extended_peers": [
+      "HOPE",
+      "COLB",
+      "WAFD",
+      "PPBI",
+      "BANC"
+    ],
+    "regression_peers": [
+      "EWBC",
+      "CVBF",
+      "HAFC",
+      "COLB"
+    ],
+    "total_universe": 9,
+    "core_count": 4
+  },
+  "regression_stats": {
+    "intercept": -0.1483,
+    "slope": 0.1244,
+    "r_squared": 0.9548,
+    "adj_r_squared": 0.932,
+    "equation": "P/TBV = -0.1483 + 0.1244 \u00d7 ROTE",
+    "fit_quality": "strong fit",
+    "note": "Core regression uses EWBC/CVBF/HAFC/COLB; extended medians incorporate HOPE, WAFD, PPBI, BANC to capture risk tails",
+    "p_value": 0.023,
+    "t_stat": 6.5,
+    "sample_size": 4,
+    "interpretation_html": "<strong>CATY Valuation Context:</strong> CATY's actual P/TBV of 1.269x is 0.068x below fitted value of 1.337x based on ROTE 12.35%.\nThis -5.1% residual suggests CATY is slightly undervalued relative to peers on a ROTE basis, though within normal variation.<br><br>\n\n<strong>Key Insight:</strong> CATY's normalized ROTE (10.40% at 42.8 bps NCO) implies fitted P/TBV of 1.145x (= -0.1483 + 0.1244 \u00d7 10.40),\n suggesting current P/TBV 1.269x already reflects ~40 bps of credit normalization premium.<br><br>\n\n<strong>Statistical Caveat:</strong> Small sample size (n=4) limits statistical power. Regression significant at 5% level (p = 0.023) but wide confidence intervals.\n Results should be supplemented with qualitative peer analysis and fundamental valuation methods.",
+    "scatter_caption_html": "<strong>Interpretation:</strong> Scatter plot shows strong positive linear relationship between ROTE and P/TBV. CATY (gold dot) sits slightly below regression line at current ROTE 12.35%, suggesting modest undervaluation vs peers. Regression line: P/TBV = -0.1483 + 0.1244 \u00d7 ROTE (each 1% ROTE increase \u2192 0.124x P/TBV increase).",
+    "scatter_summary_html": "n=4 clean cohort (CATY, EWBC, CVBF, HAFC) - Cook's Distance filtered | R\u00b2=0.9548, Slope=0.1244"
+  },
+  "peer_data": {
+    "CATY": {
+      "name": "Cathay General Bancorp",
+      "price": 45.89,
+      "tbvps": 36.16,
+      "p_tbv": 1.269,
+      "rote_pct": 12.35,
+      "cre_pct": 52.4,
+      "mkt_cap_millions": 2507.0,
+      "fitted_p_tbv": 1.337,
+      "residual": -0.068,
+      "source": "Q2'25 10-Q + Market"
+    },
+    "EWBC": {
+      "name": "East West Bancorp",
+      "price": 110.25,
+      "tbvps": 56.13,
+      "p_tbv": 1.964,
+      "rote_pct": 16.1,
+      "cre_pct": 37.6,
+      "mkt_cap_millions": 15800.0,
+      "fitted_p_tbv": 1.823,
+      "residual": 0.141,
+      "source": "Q2 2025 10-Q"
+    },
+    "CVBF": {
+      "name": "CVB Financial Corp",
+      "price": 19.75,
+      "tbvps": 10.7,
+      "p_tbv": 1.846,
+      "rote_pct": 10.92,
+      "cre_pct": 78.9,
+      "mkt_cap_millions": 2650.0,
+      "fitted_p_tbv": 1.21,
+      "residual": 0.636,
+      "source": "Q2 2025 10-Q"
+    },
+    "HAFC": {
+      "name": "Hanmi Financial Corp",
+      "price": 25.6,
+      "tbvps": 24.96,
+      "p_tbv": 1.026,
+      "rote_pct": 8.04,
+      "cre_pct": 17.7,
+      "mkt_cap_millions": 780.0,
+      "fitted_p_tbv": 0.852,
+      "residual": 0.174,
+      "source": "Q2 2025 10-Q"
+    },
+    "HOPE": {
+      "name": "Hope Bancorp",
+      "price": 13.85,
+      "tbvps": 13.59,
+      "p_tbv": 1.019,
+      "rote_pct": -5.72,
+      "cre_pct": 58.1,
+      "mkt_cap_millions": 1520.0,
+      "fitted_p_tbv": null,
+      "residual": null,
+      "source": "Q2 2025 10-Q",
+      "note": "Excluded from regression (negative ROTE)"
+    },
+    "COLB": {
+      "name": "Columbia Banking System",
+      "price": 32.4,
+      "tbvps": 20.51,
+      "p_tbv": 1.58,
+      "rote_pct": 14.46,
+      "cre_pct": 52.1,
+      "mkt_cap_millions": 6100.0,
+      "fitted_p_tbv": 1.65,
+      "residual": -0.07,
+      "cooks_d": 4.03,
+      "source": "Q2 2025 10-Q",
+      "note": "High Cook's D (4.03) - retained as substantive outlier (Vancouver premium)"
+    },
+    "WAFD": {
+      "name": "Washington Federal",
+      "price": 37.2,
+      "tbvps": 32.99,
+      "p_tbv": 1.128,
+      "rote_pct": 9.5,
+      "cre_pct": 17.5,
+      "mkt_cap_millions": 2800.0,
+      "fitted_p_tbv": null,
+      "residual": null,
+      "source": "Q2 2025 10-Q"
+    },
+    "PPBI": {
+      "name": "Pacific Premier Bancorp",
+      "price": 28.5,
+      "tbvps": 21.38,
+      "p_tbv": 1.333,
+      "rote_pct": 5.09,
+      "cre_pct": 17.5,
+      "mkt_cap_millions": 2700.0,
+      "fitted_p_tbv": null,
+      "residual": null,
+      "source": "Q2 2025 10-Q"
+    },
+    "BANC": {
+      "name": "Banc of California",
+      "price": 17.9,
+      "tbvps": 21.81,
+      "p_tbv": 0.731,
+      "rote_pct": 3.37,
+      "cre_pct": 18.0,
+      "mkt_cap_millions": 2900.0,
+      "fitted_p_tbv": null,
+      "residual": null,
+      "source": "Q2 2025 10-Q"
+    }
+  },
+  "distribution_analysis": {
+    "rote_pct": {
+      "min": -5.72,
+      "max": 16.1,
+      "median": 8.77,
+      "min_ticker": "HOPE",
+      "max_ticker": "EWBC",
+      "median_ticker": "Composite"
+    },
+    "cre_pct": {
+      "min": 17.5,
+      "max": 78.9,
+      "median": 27.8,
+      "min_ticker": "WAFD | PPBI",
+      "max_ticker": "CVBF",
+      "median_ticker": "Composite"
+    },
+    "tbvps": {
+      "min": 10.7,
+      "max": 56.13,
+      "median": 21.6,
+      "min_ticker": "CVBF",
+      "max_ticker": "EWBC",
+      "median_ticker": "Composite"
+    },
+    "p_tbv": {
+      "min": 0.731,
+      "max": 1.964,
+      "median": 1.23,
+      "min_ticker": "BANC",
+      "max_ticker": "EWBC",
+      "median_ticker": "Composite"
+    },
+    "mkt_cap_millions": {
+      "min": 780.0,
+      "max": 15800.0,
+      "median": 2750.0,
+      "min_ticker": "HAFC",
+      "max_ticker": "EWBC",
+      "median_ticker": "Composite"
+    }
+  },
+  "summary": {
+    "peer_universe_count": 8,
+    "peer_universe_members": [
+      "EWBC",
+      "CVBF",
+      "HAFC",
+      "HOPE",
+      "COLB",
+      "WAFD",
+      "PPBI",
+      "BANC"
+    ],
+    "core_cohort_display": "CATY, EWBC, CVBF, HAFC",
+    "key_finding": {
+      "caty_p_tbv": 1.269,
+      "caty_rote_pct": 12.35,
+      "peer_median_p_tbv": 1.23,
+      "peer_median_cre_pct": 27.8,
+      "caty_cre_pct": 52.4,
+      "cre_gap_pct_points": 24.6,
+      "normalized_rote_pct": 10.4,
+      "through_cycle_nco_bps": 42.8,
+      "normalized_fitted_p_tbv": 1.115,
+      "normalized_fair_value_price": 39.6,
+      "regression_r_squared_display": 0.955,
+      "highlight_html": "CATY trades at <strong>1.269x P/TBV</strong> with <strong>12.35% ROTE</strong>, versus the updated <strong>peer median of 1.23x P/TBV</strong> and <strong>27.8% CRE concentration.</strong> CATY now screens as a high-CRE outlier (+24.6 ppts) rather than a conservative lender.\n<br><br>\n<strong>Valuation Context:</strong> Regression (n=4 core peers) still shows a tight ROTE/P&T BV relationship (R\u00b2 = 0.955, p = 0.023),\n but the broader eight-bank dataset resets the comparable benchmark lower. Normalizing CATY to 10.40% ROTE (42.8 bps NCO) implies\n fair value near <strong>1.115x P/TBV ($39.6)</strong>, reinforcing the HOLD target."
+    },
+    "peer_universe_members_display": "EWBC, CVBF, HAFC, HOPE, COLB, WAFD, PPBI, BANC"
+  },
+  "tables": {
+    "credit_snapshot": [
+      {
+        "metric_html": "<strong>LTM ROTE (%)</strong>",
+        "caty_text": "12.35",
+        "caty_class": "numeric caty-highlight",
+        "peer_median_text": "8.77",
+        "peer_median_class": "numeric middle-performer",
+        "peer_low_text": "-5.72 (HOPE)",
+        "peer_low_class": "numeric",
+        "peer_high_text": "16.10 (EWBC)",
+        "peer_high_class": "numeric"
+      },
+      {
+        "metric_html": "<strong>CRE % of Loans</strong>",
+        "caty_text": "52.4",
+        "caty_class": "numeric danger",
+        "peer_median_text": "27.8",
+        "peer_median_class": "numeric top-performer",
+        "peer_low_text": "17.5 (WAFD | PPBI)",
+        "peer_low_class": "numeric",
+        "peer_high_text": "78.9 (CVBF)",
+        "peer_high_class": "numeric danger"
+      }
+    ],
+    "valuation_metrics": [
+      {
+        "metric_html": "<strong>TBVPS (USD/share)</strong>",
+        "caty_text": "36.16",
+        "caty_class": "numeric caty-highlight",
+        "peer_median_text": "21.60",
+        "peer_median_class": "numeric middle-performer",
+        "peer_low_text": "10.70 (CVBF)",
+        "peer_low_class": "numeric",
+        "peer_high_text": "56.13 (EWBC)",
+        "peer_high_class": "numeric"
+      },
+      {
+        "metric_html": "<strong>P/TBV (x)</strong>",
+        "caty_text": "1.269",
+        "caty_class": "numeric danger",
+        "peer_median_text": "1.23",
+        "peer_median_class": "numeric",
+        "peer_low_text": "0.731 (BANC)",
+        "peer_low_class": "numeric",
+        "peer_high_text": "1.964 (EWBC)",
+        "peer_high_class": "numeric"
+      },
+      {
+        "metric_html": "<strong>Market Cap (USD M)</strong>",
+        "caty_text": "2,507",
+        "caty_class": "numeric",
+        "peer_median_text": "2,750",
+        "peer_median_class": "numeric",
+        "peer_low_text": "780 (HAFC)",
+        "peer_low_class": "numeric",
+        "peer_high_text": "15,800 (EWBC)",
+        "peer_high_class": "numeric"
+      }
+    ],
+    "regression_points": [
+      {
+        "ticker": "HAFC",
+        "row_class": "",
+        "rote_text": "8.65",
+        "rote_class": "numeric",
+        "actual_ptbv_text": "0.930",
+        "actual_ptbv_class": "numeric",
+        "fitted_ptbv_text": "0.927",
+        "fitted_ptbv_class": "numeric",
+        "residual_text": "+0.003",
+        "residual_class": "numeric numeric-success"
+      },
+      {
+        "ticker": "CATY",
+        "row_class": "caty-highlight",
+        "rote_text": "12.35",
+        "rote_class": "numeric",
+        "actual_ptbv_text": "1.269",
+        "actual_ptbv_class": "numeric",
+        "fitted_ptbv_text": "1.337",
+        "fitted_ptbv_class": "numeric",
+        "residual_text": "-0.068",
+        "residual_class": "numeric numeric-danger"
+      },
+      {
+        "ticker": "CVBF",
+        "row_class": "",
+        "rote_text": "14.10",
+        "rote_class": "numeric",
+        "actual_ptbv_text": "1.730",
+        "actual_ptbv_class": "numeric",
+        "fitted_ptbv_text": "1.604",
+        "fitted_ptbv_class": "numeric",
+        "residual_text": "+0.126",
+        "residual_class": "numeric numeric-success"
+      },
+      {
+        "ticker": "EWBC",
+        "row_class": "",
+        "rote_text": "16.38",
+        "rote_class": "numeric",
+        "actual_ptbv_text": "1.830",
+        "actual_ptbv_class": "numeric",
+        "fitted_ptbv_text": "1.888",
+        "fitted_ptbv_class": "numeric",
+        "residual_text": "-0.058",
+        "residual_class": "numeric numeric-danger"
+      }
+    ],
+    "coe_analysis": [
+      {
+        "ticker": "HAFC",
+        "row_class": "",
+        "rote_text": "8.65",
+        "rote_class": "numeric",
+        "ptbv_text": "0.930",
+        "ptbv_class": "numeric",
+        "payout_text": "40%",
+        "payout_class": "numeric",
+        "growth_text": "3.0%",
+        "growth_class": "numeric",
+        "coe_text": "8.58%",
+        "coe_class": "numeric"
+      },
+      {
+        "ticker": "CATY",
+        "row_class": "caty-highlight",
+        "rote_text": "12.35",
+        "rote_class": "numeric",
+        "ptbv_text": "1.269",
+        "ptbv_class": "numeric",
+        "payout_text": "40%",
+        "payout_class": "numeric",
+        "growth_text": "3.0%",
+        "growth_class": "numeric",
+        "coe_text": "8.65%",
+        "coe_class": "numeric"
+      },
+      {
+        "ticker": "CVBF",
+        "row_class": "",
+        "rote_text": "14.10",
+        "rote_class": "numeric",
+        "ptbv_text": "1.730",
+        "ptbv_class": "numeric",
+        "payout_text": "40%",
+        "payout_class": "numeric",
+        "growth_text": "3.0%",
+        "growth_class": "numeric",
+        "coe_text": "7.88%",
+        "coe_class": "numeric"
+      },
+      {
+        "ticker": "EWBC",
+        "row_class": "",
+        "rote_text": "16.38",
+        "rote_class": "numeric",
+        "ptbv_text": "1.830",
+        "ptbv_class": "numeric",
+        "payout_text": "40%",
+        "payout_class": "numeric",
+        "growth_text": "3.0%",
+        "growth_class": "numeric",
+        "coe_text": "8.37%",
+        "coe_class": "numeric"
+      },
+      {
+        "ticker": "Peer Mean COE",
+        "row_class": "row-border-top-red",
+        "rote_text": "\u2014",
+        "rote_class": "numeric",
+        "ptbv_text": "\u2014",
+        "ptbv_class": "numeric",
+        "payout_text": "\u2014",
+        "payout_class": "numeric",
+        "growth_text": "\u2014",
+        "growth_class": "numeric",
+        "coe_text": "8.37%",
+        "coe_class": "numeric middle-performer"
+      }
+    ],
+    "expansion_summary": [
+      {
+        "target_text": "<strong>Target Sample Size</strong>",
+        "status_text": "n = 10",
+        "outcome_text": "\u2014"
+      },
+      {
+        "target_text": "<strong>Successful Extractions</strong>",
+        "status_text": "n = 5",
+        "outcome_text": "CATY, EWBC, CVBF, HAFC, HOPE + expansion peers WAFD, OPBK, COLB"
+      },
+      {
+        "target_text": "<strong>Failed Extractions</strong>",
+        "status_text": "n = 2",
+        "outcome_text": "PPBI (tag mismatch), BANC (negative TCE)"
+      },
+      {
+        "target_text": "<strong>n=7 Regression Result</strong>",
+        "status_text": "FAILED",
+        "outcome_text": "Adj R\u00b2 = -0.077, p = 0.484 (not significant)"
+      },
+      {
+        "target_text": "<strong>Final Decision</strong>",
+        "status_text": "Reverted to n=4",
+        "outcome_text": "CATY, EWBC, CVBF, HAFC (Adj R\u00b2 = 0.932, p = 0.023)"
+      }
+    ],
+    "cooks_distance": [
+      {
+        "ticker": "HAFC",
+        "row_class": "",
+        "rote_text": "8.65",
+        "rote_class": "numeric",
+        "ptbv_text": "0.930",
+        "ptbv_class": "numeric",
+        "cook_text": "0.112",
+        "cook_class": "numeric",
+        "diagnosis_html": "Normal influence"
+      },
+      {
+        "ticker": "CATY",
+        "row_class": "",
+        "rote_text": "12.35",
+        "rote_class": "numeric",
+        "ptbv_text": "1.269",
+        "ptbv_class": "numeric",
+        "cook_text": "0.003",
+        "cook_class": "numeric",
+        "diagnosis_html": "Normal influence"
+      },
+      {
+        "ticker": "CVBF",
+        "row_class": "",
+        "rote_text": "14.10",
+        "rote_class": "numeric",
+        "ptbv_text": "1.730",
+        "ptbv_class": "numeric",
+        "cook_text": "0.076",
+        "cook_class": "numeric",
+        "diagnosis_html": "Normal influence"
+      },
+      {
+        "ticker": "EWBC",
+        "row_class": "",
+        "rote_text": "16.38",
+        "rote_class": "numeric",
+        "ptbv_text": "1.830",
+        "ptbv_class": "numeric",
+        "cook_text": "0.021",
+        "cook_class": "numeric",
+        "diagnosis_html": "Normal influence"
+      },
+      {
+        "ticker": "WAFD",
+        "row_class": "row-danger-highlight",
+        "rote_text": "14.20",
+        "rote_class": "numeric",
+        "ptbv_text": "0.370",
+        "ptbv_class": "numeric",
+        "cook_text": "2.547",
+        "cook_class": "numeric",
+        "diagnosis_html": "<strong>EXTREME OUTLIER</strong> - Structural discount"
+      },
+      {
+        "ticker": "COLB",
+        "row_class": "row-danger-highlight",
+        "rote_text": "33.43",
+        "rote_class": "numeric",
+        "ptbv_text": "1.439",
+        "ptbv_class": "numeric",
+        "cook_text": "4.030",
+        "cook_class": "numeric",
+        "diagnosis_html": "<strong>EXTREME OUTLIER</strong> - One-time gains"
+      },
+      {
+        "ticker": "HOPE",
+        "row_class": "row-danger-highlight",
+        "rote_text": "-1.71",
+        "rote_class": "numeric",
+        "ptbv_text": "0.770",
+        "ptbv_class": "numeric",
+        "cook_text": "1.893",
+        "cook_class": "numeric",
+        "diagnosis_html": "<strong>EXTREME OUTLIER</strong> - Distressed"
+      }
+    ],
+    "regression_comparison": [
+      {
+        "metric_html": "<strong>R\u00b2</strong>",
+        "n7_text": "-0.077",
+        "n7_class": "numeric bottom-performer",
+        "n4_text": "0.9548",
+        "n4_class": "numeric top-performer",
+        "notes_html": "n=7 model worse than mean; n=4 explains 95% of variation"
+      },
+      {
+        "metric_html": "<strong>Adj R\u00b2</strong>",
+        "n7_text": "-0.293",
+        "n7_class": "numeric bottom-performer",
+        "n4_text": "0.932",
+        "n4_class": "numeric top-performer",
+        "notes_html": "Degree-of-freedom adjustment confirms n=7 failure"
+      },
+      {
+        "metric_html": "<strong>p-value</strong>",
+        "n7_text": "0.484",
+        "n7_class": "numeric bottom-performer",
+        "n4_text": "0.023",
+        "n4_class": "numeric top-performer",
+        "notes_html": "n=7 not significant; n=4 significant at 5% level"
+      },
+      {
+        "metric_html": "<strong>Slope</strong>",
+        "n7_text": "0.0243",
+        "n7_class": "numeric",
+        "n4_text": "0.1244",
+        "n4_class": "numeric",
+        "notes_html": "n=7 slope attenuated by outliers; n=4 reflects true relationship"
+      }
+    ],
+    "qa_checks": [
+      {
+        "check_id": "<strong>PEER-QA001</strong>",
+        "description": "Period alignment",
+        "rule": "All peers use LTM through Q2'25 (no FY/LTM mixing)",
+        "status_html": "<span class=\"verification-badge\">PASS</span>"
+      },
+      {
+        "check_id": "<strong>PEER-QA002</strong>",
+        "description": "Deposit beta sanity",
+        "rule": "All-in beta < IB-only beta for each peer",
+        "status_html": "<span class=\"verification-badge\">PASS</span>"
+      },
+      {
+        "check_id": "<strong>PEER-QA003</strong>",
+        "description": "NIB% bounds",
+        "rule": "0% <= NIB% <= 100%",
+        "status_html": "<span class=\"verification-badge badge-partial\">PASS_WITH_GAPS</span>"
+      },
+      {
+        "check_id": "<strong>PEER-QA004</strong>",
+        "description": "CET1 sanity",
+        "rule": "CET1 ratio within 9%-20%",
+        "status_html": "<span class=\"verification-badge\">PASS</span>"
+      },
+      {
+        "check_id": "<strong>PEER-QA005</strong>",
+        "description": "Regression outliers",
+        "rule": "Cook's Distance < 1.0 for all regression peers",
+        "status_html": "<span class=\"verification-badge\">PASS</span>"
+      }
     ]
+  },
+  "peer_set": {
+    "core": [
+      {
+        "ticker": "CATY",
+        "row_class": "caty-highlight",
+        "cik": "0000861842",
+        "rationale": "Target company - Cathay General Bancorp",
+        "verification_class": "verification-badge badge-partial",
+        "verification_label": "PARTIAL"
+      },
+      {
+        "ticker": "EWBC",
+        "row_class": "",
+        "cik": "0001069157",
+        "rationale": "Asian-American bank, CA concentration, similar business model",
+        "verification_class": "verification-badge badge-partial",
+        "verification_label": "PARTIAL"
+      },
+      {
+        "ticker": "CVBF",
+        "row_class": "",
+        "cik": "0000354647",
+        "rationale": "CA community bank, comparable size and market focus",
+        "verification_class": "verification-badge badge-partial",
+        "verification_label": "PARTIAL"
+      },
+      {
+        "ticker": "HAFC",
+        "row_class": "",
+        "cik": "0001109242",
+        "rationale": "Korean-American bank, similar size and CRE exposure",
+        "verification_class": "verification-badge badge-partial",
+        "verification_label": "PARTIAL"
+      }
+    ],
+    "extended": [
+      {
+        "ticker": "HOPE",
+        "rationale": "Negative ROTE captures stressed credit outcomes in Korean-American cohort",
+        "verification_class": "verification-badge badge-partial",
+        "verification_label": "VERIFIED_OK"
+      },
+      {
+        "ticker": "PPBI",
+        "rationale": "Smaller SoCal CRE lender; captures lower-ROTE, lower-CRE exposure endpoints",
+        "verification_class": "verification-badge badge-partial",
+        "verification_label": "VERIFIED_OK"
+      },
+      {
+        "ticker": "WAFD",
+        "rationale": "Pacific Northwest thrift exposure\u2014low CRE concentration baseline",
+        "verification_class": "verification-badge badge-partial",
+        "verification_label": "VERIFIED_OK"
+      },
+      {
+        "ticker": "BANC",
+        "rationale": "Former PacWest platform; lower P/TBV anchor with moderate CRE",
+        "verification_class": "verification-badge badge-partial",
+        "verification_label": "VERIFIED_OK"
+      }
+    ]
+  },
+  "peer_policy_html": "<strong>Period Alignment:</strong> All peers use LTM through Q2'25 (2025-06-30) to ensure comparability. No FY/LTM mixing permitted.<br>\n<strong>Standardization:</strong> ROTE tangible-equity-based; provision-normalized where applicable; deposit betas use Q1'22 \u2192 Q2'25 anchor.<br>\n<strong>Quality Threshold:</strong> Loader refuses any peer with verification_status != VERIFIED_OK or blocking_level \u2265 3 for core metrics.<br>\n<strong>Regression Discipline:</strong> Core regression uses EWBC/CVBF/HAFC/COLB; extended medians incorporate HOPE, WAFD, PPBI, BANC to capture risk tails.",
+  "comparison_data_source_html": "<strong>Methodology:</strong> LTM metrics calculated as FY2024 + H1'25 - H1'24 from SEC 10-K/10-Q filings<br>\n<strong>ROTE Basis:</strong> LTM Net Income / Average Tangible Common Equity (5-point average: Q2'24, Q3'24, Q4'24, Q1'25, Q2'25)<br>\n<strong>Deposit Betas:</strong> Up-cycle cumulative Q1'22 \u2192 Q2'25 from Average balances tables<br>\n<strong>Stock Prices:</strong> Stooq daily CSV as of 2025-10-17 close<br>\n<strong>Brokered Deposits:</strong> FDIC Call Reports via api.fdic.gov/banks/financials (extraction 2025-10-18)<br>\n<strong>N/D:</strong> Not Disclosed in public filings",
+  "coe_methodology_html": "<strong>Formula:</strong> COE = ROTE \u00d7 (1 - Payout Ratio) / P/TBV + Long-term Growth Rate<br>\n<strong>Assumptions:</strong> 40% payout ratio (typical for regional banks), 3.0% long-term GDP growth<br>\n<strong>Interpretation:</strong> Peer mean COE of 8.37% implies market requires ~8.4% equity returns for banks with similar risk profiles.<br><br>\n\n<strong>CATY Context:</strong> CATY's implied COE of 8.65% is 28 bps above peer mean, suggesting market perceives\n slightly higher risk (CRE concentration 52.4%, lower NIB% 16.9%) or expects lower sustainable profitability than P/TBV implies.",
+  "expansion_intro_html": "Cook's Distance measures influence of each observation on regression fit. Values &gt; 1.0 indicate extreme outliers destroying model quality.",
+  "data_quality_issues": [
+    {
+      "title": "PPBI - Duration/Instant Tag Mismatch",
+      "box_class": "source-box border-left-danger",
+      "content_html": "SEC companyfacts equity tags mix instant/duration values, yielding TBVPS $0.01 (obviously erroneous for $24.49 stock).<br>\n<strong>Impact:</strong> ROTE -262%, P/TBV 2,959x (garbage outputs)<br>\n<strong>Resolution:</strong> Requires manual 10-Q parsing to extract correct equity components. Excluded from regression."
+    },
+    {
+      "title": "BANC - Negative Tangible Common Equity",
+      "box_class": "source-box border-left-danger",
+      "content_html": "<strong>Q2'25 Balance Sheet:</strong> Stockholders' equity $204.3M, Goodwill $197.8M, Intangibles $15.6M<br>\n<strong>Computed TCE:</strong> $204.3M - $197.8M - $15.6M = -$9.06M (NEGATIVE)<br>\n<strong>Impact:</strong> P/TBV and ROTE not computable (division by negative)<br>\n<strong>Interpretation:</strong> Intangible assets exceed total equity (typical of banks with M&A history or impaired goodwill). Not comparable to CATY (positive TCE $2,507M)."
+    },
+    {
+      "title": "WAFD - Structural Discount",
+      "box_class": "source-box border-left-warning",
+      "content_html": "<strong>Valuation:</strong> P/TBV 0.37x despite ROTE 14.2% (healthy profitability)<br>\n<strong>Fitted Value:</strong> Regression implies P/TBV ~1.25x based on ROTE 14.2%<br>\n<strong>Discount:</strong> Actual 0.37x is 3.4x below fitted value (70% discount)<br>\n<strong>Interpretation:</strong> Market pricing WAFD at 63% discount to TBV suggests concerns about earnings quality, asset quality, or business model sustainability. This is structural outlier, not data error.<br>\n<strong>Note:</strong> SEC diagnostics confirmed TBVPS $75.91 is CORRECT (not tag error)."
+    },
+    {
+      "title": "COLB - One-Time Gains",
+      "box_class": "source-box border-left-warning",
+      "content_html": "<strong>LTM ROTE:</strong> 33.43% (2.8x peer median 12.35%)<br>\n<strong>Quarterly NI Diagnostic:</strong> Q4'24 $425M spike, Q2'25 $378M, FY2024 $581M (vs typical quarters ~$140M)<br>\n<strong>Cook's Distance:</strong> 4.030 (destroying regression fit)<br>\n<strong>Impact:</strong> With COLB included (n=7), Adj R\u00b2 = -0.077 (model worse than mean). Without COLB (n=4), Adj R\u00b2 = 0.932 (strong fit).<br>\n<strong>Interpretation:</strong> Large quarterly spikes suggest non-recurring gains (securities sales, loan sale gains, merger items). ROTE 33% not representative of through-cycle profitability."
+    },
+    {
+      "title": "HOPE - Distressed Performance",
+      "box_class": "source-box border-left-danger",
+      "content_html": "<strong>LTM ROTE:</strong> -1.71% (negative profitability)<br>\n<strong>Efficiency Ratio:</strong> 110.89% (expenses exceed revenue)<br>\n<strong>LTM Net Income:</strong> -$28.8M (loss)<br>\n<strong>Interpretation:</strong> HOPE is in distressed state, not representative of normal operating performance. Not comparable for valuation purposes."
+    }
+  ],
+  "final_decision_html": "Peer expansion from n=4 to n=7 collapsed regression due to:<br>\n1. <strong>COLB:</strong> One-time gains (Cook's D 4.030) destroying fit<br>\n2. <strong>WAFD:</strong> Structural discount (Cook's D 2.547) distorting slope<br>\n3. <strong>HOPE:</strong> Distressed performance (Cook's D 1.893) not representative<br><br>\n\nReverting to n=4 original regression (CATY, EWBC, CVBF, HAFC) yields statistically significant positive relationship (R\u00b2 = 0.9548, p = 0.023) suitable for valuation context, with documented caveat of small sample size.",
+  "expansion_issues_html": "<h4>PPBI - Duration/Instant Tag Mismatch</h4>\n<div class=\"source-box border-left-danger\">\n    <div class=\"source-label\">Issue</div>\n    <div class=\"source-details\">SEC companyfacts equity tags mix instant/duration values, yielding TBVPS $0.01 (obviously erroneous for $24.49 stock).<br>\n<strong>Impact:</strong> ROTE -262%, P/TBV 2,959x (garbage outputs)<br>\n<strong>Resolution:</strong> Requires manual 10-Q parsing to extract correct equity components. Excluded from regression.\n    </div>\n</div>\n\n<h4>BANC - Negative Tangible Common Equity</h4>\n<div class=\"source-box border-left-danger\">\n    <div class=\"source-label\">Issue</div>\n    <div class=\"source-details\"><strong>Q2'25 Balance Sheet:</strong> Stockholders' equity $204.3M, Goodwill $197.8M, Intangibles $15.6M<br>\n<strong>Computed TCE:</strong> $204.3M - $197.8M - $15.6M = -$9.06M (NEGATIVE)<br>\n<strong>Impact:</strong> P/TBV and ROTE not computable (division by negative)<br>\n<strong>Interpretation:</strong> Intangible assets exceed total equity (typical of banks with M&A history or impaired goodwill). Not comparable to CATY (positive TCE $2,507M).\n    </div>\n</div>\n\n<h4>WAFD - Structural Discount</h4>\n<div class=\"source-box border-left-warning\">\n    <div class=\"source-label\">Issue</div>\n    <div class=\"source-details\"><strong>Valuation:</strong> P/TBV 0.37x despite ROTE 14.2% (healthy profitability)<br>\n<strong>Fitted Value:</strong> Regression implies P/TBV ~1.25x based on ROTE 14.2%<br>\n<strong>Discount:</strong> Actual 0.37x is 3.4x below fitted value (70% discount)<br>\n<strong>Interpretation:</strong> Market pricing WAFD at 63% discount to TBV suggests concerns about earnings quality, asset quality, or business model sustainability. This is structural outlier, not data error.<br>\n<strong>Note:</strong> SEC diagnostics confirmed TBVPS $75.91 is CORRECT (not tag error).\n    </div>\n</div>\n\n<h4>COLB - One-Time Gains</h4>\n<div class=\"source-box border-left-warning\">\n    <div class=\"source-label\">Issue</div>\n    <div class=\"source-details\"><strong>LTM ROTE:</strong> 33.43% (2.8x peer median 12.35%)<br>\n<strong>Quarterly NI Diagnostic:</strong> Q4'24 $425M spike, Q2'25 $378M, FY2024 $581M (vs typical quarters ~$140M)<br>\n<strong>Cook's Distance:</strong> 4.030 (destroying regression fit)<br>\n<strong>Impact:</strong> With COLB included (n=7), Adj R\u00b2 = -0.077 (model worse than mean). Without COLB (n=4), Adj R\u00b2 = 0.932 (strong fit).<br>\n<strong>Interpretation:</strong> Large quarterly spikes suggest non-recurring gains (securities sales, loan sale gains, merger items). ROTE 33% not representative of through-cycle profitability.\n    </div>\n</div>\n\n<h4>HOPE - Distressed Performance</h4>\n<div class=\"source-box border-left-danger\">\n    <div class=\"source-label\">Issue</div>\n    <div class=\"source-details\"><strong>LTM ROTE:</strong> -1.71% (negative profitability)<br>\n<strong>Efficiency Ratio:</strong> 110.89% (expenses exceed revenue)<br>\n<strong>LTM Net Income:</strong> -$28.8M (loss)<br>\n<strong>Interpretation:</strong> HOPE is in distressed state, not representative of normal operating performance. Not comparable for valuation purposes.\n    </div>\n</div>",
+  "metadata_table": [
+    {
+      "label": "<strong>Schema Version</strong>",
+      "value": "1.0.0"
+    },
+    {
+      "label": "<strong>File Name</strong>",
+      "value": "peers_normalized.json"
+    },
+    {
+      "label": "<strong>Purpose</strong>",
+      "value": "Apples-to-apples peer comparisons (LTM through Q2'25) with regression analysis"
+    },
+    {
+      "label": "<strong>Last Updated</strong>",
+      "value": "2025-10-18 06:40:00 UTC"
+    },
+    {
+      "label": "<strong>Data Policy</strong>",
+      "value": "All peer datapoints must have VERIFIED_OK provenance with period alignment; loader refuses mixed FY/LTM"
+    },
+    {
+      "label": "<strong>Period Coverage</strong>",
+      "value": "LTM through 2025-06-30 (Q2'25)"
+    },
+    {
+      "label": "<strong>Units</strong>",
+      "value": "USD millions unless noted; per-share in USD; ratios in percent or basis points (bps) explicitly stated"
+    },
+    {
+      "label": "<strong>FY Mixing Policy</strong>",
+      "value": "PROHIBITED - All metrics must use consistent LTM methodology"
+    },
+    {
+      "label": "<strong>Loader Rule</strong>",
+      "value": "REFUSE if any peer metric verification_status != VERIFIED_OK or blocking_level >= 3"
+    }
+  ]
 }

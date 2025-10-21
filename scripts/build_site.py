@@ -674,6 +674,194 @@ def render_positive_catalysts(context: Dict[str, Any]) -> str:
     return "\n".join(lines)
 
 
+def render_peer_positioning(context: Dict[str, Any]) -> str:
+    peers_json = context.get("peers") or {}
+
+    peer_records: list[dict[str, Any]] = []
+    if isinstance(peers_json, dict):
+        peer_map = peers_json.get("peer_data")
+        if isinstance(peer_map, dict):
+            for ticker, payload in peer_map.items():
+                if isinstance(payload, dict):
+                    record = dict(payload)
+                    record["ticker"] = ticker
+                    peer_records.append(record)
+
+    if not peer_records:
+        return (
+            "<h2>Competitive Positioning & Peer Analysis</h2>\n"
+            "<p>No peer comparison data available.</p>"
+        )
+
+    preferred_order: list[str] = ["CATY", "EWBC", "CVBF", "HAFC", "COLB"]
+
+    def select_records() -> list[dict[str, Any]]:
+        seen: set[str] = set()
+        ordered: list[dict[str, Any]] = []
+        for ticker in preferred_order:
+            for record in peer_records:
+                if record["ticker"] == ticker and ticker not in seen:
+                    ordered.append(record)
+                    seen.add(ticker)
+                    break
+        if not ordered:
+            ordered.extend(peer_records)
+        return ordered
+
+    ordered_records = select_records()
+
+    def metric(record: dict[str, Any], key: str) -> float | None:
+        return safe_to_float(record.get(key))
+
+    sorted_records = sorted(
+        ordered_records,
+        key=lambda rec: metric(rec, "p_tbv") or 0.0,
+        reverse=True,
+    )
+
+    def fmt_multiple(value: float | None) -> str:
+        return f"{value:.3f}x" if value is not None else "—"
+
+    def fmt_percent(value: float | None, decimals: int = 2) -> str:
+        if value is None:
+            return "—"
+        return f"{value:.{decimals}f}%"
+
+    def fmt_basis_points(value: float | None) -> str:
+        if value is None:
+            return "—"
+        return f"{value:.0f} bps"
+
+    def fmt_positioning(record: dict[str, Any]) -> str:
+        ticker = record["ticker"]
+        ptbv = metric(record, "p_tbv")
+        residual = metric(record, "residual")
+        rote = metric(record, "rote_pct")
+        if ticker == "CATY":
+            return "Target company – valuation benchmarked in regression model"
+        if ptbv is None:
+            return "Peer data captured for qualitative context"
+        if residual is not None and residual > 0.1:
+            return "Trading at premium to regression fit"
+        if residual is not None and residual < -0.1:
+            return "Discount vs regression fit"
+        if rote is not None and rote >= (metric(sorted_records[0], "rote_pct") or rote):
+            return "Top profitability performer"
+        return "In-line valuation peer"
+
+    table_rows: list[str] = []
+    for record in sorted_records:
+        ticker = record["ticker"]
+        bank_name = record.get("name", ticker)
+        ptbv = metric(record, "p_tbv")
+        rote = metric(record, "rote_pct")
+        cre_pct = metric(record, "cre_pct")
+        nco_bps = metric(record, "nco_bps")
+        efficiency = metric(record, "efficiency_ratio")
+        deposit_beta = metric(record, "deposit_beta")
+        row_class = ' class="highlight-row"' if ticker == "CATY" else ""
+
+        table_rows.extend(
+            [
+                f"                <tr{row_class}>",
+                f"                    <td><strong>{bank_name}</strong></td>",
+                f"                    <td class=\"text-right\">{ticker}</td>",
+                f"                    <td class=\"text-right\">{fmt_multiple(ptbv)}</td>",
+                f"                    <td class=\"text-right\">{fmt_percent(rote)}</td>",
+                f"                    <td class=\"text-right\">{fmt_percent(cre_pct, 1)}</td>",
+                f"                    <td class=\"text-right\">{fmt_basis_points(nco_bps)}</td>",
+                f"                    <td class=\"text-right\">{fmt_percent(efficiency)}</td>",
+                f"                    <td class=\"text-right\">{fmt_percent(deposit_beta)}</td>",
+                f"                    <td>{fmt_positioning(record)}</td>",
+                "                </tr>",
+            ]
+        )
+
+    ptbv_pairs = [(rec["ticker"], metric(rec, "p_tbv")) for rec in sorted_records if metric(rec, "p_tbv") is not None]
+    rote_pairs = [(rec["ticker"], metric(rec, "rote_pct")) for rec in sorted_records if metric(rec, "rote_pct") is not None]
+    cre_pairs = [(rec["ticker"], metric(rec, "cre_pct")) for rec in sorted_records if metric(rec, "cre_pct") is not None]
+
+    caty_record = next((rec for rec in sorted_records if rec["ticker"] == "CATY"), None)
+    caty_ptbv = metric(caty_record, "p_tbv") if caty_record else None
+    caty_residual = metric(caty_record, "residual") if caty_record else None
+
+    top_ptbv = max(ptbv_pairs, key=lambda item: item[1]) if ptbv_pairs else (None, None)
+    top_rote = max(rote_pairs, key=lambda item: item[1]) if rote_pairs else (None, None)
+    lowest_cre = min(cre_pairs, key=lambda item: item[1]) if cre_pairs else (None, None)
+
+    def format_peer_name(ticker: str | None) -> str:
+        if not ticker:
+            return "—"
+        for record in sorted_records:
+            if record["ticker"] == ticker:
+                return record.get("name", ticker)
+        return ticker
+
+    insights: list[str] = []
+    if top_ptbv[0] is not None and caty_ptbv is not None:
+        insights.append(
+            "<strong>P/TBV:</strong> "
+            f"{format_peer_name(top_ptbv[0])} leads at {top_ptbv[1]:.3f}x vs CATY {caty_ptbv:.3f}x."
+        )
+    if top_rote[0] is not None:
+        insights.append(
+            "<strong>ROTE:</strong> "
+            f"{format_peer_name(top_rote[0])} delivers {top_rote[1]:.2f}% profitability – benchmark for CATY catalytic upside."
+        )
+    if lowest_cre[0] is not None and caty_record is not None:
+        insights.append(
+            "<strong>CRE Exposure:</strong> "
+            f"{format_peer_name(lowest_cre[0])} lowest at {lowest_cre[1]:.1f}% vs CATY {metric(caty_record, 'cre_pct') or 0:.1f}%."
+        )
+    if caty_residual is not None:
+        insights.append(
+            "<strong>Regression Residual:</strong> "
+            f"CATY trades {caty_residual:+.3f}x relative to fitted P/TBV (negative = discount)."
+        )
+
+    if not insights:
+        insights.append("Peer data available for valuation context; additional metrics pending data feed expansion.")
+
+    html_parts = [
+        "<h2>Competitive Positioning & Peer Analysis</h2>",
+        '<p class="text-secondary text-small">Derived from <code>data/caty11_peers_normalized.json</code> (core regression cohort).</p>',
+        "<div class=\"insight-box\">",
+        "    <h3>Peer Positioning & Competitive Landscape</h3>",
+        "    <p>Peers sorted by current P/TBV multiple (LTM through Q2 2025):</p>",
+        "    <table>",
+        "        <thead>",
+        "            <tr>",
+        "                <th>Bank</th>",
+        "                <th class=\"text-right\">Ticker</th>",
+        "                <th class=\"text-right\">P/TBV</th>",
+        "                <th class=\"text-right\">ROTE</th>",
+        "                <th class=\"text-right\">CRE %</th>",
+        "                <th class=\"text-right\">NCO (bps)</th>",
+        "                <th class=\"text-right\">Efficiency Ratio</th>",
+        "                <th class=\"text-right\">Deposit Beta</th>",
+        "                <th>Positioning</th>",
+        "            </tr>",
+        "        </thead>",
+        "        <tbody>",
+        *table_rows,
+        "        </tbody>",
+        "    </table>",
+        "    <h4>Key Insights</h4>",
+        "    <ul>",
+    ]
+
+    html_parts.extend(f"        <li>{item}</li>" for item in insights)
+
+    html_parts.extend(
+        [
+            "    </ul>",
+            "</div>",
+        ]
+    )
+
+    return "\n".join(html_parts)
+
+
 def render_report_meta(timestamps: Dict[str, str]) -> str:
     return f"Report Date: {timestamps['report_date']} | Last Updated: {timestamps['last_updated_utc']}"
 
@@ -1436,6 +1624,8 @@ def main(test_mode: bool = False) -> int:
         recent_developments = load_json(ROOT / "data" / "recent_developments.json") if (ROOT / "data" / "recent_developments.json").exists() else {}
         catalysts_path = ROOT / "data" / "catalysts.json"
         catalysts = load_json(catalysts_path) if catalysts_path.exists() else {}
+        peers_path = ROOT / "data" / "caty11_peers_normalized.json"
+        peers = load_json(peers_path) if peers_path.exists() else {}
 
         context = {
             "market": market,
@@ -1447,6 +1637,7 @@ def main(test_mode: bool = False) -> int:
             "narrative_prose": market.get("narrative_prose", {}),
             "recent_developments": recent_developments,
             "catalysts": catalysts,
+            "peers": peers,
             "caty01_tables": caty01_tables,
             "caty02_tables": caty02_tables,
             "caty03_tables": caty03_tables,
@@ -1482,6 +1673,7 @@ def main(test_mode: bool = False) -> int:
         html = replace_section(html, "valuation-deep-dive", render_valuation_deep_dive(context))
         html = replace_section(html, "scenario-analysis-table", render_scenario_analysis_table(context))
         html = replace_section(html, "positive-catalysts", render_positive_catalysts(context))
+        html = replace_section(html, "peer-positioning", render_peer_positioning(context))
         html = replace_section(html, "recent-developments-section", render_recent_developments_section(recent_developments, narrative_placeholders))
         html = replace_section(html, "investment-risks-bullets", render_investment_risks_section(context, narrative_placeholders))
 

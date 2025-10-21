@@ -352,6 +352,15 @@ li {
     color: var(--text-secondary);
 }
 
+.highlight-row {
+    background-color: rgba(196, 30, 58, 0.08);
+    font-weight: 600;
+}
+
+.highlight-row td {
+    border-left: 3px solid var(--cathay-red);
+}
+
 .risk-card {
     background: var(--bg-tertiary);
     padding: 20px;
