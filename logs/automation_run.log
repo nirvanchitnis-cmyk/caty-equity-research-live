@@ -633,3 +633,29 @@
 [2025-10-21 06:29:03 UTC] reconciliation_guard.py: PASS
 [2025-10-21 06:29:03 UTC] update_all_data.py: SUCCESS
 [2025-10-21 06:29:35 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-21 06:35:01 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-21 06:35:24 UTC] update_all_data.py: START
+[2025-10-21 06:35:24 UTC] TEST MODE: Skipped live price fetch
+[2025-10-21 06:35:25 UTC] fetch_sec_edgar.py: Fetched None None (period None)
+[2025-10-21 06:35:28 UTC] fetch_fdic_data.py: Fetched call report 20250630 (CERT 18503)
+[2025-10-21 06:35:37 UTC] fetch_peer_banks.py: Fetched 9 peers for Q2 2025
+[2025-10-21 06:35:37 UTC] generate_peer_snapshot.py: Rebuilt evidence/peer_snapshot_2025Q2.csv
+[2025-10-21 06:35:37 UTC] merge_data_sources.py: 2 conflicts logged
+[2025-10-21 06:35:37 UTC] calculate_valuation_metrics.py: Recalculated all targets and returns
+[2025-10-21 06:35:38 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-21 06:35:38 UTC] build_site.py: Rebuilt modules successfully
+[2025-10-21 06:35:38 UTC] reconciliation_guard.py: PASS
+[2025-10-21 06:35:38 UTC] update_all_data.py: SUCCESS
+[2025-10-21 06:35:38 UTC] update_all_data.py: START
+[2025-10-21 06:35:38 UTC] TEST MODE: Skipped live price fetch
+[2025-10-21 06:35:39 UTC] fetch_sec_edgar.py: Fetched None None (period None)
+[2025-10-21 06:35:41 UTC] fetch_fdic_data.py: Fetched call report 20250630 (CERT 18503)
+[2025-10-21 06:35:50 UTC] fetch_peer_banks.py: Fetched 9 peers for Q2 2025
+[2025-10-21 06:35:50 UTC] generate_peer_snapshot.py: Rebuilt evidence/peer_snapshot_2025Q2.csv
+[2025-10-21 06:35:50 UTC] merge_data_sources.py: 2 conflicts logged
+[2025-10-21 06:35:50 UTC] calculate_valuation_metrics.py: Recalculated all targets and returns
+[2025-10-21 06:35:51 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-21 06:35:51 UTC] build_site.py: Rebuilt modules successfully
+[2025-10-21 06:35:51 UTC] reconciliation_guard.py: PASS
+[2025-10-21 06:35:51 UTC] update_all_data.py: SUCCESS
+[2025-10-21 06:35:51 UTC] disconfirmer_monitor.py status=PASS alerts=0
