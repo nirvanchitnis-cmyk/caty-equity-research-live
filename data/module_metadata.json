@@ -7,9 +7,13 @@
       "description": "Entity metadata, CIK, auditor (KPMG), segments",
       "status": "UPDATED",
       "importance": "STANDARD",
-      "last_updated": "2025-10-19",
+      "last_updated": "2025-10-21",
       "automation_status": "100% - Autogen company profile dataset",
-      "data_dependencies": ["SEC 10-K", "SEC 10-Q", "Market Data"],
+      "data_dependencies": [
+        "SEC 10-K",
+        "SEC 10-Q",
+        "Market Data"
+      ],
       "cfa_category": "Business Description",
       "cfa_emoji": "🏢",
       "cfa_points": 5,
@@ -22,8 +26,10 @@
       "description": "Q2'25 NII, NIM 3.27%, efficiency 45.33%, EPS $1.10",
       "status": "UPDATED",
       "importance": "STANDARD",
-      "last_updated": "2025-10-18",
-      "data_dependencies": ["SEC 10-Q"],
+      "last_updated": "2025-10-21",
+      "data_dependencies": [
+        "SEC 10-Q"
+      ],
       "cfa_category": "Financial Analysis",
       "cfa_emoji": "📈",
       "cfa_points": 20,
@@ -36,8 +42,10 @@
       "description": "Assets $23.7B, TCE $2.51B, TBVPS $36.16",
       "status": "UPDATED",
       "importance": "STANDARD",
-      "last_updated": "2025-10-17",
-      "data_dependencies": ["SEC 10-Q"],
+      "last_updated": "2025-10-21",
+      "data_dependencies": [
+        "SEC 10-Q"
+      ],
       "cfa_category": "Financial Analysis",
       "cfa_emoji": "📈",
       "cfa_points": 20,
@@ -50,9 +58,12 @@
       "description": "Operating CF, investing, financing, capital returns",
       "status": "UPDATED",
       "importance": "STANDARD",
-      "last_updated": "2025-10-19",
+      "last_updated": "2025-10-21",
       "automation_status": "100% - Autogen cash flow statement",
-      "data_dependencies": ["SEC 10-Q", "SEC 10-K"],
+      "data_dependencies": [
+        "SEC 10-Q",
+        "SEC 10-K"
+      ],
       "cfa_category": "Financial Analysis",
       "cfa_emoji": "📈",
       "cfa_points": 20,
@@ -65,8 +76,11 @@
       "description": "Deposit betas (IB 60.4%, All-in 50.7%), NIM bridge",
       "status": "UPDATED",
       "importance": "KEY",
-      "last_updated": "2025-10-17",
-      "data_dependencies": ["SEC 10-Q", "Earnings Presentation"],
+      "last_updated": "2025-10-21",
+      "data_dependencies": [
+        "SEC 10-Q",
+        "Earnings Presentation"
+      ],
       "cfa_category": "Financial Analysis",
       "cfa_emoji": "📈",
       "cfa_points": 20,
@@ -79,9 +93,12 @@
       "description": "Relationship funding mix, NIB stability, brokered reliance",
       "status": "UPDATED",
       "importance": "STANDARD",
-      "last_updated": "2025-10-19",
+      "last_updated": "2025-10-21",
       "automation_status": "100% - Deposits dataset autogen",
-      "data_dependencies": ["SEC 10-Q", "Call Report"],
+      "data_dependencies": [
+        "SEC 10-Q",
+        "Call Report"
+      ],
       "cfa_category": "Financial Analysis",
       "cfa_emoji": "📈",
       "cfa_points": 20,
@@ -94,8 +111,11 @@
       "description": "Through-cycle NCO: 42.8 bps (2008-2024 FDIC data)",
       "status": "UPDATED",
       "importance": "CRITICAL",
-      "last_updated": "2025-10-18",
-      "data_dependencies": ["FDIC Call Reports", "SEC 10-Q"],
+      "last_updated": "2025-10-21",
+      "data_dependencies": [
+        "FDIC Call Reports",
+        "SEC 10-Q"
+      ],
       "cfa_category": "Investment Risks",
       "cfa_emoji": "⚠️",
       "cfa_points": 15,
@@ -108,9 +128,13 @@
       "description": "CRE 52.4% (ELEVATED), office tail risk",
       "status": "UPDATED",
       "importance": "CRITICAL",
-      "last_updated": "2025-10-19",
+      "last_updated": "2025-10-21",
       "automation_status": "100% - Built with autogen from inception",
-      "data_dependencies": ["SEC 10-Q", "Peer Benchmark Dataset", "Climate Risk Model"],
+      "data_dependencies": [
+        "SEC 10-Q",
+        "Peer Benchmark Dataset",
+        "Climate Risk Model"
+      ],
       "cfa_category": "Investment Risks",
       "cfa_emoji": "⚠️",
       "cfa_points": 15,
@@ -123,9 +147,12 @@
       "description": "CET1 13.35%, regulatory capital, AOCI",
       "status": "UPDATED",
       "importance": "STANDARD",
-      "last_updated": "2025-10-19",
+      "last_updated": "2025-10-21",
       "automation_status": "100% - Capital & liquidity dataset",
-      "data_dependencies": ["SEC 10-Q", "Call Report"],
+      "data_dependencies": [
+        "SEC 10-Q",
+        "Call Report"
+      ],
       "cfa_category": "Financial Analysis",
       "cfa_emoji": "📈",
       "cfa_points": 20,
@@ -138,8 +165,10 @@
       "description": "Dividends, buybacks, payout ratio 32.1%",
       "status": "UPDATED",
       "importance": "STANDARD",
-      "last_updated": "2025-10-17",
-      "data_dependencies": ["SEC 10-Q"],
+      "last_updated": "2025-10-21",
+      "data_dependencies": [
+        "SEC 10-Q"
+      ],
       "cfa_category": "Financial Analysis",
       "cfa_emoji": "📈",
       "cfa_points": 20,
@@ -152,8 +181,11 @@
       "description": "n=4 peers, R²=0.9548, implied COE 9.587%",
       "status": "UPDATED",
       "importance": "KEY",
-      "last_updated": "2025-10-18",
-      "data_dependencies": ["SEC EDGAR (peers)", "FactSet"],
+      "last_updated": "2025-10-21",
+      "data_dependencies": [
+        "SEC EDGAR (peers)",
+        "FactSet"
+      ],
       "cfa_category": "Industry Overview & Competitive Positioning",
       "cfa_emoji": "🏆",
       "cfa_points": 10,
@@ -166,8 +198,11 @@
       "description": "3 scenarios, Expected $52.03 (Wilson weighted), probabilities",
       "status": "UPDATED",
       "importance": "MOST_CRITICAL",
-      "last_updated": "2025-10-18",
-      "data_dependencies": ["All above modules", "Python scripts"],
+      "last_updated": "2025-10-21",
+      "data_dependencies": [
+        "All above modules",
+        "Python scripts"
+      ],
       "cfa_category": "Investment Summary",
       "cfa_emoji": "🎯",
       "cfa_points": 15,
@@ -180,8 +215,11 @@
       "description": "RIM intrinsic value $50.08, IRC blended $51.51 (60% weight)",
       "status": "UPDATED",
       "importance": "KEY",
-      "last_updated": "2025-10-18",
-      "data_dependencies": ["Python scripts", "CATY_02/03"],
+      "last_updated": "2025-10-21",
+      "data_dependencies": [
+        "Python scripts",
+        "CATY_02/03"
+      ],
       "cfa_category": "Valuation",
       "cfa_emoji": "💰",
       "cfa_points": 20,
@@ -194,8 +232,10 @@
       "description": "10,000 runs, median $48.92, 95% CI $37-$62",
       "status": "UPDATED",
       "importance": "KEY",
-      "last_updated": "2025-10-18",
-      "data_dependencies": ["Python scripts"],
+      "last_updated": "2025-10-21",
+      "data_dependencies": [
+        "Python scripts"
+      ],
       "cfa_category": "Valuation",
       "cfa_emoji": "💰",
       "cfa_points": 20,
@@ -208,9 +248,12 @@
       "description": "E/S/G quantified, COE adjustments, climate scenario",
       "status": "UPDATED",
       "importance": "STANDARD",
-      "last_updated": "2025-10-19",
+      "last_updated": "2025-10-21",
       "automation_status": "100% - ESG materiality dataset",
-      "data_dependencies": ["ESG analysis", "CATY COE framework"],
+      "data_dependencies": [
+        "ESG analysis",
+        "CATY COE framework"
+      ],
       "cfa_category": "Environmental, Social, Governance",
       "cfa_emoji": "🌱",
       "cfa_points": 15,
@@ -223,8 +266,11 @@
       "description": "CAPM 9.337% + FF3 10.142% + DDM 9.710%",
       "status": "UPDATED",
       "importance": "KEY",
-      "last_updated": "2025-10-19",
-      "data_dependencies": ["Python scripts", "Market data"],
+      "last_updated": "2025-10-21",
+      "data_dependencies": [
+        "Python scripts",
+        "Market data"
+      ],
       "cfa_category": "Valuation",
       "cfa_emoji": "💰",
       "cfa_points": 20,
@@ -237,9 +283,12 @@
       "description": "Material weaknesses, valuation impact -$1.47/share",
       "status": "UPDATED",
       "importance": "STANDARD",
-      "last_updated": "2025-10-19",
+      "last_updated": "2025-10-21",
       "automation_status": "100% - ESG KPI dataset",
-      "data_dependencies": ["ESG data warehouse", "Valuation outputs"],
+      "data_dependencies": [
+        "ESG data warehouse",
+        "Valuation outputs"
+      ],
       "cfa_category": "Environmental, Social, Governance",
       "cfa_emoji": "🌱",
       "cfa_points": 15,

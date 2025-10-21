@@ -15,6 +15,7 @@ Pipeline:
 from __future__ import annotations
 
 import datetime as dt
+import os
 import json
 import logging
 import subprocess
@@ -185,19 +186,23 @@ def main() -> int:
 
     append_log("update_all_data.py: START")
 
-    # Step 0: Fetch live market price
-    print("Fetching live CATY price...")
-    fetch_live_result = run_step(
-        [sys.executable, str(SCRIPTS / "fetch_live_price.py")],
-        "fetch_live_price",
-        allow_failure=True,
-    )
-    if fetch_live_result.returncode == 0:
-        print("✅ Market data updated")
-        append_log("fetch_live_price.py: Updated market data with latest price")
+    # Step 0: Fetch live market price (skip in test mode)
+    if not os.environ.get("CATY_TEST_MODE"):
+        print("Fetching live CATY price...")
+        fetch_live_result = run_step(
+            [sys.executable, str(SCRIPTS / "fetch_live_price.py")],
+            "fetch_live_price",
+            allow_failure=True,
+        )
+        if fetch_live_result.returncode == 0:
+            print("✅ Market data updated")
+            append_log("fetch_live_price.py: Updated market data with latest price")
+        else:
+            print("⚠️ Live price update failed - using cached value")
+            append_log("fetch_live_price.py: WARNING - live price fetch failed, using cached value")
     else:
-        print("⚠️ Live price update failed - using cached value")
-        append_log("fetch_live_price.py: WARNING - live price fetch failed, using cached value")
+        print("⚠️ Test mode: Skipping live price fetch")
+        append_log("TEST MODE: Skipped live price fetch")
 
     # Step 1: SEC EDGAR
     sec_result = run_step([sys.executable, str(SCRIPTS / "fetch_sec_edgar.py")], "fetch_sec_edgar", allow_failure=True)

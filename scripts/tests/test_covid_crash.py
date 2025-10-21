@@ -9,6 +9,7 @@ Success criteria: All returns update to reflect new price.
 from __future__ import annotations
 
 import json
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -37,6 +38,7 @@ def run_pipeline() -> subprocess.CompletedProcess[str]:
         capture_output=True,
         text=True,
         timeout=300,
+        env={**os.environ, "CATY_TEST_MODE": "1"},
     )
 
 
