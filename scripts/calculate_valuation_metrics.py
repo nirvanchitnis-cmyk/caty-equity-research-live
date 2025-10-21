@@ -193,6 +193,19 @@ def main() -> int:
     report_metadata["last_updated_utc"] = timestamp
     report_metadata["generated_at_display"] = timestamp_display
 
+    price_date_iso = market_data.get("price_date")
+    if price_date_iso:
+        try:
+            price_date_display = datetime.strptime(price_date_iso, "%Y-%m-%d").strftime("%B %d, %Y")
+        except ValueError:
+            price_date_display = price_date_iso
+    else:
+        price_date_iso = timestamp_dt.date().isoformat()
+        price_date_display = timestamp_dt.strftime("%B %d, %Y")
+
+    report_metadata["report_date_iso"] = price_date_iso
+    report_metadata["report_date"] = price_date_display
+
     save_json(MARKET_DATA_PATH, market_data)
 
     print("Valuation metrics recalculated successfully.")
