@@ -1377,6 +1377,527 @@ def render_esg_assessment(context: Dict[str, Any]) -> str:
     return "\n".join(parts)
 
 
+def render_financial_analysis_summary(context: Dict[str, Any]) -> str:
+    caty03 = context.get("caty03_tables", {})
+    caty02 = context.get("caty02_tables", {})
+    caty09 = context.get("caty09_tables", {})
+
+    q2_balance = caty03.get("q2_2025_detailed_table", {}) or {}
+    fy_balance = caty03.get("fy2024_detailed_table", {}) or {}
+
+    def get_balance(source: dict, key: str) -> float | None:
+        return extract_numeric(source.get(key))
+
+    balance_metrics = [
+        ("Total Assets", "total_assets_millions"),
+        ("Loans HFI", "loans_hfi_millions"),
+        ("Total Deposits", "total_deposits_millions"),
+        ("Noninterest-Bearing Deposits", "noninterest_bearing_deposits_millions"),
+        ("Shareholders' Equity", "total_equity_millions"),
+        ("Tangible Common Equity", "tce_millions"),
+    ]
+
+    balance_rows: list[str] = []
+    for label, key in balance_metrics:
+        current = get_balance(q2_balance, key)
+        prior = get_balance(fy_balance, key)
+        change = percent_change(current, prior)
+        change_class = classify_delta(change)
+        balance_rows.extend(
+            [
+                "            <tr>",
+                f"                <td>{label}</td>",
+                f"                <td class=\"text-right\">{format_millions(current)}</td>",
+                f"                <td class=\"text-right\">{format_millions(prior)}</td>",
+                f"                <td class=\"text-right {change_class}\">{format_delta_percent(change)}</td>",
+                "            </tr>",
+            ]
+        )
+
+    deposits_current = get_balance(q2_balance, "total_deposits_millions")
+    deposits_prior = get_balance(fy_balance, "total_deposits_millions")
+    nib_current = get_balance(q2_balance, "noninterest_bearing_deposits_millions")
+    nib_prior = get_balance(fy_balance, "noninterest_bearing_deposits_millions")
+    nib_pct_current = ratio_pct(nib_current, deposits_current)
+    nib_pct_prior = ratio_pct(nib_prior, deposits_prior)
+    nib_pct_change = absolute_change(nib_pct_current, nib_pct_prior)
+    nib_class = classify_delta(nib_pct_change)
+
+    tbvps_current = extract_numeric(q2_balance.get("tbvps"))
+    tbvps_prior = extract_numeric(fy_balance.get("tbvps"))
+    tbvps_change = percent_change(tbvps_current, tbvps_prior)
+    tbvps_class = classify_delta(tbvps_change)
+
+    balance_rows.extend(
+        [
+            "            <tr>",
+            "                <td>NIB % of Deposits</td>",
+            f"                <td class=\"text-right\">{format_plain_percent(nib_pct_current)}</td>",
+            f"                <td class=\"text-right\">{format_plain_percent(nib_pct_prior)}</td>",
+            f"                <td class=\"text-right {nib_class}\">{format_delta_points(nib_pct_change, suffix=' pts')}</td>",
+            "            </tr>",
+            "            <tr>",
+            "                <td>TBVPS</td>",
+            f"                <td class=\"text-right\">{format_money(tbvps_current)}</td>",
+            f"                <td class=\"text-right\">{format_money(tbvps_prior)}</td>",
+            f"                <td class=\"text-right {tbvps_class}\">{format_delta_percent(tbvps_change)}</td>",
+            "            </tr>",
+        ]
+    )
+
+    q2_is = caty02.get("q2_2025_snapshot", {}) or {}
+    ltm_is = caty02.get("ltm_metrics", {}) or {}
+    fy_is = caty02.get("derived_metrics_fy2024", {}) or {}
+
+    def get_metric(source: dict, key: str) -> float | None:
+        value = source.get(key)
+        if isinstance(value, dict):
+            value = value.get("value")
+        return extract_numeric(value)
+
+    profitability_metrics = [
+        ("Net Interest Margin", get_metric(q2_is, "nim_pct"), extract_numeric(ltm_is.get("nim_pct")), extract_numeric(fy_is.get("nim_pct"))),
+        ("Efficiency Ratio", get_metric(q2_is, "efficiency_ratio_pct"), None, get_metric(fy_is, "efficiency_ratio_pct")),
+        ("ROTE", extract_numeric(ltm_is.get("rote_pct")), extract_numeric(ltm_is.get("rote_pct")), extract_numeric(fy_is.get("rote_pct"))),
+        ("Diluted EPS", get_metric(q2_is, "diluted_eps"), extract_numeric(ltm_is.get("eps_diluted")), get_metric(fy_is, "diluted_eps")),
+    ]
+
+    profitability_rows: list[str] = []
+    for label, q2_value, ltm_value, fy_value in profitability_metrics:
+        def render_value(val: float | None, as_percent: bool = True) -> str:
+            if val is None:
+                return "—"
+            if label == "Diluted EPS":
+                return format_money(val)
+            format_fn = format_plain_percent if as_percent else format_money
+            decimals = 2 if label in {"Net Interest Margin", "ROTE"} else 1
+            return format_fn(val, decimals=decimals)
+
+        as_percent = label != "Diluted EPS"
+        change_vs_fy = percent_change(q2_value, fy_value) if label == "Diluted EPS" else absolute_change(q2_value, fy_value)
+        change_text = "—"
+        change_class = ""
+        if fy_value is not None and q2_value is not None:
+            if label == "Diluted EPS":
+                change_text = format_delta_percent(change_vs_fy, decimals=1)
+            else:
+                change_text = format_delta_points(change_vs_fy, decimals=1, suffix=" pts")
+            better_when_lower = {"Efficiency Ratio"}
+            adjusted_delta = -change_vs_fy if label in better_when_lower and change_vs_fy is not None else change_vs_fy
+            change_class = classify_delta(adjusted_delta)
+
+        profitability_rows.extend(
+            [
+                "            <tr>",
+                f"                <td>{label}</td>",
+                f"                <td class=\"text-right\">{render_value(q2_value, as_percent=as_percent)}</td>",
+                f"                <td class=\"text-right\">{render_value(ltm_value, as_percent=as_percent)}</td>",
+                f"                <td class=\"text-right\">{render_value(fy_value, as_percent=as_percent)}</td>",
+                f"                <td class=\"text-right {change_class}\">{change_text}</td>",
+                "            </tr>",
+            ]
+        )
+
+    capital_metrics = caty09.get("regulatory_capital_q2_2025", {}) or {}
+    liquidity_metrics = caty09.get("liquidity_metrics", {}) or {}
+
+    parts: list[str] = [
+        "<h2>Financial Analysis</h2>",
+        "<div class=\"insight-box\">",
+        "    <h3>Balance Sheet Snapshot</h3>",
+        "    <table>",
+        "        <thead>",
+        "            <tr>",
+        "                <th>Metric</th>",
+        "                <th class=\"text-right\">Q2 2025</th>",
+        "                <th class=\"text-right\">FY 2024</th>",
+        "                <th class=\"text-right\">Change</th>",
+        "            </tr>",
+        "        </thead>",
+        "        <tbody>",
+    ]
+    parts.extend(balance_rows)
+    parts.extend(
+        [
+            "        </tbody>",
+            "    </table>",
+        ]
+    )
+
+    parts.extend(
+        [
+            "    <h3>Profitability Trends</h3>",
+            "    <table>",
+            "        <thead>",
+            "            <tr>",
+            "                <th>Metric</th>",
+            "                <th class=\"text-right\">Q2 2025</th>",
+            "                <th class=\"text-right\">LTM</th>",
+            "                <th class=\"text-right\">FY 2024</th>",
+            "                <th class=\"text-right\">Δ vs FY 2024</th>",
+            "            </tr>",
+            "        </thead>",
+            "        <tbody>",
+        ]
+    )
+    parts.extend(profitability_rows)
+    parts.extend(
+        [
+            "        </tbody>",
+            "    </table>",
+        ]
+    )
+
+    if capital_metrics:
+        cet1_ratio = extract_numeric(capital_metrics.get("cet1_ratio_pct"))
+        total_capital = extract_numeric(capital_metrics.get("total_capital_ratio_pct"))
+        leverage_ratio = extract_numeric(capital_metrics.get("leverage_ratio_pct"))
+        regulatory_min = extract_numeric(capital_metrics.get("regulatory_minimum_cet1_pct"))
+        well_cap = extract_numeric(capital_metrics.get("well_capitalized_cet1_pct"))
+        buffer = extract_numeric(capital_metrics.get("buffer_vs_well_capitalized_ppts"))
+        parts.extend(
+            [
+                "    <h3>Capital Adequacy</h3>",
+                "    <ul>",
+                f"        <li>CET1 Ratio: {format_plain_percent(cet1_ratio, decimals=2)} "
+                f"(reg min {format_plain_percent(regulatory_min, decimals=2)}; well-cap {format_plain_percent(well_cap, decimals=2)})</li>",
+                f"        <li>Total Capital Ratio: {format_plain_percent(total_capital, decimals=2)}; Leverage Ratio {format_plain_percent(leverage_ratio, decimals=2)}</li>",
+                f"        <li>Status: {capital_metrics.get('status', '—')} | Buffer vs well-capitalized: {format_delta_points(buffer, decimals=1)}</li>",
+                "    </ul>",
+            ]
+        )
+
+    if liquidity_metrics:
+        liquid_assets = extract_numeric(liquidity_metrics.get("total_liquid_assets_billions"))
+        liquid_assets_pct = extract_numeric(liquidity_metrics.get("liquid_assets_pct_of_assets"))
+        loan_to_deposit_ratio = extract_numeric(liquidity_metrics.get("loan_to_deposit_ratio_pct"))
+        parts.extend(
+            [
+                "    <h3>Liquidity Coverage</h3>",
+                "    <ul>",
+                f"        <li>Total liquid assets: {format_millions(liquid_assets * 1000 if liquid_assets is not None else None)}</li>",
+                f"        <li>Liquid assets / Assets: {format_plain_percent(liquid_assets_pct, decimals=1)}</li>",
+                f"        <li>Loan-to-deposit ratio: {format_plain_percent(loan_to_deposit_ratio, decimals=1)}</li>",
+                "    </ul>",
+            ]
+        )
+
+    parts.append(
+        "    <p class=\"text-small text-secondary\">Source data: <code>caty03_balance_sheet.json</code>, <code>caty02_income_statement.json</code>, <code>caty09_capital_liquidity.json</code>.</p>"
+    )
+    parts.append("</div>")
+
+    return "\n".join(parts)
+
+
+def render_liquidity_summary(context: Dict[str, Any]) -> str:
+    caty06 = context.get("caty06_tables", {})
+    caty09 = context.get("caty09_tables", {})
+
+    snapshot = caty06.get("deposit_snapshot_q2_2025", {}) or {}
+    mix = caty06.get("deposit_mix_detail", {}) or {}
+    peer = caty06.get("peer_comparison", {}) or {}
+    funding = caty06.get("funding_sources", {}) or {}
+    liquidity_metrics = caty09.get("liquidity_metrics", {}) or {}
+
+    mix_rows: list[str] = []
+    for label, balance_key, pct_key in [
+        ("Noninterest-Bearing (DDA)", "dda_billions", "dda_pct"),
+        ("Savings", "savings_billions", "savings_pct"),
+        ("Money Market", "money_market_billions", "money_market_pct"),
+        ("Time Deposits", "time_deposits_billions", "time_deposits_pct"),
+    ]:
+        balance = extract_numeric(mix.get(balance_key))
+        pct = extract_numeric(mix.get(pct_key))
+        mix_rows.extend(
+            [
+                "            <tr>",
+                f"                <td>{label}</td>",
+                f"                <td class=\"text-right\">{format_millions(balance * 1000 if balance is not None else None)}</td>",
+                f"                <td class=\"text-right\">{format_plain_percent(pct, decimals=1)}</td>",
+                "            </tr>",
+            ]
+        )
+
+    brokered_pct = extract_numeric(snapshot.get("brokered_pct"))
+    if brokered_pct is None:
+        brokered_pct = extract_numeric(peer.get("caty_brokered_pct"))
+    brokered_billions = extract_numeric(snapshot.get("brokered_deposits_billions"))
+    loan_to_deposit = extract_numeric(liquidity_metrics.get("loan_to_deposit_ratio_pct"))
+
+    total_deposits_billions = extract_numeric(snapshot.get("total_deposits_billions"))
+    nib_mix_pct = extract_numeric(snapshot.get("nib_pct"))
+
+    parts: list[str] = [
+        "<h2>Liquidity & Funding</h2>",
+        "<div class=\"insight-box\">",
+        "    <h3>Deposit Mix (Q2 2025)</h3>",
+        "    <table>",
+        "        <thead>",
+        "            <tr>",
+        "                <th>Category</th>",
+        "                <th class=\"text-right\">Balance</th>",
+        "                <th class=\"text-right\">Mix</th>",
+        "            </tr>",
+        "        </thead>",
+        "        <tbody>",
+    ]
+    parts.extend(mix_rows)
+    parts.extend(
+        [
+            "        </tbody>",
+            "    </table>",
+        ]
+    )
+
+    parts.extend(
+        [
+            "    <h3>Liquidity Highlights</h3>",
+            "    <ul>",
+            f"        <li>Total deposits: {format_millions(total_deposits_billions * 1000 if total_deposits_billions is not None else None)} with NIB share {format_plain_percent(nib_mix_pct, decimals=1)}</li>",
+            f"        <li>Brokered funding: {format_plain_percent(brokered_pct, decimals=1)} of deposits ({format_millions(brokered_billions * 1000 if brokered_billions is not None else None)}) vs peer median {format_plain_percent(extract_numeric(peer.get('peer_median_brokered_pct')), decimals=1)}</li>",
+            f"        <li>Loan-to-deposit ratio: {format_plain_percent(loan_to_deposit, decimals=1)}</li>",
+        ]
+    )
+
+    if funding:
+        parts.append("        <li>Funding structure: deposits {0}, FHLB advances {1}, subordinated debt {2}, other borrowings {3}</li>".format(
+            format_plain_percent(extract_numeric(funding.get("deposits_pct")), decimals=1),
+            format_plain_percent(extract_numeric(funding.get("fhlb_advances_pct")), decimals=1),
+            format_plain_percent(extract_numeric(funding.get("subordinated_debt_pct")), decimals=1),
+            format_plain_percent(extract_numeric(funding.get("other_borrowings_pct")), decimals=1),
+        ))
+        note = funding.get("note")
+        if note:
+            parts.append(f"        <li>{note}</li>")
+    parts.append("    </ul>")
+
+    parts.append(
+        "    <p class=\"text-small text-secondary\">Source data: <code>caty06_deposits_funding.json</code> and <code>caty09_capital_liquidity.json</code>.</p>"
+    )
+    parts.append("</div>")
+
+    return "\n".join(parts)
+
+
+def render_scenario_analysis_narrative(context: Dict[str, Any]) -> str:
+    scenarios = context.get("valuation_outputs", {}).get("scenarios", {})
+    frameworks = context.get("valuation_outputs", {}).get("frameworks", {})
+
+    order = [
+        ("base", "Base Case"),
+        ("bull", "Bull Case"),
+        ("bear", "Bear Case"),
+    ]
+
+    scenario_items: list[str] = []
+    for key, label in order:
+        scenario = scenarios.get(key, {})
+        if not scenario:
+            continue
+        target_price = extract_numeric(scenario.get("target_price"))
+        return_pct = extract_numeric(scenario.get("return_pct"))
+        probability = extract_numeric(scenario.get("probability_pct"))
+        rote = extract_numeric(scenario.get("rote_pct"))
+        nco = extract_numeric(scenario.get("nco_bps"))
+
+        scenario_items.append(
+            f"        <li><strong>{label} ({format_plain_percent(probability, decimals=0)} probability):</strong> "
+            f"Target {format_money(target_price)} with {format_delta_percent(return_pct, decimals=1)} expected move. "
+            f"Assumes ROTE {format_plain_percent(rote, decimals=2)} and NCO "
+            f"{format_plain_percent(nco / 100 if nco is not None else None, decimals=2)}.</li>"
+        )
+
+    blended = frameworks.get("probability_weighted", {})
+    blended_price = extract_numeric(blended.get("target_price"))
+    blended_note = blended.get("composition", "Probability-weighted blend")
+
+    parts: list[str] = [
+        "<div class=\"insight-box\">",
+        "    <h3>Scenario Discussion</h3>",
+        "    <p>Scenario assumptions below are synchronized with the automated valuation table above.</p>",
+        "    <ul>",
+    ]
+    parts.extend(scenario_items)
+    if blended_price is not None:
+        parts.append(
+            f"        <li><strong>Probability-weighted outcome:</strong> {format_money(blended_price)} ({blended_note}).</li>"
+        )
+    parts.extend(
+        [
+            "    </ul>",
+            "    <p class=\"text-small text-secondary\">Source data: <code>valuation_outputs.json</code>.</p>",
+            "</div>",
+        ]
+    )
+
+    return "\n".join(parts)
+
+
+def render_monte_carlo_summary(context: Dict[str, Any]) -> str:
+    monte_carlo = context.get("caty14_tables", {})
+    summary = monte_carlo.get("simulation_summary", {}) or {}
+    percentiles = monte_carlo.get("tables", {}).get("percentiles", []) or []
+    probability_bands = monte_carlo.get("tables", {}).get("probability_bands", []) or []
+    confidence = monte_carlo.get("confidence_interval", {}) or {}
+    current_price = extract_numeric(context.get("market", {}).get("price"))
+
+    parts: list[str] = [
+        "<h3>Monte Carlo Valuation (10,000 paths)</h3>",
+        "<div class=\"insight-box\">",
+        "    <h3>Distribution Highlights</h3>",
+    ]
+
+    num_runs = summary.get("num_runs")
+    target_mean = extract_numeric(summary.get("target_mean"))
+    target_median = extract_numeric(summary.get("target_median"))
+    mean_return = extract_numeric(summary.get("mean_return_pct"))
+    median_return = extract_numeric(summary.get("median_return_pct"))
+    reference_spot = extract_numeric(summary.get("spot_price"))
+
+    headline = []
+    if num_runs:
+        headline.append(f"{num_runs:,} simulated paths")
+    if target_mean is not None and mean_return is not None:
+        headline.append(f"Mean ${target_mean:.2f} ({format_delta_percent(mean_return, decimals=1)})")
+    if target_median is not None and median_return is not None:
+        headline.append(f"Median ${target_median:.2f} ({format_delta_percent(median_return, decimals=1)})")
+    if headline:
+        parts.append(f"    <p>{' • '.join(headline)}.</p>")
+
+    if reference_spot is not None:
+        comparison = ""
+        if current_price is not None and abs(current_price - reference_spot) > 1e-6:
+            comparison = f" (simulation spot reference ${reference_spot:.2f}; current price ${current_price:.2f})"
+        else:
+            comparison = f" (spot reference ${reference_spot:.2f})"
+        parts.append(f"    <p>Spot overlay{comparison}</p>")
+
+    if percentiles:
+        parts.append("    <table>")
+        parts.append("        <thead><tr><th>Percentile</th><th class=\"text-right\">Target</th><th class=\"text-right\">Return</th><th>Scenario</th></tr></thead>")
+        parts.append("        <tbody>")
+        for row in percentiles[:5]:
+            parts.append(
+                "            <tr>"
+                f"<td>{row.get('label', '—')}</td>"
+                f"<td class=\"text-right\">{row.get('target_price', '—')}</td>"
+                f"<td class=\"text-right\">{row.get('return', '—')}</td>"
+                f"<td>{row.get('scenario', '—')}</td>"
+                "</tr>"
+            )
+        parts.append("        </tbody>")
+        parts.append("    </table>")
+        parts.append('    <img src="assets/monte_carlo_pt_distribution.png" alt="Monte Carlo fair value distribution" class="chart-image-full" />')
+
+    lower = extract_numeric(confidence.get("lower_price"))
+    upper = extract_numeric(confidence.get("upper_price"))
+    span_dollars = extract_numeric(confidence.get("range_dollars"))
+    pct_band = confidence.get("range_pct_of_spot") or confidence.get("range_pct_of_assets")
+    if lower is not None and upper is not None:
+        span_text = format_money(span_dollars) if span_dollars is not None else "—"
+        pct_text = pct_band if pct_band is not None else "—"
+        if pct_text != "—" and not str(pct_text).strip().endswith("%"):
+            pct_text = f"{pct_text}%"
+        parts.append(
+            f"    <p>95% interval: ${lower:.2f} – ${upper:.2f} (span {span_text} | {pct_text}).</p>"
+        )
+
+    if probability_bands:
+        parts.append("    <h4>Probability Bands</h4>")
+        parts.append("    <ul>")
+        for item in probability_bands:
+            parts.append(
+                f"        <li>{item.get('label', '—')}: {item.get('probability', '—')} – {item.get('implication', '')}</li>"
+            )
+        parts.append("    </ul>")
+
+    parts.append("    <p class=\"text-small text-secondary\">Source data: <code>caty14_monte_carlo.json</code>.</p>")
+    parts.append("</div>")
+
+    return "\n".join(parts)
+
+
+def render_investment_recommendation(context: Dict[str, Any]) -> str:
+    market = context.get("market", {})
+    metrics = context.get("calculated_metrics", {})
+    frameworks = context.get("valuation_outputs", {}).get("frameworks", {})
+
+    rating = metrics.get("rating", "—")
+    current_price = extract_numeric(market.get("price"))
+    price_date = market.get("price_date")
+
+    normalized_target = extract_numeric(metrics.get("target_normalized"))
+    normalized_return = extract_numeric(metrics.get("return_normalized_pct"))
+    wilson_target = extract_numeric(metrics.get("target_wilson_95"))
+    wilson_return = extract_numeric(metrics.get("return_wilson_95_pct"))
+    blended_target = extract_numeric(metrics.get("target_irc_blended")) or extract_numeric(frameworks.get("irc_blended", {}).get("target_price"))
+    blended_return = extract_numeric(metrics.get("return_irc_blended_pct"))
+
+    parts: list[str] = [
+        "<h2>Investment Recommendation</h2>",
+        "<div class=\"insight-box\">",
+        "    <h3>Rating Summary</h3>",
+        "    <ul>",
+        f"        <li><strong>Rating:</strong> {rating}</li>",
+        f"        <li><strong>Current Price:</strong> {format_money(current_price)} (as of {price_date})</li>",
+        f"        <li><strong>Normalized Fair Value:</strong> {format_money(normalized_target)} ({format_delta_percent(normalized_return, decimals=1)} vs spot)</li>",
+        f"        <li><strong>Wilson 95% Upper Bound:</strong> {format_money(wilson_target)} ({format_delta_percent(wilson_return, decimals=1)} expected return)</li>",
+        f"        <li><strong>IRC Blended Target:</strong> {format_money(blended_target)} ({format_delta_percent(blended_return, decimals=1)}).</li>",
+        "    </ul>",
+    ]
+
+    credit_costs_current = extract_numeric(metrics.get("nco_rate_bps"))
+    credit_costs_through_cycle = extract_numeric(metrics.get("through_cycle_nco_bps"))
+    key_watch = [
+        (
+            "Credit costs",
+            f"NCO {format_plain_percent(credit_costs_current / 100 if credit_costs_current is not None else None, decimals=2)} "
+            f"vs through-cycle {format_plain_percent(credit_costs_through_cycle / 100 if credit_costs_through_cycle is not None else None, decimals=2)}",
+        ),
+        (
+            "P/TBV positioning",
+            f"Current multiple {format_multiple(extract_numeric(metrics.get('current_ptbv')))} "
+            f"vs normalized {format_multiple(extract_numeric(metrics.get('normalized_ptbv')))}",
+        ),
+        (
+            "Funding mix",
+            f"Brokered deposits {format_plain_percent(extract_numeric(metrics.get('brokered_deposit_pct')), decimals=1)} | "
+            f"NIB mix {format_plain_percent(extract_numeric(metrics.get('nib_pct')), decimals=1)}",
+        ),
+    ]
+
+    parts.extend(
+        [
+            "    <h3>Key Watch Items</h3>",
+            "    <ul>",
+        ]
+    )
+    for title, text in key_watch:
+        parts.append(f"        <li><strong>{title}:</strong> {text}</li>")
+    parts.append("    </ul>")
+
+    upgrade_triggers = [
+        "Sustained NCO ≤ 25 bps while maintaining growth",
+        "ROTE ≥ 12% with efficiency ≤ 45%",
+        "Evidence of durable NIM ≥ 3.30% as rate cuts progress",
+        "Enhanced disclosure on CRE office exposure and ALM duration risk",
+    ]
+
+    parts.extend(
+        [
+            "    <h3>Upgrade Triggers</h3>",
+            "    <ul>",
+        ]
+    )
+    parts.extend(f"        <li>{item}</li>" for item in upgrade_triggers)
+    parts.append("    </ul>")
+    parts.append("    <p class=\"text-small text-secondary\">Source data: <code>market_data_current.json</code>, <code>valuation_outputs.json</code>.</p>")
+    parts.append("</div>")
+
+    return "\n".join(parts)
+
+
 def render_report_meta(timestamps: Dict[str, str]) -> str:
     return f"Report Date: {timestamps['report_date']} | Last Updated: {timestamps['last_updated_utc']}"
 
@@ -1397,6 +1918,82 @@ def format_percent(value: float | None) -> str:
     if value is None:
         return "—"
     return f"{value:+.1f}%"
+
+
+def extract_numeric(value: Any) -> float | None:
+    if isinstance(value, dict):
+        value = value.get("value")
+    if value in (None, "", "N/A", "n/a"):
+        return None
+    try:
+        return float(value)
+    except (TypeError, ValueError):
+        return None
+
+
+def format_millions(value: float | None, decimals: int = 1) -> str:
+    if value is None:
+        return "—"
+    return f"${value:,.{decimals}f}M"
+
+
+def format_plain_percent(value: float | None, decimals: int = 1) -> str:
+    if value is None:
+        return "—"
+    return f"{value:.{decimals}f}%"
+
+
+def format_delta_percent(value: float | None, decimals: int = 1) -> str:
+    if value is None:
+        return "—"
+    if abs(value) < 1e-9:
+        return f"{0:.{decimals}f}%"
+    sign = "+" if value > 0 else "-"
+    return f"{sign}{abs(value):.{decimals}f}%"
+
+
+def format_delta_points(value: float | None, decimals: int = 1, suffix: str = " pts") -> str:
+    if value is None:
+        return "—"
+    if abs(value) < 1e-9:
+        zero_fmt = f"{0:.{decimals}f}" if decimals > 0 else "0"
+        return f"{zero_fmt}{suffix}"
+    sign = "+" if value > 0 else "-"
+    return f"{sign}{abs(value):.{decimals}f}{suffix}"
+
+
+def format_multiple(value: float | None, decimals: int = 3) -> str:
+    if value is None:
+        return "—"
+    return f"{value:.{decimals}f}x"
+
+
+def percent_change(current: float | None, prior: float | None) -> float | None:
+    if current is None or prior in (None, 0):
+        return None
+    return ((current - prior) / prior) * 100
+
+
+def absolute_change(current: float | None, prior: float | None) -> float | None:
+    if current is None or prior is None:
+        return None
+    return current - prior
+
+
+def classify_delta(delta: float | None) -> str:
+    if delta is None:
+        return ""
+    if delta > 0:
+        return "text-success"
+    if delta < 0:
+        return "text-danger"
+    return ""
+
+
+def ratio_pct(part: float | None, total: float | None) -> float | None:
+    if part is None or total in (None, 0):
+        return None
+    return (part / total) * 100
 
 
 def parse_iso(ts: str | None) -> dt.datetime | None:
@@ -2200,9 +2797,14 @@ def main(test_mode: bool = False) -> int:
         html = replace_section(html, "scenario-analysis-table", render_scenario_analysis_table(context))
         html = replace_section(html, "positive-catalysts", render_positive_catalysts(context))
         html = replace_section(html, "peer-positioning", render_peer_positioning(context))
+        html = replace_section(html, "financial-analysis-summary", render_financial_analysis_summary(context))
+        html = replace_section(html, "liquidity-summary", render_liquidity_summary(context))
+        html = replace_section(html, "scenario-analysis-narrative", render_scenario_analysis_narrative(context))
+        html = replace_section(html, "monte-carlo-summary", render_monte_carlo_summary(context))
         html = replace_section(html, "historical-context", render_historical_context(context))
         html = replace_section(html, "recent-developments-section", render_recent_developments_section(recent_developments, narrative_placeholders))
         html = replace_section(html, "investment-risks-bullets", render_investment_risks_section(context, narrative_placeholders))
+        html = replace_section(html, "investment-recommendation", render_investment_recommendation(context))
 
         reconciliation_html = build_reconciliation_table()
         html = replace_section(html, "reconciliation-dashboard", reconciliation_html)
