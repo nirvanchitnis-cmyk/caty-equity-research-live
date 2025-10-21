@@ -51,7 +51,7 @@
       "description": "Peer regression snapshot generated from SEC EDGAR API",
       "id": "peer_metrics",
       "last_verified": "2025-10-20",
-      "note": "Auto-generated via peer API fetch 2025-10-21T05:03:09Z",
+      "note": "Auto-generated via peer API fetch 2025-10-21T06:11:10Z",
       "owner": "Peer Analytics",
       "path": "evidence/peer_snapshot_2025Q2.csv",
       "refresh_frequency": "Quarterly",

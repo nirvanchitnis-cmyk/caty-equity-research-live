@@ -183,12 +183,21 @@ def main() -> int:
         format="%(asctime)s %(levelname)s %(message)s",
     )
 
+    append_log("update_all_data.py: START")
+
     # Step 0: Fetch live market price
     print("Fetching live CATY price...")
-    subprocess.run(["python3", "scripts/fetch_live_price.py"], check=True)
-    print("✅ Market data updated")
-
-    append_log("update_all_data.py: START")
+    fetch_live_result = run_step(
+        [sys.executable, str(SCRIPTS / "fetch_live_price.py")],
+        "fetch_live_price",
+        allow_failure=True,
+    )
+    if fetch_live_result.returncode == 0:
+        print("✅ Market data updated")
+        append_log("fetch_live_price.py: Updated market data with latest price")
+    else:
+        print("⚠️ Live price update failed - using cached value")
+        append_log("fetch_live_price.py: WARNING - live price fetch failed, using cached value")
 
     # Step 1: SEC EDGAR
     sec_result = run_step([sys.executable, str(SCRIPTS / "fetch_sec_edgar.py")], "fetch_sec_edgar", allow_failure=True)
@@ -240,6 +249,19 @@ def main() -> int:
     dq_payload = load_payload_safely(DQ_REPORT_PATH) or {}
     conflict_count = len(dq_payload.get("conflicts", []))
     append_log(f"merge_data_sources.py: {conflict_count} conflicts logged")
+
+    # Step 4.5: Calculate valuation metrics
+    print("Calculating valuation metrics...")
+    valuation_result = run_step(
+        [sys.executable, str(SCRIPTS / "calculate_valuation_metrics.py")],
+        "calculate_valuation_metrics",
+        allow_failure=True,
+    )
+    if valuation_result.returncode == 0:
+        append_log("calculate_valuation_metrics.py: Recalculated all targets and returns")
+    else:
+        append_log("calculate_valuation_metrics.py: WARNING - calculation failed")
+        return 1
 
     # Step 5: Evidence metadata
     update_evidence_sources(sec_payload, fdic_payload, peer_payload)

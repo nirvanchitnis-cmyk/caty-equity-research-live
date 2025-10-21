@@ -1,52 +1,77 @@
 """
 Probability-Weighted Valuation Analysis
-Reconciles regression vs normalized earnings with market-implied probabilities
+Provides callable helpers for Wilson score blending of valuation targets.
 """
 
+from __future__ import annotations
+
 import json
+import sys
 from pathlib import Path
+from typing import Any, Dict
 
-# Load current market data from single source of truth
-_data_path = Path(__file__).parent.parent / 'data' / 'market_data_current.json'
-with open(_data_path, 'r') as f:
-    _market_data = json.load(f)
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 
-# Scenario targets
-target_current = 56.50  # Regression at ROTE 12.35% (7-peer: EWBC, CVBF, HAFC, COLB, WAFD, PPBI, BANC)
-target_normalized = 39.32  # Gordon Growth at ROTE 10.21%
-current_price = _market_data['price']  # DYNAMIC: loaded from data/market_data_current.json
-
-
-def expected_return(prob_current: float) -> float:
-    prob_normalized = 1 - prob_current
-    expected_target = (prob_current * target_current) + (prob_normalized * target_normalized)
-    return ((expected_target - current_price) / current_price) * 100
+from analysis.valuation_bridge_final import (  # noqa: E402
+    calculate_normalized_target,
+    calculate_regression_target,
+    load_market_data,
+)
 
 
-# Probability anchors
-data_prob_current = 0.85  # Post-2008 breach frequency (15.7% tail)
-upper_prob_current = 0.74  # 95% upper bound using Wilson interval for post-2008 sample
-market_prob_current = (current_price - target_normalized) / (target_current - target_normalized)
+DATA_PATH = Path(__file__).resolve().parents[1] / "data" / "market_data_current.json"
 
 
-def describe(label: str, prob_current: float) -> str:
-    prob_normalized = 1 - prob_current
-    exp_target = prob_current * target_current + prob_normalized * target_normalized
-    exp_return = expected_return(prob_current)
-    return (
-        f"{label:>22}: P(Current)={prob_current:5.1%}, P(Normalized)={prob_normalized:5.1%}, "
-        f"Target=${exp_target:5.2f}, Return={exp_return:+5.1f}%"
+def calculate_wilson_weighted(
+    regression_target: float,
+    normalized_target: float,
+    prob_regression: float = 0.609,
+) -> Dict[str, Any]:
+    """Calculate Wilson probability-weighted target."""
+    prob_normalized = 1 - prob_regression
+    wilson_target = (prob_regression * regression_target) + (prob_normalized * normalized_target)
+
+    return {
+        "target_price": round(wilson_target, 2),
+        "method": "Wilson 95% Probability-Weighted",
+        "probabilities": {
+            "regression": round(prob_regression, 3),
+            "normalized": round(prob_normalized, 3),
+        },
+        "inputs": {
+            "regression_target": regression_target,
+            "normalized_target": normalized_target,
+        },
+    }
+
+
+def main() -> int:
+    market_data = load_market_data(DATA_PATH)
+    metrics = market_data.get("calculated_metrics", {})
+    price = market_data.get("price")
+    tbvps = metrics.get("tbvps")
+    roae = metrics.get("rote_ltm_pct")
+    normalized_rote = metrics.get("normalized_rote_pct", roae)
+
+    if price is None or tbvps is None or roae is None:
+        raise ValueError("Missing required inputs in market_data_current.json")
+
+    regression = calculate_regression_target(roae, tbvps)
+    normalized = calculate_normalized_target(normalized_rote, tbvps)
+    wilson = calculate_wilson_weighted(regression["target_price"], normalized["target_price"])
+
+    expected_return = ((wilson["target_price"] - price) / price) * 100
+
+    print(
+        "Wilson Weighted Target: "
+        f"${wilson['target_price']:.2f} ({expected_return:+.1f}%) "
+        f"[{wilson['probabilities']['regression']*100:.1f}% regression / "
+        f"{wilson['probabilities']['normalized']*100:.1f}% normalized]"
     )
+    return 0
 
 
-hurdle_return = 15.0
-prob_for_hurdle = (hurdle_return / 100 + 1) * current_price
-prob_for_hurdle = (prob_for_hurdle - target_normalized) / (target_current - target_normalized)
-
-print(describe("Data-Anchored", data_prob_current))
-print(describe("95% Upper Bound", upper_prob_current))
-print(describe("Market-Implied", market_prob_current))
-print(describe("Neutral 60/40", 0.60))
-
-print("\nBUY hurdle (expected return > +15%): requires P(Current) >= "
-      f"{prob_for_hurdle:5.1%} (tail <= {(1 - prob_for_hurdle):5.1%})")
+if __name__ == "__main__":
+    raise SystemExit(main())
