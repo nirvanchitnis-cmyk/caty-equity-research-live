@@ -987,6 +987,161 @@ def render_historical_context(context: Dict[str, Any]) -> str:
     return "\n".join(parts)
 
 
+def render_industry_analysis(context: Dict[str, Any]) -> str:
+    industry_data = context.get("industry_analysis", {})
+    five_forces = industry_data.get("porters_five_forces", {})
+    forces_list = five_forces.get("forces", [])
+    attractiveness = five_forces.get("industry_attractiveness", {})
+    trends = industry_data.get("key_industry_trends", [])
+    positioning = industry_data.get("caty_positioning", {})
+    metadata = industry_data.get("metadata", {})
+
+    if not forces_list:
+        return "<p>No industry analysis data available.</p>"
+
+    parts: list[str] = [
+        "<div class=\"insight-box\">",
+        "    <h3>Porter's Five Forces Framework</h3>",
+        "    <table>",
+        "        <thead>",
+        "            <tr>",
+        "                <th class=\"table-col-event\">Force</th>",
+        "                <th class=\"table-col-score text-center\">Score (1-10)</th>",
+        "                <th class=\"table-col-rationale\">Rationale</th>",
+        "            </tr>",
+        "        </thead>",
+        "        <tbody>",
+    ]
+
+    for force in forces_list:
+        force_name = force.get("force", "—")
+        score_value = force.get("score")
+        score_numeric = safe_to_float(score_value)
+
+        if score_numeric is None:
+            score_display = "—"
+            score_class = ""
+        elif abs(score_numeric - round(score_numeric)) < 1e-6:
+            score_display = f"{int(round(score_numeric))}/10"
+            score_class = "text-success" if score_numeric <= 4 else "text-danger" if score_numeric >= 7 else "text-warning"
+        else:
+            score_display = f"{score_numeric:.1f}/10"
+            score_class = "text-success" if score_numeric <= 4 else "text-danger" if score_numeric >= 7 else "text-warning"
+
+        score_label = force.get("score_label", "—")
+        rationale_general = force.get("rationale_general", "—")
+        rationale_caty = force.get("rationale_caty", "—")
+
+        class_names = ["text-center"]
+        if score_class:
+            class_names.append(score_class)
+        score_class_attr = " ".join(class_names)
+
+        parts.extend(
+            [
+                "            <tr>",
+                f"                <td><strong>{force_name}</strong></td>",
+                f"                <td class=\"{score_class_attr}\"><strong>{score_display}</strong><br>({score_label})</td>",
+                "                <td>",
+                f"                    <strong>Industry Dynamic:</strong> {rationale_general}",
+                "                    <br><br>",
+                f"                    <strong>For CATY:</strong> {rationale_caty}",
+                "                </td>",
+                "            </tr>",
+            ]
+        )
+
+    parts.extend(
+        [
+            "        </tbody>",
+            "    </table>",
+        ]
+    )
+
+    attract_score_value = safe_to_float(attractiveness.get("score"))
+    if attract_score_value is None:
+        attract_score_text = "—"
+        attract_class = ""
+        attract_label = "Industry Outlook"
+    else:
+        attract_score_text = f"{attract_score_value:.1f}/10"
+        attract_class = (
+            "text-success" if attract_score_value <= 4.5 else "text-danger" if attract_score_value >= 6.5 else "text-warning"
+        )
+        if attract_score_value <= 4.5:
+            attract_label = "Attractive"
+        elif attract_score_value >= 6.5:
+            attract_label = "Challenged"
+        else:
+            attract_label = "Moderately Attractive"
+
+    if attract_class:
+        parts.append(
+            f"    <h3 class=\"mt-20\">Industry Attractiveness Score: <span class=\"{attract_class}\">{attract_score_text}</span> ({attract_label})</h3>"
+        )
+    else:
+        parts.append(
+            f"    <h3 class=\"mt-20\">Industry Attractiveness Score: <span>{attract_score_text}</span> ({attract_label})</h3>"
+        )
+
+    interpretation = attractiveness.get("interpretation")
+    if interpretation:
+        parts.append(f"    <p><strong>Interpretation:</strong> {interpretation}</p>")
+
+    if trends:
+        impact_map = {
+            "favorable": ("badge-success", "Favorable for CATY"),
+            "risk": ("badge-danger", "Risk for CATY"),
+            "unfavorable": ("badge-danger", "Unfavorable for CATY"),
+            "neutral": ("badge-warning", "Neutral for CATY"),
+            "mixed": ("badge-warning", "Mixed Impact"),
+        }
+        parts.append("    <h3>Key Industry Trends (2025-2027 Outlook)</h3>")
+        parts.append("    <ul>")
+        for trend in trends:
+            trend_name = trend.get("trend", "—")
+            description = trend.get("description", "—")
+            impact_raw = str(trend.get("impact_caty", "neutral")).lower()
+            badge_class, badge_label = impact_map.get(impact_raw, ("badge-warning", "Neutral for CATY"))
+            parts.append(
+                f"        <li><strong>{trend_name}:</strong> {description} "
+                f"<span class=\"{badge_class}\">{badge_label}</span></li>"
+            )
+        parts.append("    </ul>")
+
+    favorable = positioning.get("favorable_exposures", [])
+    risks = positioning.get("risk_exposures", [])
+    if favorable or risks:
+        parts.append("    <h3>CATY Positioning vs Industry Trends</h3>")
+    if favorable:
+        parts.append("    <p><strong>Favorable Exposures:</strong></p>")
+        parts.append("    <ul>")
+        parts.extend(f"        <li>{item}</li>" for item in favorable)
+        parts.append("    </ul>")
+    if risks:
+        parts.append("    <p><strong>Risk Exposures:</strong></p>")
+        parts.append("    <ul>")
+        parts.extend(f"        <li>{item}</li>" for item in risks)
+        parts.append("    </ul>")
+
+    meta_bits: list[str] = []
+    last_updated = metadata.get("last_updated")
+    if last_updated:
+        meta_bits.append(f"Updated {last_updated}")
+    provenance = metadata.get("provenance")
+    if provenance:
+        meta_bits.append(f"Source: {provenance}")
+    confidence = metadata.get("confidence")
+    if confidence:
+        meta_bits.append(f"Confidence: {confidence}")
+    if meta_bits:
+        parts.append(f"    <p class=\"text-secondary text-small\">{' • '.join(meta_bits)}</p>")
+
+    parts.append("</div>")
+
+    return "\n".join(parts)
+
+
 def render_report_meta(timestamps: Dict[str, str]) -> str:
     return f"Report Date: {timestamps['report_date']} | Last Updated: {timestamps['last_updated_utc']}"
 
@@ -1753,6 +1908,8 @@ def main(test_mode: bool = False) -> int:
         peers = load_json(peers_path) if peers_path.exists() else {}
         history_path = ROOT / "data" / "historical_context.json"
         historical_context = load_json(history_path) if history_path.exists() else {}
+        industry_path = ROOT / "data" / "industry_analysis.json"
+        industry_analysis = load_json(industry_path) if industry_path.exists() else {}
 
         context = {
             "market": market,
@@ -1766,6 +1923,7 @@ def main(test_mode: bool = False) -> int:
             "catalysts": catalysts,
             "peers": peers,
             "historical_context": historical_context,
+            "industry_analysis": industry_analysis,
             "caty01_tables": caty01_tables,
             "caty02_tables": caty02_tables,
             "caty03_tables": caty03_tables,
@@ -1794,6 +1952,7 @@ def main(test_mode: bool = False) -> int:
         html = replace_section(html, "report-meta", render_report_meta(timestamps))
         html = replace_section(html, "footer-timestamp", render_footer_timestamp(timestamps))
         html = replace_section(html, "company-overview", render_company_overview(context))
+        html = replace_section(html, "industry-analysis", render_industry_analysis(context))
         html = replace_section(html, "investment-thesis-summary", render_investment_thesis(context, narrative_placeholders))
         html = replace_section(html, "key-findings-bullets", render_key_findings(narrative_placeholders))
         html = replace_section(html, "valuation-framework-caption", render_price_target_caption(narrative_placeholders))
