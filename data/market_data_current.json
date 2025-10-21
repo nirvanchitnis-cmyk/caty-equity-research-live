@@ -1,7 +1,7 @@
 {
   "price": 47.0,
   "price_date": "2025-10-20",
-  "report_generated": "2025-10-21T06:25:19.622216+00:00",
+  "report_generated": "2025-10-21T06:29:02.973915+00:00",
   "data_source": "NASDAQ closing price (Friday, Oct 18, 2025)",
   "ticker": "CATY",
   "company": "Cathay General Bancorp",
@@ -53,8 +53,8 @@
   "report_metadata": {
     "report_date": "October 20, 2025",
     "report_date_iso": "2025-10-20",
-    "last_updated_utc": "2025-10-21T06:25:19.622216+00:00",
-    "generated_at_display": "October 21, 2025 06:25 UTC"
+    "last_updated_utc": "2025-10-21T06:29:02.973915+00:00",
+    "generated_at_display": "October 21, 2025 06:29 UTC"
   },
   "narrative_prose": {
     "investment_thesis_summary": "{{company}} ({{ticker}}) trades at ${{price}} ({{price_date}}) with expected return of {{return_wilson_95_pct}}% to Wilson 95% target ${{target_wilson_95}}. Current P/TBV {{current_ptbv}}x represents premium to normalized {{normalized_ptbv}}x, driven by current earnings (ROTE {{rote_ltm_pct}}%) vs through-cycle assumptions (NCO {{through_cycle_nco_bps}} bps).",
