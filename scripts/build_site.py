@@ -1142,6 +1142,241 @@ def render_industry_analysis(context: Dict[str, Any]) -> str:
     return "\n".join(parts)
 
 
+def render_esg_assessment(context: Dict[str, Any]) -> str:
+    esg_data = context.get("esg_assessment", {})
+    governance = esg_data.get("governance", {})
+    social = esg_data.get("social", {})
+    environmental = esg_data.get("environmental", {})
+    overall = esg_data.get("overall_rating", {})
+    materiality = esg_data.get("esg_materiality", {})
+    metadata = esg_data.get("metadata", {})
+
+    if not governance and not social and not environmental:
+        return "<p>No ESG data available.</p>"
+
+    market = context.get("market", {})
+    metrics = context.get("calculated_metrics", {})
+    capital_tables = context.get("caty10_tables", {})
+    capital_metrics = capital_tables.get("capital_return_metrics", {})
+    buyback_program = capital_tables.get("buyback_program", {})
+
+    capital_allocation = governance.get("capital_allocation", {})
+
+    price_value = safe_to_float(market.get("price")) or safe_to_float(capital_allocation.get("current_price"))
+    dividend_annual = (
+        safe_to_float(capital_allocation.get("dividend_annual"))
+        or safe_to_float(capital_metrics.get("annual_dividend"))
+        or safe_to_float(metrics.get("dividend_annual"))
+    )
+    dividend_quarterly = (
+        safe_to_float(capital_allocation.get("dividend_quarterly"))
+        or safe_to_float(capital_metrics.get("quarterly_dividend"))
+        or (dividend_annual / 4 if dividend_annual is not None else None)
+    )
+    dividend_yield = (
+        safe_to_float(capital_allocation.get("dividend_yield_pct"))
+        or safe_to_float(capital_metrics.get("dividend_yield_pct"))
+        or safe_to_float(metrics.get("dividend_yield_pct"))
+    )
+    payout_ratio = (
+        safe_to_float(capital_allocation.get("payout_ratio_pct"))
+        or safe_to_float(capital_metrics.get("dividend_payout_ratio_pct"))
+        or safe_to_float(metrics.get("payout_ratio_pct"))
+    )
+    cet1_ratio = (
+        safe_to_float(capital_allocation.get("pro_forma_cet1_pct"))
+        or safe_to_float(metrics.get("cet1_ratio_pct"))
+    )
+    cet1_floor = safe_to_float(capital_allocation.get("cet1_floor_pct"))
+
+    buyback_auth = (
+        safe_to_float(capital_allocation.get("buyback_authorized_millions"))
+        or safe_to_float(capital_metrics.get("buyback_authorization_millions"))
+    )
+    avg_buyback_price = (
+        safe_to_float(capital_allocation.get("avg_repurchase_price"))
+        or safe_to_float(buyback_program.get("average_price"))
+    )
+
+    shares_repurchased_value = safe_to_float(capital_allocation.get("shares_repurchased"))
+    if shares_repurchased_value is None:
+        shares_repurchased_millions = safe_to_float(buyback_program.get("shares_repurchased_millions"))
+        if shares_repurchased_millions is not None:
+            shares_repurchased_value = shares_repurchased_millions * 1_000_000
+
+    def describe_buyback_gap(avg_price: float | None, current_price: float | None) -> str:
+        if avg_price is None or current_price is None or avg_price == 0:
+            return "comparison unavailable"
+        delta_pct = ((current_price - avg_price) / avg_price) * 100
+        if abs(delta_pct) < 0.5:
+            return "in-line with current price"
+        direction = "discount" if delta_pct > 0 else "premium"
+        return f"{abs(delta_pct):.1f}% {direction} to current price"
+
+    buyback_gap = describe_buyback_gap(avg_buyback_price, price_value)
+
+    credit_risk = governance.get("risk_management", {}).get("credit_risk", {})
+    caty_nco = safe_to_float(metrics.get("nco_rate_bps")) or safe_to_float(credit_risk.get("caty_nco_bps"))
+    peer_nco = safe_to_float(credit_risk.get("peer_median_nco_bps"))
+    cre_concentration = safe_to_float(metrics.get("cre_loans_pct")) or safe_to_float(credit_risk.get("cre_concentration_pct"))
+    coverage_ratio = safe_to_float(credit_risk.get("coverage_ratio_pct"))
+
+    parts: list[str] = [
+        "<h2>ESG Assessment</h2>",
+        "<div class=\"insight-box\">",
+        "    <h3>ESG Materiality for Regional Banks</h3>",
+    ]
+    overview = materiality.get("overview")
+    if overview:
+        parts.append(f"    <p>{overview}</p>")
+
+    parts.append("    <h3>Material ESG Factors</h3>")
+
+    governance_materiality = governance.get("materiality", "Most Material")
+    parts.append(f"    <h4>Governance ({governance_materiality})</h4>")
+
+    if capital_allocation:
+        price_text = format_money(price_value) if price_value is not None else "—"
+        buyback_auth_text = f"${buyback_auth:,.0f}M" if buyback_auth is not None else "—"
+        shares_text = f"{int(round(shares_repurchased_value)):,}" if shares_repurchased_value is not None else "—"
+        avg_price_text = format_money(avg_buyback_price) if avg_buyback_price is not None else "—"
+        dividend_q_text = f"${dividend_quarterly:.2f}" if dividend_quarterly is not None else "—"
+        dividend_a_text = f"${dividend_annual:.2f}" if dividend_annual is not None else "—"
+        yield_text = f"{dividend_yield:.1f}%" if dividend_yield is not None else "—"
+        payout_text = f"{payout_ratio:.0f}%" if payout_ratio is not None else "—"
+        cet1_text = f"{cet1_ratio:.2f}%" if cet1_ratio is not None else "—"
+        cet1_floor_text = f"{cet1_floor:.0f}%" if cet1_floor is not None else "—"
+        rating_label = capital_allocation.get("rating", "—")
+        rating_rationale = capital_allocation.get("rating_rationale", "")
+
+        parts.extend(
+            [
+                "    <p><strong>Capital Allocation Discipline:</strong></p>",
+                "    <ul>",
+                f"        <li>Buyback execution: {buyback_auth_text} authorized; {shares_text} shares repurchased at avg {avg_price_text} (vs current {price_text} = {buyback_gap})</li>",
+                f"        <li>Dividend policy: Consistent {dividend_q_text}/quarter ({dividend_a_text} annualized), {yield_text} yield, payout ratio ~{payout_text} of LTM EPS</li>",
+                f"        <li>Capital levels: Pro forma CET1 {cet1_text} vs management floor {cet1_floor_text}</li>",
+                f"        <li>Rating: <strong>{rating_label}</strong> - {rating_rationale}</li>",
+                "    </ul>",
+            ]
+        )
+
+    if credit_risk:
+        caty_nco_text = f"{caty_nco:.1f} bps" if caty_nco is not None else "—"
+        peer_nco_text = f"{peer_nco:.1f} bps" if peer_nco is not None else "—"
+        cre_text = f"{cre_concentration:.1f}%" if cre_concentration is not None else "—"
+        coverage_text = f"{coverage_ratio:.0f}%" if coverage_ratio is not None else "—"
+        rating_label = credit_risk.get("rating", "—")
+        rating_rationale = credit_risk.get("rating_rationale", "")
+
+        parts.extend(
+            [
+                "    <p><strong>Risk Management:</strong></p>",
+                "    <ul>",
+                f"        <li>Credit risk: Superior NCO performance ({caty_nco_text} vs peer {peer_nco_text}) demonstrates effective underwriting</li>",
+                f"        <li>CRE concentration: {cre_text} creates tail risk, but coverage ratio {coverage_text} provides cushion</li>",
+                "        <li>AOCI/ALM risk: Not disclosed in Q2'25 10-Q; inability to assess duration risk is governance weakness</li>",
+                f"        <li>Rating: <strong>{rating_label}</strong> - {rating_rationale}</li>",
+                "    </ul>",
+            ]
+        )
+
+    board = governance.get("board_independence", {})
+    if board:
+        parts.extend(
+            [
+                "    <p><strong>Board Independence:</strong></p>",
+                "    <ul>",
+                f"        <li>Auditor: {board.get('auditor', '—')} - {board.get('auditor_description', '—')}</li>",
+                f"        <li>Board composition: {board.get('board_composition', '—')}</li>",
+                f"        <li>Rating: <strong>{board.get('rating', '—')}</strong> - {board.get('rating_rationale', '')}</li>",
+                "    </ul>",
+            ]
+        )
+
+    social_materiality = social.get("materiality", "Moderately Material")
+    parts.append(f"    <h4>Social ({social_materiality})</h4>")
+
+    community = social.get("community_lending", {})
+    if community:
+        parts.extend(
+            [
+                "    <p><strong>Community Lending & CRA:</strong></p>",
+                "    <ul>",
+                f"        <li>{community.get('description', '—')}</li>",
+                f"        <li>Rating: <strong>{community.get('rating', '—')}</strong> - {community.get('rating_rationale', '')}</li>",
+                "    </ul>",
+            ]
+        )
+
+    privacy = social.get("customer_data_privacy", {})
+    if privacy:
+        parts.extend(
+            [
+                "    <p><strong>Customer Data Privacy:</strong></p>",
+                "    <ul>",
+                f"        <li>{privacy.get('description', '—')}</li>",
+                f"        <li>Rating: <strong>{privacy.get('rating', '—')}</strong> - {privacy.get('rating_rationale', '')}</li>",
+                "    </ul>",
+            ]
+        )
+
+    environmental_materiality = environmental.get("materiality", "Less Material for Commercial Banks")
+    parts.append(f"    <h4>Environmental ({environmental_materiality})</h4>")
+
+    climate = environmental.get("climate_risk", {})
+    if climate:
+        parts.extend(
+            [
+                "    <p><strong>Climate Risk in CRE Portfolio:</strong></p>",
+                "    <ul>",
+                f"        <li>Physical risk: {climate.get('physical_risk', '—')}</li>",
+                f"        <li>Transition risk: {climate.get('transition_risk', '—')}</li>",
+                f"        <li>Financed emissions: {climate.get('financed_emissions', '—')}</li>",
+                f"        <li>Disclosure: {climate.get('disclosure', '—')}</li>",
+                f"        <li>Rating: <strong>{climate.get('rating', '—')}</strong> - {climate.get('rating_rationale', '')}</li>",
+                "    </ul>",
+            ]
+        )
+
+    if overall:
+        score_value = safe_to_float(overall.get("score"))
+        score_text = f"{score_value:.0f}" if score_value is not None else overall.get("score", "—")
+        score_label = overall.get("score_label", "—")
+        parts.append(f"    <h3>Overall ESG Rating: {score_text}/10 ({score_label})</h3>")
+
+        summary = overall.get("summary")
+        if summary:
+            parts.append(f"    <p><strong>Summary:</strong> {summary}</p>")
+
+        impact = overall.get("investment_impact")
+        impact_detail = overall.get("investment_impact_detail")
+        if impact or impact_detail:
+            impact_bits = []
+            if impact:
+                impact_bits.append(f"<strong>{impact}.</strong>")
+            if impact_detail:
+                impact_bits.append(impact_detail)
+            parts.append(f"    <p><strong>Impact on Investment Case:</strong> {' '.join(impact_bits)}</p>")
+
+    meta_bits: list[str] = []
+    last_updated = metadata.get("last_updated")
+    if last_updated:
+        meta_bits.append(f"Last Updated: {last_updated}")
+    provenance = metadata.get("provenance")
+    if provenance:
+        meta_bits.append(f"Source: {provenance}")
+    confidence = metadata.get("confidence")
+    if confidence:
+        meta_bits.append(f"Confidence: {confidence}")
+    if meta_bits:
+        parts.append(f"    <p class=\"text-small text-secondary\">{' | '.join(meta_bits)}</p>")
+
+    parts.append("</div>")
+
+    return "\n".join(parts)
+
+
 def render_report_meta(timestamps: Dict[str, str]) -> str:
     return f"Report Date: {timestamps['report_date']} | Last Updated: {timestamps['last_updated_utc']}"
 
@@ -1910,6 +2145,8 @@ def main(test_mode: bool = False) -> int:
         historical_context = load_json(history_path) if history_path.exists() else {}
         industry_path = ROOT / "data" / "industry_analysis.json"
         industry_analysis = load_json(industry_path) if industry_path.exists() else {}
+        esg_path = ROOT / "data" / "esg_assessment.json"
+        esg_assessment = load_json(esg_path) if esg_path.exists() else {}
 
         context = {
             "market": market,
@@ -1924,6 +2161,7 @@ def main(test_mode: bool = False) -> int:
             "peers": peers,
             "historical_context": historical_context,
             "industry_analysis": industry_analysis,
+            "esg_assessment": esg_assessment,
             "caty01_tables": caty01_tables,
             "caty02_tables": caty02_tables,
             "caty03_tables": caty03_tables,
@@ -1953,6 +2191,7 @@ def main(test_mode: bool = False) -> int:
         html = replace_section(html, "footer-timestamp", render_footer_timestamp(timestamps))
         html = replace_section(html, "company-overview", render_company_overview(context))
         html = replace_section(html, "industry-analysis", render_industry_analysis(context))
+        html = replace_section(html, "esg-assessment", render_esg_assessment(context))
         html = replace_section(html, "investment-thesis-summary", render_investment_thesis(context, narrative_placeholders))
         html = replace_section(html, "key-findings-bullets", render_key_findings(narrative_placeholders))
         html = replace_section(html, "valuation-framework-caption", render_price_target_caption(narrative_placeholders))
