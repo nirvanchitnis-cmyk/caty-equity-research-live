@@ -39,6 +39,12 @@ def load_json(path: Path) -> Dict[str, Any]:
         return json.load(fh)
 
 
+def write_json(path: Path, payload: Dict[str, Any]) -> None:
+    with path.open("w", encoding="utf-8") as fh:
+        json.dump(payload, fh, indent=2)
+        fh.write("\n")
+
+
 def replace_placeholders(value: Any, replacements: Dict[str, str]) -> Any:
     if isinstance(value, str):
         result = value
@@ -66,19 +72,66 @@ def render_template_string(template: str | None, replacements: Dict[str, Any]) -
 
 
 def render_timestamps() -> Dict[str, str]:
-    data = load_json(ROOT / "data" / "market_data_current.json")
-    metadata = data.get("report_metadata") or {}
+    data_path = ROOT / "data" / "market_data_current.json"
+    data = load_json(data_path)
+    metadata = dict(data.get("report_metadata") or {})
 
-    report_date = metadata.get("report_date") or data.get("price_date") or ""
-    report_date_iso = metadata.get("report_date_iso") or data.get("price_date") or ""
-    generated_display = metadata.get("generated_at_display") or metadata.get("last_updated_utc") or data.get("report_generated") or ""
-    generated_iso = metadata.get("last_updated_utc") or data.get("report_generated") or ""
+    def to_date(value: Any) -> dt.date | None:
+        if value in (None, "", "—"):
+            return None
+        if isinstance(value, dt.datetime):
+            return value.date()
+        if isinstance(value, dt.date):
+            return value
+        if isinstance(value, str):
+            candidate = value.strip()
+            if not candidate:
+                return None
+            try:
+                return dt.datetime.strptime(candidate[:10], "%Y-%m-%d").date()
+            except ValueError:
+                parsed_dt = parse_iso(candidate)
+                if parsed_dt:
+                    return parsed_dt.date()
+        return None
+
+    report_generated_ts = data.get("report_generated") or metadata.get("last_updated_utc")
+    generated_dt = parse_iso(report_generated_ts) if isinstance(report_generated_ts, str) else None
+    if generated_dt is None:
+        generated_dt = dt.datetime.now(dt.timezone.utc)
+    else:
+        generated_dt = generated_dt.astimezone(dt.timezone.utc)
+
+    price_date_dt = to_date(data.get("price_date"))
+    report_date_dt = generated_dt.date()
+
+    report_date_iso = report_date_dt.isoformat()
+    report_date_long = format_date_value(report_date_iso, "long")
+    last_updated_display = generated_dt.strftime("%B %d, %Y %H:%M UTC")
+    generated_iso = generated_dt.isoformat()
+
+    metadata_updates = {
+        "report_date": report_date_long,
+        "report_date_iso": report_date_iso,
+        "generated_at_display": last_updated_display,
+        "last_updated_utc": generated_iso,
+    }
+
+    changed = False
+    for key, value in metadata_updates.items():
+        if metadata.get(key) != value:
+            metadata[key] = value
+            changed = True
+
+    if changed or data.get("report_metadata") is None:
+        data["report_metadata"] = metadata
+        write_json(data_path, data)
 
     return {
-        "report_date": report_date,
-        "report_date_iso": report_date_iso,
-        "last_updated_utc": generated_display,
-        "generated_at_utc": generated_iso,
+        "report_date": metadata["report_date"],
+        "report_date_iso": metadata["report_date_iso"],
+        "last_updated_utc": metadata["generated_at_display"],
+        "generated_at_utc": metadata["last_updated_utc"],
     }
 
 
@@ -102,12 +155,11 @@ def build_narrative_replacements(market: Dict[str, Any], timestamps: Dict[str, s
         fmt_spec += f".{decimals}f"
         return format(value_float, fmt_spec)
 
-    report_date_display = (
-        timestamps.get("report_date")
-        or metadata.get("report_date")
-        or format_date_value(market.get("price_date"), "long")
+    report_date_display = timestamps.get("report_date") or metadata.get("report_date") or ""
+    price_date_display = (
+        format_date_value(market.get("price_date"), "long")
         if market.get("price_date")
-        else ""
+        else report_date_display
     )
 
     replacements: Dict[str, str] = {
@@ -115,9 +167,9 @@ def build_narrative_replacements(market: Dict[str, Any], timestamps: Dict[str, s
         "ticker": market.get("ticker", ""),
         "rating": metrics.get("rating", ""),
         "price": fmt_number(market.get("price"), decimals=2, comma=True),
-        "price_date": report_date_display,
+        "price_date": price_date_display,
         "price_date_iso": market.get("price_date", ""),
-        "report_date": report_date_display,
+        "report_date": report_date_display or price_date_display,
         "last_updated_utc": timestamps.get("last_updated_utc", ""),
         "target_wilson_95": fmt_number(metrics.get("target_wilson_95"), decimals=2, comma=True),
         "target_regression": fmt_number(metrics.get("target_regression"), decimals=2, comma=True),
@@ -2648,11 +2700,12 @@ def render_evidence_table() -> str:
     for item in sources_cfg.get("sources", []):
         rel_path = Path(item["path"])
         abs_path = ROOT / rel_path
-        sha256 = compute_sha256(abs_path)
         if abs_path.exists():
+            sha256 = compute_sha256(abs_path)
             mtime = dt.datetime.fromtimestamp(abs_path.stat().st_mtime, tz=dt.timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
         else:
-            mtime = "MISSING"
+            sha256 = item.get("sha256", "MISSING")
+            mtime = item.get("last_verified") or "MISSING"
 
         rows.append(
             "        <tr>\n"
