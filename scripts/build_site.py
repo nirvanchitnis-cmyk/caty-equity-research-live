@@ -862,6 +862,131 @@ def render_peer_positioning(context: Dict[str, Any]) -> str:
     return "\n".join(html_parts)
 
 
+def render_historical_context(context: Dict[str, Any]) -> str:
+    history_data = context.get("historical_context", {})
+    milestones = history_data.get("historical_milestones", [])
+    performance = history_data.get("performance_track_record", {})
+    strengths = history_data.get("key_strengths_from_history", [])
+    metadata = history_data.get("metadata", {})
+
+    if not milestones:
+        return "<p>No historical data available.</p>"
+
+    parts: list[str] = [
+        "<div class=\"insight-box\">",
+        "    <h3>Historical Context & Performance Track Record</h3>",
+        "    <h4>Key Milestones</h4>",
+        "    <div class=\"timeline\">",
+    ]
+
+    def format_label(raw_key: str) -> str:
+        replacements = {
+            "rote": "ROTE",
+            "nco": "NCO",
+            "ppp": "PPP",
+            "cre": "CRE",
+            "acl": "ACL",
+        }
+        words = raw_key.replace("_", " ").split()
+        formatted_words: list[str] = []
+        for word in words:
+            normalized = word.lower()
+            formatted_words.append(replacements.get(normalized, word.capitalize()))
+        return " ".join(formatted_words)
+
+    for milestone in milestones:
+        year = milestone.get("year", "—")
+        event = milestone.get("event", "—")
+        context_text = milestone.get("context", "—")
+        significance = milestone.get("significance", "—")
+        details = milestone.get("performance", {})
+
+        parts.extend(
+            [
+                "        <div class=\"timeline-item\">",
+                f"            <div class=\"timeline-year\">{year}</div>",
+                "            <div class=\"timeline-content\">",
+                f"                <h5>{event}</h5>",
+                f"                <p><strong>Context:</strong> {context_text}</p>",
+                f"                <p><strong>Significance:</strong> {significance}</p>",
+            ]
+        )
+
+        if isinstance(details, dict) and details:
+            parts.append("                <p><strong>Performance:</strong></p>")
+            parts.append("                <ul>")
+            for key, value in details.items():
+                label = format_label(key)
+                parts.append(f"                    <li>{label}: {value}</li>")
+            parts.append("                </ul>")
+
+        parts.extend(
+            [
+                "            </div>",
+                "        </div>",
+            ]
+        )
+
+    parts.extend(
+        [
+            "    </div>",
+        ]
+    )
+
+    through_cycle = performance.get("through_cycle_performance", {})
+    if isinstance(through_cycle, dict) and through_cycle:
+        parts.append("    <h4>Through-Cycle Performance</h4>")
+        parts.append("    <ul>")
+        for key, value in through_cycle.items():
+            label = format_label(key)
+            parts.append(f"        <li><strong>{label}:</strong> {value}</li>")
+        parts.append("    </ul>")
+
+    competitive = performance.get("competitive_positioning", {})
+    if isinstance(competitive, dict) and competitive:
+        parts.append("    <h4>Competitive Positioning</h4>")
+        parts.append("    <ul>")
+        for key, value in competitive.items():
+            label = format_label(key)
+            parts.append(f"        <li><strong>{label}:</strong> {value}</li>")
+        parts.append("    </ul>")
+
+    if strengths:
+        parts.append("    <h4>Key Strengths from Historical Track Record</h4>")
+        parts.append("    <div class=\"strength-grid\">")
+        for strength_data in strengths:
+            strength = strength_data.get("strength", "—")
+            evidence = strength_data.get("evidence", "—")
+            sustainability = strength_data.get("sustainability", "—")
+            parts.extend(
+                [
+                    "        <div class=\"strength-card\">",
+                    f"            <h5>{strength}</h5>",
+                    f"            <p><strong>Evidence:</strong> {evidence}</p>",
+                    f"            <p><strong>Sustainability:</strong> {sustainability}</p>",
+                    "        </div>",
+                ]
+            )
+        parts.append("    </div>")
+
+    meta_bits: list[str] = []
+    provenance = metadata.get("provenance")
+    if provenance:
+        meta_bits.append(f"Source: {provenance}")
+    confidence = metadata.get("confidence")
+    if confidence:
+        meta_bits.append(f"Confidence: {confidence}")
+    last_updated = metadata.get("last_updated")
+    if last_updated:
+        meta_bits.append(f"Last Updated: {last_updated}")
+    if meta_bits:
+        parts.append(f"    <p class=\"text-small text-secondary\">{' | '.join(meta_bits)}</p>")
+
+    parts.append("</div>")
+
+    return "\n".join(parts)
+
+
 def render_report_meta(timestamps: Dict[str, str]) -> str:
     return f"Report Date: {timestamps['report_date']} | Last Updated: {timestamps['last_updated_utc']}"
 
@@ -1626,6 +1751,8 @@ def main(test_mode: bool = False) -> int:
         catalysts = load_json(catalysts_path) if catalysts_path.exists() else {}
         peers_path = ROOT / "data" / "caty11_peers_normalized.json"
         peers = load_json(peers_path) if peers_path.exists() else {}
+        history_path = ROOT / "data" / "historical_context.json"
+        historical_context = load_json(history_path) if history_path.exists() else {}
 
         context = {
             "market": market,
@@ -1638,6 +1765,7 @@ def main(test_mode: bool = False) -> int:
             "recent_developments": recent_developments,
             "catalysts": catalysts,
             "peers": peers,
+            "historical_context": historical_context,
             "caty01_tables": caty01_tables,
             "caty02_tables": caty02_tables,
             "caty03_tables": caty03_tables,
@@ -1674,6 +1802,7 @@ def main(test_mode: bool = False) -> int:
         html = replace_section(html, "scenario-analysis-table", render_scenario_analysis_table(context))
         html = replace_section(html, "positive-catalysts", render_positive_catalysts(context))
         html = replace_section(html, "peer-positioning", render_peer_positioning(context))
+        html = replace_section(html, "historical-context", render_historical_context(context))
         html = replace_section(html, "recent-developments-section", render_recent_developments_section(recent_developments, narrative_placeholders))
         html = replace_section(html, "investment-risks-bullets", render_investment_risks_section(context, narrative_placeholders))
 

@@ -1,7 +1,7 @@
 # PROJECT NUKE: Template Conversion Inventory
 
-**Status:** In Progress (14/60 sections completed ~23%)
-**Last Updated:** October 21, 2025 02:45 UTC
+**Status:** In Progress (15/60 sections completed ~25%) - ALL DATA SECTIONS COMPLETE
+**Last Updated:** October 21, 2025 03:05 UTC
 
 ---
 
@@ -21,10 +21,11 @@
 | 866-952 | Peer Positioning | data/caty11_peers_normalized.json → peers | ✅ DONE |
 | 871-913 | Scenario Analysis Table | market_data_current.json → calculated_metrics | ✅ DONE |
 | 1599-1730 | Positive Catalysts | data/catalysts.json → positive_catalysts | ✅ DONE |
+| 1619-1718 | Historical Context | data/historical_context.json → milestones/performance | ✅ DONE |
 | 1710+ | Investment Risks | market_data_current.json → investment_risks | ✅ DONE |
 | 2201-2206 | Footer Timestamp | market_data_current.json → report_metadata | ✅ DONE |
 
-**Total: 14 sections auto-generate from JSON**
+**Total: 15 sections auto-generate from JSON**
 
 ---
 
@@ -34,7 +35,6 @@
 
 | Line Range | Section | Hardcoded Facts | JSON Source Needed | Priority |
 |------------|---------|-----------------|-------------------|----------|
-| ~1650-1800 | Historical Context | Past performance, inflection points | data/historical_context.json (NEW) | MEDIUM |
 | ~1950-2100 | Appendix / Methodology | Formula explanations | Static (OK to keep hardcoded) | LOW |
 
 ### Pure Commentary (Can Stay Hardcoded):
@@ -54,10 +54,11 @@
    - 5 positive catalysts (NIM, efficiency, Texas, credit, digital)
    - Created: October 21, 2025
 
-2. **data/historical_context.json** - Past inflection points
-   - GFC survival (no TARP)
-   - 2020 pandemic pivot
-   - Key milestones
+2. **data/historical_context.json** ✅ COMPLETE
+   - 6 historical milestones (1962, 1997, GFC, COVID, 2021, 2025)
+   - Through-cycle performance metrics
+   - Key strengths from track record
+   - Created: October 21, 2025
 
 3. **Scenario Analysis** - Already in market_data_current.json
    - Just needs renderer function in build_site.py
@@ -83,17 +84,18 @@
 - Renderer: render_peer_positioning()
 - Completed: October 21, 2025 (Codex delivery)
 
-### Phase 7: Historical Context (Next)
-- Lines 1650-1800
-- Create data/historical_context.json
-- Est: 45 min (Codex)
+### Phase 7: Historical Context ✅ COMPLETE
+- Lines 1619-1718 (historical milestones timeline + performance)
+- Created data/historical_context.json with 6 milestones
+- Renderer: render_historical_context()
+- Completed: October 21, 2025 (Codex delivery)
 
-### Phase 8: Final Cleanup
+### Phase 8: Final Cleanup (Next)
 - Remove any remaining stale refs
 - Full end-to-end test
 - Est: 30 min
 
-**Total Remaining: ~1.5 hours**
+**Total Remaining: ~30 minutes (cleanup only)**
 
 ---
 
@@ -122,4 +124,4 @@ python3 scripts/update_all_data.py
 
 ---
 
-**Current State: 23% complete (14/60 sections). Phases 4-6 delivered by Codex. Final stretch. ~1.5 hours to 100%.**
+**Current State: 25% complete (15/60 sections). ALL DATA SECTIONS COMPLETE. Phases 4-7 delivered by Codex. Only cleanup remains (~30 min).**

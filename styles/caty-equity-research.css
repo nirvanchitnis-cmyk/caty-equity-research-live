@@ -1805,3 +1805,47 @@ a:focus-visible {
 .row-tertiary {
     background: var(--bg-tertiary);
 }
+
+/* Historical timeline */
+.timeline {
+    position: relative;
+    padding-left: 1.5rem;
+    border-left: 3px solid var(--cathay-red);
+    margin: 1.5rem 0 2rem;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 1.75rem;
+}
+
+.timeline-year {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--cathay-red);
+    margin-bottom: 0.35rem;
+}
+
+.timeline-content h5 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+.strength-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.strength-card {
+    background: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.25rem;
+}
+
+.strength-card h5 {
+    margin-top: 0;
+    color: var(--cathay-red);
+}
