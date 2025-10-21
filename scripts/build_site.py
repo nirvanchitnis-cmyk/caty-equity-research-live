@@ -491,6 +491,189 @@ def render_valuation_deep_dive(context: Dict[str, Any]) -> str:
     return "\n".join(lines)
 
 
+def render_company_overview(context: Dict[str, Any]) -> str:
+    catalysts = context.get("catalysts") or {}
+    overview = catalysts.get("company_overview") or {}
+    metadata = catalysts.get("metadata") or {}
+    market = context.get("market", {})
+
+    market_cap = safe_to_float(overview.get("market_cap_billions"))
+    shares = safe_to_float(overview.get("shares_outstanding_millions"))
+    branches_total = overview.get("branches_total")
+    fiscal_year = overview.get("fiscal_year_end") or "December 31"
+    founded_year = overview.get("founded_year")
+    business_model = overview.get("business_model_summary") or "No overview provided."
+
+    price_date_raw = market.get("price_date")
+    price_date_display = format_date_value(price_date_raw, "long") if price_date_raw else None
+
+    def fmt_billions(value: float | None) -> str:
+        if value is None:
+            return "—"
+        return f"${value:.2f}B"
+
+    def fmt_millions(value: float | None) -> str:
+        if value is None:
+            return "—"
+        return f"{value:.1f}M"
+
+    def fmt_count(value: Any) -> str:
+        if value in (None, ""):
+            return "—"
+        try:
+            value_float = float(value)
+        except (TypeError, ValueError):
+            return str(value)
+        if value_float.is_integer():
+            return f"{int(value_float)}"
+        return f"{value_float:.1f}"
+
+    def fmt_percent_text(value: Any) -> str:
+        pct = safe_to_float(value)
+        return f"{pct:.1f}%" if pct is not None else "—"
+
+    branch_items: list[str] = []
+    for entry in overview.get("branches_by_state", []):
+        state = entry.get("state", "Unknown")
+        count_text = fmt_count(entry.get("count"))
+        pct_text = fmt_percent_text(entry.get("pct"))
+        branch_items.append(f"        <li><strong>{state}:</strong> {count_text} branches ({pct_text})</li>")
+
+    if branch_items:
+        branch_lines = ["    <ul>"] + branch_items + ["    </ul>"]
+    else:
+        branch_lines = ["    <p>No branch breakdown available.</p>"]
+
+    market_cap_line = fmt_billions(market_cap)
+    if price_date_display and market_cap_line != "—":
+        market_cap_line = f"{market_cap_line} (as of {price_date_display})"
+    elif price_date_raw and market_cap_line != "—":
+        market_cap_line = f"{market_cap_line} (as of {price_date_raw})"
+
+    shares_line = fmt_millions(shares)
+    branches_total_text = fmt_count(branches_total)
+    founded_text = fmt_count(founded_year)
+
+    lines = [
+        "<h2>Company Overview</h2>",
+        "<div class=\"insight-box\">",
+        "    <h3>Corporate Facts</h3>",
+        "    <ul>",
+        f"        <li><strong>Market Capitalization:</strong> {market_cap_line}</li>",
+        f"        <li><strong>Shares Outstanding:</strong> {shares_line}</li>",
+        f"        <li><strong>Fiscal Year End:</strong> {fiscal_year}</li>",
+        f"        <li><strong>Founded:</strong> {founded_text}</li>",
+        "    </ul>",
+        "",
+        "    <h3>Geographic Footprint</h3>",
+        f"    <p><strong>Total Branches:</strong> {branches_total_text}</p>",
+    ]
+
+    lines.extend(branch_lines)
+
+    lines.extend(
+        [
+            "",
+            "    <h3>Business Model</h3>",
+            f"    <p>{business_model}</p>",
+            "</div>",
+        ]
+    )
+
+    metadata_parts: list[str] = []
+    last_updated = metadata.get("last_updated")
+    if last_updated:
+        metadata_parts.append(f"Updated {last_updated}")
+    provenance = metadata.get("provenance")
+    if provenance:
+        metadata_parts.append(f"Source: {provenance}")
+    confidence = metadata.get("confidence")
+    if confidence:
+        metadata_parts.append(f"Confidence: {confidence}")
+
+    if metadata_parts:
+        lines.append(
+            "<p class=\"text-secondary text-small\">"
+            + " • ".join(metadata_parts)
+            + "</p>"
+        )
+
+    return "\n".join(lines)
+
+
+def render_positive_catalysts(context: Dict[str, Any]) -> str:
+    catalysts = context.get("catalysts") or {}
+    catalysts_list = catalysts.get("positive_catalysts") or []
+    metadata = catalysts.get("metadata") or {}
+
+    if not catalysts_list:
+        return "<h2>Positive Catalysts</h2>\n<p>No catalysts defined.</p>"
+
+    lines: list[str] = ["<h2>Positive Catalysts</h2>"]
+
+    for catalyst in catalysts_list:
+        name = catalyst.get("catalyst", "Unnamed Catalyst")
+        current = catalyst.get("current", "—")
+        target = catalyst.get("target", "—")
+        timeline = catalyst.get("timeline", "—")
+        impact = catalyst.get("impact", "—")
+        drivers = catalyst.get("drivers") or []
+
+        driver_lines = [f"            <li>{driver}</li>" for driver in drivers] or ["            <li>No key drivers listed.</li>"]
+
+        lines.extend(
+            [
+                "<div class=\"catalyst-card\">",
+                f"    <h4>{name}</h4>",
+                "    <table class=\"catalyst-table\">",
+                "        <tr>",
+                "            <td><strong>Current:</strong></td>",
+                f"            <td>{current}</td>",
+                "        </tr>",
+                "        <tr>",
+                "            <td><strong>Target:</strong></td>",
+                f"            <td>{target}</td>",
+                "        </tr>",
+                "        <tr>",
+                "            <td><strong>Timeline:</strong></td>",
+                f"            <td>{timeline}</td>",
+                "        </tr>",
+                "    </table>",
+                "    <p><strong>Key Drivers:</strong></p>",
+                "    <ul>",
+                *driver_lines,
+                "    </ul>",
+                f"    <p class=\"catalyst-impact\"><strong>Expected Impact:</strong> {impact}</p>",
+                "</div>",
+            ]
+        )
+
+    provenance = metadata.get("provenance", "Management guidance")
+    confidence = metadata.get("confidence", "MEDIUM")
+    last_updated = metadata.get("last_updated")
+
+    disclosure_lines = [
+        "<div class=\"alert-box info\">",
+        "    <div class=\"alert-title\">Forward-Looking Statements</div>",
+        "    <div class=\"alert-text\">",
+        "        Catalysts reflect management guidance and analyst expectations. Actual results may differ materially.",
+        f"        <br><strong>Source:</strong> {provenance}",
+        f"        <br><strong>Confidence:</strong> {confidence}",
+    ]
+    if last_updated:
+        disclosure_lines.append(f"        <br><strong>Last Updated:</strong> {last_updated}")
+    disclosure_lines.extend(
+        [
+            "    </div>",
+            "</div>",
+        ]
+    )
+
+    lines.extend(disclosure_lines)
+
+    return "\n".join(lines)
+
+
 def render_report_meta(timestamps: Dict[str, str]) -> str:
     return f"Report Date: {timestamps['report_date']} | Last Updated: {timestamps['last_updated_utc']}"
 
@@ -1251,6 +1434,8 @@ def main(test_mode: bool = False) -> int:
         caty15_tables = load_json(ROOT / "data" / "caty15_esg_materiality.json") if (ROOT / "data" / "caty15_esg_materiality.json").exists() else {}
         caty17_tables = load_json(ROOT / "data" / "caty17_esg_kpi.json") if (ROOT / "data" / "caty17_esg_kpi.json").exists() else {}
         recent_developments = load_json(ROOT / "data" / "recent_developments.json") if (ROOT / "data" / "recent_developments.json").exists() else {}
+        catalysts_path = ROOT / "data" / "catalysts.json"
+        catalysts = load_json(catalysts_path) if catalysts_path.exists() else {}
 
         context = {
             "market": market,
@@ -1261,6 +1446,7 @@ def main(test_mode: bool = False) -> int:
             "calculated_metrics": market.get("calculated_metrics", {}),
             "narrative_prose": market.get("narrative_prose", {}),
             "recent_developments": recent_developments,
+            "catalysts": catalysts,
             "caty01_tables": caty01_tables,
             "caty02_tables": caty02_tables,
             "caty03_tables": caty03_tables,
@@ -1288,12 +1474,14 @@ def main(test_mode: bool = False) -> int:
         html = replace_section(html, "page-title", render_page_title(timestamps["report_date"]))
         html = replace_section(html, "report-meta", render_report_meta(timestamps))
         html = replace_section(html, "footer-timestamp", render_footer_timestamp(timestamps))
+        html = replace_section(html, "company-overview", render_company_overview(context))
         html = replace_section(html, "investment-thesis-summary", render_investment_thesis(context, narrative_placeholders))
         html = replace_section(html, "key-findings-bullets", render_key_findings(narrative_placeholders))
         html = replace_section(html, "valuation-framework-caption", render_price_target_caption(narrative_placeholders))
         html = replace_section(html, "valuation-framework-grid", render_price_target_grid(narrative_placeholders))
         html = replace_section(html, "valuation-deep-dive", render_valuation_deep_dive(context))
         html = replace_section(html, "scenario-analysis-table", render_scenario_analysis_table(context))
+        html = replace_section(html, "positive-catalysts", render_positive_catalysts(context))
         html = replace_section(html, "recent-developments-section", render_recent_developments_section(recent_developments, narrative_placeholders))
         html = replace_section(html, "investment-risks-bullets", render_investment_risks_section(context, narrative_placeholders))
 

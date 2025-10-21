@@ -280,11 +280,76 @@ li {
 }
 
 .catalyst-card {
-    background: var(--bg-tertiary);
-    padding: 20px;
-    margin: 15px 0;
-    border-left: 4px solid var(--success);
-    border-radius: 4px;
+    background: var(--bg-secondary);
+    border-left: 4px solid var(--cathay-red);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.catalyst-card h4 {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    font-size: 1.2em;
+}
+
+.catalyst-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+}
+
+.catalyst-table td {
+    padding: 0.5rem 0.75rem;
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: top;
+}
+
+.catalyst-card ul {
+    margin: 0.75rem 0 0.5rem 1.25rem;
+}
+
+.catalyst-impact {
+    font-weight: 600;
+    color: var(--success);
+    margin-top: 1rem;
+}
+
+.alert-box {
+    background: var(--bg-secondary);
+    border-left: 4px solid var(--info);
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    margin: 1.5rem 0;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.alert-box.info {
+    border-left-color: var(--info);
+}
+
+.alert-box.warning {
+    border-left-color: var(--warning);
+}
+
+.alert-box.success {
+    border-left-color: var(--success);
+}
+
+.alert-box.danger {
+    border-left-color: var(--danger);
+}
+
+.alert-title {
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+.alert-text {
+    font-size: 0.95em;
+    color: var(--text-secondary);
 }
 
 .risk-card {

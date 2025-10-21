@@ -1,7 +1,7 @@
 # PROJECT NUKE: Template Conversion Inventory
 
-**Status:** In Progress (11/60 sections completed ~18%)
-**Last Updated:** October 21, 2025 00:15 UTC
+**Status:** In Progress (13/60 sections completed ~22%)
+**Last Updated:** October 21, 2025 01:40 UTC
 
 ---
 
@@ -16,12 +16,14 @@
 | 380+ | Key Findings Bullets | market_data_current.json → calculated_metrics | ✅ DONE |
 | 420-500 | Reconciliation Dashboard | Valuation scripts (dynamic) | ✅ DONE |
 | 630+ | Recent Developments | data/recent_developments.json | ✅ DONE |
+| 643-667 | Company Overview | data/catalysts.json → company_overview | ✅ DONE |
 | 829-869 | Valuation Deep Dive | market_data_current.json → calculated_metrics | ✅ DONE |
 | 871-913 | Scenario Analysis Table | market_data_current.json → calculated_metrics | ✅ DONE |
+| 1599-1730 | Positive Catalysts | data/catalysts.json → positive_catalysts | ✅ DONE |
 | 1710+ | Investment Risks | market_data_current.json → investment_risks | ✅ DONE |
 | 2201-2206 | Footer Timestamp | market_data_current.json → report_metadata | ✅ DONE |
 
-**Total: 11 sections auto-generate from JSON**
+**Total: 13 sections auto-generate from JSON**
 
 ---
 
@@ -31,9 +33,7 @@
 
 | Line Range | Section | Hardcoded Facts | JSON Source Needed | Priority |
 |------------|---------|-----------------|-------------------|----------|
-| ~150-250 | Company Overview | Market cap, shares, fiscal year | market_data_current.json | HIGH |
-| ~700-900 | Positive Catalysts | NIM targets, efficiency goals | data/catalysts.json (NEW) | HIGH |
-| ~1400-1600 | Peer Positioning | Peer metrics comparison | data/caty11_peers_normalized.json | MEDIUM |
+| ~1400-1600 | Peer Positioning | Peer metrics comparison | data/caty11_peers_normalized.json | HIGH |
 | ~1650-1800 | Historical Context | Past performance, inflection points | data/historical_context.json (NEW) | LOW |
 | ~1950-2100 | Appendix / Methodology | Formula explanations | Static (OK to keep hardcoded) | LOW |
 
@@ -49,10 +49,10 @@
 
 ## Data Files Needed (NEW):
 
-1. **data/catalysts.json** - Forward-looking drivers
-   - NIM expansion targets
-   - Efficiency ratio goals
-   - Texas branch expansion timeline
+1. **data/catalysts.json** ✅ COMPLETE
+   - Company overview facts (market cap, shares, branches)
+   - 5 positive catalysts (NIM, efficiency, Texas, credit, digital)
+   - Created: October 21, 2025
 
 2. **data/historical_context.json** - Past inflection points
    - GFC survival (no TARP)
@@ -71,22 +71,28 @@
 - Renderers: render_scenario_analysis_table(), render_valuation_deep_dive()
 - Completed: October 21, 2025 (Codex delivery)
 
-### Phase 5: Company Overview + Catalysts (Next)
-- Lines 150-250, 700-900
-- Create catalysts.json
-- Est: 2 hours (Codex)
+### Phase 5: Company Overview + Catalysts ✅ COMPLETE
+- Lines 643-667 (company overview), 1599-1730 (catalysts)
+- Created data/catalysts.json with 5 catalysts
+- Renderers: render_company_overview(), render_positive_catalysts()
+- Completed: October 21, 2025 (Codex delivery)
 
-### Phase 6: Peer Positioning + Historical
-- Lines 1400-1600, 1650-1800
-- Use existing peer JSON + create historical JSON
-- Est: 1.5 hours (Codex)
+### Phase 6: Peer Positioning (Next)
+- Lines ~1400-1600
+- Use existing data/caty11_peers_normalized.json
+- Est: 1 hour (Codex)
 
-### Phase 7: Final Cleanup
+### Phase 7: Historical Context
+- Lines 1650-1800
+- Create data/historical_context.json
+- Est: 45 min (Codex)
+
+### Phase 8: Final Cleanup
 - Remove any remaining stale refs
 - Full end-to-end test
 - Est: 30 min
 
-**Total Remaining: ~4 hours**
+**Total Remaining: ~2.5 hours**
 
 ---
 
@@ -115,4 +121,4 @@ python3 scripts/update_all_data.py
 
 ---
 
-**Current State: 18% complete (11/60 sections). Phase 4 delivered by Codex. Momentum strong.**
+**Current State: 22% complete (13/60 sections). Phases 4-5 delivered by Codex. Momentum excellent. ~2.5 hours to 100%.**

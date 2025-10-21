@@ -1,7 +1,7 @@
 {
   "price": 47.0,
   "price_date": "2025-10-20",
-  "report_generated": "2025-10-20T22:37:57Z",
+  "report_generated": "2025-10-21T00:31:47Z",
   "data_source": "NASDAQ closing price (Friday, Oct 18, 2025)",
   "ticker": "CATY",
   "company": "Cathay General Bancorp",
@@ -73,7 +73,7 @@
       {
         "risk": "NIM Compression",
         "severity": "MEDIUM",
-        "description": "IB-Only Beta {{deposit_beta_interest_bearing}}, 100 bps Fed cuts → ~50 bps NIM impact. NIB mix {{nib_pct}}% provides limited cushion."
+        "description": "IB-Only Beta {{deposit_beta_interest_bearing}}, 100 bps Fed cuts \u2192 ~50 bps NIM impact. NIB mix {{nib_pct}}% provides limited cushion."
       }
     ]
   }
