@@ -1,7 +1,7 @@
 # PROJECT NUKE: Template Conversion Inventory
 
-**Status:** In Progress (9/60 sections completed ~15%)
-**Last Updated:** October 20, 2025 23:50 UTC
+**Status:** In Progress (11/60 sections completed ~18%)
+**Last Updated:** October 21, 2025 00:15 UTC
 
 ---
 
@@ -16,10 +16,12 @@
 | 380+ | Key Findings Bullets | market_data_current.json → calculated_metrics | ✅ DONE |
 | 420-500 | Reconciliation Dashboard | Valuation scripts (dynamic) | ✅ DONE |
 | 630+ | Recent Developments | data/recent_developments.json | ✅ DONE |
+| 829-869 | Valuation Deep Dive | market_data_current.json → calculated_metrics | ✅ DONE |
+| 871-913 | Scenario Analysis Table | market_data_current.json → calculated_metrics | ✅ DONE |
 | 1710+ | Investment Risks | market_data_current.json → investment_risks | ✅ DONE |
 | 2201-2206 | Footer Timestamp | market_data_current.json → report_metadata | ✅ DONE |
 
-**Total: 9 sections auto-generate from JSON**
+**Total: 11 sections auto-generate from JSON**
 
 ---
 
@@ -31,8 +33,6 @@
 |------------|---------|-----------------|-------------------|----------|
 | ~150-250 | Company Overview | Market cap, shares, fiscal year | market_data_current.json | HIGH |
 | ~700-900 | Positive Catalysts | NIM targets, efficiency goals | data/catalysts.json (NEW) | HIGH |
-| ~950-1050 | Scenario Analysis Table | Returns under 3 scenarios | Already in JSON, needs renderer | HIGH |
-| ~1100-1300 | Valuation Deep Dive | P/TBV multiples, regression details | market_data_current.json | MEDIUM |
 | ~1400-1600 | Peer Positioning | Peer metrics comparison | data/caty11_peers_normalized.json | MEDIUM |
 | ~1650-1800 | Historical Context | Past performance, inflection points | data/historical_context.json (NEW) | LOW |
 | ~1950-2100 | Appendix / Methodology | Formula explanations | Static (OK to keep hardcoded) | LOW |
@@ -66,12 +66,12 @@
 
 ## Phased Approach (Remaining Work):
 
-### Phase 4: Scenario Analysis + Valuation Deep Dive (Next)
-- Lines 950-1050, 1100-1300
-- Data exists, build renderers
-- Est: 2 hours (Codex)
+### Phase 4: Scenario Analysis + Valuation Deep Dive ✅ COMPLETE
+- Lines 829-869 (valuation deep dive), 871-913 (scenario table)
+- Renderers: render_scenario_analysis_table(), render_valuation_deep_dive()
+- Completed: October 21, 2025 (Codex delivery)
 
-### Phase 5: Company Overview + Catalysts
+### Phase 5: Company Overview + Catalysts (Next)
 - Lines 150-250, 700-900
 - Create catalysts.json
 - Est: 2 hours (Codex)
@@ -86,7 +86,7 @@
 - Full end-to-end test
 - Est: 30 min
 
-**Total Remaining: ~6 hours**
+**Total Remaining: ~4 hours**
 
 ---
 
@@ -115,4 +115,4 @@ python3 scripts/update_all_data.py
 
 ---
 
-**Current State: 15% complete. Momentum established. Continuing systematically.**
+**Current State: 18% complete (11/60 sections). Phase 4 delivered by Codex. Momentum strong.**

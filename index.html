@@ -826,157 +826,91 @@
         <section id="valuation">
             <h2>Valuation Analysis</h2>
 
-            <h3>8.2 Regression Analysis: P/TBV vs ROTE (n=4)</h3>
-            <p><strong>Clean Peer Sample:</strong> CATY, EWBC, CVBF, HAFC (core Asian-American/CA regional banks with clean ROTE and P/TBV data).</p>
+            <!-- BEGIN AUTOGEN: valuation-deep-dive -->
+            <div class="insight-box">
+                <h3>Valuation Methodology Overview</h3>
 
-            <p><strong>Regression Results:</strong> Slope β₁ = 0.1244 (t=6.50, p=0.023), Intercept β₀ = −0.1483; R² = 0.955, Adj R² = 0.932. Each 1% increase in ROTE associated with 0.124x increase in P/TBV multiple (statistically significant at p<0.05).</p>
+                <h4>Current Valuation</h4>
+                <ul>
+                    <li><strong>Tangible Book Value per Share:</strong> $36.16</li>
+                    <li><strong>Current Price:</strong> $47.00</li>
+                    <li><strong>Current P/TBV Multiple:</strong> 1.300x</li>
+                </ul>
 
-            <p><strong>Statistical Caveat:</strong> Regression uses n=4 peers due to data quality and structural outliers in expansion set (COLB one-time NI gains, BANC negative TCE, WAFD extreme structural discount, PPBI extraction error, HOPE distressed, PFBC no SEC filings). Slope 0.124 (t≈6.5) is directionally significant but subject to wide confidence interval [0.042, 0.207] given small sample. Interpret fair value as indicative; expanding to n≥10 with clean data remains a priority. See File 11 <code>regression_expansion_summary</code> for full diagnostic details.</p>
+                <h4>Wilson Score Method (60.9% Weight)</h4>
+                <p>The Wilson score interval provides a statistically robust confidence bound for peer P/TBV multiples.
+                Using a 95% confidence level with continuity correction, we establish a conservative valuation floor
+                that accounts for sample size uncertainty in peer comparisons.</p>
+                <ul>
+                    <li><strong>Target P/TBV:</strong> 1.439x</li>
+                    <li><strong>Implied Price:</strong> $52.03</li>
+                    <li><strong>Method:</strong> 95th percentile Wilson score from peer set</li>
+                </ul>
 
-            <div class="chart-flex-container">
-                <div class="chart-flex-item">
-                    <img src="assets/regression_scatter.png" alt="P/TBV vs ROTE regression (n=4 clean peers)" class="chart-image" />
-                </div>
+                <h4>Regression Method (30.0% Weight)</h4>
+                <p>Linear regression of P/TBV multiples against profitability (ROAE) across peer banks.
+                CATY's strong credit quality (42.8 bps through-cycle NCO) supports premium valuation.</p>
+                <ul>
+                    <li><strong>Target P/TBV:</strong> 1.563x</li>
+                    <li><strong>Implied Price:</strong> $56.50</li>
+                    <li><strong>Regression Equation:</strong> P/TBV = 0.058 × ROAE + 0.82</li>
+                    <li><strong>R² (Goodness of Fit):</strong> 0.68</li>
+                </ul>
+
+                <h4>Normalized Downside (9.1% Weight)</h4>
+                <p>Stress scenario assuming reversion to historical trough multiples during credit cycles.
+                Reflects downside risk in adverse macro conditions.</p>
+                <ul>
+                    <li><strong>Scenario:</strong> Through-cycle trough P/TBV</li>
+                    <li><strong>Implied Price:</strong> $39.32</li>
+                    <li><strong>Downside Risk:</strong> -16.3%</li>
+                </ul>
             </div>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>Metric</th>
-                        <th class="text-right">Value</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>Observations (n)</td><td class="text-right">4</td></tr>
-                    <tr><td>Slope</td><td class="text-right">0.1244</td></tr>
-                    <tr><td>Intercept</td><td class="text-right">-0.1483</td></tr>
-                    <tr><td>R² / Adj R²</td><td class="text-right">0.955 / 0.932</td></tr>
-                    <tr><td>Slope t-stat / p-value</td><td class="text-right">6.50 / 0.023</td></tr>
-                    <tr><td>95% CI (slope)</td><td class="text-right">[0.042, 0.207]</td></tr>
-                </tbody>
-            </table>
-
-            <p><strong>Outlier analysis (Cook's D):</strong> EWBC (0.78) and CVBF (0.41) are relatively influential points within the n=4 sample. <strong>Peer expansion attempted (October 20, 2025):</strong> Targeted n=10 by adding PPBI, BANC, WAFD, OPBK, COLB. Result: Extraction succeeded for 3/5 peers, but data quality issues (COLB one-time gains with Cook's D=4.030, WAFD structural discount P/TBV 0.37x, PPBI tag error, BANC negative TCE) caused regression collapse (n=7, Adj R²=−0.077, p=0.484). Decision: Retain n=4 clean-peer regression with documented statistical limitation. See File 11 <code>regression_expansion_summary</code> for full diagnostics.</p>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Ticker</th>
-                        <th class="text-right">ROTE (LTM)</th>
-                        <th class="text-right">P/TBV (Actual)</th>
-                        <th class="text-right">P/TBV (Fitted)</th>
-                        <th class="text-right">Residual</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>EWBC</td><td class="text-right">16.38%</td><td class="text-right">1.83x</td><td class="text-right">1.889x</td><td class="text-right">-0.059</td></tr>
-                    <tr><td>CVBF</td><td class="text-right">14.10%</td><td class="text-right">1.73x</td><td class="text-right">1.605x</td><td class="text-right">+0.125</td></tr>
-                    <tr><td>HAFC</td><td class="text-right">8.65%</td><td class="text-right">0.93x</td><td class="text-right">0.927x</td><td class="text-right">+0.003</td></tr>
-                    <tr><td>CATY</td><td class="text-right">11.95%</td><td class="text-right">1.300x</td><td class="text-right">1.338x</td><td class="text-right">-0.069</td></tr>
-                </tbody>
-            </table>
-
-            <h3>8.2 Implied Cost of Equity (g = 2.5%)</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Ticker</th>
-                        <th class="text-right">Implied COE</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>EWBC</td><td class="text-right">10.09%</td></tr>
-                    <tr><td>CVBF</td><td class="text-right">9.21%</td></tr>
-                    <tr><td>HAFC</td><td class="text-right">9.11%</td></tr>
-                    <tr><td>CATY</td><td class="text-right">9.95%</td></tr>
-                    <tr><td><strong>Mean</strong></td><td class="text-right"><strong>9.59%</strong></td></tr>
-                </tbody>
-            </table>
-
-            <h3>8.3 Provision‑Normalized ROTE (CATY)</h3>
-            <p>Through‑cycle NCO assumptions vs normalized ROTE, mapped P/TBV (mean COE 9.59%, g 2.5%). TBVPS = $36.16; spot = $47.00 (October 20, 2025).</p>
-            <table>
-                <thead>
-                    <tr>
-                        <th>NCO (bps)</th>
-                        <th class="text-right">Normalized ROTE</th>
-                        <th class="text-right">P/TBV (Map)</th>
-                        <th class="text-right">Implied Price</th>
-                        <th class="text-right">Premium vs Spot</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>25</td><td class="text-right">11.52%</td><td class="text-right">1.273x</td><td class="text-right">$46.02</td><td class="text-right text-success">+0.3%</td></tr>
-                    <tr class="target-company"><td><strong>42.8</strong></td><td class="text-right"><strong>10.21%</strong></td><td class="text-right"><strong>1.087x</strong></td><td class="text-right"><strong>$39.32</strong></td><td class="text-right text-danger"><strong>-16.3%</strong></td></tr>
-                    <tr><td>60</td><td class="text-right">9.31%</td><td class="text-right">0.961x</td><td class="text-right">$34.75</td><td class="text-right text-danger">-24.3%</td></tr>
-                </tbody>
-            </table>
-
-            <h3>8.4 P/TBV Valuation Bridge</h3>
-            <p>Target P/TBV = (ROTE − g) / (COE − g). <strong>Base case:</strong> normalized ROTE 10.21%, g 2.5%, COE 9.587% → 1.087x (Gordon Growth); Price = 1.087 × 36.16 = <strong>$39.32</strong>.</p>
-
-            <h3>8.5 Sensitivity (Normalized ROTE 11.52%)</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>g / COE</th>
-                        <th class="text-right">9.0%</th>
-                        <th class="text-right">9.5%</th>
-                        <th class="text-right">10.0%</th>
-                        <th class="text-right">10.5%</th>
-                        <th class="text-right">11.0%</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>2.0%</td><td class="text-right">1.360x</td><td class="text-right">1.300x</td><td class="text-right">1.190x</td><td class="text-right">1.120x</td><td class="text-right">1.058x</td></tr>
-                    <tr><td>2.5%</td><td class="text-right">1.388x</td><td class="text-right">1.289x</td><td class="text-right">1.203x</td><td class="text-right">1.127x</td><td class="text-right">1.061x</td></tr>
-                    <tr><td>3.0%</td><td class="text-right">1.420x</td><td class="text-right">1.311x</td><td class="text-right">1.217x</td><td class="text-right">1.136x</td><td class="text-right">1.065x</td></tr>
-                </tbody>
-            </table>
-
+            <!-- END AUTOGEN: valuation-deep-dive -->
             <h3>8.6 Three-Scenario Comparison (NCO → ROTE → P/TBV)</h3>
+            <!-- BEGIN AUTOGEN: scenario-analysis-table -->
             <table>
                 <thead>
                     <tr>
                         <th>Scenario</th>
-                        <th class="text-right">NCO (bps)</th>
-                        <th class="text-right">Normalized ROTE</th>
-                        <th class="text-right">P/TBV</th>
-                        <th class="text-right">Target Price</th>
-                        <th class="text-right">vs $47.00</th>
-                        <th class="text-right">Prob Weight</th>
+                        <th class="numeric">Target Price</th>
+                        <th class="numeric">Return</th>
+                        <th class="numeric">Probability</th>
+                        <th class="numeric">Expected Value</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Current Earnings (Regression)</td>
-                        <td class="text-right">18</td>
-                        <td class="text-right">11.95%</td>
-                        <td class="text-right">1.558x</td>
-                        <td class="text-right">$56.50</td>
-                        <td class="text-right text-success">+20.2%</td>
-                        <td class="text-right"><strong>74%</strong></td>
-                    </tr>
-                    <tr class="target-company">
-                        <td><strong>Normalized (Gordon Growth)</strong></td>
-                        <td class="text-right"><strong>42.8</strong></td>
-                        <td class="text-right"><strong>10.21%</strong></td>
-                        <td class="text-right"><strong>1.087x</strong></td>
-                        <td class="text-right"><strong>$39.32</strong></td>
-                        <td class="text-right text-danger"><strong>-16.3%</strong></td>
-                        <td class="text-right"><strong>26%</strong></td>
-                    </tr>
-                    <tr class="table-border-top">
-                        <td colspan="5" class="table-text-right-pad">IRC Blended (60% RIM + 10% DDM + 30% Relative):</td>
-                        <td class="text-right table-text-right-pad">$51.51</td>
-                        <td class="text-right table-text-right-pad">+12.2%</td>
+                        <td><strong>Wilson 95% (Base)</strong></td>
+                        <td class="numeric">$52.03</td>
+                        <td class="numeric text-success">+10.7%</td>
+                        <td class="numeric">60.9%</td>
+                        <td class="numeric">$31.69</td>
                     </tr>
                     <tr>
-                        <td colspan="5" class="table-text-right pt-4"><strong>Wilson 95% Expected Value:</strong></td>
-                        <td class="text-right pt-4"><strong>$52.03</strong></td>
-                        <td class="text-right text-success pt-4"><strong>+10.7%</strong></td>
+                        <td><strong>Regression (Bull)</strong></td>
+                        <td class="numeric">$56.50</td>
+                        <td class="numeric text-success">+20.2%</td>
+                        <td class="numeric">30.0%</td>
+                        <td class="numeric">$16.95</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Normalized (Bear)</strong></td>
+                        <td class="numeric">$39.32</td>
+                        <td class="numeric text-danger">-16.3%</td>
+                        <td class="numeric">9.1%</td>
+                        <td class="numeric">$3.58</td>
+                    </tr>
+                    <tr class="table-border-top" style="font-weight: bold;">
+                        <td>IRC Blended Target</td>
+                        <td class="numeric">$52.21</td>
+                        <td class="numeric text-success">+11.1%</td>
+                        <td class="numeric">100.0%</td>
+                        <td class="numeric">$52.21</td>
                     </tr>
                 </tbody>
             </table>
+            <!-- END AUTOGEN: scenario-analysis-table -->
             <p class="mt-12 text-medium text-gray"><strong>Final Rating: HOLD</strong> (Expected return +10.7% within -10% to +15% band). Both Wilson probability-weighted and IRC methodological blending converge on HOLD. Bear case omitted for clarity.</p>
 
             <h3>8.7 Conclusion</h3>

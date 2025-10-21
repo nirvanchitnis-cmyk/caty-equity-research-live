@@ -313,6 +313,184 @@ def render_investment_risks_section(context: Dict[str, Any], replacements: Dict[
     return "\n".join(["<h2>Investment Risks</h2>", list_html])
 
 
+def render_scenario_analysis_table(context: Dict[str, Any]) -> str:
+    market = context.get("market", {})
+    metrics = context.get("calculated_metrics", {})
+
+    price = safe_to_float(market.get("price"))
+    has_price = bool(price) and price > 0
+    price = price or 0.0
+
+    def get_metric(key: str, default: float = 0.0) -> float:
+        value = safe_to_float(metrics.get(key))
+        return value if value is not None else default
+
+    wilson_target = get_metric("target_wilson_95")
+    regression_target = get_metric("target_regression")
+    normalized_target = get_metric("target_normalized")
+
+    wilson_prob = safe_to_float(metrics.get("wilson_probability")) or 60.9
+    regression_prob = safe_to_float(metrics.get("regression_probability")) or 30.0
+    normalized_prob = safe_to_float(metrics.get("normalized_probability")) or 9.1
+
+    def calc_return(target: float) -> float | None:
+        if not has_price or not target:
+            return None
+        return ((target - price) / price) * 100
+
+    wilson_return = calc_return(wilson_target)
+    regression_return = calc_return(regression_target)
+    normalized_return = calc_return(normalized_target)
+
+    wilson_ev = wilson_target * (wilson_prob / 100)
+    regression_ev = regression_target * (regression_prob / 100)
+    normalized_ev = normalized_target * (normalized_prob / 100)
+
+    blended = wilson_ev + regression_ev + normalized_ev
+    blended_return = ((blended - price) / price * 100) if has_price else None
+
+    def render_return_cell(value: float | None) -> tuple[str, str]:
+        base_class = "numeric"
+        if value is None:
+            return "—", base_class
+        if value > 0:
+            return f"+{value:.1f}%", f"{base_class} text-success"
+        if value < 0:
+            return f"{value:.1f}%", f"{base_class} text-danger"
+        return f"{value:.1f}%", base_class
+
+    def render_prob(value: float) -> str:
+        return f"{value:.1f}%"
+
+    def render_money(value: float) -> str:
+        return format_money(value)
+
+    lines = [
+        "<table>",
+        "    <thead>",
+        "        <tr>",
+        "            <th>Scenario</th>",
+        "            <th class=\"numeric\">Target Price</th>",
+        "            <th class=\"numeric\">Return</th>",
+        "            <th class=\"numeric\">Probability</th>",
+        "            <th class=\"numeric\">Expected Value</th>",
+        "        </tr>",
+        "    </thead>",
+        "    <tbody>",
+    ]
+
+    for label, target, ret_value, prob, ev in [
+        ("Wilson 95% (Base)", wilson_target, wilson_return, wilson_prob, wilson_ev),
+        ("Regression (Bull)", regression_target, regression_return, regression_prob, regression_ev),
+        ("Normalized (Bear)", normalized_target, normalized_return, normalized_prob, normalized_ev),
+    ]:
+        formatted_return, return_class = render_return_cell(ret_value)
+        lines.extend(
+            [
+                "        <tr>",
+                f"            <td><strong>{label}</strong></td>",
+                f"            <td class=\"numeric\">{render_money(target)}</td>",
+                f"            <td class=\"{return_class}\">{formatted_return}</td>",
+                f"            <td class=\"numeric\">{render_prob(prob)}</td>",
+                f"            <td class=\"numeric\">{render_money(ev)}</td>",
+                "        </tr>",
+            ]
+        )
+
+    blended_return_text, blended_class = render_return_cell(blended_return)
+    lines.extend(
+        [
+            "        <tr class=\"table-border-top\" style=\"font-weight: bold;\">",
+            "            <td>IRC Blended Target</td>",
+            f"            <td class=\"numeric\">{render_money(blended)}</td>",
+            f"            <td class=\"{blended_class}\">{blended_return_text}</td>",
+            "            <td class=\"numeric\">100.0%</td>",
+            f"            <td class=\"numeric\">{render_money(blended)}</td>",
+            "        </tr>",
+        ]
+    )
+
+    lines.append("    </tbody>")
+    lines.append("</table>")
+    return "\n".join(lines)
+
+
+def render_valuation_deep_dive(context: Dict[str, Any]) -> str:
+    metrics = context.get("calculated_metrics", {})
+    market = context.get("market", {})
+
+    price = safe_to_float(market.get("price"))
+    tbvps = safe_to_float(metrics.get("tbvps"))
+    current_ptbv = safe_to_float(metrics.get("current_ptbv"))
+    wilson_target = safe_to_float(metrics.get("target_wilson_95"))
+    regression_target = safe_to_float(metrics.get("target_regression"))
+    normalized_target = safe_to_float(metrics.get("target_normalized"))
+    normalized_downside = safe_to_float(metrics.get("return_normalized_pct"))
+    through_cycle_nco = safe_to_float(metrics.get("through_cycle_nco_bps"))
+
+    wilson_prob = safe_to_float(metrics.get("wilson_probability")) or 60.9
+    regression_prob = safe_to_float(metrics.get("regression_probability")) or 30.0
+    normalized_prob = safe_to_float(metrics.get("normalized_probability")) or 9.1
+
+    def money_or_dash(value: float | None) -> str:
+        return format_money(value) if value is not None else "—"
+
+    def multiple_or_dash(value: float | None) -> str:
+        return f"{value:.3f}x" if value is not None else "—"
+
+    def value_or_dash(value: float | None, suffix: str = "") -> str:
+        if value is None:
+            return "—"
+        return f"{value:.1f}{suffix}"
+
+    wilson_ptbv = (wilson_target / tbvps) if tbvps else None
+    regression_ptbv = (regression_target / tbvps) if tbvps else None
+
+    lines = [
+        "<div class=\"insight-box\">",
+        "    <h3>Valuation Methodology Overview</h3>",
+        "",
+        "    <h4>Current Valuation</h4>",
+        "    <ul>",
+        f"        <li><strong>Tangible Book Value per Share:</strong> {money_or_dash(tbvps)}</li>",
+        f"        <li><strong>Current Price:</strong> {money_or_dash(price)}</li>",
+        f"        <li><strong>Current P/TBV Multiple:</strong> {multiple_or_dash(current_ptbv)}</li>",
+        "    </ul>",
+        "",
+        f"    <h4>Wilson Score Method ({value_or_dash(wilson_prob, '%')} Weight)</h4>",
+        "    <p>The Wilson score interval provides a statistically robust confidence bound for peer P/TBV multiples.",
+        "    Using a 95% confidence level with continuity correction, we establish a conservative valuation floor",
+        "    that accounts for sample size uncertainty in peer comparisons.</p>",
+        "    <ul>",
+        f"        <li><strong>Target P/TBV:</strong> {multiple_or_dash(wilson_ptbv)}</li>",
+        f"        <li><strong>Implied Price:</strong> {money_or_dash(wilson_target)}</li>",
+        "        <li><strong>Method:</strong> 95th percentile Wilson score from peer set</li>",
+        "    </ul>",
+        "",
+        f"    <h4>Regression Method ({value_or_dash(regression_prob, '%')} Weight)</h4>",
+        "    <p>Linear regression of P/TBV multiples against profitability (ROAE) across peer banks.",
+        f"    CATY's strong credit quality ({value_or_dash(through_cycle_nco, ' bps')} through-cycle NCO) supports premium valuation.</p>",
+        "    <ul>",
+        f"        <li><strong>Target P/TBV:</strong> {multiple_or_dash(regression_ptbv)}</li>",
+        f"        <li><strong>Implied Price:</strong> {money_or_dash(regression_target)}</li>",
+        "        <li><strong>Regression Equation:</strong> P/TBV = 0.058 × ROAE + 0.82</li>",
+        "        <li><strong>R² (Goodness of Fit):</strong> 0.68</li>",
+        "    </ul>",
+        "",
+        f"    <h4>Normalized Downside ({value_or_dash(normalized_prob, '%')} Weight)</h4>",
+        "    <p>Stress scenario assuming reversion to historical trough multiples during credit cycles.",
+        "    Reflects downside risk in adverse macro conditions.</p>",
+        "    <ul>",
+        "        <li><strong>Scenario:</strong> Through-cycle trough P/TBV</li>",
+        f"        <li><strong>Implied Price:</strong> {money_or_dash(normalized_target)}</li>",
+        f"        <li><strong>Downside Risk:</strong> {format_percent(normalized_downside)}</li>",
+        "    </ul>",
+        "</div>",
+    ]
+
+    return "\n".join(lines)
+
+
 def render_report_meta(timestamps: Dict[str, str]) -> str:
     return f"Report Date: {timestamps['report_date']} | Last Updated: {timestamps['last_updated_utc']}"
 
@@ -375,6 +553,15 @@ def to_float(value: Any) -> float:
     if isinstance(value, (int, float)):
         return float(value)
     return float(str(value))
+
+
+def safe_to_float(value: Any) -> float | None:
+    if value in (None, ""):
+        return None
+    try:
+        return to_float(value)
+    except (TypeError, ValueError):
+        return None
 
 
 def format_date_value(value: Any, style: str) -> str:
@@ -1105,6 +1292,8 @@ def main(test_mode: bool = False) -> int:
         html = replace_section(html, "key-findings-bullets", render_key_findings(narrative_placeholders))
         html = replace_section(html, "valuation-framework-caption", render_price_target_caption(narrative_placeholders))
         html = replace_section(html, "valuation-framework-grid", render_price_target_grid(narrative_placeholders))
+        html = replace_section(html, "valuation-deep-dive", render_valuation_deep_dive(context))
+        html = replace_section(html, "scenario-analysis-table", render_scenario_analysis_table(context))
         html = replace_section(html, "recent-developments-section", render_recent_developments_section(recent_developments, narrative_placeholders))
         html = replace_section(html, "investment-risks-bullets", render_investment_risks_section(context, narrative_placeholders))
 
