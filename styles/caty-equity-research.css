@@ -745,6 +745,10 @@ a:hover {
     color: #ffa500;
 }
 
+.dashboard-value-red {
+    color: #dc3545;
+}
+
 .dashboard-subtext {
     font-size: 11px;
     color: #999;

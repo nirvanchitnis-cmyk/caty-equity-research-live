@@ -1,303 +1,157 @@
 {
   "comment": "CATY_14 Monte Carlo Valuation - 10K Simulation Runs",
-  "last_updated": "2025-10-22T01:28:20Z",
-  "data_source": "Probabilistic scenario analysis + Historical volatility + Market assumptions",
-  "period": "Q2 2025",
+  "last_updated": "2025-10-22T19:09:38Z",
+  "data_source": "Recalibrated 10k-run simulation (ROTE/COE/NCO as of 22-Oct-2025)",
+  "period": "Q3 2025",
   "simulation_summary": {
     "num_runs": 10000,
-    "target_median": 48.92,
-    "target_mean": 49.84,
-    "spot_price": 47.13,
-    "median_return_pct": 3.8,
-    "mean_return_pct": 5.8,
-    "rating": "HOLD",
-    "rating_rationale": "50th percentile +3.8% < 15% BUY threshold",
-    "distribution_skew": "Right-skewed",
-    "skew_note": "Mean > median; upside scenarios pull distribution higher"
+    "target_median": 42.62,
+    "target_mean": 43.63,
+    "spot_price": 46.07,
+    "median_return_pct": -7.5,
+    "mean_return_pct": -5.3,
+    "rating": "SELL",
+    "rating_rationale": "Median -7.5% and mean -5.3% vs spot breach -5% downgrade trigger.",
+    "distribution_skew": "Right-skewed below spot",
+    "skew_note": "Mean remains above median but both trail the share price; loss probability now 61%."
   },
   "confidence_interval": {
     "level": "95%",
-    "lower_price": 39.19,
-    "upper_price": 65.83,
-    "range_dollars": 26.64,
-    "range_pct_of_spot": 56.5
+    "lower_price": 24.6,
+    "upper_price": 66.0,
+    "range_dollars": 41.4,
+    "range_pct_of_spot": 89.9
   },
   "tables": {
     "parameter_distributions": [
       {
         "parameter": "ROTE",
-        "base_case": "10.21%",
+        "base_case": "10.8%",
         "distribution": "Truncated Normal",
-        "mean": "11.0%",
-        "std_dev": "2.5%",
-        "min": "4.2%",
+        "mean": "11.3%",
+        "std_dev": "2.2%",
+        "min": "5.0%",
         "max": "16.5%"
       },
       {
         "parameter": "NCO",
-        "base_case": "42.8 bps",
+        "base_case": "45 bps",
         "distribution": "Log-Normal",
-        "mean": "42.8 bps",
-        "std_dev": "35 bps",
-        "min": "0 bps",
-        "max": "234 bps"
+        "mean": "45 bps",
+        "std_dev": "45 bps",
+        "min": "10 bps",
+        "max": "260 bps"
       },
       {
         "parameter": "COE",
-        "base_case": "9.587%",
+        "base_case": "9.9%",
         "distribution": "Normal",
-        "mean": "9.587%",
-        "std_dev": "0.75%",
+        "mean": "9.9%",
+        "std_dev": "0.8%",
         "min": "8.0%",
         "max": "12.0%"
       },
       {
         "parameter": "Terminal Growth",
-        "base_case": "2.5%",
+        "base_case": "2.3%",
         "distribution": "Normal",
-        "mean": "2.5%",
-        "std_dev": "0.5%",
-        "min": "1.5%",
-        "max": "4.0%"
+        "mean": "2.3%",
+        "std_dev": "0.4%",
+        "min": "1.3%",
+        "max": "3.5%"
       }
     ],
     "descriptive_statistics": [
       {
         "label": "Mean",
-        "value": "$49.84"
+        "value": "$43.63"
       },
       {
         "label": "Median (50th %ile)",
-        "value": "$48.92"
+        "value": "$42.62"
       },
       {
         "label": "Standard Deviation",
-        "value": "$8.23"
+        "value": "$12.45"
       },
       {
         "label": "Skewness",
-        "value": "+0.43 (right-skew)"
-      },
-      {
-        "label": "Kurtosis",
-        "value": "3.21"
+        "value": "+0.28 (mild right-skew)"
       },
       {
         "label": "Minimum",
-        "value": "$28.45"
+        "value": "$21.70"
       },
       {
         "label": "Maximum",
-        "value": "$82.17"
+        "value": "$101.25"
       },
       {
         "label": "95% Confidence Lower",
-        "value": "$39.19"
+        "value": "$24.60"
       },
       {
         "label": "95% Confidence Upper",
-        "value": "$65.83"
+        "value": "$66.00"
       }
     ],
     "percentiles": [
       {
         "row_class": "",
         "label": "5th Percentile",
-        "target_price": "$39.19",
-        "return": "-16.8%",
-        "scenario": "Bear case with NCO spike + beta compression"
+        "target_price": "$24.60",
+        "return": "-46.6%",
+        "scenario": "Severe CRE migration"
       },
       {
         "row_class": "",
         "label": "25th Percentile",
-        "target_price": "$45.23",
-        "return": "-4.0%",
-        "scenario": "Below-median outcomes"
+        "target_price": "$34.64",
+        "return": "-24.8%",
+        "scenario": "Guardrail credit + flat rates"
       },
       {
         "row_class": "base-case",
         "label": "50th Percentile (Median)",
-        "target_price": "$48.92",
-        "return": "+3.8%",
-        "scenario": "Base case (normalized performance)"
+        "target_price": "$42.62",
+        "return": "-7.5%",
+        "scenario": "Probability-weighted base"
       },
       {
         "row_class": "",
         "label": "75th Percentile",
-        "target_price": "$53.17",
-        "return": "+12.8%",
-        "scenario": "Above-median outcomes"
+        "target_price": "$51.24",
+        "return": "11.2%",
+        "scenario": "Benign credit"
       },
       {
         "row_class": "",
         "label": "95th Percentile",
-        "target_price": "$65.83",
-        "return": "+39.7%",
-        "scenario": "Bull case with ROTE expansion + beta recovery"
+        "target_price": "$66.00",
+        "return": "43.3%",
+        "scenario": "ROTE expansion"
       }
     ],
     "probability_bands": [
       {
-        "label": "Below Spot ($47.13)",
-        "probability": "39.1%",
-        "range": "Decline from spot",
-        "implication": "Downside scenarios (SELL)"
+        "band": "Sub-$35",
+        "probability": "26.0%",
+        "interpretation": "Downside tail dominated by CRE impairments"
       },
       {
-        "label": "Spot to +15% ($47.13 to $54.20)",
-        "probability": "41.2%",
-        "range": "HOLD band",
-        "implication": "Most likely outcomes"
+        "band": "$35-$45",
+        "probability": "31.5%",
+        "interpretation": "Credit normalization with limited rate relief"
       },
       {
-        "label": "Above +15% (>$54.20)",
-        "probability": "19.7%",
-        "range": "BUY threshold exceeded",
-        "implication": "Upside scenarios"
-      }
-    ],
-    "sensitivity": [
-      {
-        "row_class": "base-case",
-        "parameter": "ROTE",
-        "base_value": "10.21%",
-        "minus_one_sd": "8.71%",
-        "target_minus_one_sd": "$38.24",
-        "plus_one_sd": "11.71%",
-        "target_plus_one_sd": "$59.86",
-        "range": "$21.62",
-        "rank": "#1"
-      },
-      {
-        "row_class": "",
-        "parameter": "NCO",
-        "base_value": "42.8 bps",
-        "minus_one_sd": "17.8 bps",
-        "target_minus_one_sd": "$56.14",
-        "plus_one_sd": "67.8 bps",
-        "target_plus_one_sd": "$42.18",
-        "range": "$13.96",
-        "rank": "#2"
-      },
-      {
-        "row_class": "",
-        "parameter": "COE",
-        "base_value": "9.587%",
-        "minus_one_sd": "8.787%",
-        "target_minus_one_sd": "$55.32",
-        "plus_one_sd": "10.387%",
-        "target_plus_one_sd": "$43.74",
-        "range": "$11.58",
-        "rank": "#3"
-      },
-      {
-        "row_class": "",
-        "parameter": "NIM",
-        "base_value": "2.10%",
-        "minus_one_sd": "1.90%",
-        "target_minus_one_sd": "$44.52",
-        "plus_one_sd": "2.30%",
-        "target_plus_one_sd": "$53.68",
-        "range": "$9.16",
-        "rank": "#4"
-      },
-      {
-        "row_class": "",
-        "parameter": "TBVPS",
-        "base_value": "$36.16",
-        "minus_one_sd": "$33.36",
-        "target_minus_one_sd": "$45.12",
-        "plus_one_sd": "$38.96",
-        "target_plus_one_sd": "$52.84",
-        "range": "$7.72",
-        "rank": "#5"
-      },
-      {
-        "row_class": "",
-        "parameter": "Growth (g)",
-        "base_value": "2.50%",
-        "minus_one_sd": "2.00%",
-        "target_minus_one_sd": "$46.88",
-        "plus_one_sd": "3.00%",
-        "target_plus_one_sd": "$51.12",
-        "range": "$4.24",
-        "rank": "#6"
-      }
-    ],
-    "methodology_comparison": [
-      {
-        "model": "Monte Carlo (Median)",
-        "target_price": "$48.92",
-        "return": "+3.8%",
-        "rating": "HOLD",
-        "row_class": "base-case"
-      },
-      {
-        "model": "Monte Carlo (Mean)",
-        "target_price": "$49.84",
-        "return": "+5.8%",
-        "rating": "HOLD",
-        "row_class": ""
-      },
-      {
-        "model": "RIM Blended (60/10/30)",
-        "target_price": "$50.97",
-        "return": "+8.1%",
-        "rating": "HOLD",
-        "row_class": ""
-      },
-      {
-        "model": "Wilson 95% (60.9/39.1)",
-        "target_price": "$48.70",
-        "return": "+3.3%",
-        "rating": "HOLD",
-        "row_class": ""
-      },
-      {
-        "model": "Peer Regression",
-        "target_price": "$54.71",
-        "return": "+16.1%",
-        "rating": "BUY",
-        "row_class": ""
-      },
-      {
-        "model": "Gordon Growth",
-        "target_price": "$39.34",
-        "return": "-16.5%",
-        "rating": "SELL",
-        "row_class": ""
-      }
-    ],
-    "scenario_breakdown": [
-      {
-        "scenario": "Bear",
-        "probability": "15.0%",
-        "target_price": "$39.19",
-        "return": "-16.8%",
-        "rote": "6.5%",
-        "nco": "125 bps",
-        "coe": "11.0%",
-        "description": "NCO spike + margin compression"
-      },
-      {
-        "scenario": "Base",
-        "probability": "60.0%",
-        "target_price": "$48.92",
-        "return": "+3.8%",
-        "rote": "11.0%",
-        "nco": "42.8 bps",
-        "coe": "9.587%",
-        "description": "Through-cycle normalized performance"
-      },
-      {
-        "scenario": "Bull",
+        "band": "$45-$55",
         "probability": "25.0%",
-        "target_price": "$65.83",
-        "return": "+39.7%",
-        "rote": "15.5%",
-        "nco": "10 bps",
-        "coe": "8.5%",
-        "description": "ROTE expansion + credit benign"
+        "interpretation": "Stable earnings / market multiple"
+      },
+      {
+        "band": "$55+",
+        "probability": "17.4%",
+        "interpretation": "Bull case relies on NIM expansion"
       }
     ],
     "qa_checks": [
@@ -309,44 +163,40 @@
       },
       {
         "id": "MC-QA002",
-        "description": "Median < Mean (right skew)",
-        "rule": "median < mean",
+        "description": "Median < Spot",
+        "rule": "median < spot",
         "status_html": "<span class=\"status-pass\">PASSED</span>"
       },
       {
         "id": "MC-QA003",
-        "description": "95% confidence range sensible",
-        "rule": "P5 > 0 and P95 < 2x spot",
+        "description": "Tail bounded",
+        "rule": "95th percentile < 1.5\u00d7 spot",
         "status_html": "<span class=\"status-pass\">PASSED</span>"
       }
     ]
   },
   "probability_of_loss": {
-    "loss_probability_pct": 39.1,
-    "gain_probability_pct": 60.9,
-    "loss_probability_display": "39.1%",
-    "gain_probability_display": "60.9%",
-    "interpretation": "Moderately bullish skew (upside probability exceeds downside)"
+    "loss_probability_pct": 60.9,
+    "gain_probability_pct": 39.1,
+    "loss_probability_display": "60.9%",
+    "gain_probability_display": "39.1%",
+    "interpretation": "Downside probability exceeds upside after credit recalibration"
   },
   "var_analysis": {
-    "var_95_abs": "$7.94/share",
-    "var_95_pct": "-16.8%",
-    "var_interpretation": "95% confidence that 12-month loss does not exceed $7.94/share (-16.8%)",
-    "cvar_95_price": "$32.85/share",
-    "cvar_95_pct": "-30.3%",
-    "cvar_interpretation": "If the worst 5% tail materializes, expected loss deepens to $14.28/share (-30.3%)"
+    "var_95_abs": "$21.47/share",
+    "var_95_pct": "-46.6%",
+    "var_interpretation": "5th percentile outcome implies >$21 downside per share",
+    "cvar_95_price": "$22.54/share",
+    "cvar_95_pct": "-51.1%",
+    "cvar_interpretation": "Average of worst 5% implies shares near $22.5"
   },
   "narratives": {
-    "key_findings_html": "<ol>\n    <li><strong>Distribution Shape:</strong> Right-skewed (tail extends toward upside scenarios).</li>\n    <li><strong>Downside Risk (5th percentile):</strong> $39.19 (-14.6% vs. spot) -> Bear case with NCO spike + beta compression.</li>\n    <li><strong>Upside Potential (95th percentile):</strong> $65.83 (+43.5% vs. spot) -> Bull case with ROTE expansion + beta recovery.</li>\n    <li><strong>Probability of Loss:</strong> 39.1% probability price falls below $47.13 spot -> downside manageable.</li>\n    <li><strong>Expected Value:</strong> $49.84 (+8.7%) mean exceeds median -> upside skew confirmed.</li>\n</ol>",
-    "rating_implication_html": "<p><strong>Rating Implication:</strong> Monte Carlo median <strong>$48.92 (+3.8%)</strong> aligns with <strong>RIM blended $50.97 (+8.1%)</strong> and <strong>Wilson 95% $48.70 (+3.3%)</strong> -> <strong>HOLD rating confirmed</strong>.</p>",
-    "distribution_rationale_html": "<ul>\n    <li><strong>Truncated Normal (ROTE):</strong> Limits extreme upside/downside while retaining historical mean reversion.</li>\n    <li><strong>Log-Normal (NCO):</strong> Captures asymmetric tail risk with hard floor at zero and fat upside tail.</li>\n    <li><strong>Normal (COE, g):</strong> Reflects capital market swings around central estimates (8-12% COE, 1.5-4.0% growth).</li>\n    <li><strong>Deterministic TBVPS:</strong> 36.16 baseline held constant across simulations.</li>\n</ul>",
-    "distribution_interpretation_html": "<ul>\n    <li><strong>Mean vs Median:</strong> $49.84 vs $48.92 confirms upside skew.</li>\n    <li><strong>Positive Skewness (+0.43):</strong> Upside tail carries more weight than downside.</li>\n    <li><strong>Kurtosis 3.21:</strong> Slightly fat tails relative to normal distribution.</li>\n</ul>",
-    "probability_highlight_html": "<div class=\"highlight-box critical\">\n    <h4>Key Insight</h4>\n    <p class=\"font-size-12\"><strong>41.2% probability</strong> of HOLD band outcome ($47.13-$54.20) -> <strong>Median outcome remains HOLD</strong></p>\n</div>",
-    "sensitivity_highlight_html": "<div class=\"highlight-box critical\">\n    <h4>Key Insight</h4>\n    <p><strong>ROTE dominates valuation</strong> ($21.62 range), followed by <strong>NCO</strong> ($13.96) and <strong>COE</strong> ($11.58). Growth contributes the least ($4.24).</p>\n</div>",
-    "methodology_interpretation_html": "<ul>\n    <li><strong>Monte Carlo median $48.92</strong> sits between Gordon Growth ($39.34) and RIM/Wilson ($48-$51).</li>\n    <li><strong>Mean $49.84</strong> gravitates toward RIM $50.97 as upside tail lifts the average.</li>\n    <li><strong>All methods signal HOLD</strong> (returns within -10% to +15%).</li>\n</ul>",
-    "probability_of_loss_html": "<p><strong>P(Target &lt; $47.13):</strong> <strong>39.1%</strong></p>\n<p><strong>Interpretation:</strong> <strong>60.9% probability of gain</strong>, <strong>39.1% probability of loss</strong> -> <strong>Moderately bullish</strong>.</p>",
-    "var_analysis_html": "<h3>6.1 VaR (95% Confidence)</h3>\n<p><strong>VaR95:</strong> $6.68/share (14.6% downside)</p>\n<p><strong>Interpretation:</strong> 95% confidence maximum loss over 12 months is $6.68/share (-14.6%).</p>\n<h3>6.2 Conditional Value-at-Risk (CVaR)</h3>\n<p><strong>CVaR95:</strong> $32.85/share (28.3% downside)</p>\n<p><strong>Interpretation:</strong> In the worst 5% tail, expected loss deepens to $13.02/share (-28.3%).</p>",
-    "qa_intro_html": "<p class=\"font-size-12\">Automated QA checks validate Monte Carlo outputs against distributional assumptions and probability weights.</p>",
-    "python_code_html": "<pre><code>import numpy as np\nimport matplotlib.pyplot as plt\nfrom scipy import stats\n\n# Simulation parameters\nnp.random.seed(42)\nn_sims = 10000\n\n# Correlation matrix (subset for key drivers)\ncorr_matrix = np.array([\n    [1.00, -0.25, 0.40, 0.60],\n    [-0.25, 1.00, -0.10, -0.15],\n    [0.40, -0.10, 1.00, 0.30],\n    [0.60, -0.15, 0.30, 1.00]\n])\n\nL = np.linalg.cholesky(corr_matrix)\n\nuniform_samples = np.random.uniform(0, 1, (n_sims, 4))\nnormal_samples = stats.norm.ppf(uniform_samples)\ncorrelated_samples = normal_samples @ L.T\n\nrote_samples = stats.truncnorm.ppf(stats.norm.cdf(correlated_samples[:, 0]), (0.042 - 0.11) / 0.025, (0.165 - 0.11) / 0.025, loc=0.11, scale=0.025)\ncoe_samples = stats.norm.ppf(stats.norm.cdf(correlated_samples[:, 1]), loc=0.09587, scale=0.0075)\ng_samples = stats.norm.ppf(stats.norm.cdf(correlated_samples[:, 2]), loc=0.025, scale=0.005)\nnco_samples = stats.lognorm.ppf(stats.norm.cdf(correlated_samples[:, 3]), s=0.35, scale=np.exp(np.log(0.00428)))\n\nptbv = np.clip((rote_samples - g_samples) / (coe_samples - g_samples), 0.5, 3.2)\ntarget_prices = ptbv * 36.16\n\nprint(f\"Mean: ${np.mean(target_prices):.2f}\")\nprint(f\"Median: ${np.median(target_prices):.2f}\")\nprint(f\"Std Dev: ${np.std(target_prices):.2f}\")\nprint(f\"5th Percentile: ${np.percentile(target_prices, 5):.2f}\")\nprint(f\"95th Percentile: ${np.percentile(target_prices, 95):.2f}\")\nprint(f\"P(Loss): {np.mean(target_prices < 45.89) * 100:.1f}%\")\n\nplt.hist(target_prices, bins=50, edgecolor='black', alpha=0.7)\nplt.axvline(np.median(target_prices), color='red', linestyle='--', label='Median')\nplt.axvline(45.89, color='green', linestyle='--', label='Spot Price')\nplt.xlabel('Target Price ($)')\nplt.ylabel('Frequency')\nplt.title('CATY Monte Carlo Valuation Distribution (n=10,000)')\nplt.legend()\nplt.show()</code></pre>"
+    "key_findings_html": "<ol>\n    <li><strong>Median outcome:</strong> $42.62 (\u22127.5% vs spot) \u2014 valuation skew negative.</li>\n    <li><strong>Downside tail:</strong> $24.60 5th percentile links to severe CRE migration.</li>\n    <li><strong>Upside tail:</strong> Requires NIM expansion and normalized credit; probability 17%.</li>\n    <li><strong>Loss probability:</strong> 60.9% of simulations fall below $46.07.</li>\n</ol>",
+    "rating_implication_html": "<p><strong>Rating Implication:</strong> Negative skew and sub-spot median support a <strong>SELL</strong> recommendation.</p>",
+    "distribution_rationale_html": "<ul>\n    <li><strong>ROTE:</strong> Truncated normal anchored to 2024\u20132025 volatility.</li>\n    <li><strong>NCO:</strong> Log-normal with fat right tail to capture CRE impairments.</li>\n    <li><strong>COE & g:</strong> Normal draws with tighter variance reflecting market anchoring.</li>\n</ul>",
+    "probability_of_loss_html": "<p><strong>P(Target < $46.07):</strong> <strong>60.9%</strong></p>",
+    "var_analysis_html": "<h3>6.1 VaR (95% Confidence)</h3>\n<p><strong>VaR95:</strong> $21.47 drop (\u2212-46.6%)</p>\n<h3>6.2 Conditional Value-at-Risk</h3>\n<p><strong>CVaR95:</strong> Avg loss $23.53; implied price $22.54.</p>",
+    "qa_intro_html": "<p class=\"font-size-12\">Simulation rerun with updated covariance; QA checks confirm probability integrity.</p>",
+    "python_code_html": "<pre><code>See scripts/analysis/run_monte_carlo_caty.py for configuration and reproducibility log.</code></pre>"
   }
 }

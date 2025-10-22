@@ -1,5 +1,5 @@
 {
-  "generated_at": "2025-10-22T18:04:33.716495+00:00",
+  "generated_at": "2025-10-22T19:03:10.273543+00:00",
   "base": {
     "loan_balance_b": 20.1,
     "nco_bps": 18.1,
@@ -38,6 +38,17 @@
       "eps": 0.75,
       "eps_hit": 0.38,
       "tbvps": 40.74
+    },
+    {
+      "scenario": "Severe",
+      "descriptor": "GFC analogue (3\u00d7 LTM)",
+      "nco_bps": 120.0,
+      "incremental_bps": 101.9,
+      "provision_m": 79.9,
+      "incremental_provision_m": 51.2,
+      "eps": 0.56,
+      "eps_hit": 0.57,
+      "tbvps": 40.61
     }
   ],
   "assumptions": {

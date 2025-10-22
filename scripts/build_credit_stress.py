@@ -20,6 +20,7 @@ SCENARIOS = [
     {"name": "Base LTM", "nco_bps": 18.1, "label": "Q3 run-rate"},
     {"name": "Guardrail", "nco_bps": 42.8, "label": "Through-cycle mean"},
     {"name": "Stress", "nco_bps": 85.0, "label": "2× guardrail"},
+    {"name": "Severe", "nco_bps": 120.0, "label": "GFC analogue (3× LTM)"},
 ]
 
 

@@ -467,27 +467,42 @@ async function fetchMarketData() {
     }
 }
 
+async function fetchJsonResource(path) {
+    try {
+        const response = await fetch(path);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return await response.json();
+    } catch (error) {
+        console.error(`Error fetching ${path}:`, error);
+        return null;
+    }
+}
+
 // Initialize valuation comparison chart from market data
 async function initValuationChart(canvasId) {
     const marketData = await fetchMarketData();
+    const probabilisticOutlook = await fetchJsonResource('analysis/probabilistic_outlook.json');
+    const monteCarlo = await fetchJsonResource('data/caty14_monte_carlo.json');
 
-    if (!marketData) {
-        console.error('Failed to load market data');
+    if (!marketData || !probabilisticOutlook || !monteCarlo) {
+        console.error('Failed to load valuation datasets');
         return null;
     }
 
     const chartData = {
         labels: [
             'Current Price',
-            'Wilson 95%',
-            'IRC Blended',
-            'Regression'
+            'Probability-weighted',
+            'Normalized Gordon',
+            'Monte Carlo Median'
         ],
         values: [
             marketData.price,
-            marketData.calculated_metrics.target_wilson_95,
-            marketData.calculated_metrics.target_irc_blended,
-            marketData.calculated_metrics.target_regression
+            (probabilisticOutlook.expected && probabilisticOutlook.expected.price) ? probabilisticOutlook.expected.price : marketData.calculated_metrics.target_normalized,
+            marketData.calculated_metrics.target_normalized,
+            (monteCarlo.simulation_summary && monteCarlo.simulation_summary.target_median) ? monteCarlo.simulation_summary.target_median : marketData.calculated_metrics.target_normalized
         ]
     };
 

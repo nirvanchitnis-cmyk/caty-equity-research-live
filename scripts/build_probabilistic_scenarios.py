@@ -14,25 +14,28 @@ RATE_PATH = ROOT / "analysis" / "deposit_rate_scenarios.json"
 CREDIT_PATH = ROOT / "analysis" / "credit_stress_scenarios.json"
 OUTPUT_PATH = ROOT / "analysis" / "probabilistic_outlook.json"
 
-CURRENT_PRICE = 46.08  # Spot price 22-Oct-2025 14:25 EDT
+CURRENT_PRICE = 46.07  # Spot price 22-Oct-2025 close
 BASE_QUARTERLY_EPS = 1.13  # Q3'25 diluted EPS per 8-K Exhibit 99.1
 BASE_TBV = 41.00  # Guardrail TBVPS per Module 18 sensitivity baseline
 CURRENT_P_E = CURRENT_PRICE / (BASE_QUARTERLY_EPS * 4.0)
 CURRENT_P_TBV = CURRENT_PRICE / BASE_TBV
 
-# Probabilities informed by CME FedWatch (Oct 22, 2025) and internal credit review.
+# Probabilities anchored to CME FedWatch (22-Oct-2025 15:30 ET snapshot) and IRC credit review.
+# FedWatch implies ~50% probability of ≤50 bps cuts by Sep-2026, ~25% hold, remainder skewed to hikes.
 RATE_PROB = {
-    -100: 0.15,
-    -50: 0.25,
+    -100: 0.08,
+    -50: 0.22,
     -25: 0.20,
     0: 0.25,
-    25: 0.10,
-    50: 0.05,
+    25: 0.15,
+    50: 0.10,
 }
+# Credit distribution reflects elevated watchlist risk: 50% base, 30% guardrail, 15% stress, 5% severe migration.
 CREDIT_PROB = {
-    "Base LTM": 0.60,
-    "Guardrail": 0.25,
+    "Base LTM": 0.50,
+    "Guardrail": 0.30,
     "Stress": 0.15,
+    "Severe": 0.05,
 }
 
 

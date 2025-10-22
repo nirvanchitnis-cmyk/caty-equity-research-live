@@ -7,18 +7,18 @@
 
 ## Executive Summary
 
-**Monte Carlo Target Price (50th Percentile):** **$48.92** (+6.6% vs. $45.87 spot)
+**Monte Carlo Target Price (50th Percentile):** **$42.62** (−7.5% vs. $46.07 spot)
 
-**95% Confidence Interval:** $37.21 to $62.18 (range: $24.97, 67% of spot price)
+**95% Confidence Interval:** $24.60 to $66.00 (range: $41.40, 89.9% of spot price)
 
 **Key Findings:**
-1. **Distribution Shape:** Right-skewed (tail extends toward upside scenarios)
-2. **Downside Risk (5th percentile):** $37.21 (-18.9% vs. spot) → Severe CRE stress scenario
-3. **Upside Potential (95th percentile):** $62.18 (+35.6% vs. spot) → Housing boom + M&A interest
-4. **Probability of Loss:** 32% (price < $45.87 spot) → Moderate downside risk
-5. **Expected Value:** $49.84 (+8.6% vs. spot) → Mean exceeds median (right-skew confirmation)
+1. **Distribution Shape:** Still right-skewed, but centered below spot after credit tail calibration.
+2. **Downside Risk (5th percentile):** $24.60 (−46.6% vs. spot) → CRE migration + elevated NCOs.
+3. **Upside Potential (95th percentile):** $66.00 (+43.3% vs. spot) → Requires ROTE expansion and benign credit.
+4. **Probability of Loss:** 60.9% (price < $46.07 spot) → Downside now dominates.
+5. **Expected Value:** $43.63 (−5.3% vs. spot) → Mean remains below spot despite tail upside.
 
-**Rating Implication:** Monte Carlo **50th percentile $48.92 (+6.6%)** aligns with **RIM blended $50.97 (+8.1%)** and **Wilson 95% $48.70 (+3.3%)** → **HOLD rating confirmed** (all methods within -10% to +15% band)
+**Rating Implication:** Monte Carlo **median $42.62 (−7.5%)** and **mean $43.63 (−5.3%)** both trail the share price, supporting the **SELL** downgrade alongside the probability-weighted valuation ($43.97).
 
 ---
 

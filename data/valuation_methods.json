@@ -1,82 +1,62 @@
 {
   "tolerance_dollars": 0.5,
-  "last_reconciliation_run": "2025-10-21T06:27:00Z",
+  "last_reconciliation_run": "2025-10-22T19:10:00Z",
   "methods": [
     {
       "id": "spot",
       "label": "Current Spot",
       "target_path": "price",
-      "probability_text": "—",
-      "data_source": "NASDAQ Close (Oct 20, 2025)",
+      "probability_text": "\u2014",
+      "data_source": "NASDAQ Close (Oct 21, 2025)",
       "source_link": null,
-      "last_run": "2025-10-21T06:27:00Z",
+      "last_run": "2025-10-22T19:10:00Z",
       "row_class": ""
     },
     {
-      "id": "wilson",
-      "label": "Wilson 95% Upper",
-      "target_path": "calculated_metrics.target_wilson_95",
-      "probability_text": "74% / 26%",
-      "data_source": "analysis/probability_weighted_valuation.py",
-      "source_link": "analysis/probability_weighted_valuation.py",
-      "last_run": "2025-10-21T06:27:00Z",
+      "id": "probability_weighted",
+      "label": "Probability-weighted",
+      "target_value": 43.97,
+      "probability_text": "Rates \u00d7 credit (FedWatch \u00d7 guardrails)",
+      "data_source": "analysis/probabilistic_outlook.json",
+      "source_link": "analysis/probabilistic_outlook.json",
+      "last_run": "2025-10-22T19:10:00Z",
       "row_class": "row-highlight-yellow"
     },
     {
-      "id": "irc_blended",
-      "label": "IRC Blended (60/10/30)",
-      "target_path": "calculated_metrics.target_irc_blended",
-      "probability_text": "RIM 60%, DDM 10%, Rel 30%",
-      "data_source": "analysis/RESIDUAL_INCOME_VALUATION.md",
-      "source_link": "analysis/RESIDUAL_INCOME_VALUATION.md",
-      "last_run": "2025-10-21T06:27:00Z",
-      "row_class": ""
-    },
-    {
-      "id": "regression",
-      "label": "Regression (7-peer)",
-      "target_path": "calculated_metrics.target_regression",
-      "probability_text": "n=7, R²=0.66",
-      "data_source": "analysis/valuation_bridge_final.py",
-      "source_link": "analysis/valuation_bridge_final.py",
-      "last_run": "2025-10-21T06:27:00Z",
-      "row_class": ""
-    },
-    {
       "id": "normalized",
-      "label": "Normalized (Gordon Growth)",
+      "label": "Normalized (Gordon)",
       "target_path": "calculated_metrics.target_normalized",
-      "probability_text": "NCO 42.8 bps, ROTE 10.21%",
+      "probability_text": "ROTE 11.2%, COE 9.59%",
       "data_source": "analysis/valuation_bridge_final.py",
       "source_link": "analysis/valuation_bridge_final.py",
       "last_run": "2025-10-21T06:27:00Z",
       "row_class": ""
-    },
-    {
-      "id": "market_implied",
-      "label": "Market-Implied",
-      "target_path": "price",
-      "probability_text": "60.9% / 39.1%",
-      "data_source": "analysis/probability_weighted_valuation.py",
-      "source_link": "analysis/probability_weighted_valuation.py",
-      "last_run": "2025-10-21T06:27:00Z",
-      "row_class": "row-highlight-blue"
     },
     {
       "id": "monte_carlo",
       "label": "Monte Carlo Median",
-      "target_value": 48.92,
-      "probability_text": "10K runs, 95% CI $37-$62",
-      "data_source": "CATY_14_monte_carlo_valuation.html",
-      "source_link": "CATY_14_monte_carlo_valuation.html",
-      "last_run": "2025-10-21T06:27:00Z",
+      "target_value": 42.62,
+      "probability_text": "10k runs, loss probability 60.9%",
+      "data_source": "data/caty14_monte_carlo.json",
+      "source_link": "data/caty14_monte_carlo.json",
+      "last_run": "2025-10-22T19:09:00Z",
       "row_class": ""
+    },
+    {
+      "id": "market_implied",
+      "label": "Market-Implied COE",
+      "target_path": "price",
+      "probability_text": "Spot \u2192 COE 9.99%",
+      "data_source": "analysis/market_implied_coe.json",
+      "source_link": "analysis/market_implied_coe.json",
+      "last_run": "2025-10-22T19:10:00Z",
+      "row_class": "row-highlight-blue"
     }
   ],
   "validation": {
     "script": "analysis/reconciliation_guard.py",
     "pre_commit": ".git/hooks/pre-commit",
     "ci_workflow": ".github/workflows/reconciliation-guard.yml",
-    "last_run": "2025-10-21T06:27:00Z"
+    "last_run": "2025-10-22T19:10:00Z"
   }
 }

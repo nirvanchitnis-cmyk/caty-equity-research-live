@@ -502,6 +502,28 @@
                 <div class="callout-title">High-Rate Contingency Plan</div>
                 <p>A +50 bps shock lifts modeled IB costs to 3.59% and trims EPS to $1.04 (interest expense +$13.0M). Management’s mitigation per the October 21 call (<a href="evidence/primary_sources/CATY_Q3_2025_Presentation_20251021.pdf#page=7" target="_blank" rel="noopener">Q3 deck slide 7</a>) is to let $2.1B of promotional CDs roll off over the next 12 months, replace with treasury-services DDA, and slow buybacks if CET1 approaches the 12% guardrail. We track execution via quarterly updates to <code>analysis/deposit_rate_scenarios.json</code> and <a href="CATY_10_capital_actions.html">Module 10</a>.</p>
             </div>
+
+            <div class="callout-box info">
+                <div class="callout-title">FedWatch Probability Snapshot (22-Oct-2025 15:30 ET)</div>
+                <p>Scenario weights used in the probability engine originate from the CME FedWatch tool and are archived in <code>analysis/fedwatch_snapshot.json</code>.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Fed Move (bps)</th>
+                            <th class="numeric">Probability</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>−100</td><td class="numeric">8%</td></tr>
+                        <tr><td>−50</td><td class="numeric">22%</td></tr>
+                        <tr><td>−25</td><td class="numeric">20%</td></tr>
+                        <tr><td>0</td><td class="numeric">25%</td></tr>
+                        <tr><td>+25</td><td class="numeric">15%</td></tr>
+                        <tr><td>+50</td><td class="numeric">10%</td></tr>
+                    </tbody>
+                </table>
+                <p class="text-small">Probabilities reflect a linear blend of March and September 2026 Fed funds futures contracts captured on 22-Oct-2025.</p>
+            </div>
         </section>
 
         <!-- ======================================== -->

@@ -104,7 +104,7 @@
             </div>
             <!-- END AUTOGEN: caty07-nco-callout -->
             <h3>Credit Loss Stress Test (Provision Bridge)</h3>
-            <p class="text-medium">Provision scenarios translate net charge-off assumptions into EPS/TBV to frame disconfirming evidence. Base uses Q3 run-rate provision of $28.7M; stress doubles through-cycle guardrail to 85 bps.</p>
+            <p class="text-medium">Provision scenarios translate net charge-off assumptions into EPS/TBV to frame disconfirming evidence. Base uses Q3 run-rate provision of $28.7M; stress doubles through-cycle guardrail to 85 bps, and the new severe case tests a 120 bps GFC analogue.</p>
             <table>
                 <thead>
                     <tr>
@@ -141,6 +141,14 @@
                         <td class="numeric">-$0.38</td>
                         <td class="numeric">$40.74</td>
                     </tr>
+                    <tr>
+                        <td><strong>Severe</strong> (GFC analogue)</td>
+                        <td class="numeric">120.0 bps</td>
+                        <td class="numeric">$79.9</td>
+                        <td class="numeric">$0.56</td>
+                        <td class="numeric">-$0.57</td>
+                        <td class="numeric">$40.61</td>
+                    </tr>
                 </tbody>
             </table>
             <div class="insight-box">
@@ -148,12 +156,12 @@
                 <ul>
                     <li><strong>Provision spike explained:</strong> $28.7M provision includes $9.1M specific reserve on two movie theatre loans and $3.8M from a CECL model recalibration (<a href="evidence/raw/CATY_2025Q3_8K/ex_873308.htm" target="_blank" rel="noopener">8-K Exhibit 99.1</a>).</li>
                     <li><strong>Watchlist exposure:</strong> Special-mention loans rose to $455M across six CRE relationships (theatre, multi-tenant retail, industrial) per management’s slide deck (<a href="evidence/primary_sources/CATY_Q3_2025_Presentation_20251021.pdf#page=8" target="_blank" rel="noopener">Q3 deck slide 8</a>). Our guardrail assumes 20% migration, adding ~35 bps to NPLs.</li>
-                    <li><strong>Stress linkage:</strong> The 85 bps NCO stress aligns with a full migration of the special-mention pool plus a 150 bps loss rate on office/theatre exposures, translating to a $33.6M incremental provision and EPS $0.75 (see <code>analysis/credit_stress_scenarios.json</code>).</li>
+                    <li><strong>Stress linkage:</strong> The 85 bps NCO stress aligns with a full migration of the special-mention pool plus a 150 bps loss rate on office/theatre exposures, translating to a $33.6M incremental provision and EPS $0.75, while the severe case at 120 bps assumes additional office/retail downgrades and drives EPS to $0.56 (<code>analysis/credit_stress_scenarios.json</code>).</li>
                 </ul>
                 <p class="text-small text-secondary">Migration assumptions validated against CATY’s 2009 peak loss experience (306 bps) and the 2020 downgrade cadence documented in <a href="evidence/CATY_FDIC_NCO_series.md" target="_blank" rel="noopener">FDIC workpaper</a>.</p>
             </div>
             <p class="text-small text-secondary">Source: <code>scripts/build_credit_stress.py</code> feeding <code>analysis/credit_stress_scenarios.json</code>. Loan base $20.10B and provision detail per Q3 2025 8-K (Exhibit 99.1 lines 213-304).</p>
-            <p class="text-small text-secondary">Scenario weighting: base 60%, guardrail 25%, stress 15% — consistent with <code>analysis/probabilistic_outlook.json</code> and the downgrade guardrails discussed in the main deck.</p>
+            <p class="text-small text-secondary">Scenario weighting: base 50%, guardrail 30%, stress 15%, severe 5% — consistent with <code>analysis/probabilistic_outlook.json</code> and the downgrade guardrails discussed in the main deck.</p>
 
 
             <!-- BEGIN AUTOGEN: caty07-nco-history-heading -->
