@@ -879,144 +879,168 @@ a:hover {
    ============================================================ */
 .scenario-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 24px;
-    margin-top: 24px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 26px;
+    margin-top: 28px;
 }
 
 .scenario-card {
+    --scenario-accent: var(--cathay-gold);
     position: relative;
-    background: rgba(12, 26, 37, 0.92);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 16px;
-    padding: 24px;
-    box-shadow: 0 18px 32px rgba(0, 0, 0, 0.28);
-    overflow: hidden;
+    background: var(--bg-secondary);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 18px;
+    padding: 26px 26px 22px;
+    box-shadow: 0 16px 30px rgba(6, 16, 28, 0.34);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.scenario-card::before {
+.scenario-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 22px 40px rgba(6, 16, 28, 0.45);
+}
+
+.scenario-card::after {
     content: "";
     position: absolute;
     top: 0;
-    left: 0;
-    width: 100%;
-    height: 4px;
-    background: var(--cathay-gold);
-    opacity: 0.9;
+    left: 26px;
+    width: 56px;
+    height: 6px;
+    border-radius: 0 0 8px 8px;
+    background: var(--scenario-accent);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3);
 }
 
-.scenario-card.bull::before {
-    background: linear-gradient(90deg, var(--success), rgba(255,255,255,0.35));
+.scenario-card.bull {
+    --scenario-accent: var(--success);
 }
 
-.scenario-card.base::before {
-    background: linear-gradient(90deg, var(--cathay-gold), rgba(255,255,255,0.25));
+.scenario-card.base {
+    --scenario-accent: var(--cathay-gold);
 }
 
-.scenario-card.bear::before {
-    background: linear-gradient(90deg, var(--danger), rgba(255,255,255,0.25));
+.scenario-card.bear {
+    --scenario-accent: var(--danger);
 }
 
 .scenario-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    font-size: 0.95rem;
-    letter-spacing: 0.08em;
-    font-weight: 700;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.85);
+    letter-spacing: 0.14em;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.62);
+    margin-bottom: 6px;
 }
 
 .scenario-name {
-    font-size: 0.95rem;
+    color: var(--scenario-accent);
 }
 
 .scenario-probability {
-    font-size: 0.78rem;
+    font-size: 0.72rem;
     font-weight: 600;
-    padding: 4px 10px;
+    padding: 4px 12px;
     border-radius: 999px;
-    background: rgba(255,255,255,0.12);
-    color: rgba(255,255,255,0.9);
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .scenario-rating {
-    margin-top: 16px;
-    font-size: 0.82rem;
+    margin-top: 14px;
+    font-size: 0.78rem;
     font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.7);
+    letter-spacing: 0.18em;
+    color: rgba(255, 255, 255, 0.58);
 }
 
-.scenario-card .scenario-rating::before {
+.scenario-rating::before {
     content: "RATING";
     display: block;
-    font-size: 0.7rem;
-    letter-spacing: 0.16em;
-    color: rgba(255,255,255,0.45);
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    color: rgba(255, 255, 255, 0.42);
     margin-bottom: 4px;
 }
 
 .scenario-metrics {
-    margin: 18px 0 12px;
+    margin-top: 20px;
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px 16px;
+    gap: 14px 18px;
 }
 
 .scenario-metric {
-    padding: 10px 12px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: 12px;
-    background: rgba(255,255,255,0.05);
+    padding: 12px 14px;
+    min-height: 78px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .scenario-metric-label {
-    font-size: 0.72rem;
-    letter-spacing: 0.08em;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.55);
+    color: rgba(255, 255, 255, 0.5);
     margin-bottom: 6px;
 }
 
 .scenario-metric-value {
-    font-size: 1rem;
+    font-size: 1.05rem;
     font-weight: 600;
-    color: rgba(255,255,255,0.9);
+    color: rgba(255, 255, 255, 0.88);
 }
 
-.scenario-card .text-danger {
-    color: var(--danger);
+.scenario-metric:first-child {
+    grid-column: span 2;
+    padding: 18px 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.scenario-card .text-danger-dark {
-    color: #ff4f4f;
+.scenario-metric:first-child .scenario-metric-label {
+    color: rgba(255, 255, 255, 0.6);
+    letter-spacing: 0.18em;
+}
+
+.scenario-metric:first-child .scenario-metric-value {
+    font-size: 2.1rem;
+    font-weight: 700;
+    color: var(--scenario-accent);
+}
+
+.scenario-card.bull .scenario-metric:first-child {
+    background: rgba(45, 119, 56, 0.15);
+    border-color: rgba(45, 119, 56, 0.32);
+}
+
+.scenario-card.base .scenario-metric:first-child {
+    background: rgba(212, 175, 55, 0.18);
+    border-color: rgba(212, 175, 55, 0.32);
+}
+
+.scenario-card.bear .scenario-metric:first-child {
+    background: rgba(220, 38, 38, 0.15);
+    border-color: rgba(220, 38, 38, 0.32);
 }
 
 .scenario-note {
-    margin-top: 12px;
+    margin-top: 8px;
+    padding: 12px 14px;
+    background: rgba(255, 255, 255, 0.03);
+    border-left: 3px solid var(--scenario-accent);
+    border-radius: 12px;
     font-size: 0.9rem;
     line-height: 1.45;
-    color: rgba(255,255,255,0.75);
-    background: rgba(255,255,255,0.04);
-    border-radius: 12px;
-    padding: 12px 14px;
-}
-
-.scenario-card.bull .scenario-rating,
-.scenario-card.bull .scenario-name {
-    color: rgba(133, 214, 161, 0.95);
-}
-
-.scenario-card.base .scenario-rating,
-.scenario-card.base .scenario-name {
-    color: rgba(255, 214, 102, 0.95);
-}
-
-.scenario-card.bear .scenario-rating,
-.scenario-card.bear .scenario-name {
-    color: rgba(255, 124, 124, 0.92);
+    color: rgba(255, 255, 255, 0.72);
 }
 
 @media (max-width: 720px) {
