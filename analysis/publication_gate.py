@@ -49,20 +49,31 @@ def main() -> int:
     if not (is_number(beta_ib) and is_number(beta_all)):
         reasons.append("Deposit betas pending (product-level required post-10-Q)")
 
-    # Gate 2: Peer regression universe robust (>= 8) and coefficients exist
+    # Gate 2: Peer regression sample actually used must be >= 8 (not just total universe)
     peers = load_json(ROOT / "data" / "caty11_peers_normalized.json")
     uni = (peers.get("regression_universe") or {}) if isinstance(peers, dict) else {}
-    total_universe = uni.get("total_universe") or uni.get("peer_universe_count")
     stats = peers.get("regression_stats") or {}
+    sample_size = stats.get("sample_size")
     slope = stats.get("slope")
     intercept = stats.get("intercept")
-    if not (is_number(total_universe) and int(total_universe) >= 8 and is_number(slope) and is_number(intercept)):
-        reasons.append("Peer regression incomplete (universe < 8 or coefficients missing)")
+    if not (is_number(sample_size) and int(sample_size) >= 8 and is_number(slope) and is_number(intercept)):
+        reasons.append("Peer regression incomplete (sample < 8 or coefficients missing)")
 
-    # Gate 3: COE triangulation available (optional)
+    # Gate 3: COE triangulation available (required)
     coe = load_json(ROOT / "data" / "caty16_coe_triangulation.json")
     if not coe:
         reasons.append("COE triangulation not finalized")
+
+    # Gate 4: Deposit beta history with >= 3 quarters present in NIM module tables
+    nim_tables = load_json(ROOT / "data" / "caty05_calculated_tables.json")
+    beta_calc = nim_tables.get("beta_calculation") or {}
+    all_in = beta_calc.get("all_in") or {}
+    quarters_present = 0
+    for key in ("q1_inputs", "q2_inputs", "q3_inputs"):
+        if key in all_in and isinstance(all_in.get(key), dict) and all_in.get(key):
+            quarters_present += 1
+    if quarters_present < 3:
+        reasons.append("Deposit beta product-level history < 3 quarters")
 
     if reasons:
         print("Publication Gate: NOT RATED")
@@ -76,4 +87,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

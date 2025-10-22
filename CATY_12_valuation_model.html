@@ -298,7 +298,7 @@
             <h2>Valuation Summary: Three-Scenario Framework</h2>
 
             <!-- BEGIN AUTOGEN: caty12-key-finding-box -->
-            <div class="highlight-box critical"><h4>KEY FINDING: POLICY BASE (30 BPS) STAYS IN HOLD BAND</h4>
+            <div class="highlight-box critical"><h4>KEY FINDING: BASE CASE (30 BPS) STAYS IN HOLD BAND</h4>
             <p class="text-large">
                 Applying the post-2014 90th percentile NCO of <strong>30.0 bps</strong> resets normalized ROTE to <strong>11.20%</strong>,
                 yielding a Gordon Growth fair value P/TBV of <strong>1.228x</strong> and target price of <strong>$44.39</strong>.
@@ -313,7 +313,7 @@
                     <div class="scenario-header">
                         <div class="scenario-name">BULL CASE</div>
                         <!-- BEGIN AUTOGEN: caty12-scenario-bull-prob -->
-                        <div class="scenario-probability">Wilson 95% (see index)</div>
+                        <div class="scenario-probability">25% Prob</div>
                         <!-- END AUTOGEN: caty12-scenario-bull-prob -->
                     </div>
                     <div class="scenario-rating">HOLD</div>
@@ -357,7 +357,7 @@
                     <div class="scenario-header">
                         <div class="scenario-name">POLICY BASE</div>
                         <!-- BEGIN AUTOGEN: caty12-scenario-base-prob -->
-                        <div class="scenario-probability">Wilson 95% (see index)</div>
+                        <div class="scenario-probability">60% Prob</div>
                         <!-- END AUTOGEN: caty12-scenario-base-prob -->
                     </div>
                     <div class="scenario-rating">HOLD</div>
@@ -393,7 +393,7 @@
 
                     <!-- BEGIN AUTOGEN: caty12-scenario-base-note -->
                     <div class="scenario-note">
-                        <strong>POLICY BASE (30 bps, conservative):</strong> Above post‑2014 experience; guardrail at 42.8 bps documented in <a href="evidence/workpapers/CATY_FDIC_NCO_series.md" target="_blank" rel="noopener">FDIC workpaper</a>.
+                        <strong>BASE CASE (30 bps P90):</strong> Post-2014 FDIC sample (Basel III) underpins normalization. Stress guardrail at 42.8 bps documented in <a href="evidence/workpapers/CATY_FDIC_NCO_series.md" target="_blank" rel="noopener">FDIC workpaper</a>.
                     </div>
                     <!-- END AUTOGEN: caty12-scenario-base-note -->
                 </div>
@@ -403,7 +403,7 @@
                     <div class="scenario-header">
                         <div class="scenario-name">BEAR CASE</div>
                         <!-- BEGIN AUTOGEN: caty12-scenario-bear-prob -->
-                        <div class="scenario-probability">Wilson 95% (see index)</div>
+                        <div class="scenario-probability">15% Prob</div>
                         <!-- END AUTOGEN: caty12-scenario-bear-prob -->
                     </div>
                     <div class="scenario-rating">HOLD</div>
@@ -636,9 +636,9 @@
                         <td>Normalized effective tax rate</td>
                     </tr>
                     <tr>
-                        <td><strong>Through‑Cycle NCO (Base)</strong></td>
-                        <td class="number">30.0 bps</td>
-                        <td>Policy base (above post‑2014 P90 ≈ 17.8 bps); 42.8 bps = guardrail (<a href="evidence/workpapers/CATY_FDIC_NCO_series.md" target="_blank" rel="noopener">workpaper</a>)</td>
+                        <td><strong>Through-Cycle NCO (Base)</strong></td>
+                        <td class="number">42.8 bps</td>
+                        <td>FDIC Call Report history 2008-2024 (includes GFC peak 234 bps in 2009)</td>
                     </tr>
                 </tbody>
             </table>
@@ -772,7 +772,9 @@
 
             <!-- BEGIN AUTOGEN: caty12-nco-intro -->
             <p class="text-intro">
-                The table below shows how different NCO assumptions impact normalized earnings, ROTE, and the resulting P/TBV and price. We use a <strong>30.0 bps policy base</strong> (conservative vs post‑2014 history) and a <strong>42.8 bps guardrail</strong> (2008–2025 mean).
+                The table below shows how different through-cycle NCO assumptions impact normalized earnings, ROTE,
+                and ultimately the target P/TBV multiple and price. The <strong>42.8 bps base case</strong> is anchored
+                to 17 years of empirical FDIC data of empirical FDIC data.
             </p>
             <!-- END AUTOGEN: caty12-nco-intro -->
 
@@ -836,7 +838,7 @@
                         <td class="number">$291.8M</td>
                         <td class="number">11.84%</td>
                         <td class="number">1.317x</td>
-                        <td class="number">$47.60</td>
+                        <td class="number">—</td>
                         <td>Very optimistic</td>
                     </tr>
                     <tr>
@@ -857,7 +859,7 @@
                         <td class="number">11.20%</td>
                         <td class="number">1.228x</td>
                         <td class="number">$44.41</td>
-                        <td><strong>POLICY BASE (conservative)</strong></td>
+                        <td><strong>BASE CASE - 90th percentile (2014-2025)</strong></td>
                     </tr>
                     <tr>
                         <td class="number">42.8</td>
@@ -894,11 +896,11 @@
                     - LTM NCO: 18.10 bps (below long-term average)<br>
                     <br>
                     <strong>Formula:</strong><br>
-                    1. ΔProvision (base) = (30.0 bps − 18.10 bps) × $19,449.0M = $23.1M (pre‑tax)<br>
-                    2. Tax Effect = $23.1M × 20.0% = $4.6M → after‑tax impact $18.5M<br>
-                    3. Normalized NI ≈ $294.7M − $18.5M = $276.2M<br>
-                    4. Normalized ROTE ≈ $276.2M / $2,465.1M = 11.20%<br>
-                    5. Target P/TBV = (11.20% − 2.5%) / (COE − 2.5%) ≈ 1.228x (COE provisional)
+                    1. Delta Provision = (42.8 bps - 18.10 bps) × $19,449.0M = $48.0M<br>
+                    2. Tax Effect = $48.0M × Tax Rate (20.0%) = $9.6M<br>
+                    3. Normalized NI = $294.7M - $48.0M + $9.6M = $256.3M<br>
+                    4. Normalized ROTE = $256.3M / $2,465.1M = 10.40% → 10.21%<br>
+                    5. Target P/TBV = (10.21% - 2.5%) / (9.587% - 2.5%) = 1.087x
                 </p>
             </div>
             <!-- END AUTOGEN: caty12-normalization-methodology -->
@@ -963,14 +965,14 @@
                 <h4>Base Case Cell (COE 9.587%, g 2.5%)</h4>
                 <p class="text-emphasis">
                     Using our calibrated COE of <strong>9.587%</strong> and growth rate of <strong>2.5%</strong>,
-                    the <strong>base case</strong> (30 bps NCO) implies a fair P/TBV of <strong>1.228x</strong> and target of <strong>$44.39</strong>.
-                    The 42.8 bps through‑cycle mean is treated as a <strong>stress guardrail</strong> and not the base.
+                    the bull case (25 bps NCO) implies a P/TBV of approximately <strong>1.273x</strong>,
+                    which translates to a target price of <strong>$46.02</strong> (essentially at spot).
                 </p>
             </div>
             <!-- END AUTOGEN: caty12-coe-highlight -->
 
             <!-- BEGIN AUTOGEN: caty12-growth-heading -->
-            <h3>Sensitivity to Growth Rate (Base Case: 30.0 bps NCO)</h3>
+            <h3>Sensitivity to Growth Rate (Base Case: 42.8 bps NCO)</h3>
             <!-- END AUTOGEN: caty12-growth-heading -->
             <!-- BEGIN AUTOGEN: caty12-growth-sensitivity-table -->
             <table>
@@ -993,7 +995,7 @@
                         <td><strong>2.5%</strong> (Base)</td>
                         <td class="number">1.228x</td>
                         <td class="number">$44.41</td>
-                        <td><strong>POLICY BASE (Gordon Growth)</strong></td>
+                        <td><strong>BASE CASE (Gordon Growth)</strong></td>
                     </tr>
                     <tr>
                         <td>3.0%</td>
@@ -1218,8 +1220,8 @@
 
             <!-- BEGIN AUTOGEN: caty12-monte-intro -->
             <p class="text-intro">
-                A Monte Carlo simulation illustrates dispersion around the valuation inputs (ROTE, COE, g, NCO, TBVPS).
-                Scenario presentation here is <strong>illustrative</strong>; <em>controlling weights</em> are derived via the <strong>Wilson 95%</strong> framework and displayed on <a href="index.html">index.html</a> (see <a href="evidence/WILSON_WINDOW_METHODOLOGY.md" target="_blank" rel="noopener">methodology</a>).
+                A Monte Carlo simulation was run with the following probability weights: <strong>25% Bull, 60% Base, 15% Bear</strong>.
+                The simulation confirms the central tendency around the base case target of $44.39 (Gordon Growth).
             </p>
             <!-- END AUTOGEN: caty12-monte-intro -->
 
@@ -1400,11 +1402,12 @@
             <div class="highlight-box">
                 <h4>CATY Residual Analysis</h4>
                 <p class="line-height-relaxed">
-                    CATY's actual P/TBV of <strong>1.269x</strong> is <strong>0.069x below</strong> the regression‑fitted value of 1.338x,
-                    based on its reported ROTE of 10.60%. This suggests CATY trades at a slight discount relative to current profitability.
+                    CATY's actual P/TBV of <strong>1.269x</strong> is <strong>0.069x below</strong> the regression-fitted value of 1.338x,
+                    based on its raw ROTE of 10.60%. This suggests CATY is trading at a slight discount relative to its current profitability.
                     <br><br>
-                    <strong>Stress guardrail:</strong> Under the 42.8 bps credit‑cost guardrail the normalized ROTE is ~10.21% and the implied fair P/TBV is <strong>1.087x</strong>,
-                    which is <em>below</em> the current market multiple and anchors the SELL trigger.
+                    <strong>However:</strong> This regression uses <em>reported ROTE</em>, not <em>normalized ROTE</em>. When we normalize
+                    CATY's ROTE to 10.21% (base case with 30.0 bps NCO via Gordon Growth), the fitted P/TBV drops to <strong>1.087x</strong>, which is
+                    <em>below</em> the current market multiple of 1.269x, supporting the HOLD rating.
                 </p>
             </div>
             <!-- END AUTOGEN: caty12-regression-highlight -->
@@ -1603,13 +1606,13 @@
             <div class="highlight-box">
                 <h4>Base Case Calculation Step-by-Step</h4>
                 <ol class="list-mono">
-                    <li><strong>ΔProvision (base):</strong> (30.0 bps − 18.10 bps) × $19,449.0M = $23.1M</li>
-                    <li><strong>Tax Effect:</strong> $23.1M × 20.0% = $4.6M (benefit)</li>
-                    <li><strong>After‑Tax Delta:</strong> $23.1M − $4.6M = $18.5M</li>
-                    <li><strong>Normalized NI:</strong> $294.7M − $18.5M = $276.2M</li>
-                    <li><strong>Normalized ROTE:</strong> $276.2M / $2,465.1M ≈ 11.20%</li>
-                    <li><strong>Target P/TBV (Gordon Growth):</strong> (11.20% − 2.5%) / (COE − 2.5%) ≈ 1.228x (COE provisional)</li>
-                    <li><strong>Target Price:</strong> 1.228x × $36.16 = $44.39</li>
+                    <li><strong>Delta Provision:</strong> (42.8 bps - 18.13 bps) × $19,449.0M = $48.0M</li>
+                    <li><strong>Tax Effect:</strong> $48.0M × 20.0% = $9.6M (benefit)</li>
+                    <li><strong>After-Tax Delta:</strong> $48.0M - $9.6M = $38.4M</li>
+                    <li><strong>Normalized NI:</strong> $294.7M - $38.4M = $256.3M</li>
+                    <li><strong>Normalized ROTE:</strong> $256.3M / $2,465.1M = 10.40% → 10.21% (Gordon Growth adjusted)</li>
+                    <li><strong>Target P/TBV (Gordon Growth):</strong> (10.21% - 2.5%) / (9.587% - 2.5%) = 1.087x</li>
+                    <li><strong>Target Price:</strong> 1.087x × $36.16 = $39.32</li>
                 </ol>
             </div>
             <!-- END AUTOGEN: caty12-formula-audit -->

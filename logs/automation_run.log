@@ -912,3 +912,8 @@
 [2025-10-22 08:49:17 UTC] disconfirmer_monitor.py status=PASS alerts=0
 [2025-10-22 08:53:31 UTC] disconfirmer_monitor.py status=PASS alerts=0
 [2025-10-22 08:59:24 UTC] disconfirmer_monitor.py status=PASS alerts=0
+[2025-10-22 09:31:46 UTC] disconfirmer_monitor.py status=PASS alerts=0
+[2025-10-22 09:42:37 UTC] build_site.py FAILED: Marker 'monte-carlo-summary' not found in HTML
+[2025-10-22 09:43:49 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-22 09:45:40 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-22 09:46:16 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated

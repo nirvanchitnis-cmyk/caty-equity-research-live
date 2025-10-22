@@ -20,6 +20,7 @@ import re
 import sys
 from pathlib import Path
 from typing import Any, Dict
+import subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
 INDEX_PATH = ROOT / "index.html"
@@ -201,6 +202,15 @@ def render_investment_thesis(context: Dict[str, Any], replacements: Dict[str, st
     summary_template = narrative.get("investment_thesis_summary")
     rationale_template = narrative.get("rating_rationale")
 
+    # Publication gate: suppress valuations and force NOT RATED message
+    if publication_gate_active():
+        msg = (
+            f"<strong>Rating: NOT RATED (Publication Gate)</strong> "
+            f"{replacements.get('company','')} ({replacements.get('ticker','')}) trades at ${replacements.get('price','—')} "
+            f"({replacements.get('price_date','—')}). Valuation anchors are hidden until product‑level deposit betas and COE peer triangulation are finalized."
+        )
+        return f"<p>{msg}</p>"
+
     summary_text = render_template_string(summary_template, replacements) if summary_template else ""
     if not summary_text:
         fallback_template = (
@@ -260,32 +270,49 @@ def render_price_target_caption(replacements: Dict[str, str]) -> str:
 
 
 def render_price_target_grid(replacements: Dict[str, str]) -> str:
-    cards = [
-        {
-            "classes": "metric-card",
-            "label": "Current Price",
-            "value": f"${replacements.get('price', '—')}",
-            "subtext": f"As of {replacements.get('price_date', '—')}",
-        },
-        {
-            "classes": "metric-card metric-card-success",
-            "label": "Wilson 95%",
-            "value": f"${replacements.get('target_wilson_95', '—')}",
-            "subtext": f"{replacements.get('return_wilson_95_pct', '—')}% (HOLD band)",
-        },
-        {
-            "classes": "metric-card",
-            "label": "IRC Blended",
-            "value": f"${replacements.get('target_irc_blended', '—')}",
-            "subtext": f"{replacements.get('return_irc_blended_pct', '—')}% (60% RIM)",
-        },
-        {
-            "classes": "metric-card metric-card-success",
-            "label": "Regression",
-            "value": f"${replacements.get('target_regression', '—')}",
-            "subtext": f"{replacements.get('return_regression_pct', '—')}% (7-peer)",
-        },
-    ]
+    gate_active = publication_gate_active()
+    if gate_active:
+        cards = [
+            {
+                "classes": "metric-card",
+                "label": "Current Price",
+                "value": f"${replacements.get('price', '—')}",
+                "subtext": f"As of {replacements.get('price_date', '—')}",
+            },
+            {
+                "classes": "metric-card",
+                "label": "Valuation Anchors",
+                "value": "Hidden",
+                "subtext": "Publication Gate — will render when betas/COE/peers ready",
+            },
+        ]
+    else:
+        cards = [
+            {
+                "classes": "metric-card",
+                "label": "Current Price",
+                "value": f"${replacements.get('price', '—')}",
+                "subtext": f"As of {replacements.get('price_date', '—')}",
+            },
+            {
+                "classes": "metric-card metric-card-success",
+                "label": "Wilson 95%",
+                "value": f"${replacements.get('target_wilson_95', '—')}",
+                "subtext": f"{replacements.get('return_wilson_95_pct', '—')}% (HOLD band)",
+            },
+            {
+                "classes": "metric-card",
+                "label": "IRC Blended",
+                "value": f"${replacements.get('target_irc_blended', '—')}",
+                "subtext": f"{replacements.get('return_irc_blended_pct', '—')}% (60% RIM)",
+            },
+            {
+                "classes": "metric-card metric-card-success",
+                "label": "Regression",
+                "value": f"${replacements.get('target_regression', '—')}",
+                "subtext": f"{replacements.get('return_regression_pct', '—')}% (peer set)",
+            },
+        ]
 
     lines = ["<div class=\"price-target-grid price-target-grid-spaced\">"]
     for card in cards:
@@ -2493,8 +2520,8 @@ def render_module_section(section_cfg: Dict[str, Any], context: Dict[str, Any]) 
 def build_reconciliation_table() -> str:
     market = load_json(ROOT / "data" / "market_data_current.json")
     methods_cfg = load_json(ROOT / "data" / "valuation_methods.json")
-
-    price = float(market["price"])
+    gate_active = publication_gate_active()
+    price = float(market["price"]) if market.get("price") is not None else 0.0
     rows: list[str] = []
 
     for method in methods_cfg["methods"]:
@@ -2525,24 +2552,41 @@ def build_reconciliation_table() -> str:
         row_class = method.get("row_class", "")
         class_attr = f' class="{row_class}"' if row_class else ""
 
-        rows.append(
-            "<tr{class_attr}>\n"
-            "    <td><strong>{label}</strong></td>\n"
-            "    <td class=\"text-align-right\">{target}</td>\n"
-            "    <td class=\"text-align-right\">{return_pct}</td>\n"
-            "    <td class=\"text-align-right\">{prob}</td>\n"
-            "    <td>{source}</td>\n"
-            "    <td>{last_run}</td>\n"
-            "</tr>".format(
-                class_attr="" if not row_class else class_attr,
-                label=method["label"],
-                target=format_money(target_val),
-                return_pct=format_percent(return_pct),
-                prob=probability_text,
-                source=source_html,
-                last_run=last_run_ts,
+        if gate_active and method.get("id") != "spot":
+            rows.append(
+                "<tr{class_attr}>\n"
+                "    <td><strong>{label}</strong></td>\n"
+                "    <td class=\"text-align-right\">Hidden</td>\n"
+                "    <td class=\"text-align-right\">—</td>\n"
+                "    <td class=\"text-align-right\">—</td>\n"
+                "    <td>{source}</td>\n"
+                "    <td>{last_run}</td>\n"
+                "</tr>".format(
+                    class_attr="" if not row_class else class_attr,
+                    label=method["label"],
+                    source=source_html,
+                    last_run=last_run_ts,
+                )
             )
-        )
+        else:
+            rows.append(
+                "<tr{class_attr}>\n"
+                "    <td><strong>{label}</strong></td>\n"
+                "    <td class=\"text-align-right\">{target}</td>\n"
+                "    <td class=\"text-align-right\">{return_pct}</td>\n"
+                "    <td class=\"text-align-right\">{prob}</td>\n"
+                "    <td>{source}</td>\n"
+                "    <td>{last_run}</td>\n"
+                "</tr>".format(
+                    class_attr="" if not row_class else class_attr,
+                    label=method["label"],
+                    target=format_money(target_val),
+                    return_pct=format_percent(return_pct),
+                    prob=probability_text,
+                    source=source_html,
+                    last_run=last_run_ts,
+                )
+            )
 
     validation = methods_cfg.get("validation", {})
     validation_html = (
@@ -2584,14 +2628,53 @@ def build_reconciliation_table() -> str:
         + "\n    </tbody>\n</table>"
     )
 
-    note_html = (
-        "<p class=\"text-note\">\n"
-        "    <strong>Proof of Synchronization:</strong> All target prices are generated from "
+    note_text = (
+        "<strong>Proof of Synchronization:</strong> All target prices are generated from "
         "<code>data/market_data_current.json</code> via <code>scripts/build_site.py</code>. "
-        "Automated validation blocks commits if published numbers diverge from calculated values. "
-        "Run <code>python3 analysis/reconciliation_guard.py</code> to verify integrity.\n"
-        "</p>"
+        "Validation blocks commits if published numbers diverge from calculated values. "
+        "Run <code>python3 analysis/reconciliation_guard.py</code> and <code>python3 analysis/publication_gate.py</code> to verify integrity."
     )
+    if gate_active:
+        note_text += " <strong>Publication Gate ACTIVE:</strong> valuation outputs are hidden until deposit betas, COE, and ≥8‑peer regression are finalized."
+    note_html = f"<p class=\"text-note\">{note_text}</p>"
+
+    return "\n".join([header, table_html, validation_html, note_html])
+
+
+def publication_gate_active() -> bool:
+    """Return True if gate is active (i.e., not clear)."""
+    script = ROOT / "analysis" / "publication_gate.py"
+    if not script.exists():
+        return False
+    try:
+        res = subprocess.run(["python3", str(script)], cwd=ROOT, capture_output=True, text=True)
+        return res.returncode != 0
+    except Exception:
+        return True
+
+
+def render_sensitivity_scaffold() -> str:
+    """Placeholder sensitivity table visible to the Board even before data is final."""
+    rows = [
+        "<table>",
+        "  <thead>",
+        "    <tr>",
+        "      <th>Sensitivity</th>",
+        "      <th class=\"numeric\">Δ Assumption</th>",
+        "      <th class=\"numeric\">Δ NIM (bps)</th>",
+        "      <th class=\"numeric\">Δ EPS ($)</th>",
+        "      <th class=\"numeric\">Δ Fair Value ($)</th>",
+        "    </tr>",
+        "  </thead>",
+        "  <tbody>",
+        "    <tr><td>Deposit Beta</td><td class=\"numeric\">+10 bps</td><td class=\"numeric\">TBA</td><td class=\"numeric\">TBA</td><td class=\"numeric\">TBA</td></tr>",
+        "    <tr><td>Credit Cost</td><td class=\"numeric\">+10 bps</td><td class=\"numeric\">n/a</td><td class=\"numeric\">TBA</td><td class=\"numeric\">TBA</td></tr>",
+        "    <tr><td>COE</td><td class=\"numeric\">+10 bps</td><td class=\"numeric\">n/a</td><td class=\"numeric\">n/a</td><td class=\"numeric\">TBA</td></tr>",
+        "  </tbody>",
+        "</table>",
+        "<p class=\"text-secondary\">Scaffold: populated after Q3 10‑Q and peer COE refresh.</p>",
+    ]
+    return "\n".join(rows)
 
     return "\n".join([header, table_html, validation_html, note_html])
 
@@ -2878,6 +2961,8 @@ def main(test_mode: bool = False) -> int:
         html = replace_section(html, "investment-thesis-summary", render_investment_thesis(context, narrative_placeholders))
         html = replace_section(html, "key-findings-bullets", render_key_findings(narrative_placeholders))
         html = replace_section(html, "valuation-framework-caption", render_price_target_caption(narrative_placeholders))
+        # Populate both the above-the-fold price-target grid and the deeper valuation grid
+        html = replace_section(html, "price-target-grid", render_price_target_grid(narrative_placeholders))
         html = replace_section(html, "valuation-framework-grid", render_price_target_grid(narrative_placeholders))
         html = replace_section(html, "valuation-deep-dive", render_valuation_deep_dive(context))
         html = replace_section(html, "scenario-analysis-table", render_scenario_analysis_table(context))
@@ -2887,6 +2972,7 @@ def main(test_mode: bool = False) -> int:
         html = replace_section(html, "liquidity-summary", render_liquidity_summary(context))
         html = replace_section(html, "scenario-analysis-narrative", render_scenario_analysis_narrative(context))
         html = replace_section(html, "monte-carlo-summary", render_monte_carlo_summary(context))
+        html = replace_section(html, "sensitivity-table", render_sensitivity_scaffold())
         html = replace_section(html, "historical-context", render_historical_context(context))
         html = replace_section(html, "recent-developments-section", render_recent_developments_section(recent_developments, narrative_placeholders))
         html = replace_section(html, "investment-risks-bullets", render_investment_risks_section(context, narrative_placeholders))
@@ -2908,7 +2994,11 @@ def main(test_mode: bool = False) -> int:
 
         price_target_cfg = exec_cfg.get("price_target")
         if price_target_cfg:
-            price_html = render_cards(price_target_cfg, context)
+            # Ensure gating-aware rendering for above-the-fold price target grid
+            if publication_gate_active():
+                price_html = render_price_target_grid(narrative_placeholders)
+            else:
+                price_html = render_cards(price_target_cfg, context)
             html = replace_section(html, price_target_cfg["marker"], price_html)
 
         INDEX_PATH.write_text(html, encoding="utf-8")

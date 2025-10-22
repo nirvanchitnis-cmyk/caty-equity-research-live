@@ -91,3 +91,10 @@ jobs:
           echo "2. Rerun \`python3 analysis/valuation_bridge_final.py\` and \`python3 analysis/probability_weighted_valuation.py\`" >> $GITHUB_STEP_SUMMARY
           echo "3. Update README.md and index.html with correct values" >> $GITHUB_STEP_SUMMARY
           echo "4. Push corrected changes" >> $GITHUB_STEP_SUMMARY
+
+      - name: Run publication gate (required)
+        run: |
+          echo "========================================"
+          echo "Publication Gate — Rating Eligibility"
+          echo "========================================"
+          python3 analysis/publication_gate.py
