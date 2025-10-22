@@ -58,7 +58,44 @@
     },
     "repricing_lag_low_bps": 40,
     "repricing_lag_high_bps": 80,
-    "prior_cycle_total_bps": 225
+    "prior_cycle_total_bps": 225,
+    "history": {
+      "source": "data/deposit_beta_history.json",
+      "updated_at": "2025-10-22T10:32:42Z",
+      "quarters": [
+        {
+          "quarter": "2024Q3",
+          "report_date": "2024-09-30",
+          "interest_bearing_rate_pct": 3.95,
+          "all_in_rate_pct": 0.833,
+          "dda_mix_pct": 16.23,
+          "total_interest_bearing_balance_thousands": 16671662.0,
+          "total_interest_expense_thousands": 165704.0
+        },
+        {
+          "quarter": "2025Q1",
+          "report_date": "2025-03-31",
+          "interest_bearing_rate_pct": 3.43,
+          "all_in_rate_pct": 0.703,
+          "dda_mix_pct": 16.78,
+          "total_interest_bearing_balance_thousands": 16396987.0,
+          "total_interest_expense_thousands": 138500.0
+        },
+        {
+          "quarter": "2025Q2",
+          "report_date": "2025-06-30",
+          "interest_bearing_rate_pct": 3.35,
+          "all_in_rate_pct": 0.695,
+          "dda_mix_pct": 16.69,
+          "total_interest_bearing_balance_thousands": 16633658.0,
+          "total_interest_expense_thousands": 138734.0
+        }
+      ]
+    },
+    "latest_quarter": "2025Q2",
+    "latest_interest_bearing_rate_pct": 3.35,
+    "latest_all_in_rate_pct": 0.695,
+    "latest_dda_mix_pct": 16.69
   },
   "beta_assumptions": {
     "down_cycle_beta_pct": 60,

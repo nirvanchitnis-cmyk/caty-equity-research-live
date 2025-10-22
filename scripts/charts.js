@@ -527,21 +527,25 @@ async function initNCOChart(canvasId) {
 
 // Initialize peer scatter plot (ROTE vs P/TBV)
 function initPeerScatterChart(canvasId) {
-    // Peer data from CATY_11 (n=4 clean cohort)
+    // Peer data from CATY_11 (n=8 Cook's D-screened cohort)
     const peerData = {
         peers: [
-            { x: 8.65, y: 0.930, label: 'HAFC' },
-            { x: 14.10, y: 1.730, label: 'CVBF' },
-            { x: 16.38, y: 1.830, label: 'EWBC' }
+            { x: 16.10, y: 1.844, label: 'EWBC' },
+            { x: 13.79, y: 1.760, label: 'CVBF' },
+            { x: 8.16,  y: 0.996, label: 'HAFC' },
+            { x: 15.70, y: 1.384, label: 'COLB' },
+            { x: 9.64,  y: 0.887, label: 'WAFD' },
+            { x: 6.27,  y: 1.161, label: 'PPBI' },
+            { x: 3.54,  y: 0.770, label: 'BANC' },
+            { x: 11.85, y: 0.943, label: 'OPBK' }
         ],
-        caty: { x: 11.95, y: 1.269, label: 'CATY' }
+        caty: { x: 12.35, y: 1.303, label: 'CATY' }
     };
 
-    // Regression line: P/TBV = -0.1483 + 0.1244*ROTE
-    // Calculate two points for the line
+    // Regression line: P/TBV = 0.4812 + 0.0693 × ROTE
     const regressionData = [
-        { x: 8, y: -0.1483 + 0.1244 * 8 },    // Left edge
-        { x: 17, y: -0.1483 + 0.1244 * 17 }   // Right edge
+        { x: 3,  y: 0.4812 + 0.0693 * 3 },
+        { x: 18, y: 0.4812 + 0.0693 * 18 }
     ];
 
     return createPeerScatterChart(canvasId, peerData, regressionData);

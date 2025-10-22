@@ -9885,7 +9885,7 @@
                 "placeholders": {
                   "{cohort}": {
                     "source": "caty11_tables",
-                    "path": "summary.core_cohort_display",
+                    "path": "summary.regression_cohort_display",
                     "format": "text"
                   }
                 }
@@ -9920,7 +9920,15 @@
                 "decimals": 4
               },
               "subtext": {
-                "template": "0.124x P/TBV per 1% ROTE"
+                "template": "{slope_per_rote}x P/TBV per 1% ROTE",
+                "placeholders": {
+                  "{slope_per_rote}": {
+                    "source": "caty11_tables",
+                    "path": "regression_stats.slope",
+                    "format": "decimal",
+                    "decimals": 3
+                  }
+                }
               }
             },
             {

@@ -65,14 +65,9 @@ def main() -> int:
         reasons.append("COE triangulation not finalized")
 
     # Gate 4: Deposit beta history with >= 3 quarters present in NIM module tables
-    nim_tables = load_json(ROOT / "data" / "caty05_calculated_tables.json")
-    beta_calc = nim_tables.get("beta_calculation") or {}
-    all_in = beta_calc.get("all_in") or {}
-    quarters_present = 0
-    for key in ("q1_inputs", "q2_inputs", "q3_inputs"):
-        if key in all_in and isinstance(all_in.get(key), dict) and all_in.get(key):
-            quarters_present += 1
-    if quarters_present < 3:
+    deposit_history = load_json(ROOT / "data" / "deposit_beta_history.json")
+    quarters = deposit_history.get("quarters") if isinstance(deposit_history, dict) else None
+    if not quarters or len(quarters) < 3:
         reasons.append("Deposit beta product-level history < 3 quarters")
 
     if reasons:

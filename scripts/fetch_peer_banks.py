@@ -40,6 +40,7 @@ PEER_BANKS: Dict[str, Dict[str, str]] = {
     "WAFD": {"cik": "0000936528", "name": "Washington Federal"},
     "PPBI": {"cik": "0001028918", "name": "Pacific Premier Bancorp"},
     "BANC": {"cik": "0001169770", "name": "Banc of California"},
+    "OPBK": {"cik": "0001722010", "name": "OP Bancorp"},
 }
 
 # CRE disclosure is not consistently tagged across peers. Until a robust parser exists,
@@ -54,6 +55,7 @@ FALLBACK_CRE_RATIOS: Dict[str, float] = {
     "WAFD": 17.5,
     "PPBI": 17.5,
     "BANC": 18.0,
+    "OPBK": None,
 }
 
 
