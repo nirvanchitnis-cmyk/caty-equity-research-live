@@ -1,8 +1,8 @@
-# CRE OFFICE EXPOSURE — STATUS: PARTIAL CONFIRMATION (Q3'25 UPDATE)
+# CRE OFFICE EXPOSURE — STATUS: PRELIMINARY (Q3'25 UPDATE)
 
 **Date Created:** October 18, 2025
 **Date Updated:** October 22, 2025 (Q3'25 presentation integrated)
-**Status:** ⚠️ **PARTIAL** — Composition and office detail are evidenced; maturity ladder, DSCR by property type, and office credit metrics remain material gaps
+**Status:** ⚠️ **PRELIMINARY** — Composition and office detail are evidenced; DSCR by property type, maturity ladder, and office credit metrics remain material gaps
 
 ---
 
@@ -152,7 +152,9 @@ Q3'25 weighted average LTV (office): 47% (Q2'25: 46%).
 | Office W.A. LTV | 46% | 47% | +1 pp | Q2 Slide 10; Q3 Slide 10 |
 | Total CRE W.A. LTV | 49% | 49% | 0 pp | Q2 Slide 8; Q3 Slides 7–8 |
 | CRE swaps notional | $966M | $626M | -$340M | Q2 Slide 5; Q3 Slide 5 |
-| CRE / Risk‑Based Capital | ~281% | ~231% | -50 ppts | Q2/ Q3 concentration charts |
+| CRE / Risk‑Based Capital | ~281% | ~231% | -50 ppts | Q2/Q3 concentration charts |
+
+Formula note (illustrative): CRE/RBC = Total CRE / Risk‑Based Capital. At Q3'25: ~10.5B / RBC ≈ 2.31 → RBC ≈ ~$4.5B (approx.). This is a supervisory indicator shown by the company, not a GAAP measure; use regulatory filings for precise capital.
 
 Notes:
 - Aggregates reflect rounding/“~” values in Q3 deck.
@@ -235,16 +237,26 @@ Notes:
 
 ---
 
-## EARNINGS CONTEXT (Q3'25) — Pending Press Release Tie‑out
+## EARNINGS TIE‑OUT (Q3'25) — Press Release
 
-- This page will link CRE movement to quarterly earnings (NIM, provision, NCOs) once the Q3 press release is archived and cited.
-- Action: Archive and hash Q3'25 earnings press release; extract provision, NIM, and credit quality tables; connect to office/CRE exposures.
+- Primary source (archived): `evidence/primary_sources/CATY_Q3_2025_PressRelease_20251021.pdf` (see evidence/README.md for SHA256; URL: https://www.cathaybank.com/CGB/pr-20251021)
+- Net interest margin (NIM): 3.31% (up from 3.27% in Q2'25) — “Third Quarter Highlights” and “Net interest income” sections.
+- Net interest income before provision: $189.6M (Q3'25) vs $181.2M (Q2'25) — “Net interest income” section.
+- Provision for credit losses: $28.7M, including $9.1M for two movie theatre loans and $3.8M from a CECL model change — “Provision for credit losses”.
+- Net charge‑offs: $15.6M in Q3'25 vs $12.7M in Q2'25 — charge‑offs/recoveries table.
+- Non‑accrual loans: $165.6M (↓ from $174.2M in Q2'25) — “Asset quality”.
+- Allowance for credit losses (total): $196.5M (0.98% of gross loans) = $186.6M (loans) + $9.9M (off‑BS commitments) — “Provision/ACL”.
+- Loans: $20.10B; Deposits: $20.52B — “Balance sheet”.
+
+Interpretation:
+- $9.1M provision tied to two movie theatre loans links to the “Theater” sub‑category (deck shows $20M outstanding). Monitor severity assumptions there.
+- Rising NIM with higher provision suggests improving spreads but elevated credit costs; reflect in EPS/capital sensitivities.
 
 ---
 
 ## DEFINITIONS & CALCULATION NOTES
 
-- CRE / Risk‑Based Capital (CRE/RBC): As shown in company slides; ratio relates total CRE loans to regulatory risk‑based capital (Tier 1 + Tier 2). Thresholds indicated on slides: 300% (regulatory), 400% (internal). This is a supervisory concentration indicator, not a GAAP metric.
+- CRE / Risk‑Based Capital (CRE/RBC): As shown in company slides; ratio relates total CRE loans to regulatory risk‑based capital (Tier 1 + Tier 2). Thresholds indicated: 300% (supervisory), 400% (internal). Supervisory indicator, not a GAAP metric. Use regulatory filings for denominator detail.
 - Weighted Average LTV: Company‑reported; implicitly portfolio‑weighted within each category.
 - CBD: Central Business District (central downtown financial/business areas), per slide footnote.
 - Swaps Notional: Gross notional of interest‑rate swaps associated with CRE loans; not a measure of mark‑to‑market exposure or duration profile.
@@ -266,6 +278,10 @@ Notes:
   - URL: https://www.cathaybank.com/CGB/pr-20251021-presentation
   - Notes: Captures total loans, CRE breakdown, LTVs, office detail, swaps notional, CRE/RBC chart.
   - PDF: `evidence/primary_sources/CATY_Q3_2025_Presentation_20251021.pdf` (SHA256 in evidence/README.md)
+- Q3'25 earnings press release
+  - PDF: `evidence/primary_sources/CATY_Q3_2025_PressRelease_20251021.pdf` (SHA256 in evidence/README.md)
+  - URL: https://www.cathaybank.com/CGB/pr-20251021
+  - Notes: Provides NIM, provision, charge‑offs table, non‑accruals, ACL, loan/deposit balances.
 - Q2'25 deck (slides 8, 10)
   - File: `evidence/primary_sources/CATY_Q2_2025_Presentation_20250722.txt`
   - URL: https://www.cathaybank.com/CGB/pr-20250722-presentation
@@ -279,4 +295,4 @@ Notes:
 
 ---
 
-**Status:** Office exposure confirmed at ~$1.47B (~14% of CRE). Office remains a monitoring item rather than a core driver. Next steps: obtain/estimate DSCR and maturity ladder by property type; refresh stress tests with Q3 composition and updated swaps level.
+**Status:** PRELIMINARY — Office exposure ~$1.47B (~14% of CRE). Office remains a monitoring item rather than a core driver. Next steps: obtain/estimate DSCR and maturity ladder by property type; refresh stress tests with Q3 composition and updated swaps level; integrate Q3 press release credit tables.
