@@ -16,8 +16,8 @@ OUTPUT_MD = Path(__file__).resolve().parents[1] / "evidence" / "valuation_sensit
 AVERAGE_LOANS = 19_448.955  # Average loans used in valuation bridge
 TANGIBLE_COMMON_EQUITY = 2_465.091  # Average tangible common equity
 TBVPS = 36.16
-TOTAL_DEPOSITS = 20_006.0
-NON_INTEREST_DDA_RATIO = 0.17  # From Q2'25 presentation
+TOTAL_DEPOSITS = 20_520.0  # Q3 2025 total deposits ($20.52B) per 8-K Exhibit 99.1
+NON_INTEREST_DDA_RATIO = 0.174  # Q3 2025 noninterest-bearing mix (17.4%)
 TAX_RATE = 0.20
 
 

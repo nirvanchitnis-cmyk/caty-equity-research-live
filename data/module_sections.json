@@ -6802,7 +6802,7 @@
             "class": "highlight-box critical"
           },
           "template": {
-            "template": "<h4>KEY FINDING: BASE CASE SUPPORTS HOLD RATING</h4>\n<p class=\"text-large\">\n    Using empirical through-cycle NCO of <strong>{nco_tc} bps</strong> (2008-2024 FDIC average including GFC and COVID),\n    normalized ROTE is <strong>{rote_norm}%</strong>, implying a normalized fair value P/TBV of <strong>{ptbv_norm}x</strong> (Gordon Growth) and target price of\n    <strong>{target_norm}</strong>. This represents <strong>{return_norm}% downside</strong> from the {price_date} spot price of {spot_price},\n    supporting a <strong>HOLD rating</strong>.\n</p>",
+            "template": "<h4>KEY FINDING: BASE CASE (30 BPS) STAYS IN HOLD BAND</h4>\n<p class=\"text-large\">\n    Applying the post-2014 90th percentile NCO of <strong>{nco_tc} bps</strong> resets normalized ROTE to <strong>{rote_norm}%</strong>,\n    yielding a Gordon Growth fair value P/TBV of <strong>{ptbv_norm}x</strong> and target price of <strong>{target_norm}</strong>.\n    That is <strong>{return_norm}% downside</strong> versus the {price_date} spot price of {spot_price},\n    which remains inside the -10%/+15% HOLD corridor. The 42.8 bps through-cycle mean is now treated as a stress guardrail (<a href=\"evidence/workpapers/CATY_FDIC_NCO_series.md\" target=\"_blank\" rel=\"noopener\">workpaper</a>).\n</p>",
             "placeholders": {
               "{nco_tc}": {
                 "source": "market",
@@ -9251,29 +9251,12 @@
           "marker": "caty12-scenario-base-note",
           "type": "text",
           "template": {
-            "template": "<div class=\"scenario-note\">\n    <strong>EMPIRICAL BASE CASE (Gordon Growth):</strong> {fdic_range_text} including GFC (peak {gfc_peak} in 2009) and COVID.\n    This is the most defensible normalization given {history_years}. Gordon Growth framework yields P/TBV {normalized_ptbv}.\n</div>",
+            "template": "<div class=\"scenario-note\">\n    <strong>BASE CASE (30 bps P90):</strong> {history_years} underpins normalization. Stress guardrail at 42.8 bps documented in <a href=\"evidence/workpapers/CATY_FDIC_NCO_series.md\" target=\"_blank\" rel=\"noopener\">FDIC workpaper</a>.\n</div>",
             "placeholders": {
-              "{fdic_range_text}": {
-                "source": "caty12_tables",
-                "path": "normalization_inputs.fdic_range_text",
-                "format": "text"
-              },
-              "{gfc_peak}": {
-                "source": "caty12_tables",
-                "path": "normalization_inputs.gfc_peak_nco_bps",
-                "format": "bps",
-                "decimals": 0
-              },
               "{history_years}": {
                 "source": "caty12_tables",
                 "path": "scenario_notes.base_history_years",
                 "format": "text"
-              },
-              "{normalized_ptbv}": {
-                "source": "caty12_tables",
-                "path": "regression_diagnostics.residual_analysis.normalized_ptbv",
-                "format": "multiple",
-                "decimals": 3
               }
             }
           }
