@@ -1,6 +1,6 @@
 {
   "comment": "CATY_02 Income Statement - Q3 2025 GAAP financials and derived metrics",
-  "data_source": "SEC EDGAR 10-Q (Accession 0001437749-25-025772)",
+  "data_source": "Form 8-K Exhibit 99.1 (Q3 2025 results) + SEC 10-Q Q2 2025 for supplementary detail",
   "derived_metrics": {
     "diluted_eps": 1.13,
     "effective_tax_rate_pct": {
@@ -18,7 +18,9 @@
     "nim_pct": 3.31,
     "pretax_margin_pct": 48.89,
     "roe_pct": 10.6,
-    "rote_pct": 10.6
+    "rote_pct": 10.6,
+    "return_on_assets_pct": 1.29,
+    "dividend_payout_pct": 29.93
   },
   "derived_metrics_fy2024": {
     "diluted_eps": {
@@ -279,7 +281,7 @@
       "xbrl_tag": "us-gaap:ProvisionForLoanLossesExpensed"
     }
   },
-  "last_updated": "2025-10-22T02:21:00Z",
+  "last_updated": "2025-10-22T02:45:00Z",
   "ltm_metrics": {
     "eps_diluted": 4.25,
     "net_income_millions": 294.67,
@@ -427,9 +429,13 @@
     }
   },
   "q3_2025_snapshot": {
+    "net_interest_income_millions": 189.6,
     "provision_millions": 28.7,
-    "noninterest_income_millions": 21.021,
-    "noninterest_expense_millions": 88.117,
+    "net_interest_after_provision_millions": 160.9,
+    "noninterest_income_millions": 21.0,
+    "noninterest_expense_millions": 88.1,
+    "income_before_tax_millions": 93.8,
+    "income_tax_expense_millions": 16.1,
     "net_income_millions": 77.7,
     "eps_basic": 1.13,
     "eps_diluted": 1.13,
@@ -439,12 +445,9 @@
     "efficiency_ratio_pct": 41.84,
     "dividend_payout_pct": 29.93,
     "net_interest_spread_pct": 2.52,
+    "net_interest_margin_pct": 3.31,
     "period_end": "2025-09-30",
     "source": "Form 8-K Exhibit 99.1 (filed 2025-10-21)",
-    "net_interest_income_millions": 189.587,
-    "net_interest_margin_pct": 3.31,
-    "income_before_tax_millions": 93.8,
-    "income_tax_expense_millions": 16.1,
-    "effective_tax_rate_pct": 17.18
+    "effective_tax_rate_pct": 17.16
   }
 }

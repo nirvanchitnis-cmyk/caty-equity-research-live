@@ -1,23 +1,28 @@
 {
   "assets": {
-    "allowance_credit_losses_millions": -173.5,
-    "cash_due_from_banks_millions": 276.4,
+    "allowance_credit_losses_millions": 186.6,
+    "cash_due_from_banks_millions": 166.2,
     "goodwill_intangibles_millions": 0.0,
-    "loans_hfi_gross_millions": 19794.2,
-    "loans_hfi_net_millions": 19620.7,
-    "other_assets_millions": 876.9,
-    "premises_equipment_millions": 104.3,
-    "securities_afs_millions": 2389.5,
+    "loans_hfi_gross_millions": 20104.7,
+    "loans_hfi_net_millions": 19903.1,
+    "other_assets_millions": 244.3,
+    "premises_equipment_millions": 88.6,
+    "securities_afs_millions": 1643.5,
     "securities_htm_millions": 428.7,
-    "total_assets_millions": 23696.5
+    "total_assets_millions": 24075.6,
+    "short_term_investments_millions": 1141.9,
+    "deferred_fees_millions": 15.0,
+    "goodwill_millions": 375.7,
+    "intangibles_other_millions": 2.7
   },
-  "comment": "CATY_03 Balance Sheet - Q2 2025 assets, liabilities, equity",
-  "data_source": "SEC EDGAR 10-Q (Accession 0001437749-25-025772)",
+  "comment": "CATY_03 Balance Sheet - Q3 2025 assets, liabilities, equity",
+  "data_source": "Form 8-K Exhibit 99.1 (filed 2025-10-21); limited detail until 10-Q release",
   "deposit_composition_pct": {
-    "brokered_deposits": 5.6,
-    "demand_noninterest_bearing": 16.7,
-    "savings_money_market": 48.3,
-    "time_deposits": 29.4
+    "demand_noninterest_bearing_pct": 17.4,
+    "now_pct": 10.8,
+    "money_market_pct": 17.5,
+    "savings_pct": 6.9,
+    "time_deposits_pct": 47.3
   },
   "equity": {
     "additional_paid_in_capital_millions": 1780.5,
@@ -26,7 +31,9 @@
     "less_goodwill_intangibles_millions": 0.0,
     "retained_earnings_millions": 1014.3,
     "tangible_common_equity_millions": 2508.4,
-    "total_stockholders_equity_millions": 2508.4
+    "total_stockholders_equity_millions": 2902.3,
+    "shares_outstanding_millions": 68.287,
+    "book_value_per_share": 42.5
   },
   "fy2024_deposit_mix": {
     "interest_bearing_pct": {
@@ -296,9 +303,16 @@
   "liabilities": {
     "deposits_millions": 19965.1,
     "fhlb_borrowings_millions": 1200.0,
-    "other_liabilities_millions": 899.3,
+    "other_liabilities_millions": 284.6,
     "subordinated_debt_millions": 123.7,
-    "total_liabilities_millions": 22188.1
+    "total_liabilities_millions": 21173.4,
+    "total_deposits_millions": 20521.1,
+    "noninterest_bearing_demand_millions": 3574.6,
+    "fhlb_advances_millions": 190.0,
+    "other_borrowings_millions": 17.6,
+    "long_term_debt_millions": 119.1,
+    "lease_liabilities_millions": 33.1,
+    "interest_bearing_deposits_millions": 16946.5
   },
   "loan_composition_pct": {
     "commercial_industrial": 24.3,
@@ -654,5 +668,11 @@
       "xbrl_tag": "us-gaap:Deposits"
     },
     "total_loans_billions": 19.8
+  },
+  "as_of": "2025-09-30",
+  "metadata": {
+    "source_document": "evidence/raw/CATY_2025Q3_10Q_xbrl/ex_873308.htm",
+    "retrieved": "2025-10-22T02:40:00Z",
+    "notes": "Values sourced from Form 8-K Exhibit 99.1 (quarter ended September 30, 2025). Amounts in thousands converted to USD millions."
   }
 }

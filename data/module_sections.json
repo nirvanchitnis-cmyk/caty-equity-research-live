@@ -9,7 +9,7 @@
           "marker": "caty01-header-meta",
           "type": "text",
           "template": {
-            "template": "<p class=\"page-meta\">\n    Corporate identifiers and market snapshot |\n    Last Updated: {last_updated} |\n    Source: SEC 10-K FY2024 + SEC 10-Q Q2 2025\n</p>",
+            "template": "<p class=\"page-meta\">\n    Corporate identifiers and market snapshot |\n    Last Updated: {last_updated} |\n    Source: Form 8-K (Q3 2025 results) + SEC 10-K FY2024\n</p>",
             "placeholders": {
               "{last_updated}": {
                 "source": "market",
@@ -347,7 +347,7 @@
               "label": "Stock Price",
               "value": {
                 "source": "caty01_tables",
-                "path": "market_data_q2_2025.stock_price",
+                "path": "market_data_q3_2025.stock_price",
                 "format": "currency",
                 "decimals": 2
               },
@@ -359,7 +359,7 @@
               "label": "Market Cap",
               "value": {
                 "source": "caty01_tables",
-                "path": "market_data_q2_2025.market_cap_millions",
+                "path": "market_data_q3_2025.market_cap_millions",
                 "format": "currency_scale",
                 "scale": "millions",
                 "decimals": 0
@@ -369,7 +369,7 @@
                 "placeholders": {
                   "{shares}": {
                     "source": "caty01_tables",
-                    "path": "market_data_q2_2025.shares_outstanding_millions",
+                    "path": "market_data_q3_2025.shares_outstanding_millions",
                     "format": "number_scale",
                     "scale": "millions",
                     "decimals": 3
@@ -381,7 +381,7 @@
               "label": "TBVPS",
               "value": {
                 "source": "caty01_tables",
-                "path": "market_data_q2_2025.tbvps",
+                "path": "market_data_q3_2025.tbvps",
                 "format": "currency",
                 "decimals": 2
               },
@@ -390,7 +390,7 @@
                 "placeholders": {
                   "{ptbv}": {
                     "source": "caty01_tables",
-                    "path": "market_data_q2_2025.p_tbv",
+                    "path": "market_data_q3_2025.p_tbv",
                     "format": "decimal",
                     "decimals": 3
                   }
@@ -404,13 +404,13 @@
                 "placeholders": {
                   "{low}": {
                     "source": "caty01_tables",
-                    "path": "market_data_q2_2025.fifty_two_week_low",
+                    "path": "market_data_q3_2025.fifty_two_week_low",
                     "format": "currency",
                     "decimals": 2
                   },
                   "{high}": {
                     "source": "caty01_tables",
-                    "path": "market_data_q2_2025.fifty_two_week_high",
+                    "path": "market_data_q3_2025.fifty_two_week_high",
                     "format": "currency",
                     "decimals": 2
                   }
@@ -421,7 +421,7 @@
                 "placeholders": {
                   "{adv}": {
                     "source": "caty01_tables",
-                    "path": "market_data_q2_2025.average_daily_volume_thousands",
+                    "path": "market_data_q3_2025.average_daily_volume_thousands",
                     "format": "decimal",
                     "decimals": 0
                   }
@@ -3686,7 +3686,7 @@
           "marker": "caty07-header-meta",
           "type": "text",
           "template": {
-            "template": "<p class=\"page-meta\">\n    Credit metrics, ACL, NPAs, and Through-Cycle NCO Analysis |\n    Last Updated: {last_updated} |\n    Source: SEC EDGAR 10-Q Q2'25 & FDIC Call Reports 2008-2024\n</p>",
+            "template": "<p class=\"page-meta\">\n    Credit metrics, ACL, NPAs, and through-cycle context |\n    Last Updated: {last_updated} |\n    Source: Form 8-K (Q3 2025 results) + FDIC Call Reports 2008-2024\n</p>",
             "placeholders": {
               "{last_updated}": {
                 "source": "module",
@@ -3725,31 +3725,19 @@
           },
           "cards": [
             {
-              "label": "LTM NCO Rate",
+              "label": "Net Charge-Off Rate",
               "value": {
                 "source": "caty07_tables",
-                "path": "snapshot_metrics.nco_rate_ltm_bps",
+                "path": "snapshot_metrics.nco_rate_qtd_bps",
                 "format": "bps",
                 "decimals": 1
               },
               "subtext": {
-                "template": "Last 12 months"
+                "template": "Q3 2025 (annualized)"
               }
             },
             {
-              "label": "Through-Cycle NCO",
-              "value": {
-                "source": "caty07_tables",
-                "path": "snapshot_metrics.through_cycle_nco_bps",
-                "format": "bps",
-                "decimals": 1
-              },
-              "subtext": {
-                "template": "2008-2025 mean"
-              }
-            },
-            {
-              "label": "ACL / Loans",
+              "label": "Allowance / Loans",
               "value": {
                 "source": "caty07_tables",
                 "path": "snapshot_metrics.acl_loans_pct",
@@ -3757,20 +3745,28 @@
                 "decimals": 2
               },
               "subtext": {
-                "template": "Allowance coverage"
+                "template": "{amount} ACL",
+                "placeholders": {
+                  "{amount}": {
+                    "source": "caty07_tables",
+                    "path": "snapshot_metrics.acl_amount_millions",
+                    "format": "currency_scale",
+                    "scale": "millions",
+                    "decimals": 1
+                  }
+                }
               }
             },
             {
-              "label": "ACL Amount",
+              "label": "Allowance / NPLs",
               "value": {
                 "source": "caty07_tables",
-                "path": "snapshot_metrics.acl_amount_millions",
-                "format": "currency_scale",
-                "scale": "millions",
-                "decimals": 1
+                "path": "snapshot_metrics.allowance_to_npl_pct",
+                "format": "percent",
+                "decimals": 2
               },
               "subtext": {
-                "template": "Total reserve"
+                "template": "Coverage of non-performing loans"
               }
             },
             {
@@ -3782,32 +3778,16 @@
                 "decimals": 2
               },
               "subtext": {
-                "template": "Nonperforming ratio"
-              }
-            },
-            {
-              "label": "NPA Amount",
-              "value": {
-                "source": "caty07_tables",
-                "path": "snapshot_metrics.npa_amount_millions",
-                "format": "currency_scale",
-                "scale": "millions",
-                "decimals": 1
-              },
-              "subtext": {
-                "template": "Total NPAs"
-              }
-            },
-            {
-              "label": "Criticized Loans",
-              "value": {
-                "source": "caty07_tables",
-                "path": "snapshot_metrics.criticized_loans_pct",
-                "format": "percent",
-                "decimals": 2
-              },
-              "subtext": {
-                "template": "Special mention + classified"
+                "template": "{npa} NPAs",
+                "placeholders": {
+                  "{npa}": {
+                    "source": "caty07_tables",
+                    "path": "snapshot_metrics.npa_amount_millions",
+                    "format": "currency_scale",
+                    "scale": "millions",
+                    "decimals": 1
+                  }
+                }
               }
             },
             {
@@ -3820,7 +3800,26 @@
                 "decimals": 1
               },
               "subtext": {
-                "template": "Interest suspended"
+                "template": "Interest suspended balances"
+              }
+            },
+            {
+              "label": "Criticized Loans",
+              "value": {
+                "source": "caty07_tables",
+                "path": "snapshot_metrics.criticized_loans_pct",
+                "format": "percent",
+                "decimals": 2
+              },
+              "subtext": {
+                "template": "{note}",
+                "placeholders": {
+                  "{note}": {
+                    "source": "caty07_tables",
+                    "path": "snapshot_metrics.criticized_loans_note",
+                    "format": "text"
+                  }
+                }
               }
             }
           ]
@@ -3829,7 +3828,7 @@
           "marker": "caty07-snapshot-source",
           "type": "text",
           "template": {
-            "template": "<div class=\"source-box\">\n    <div class=\"source-label\">Data Source <span class=\"verification-badge\">VERIFIED_OK</span></div>\n    <div class=\"source-details\">\n        <strong>Form:</strong> {form}<br>\n        <strong>Accession:</strong> {accession}<br>\n        <strong>Filed:</strong> {filed}<br>\n        <strong>Item:</strong> {item}<br>\n        <strong>Note:</strong> {note}<br>\n        <strong>Excerpt:</strong> {excerpt}<br>\n        <strong>URL:</strong> <a href=\"{url}\" target=\"_blank\" rel=\"noopener noreferrer\">View Filing</a>\n    </div>\n</div>",
+            "template": "<div class=\"source-box\">\n    <div class=\"source-label\">Data Source <span class=\"verification-badge\">VERIFIED_OK</span></div>\n    <div class=\"source-details\">\n        <strong>Primary:</strong> Form 8-K Q3 2025 results release (Exhibit 99.1, filed October 21, 2025) \u2014 nonperforming asset table, allowance ratios, quarterly charge-offs<br>\n        <strong>Supplemental:</strong> 10-Q Q2 2025 (Accession 0001437749-25-025772) \u2014 criticized loan disclosure until Q3 10-Q is filed<br>\n        <strong>URLs:</strong> <a href=\"https://www.sec.gov/Archives/edgar/data/0000861842/000143774925031420/ex_873308.htm\" target=\"_blank\" rel=\"noopener noreferrer\">8-K Exhibit 99.1</a> | <a href=\"https://www.sec.gov/Archives/edgar/data/0000861842/000143774925025772/\" target=\"_blank\" rel=\"noopener noreferrer\">Q2 2025 10-Q</a>\n    </div>\n</div>",
             "placeholders": {
               "{form}": {
                 "source": "caty07_tables",
@@ -4950,15 +4949,20 @@
       "data": {
         "last_updated_display": "October 22, 2025",
         "nim": {
-          "qoq_change_bps": -3,
-          "asset_yield_pct": 5.83,
-          "asset_yield_change_bps": -6,
-          "funding_cost_pct": 3.37,
-          "funding_cost_change_bps": -9,
+          "qoq_change_bps": 4,
+          "asset_yield_pct": 5.84,
+          "asset_yield_change_bps": 1,
+          "funding_cost_pct": 3.32,
+          "funding_cost_change_bps": -5,
           "fte_adjustment_display": "TBD",
           "fte_adjustment_status": "Not disclosed in source JSON",
-          "fte_adjustment_bps": 8,
-          "fte_nim_pct": 3.35
+          "fte_adjustment_bps": 4,
+          "fte_nim_pct": 3.35,
+          "net_interest_margin_pct": 3.31,
+          "prior_margin_pct": 3.27,
+          "interest_bearing_deposit_cost_pct": 3.28,
+          "asset_yield_prior_pct": 5.83,
+          "funding_cost_prior_pct": 3.37
         },
         "betas": {
           "ib_pct": 60.4,
@@ -4981,7 +4985,7 @@
           "purpose": "NIM bridge and rate sensitivity analysis",
           "last_updated_iso": "2025-10-17T22:53:30Z",
           "data_policy": "All material datapoints sourced from SEC filings with mandatory provenance",
-          "period_coverage": "Quarterly 2015-Q1 to 2025-Q2; annual FY2015-FY2024",
+          "period_coverage": "Quarterly through Q3 2025; structural beta series Q1 2022 - Q2 2025",
           "units": "USD millions unless noted; per-share in USD; ratios in percent or bps"
         }
       },
@@ -4990,7 +4994,7 @@
           "marker": "caty05-header-meta",
           "type": "text",
           "template": {
-            "template": "<p class=\"page-meta\">\n    Rate sensitivity and funding dynamics |\n    Last Updated: {last_updated} |\n    Source: SEC EDGAR 10-Q Q2 2025\n</p>",
+            "template": "<p class=\"page-meta\">\n    Rate sensitivity and funding dynamics |\n    Last Updated: {last_updated} |\n    Source: Form 8-K (Q3 2025 results) + historical SEC 10-Q datasets\n</p>",
             "placeholders": {
               "{last_updated}": {
                 "source": "module",
@@ -5017,18 +5021,25 @@
             {
               "label": "Net Interest Margin",
               "value": {
-                "source": "market",
-                "path": "calculated_metrics.nim_pct",
-                "format": "percent",
-                "decimals": 2
+                "source": "module",
+                "path": "nim.net_interest_margin_pct",
+                "format": "decimal",
+                "decimals": 2,
+                "suffix": "%"
               },
               "subtext": {
-                "template": "Q2 2025 | {nim_change} QoQ",
+                "template": "Q3 2025 | Q2: {prior}% (\u0394 {delta} bps)",
                 "placeholders": {
-                  "{nim_change}": {
+                  "{prior}": {
+                    "source": "module",
+                    "path": "nim.prior_margin_pct",
+                    "format": "decimal",
+                    "decimals": 2
+                  },
+                  "{delta}": {
                     "source": "module",
                     "path": "nim.qoq_change_bps",
-                    "format": "bps",
+                    "format": "decimal",
                     "decimals": 0
                   }
                 }
@@ -5039,16 +5050,17 @@
               "value": {
                 "source": "module",
                 "path": "nim.asset_yield_pct",
-                "format": "percent",
-                "decimals": 2
+                "format": "decimal",
+                "decimals": 2,
+                "suffix": "%"
               },
               "subtext": {
-                "template": "Q2 2025 | {asset_change} QoQ",
+                "template": "q/q change {delta} bps",
                 "placeholders": {
-                  "{asset_change}": {
+                  "{delta}": {
                     "source": "module",
                     "path": "nim.asset_yield_change_bps",
-                    "format": "bps",
+                    "format": "decimal",
                     "decimals": 0
                   }
                 }
@@ -5059,16 +5071,17 @@
               "value": {
                 "source": "module",
                 "path": "nim.funding_cost_pct",
-                "format": "percent",
-                "decimals": 2
+                "format": "decimal",
+                "decimals": 2,
+                "suffix": "%"
               },
               "subtext": {
-                "template": "Q2 2025 | {funding_change} QoQ",
+                "template": "Interest-bearing liabilities | q/q change {delta} bps",
                 "placeholders": {
-                  "{funding_change}": {
+                  "{delta}": {
                     "source": "module",
                     "path": "nim.funding_cost_change_bps",
-                    "format": "bps",
+                    "format": "decimal",
                     "decimals": 0
                   }
                 }
@@ -5080,29 +5093,29 @@
           "marker": "caty05-rate-cycle-context",
           "type": "text",
           "template": {
-            "template": "<p class=\"line-height-relaxed\">\n    CATY entered Q2 2025 near the peak of the Fed's tightening cycle (Fed Funds {fed_end}%).\n    Funding cost deceleration ({funding_change} bps QoQ) exceeded asset yield compression ({asset_change} bps QoQ),\n    resulting in modest NIM compression of {nim_change} bps. The deposit beta analysis below reveals\n    critical insights into CATY's liability sensitivity.\n</p>",
+            "template": "<p class=\"line-height-relaxed\">\n    CATY entered Q3 2025 with Fed Funds anchored at {fed_end}%.\n    Funding cost deceleration ({funding_change} bps q/q) paired with a modest asset yield uptick ({asset_change} bps)\n    expanded net interest margin by {nim_change} bps. The deposit beta analysis below highlights liability sensitivity\n    across the hiking cycle (Q1 2022 \u2013 Q2 2025).\n</p>",
             "placeholders": {
               "{fed_end}": {
-                "source": "caty05_tables",
-                "path": "beta_calculation.ib_only.fed_end_pct",
+                "source": "module",
+                "path": "rates.fed_funds.end_pct",
                 "format": "decimal",
                 "decimals": 2
               },
               "{funding_change}": {
-                "source": "caty05_tables",
-                "path": "nim_bridge.qoq_changes_bps.funding_cost",
+                "source": "module",
+                "path": "nim.funding_cost_change_bps",
                 "format": "decimal",
                 "decimals": 0
               },
               "{asset_change}": {
-                "source": "caty05_tables",
-                "path": "nim_bridge.qoq_changes_bps.asset_yield",
+                "source": "module",
+                "path": "nim.asset_yield_change_bps",
                 "format": "decimal",
                 "decimals": 0
               },
               "{nim_change}": {
-                "source": "caty05_tables",
-                "path": "nim_bridge.qoq_changes_bps.nim",
+                "source": "module",
+                "path": "nim.qoq_change_bps",
                 "format": "decimal",
                 "decimals": 0
               }
@@ -5507,7 +5520,15 @@
                 "decimals": 2
               },
               "subtext": {
-                "template": "Q2 2025 | As reported"
+                "template": "Q3 2025 | Q2: {prior}%",
+                "placeholders": {
+                  "{prior}": {
+                    "source": "module",
+                    "path": "nim.prior_margin_pct",
+                    "format": "decimal",
+                    "decimals": 2
+                  }
+                }
               }
             },
             {
@@ -6114,59 +6135,59 @@
           "marker": "caty05-nim-bridge-qoq-table",
           "type": "text",
           "template": {
-            "template": "<table>\n    <thead>\n        <tr>\n            <th>Component</th>\n            <th>Q1 2025</th>\n            <th>Q2 2025</th>\n            <th>Change (bps)</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td>Net Interest Margin</td>\n            <td class=\"numeric\">{q1_nim}%</td>\n            <td class=\"numeric\">{q2_nim}%</td>\n            <td class=\"numeric\">{nim_change}</td>\n        </tr>\n        <tr>\n            <td>Asset Yield</td>\n            <td class=\"numeric\">{q1_asset}%</td>\n            <td class=\"numeric\">{q2_asset}%</td>\n            <td class=\"numeric\">{asset_change}</td>\n        </tr>\n        <tr>\n            <td>Funding Cost</td>\n            <td class=\"numeric\">{q1_funding}%</td>\n            <td class=\"numeric\">{q2_funding}%</td>\n            <td class=\"numeric\">{funding_change}</td>\n        </tr>\n    </tbody>\n</table>",
+            "template": "<table>\n    <thead>\n        <tr>\n            <th>Component</th>\n            <th>Q2 2025</th>\n            <th>Q3 2025</th>\n            <th>\u0394 (bps)</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td>Net Interest Margin</td>\n            <td class=\"numeric\">{q2_nim}%</td>\n            <td class=\"numeric\">{q3_nim}%</td>\n            <td class=\"numeric\">{nim_change}</td>\n        </tr>\n        <tr>\n            <td>Asset Yield</td>\n            <td class=\"numeric\">{q2_asset}%</td>\n            <td class=\"numeric\">{q3_asset}%</td>\n            <td class=\"numeric\">{asset_change}</td>\n        </tr>\n        <tr>\n            <td>Funding Cost</td>\n            <td class=\"numeric\">{q2_funding}%</td>\n            <td class=\"numeric\">{q3_funding}%</td>\n            <td class=\"numeric\">{funding_change}</td>\n        </tr>\n    </tbody>\n</table>",
             "placeholders": {
-              "{q1_nim}": {
-                "source": "caty05_tables",
-                "path": "nim_bridge.q1_2025.nim_pct",
+              "{q2_nim}": {
+                "source": "module",
+                "path": "nim.prior_margin_pct",
                 "format": "decimal",
                 "decimals": 2
               },
-              "{q2_nim}": {
-                "source": "caty05_tables",
-                "path": "nim_bridge.q2_2025.nim_pct",
+              "{q3_nim}": {
+                "source": "module",
+                "path": "nim.net_interest_margin_pct",
                 "format": "decimal",
                 "decimals": 2
               },
               "{nim_change}": {
-                "source": "caty05_tables",
-                "path": "nim_bridge.qoq_changes_bps.nim",
+                "source": "module",
+                "path": "nim.qoq_change_bps",
                 "format": "decimal",
                 "decimals": 0
               },
-              "{q1_asset}": {
-                "source": "caty05_tables",
-                "path": "nim_bridge.q1_2025.asset_yield_pct",
+              "{q2_asset}": {
+                "source": "module",
+                "path": "nim.asset_yield_prior_pct",
                 "format": "decimal",
                 "decimals": 2
               },
-              "{q2_asset}": {
-                "source": "caty05_tables",
-                "path": "nim_bridge.q2_2025.asset_yield_pct",
+              "{q3_asset}": {
+                "source": "module",
+                "path": "nim.asset_yield_pct",
                 "format": "decimal",
                 "decimals": 2
               },
               "{asset_change}": {
-                "source": "caty05_tables",
-                "path": "nim_bridge.qoq_changes_bps.asset_yield",
+                "source": "module",
+                "path": "nim.asset_yield_change_bps",
                 "format": "decimal",
                 "decimals": 0
               },
-              "{q1_funding}": {
-                "source": "caty05_tables",
-                "path": "nim_bridge.q1_2025.funding_cost_pct",
+              "{q2_funding}": {
+                "source": "module",
+                "path": "nim.funding_cost_prior_pct",
                 "format": "decimal",
                 "decimals": 2
               },
-              "{q2_funding}": {
-                "source": "caty05_tables",
-                "path": "nim_bridge.q2_2025.funding_cost_pct",
+              "{q3_funding}": {
+                "source": "module",
+                "path": "nim.funding_cost_pct",
                 "format": "decimal",
                 "decimals": 2
               },
               "{funding_change}": {
-                "source": "caty05_tables",
-                "path": "nim_bridge.qoq_changes_bps.funding_cost",
+                "source": "module",
+                "path": "nim.funding_cost_change_bps",
                 "format": "decimal",
                 "decimals": 0
               }
@@ -13115,7 +13136,7 @@
           "marker": "caty09-header-meta",
           "type": "text",
           "template": {
-            "template": "<p class=\"page-meta\">Regulatory ratios, AOCI reconciliation, and liquidity buffers | Last Updated: {last_updated} | Source: SEC 10-Q Q2 2025 + Call Report</p>",
+            "template": "<p class=\"page-meta\">\n    Regulatory ratios, AOCI reconciliation, and liquidity buffers |\n    Last Updated: {last_updated} |\n    Source: Form 8-K (Q3 2025 results) + Call Report data\n</p>",
             "placeholders": {
               "{last_updated}": {
                 "source": "module",
@@ -13209,9 +13230,15 @@
           "marker": "caty09-capital-table",
           "type": "text",
           "template": {
-            "template": "<table>\n    <thead>\n        <tr>\n            <th>Capital Ratio</th>\n            <th class=\"numeric\">Q2 2025</th>\n            <th class=\"numeric\">Reg Minimum</th>\n            <th class=\"numeric\">Well-Capitalized</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr><td><strong>CET1</strong></td><td class=\"numeric\">{cet1}%</td><td class=\"numeric\">{reg_min}%</td><td class=\"numeric\">{well_cap}%</td></tr>\n        <tr><td>Tier 1</td><td class=\"numeric\">{tier1}%</td><td class=\"numeric\">\u2014</td><td class=\"numeric\">\u2014</td></tr>\n        <tr><td>Total Capital</td><td class=\"numeric\">{total}%</td><td class=\"numeric\">\u2014</td><td class=\"numeric\">\u2014</td></tr>\n        <tr><td>Leverage</td><td class=\"numeric\">{leverage}%</td><td class=\"numeric\">\u2014</td><td class=\"numeric\">\u2014</td></tr>\n    </tbody>\n</table>",
+            "template": "<table>\n    <thead>\n        <tr>\n            <th>Capital Ratio</th>\n            <th class=\"numeric\">Q3 2025</th>\n            <th class=\"numeric\">Q2 2025</th>\n            <th class=\"numeric\">Reg Minimum</th>\n            <th class=\"numeric\">Well-Capitalized</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr><td><strong>CET1</strong></td><td class=\"numeric\">{cet1_q3}%</td><td class=\"numeric\">{cet1_q2}%</td><td class=\"numeric\">{reg_min}%</td><td class=\"numeric\">{well_cap}%</td></tr>\n        <tr><td>Tier 1</td><td class=\"numeric\">{tier1_q3}%</td><td class=\"numeric\">{tier1_q2}%</td><td class=\"numeric\">\u2014</td><td class=\"numeric\">\u2014</td></tr>\n        <tr><td>Total Capital</td><td class=\"numeric\">{total_q3}%</td><td class=\"numeric\">{total_q2}%</td><td class=\"numeric\">\u2014</td><td class=\"numeric\">\u2014</td></tr>\n        <tr><td>Leverage</td><td class=\"numeric\">{leverage_q3}%</td><td class=\"numeric\">{leverage_q2}%</td><td class=\"numeric\">\u2014</td><td class=\"numeric\">\u2014</td></tr>\n    </tbody>\n</table>",
             "placeholders": {
-              "{cet1}": {
+              "{cet1_q3}": {
+                "source": "caty09_tables",
+                "path": "regulatory_capital_q3_2025.cet1_ratio_pct",
+                "format": "decimal",
+                "decimals": 2
+              },
+              "{cet1_q2}": {
                 "source": "caty09_tables",
                 "path": "regulatory_capital_q2_2025.cet1_ratio_pct",
                 "format": "decimal",
@@ -13219,29 +13246,47 @@
               },
               "{reg_min}": {
                 "source": "caty09_tables",
-                "path": "regulatory_capital_q2_2025.regulatory_minimum_cet1_pct",
+                "path": "regulatory_capital_q3_2025.regulatory_minimum_cet1_pct",
                 "format": "decimal",
                 "decimals": 1
               },
               "{well_cap}": {
                 "source": "caty09_tables",
-                "path": "regulatory_capital_q2_2025.well_capitalized_cet1_pct",
+                "path": "regulatory_capital_q3_2025.well_capitalized_cet1_pct",
                 "format": "decimal",
                 "decimals": 1
               },
-              "{tier1}": {
+              "{tier1_q3}": {
+                "source": "caty09_tables",
+                "path": "regulatory_capital_q3_2025.tier1_ratio_pct",
+                "format": "decimal",
+                "decimals": 2
+              },
+              "{tier1_q2}": {
                 "source": "caty09_tables",
                 "path": "regulatory_capital_q2_2025.tier1_ratio_pct",
                 "format": "decimal",
                 "decimals": 2
               },
-              "{total}": {
+              "{total_q3}": {
+                "source": "caty09_tables",
+                "path": "regulatory_capital_q3_2025.total_capital_ratio_pct",
+                "format": "decimal",
+                "decimals": 2
+              },
+              "{total_q2}": {
                 "source": "caty09_tables",
                 "path": "regulatory_capital_q2_2025.total_capital_ratio_pct",
                 "format": "decimal",
                 "decimals": 2
               },
-              "{leverage}": {
+              "{leverage_q3}": {
+                "source": "caty09_tables",
+                "path": "regulatory_capital_q3_2025.leverage_ratio_pct",
+                "format": "decimal",
+                "decimals": 2
+              },
+              "{leverage_q2}": {
                 "source": "caty09_tables",
                 "path": "regulatory_capital_q2_2025.leverage_ratio_pct",
                 "format": "decimal",

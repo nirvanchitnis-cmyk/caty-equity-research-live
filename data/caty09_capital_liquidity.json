@@ -1,7 +1,7 @@
 {
-  "comment": "CATY_09 Capital & Liquidity - Regulatory Metrics and AOCI",
-  "last_updated": "2025-10-19T23:55:00Z",
-  "data_source": "SEC 10-Q Q2 2025 + Call Report",
+  "comment": "CATY_09 Capital & Liquidity - Q3 2025 regulatory metrics",
+  "last_updated": "2025-10-22T02:48:00Z",
+  "data_source": "Form 8-K Exhibit 99.1 (Q3 2025 results) + prior call report archives",
   "regulatory_capital_q2_2025": {
     "cet1_ratio_pct": 13.35,
     "tier1_ratio_pct": 13.35,
@@ -10,7 +10,8 @@
     "regulatory_minimum_cet1_pct": 7.0,
     "well_capitalized_cet1_pct": 6.5,
     "buffer_vs_well_capitalized_ppts": 6.85,
-    "status": "Well Capitalized"
+    "status": "Well Capitalized",
+    "note": "Historical reference; see q3_2025 for latest."
   },
   "aoci_impact": {
     "aoci_millions": -518.3,
@@ -23,12 +24,24 @@
     "note": "AOCI primarily AFS unrealized losses from 2022-23 rate shock"
   },
   "liquidity_metrics": {
-    "cash_billions": 1.88,
-    "unencumbered_securities_billions": 3.12,
-    "total_liquid_assets_billions": 5.00,
-    "liquid_assets_pct_of_assets": 21.1,
-    "loan_to_deposit_ratio_pct": 98.9,
-    "loans_billions": 19.79,
-    "deposits_billions": 20.01
+    "cash_billions": 0.17,
+    "short_term_investments_billions": 1.14,
+    "available_for_sale_securities_billions": 1.64,
+    "total_liquid_assets_billions": 2.95,
+    "liquid_assets_pct_of_assets": 12.3,
+    "loan_to_deposit_ratio_pct": 98.0,
+    "loans_billions": 20.1,
+    "deposits_billions": 20.52,
+    "unencumbered_securities_billions": 1.64
+  },
+  "regulatory_capital_q3_2025": {
+    "cet1_ratio_pct": 13.15,
+    "tier1_ratio_pct": 13.15,
+    "total_capital_ratio_pct": 14.76,
+    "leverage_ratio_pct": 10.88,
+    "regulatory_minimum_cet1_pct": 7.0,
+    "well_capitalized_cet1_pct": 6.5,
+    "buffer_vs_well_capitalized_ppts": 6.65,
+    "status": "Well Capitalized"
   }
 }

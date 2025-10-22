@@ -870,3 +870,11 @@
 [2025-10-22 02:27:30 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
 [2025-10-22 02:28:00 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
 [2025-10-22 02:28:36 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-22 02:34:21 UTC] disconfirmer_monitor.py status=PASS alerts=0
+[2025-10-22 02:54:02 UTC] build_site.py FAILED: "Path 'q3_2025_snapshot.effective_tax_rate_pct' missing key 'effective_tax_rate_pct'"
+[2025-10-22 02:54:39 UTC] build_site.py FAILED: "Path 'liquidity_metrics.unencumbered_securities_billions' missing key 'unencumbered_securities_billions'"
+[2025-10-22 02:55:02 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-22 02:58:06 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-22 02:59:48 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-22 03:00:40 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-22 03:01:40 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
