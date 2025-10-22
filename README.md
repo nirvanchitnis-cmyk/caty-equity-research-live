@@ -20,7 +20,7 @@ All public modules, data pipelines, and provenance logs now reference the Q3 202
 
 ## 🎯 Current Investment Thesis
 
-### **HOLD Rating** - Expected Price: **$48.95 (+3.9%)**
+### **HOLD Rating (Provisional)** - Expected Price: **$48.95 (+3.9%)**
 
 **Current Price:** $47.13 (October 21, 2025)
 **Wilson 95% Probability-Weighted:** 60.9% × $51.88 + 39.1% × $44.39 = **$48.95**
@@ -29,21 +29,20 @@ All public modules, data pipelines, and provenance logs now reference the Q3 202
 | Method | Weight | Target | vs Spot | Methodology |
 |--------|--------|--------|---------|-------------|
 | **Wilson 95%** | — | **$48.95** | **+3.9%** | 60.9% Regression / 39.1% Normalized |
-| **IRC Blended** | — | **$50.12** | **+6.3%** | 60% RIM / 10% Gordon / 30% Relative |
-| **RIM (Residual Income)** | 60% | $50.08 | +6.3% | 3-stage with through-cycle NCO |
-| **Gordon Growth (Normalized)** | 10% | **$44.39** | **-5.8%** | COE 9.587%, g 2.5%, ROTE 11.20% (30 bps P90 NCO) |
-| **Regression (Current Earnings\*)** | 30% | **$51.88** | **+10.1%** | P/TBV = 0.058 × ROTE + 0.82 |
-| **Monte Carlo Median** | — | $40.16 | -14.8% | 10,000-path simulation |
+| **IRC Blended** | — | **$50.12** | **+6.3%** | 60% RIM / 10% Gordon / 30% Relative (legacy, non‑controlling) |
+| **RIM (Residual Income)** | 60% | $50.08 | +6.3% | 3‑stage with through‑cycle guardrail |
+| **Gordon Growth (Normalized)** | 10% | **$44.39** | **-5.8%** | COE provisional, g 2.5%, ROTE 11.20% (30 bps base) |
+| **Regression (Current Earnings\*)** | 30% | **$51.88** | **+10.1%** | P/TBV = 0.058 × ROTE + 0.82 (provisional peers) |
 
 *Regression output pending Q3 peer coefficient refresh (see Module 12 normalization bridge).*
 
-**Rating:** HOLD (-0.3% expected return within -10% to +15% policy band)
+**Rating:** HOLD (Provisional; within −10% to +15% band). Final COE and deposit‑beta inputs update after Q3 peer set and 10‑Q.
 
 #### Key Investment Drivers:
 1. **Credit Normalization (30 bps base / 42.8 bps guardrail)** - Base case uses post-2014 90th percentile FDIC NCO (30 bps) with stress guardrail at the 2008-2025 mean (42.8 bps). See `evidence/workpapers/CATY_FDIC_NCO_series.md` and `evidence/workpapers/CATY_Q3_2025_normalization_bridge.md`.
 2. **Elevated CRE Concentration (52.4%)** - Above peer median ~41%, office exposure tail risk
 3. **NIM Compression Risk** - Interest-bearing beta 60.4%; +25 bps beta shock ≈ $4.3 price drag (see `evidence/valuation_sensitivity_summary.md`). 100 bps Fed cuts → ~50 bps NIM impact.
-4. **Premium Valuation vs. Fundamentals** - P/TBV 1.303x vs normalized 1.088x
+4. **Premium Valuation vs. Fundamentals** - P/TBV 1.303x vs normalized 1.228x
 5. **Capital Return Mix** - Q3 buyback 1.07M shares ($50.1M) lifted payout to 70.8%, shaved TBVPS by 16 bps and CET1 by 20 bps, added ~\$0.02 EPS; ~$221M CET1 headroom to a 12% guardrail with $59.9M authorization remaining (see `evidence/workpapers/CATY_Q3_2025_buyback_analysis.md`).
 
 ---
