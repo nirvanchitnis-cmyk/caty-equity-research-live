@@ -2422,7 +2422,7 @@
           "marker": "caty02-header-meta",
           "type": "text",
           "template": {
-            "template": "<p class=\"page-meta\">\n    GAAP income statement with core adjustments and derived metrics (NIM, efficiency ratio, EPS) |\n    Last Updated: {last_updated} |\n    Source: SEC EDGAR 10-K FY2024, 10-Q Q2 2025\n</p>",
+            "template": "<p class=\"page-meta\">\n    GAAP income statement with core adjustments and derived metrics (NIM, efficiency ratio, EPS) |\n    Last Updated: {last_updated} |\n    Source: Form 8-K (Q3 2025 results) + SEC EDGAR 10-Q Q2 2025 (historical)\n</p>",
             "placeholders": {
               "{last_updated}": {
                 "source": "module",
@@ -2450,87 +2450,150 @@
               "label": "Net Interest Income",
               "value": {
                 "source": "caty02_tables",
-                "path": "q2_2025_snapshot.nii_millions",
+                "path": "q3_2025_snapshot.net_interest_income_millions",
                 "format": "currency_scale",
                 "scale": "millions",
                 "decimals": 1
               },
               "subtext": {
-                "template": "Q2 2025"
+                "template": "Q3 2025 | Q2: {q2_value}",
+                "placeholders": {
+                  "{q2_value}": {
+                    "source": "caty02_tables",
+                    "path": "q2_2025_snapshot.net_interest_income_millions",
+                    "format": "currency_scale",
+                    "scale": "millions",
+                    "decimals": 1
+                  }
+                }
               }
             },
             {
               "label": "Net Interest Margin",
               "value": {
                 "source": "caty02_tables",
-                "path": "q2_2025_snapshot.nim_pct",
-                "format": "percent",
-                "decimals": 2
+                "path": "q3_2025_snapshot.net_interest_margin_pct",
+                "format": "decimal",
+                "decimals": 2,
+                "suffix": "%"
               },
               "subtext": {
-                "template": "Annualized"
+                "template": "Q2: {q2_nim}%",
+                "placeholders": {
+                  "{q2_nim}": {
+                    "source": "caty02_tables",
+                    "path": "q2_2025_snapshot.net_interest_margin_pct",
+                    "format": "decimal",
+                    "decimals": 2
+                  }
+                }
               }
             },
             {
               "label": "Net Income",
               "value": {
                 "source": "caty02_tables",
-                "path": "q2_2025_snapshot.net_income_millions",
+                "path": "q3_2025_snapshot.net_income_millions",
                 "format": "currency_scale",
                 "scale": "millions",
                 "decimals": 1
               },
               "subtext": {
-                "template": "Q2 2025"
+                "template": "Q2: {q2_net_income}",
+                "placeholders": {
+                  "{q2_net_income}": {
+                    "source": "caty02_tables",
+                    "path": "q2_2025_snapshot.net_income_millions",
+                    "format": "currency_scale",
+                    "scale": "millions",
+                    "decimals": 1
+                  }
+                }
               }
             },
             {
               "label": "Efficiency Ratio",
               "value": {
                 "source": "caty02_tables",
-                "path": "q2_2025_snapshot.efficiency_ratio_pct",
-                "format": "percent",
-                "decimals": 2
+                "path": "q3_2025_snapshot.efficiency_ratio_pct",
+                "format": "decimal",
+                "decimals": 2,
+                "suffix": "%"
               },
               "subtext": {
-                "template": "Noninterest expense / (NII + Noninterest income)"
+                "template": "Q2: {q2_eff}%",
+                "placeholders": {
+                  "{q2_eff}": {
+                    "source": "caty02_tables",
+                    "path": "q2_2025_snapshot.efficiency_ratio_pct",
+                    "format": "decimal",
+                    "decimals": 2
+                  }
+                }
               }
             },
             {
               "label": "Diluted EPS",
               "value": {
                 "source": "caty02_tables",
-                "path": "q2_2025_snapshot.diluted_eps",
-                "format": "currency",
-                "decimals": 2
+                "path": "q3_2025_snapshot.eps_diluted",
+                "format": "decimal",
+                "decimals": 2,
+                "prefix": "$"
               },
               "subtext": {
-                "template": "Q2 2025"
+                "template": "Q2: ${q2_eps}",
+                "placeholders": {
+                  "{q2_eps}": {
+                    "source": "caty02_tables",
+                    "path": "q2_2025_snapshot.diluted_eps",
+                    "format": "decimal",
+                    "decimals": 2
+                  }
+                }
               }
             },
             {
               "label": "Provision for Credit Losses",
               "value": {
                 "source": "caty02_tables",
-                "path": "q2_2025_snapshot.provision_millions",
+                "path": "q3_2025_snapshot.provision_millions",
                 "format": "currency_scale",
                 "scale": "millions",
                 "decimals": 1
               },
               "subtext": {
-                "template": "CECL methodology"
+                "template": "Q2: {q2_provision}",
+                "placeholders": {
+                  "{q2_provision}": {
+                    "source": "caty02_tables",
+                    "path": "q2_2025_snapshot.provision_millions",
+                    "format": "currency_scale",
+                    "scale": "millions",
+                    "decimals": 1
+                  }
+                }
               }
             },
             {
               "label": "Effective Tax Rate",
               "value": {
                 "source": "caty02_tables",
-                "path": "q2_2025_snapshot.effective_tax_rate_pct",
-                "format": "percent",
-                "decimals": 2
+                "path": "q3_2025_snapshot.effective_tax_rate_pct",
+                "format": "decimal",
+                "decimals": 2,
+                "suffix": "%"
               },
               "subtext": {
-                "template": "Income tax expense / Pretax income"
+                "template": "Q2: {q2_tax}%",
+                "placeholders": {
+                  "{q2_tax}": {
+                    "source": "caty02_tables",
+                    "path": "q2_2025_snapshot.effective_tax_rate_pct",
+                    "format": "decimal",
+                    "decimals": 2
+                  }
+                }
               }
             },
             {
@@ -2543,7 +2606,7 @@
                 "decimals": 0
               },
               "subtext": {
-                "template": "Period average"
+                "template": "Q2 2025 (10-Q) \u2013 next update with Q3 10-Q"
               }
             }
           ]
@@ -9142,7 +9205,7 @@
               },
               "{last_updated}": {
                 "source": "caty12_tables",
-                "path": "metadata.last_updated_iso",
+                "path": "metadata.last_updated_display",
                 "format": "text"
               },
               "{data_policy}": {
@@ -12691,7 +12754,7 @@
           "marker": "caty06-header-meta",
           "type": "text",
           "template": {
-            "template": "<p class=\"page-meta\">Funding mix, deposit composition, and peer benchmarking | Last Updated: {last_updated} | Source: SEC 10-Q Q2 2025 + Call Report</p>",
+            "template": "<p class=\"page-meta\">Funding mix, deposit composition, and peer benchmarking | Last Updated: {last_updated} | Source: Form 8-K (Q3 2025 results) + Call Report</p>",
             "placeholders": {
               "{last_updated}": {
                 "source": "module",
@@ -12720,7 +12783,7 @@
               "card_class": "metric-card highlight",
               "value": {
                 "source": "caty06_tables",
-                "path": "deposit_snapshot_q2_2025.total_deposits_billions",
+                "path": "deposit_snapshot_latest.total_deposits_billions",
                 "format": "number_scale",
                 "scale": "billions",
                 "decimals": 2,
@@ -12734,7 +12797,7 @@
               "label": "Noninterest-Bearing",
               "value": {
                 "source": "caty06_tables",
-                "path": "deposit_snapshot_q2_2025.noninterest_bearing_billions",
+                "path": "deposit_snapshot_latest.noninterest_bearing_billions",
                 "format": "number_scale",
                 "scale": "billions",
                 "decimals": 2,
@@ -12745,7 +12808,7 @@
                 "placeholders": {
                   "{share}": {
                     "source": "caty06_tables",
-                    "path": "deposit_snapshot_q2_2025.nib_pct",
+                    "path": "deposit_snapshot_latest.nib_pct",
                     "format": "decimal",
                     "decimals": 1
                   }
@@ -12756,7 +12819,7 @@
               "label": "Interest-Bearing",
               "value": {
                 "source": "caty06_tables",
-                "path": "deposit_snapshot_q2_2025.interest_bearing_billions",
+                "path": "deposit_snapshot_latest.interest_bearing_billions",
                 "format": "number_scale",
                 "scale": "billions",
                 "decimals": 2,
@@ -12767,7 +12830,7 @@
                 "placeholders": {
                   "{share}": {
                     "source": "caty06_tables",
-                    "path": "deposit_snapshot_q2_2025.ib_pct",
+                    "path": "deposit_snapshot_latest.ib_pct",
                     "format": "decimal",
                     "decimals": 1
                   }
@@ -12778,7 +12841,7 @@
               "label": "Brokered Deposits",
               "value": {
                 "source": "caty06_tables",
-                "path": "deposit_snapshot_q2_2025.brokered_deposits_billions",
+                "path": "deposit_snapshot_latest.brokered_deposits_billions",
                 "format": "number_scale",
                 "scale": "billions",
                 "decimals": 2,
@@ -12789,7 +12852,7 @@
                 "placeholders": {
                   "{share}": {
                     "source": "caty06_tables",
-                    "path": "deposit_snapshot_q2_2025.brokered_pct",
+                    "path": "deposit_snapshot_latest.brokered_pct",
                     "format": "decimal",
                     "decimals": 1
                   }
@@ -12802,7 +12865,7 @@
           "marker": "caty06-deposit-mix-table",
           "type": "text",
           "template": {
-            "template": "<table>\n    <thead>\n        <tr>\n            <th>Deposit Type</th>\n            <th class=\"numeric\">Balance ($B)</th>\n            <th class=\"numeric\">Mix (%)</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr><td><strong>Demand (DDA)</strong></td><td class=\"numeric\">{dda_balance}</td><td class=\"numeric\">{dda_pct}%</td></tr>\n        <tr><td><strong>Savings</strong></td><td class=\"numeric\">{savings_balance}</td><td class=\"numeric\">{savings_pct}%</td></tr>\n        <tr><td><strong>Money Market</strong></td><td class=\"numeric\">{mm_balance}</td><td class=\"numeric\">{mm_pct}%</td></tr>\n        <tr><td><strong>Time Deposits</strong></td><td class=\"numeric\">{time_balance}</td><td class=\"numeric\">{time_pct}%</td></tr>\n    </tbody>\n</table>",
+            "template": "<table>\n    <thead>\n        <tr>\n            <th>Deposit Type</th>\n            <th class=\"numeric\">Balance ($B)</th>\n            <th class=\"numeric\">Mix (%)</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr><td><strong>Demand (DDA)</strong></td><td class=\"numeric\">{dda_balance}</td><td class=\"numeric\">{dda_pct}%</td></tr>\n        <tr><td><strong>Savings</strong></td><td class=\"numeric\">{savings_balance}</td><td class=\"numeric\">{savings_pct}%</td></tr>\n        <tr><td><strong>NOW / Interest Checking</strong></td><td class=\"numeric\">{now_balance}</td><td class=\"numeric\">{now_pct}%</td></tr>\n        <tr><td><strong>Money Market</strong></td><td class=\"numeric\">{mm_balance}</td><td class=\"numeric\">{mm_pct}%</td></tr>\n        <tr><td><strong>Time Deposits</strong></td><td class=\"numeric\">{time_balance}</td><td class=\"numeric\">{time_pct}%</td></tr>\n    </tbody>\n</table>",
             "placeholders": {
               "{dda_balance}": {
                 "source": "caty06_tables",
@@ -12859,6 +12922,20 @@
                 "path": "deposit_mix_detail.time_deposits_pct",
                 "format": "decimal",
                 "decimals": 1
+              },
+              "{now_balance}": {
+                "source": "caty06_tables",
+                "path": "deposit_mix_detail.now_billions",
+                "format": "number_scale",
+                "scale": "billions",
+                "decimals": 2,
+                "prefix": "$"
+              },
+              "{now_pct}": {
+                "source": "caty06_tables",
+                "path": "deposit_mix_detail.now_pct",
+                "format": "decimal",
+                "decimals": 1
               }
             }
           }
@@ -12867,22 +12944,32 @@
           "marker": "caty06-nib-trend",
           "type": "text",
           "template": {
-            "template": "<div class=\"alert-box info\">\n    <div class=\"alert-title\">{direction} NIB Mix</div>\n    <div class=\"alert-text\">Noninterest-bearing deposits moved from {start}% in Q1 2022 to {end}% in Q2 2025, a change of {change} ppts. {interpretation}</div>\n</div>",
+            "template": "<div class=\"alert-box info\">\n    <div class=\"alert-title\">{direction} NIB Mix</div>\n    <div class=\"alert-text\">Noninterest-bearing deposits moved from {start_pct}% in {start_period} to {end_pct}% in {end_period}, a change of {change} ppts. {interpretation}</div>\n    <div class=\"alert-text text-small\">Long-term change versus {long_term_period}: {long_term_change} ppts.</div>\n</div>",
             "placeholders": {
               "{direction}": {
                 "source": "caty06_tables",
                 "path": "nib_trend.direction",
                 "format": "text"
               },
-              "{start}": {
+              "{start_period}": {
                 "source": "caty06_tables",
-                "path": "nib_trend.q1_2022_nib_pct",
+                "path": "nib_trend.start_period",
+                "format": "text"
+              },
+              "{start_pct}": {
+                "source": "caty06_tables",
+                "path": "nib_trend.start_pct",
                 "format": "decimal",
                 "decimals": 1
               },
-              "{end}": {
+              "{end_period}": {
                 "source": "caty06_tables",
-                "path": "nib_trend.q2_2025_nib_pct",
+                "path": "nib_trend.end_period",
+                "format": "text"
+              },
+              "{end_pct}": {
+                "source": "caty06_tables",
+                "path": "nib_trend.end_pct",
                 "format": "decimal",
                 "decimals": 1
               },
@@ -12896,6 +12983,17 @@
                 "source": "caty06_tables",
                 "path": "nib_trend.interpretation",
                 "format": "text"
+              },
+              "{long_term_period}": {
+                "source": "caty06_tables",
+                "path": "nib_trend.long_term_base_period",
+                "format": "text"
+              },
+              "{long_term_change}": {
+                "source": "caty06_tables",
+                "path": "nib_trend.long_term_change_ppts",
+                "format": "decimal",
+                "decimals": 1
               }
             }
           }

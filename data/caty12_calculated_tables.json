@@ -1,6 +1,6 @@
 {
   "comment": "CATY_12 Valuation Model - All sensitivity tables and scenario data",
-  "last_updated": "2025-10-19T23:15:00Z",
+  "last_updated": "2025-10-22T02:14:51Z",
   "source_script": "analysis/calculate_valuation_tables.py",
   "nco_metrics": [
     {
@@ -576,16 +576,17 @@
     "framework_text": "P/TBV mapping with through-cycle NCO normalization",
     "data_sources_text": "SEC EDGAR (companyfacts, 10-Ks), FDIC Call Reports 2008-2024, Bloomberg peer data",
     "confidence_text": "High on base case; Medium on bull/bear scenarios (judgment-based)",
-    "last_updated_display": "2025-10-18 06:40:00 UTC"
+    "last_updated_display": "October 22, 2025 02:14 UTC"
   },
   "metadata": {
     "schema_version": "1.0.0",
     "file_name": "valuation_model.json",
     "purpose": "Valuation logic, scenarios, and PT bridge (blocked until dependencies met)",
-    "last_updated_iso": "2025-10-18T06:40:00Z",
+    "last_updated_iso": "2025-10-22T02:14:51Z",
     "data_policy": "No valuation outputs until files 1-11 are VERIFIED_OK or ESTIMATED_FLAGGED with documented methods",
     "loader_rule": "REFUSE to compute target_price if any dependency blocking_level >= 3 or peer metrics not VERIFIED_OK",
-    "units": "USD millions unless noted; per-share in USD; ratios in percent or bps"
+    "units": "USD millions unless noted; per-share in USD; ratios in percent or bps",
+    "last_updated_display": "October 22, 2025 02:14 UTC (automation run)"
   },
   "growth_metrics": {
     "cards": [

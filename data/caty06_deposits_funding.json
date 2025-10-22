@@ -1,32 +1,48 @@
 {
   "comment": "CATY_06 Deposits & Funding - Composition and Funding Mix",
-  "last_updated": "2025-10-19T23:55:00Z",
-  "data_source": "SEC 10-Q Q2 2025 + CATY_03 Balance Sheet",
+  "last_updated": "2025-10-22T02:18:18+00:00",
+  "data_source": "Form 8-K Exhibit 99.1 (Q3 2025 results filed 2025-10-21) + management disclosures",
   "deposit_snapshot_q2_2025": {
     "total_deposits_billions": 20.01,
-    "noninterest_bearing_billions": 5.40,
-    "interest_bearing_billions": 14.61,
-    "nib_pct": 27.0,
-    "ib_pct": 73.0,
+    "noninterest_bearing_billions": 3.38,
+    "interest_bearing_billions": 16.62,
+    "nib_pct": 16.9,
+    "ib_pct": 83.1,
     "brokered_deposits_billions": 1.12,
     "brokered_pct": 5.6
   },
   "deposit_mix_detail": {
-    "dda_billions": 5.40,
-    "savings_billions": 2.15,
-    "money_market_billions": 8.92,
-    "time_deposits_billions": 3.54,
-    "dda_pct": 27.0,
-    "savings_pct": 10.7,
-    "money_market_pct": 44.6,
-    "time_deposits_pct": 17.7
+    "dda_billions": 3.57,
+    "savings_billions": 1.42,
+    "money_market_billions": 3.59,
+    "time_deposits_billions": 9.71,
+    "dda_pct": 17.4,
+    "savings_pct": 6.9,
+    "money_market_pct": 17.5,
+    "time_deposits_pct": 47.3,
+    "now_billions": 2.23,
+    "now_pct": 10.8,
+    "q2_reference": {
+      "dda_billions": 3.38,
+      "now_billions": 2.17,
+      "money_market_billions": 3.43,
+      "savings_billions": 1.32,
+      "time_deposits_billions": 9.7
+    }
   },
   "nib_trend": {
-    "q1_2022_nib_pct": 24.0,
-    "q2_2025_nib_pct": 27.0,
-    "change_ppts": 3.0,
-    "direction": "STABLE",
-    "interpretation": "NIB mix stabilized after COVID drawdown; slight recovery"
+    "change_ppts": 0.5,
+    "direction": "IMPROVING",
+    "interpretation": "Noninterest-bearing mix ticked higher sequentially following treasury stock repatriation and seasonal cash builds.",
+    "base_period": "Q2 2025",
+    "comparison_period": "Q3 2025",
+    "start_period": "Q2 2025",
+    "start_pct": 16.9,
+    "end_period": "Q3 2025",
+    "end_pct": 17.4,
+    "long_term_base_period": "Q1 2022",
+    "long_term_base_pct": 24.0,
+    "long_term_change_ppts": -6.6
   },
   "funding_sources": {
     "deposits_pct": 84.3,
@@ -36,9 +52,20 @@
     "note": "Deposit-funded model; low reliance on wholesale funding"
   },
   "peer_comparison": {
-    "caty_nib_pct": 27.0,
+    "caty_nib_pct": 17.4,
     "peer_median_nib_pct": 31.5,
     "caty_brokered_pct": 5.6,
     "peer_median_brokered_pct": 8.2
+  },
+  "deposit_snapshot_latest": {
+    "period": "Q3 2025",
+    "as_of": "2025-09-30",
+    "total_deposits_billions": 20.52,
+    "noninterest_bearing_billions": 3.57,
+    "interest_bearing_billions": 16.95,
+    "nib_pct": 17.4,
+    "ib_pct": 82.6,
+    "brokered_deposits_billions": 1.12,
+    "brokered_pct": 5.6
   }
 }

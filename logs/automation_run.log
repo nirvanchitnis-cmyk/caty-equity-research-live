@@ -849,3 +849,24 @@
 [2025-10-22 01:53:22 UTC] reconciliation_guard.py: PASS
 [2025-10-22 01:53:22 UTC] update_all_data.py: SUCCESS
 [2025-10-22 01:57:13 UTC] disconfirmer_monitor.py status=PASS alerts=0
+[2025-10-22 02:14:33 UTC] update_all_data.py: START
+[2025-10-22 02:14:34 UTC] fetch_live_price.py: Updated market data with latest price
+[2025-10-22 02:14:37 UTC] fetch_sec_edgar.py: Fetched None None (period None)
+[2025-10-22 02:14:40 UTC] fetch_fdic_data.py: Fetched call report 20250630 (CERT 18503)
+[2025-10-22 02:14:51 UTC] fetch_peer_banks.py: Fetched 9 peers for Q2 2025
+[2025-10-22 02:14:51 UTC] generate_peer_snapshot.py: Rebuilt evidence/peer_snapshot_2025Q2.csv
+[2025-10-22 02:14:51 UTC] merge_data_sources.py: 2 conflicts logged
+[2025-10-22 02:14:51 UTC] calculate_valuation_metrics.py: Recalculated all targets and returns
+[2025-10-22 02:14:52 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-22 02:14:52 UTC] build_site.py: Rebuilt modules successfully
+[2025-10-22 02:14:52 UTC] reconciliation_guard.py: PASS
+[2025-10-22 02:14:52 UTC] update_all_data.py: SUCCESS
+[2025-10-22 02:19:31 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-22 02:20:32 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-22 02:23:08 UTC] build_site.py FAILED: "Path 'q2_2025_snapshot.eps_diluted' missing key 'eps_diluted'"
+[2025-10-22 02:23:51 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-22 02:25:05 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-22 02:26:56 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-22 02:27:30 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-22 02:28:00 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-22 02:28:36 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
