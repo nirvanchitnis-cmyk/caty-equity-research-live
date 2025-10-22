@@ -165,14 +165,14 @@
   },
   "growth_rate_sensitivity": {
     "comment": "Terminal growth rate sensitivity (base: 2.5%)",
-    "base_nco_bps": 42.8,
-    "delta_target_price_per_50bps": 0.3,
+    "base_nco_bps": 30.0,
+    "delta_target_price_per_50bps": 0.54,
     "scenarios": [
       {
         "growth_rate_pct": 2.0,
-        "target_ptbv": 1.107,
-        "target_price": 40.04,
-        "impact_text": "Lower g \u2192 slightly lower target",
+        "target_ptbv": 1.213,
+        "target_price": 43.87,
+        "impact_text": "Lower g \u2192 softer normalized target",
         "row_class": "",
         "label_html": "2.0%",
         "label_suffix": "",
@@ -181,8 +181,8 @@
       },
       {
         "growth_rate_pct": 2.5,
-        "target_ptbv": 1.087,
-        "target_price": 39.32,
+        "target_ptbv": 1.228,
+        "target_price": 44.41,
         "impact_text": "<strong>BASE CASE (Gordon Growth)</strong>",
         "row_class": "row-highlight-red",
         "label_html": "<strong>2.5%</strong>",
@@ -192,9 +192,9 @@
       },
       {
         "growth_rate_pct": 3.0,
-        "target_ptbv": 1.123,
-        "target_price": 40.61,
-        "impact_text": "Higher g \u2192 slightly higher target",
+        "target_ptbv": 1.245,
+        "target_price": 45.04,
+        "impact_text": "Higher g \u2192 richer valuation",
         "row_class": "",
         "label_html": "3.0%",
         "label_suffix": "",
