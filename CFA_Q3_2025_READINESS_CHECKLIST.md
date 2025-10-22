@@ -15,6 +15,7 @@
 | Module 09 (Capital) capital table compares Q3 vs Q2; CET1 13.15% | ✅ | `CATY_09_capital_liquidity.html`, `data/caty09_capital_liquidity.json` |
 | Valuation metadata table timestamps match Q3 run | ✅ | `CATY_12_valuation_model.html` |
 | Valuation bridge reconciles Q3 run-rate earnings to normalized base case | ✅ | `CATY_12_valuation_model.html`, `index.html` |
+| Normalization & buyback workpapers published for CFA audit | ✅ | `evidence/workpapers/CATY_Q3_2025_normalization_bridge.md`, `evidence/workpapers/CATY_Q3_2025_buyback_analysis.md` |
 | Q3 peer 8-Ks (EWBC, HAFC, WAFD) archived for regression refresh | ✅ | `evidence/raw/EWBC_2025Q3_8K/`, `HAFC_2025Q3_8K/`, `WAFD_2025Q3_8K/` |
 | Peer dataset updated with EWBC & HAFC Q3 metrics; remaining peers flagged pending filings | ⚠️ | `data/peer_data_raw.json` (`data_status`) |
 | Recent Developments list includes Oct 21 earnings release with metrics | ✅ | `index.html` / `data/recent_developments.json` |
@@ -27,4 +28,5 @@
 - Deposit betas remain anchored to Q1’22 → Q2’25 hiking window; down-cycle sensitivities flagged for update once the Q3 10-Q provides average balance schedules.
 - Criticized loan percentage retains Q2 disclosure; 8-K did not provide refreshed segmentation. Disclosure text explicitly calls this out.
 - Reconciliation guard still reports legacy marker warnings (Wilson/IRC autogen), but run exits cleanly—tracked in backlog `analysis/reconciliation_guard.py`.
+- Regression coefficients still rely on Q2 2025 peer slope/intercept; refresh scheduled once remaining Q3 8-Ks post (see `CATY_12_valuation_model.html`).
 - Next action once Q3 10-Q posts: refresh cash flow module, update criticized loan detail, rerun beta calculations with updated average balances, remove disclosures marked “pending Q3 10-Q”.

@@ -746,7 +746,7 @@
 
             <!-- BEGIN AUTOGEN: caty12-normalization-methodology -->
             <div class="bridge-card">
-                <h3>Normalization Bridge (Q3 2025 → Through-Cycle)</h3>
+                <h3 id="valuation-bridge">Normalization Bridge (Q3 2025 → Through-Cycle)</h3>
                 <table>
                     <thead>
                         <tr>
@@ -763,38 +763,40 @@
                             <td class="number">$310.8</td>
                             <td class="number">—</td>
                             <td class="number">11.18</td>
-                            <td>Annualises $77.7M quarterly net income (press release Ex.99.1, summary table).</td>
+                            <td>Annualises $77.7M net income reported in Form 8-K Exhibit 99.1 “Consolidated Financial Highlights” (<a href="evidence/raw/CATY_2025Q3_8K/ex_873308.htm" target="_blank" rel="noopener">primary source</a>).</td>
                         </tr>
                         <tr>
                             <td><strong>Align to LTM</strong></td>
                             <td class="number">$294.7</td>
                             <td class="number">-16.1</td>
                             <td class="number">10.60</td>
-                            <td>Replace run-rate with trailing twelve months (Q4’24–Q3’25) per <code>data/caty02_income_statement.json</code>.</td>
+                            <td>Replace single-quarter run-rate with trailing 12 months (Q4’24–Q3’25) per automation output (<code>data/caty02_income_statement.json</code>); quarter-by-quarter ties listed in <a href="evidence/workpapers/CATY_Q3_2025_normalization_bridge.md" target="_blank" rel="noopener">normalization workpaper</a>.</td>
                         </tr>
                         <tr>
                             <td><strong>Neutralise buyback uplift</strong></td>
                             <td class="number">$294.7</td>
                             <td class="number">—</td>
                             <td class="number">10.51</td>
-                            <td>Q3 repurchase (1.07M sh @ $46.81) lowered average TCE by ~$25M, inflating ROTE by ~9 bps (<code>data/caty10_capital_actions.json</code>).</td>
+                            <td>Adjusts ROTE for the Q3 repurchase (1.07M shares @ $46.81) which lowered average tangible equity by ~$25M; see <a href="evidence/workpapers/CATY_Q3_2025_buyback_analysis.md" target="_blank" rel="noopener">buyback analysis</a>.</td>
                         </tr>
                         <tr>
                             <td><strong>Provision overlay</strong></td>
                             <td class="number">$256.3</td>
                             <td class="number">-38.4</td>
                             <td class="number">10.21</td>
-                            <td>Apply through-cycle NCO (42.8 bps) vs. Q3 actual 18.1 bps across $19.4B loans; 20% tax shield (<code>data/fdic_nco_history.json</code>).</td>
+                            <td>ΔProvision = (42.8 − 18.1) bps × $19.4B = $48.0M; tax shield (20%) = $9.6M → after-tax drag $38.4M (<a href="evidence/workpapers/CATY_Q3_2025_normalization_bridge.md" target="_blank" rel="noopener">workpaper</a>).</td>
                         </tr>
                         <tr>
                             <td><strong>Normalized earnings power</strong></td>
                             <td class="number">$256.3</td>
                             <td class="number">—</td>
                             <td class="number">10.21</td>
-                            <td>Inputs feed the Gordon Growth path (COE 9.587%, g 2.5%) in <code>data/valuation_outputs.json</code>.</td>
+                            <td>Normalized NI feeds the Gordon Growth path (COE 9.587%, g 2.5%) tracked in <code>data/valuation_outputs.json</code>.</td>
                         </tr>
                     </tbody>
                 </table>
+                <p class="text-small text-secondary">Full source trail and arithmetic are logged in <a href="evidence/workpapers/CATY_Q3_2025_normalization_bridge.md" target="_blank" rel="noopener">CATY_Q3_2025_normalization_bridge.md</a>.</p>
+                <pre class="formula-block"><code>ΔProvision (after tax) = (42.8 − 18.1) bps × $19,449M × (1 − 0.20) = $38.4M</code></pre>
             </div>
             <div class="bridge-side-cards">
                 <div class="bridge-side-card">
@@ -827,6 +829,10 @@
                         <li><span>Source:</span> Ex.99.1 capital table + <code>data/caty10_capital_actions.json</code></li>
                     </ul>
                 </div>
+            </div>
+            <div class="alert-box warning">
+                <div class="alert-title">Regression Status</div>
+                <div class="alert-text">Regression target still uses Q2 2025 slope/intercept. Remaining peer 8-Ks (WAFD, PPBI, BANC, COLB, HOPE) are queued; coefficients will be recomputed immediately after filings post (target: October 27, 2025). Treat the $51.88 output as preliminary until that refresh lands.</div>
             </div>
 
             <!-- END AUTOGEN: caty12-normalization-methodology -->
