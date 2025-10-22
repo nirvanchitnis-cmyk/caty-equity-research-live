@@ -5,6 +5,155 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CATY - Valuation Model | Data Repository</title>
     <link rel="stylesheet" href="styles/caty-equity-research.css">
+    <style>
+        .scenario-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+            margin-top: 24px;
+        }
+
+        .scenario-card {
+            position: relative;
+            background: rgba(12, 26, 37, 0.92);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 18px 32px rgba(0, 0, 0, 0.28);
+            overflow: hidden;
+        }
+
+        .scenario-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--cathay-gold);
+            opacity: 0.9;
+        }
+
+        .scenario-card.bull::before {
+            background: linear-gradient(90deg, var(--success), rgba(255,255,255,0.35));
+        }
+
+        .scenario-card.base::before {
+            background: linear-gradient(90deg, var(--cathay-gold), rgba(255,255,255,0.25));
+        }
+
+        .scenario-card.bear::before {
+            background: linear-gradient(90deg, var(--danger), rgba(255,255,255,0.25));
+        }
+
+        .scenario-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.95rem;
+            letter-spacing: 0.08em;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.85);
+        }
+
+        .scenario-name {
+            font-size: 0.95rem;
+        }
+
+        .scenario-probability {
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.12);
+            color: rgba(255,255,255,0.9);
+        }
+
+        .scenario-rating {
+            margin-top: 16px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .scenario-rating::before {
+            content: "RATING";
+            display: block;
+            font-size: 0.7rem;
+            letter-spacing: 0.16em;
+            color: rgba(255,255,255,0.45);
+            margin-bottom: 4px;
+        }
+
+        .scenario-metrics {
+            margin: 18px 0 12px;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px 16px;
+        }
+
+        .scenario-metric {
+            padding: 10px 12px;
+            border-radius: 12px;
+            background: rgba(255,255,255,0.05);
+        }
+
+        .scenario-metric-label {
+            font-size: 0.72rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.55);
+            margin-bottom: 6px;
+        }
+
+        .scenario-metric-value {
+            font-size: 1rem;
+            font-weight: 600;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .scenario-card .text-danger {
+            color: var(--danger);
+        }
+
+        .scenario-card .text-danger-dark {
+            color: #ff4f4f;
+        }
+
+        .scenario-note {
+            margin-top: 12px;
+            font-size: 0.9rem;
+            line-height: 1.45;
+            color: rgba(255,255,255,0.75);
+            background: rgba(255,255,255,0.04);
+            border-radius: 12px;
+            padding: 12px 14px;
+        }
+
+        .scenario-card.bull .scenario-rating,
+        .scenario-card.bull .scenario-name {
+            color: rgba(133, 214, 161, 0.95);
+        }
+
+        .scenario-card.base .scenario-rating,
+        .scenario-card.base .scenario-name {
+            color: rgba(255, 214, 102, 0.95);
+        }
+
+        .scenario-card.bear .scenario-rating,
+        .scenario-card.bear .scenario-name {
+            color: rgba(255, 124, 124, 0.92);
+        }
+
+        @media (max-width: 720px) {
+            .scenario-metrics {
+                grid-template-columns: repeat(1, minmax(0, 1fr));
+            }
+        }
+    </style>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 </head>
 <body>
