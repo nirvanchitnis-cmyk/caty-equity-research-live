@@ -234,6 +234,42 @@
         </section>
 
         <!-- ======================================== -->
+        <!-- REGRESSION OUTPUTS (PRODUCT-LEVEL TEMPLATE) -->
+        <!-- ======================================== -->
+        <section id="deposit-beta-regression">
+            <h2>Deposit Beta Regressions (Template & Outputs)</h2>
+            <div class="callout-box">
+                <div class="callout-title">What This Does</div>
+                <p>
+                    Runs OLS regressions of quarterly changes in deposit product rates (time, MMA, savings, IB demand)
+                    against changes in the effective Fed Funds rate, across the last two rate cycles where available.
+                    Results update within hours of the 10-Q posting.
+                </p>
+            </div>
+
+            <h3>How to Reproduce</h3>
+            <ol>
+                <li>Extract quarterly deposit tables: <code>python3 scripts/extract_deposit_betas_q10.py --quarters 2025Q3 2025Q2 2025Q1 2024Q4 2024Q3 2024Q2 2024Q1 2023Q4 2023Q3 2023Q2 2023Q1 2022Q4 2022Q3 2022Q2 2022Q1</code></li>
+                <li>Ensure Fed Funds quarterly file is present: <code>data/fed_funds_quarterly.csv</code></li>
+                <li>Run regressions: <code>python3 scripts/compute_deposit_beta_regressions.py</code></li>
+            </ol>
+
+            <div class="source-box">
+                <div class="source-label">Outputs</div>
+                <div class="source-details">
+                    <ul>
+                        <li><a href="analysis/deposit_beta_regressions.md" target="_blank" rel="noopener">analysis/deposit_beta_regressions.md</a></li>
+                        <li><a href="analysis/deposit_beta_regressions.json" target="_blank" rel="noopener">analysis/deposit_beta_regressions.json</a></li>
+                    </ul>
+                    <p class="text-small">If these files are missing, they will appear after the above scripts are run with Q3 10‑Q.</p>
+                </div>
+            </div>
+
+            <h3>Peer Comparison Hook</h3>
+            <p>Replicate the extraction and regression for peers (e.g., EWBC, FHB, WAL) by replacing the CIK/ticker in the scripts. A consolidated table will be added to the peer module once Q3 10‑Qs are posted.</p>
+        </section>
+
+        <!-- ======================================== -->
         <!-- PEER COMPARISON -->
         <!-- ======================================== -->
         <section id="peer-comparison">

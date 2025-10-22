@@ -21,8 +21,10 @@
         <h3 class="toc-header">Table of Contents</h3>
         <ul class="toc-list">
             <li><a href="#executive-dashboard" class="toc-link">Executive Dashboard</a></li>
+            <li><a href="#roadmap-sla" class="toc-link">Roadmap & SLA</a></li>
             <li><a href="#reconciliation-dashboard" class="toc-link">🔄 Valuation Reconciliation</a></li>
             <li><a href="#interactive-visuals" class="toc-link">📊 Interactive Visuals & Modules</a></li>
+            <li><a href="#thesis-controversy" class="toc-link">Thesis & Controversy</a></li>
             <li><a href="#recent-developments" class="toc-link">Recent Developments</a></li>
             <li><a href="#company-overview" class="toc-link">Company Overview</a></li>
             <li><a href="#industry-analysis" class="toc-link">Industry Analysis</a></li>
@@ -33,6 +35,7 @@
             <li><a href="#scenario-analysis" class="toc-link">Scenario Analysis</a></li>
             <li><a href="#investment-risks" class="toc-link">Investment Risks</a></li>
             <li><a href="#driver-map" class="toc-link">Driver Map</a></li>
+            <li><a href="#cross-examination" class="toc-link">Cross-Examination</a></li>
             <li><a href="#catalysts" class="toc-link">Positive Catalysts</a></li>
             <li><a href="#esg-assessment" class="toc-link">ESG Assessment</a></li>
             <li><a href="#recommendation" class="toc-link">Recommendation</a></li>
@@ -71,6 +74,19 @@
                 Deposit betas (product‑level) and cost‑of‑equity triangulation require Q3 10‑Q + full peer refresh. Do not present to Board until gates clear.
                 SLA: deposit betas ≤24h post‑10‑Q; peer regression/COE ≤48h after last peer filing.
             </div>
+        </section>
+
+        <!-- Roadmap & SLA -->
+        <section id="roadmap-sla" class="content-section">
+            <h2>Roadmap & SLA (Board Gating)</h2>
+            <ul>
+                <li>Deposit betas: product-level regressions (time/MMA/DDA) — <strong>PENDING</strong> → <a href="CATY_05_nim_decomposition.html#deposit-beta-regression">template & commands</a></li>
+                <li>COE triangulation: CAPM (KBWR 2y weekly), implied DDM, peer regression — <strong>IN PROGRESS</strong> → <a href="CATY_16_coe_triangulation.html#reproducibility">reproducibility</a></li>
+                <li>Sensitivities: EPS & TBV/share under ±50 bps NIM, ±2% loans — <strong>ADDED</strong> → <a href="CATY_18_sensitivity_analysis.html">view table</a></li>
+                <li>Peer benchmarking: deposit mix, NIM, reserve ratios, CRE concentration — <strong>PENDING</strong></li>
+                <li>Citations: link every figure to SEC line anchors — <strong>IN PROGRESS</strong> → <a href="#evidence-notes">evidence</a></li>
+            </ul>
+            <p class="text-small text-secondary">SLA: deposit betas ≤24h post 10‑Q; COE + peers ≤48h after last peer filing.</p>
         </section>
 
         <!-- ======================================== -->
@@ -438,6 +454,13 @@
             <!-- END AUTOGEN: sensitivity-table -->
         </div>
 
+        <!-- Thesis & Controversy -->
+        <section id="thesis-controversy" class="content-section">
+            <h2>Thesis & Controversy</h2>
+            <p><strong>Working Thesis:</strong> Liability‑sensitive deposit franchise with improving NIM (3.31%) as funding costs ease; upside bounded by CRE concentration and rising credit costs (Q3 provision $28.7M). COE likely 11–12% near-term; at ~10.6% ROE, valuation upside requires sustained margin and expense discipline.</p>
+            <p><strong>Controversy:</strong> Whether deposit betas normalize fast enough in a cutting cycle to offset credit normalization and CRE tail risks. Disconfirming signals: renewed deposit competition, NPL migration in office CRE, or peer‑relative COE >12%.</p>
+        </section>
+
         <!-- ======================================== -->
         <!-- 2. VALUATION RECONCILIATION DASHBOARD -->
         <!-- ======================================== -->
@@ -710,6 +733,17 @@
                     <div class="module-card-status">
                         Updated 22 Oct 2025
                     </div>
+                </a>
+
+                <!-- Module 18: Sensitivity Analysis -->
+                <a href="CATY_18_sensitivity_analysis.html" target="_blank" rel="noopener noreferrer" class="dashboard-card module-card-link">
+                    <div class="module-card-header">
+                        <span class="module-card-icon">🧮</span>
+                        <h5 class="module-card-title">EPS/TBV Sensitivities</h5>
+                    </div>
+                    <div class="module-card-value">±50 bps / ±2%</div>
+                    <div class="module-card-description">Rate & growth elasticities</div>
+                    <div class="module-card-status">Added 22 Oct 2025</div>
                 </a>
 
                 <!-- Module 17: ESG KPI Dashboard -->
@@ -1434,14 +1468,14 @@
                         <td><span class="badge-success">Green</span></td>
                     </tr>
                     <tr>
-                        <td><strong>Loan Growth &amp; Mix</strong></td>
-                        <td>BS</td>
+                        <td><strong>Loan Growth (CRE, C&amp;I, Residential)</strong></td>
+                        <td>IS/BS</td>
                         <td>4</td>
                         <td>4</td>
                         <td>3</td>
                         <td>3</td>
-                        <td>2</td>
-                        <td><span class="badge-warning">Yellow</span></td>
+                        <td>3</td>
+                        <td><span class="badge-success">Green</span></td>
                     </tr>
                     <tr>
                         <td><strong>Deposit Costs / Betas</strong></td>
@@ -1464,14 +1498,14 @@
                         <td><span class="badge-warning">Yellow</span></td>
                     </tr>
                     <tr>
-                        <td><strong>Non-Interest Income (fees)</strong></td>
+                        <td><strong>Non‑Interest Income (fees, wealth)</strong></td>
                         <td>IS</td>
                         <td>2</td>
+                        <td>3</td>
                         <td>2</td>
-                        <td>1</td>
                         <td>2</td>
                         <td>3</td>
-                        <td><span class="badge-danger">Red</span></td>
+                        <td><span class="badge-warning">Yellow</span></td>
                     </tr>
                     <tr>
                         <td><strong>Efficiency Ratio (expenses)</strong></td>
@@ -1484,14 +1518,14 @@
                         <td><span class="badge-success">Green</span></td>
                     </tr>
                     <tr>
-                        <td><strong>Capital Actions (Buybacks)</strong></td>
-                        <td>CF</td>
-                        <td>3</td>
+                        <td><strong>Share Repurchases &amp; Capital</strong></td>
+                        <td>BS/CF</td>
+                        <td>2</td>
                         <td>5</td>
                         <td>2</td>
                         <td>4</td>
                         <td>2</td>
-                        <td><span class="badge-warning">Yellow</span></td>
+                        <td><span class="badge-success">Green</span></td>
                     </tr>
                     <tr>
                         <td><strong>Regulatory Capital Ratios (CET1)</strong></td>
@@ -1506,6 +1540,26 @@
                 </tbody>
             </table>
             <p class="text-small text-secondary">Color coding reflects pushback hierarchy provided by CFA reviewers (Green = strength, Yellow = watch, Red = weak signal). Source: Q3 2025 8-K, management commentary, FDIC Call Reports.</p>
+        </section>
+
+        <!-- ======================================== -->
+        <!-- CROSS-EXAMINATION -->
+        <!-- ======================================== -->
+        <section id="cross-examination" class="content-section">
+            <h2>Cross‑Examination (Board Prep)</h2>
+            <ol>
+                <li>Deposit Beta Evidence — regressions by product, with R²: see <a href="CATY_05_nim_decomposition.html#deposit-beta-regression">deposit beta regressions</a>.</li>
+                <li>Margin Sustainability — NIM bridge under rate cuts: see <a href="CATY_18_sensitivity_analysis.html">sensitivities</a>.</li>
+                <li>Loan Growth Composition — Q3 mix by CRE/Resi/C&amp;I: see <a href="CATY_07_loans_credit_quality.html">credit quality</a>.</li>
+                <li>Credit‑Loss Provisions — concentration and vintages: see <a href="CATY_07_loans_credit_quality.html">credit</a>, evidence pack.</li>
+                <li>Capital Utilisation — buybacks vs CET1/Tier 1: see <a href="CATY_10_capital_actions.html">capital actions</a>.</li>
+                <li>Non‑Interest Income Volatility — trajectory and headwinds: see <a href="CATY_02_income_statement.html">income statement</a>.</li>
+                <li>Expense Discipline — efficiency sustainability drivers: see <a href="CATY_02_income_statement.html">IS</a>.</li>
+                <li>Peer Relative Positioning — deposit mix/NIM/CRE/CET1 spider: pending peer refresh.</li>
+                <li>Management Control — what’s controllable vs market: annotated across Driver Map.</li>
+                <li>Disconfirming Evidence — live monitor for deposit run‑off, credit blow‑ups: see Evidence Notes.</li>
+                <li>Valuation Linkage — P/TBV &amp; P/E sensitivity: see <a href="CATY_18_sensitivity_analysis.html">sensitivities</a>.</li>
+            </ol>
         </section>
 
         <!-- ======================================== -->

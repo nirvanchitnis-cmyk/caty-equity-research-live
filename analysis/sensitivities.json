@@ -1,0 +1,43 @@
+{
+  "base": {
+    "avg_interest_earning_assets": 22000000000.0,
+    "shares_out": 68700000.0,
+    "nim": 0.0331,
+    "tax_rate": 0.23,
+    "non_interest_items_eps": 0.15,
+    "quarterly_eps": 1.13,
+    "tbvps": 41.0
+  },
+  "grid": [
+    {
+      "nim_bps": -50,
+      "eps_-2pct": 1.85,
+      "eps_0pct": 1.88,
+      "eps_2pct": 1.92
+    },
+    {
+      "nim_bps": -25,
+      "eps_-2pct": 2.0,
+      "eps_0pct": 2.04,
+      "eps_2pct": 2.07
+    },
+    {
+      "nim_bps": 0,
+      "eps_-2pct": 2.15,
+      "eps_0pct": 2.19,
+      "eps_2pct": 2.23
+    },
+    {
+      "nim_bps": 25,
+      "eps_-2pct": 2.3,
+      "eps_0pct": 2.34,
+      "eps_2pct": 2.39
+    },
+    {
+      "nim_bps": 50,
+      "eps_-2pct": 2.45,
+      "eps_0pct": 2.5,
+      "eps_2pct": 2.55
+    }
+  ]
+}

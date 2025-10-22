@@ -205,6 +205,27 @@
             <!-- END AUTOGEN: caty16-capm-sensitivity-note -->
         </section>
 
+        <section id="reproducibility">
+            <h2>Reproducibility & Commands</h2>
+            <div class="source-box">
+                <div class="source-label">CAPM (Weekly, ~2y)</div>
+                <div class="source-details">
+                    <p>Run: <code>python3 scripts/compute_capm_beta.py --rf 0.0423 --erp 0.0585</code></p>
+                    <ul>
+                        <li><a href="analysis/capm_beta_results.md" target="_blank" rel="noopener">analysis/capm_beta_results.md</a></li>
+                        <li><a href="analysis/capm_beta_results.json" target="_blank" rel="noopener">analysis/capm_beta_results.json</a></li>
+                    </ul>
+                    <p class="text-small">Benchmark defaults to KBWR, falls back to KRE if unavailable. Adjust Rf/ERP as needed. Requires <code>yfinance</code>.</p>
+                </div>
+            </div>
+            <div class="source-box">
+                <div class="source-label">Peer Regression Overlay</div>
+                <div class="source-details">
+                    <p>Next: add peer cross-section (P/TBV vs ROE, risk controls) to imply COE. Template will be published to <code>analysis/peer_regression_coe.md</code> after peer 10‑Qs.</p>
+                </div>
+            </div>
+        </section>
+
         <section id="fama-french">
             <h2>2. Fama-French 3-Factor Model</h2>
 
