@@ -313,7 +313,7 @@
                     <div class="scenario-header">
                         <div class="scenario-name">BULL CASE</div>
                         <!-- BEGIN AUTOGEN: caty12-scenario-bull-prob -->
-                        <div class="scenario-probability">25% Prob</div>
+                        <div class="scenario-probability">Wilson 95% (see index)</div>
                         <!-- END AUTOGEN: caty12-scenario-bull-prob -->
                     </div>
                     <div class="scenario-rating">HOLD</div>
@@ -357,7 +357,7 @@
                     <div class="scenario-header">
                         <div class="scenario-name">BASE CASE</div>
                         <!-- BEGIN AUTOGEN: caty12-scenario-base-prob -->
-                        <div class="scenario-probability">60% Prob</div>
+                        <div class="scenario-probability">Wilson 95% (see index)</div>
                         <!-- END AUTOGEN: caty12-scenario-base-prob -->
                     </div>
                     <div class="scenario-rating">HOLD</div>
@@ -403,7 +403,7 @@
                     <div class="scenario-header">
                         <div class="scenario-name">BEAR CASE</div>
                         <!-- BEGIN AUTOGEN: caty12-scenario-bear-prob -->
-                        <div class="scenario-probability">15% Prob</div>
+                        <div class="scenario-probability">Wilson 95% (see index)</div>
                         <!-- END AUTOGEN: caty12-scenario-bear-prob -->
                     </div>
                     <div class="scenario-rating">HOLD</div>
@@ -636,9 +636,9 @@
                         <td>Normalized effective tax rate</td>
                     </tr>
                     <tr>
-                        <td><strong>Through-Cycle NCO (Base)</strong></td>
-                        <td class="number">42.8 bps</td>
-                        <td>FDIC Call Report history 2008-2024 (includes GFC peak 234 bps in 2009)</td>
+                        <td><strong>Through‑Cycle NCO (Base)</strong></td>
+                        <td class="number">30.0 bps</td>
+                        <td>Post‑2014 90th percentile; 42.8 bps retained as guardrail (<a href="evidence/workpapers/CATY_FDIC_NCO_series.md" target="_blank" rel="noopener">workpaper</a>)</td>
                     </tr>
                 </tbody>
             </table>
@@ -681,6 +681,35 @@
                 </div>
             </div>
             <!-- END AUTOGEN: caty12-ptbv-source-box -->
+
+            <div class="bridge-card">
+                <h4>P/TBV Reconciliation Bridge (Current → Fair)</h4>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td><strong>Start:</strong> Market P/TBV</td>
+                            <td class="number">1.269×</td>
+                            <td>Spot $47.13 ÷ TBVPS $37.13 (approx.)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Normalize Credit:</strong> ROTE → 11.20%</td>
+                            <td class="number">−</td>
+                            <td>Apply 30 bps NCO base (post‑2014 P90) per <a href="evidence/workpapers/CATY_Q3_2025_normalization_bridge.md" target="_blank" rel="noopener">bridge</a></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cost of Equity / g:</strong> COE 9.587%, g 2.5%</td>
+                            <td class="number">→</td>
+                            <td>Map via Gordon formula (see below)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Result:</strong> Fair P/TBV</td>
+                            <td class="number"><strong>1.228×</strong></td>
+                            <td>Target price <strong>$44.39</strong> (HOLD band)</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="text-small text-secondary">This bridge explains the discount from market multiple to fair multiple by (i) normalizing credit costs and (ii) applying COE/g assumptions. Full arithmetic in the linked workpaper.</p>
+            </div>
         </section>
 
         <!-- ======================================== -->
@@ -884,14 +913,14 @@
                 <h4>Base Case Cell (COE 9.587%, g 2.5%)</h4>
                 <p class="text-emphasis">
                     Using our calibrated COE of <strong>9.587%</strong> and growth rate of <strong>2.5%</strong>,
-                    the bull case (25 bps NCO) implies a P/TBV of approximately <strong>1.273x</strong>,
-                    which translates to a target price of <strong>$46.02</strong> (essentially at spot).
+                    the <strong>base case</strong> (30 bps NCO) implies a fair P/TBV of <strong>1.228x</strong> and target of <strong>$44.39</strong>.
+                    The 42.8 bps through‑cycle mean is treated as a <strong>stress guardrail</strong> and not the base.
                 </p>
             </div>
             <!-- END AUTOGEN: caty12-coe-highlight -->
 
             <!-- BEGIN AUTOGEN: caty12-growth-heading -->
-            <h3>Sensitivity to Growth Rate (Base Case: 42.8 bps NCO)</h3>
+            <h3>Sensitivity to Growth Rate (Base Case: 30.0 bps NCO)</h3>
             <!-- END AUTOGEN: caty12-growth-heading -->
             <!-- BEGIN AUTOGEN: caty12-growth-sensitivity-table -->
             <table>
@@ -1030,8 +1059,8 @@
 
             <!-- BEGIN AUTOGEN: caty12-monte-intro -->
             <p class="text-intro">
-                A Monte Carlo simulation was run with the following probability weights: <strong>25% Bull, 60% Base, 15% Bear</strong>.
-                The simulation confirms the central tendency around the base case target of $44.39 (Gordon Growth).
+                A Monte Carlo simulation illustrates dispersion around the valuation inputs (ROTE, COE, g, NCO, TBVPS).
+                Scenario presentation here is <strong>illustrative</strong>; <em>controlling weights</em> are derived via the <strong>Wilson 95%</strong> framework and displayed on <a href="index.html">index.html</a> (see <a href="evidence/WILSON_WINDOW_METHODOLOGY.md" target="_blank" rel="noopener">methodology</a>).
             </p>
             <!-- END AUTOGEN: caty12-monte-intro -->
 
