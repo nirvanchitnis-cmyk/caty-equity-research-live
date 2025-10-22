@@ -131,6 +131,7 @@ def build_scenarios() -> Dict:
     base_nim_pct = nim_meta["base_nim_pct"]
 
     base_ib_expense_m = quarterly_interest_expense(total_ib_balance, base_ib_cost_pct)
+    base_nii_m = (base_payload["avg_interest_earning_assets"] * (base_nim_pct / 100.0) / 4.0) / 1e6
 
     scenarios = []
     for delta_bps in FED_SCENARIOS_BPS:
@@ -162,6 +163,8 @@ def build_scenarios() -> Dict:
 
         eps = round(eps_from_nim(scenario_nim_pct), 2)
         tbvps = round(tbv_from_eps(eps), 2)
+        scenario_nii_m = (base_payload["avg_interest_earning_assets"] * (scenario_nim_pct / 100.0) / 4.0) / 1e6
+        nii_delta_m = round(scenario_nii_m - base_nii_m, 2)
 
         interest_expense_m = quarterly_interest_expense(total_ib_balance, weighted_cost_pct)
         delta_interest_expense_m = round(interest_expense_m - base_ib_expense_m, 2)
@@ -179,6 +182,8 @@ def build_scenarios() -> Dict:
                 "nim_delta_bps": round(nim_delta_bps, 1),
                 "quarterly_eps": eps,
                 "tbvps": tbvps,
+                "net_interest_income_m": round(scenario_nii_m, 2),
+                "nii_delta_m": nii_delta_m,
                 "interest_expense_delta_m": delta_interest_expense_m,
                 "product_rates": product_rates,
             }

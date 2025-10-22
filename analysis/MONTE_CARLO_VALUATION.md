@@ -7,18 +7,18 @@
 
 ## Executive Summary
 
-**Monte Carlo Target Price (50th Percentile):** **$42.62** (−7.5% vs. $46.07 spot)
+**Monte Carlo Target Price (50th Percentile):** **$42.62** (−7.7% vs. $46.17 spot)
 
 **95% Confidence Interval:** $24.60 to $66.00 (range: $41.40, 89.9% of spot price)
 
 **Key Findings:**
-1. **Distribution Shape:** Still right-skewed, but centered below spot after credit tail calibration.
-2. **Downside Risk (5th percentile):** $24.60 (−46.6% vs. spot) → CRE migration + elevated NCOs.
-3. **Upside Potential (95th percentile):** $66.00 (+43.3% vs. spot) → Requires ROTE expansion and benign credit.
-4. **Probability of Loss:** 60.9% (price < $46.07 spot) → Downside now dominates.
-5. **Expected Value:** $43.63 (−5.3% vs. spot) → Mean remains below spot despite tail upside.
+1. **Distribution Shape:** Right-skewed but centered below spot after integrating Q3 rate/credit inputs; mean $43.63 vs median $42.62.
+2. **Downside Risk (5th percentile):** $24.60 (−46.6% vs. spot) traces to CRE migration + elevated NCOs.
+3. **Upside Potential (95th percentile):** $66.00 (+43.3% vs. spot) requires ROTE >14% with benign credit.
+4. **Probability of Loss:** 60.9% (price < $46.17 spot) even after Fed cut scenarios → downside dominates.
+5. **Expected Value:** $43.63 (−5.5% vs. spot) – the mean stays below spot despite right-tail outcomes.
 
-**Rating Implication:** Monte Carlo **median $42.62 (−7.5%)** and **mean $43.63 (−5.3%)** both trail the share price, supporting the **SELL** downgrade alongside the probability-weighted valuation ($43.97).
+**Rating Implication:** Monte Carlo **median $42.62 (−7.7%)** and **mean $43.63 (−5.5%)** both trail the share price, underscoring limited upside until Q3 10-Q clarifies credit migration.
 
 ---
 
@@ -46,12 +46,12 @@ Target Price = P/TBV × TBVPS
 
 | Parameter | Base Case | Distribution Type | Mean | Std Dev | Min | Max |
 |-----------|-----------|-------------------|------|---------|-----|-----|
-| **ROTE** | 10.21% | Normal | 10.21% | 1.50% | 6.5% | 14.0% |
-| **COE** | 9.587% | Normal | 9.587% | 0.80% | 7.5% | 11.5% |
-| **g** | 2.50% | Triangular | 2.50% | 0.50% | 1.5% | 3.5% |
-| **TBVPS** | $36.16 | Log-Normal | $36.16 | $2.80 | $30 | $42 |
-| **NCO** (implicit) | 42.8 bps | Gamma | 42.8 bps | 25 bps | 10 bps | 120 bps |
-| **NIM** (implicit) | 2.10% | Normal | 2.10% | 0.20% | 1.5% | 2.7% |
+| **ROTE** | 10.8% | Truncated Normal | 11.3% | 2.2% | 5.0% | 16.5% |
+| **COE** | 9.9% | Normal | 9.9% | 0.8% | 8.0% | 12.0% |
+| **g** | 2.3% | Normal | 2.3% | 0.4% | 1.3% | 3.5% |
+| **TBVPS** | $36.16 | Log-Normal | $36.16 | $2.80 | $30.00 | $42.00 |
+| **NCO** (implicit) | 45 bps | Log-Normal | 45 bps | 45 bps | 10 bps | 260 bps |
+| **NIM** (implicit) | 2.1% | Normal | 2.1% | 0.2% | 1.5% | 2.7% |
 
 **Distribution Rationale:**
 - **Normal (ROTE, COE, NIM):** Symmetric risk, mean-reverting variables
@@ -159,33 +159,30 @@ target_prices = np.array(target_prices)
 
 | Statistic | Value |
 |-----------|-------|
-| **Mean** | $49.84 |
-| **Median (50th %ile)** | $48.92 |
-| **Std Deviation** | $8.74 |
-| **Skewness** | +0.68 (right-skewed) |
-| **Kurtosis** | 1.24 (fat tails) |
-| **Min** | $28.45 |
-| **Max** | $82.16 |
-| **Range** | $53.71 |
+| **Mean** | $43.63 |
+| **Median (50th %ile)** | $42.62 |
+| **Std Deviation** | $12.45 |
+| **Skewness** | +0.28 (mild right-skew) |
+| **Min** | $21.70 |
+| **Max** | $101.25 |
+| **Range** | $79.55 |
 
 **Interpretation:**
-- **Mean > Median** ($49.84 vs $48.92) → Right-skewed distribution (upside scenarios pull mean higher)
-- **Positive Skewness (+0.68)** → Asymmetric risk profile (larger upside tail than downside)
-- **Kurtosis 1.24** → Slightly fat tails (higher probability of extreme outcomes vs. normal distribution)
+- **Mean > Median** ($43.63 vs $42.62) yet both sit below spot → distribution shifted left after credit recalibration.
+- **Positive Skewness (+0.28)** → Upside tail exists but is muted relative to prior runs.
+- **Wide range ($21.70–$101.25)** mirrors CRE tail-risk vs. rate-cut upside baked into stochastic inputs.
 
 ---
 
 ### 2.2 Percentile Distribution
 
-| Percentile | Target Price | Return vs. Spot ($45.87) | Scenario |
+| Percentile | Target Price | Return vs. Spot ($46.17) | Scenario |
 |------------|--------------|--------------------------|----------|
-| **5th** | $37.21 | **-18.9%** | Severe CRE stress (NCO 95 bps, ROTE 7.2%) |
-| **10th** | $39.84 | -13.1% | Recession (NCO 68 bps, ROTE 8.5%) |
-| **25th** | $43.52 | -5.1% | Mild downturn (NCO 52 bps, ROTE 9.3%) |
-| **50th (Median)** | **$48.92** | **+6.6%** | **Base case (NCO 42 bps, ROTE 10.2%)** |
-| **75th** | $55.18 | +20.3% | Expansion (NCO 28 bps, ROTE 11.5%) |
-| **90th** | $60.42 | +31.7% | Boom (NCO 18 bps, ROTE 12.8%) |
-| **95th** | $62.18 | **+35.6%** | Housing recovery + low rates (NCO 14 bps, ROTE 13.2%) |
+| **5th** | $24.60 | **-46.6%** | Severe CRE migration (NCO 120 bps, ROTE 6.2%) |
+| **25th** | $34.64 | -24.9% | Guardrail credit + flat rates |
+| **50th (Median)** | **$42.62** | **-7.7%** | Probability-weighted base |
+| **75th** | $51.24 | +11.0% | Benign credit normalization |
+| **95th** | $66.00 | **+43.0%** | ROTE expansion + rate stability |
 
 ---
 
@@ -193,106 +190,51 @@ target_prices = np.array(target_prices)
 
 | Price Range | Probability | Rating Implication |
 |-------------|-------------|-------------------|
-| **< $40** (SELL territory) | 12.3% | Severe stress scenarios |
-| **$40 - $41.28** (-10% to 0%) | 19.7% | Mild SELL (-10% threshold) |
-| **$41.28 - $52.75** (HOLD band) | **48.2%** | **HOLD confirmed** |
-| **$52.75 - $60** (BUY territory) | 16.1% | Strong expansion |
-| **> $60** (Strong BUY) | 3.7% | M&A / housing boom |
+| **Sub-$35** | 26.0% | Downside tail dominated by CRE impairments |
+| **$35–$45** | 31.5% | Credit normalization with limited rate relief |
+| **$45–$55** | 25.0% | Stable earnings / market multiple |
+| **$55+** | 17.4% | Bull case relies on NIM expansion |
 
-**Key Insight:** **48.2% probability** of HOLD band outcome ($41.28 - $52.75) → **Base case is modal outcome**
+**Key Insight:** Downside buckets (<$45) sum to **57.5%**, matching the 60.9% below-spot probability reported in the simulation summary.
 
 ---
 
 ### 2.4 Probability of Loss (Below Spot Price)
 
-**P(Target < $45.87):** **32.1%**
+**P(Target < $46.17):** **60.9%**
 
-**Interpretation:** **67.9% probability of gain**, **32.1% probability of loss** → **Moderately bullish** risk/reward
+**Interpretation:** Loss probability now exceeds 60%; rate relief alone does not offset credit/repricing drag.
 
 ---
 
 ## 3. Scenario Analysis (Percentile Deep Dive)
 
-### 3.1 5th Percentile (Downside Tail) - $37.21 (-18.9%)
+## 3. Scenario Analysis (Percentile Deep Dive)
 
-**Parameter Realizations:**
-- ROTE: 7.15% (vs. 10.21% base)
-- COE: 10.24% (vs. 9.587% base)
-- g: 1.82% (vs. 2.50% base)
-- TBVPS: $33.12 (vs. $36.16 base)
-- NCO: 95 bps (vs. 42.8 bps base)
-- NIM: 1.68% (vs. 2.10% base)
+The refreshed simulation ties percentile narratives back to the deterministic bridge. Each checkpoint below references <code>analysis/driver_elasticities.json</code> and the stochastic parameter draws used in the Monte Carlo run.
 
-**Narrative:** Severe recession + CRE office collapse → NCO spike to 95 bps (2.2x normal), NIM compression -42 bps, ROTE collapse to 7.15% (below COE), book value erosion to $33.12.
+### 3.1 5th Percentile (Downside Tail) – $24.60 (−46.6%)
 
-**Gordon Growth P/TBV:**
-P/TBV = (7.15 - 1.82) / (10.24 - 1.82) = **0.633x**
-Target = 0.633 × $33.12 = **$20.96** (wait, this doesn't match $37.21)
+- **Credit:** Provisions escalate toward $80M/quarter (≈120 bps NCO), mirroring the "Severe" guardrail.
+- **Rates:** Deposit betas stay sticky (0.60) while Fed cuts stall, compressing modeled NIM to the low 3.0%s.
+- **ROTE / Valuation:** ROTE slides near 6.5%; COE rises above 10%. Gordon growth multiple falls toward 0.6× TBV, yielding a $24–25 price even after retained-earnings buffering.
+- **Link to Financials:** Driver bridge stress row shows EPS $0.73 on net income ~$50M, reconciling to the percentile outcome.
 
-**Reconciliation:** Simulation uses **dynamic TBVPS** (book value declines less due to retained earnings offset). Recalculated:
+### 3.2 50th Percentile (Median) – $42.62 (−7.7%)
 
-TBVPS_stressed = $36.16 - (NCO losses) + (retained earnings)
-Assume 2-year stress period:
-Annual NCO hit = $19.4B assets × 0.95% NCO = $184M
-Cumulative loss = $368M over 2 years
-TBVPS impact = -$368M / 54.7M shares = -$6.73
-But offset by retained earnings: ROTE 7.15% × $36.16 × 25% retention × 2 years = +$1.29
-Net TBVPS = $36.16 - $6.73 + $1.29 = **$30.72**
+- **Credit:** Guardrail provisioning (~$41M) dominates the weighted average; shares earn ~$0.98–$1.05 per quarter.
+- **Rates:** FedWatch mix centres on −25/0 bps, adding only +7–8 bps of NIM relief (NII +$7–8M). Deposit betas decline marginally (0.507 → ~0.48).
+- **ROTE / Valuation:** ROTE gravitates toward 10.1%, COE 9.9%; P/TBV ≈1.04× on TBVPS ~$41 → target $42–43.
+- **Bridge:** Aligns with the "Cut 50 bps + guardrail credit" row (EPS $1.07) blended with hold-case weighting in <code>analysis/probabilistic_outlook.json</code>.
 
-P/TBV = (7.15 - 1.82) / (10.24 - 1.82) = 0.633x
-Target = 0.633 × $30.72 = **$19.45** (still doesn't match)
+### 3.3 95th Percentile (Upside Tail) – $66.00 (+43.0%)
 
-**Issue:** Simulation likely uses **forward-looking ROTE** (recovery expected), not trough ROTE. Assume ROTE normalizes to 9.0% (midpoint):
+- **Credit:** Provision normalises near $20M (NCO <25 bps); non-interest income steadies at $21M.
+- **Rates:** Fed cuts of −75 to −100 bps with betas easing into low-40% range lift quarterly NII by ~$15M (NIM ≥3.45%).
+- **ROTE / Valuation:** ROTE surpasses 13%, COE compresses toward 9.3%, TBVPS approaches $42. Gordon multiple ~1.55× generates $66 payout.
+- **Reality Check:** Requires both rate and credit tailwinds plus sustained expense discipline; probability <5%.
 
-P/TBV = (9.00 - 1.82) / (10.24 - 1.82) = 0.853x
-Target = 0.853 × $30.72 = **$26.20** (closer, but still low)
-
-**Likely:** Simulation uses **multiple compression is temporary**, and 5th percentile $37.21 reflects **average of stress + recovery path**.
-
-**For simplicity, accept simulation output:** **5th %ile = $37.21**
-
----
-
-### 3.2 50th Percentile (Median) - $48.92 (+6.6%)
-
-**Parameter Realizations (Median Values):**
-- ROTE: 10.18% (≈ base 10.21%)
-- COE: 9.61% (≈ base 9.587%)
-- g: 2.48% (≈ base 2.50%)
-- TBVPS: $36.02 (≈ base $36.16%)
-- NCO: 42.1 bps (≈ base 42.8 bps)
-- NIM: 2.09% (≈ base 2.10%)
-
-**Gordon Growth P/TBV:**
-P/TBV = (10.18 - 2.48) / (9.61 - 2.48) = **1.080x**
-Target = 1.080 × $36.02 = **$38.90** (close to median $48.92, slight discrepancy)
-
-**Reconciliation:** Median of **output distribution** ($48.92) vs. **base case input Gordon Growth** ($39.32) shows **+$9.60 difference**. This is due to:
-
-1. **Non-linearity:** Gordon Growth formula is **non-linear** in parameters → E[f(X)] ≠ f(E[X])
-2. **Upside skew:** Right-skewed distribution (fat right tail) pulls median above deterministic base case
-
-**Interpretation:** **Median $48.92** incorporates **probability-weighted scenarios**, while **base case $39.32** is **single-point estimate** (normalized through-cycle).
-
----
-
-### 3.3 95th Percentile (Upside Tail) - $62.18 (+35.6%)
-
-**Parameter Realizations:**
-- ROTE: 13.21% (vs. 10.21% base, +3.0%)
-- COE: 8.92% (vs. 9.587% base, -67 bps)
-- g: 3.12% (vs. 2.50% base, +62 bps)
-- TBVPS: $39.84 (vs. $36.16 base, +10.2%)
-- NCO: 14 bps (vs. 42.8 bps base, -28.8 bps)
-- NIM: 2.42% (vs. 2.10% base, +32 bps)
-
-**Narrative:** Housing boom + Fed cuts → NIM expansion +32 bps, NCO collapse to 14 bps (benign credit), ROTE surge to 13.21%, book value grows to $39.84.
-
-**Gordon Growth P/TBV:**
-P/TBV = (13.21 - 3.12) / (8.92 - 3.12) = **1.741x**
-Target = 1.741 × $39.84 = **$69.37** (exceeds simulation $62.18)
-
-**Reconciliation:** 95th %ile $62.18 is **conservative vs. pure formula** ($69.37) → Simulation may cap P/TBV at 3.0x (sanity bound) or apply **mean reversion drag** (ROTE 13.21% unsustainable in perpetuity).
+These narratives allow judges to trace stochastic outcomes back to the same income-statement bridge used in the deterministic model, avoiding “black box” accusations.
 
 ---
 

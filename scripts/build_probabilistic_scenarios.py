@@ -7,16 +7,28 @@ import json
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Dict, List, Tuple
+from typing import Dict, List
 
 ROOT = Path(__file__).resolve().parents[1]
 RATE_PATH = ROOT / "analysis" / "deposit_rate_scenarios.json"
 CREDIT_PATH = ROOT / "analysis" / "credit_stress_scenarios.json"
 OUTPUT_PATH = ROOT / "analysis" / "probabilistic_outlook.json"
+MARKET_DATA_PATH = ROOT / "data" / "market_data_current.json"
 
-CURRENT_PRICE = 46.07  # Spot price 22-Oct-2025 close
 BASE_QUARTERLY_EPS = 1.13  # Q3'25 diluted EPS per 8-K Exhibit 99.1
 BASE_TBV = 41.00  # Guardrail TBVPS per Module 18 sensitivity baseline
+
+def load_current_price() -> float:
+    if not MARKET_DATA_PATH.exists():
+        raise FileNotFoundError(f"Missing market data file: {MARKET_DATA_PATH}")
+    payload = json.loads(MARKET_DATA_PATH.read_text())
+    price = payload.get("price")
+    if price is None:
+        raise ValueError("Market data payload missing 'price'")
+    return float(price)
+
+
+CURRENT_PRICE = load_current_price()
 CURRENT_P_E = CURRENT_PRICE / (BASE_QUARTERLY_EPS * 4.0)
 CURRENT_P_TBV = CURRENT_PRICE / BASE_TBV
 
@@ -109,10 +121,11 @@ def combine_scenarios() -> Dict:
     expected_price = 0.0
     expected_eps = 0.0
     expected_tbv = 0.0
+    probability_sum = 0.0
 
     for rate in rate_map.values():
         for credit in credit_map.values():
-            joint_prob = round(rate.probability * credit.probability, 4)
+            joint_prob = rate.probability * credit.probability
             adj_eps = rate.eps + credit.eps_delta
             adj_tbv = rate.tbvps + credit.tbv_delta
             annual_eps = annualize_eps(adj_eps)
@@ -123,7 +136,7 @@ def combine_scenarios() -> Dict:
                 {
                     "rate_fed_change_bps": rate.fed_change_bps,
                     "credit_scenario": credit.name,
-                    "probability": joint_prob,
+                    "probability": round(joint_prob, 4),
                     "quarterly_eps": round(adj_eps, 2),
                     "annual_eps": round(annual_eps, 2),
                     "tbvps": round(adj_tbv, 2),
@@ -137,10 +150,12 @@ def combine_scenarios() -> Dict:
             expected_price += implied_price * joint_prob
             expected_eps += annual_eps * joint_prob
             expected_tbv += adj_tbv * joint_prob
+            probability_sum += joint_prob
 
     expected_price = round(expected_price, 2)
     expected_eps = round(expected_eps, 2)
     expected_tbv = round(expected_tbv, 2)
+    probability_sum = round(probability_sum, 4)
 
     return {
         "generated_at": datetime.now(timezone.utc).isoformat(),
@@ -150,6 +165,7 @@ def combine_scenarios() -> Dict:
         "rate_probabilities": RATE_PROB,
         "credit_probabilities": CREDIT_PROB,
         "combined_scenarios": combined,
+        "probability_sum": probability_sum,
         "expected": {
             "price": expected_price,
             "annual_eps": expected_eps,

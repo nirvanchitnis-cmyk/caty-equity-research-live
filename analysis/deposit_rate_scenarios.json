@@ -1,5 +1,5 @@
 {
-  "generated_at": "2025-10-22T18:04:28.804968+00:00",
+  "generated_at": "2025-10-22T22:01:17.264720+00:00",
   "base": {
     "fed_funds_pct": 5.33,
     "interest_bearing_cost_pct": 3.28,
@@ -23,6 +23,8 @@
       "nim_delta_bps": 27.9,
       "quarterly_eps": 1.3,
       "tbvps": 41.12,
+      "net_interest_income_m": 197.4,
+      "nii_delta_m": 15.35,
       "interest_expense_delta_m": -26.16,
       "product_rates": [
         {
@@ -63,6 +65,8 @@
       "nim_delta_bps": 21.0,
       "quarterly_eps": 1.26,
       "tbvps": 41.09,
+      "net_interest_income_m": 193.57,
+      "nii_delta_m": 11.52,
       "interest_expense_delta_m": -19.63,
       "product_rates": [
         {
@@ -103,6 +107,8 @@
       "nim_delta_bps": 14.0,
       "quarterly_eps": 1.22,
       "tbvps": 41.06,
+      "net_interest_income_m": 189.75,
+      "nii_delta_m": 7.7,
       "interest_expense_delta_m": -13.1,
       "product_rates": [
         {
@@ -143,6 +149,8 @@
       "nim_delta_bps": 7.0,
       "quarterly_eps": 1.17,
       "tbvps": 41.03,
+      "net_interest_income_m": 185.93,
+      "nii_delta_m": 3.88,
       "interest_expense_delta_m": -6.57,
       "product_rates": [
         {
@@ -183,6 +191,8 @@
       "nim_delta_bps": 0.1,
       "quarterly_eps": 1.13,
       "tbvps": 41.0,
+      "net_interest_income_m": 182.1,
+      "nii_delta_m": 0.05,
       "interest_expense_delta_m": -0.04,
       "product_rates": [
         {
@@ -223,6 +233,8 @@
       "nim_delta_bps": -6.9,
       "quarterly_eps": 1.09,
       "tbvps": 40.97,
+      "net_interest_income_m": 178.28,
+      "nii_delta_m": -3.77,
       "interest_expense_delta_m": 6.49,
       "product_rates": [
         {
@@ -263,6 +275,8 @@
       "nim_delta_bps": -13.8,
       "quarterly_eps": 1.04,
       "tbvps": 40.94,
+      "net_interest_income_m": 174.46,
+      "nii_delta_m": -7.59,
       "interest_expense_delta_m": 13.02,
       "product_rates": [
         {

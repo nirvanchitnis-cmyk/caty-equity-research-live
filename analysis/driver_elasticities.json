@@ -1,0 +1,168 @@
+{
+  "generated_at": "2025-10-22T22:02:06.700754+00:00",
+  "base_snapshot": {
+    "net_interest_income_m": 189.6,
+    "noninterest_income_m": 21.0,
+    "noninterest_expense_m": 88.1,
+    "provision_m": 28.7,
+    "net_income_m": 77.7,
+    "eps": 1.13,
+    "tax_rate": 0.1716,
+    "shares_out_m": 68.7
+  },
+  "bridge_cases": [
+    {
+      "name": "Base run-rate",
+      "fed_change_bps": 0,
+      "credit_scenario": "Base LTM",
+      "financials": {
+        "net_interest_income_m": 189.65,
+        "noninterest_income_m": 21.0,
+        "noninterest_expense_m": 88.1,
+        "provision_m": 28.7,
+        "pre_tax_income_m": 93.85,
+        "tax_expense_m": 16.1,
+        "net_income_m": 77.75,
+        "eps": 1.13
+      },
+      "deltas": {
+        "nii_delta_m": 0.05,
+        "interest_expense_delta_m": -0.04,
+        "provision_delta_m": 0.0,
+        "eps_delta": 0.0
+      },
+      "inputs": {
+        "net_interest_income_base_m": 189.6,
+        "noninterest_income_base_m": 21.0,
+        "noninterest_expense_base_m": 88.1,
+        "provision_base_m": 28.7,
+        "tax_rate": 0.1716,
+        "shares_out_m": 68.7
+      }
+    },
+    {
+      "name": "Rate cut 50 bps",
+      "fed_change_bps": -50,
+      "credit_scenario": "Base LTM",
+      "financials": {
+        "net_interest_income_m": 197.3,
+        "noninterest_income_m": 21.0,
+        "noninterest_expense_m": 88.1,
+        "provision_m": 28.7,
+        "pre_tax_income_m": 101.5,
+        "tax_expense_m": 17.42,
+        "net_income_m": 84.08,
+        "eps": 1.22
+      },
+      "deltas": {
+        "nii_delta_m": 7.7,
+        "interest_expense_delta_m": -13.1,
+        "provision_delta_m": 0.0,
+        "eps_delta": 0.09
+      },
+      "inputs": {
+        "net_interest_income_base_m": 189.6,
+        "noninterest_income_base_m": 21.0,
+        "noninterest_expense_base_m": 88.1,
+        "provision_base_m": 28.7,
+        "tax_rate": 0.1716,
+        "shares_out_m": 68.7
+      }
+    },
+    {
+      "name": "Credit guardrail",
+      "fed_change_bps": 0,
+      "credit_scenario": "Guardrail",
+      "financials": {
+        "net_interest_income_m": 189.65,
+        "noninterest_income_m": 21.0,
+        "noninterest_expense_m": 88.1,
+        "provision_m": 41.1,
+        "pre_tax_income_m": 81.45,
+        "tax_expense_m": 13.98,
+        "net_income_m": 67.47,
+        "eps": 0.98
+      },
+      "deltas": {
+        "nii_delta_m": 0.05,
+        "interest_expense_delta_m": -0.04,
+        "provision_delta_m": 12.4,
+        "eps_delta": -0.15
+      },
+      "inputs": {
+        "net_interest_income_base_m": 189.6,
+        "noninterest_income_base_m": 21.0,
+        "noninterest_expense_base_m": 88.1,
+        "provision_base_m": 28.7,
+        "tax_rate": 0.1716,
+        "shares_out_m": 68.7
+      }
+    },
+    {
+      "name": "Cut 50 bps + guardrail credit",
+      "fed_change_bps": -50,
+      "credit_scenario": "Guardrail",
+      "financials": {
+        "net_interest_income_m": 197.3,
+        "noninterest_income_m": 21.0,
+        "noninterest_expense_m": 88.1,
+        "provision_m": 41.1,
+        "pre_tax_income_m": 89.1,
+        "tax_expense_m": 15.29,
+        "net_income_m": 73.81,
+        "eps": 1.07
+      },
+      "deltas": {
+        "nii_delta_m": 7.7,
+        "interest_expense_delta_m": -13.1,
+        "provision_delta_m": 12.4,
+        "eps_delta": -0.06
+      },
+      "inputs": {
+        "net_interest_income_base_m": 189.6,
+        "noninterest_income_base_m": 21.0,
+        "noninterest_expense_base_m": 88.1,
+        "provision_base_m": 28.7,
+        "tax_rate": 0.1716,
+        "shares_out_m": 68.7
+      }
+    },
+    {
+      "name": "Credit stress (85 bps)",
+      "fed_change_bps": 0,
+      "credit_scenario": "Stress",
+      "financials": {
+        "net_interest_income_m": 189.65,
+        "noninterest_income_m": 21.0,
+        "noninterest_expense_m": 88.1,
+        "provision_m": 62.3,
+        "pre_tax_income_m": 60.25,
+        "tax_expense_m": 10.34,
+        "net_income_m": 49.91,
+        "eps": 0.73
+      },
+      "deltas": {
+        "nii_delta_m": 0.05,
+        "interest_expense_delta_m": -0.04,
+        "provision_delta_m": 33.6,
+        "eps_delta": -0.4
+      },
+      "inputs": {
+        "net_interest_income_base_m": 189.6,
+        "noninterest_income_base_m": 21.0,
+        "noninterest_expense_base_m": 88.1,
+        "provision_base_m": 28.7,
+        "tax_rate": 0.1716,
+        "shares_out_m": 68.7
+      }
+    }
+  ],
+  "metadata": {
+    "sources": {
+      "net_interest_income": "Form 8-K Exhibit 99.1 (Q3 2025)",
+      "deposit_betas": "analysis/deposit_rate_scenarios.json",
+      "credit": "analysis/credit_stress_scenarios.json",
+      "shares": "data/market_data_current.json"
+    }
+  }
+}

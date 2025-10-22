@@ -1,8 +1,8 @@
 {
-  "generated_at": "2025-10-22T19:04:49.375369+00:00",
-  "current_price": 46.07,
-  "current_forward_pe": 10.19,
-  "current_ptbv": 1.124,
+  "generated_at": "2025-10-22T21:59:37.597248+00:00",
+  "current_price": 46.17,
+  "current_forward_pe": 10.21,
+  "current_ptbv": 1.126,
   "rate_probabilities": {
     "-100": 0.08,
     "-50": 0.22,
@@ -25,11 +25,11 @@
       "quarterly_eps": 1.3,
       "annual_eps": 5.2,
       "tbvps": 41.12,
-      "current_pe_at_price": 8.86,
+      "current_pe_at_price": 8.88,
       "current_ptbv_at_price": 1.12,
-      "implied_price_pe": 53.0,
-      "implied_price_ptbv": 46.2,
-      "implied_price_avg": 49.6
+      "implied_price_pe": 53.12,
+      "implied_price_ptbv": 46.31,
+      "implied_price_avg": 49.72
     },
     {
       "rate_fed_change_bps": -100,
@@ -38,11 +38,11 @@
       "quarterly_eps": 1.16,
       "annual_eps": 4.64,
       "tbvps": 41.02,
-      "current_pe_at_price": 9.93,
-      "current_ptbv_at_price": 1.12,
-      "implied_price_pe": 47.29,
-      "implied_price_ptbv": 46.09,
-      "implied_price_avg": 46.69
+      "current_pe_at_price": 9.95,
+      "current_ptbv_at_price": 1.13,
+      "implied_price_pe": 47.4,
+      "implied_price_ptbv": 46.19,
+      "implied_price_avg": 46.8
     },
     {
       "rate_fed_change_bps": -100,
@@ -51,11 +51,11 @@
       "quarterly_eps": 0.92,
       "annual_eps": 3.68,
       "tbvps": 40.86,
-      "current_pe_at_price": 12.52,
+      "current_pe_at_price": 12.55,
       "current_ptbv_at_price": 1.13,
-      "implied_price_pe": 37.51,
-      "implied_price_ptbv": 45.91,
-      "implied_price_avg": 41.71
+      "implied_price_pe": 37.59,
+      "implied_price_ptbv": 46.01,
+      "implied_price_avg": 41.8
     },
     {
       "rate_fed_change_bps": -100,
@@ -64,11 +64,11 @@
       "quarterly_eps": 0.73,
       "annual_eps": 2.92,
       "tbvps": 40.73,
-      "current_pe_at_price": 15.78,
+      "current_pe_at_price": 15.81,
       "current_ptbv_at_price": 1.13,
-      "implied_price_pe": 29.76,
-      "implied_price_ptbv": 45.77,
-      "implied_price_avg": 37.77
+      "implied_price_pe": 29.83,
+      "implied_price_ptbv": 45.87,
+      "implied_price_avg": 37.85
     },
     {
       "rate_fed_change_bps": -50,
@@ -77,11 +77,11 @@
       "quarterly_eps": 1.22,
       "annual_eps": 4.88,
       "tbvps": 41.06,
-      "current_pe_at_price": 9.44,
+      "current_pe_at_price": 9.46,
       "current_ptbv_at_price": 1.12,
-      "implied_price_pe": 49.74,
-      "implied_price_ptbv": 46.14,
-      "implied_price_avg": 47.94
+      "implied_price_pe": 49.85,
+      "implied_price_ptbv": 46.24,
+      "implied_price_avg": 48.05
     },
     {
       "rate_fed_change_bps": -50,
@@ -90,11 +90,11 @@
       "quarterly_eps": 1.08,
       "annual_eps": 4.32,
       "tbvps": 40.96,
-      "current_pe_at_price": 10.66,
-      "current_ptbv_at_price": 1.12,
-      "implied_price_pe": 44.03,
-      "implied_price_ptbv": 46.03,
-      "implied_price_avg": 45.03
+      "current_pe_at_price": 10.69,
+      "current_ptbv_at_price": 1.13,
+      "implied_price_pe": 44.13,
+      "implied_price_ptbv": 46.12,
+      "implied_price_avg": 45.12
     },
     {
       "rate_fed_change_bps": -50,
@@ -103,11 +103,11 @@
       "quarterly_eps": 0.84,
       "annual_eps": 3.36,
       "tbvps": 40.8,
-      "current_pe_at_price": 13.71,
+      "current_pe_at_price": 13.74,
       "current_ptbv_at_price": 1.13,
-      "implied_price_pe": 34.25,
-      "implied_price_ptbv": 45.85,
-      "implied_price_avg": 40.05
+      "implied_price_pe": 34.32,
+      "implied_price_ptbv": 45.94,
+      "implied_price_avg": 40.13
     },
     {
       "rate_fed_change_bps": -50,
@@ -116,11 +116,11 @@
       "quarterly_eps": 0.65,
       "annual_eps": 2.6,
       "tbvps": 40.67,
-      "current_pe_at_price": 17.72,
-      "current_ptbv_at_price": 1.13,
-      "implied_price_pe": 26.5,
-      "implied_price_ptbv": 45.7,
-      "implied_price_avg": 36.1
+      "current_pe_at_price": 17.76,
+      "current_ptbv_at_price": 1.14,
+      "implied_price_pe": 26.56,
+      "implied_price_ptbv": 45.8,
+      "implied_price_avg": 36.18
     },
     {
       "rate_fed_change_bps": -25,
@@ -129,11 +129,11 @@
       "quarterly_eps": 1.17,
       "annual_eps": 4.68,
       "tbvps": 41.03,
-      "current_pe_at_price": 9.84,
-      "current_ptbv_at_price": 1.12,
-      "implied_price_pe": 47.7,
-      "implied_price_ptbv": 46.1,
-      "implied_price_avg": 46.9
+      "current_pe_at_price": 9.87,
+      "current_ptbv_at_price": 1.13,
+      "implied_price_pe": 47.8,
+      "implied_price_ptbv": 46.2,
+      "implied_price_avg": 47.0
     },
     {
       "rate_fed_change_bps": -25,
@@ -142,11 +142,11 @@
       "quarterly_eps": 1.03,
       "annual_eps": 4.12,
       "tbvps": 40.93,
-      "current_pe_at_price": 11.18,
+      "current_pe_at_price": 11.21,
       "current_ptbv_at_price": 1.13,
-      "implied_price_pe": 41.99,
-      "implied_price_ptbv": 45.99,
-      "implied_price_avg": 43.99
+      "implied_price_pe": 42.08,
+      "implied_price_ptbv": 46.09,
+      "implied_price_avg": 44.09
     },
     {
       "rate_fed_change_bps": -25,
@@ -155,11 +155,11 @@
       "quarterly_eps": 0.79,
       "annual_eps": 3.16,
       "tbvps": 40.77,
-      "current_pe_at_price": 14.58,
+      "current_pe_at_price": 14.61,
       "current_ptbv_at_price": 1.13,
-      "implied_price_pe": 32.21,
-      "implied_price_ptbv": 45.81,
-      "implied_price_avg": 39.01
+      "implied_price_pe": 32.28,
+      "implied_price_ptbv": 45.91,
+      "implied_price_avg": 39.09
     },
     {
       "rate_fed_change_bps": -25,
@@ -168,11 +168,11 @@
       "quarterly_eps": 0.6,
       "annual_eps": 2.4,
       "tbvps": 40.64,
-      "current_pe_at_price": 19.2,
-      "current_ptbv_at_price": 1.13,
-      "implied_price_pe": 24.46,
-      "implied_price_ptbv": 45.67,
-      "implied_price_avg": 35.06
+      "current_pe_at_price": 19.24,
+      "current_ptbv_at_price": 1.14,
+      "implied_price_pe": 24.52,
+      "implied_price_ptbv": 45.76,
+      "implied_price_avg": 35.14
     },
     {
       "rate_fed_change_bps": 0,
@@ -181,11 +181,11 @@
       "quarterly_eps": 1.13,
       "annual_eps": 4.52,
       "tbvps": 41.0,
-      "current_pe_at_price": 10.19,
-      "current_ptbv_at_price": 1.12,
-      "implied_price_pe": 46.07,
-      "implied_price_ptbv": 46.07,
-      "implied_price_avg": 46.07
+      "current_pe_at_price": 10.21,
+      "current_ptbv_at_price": 1.13,
+      "implied_price_pe": 46.17,
+      "implied_price_ptbv": 46.17,
+      "implied_price_avg": 46.17
     },
     {
       "rate_fed_change_bps": 0,
@@ -194,11 +194,11 @@
       "quarterly_eps": 0.99,
       "annual_eps": 3.96,
       "tbvps": 40.9,
-      "current_pe_at_price": 11.63,
+      "current_pe_at_price": 11.66,
       "current_ptbv_at_price": 1.13,
-      "implied_price_pe": 40.36,
-      "implied_price_ptbv": 45.96,
-      "implied_price_avg": 43.16
+      "implied_price_pe": 40.45,
+      "implied_price_ptbv": 46.06,
+      "implied_price_avg": 43.26
     },
     {
       "rate_fed_change_bps": 0,
@@ -207,11 +207,11 @@
       "quarterly_eps": 0.75,
       "annual_eps": 3.0,
       "tbvps": 40.74,
-      "current_pe_at_price": 15.36,
+      "current_pe_at_price": 15.39,
       "current_ptbv_at_price": 1.13,
-      "implied_price_pe": 30.58,
-      "implied_price_ptbv": 45.78,
-      "implied_price_avg": 38.18
+      "implied_price_pe": 30.64,
+      "implied_price_ptbv": 45.88,
+      "implied_price_avg": 38.26
     },
     {
       "rate_fed_change_bps": 0,
@@ -220,11 +220,11 @@
       "quarterly_eps": 0.56,
       "annual_eps": 2.24,
       "tbvps": 40.61,
-      "current_pe_at_price": 20.57,
-      "current_ptbv_at_price": 1.13,
-      "implied_price_pe": 22.83,
-      "implied_price_ptbv": 45.63,
-      "implied_price_avg": 34.23
+      "current_pe_at_price": 20.61,
+      "current_ptbv_at_price": 1.14,
+      "implied_price_pe": 22.88,
+      "implied_price_ptbv": 45.73,
+      "implied_price_avg": 34.3
     },
     {
       "rate_fed_change_bps": 25,
@@ -233,11 +233,11 @@
       "quarterly_eps": 1.09,
       "annual_eps": 4.36,
       "tbvps": 40.97,
-      "current_pe_at_price": 10.57,
-      "current_ptbv_at_price": 1.12,
-      "implied_price_pe": 44.44,
-      "implied_price_ptbv": 46.04,
-      "implied_price_avg": 45.24
+      "current_pe_at_price": 10.59,
+      "current_ptbv_at_price": 1.13,
+      "implied_price_pe": 44.54,
+      "implied_price_ptbv": 46.14,
+      "implied_price_avg": 45.34
     },
     {
       "rate_fed_change_bps": 25,
@@ -246,11 +246,11 @@
       "quarterly_eps": 0.95,
       "annual_eps": 3.8,
       "tbvps": 40.87,
-      "current_pe_at_price": 12.12,
+      "current_pe_at_price": 12.15,
       "current_ptbv_at_price": 1.13,
-      "implied_price_pe": 38.73,
-      "implied_price_ptbv": 45.92,
-      "implied_price_avg": 42.33
+      "implied_price_pe": 38.82,
+      "implied_price_ptbv": 46.02,
+      "implied_price_avg": 42.42
     },
     {
       "rate_fed_change_bps": 25,
@@ -259,11 +259,11 @@
       "quarterly_eps": 0.71,
       "annual_eps": 2.84,
       "tbvps": 40.71,
-      "current_pe_at_price": 16.22,
+      "current_pe_at_price": 16.26,
       "current_ptbv_at_price": 1.13,
-      "implied_price_pe": 28.95,
-      "implied_price_ptbv": 45.74,
-      "implied_price_avg": 37.34
+      "implied_price_pe": 29.01,
+      "implied_price_ptbv": 45.84,
+      "implied_price_avg": 37.43
     },
     {
       "rate_fed_change_bps": 25,
@@ -272,11 +272,11 @@
       "quarterly_eps": 0.52,
       "annual_eps": 2.08,
       "tbvps": 40.58,
-      "current_pe_at_price": 22.15,
+      "current_pe_at_price": 22.2,
       "current_ptbv_at_price": 1.14,
-      "implied_price_pe": 21.2,
-      "implied_price_ptbv": 45.6,
-      "implied_price_avg": 33.4
+      "implied_price_pe": 21.25,
+      "implied_price_ptbv": 45.7,
+      "implied_price_avg": 33.48
     },
     {
       "rate_fed_change_bps": 50,
@@ -285,11 +285,11 @@
       "quarterly_eps": 1.04,
       "annual_eps": 4.16,
       "tbvps": 40.94,
-      "current_pe_at_price": 11.07,
+      "current_pe_at_price": 11.1,
       "current_ptbv_at_price": 1.13,
-      "implied_price_pe": 42.4,
-      "implied_price_ptbv": 46.0,
-      "implied_price_avg": 44.2
+      "implied_price_pe": 42.49,
+      "implied_price_ptbv": 46.1,
+      "implied_price_avg": 44.3
     },
     {
       "rate_fed_change_bps": 50,
@@ -298,11 +298,11 @@
       "quarterly_eps": 0.9,
       "annual_eps": 3.6,
       "tbvps": 40.84,
-      "current_pe_at_price": 12.8,
+      "current_pe_at_price": 12.82,
       "current_ptbv_at_price": 1.13,
-      "implied_price_pe": 36.69,
-      "implied_price_ptbv": 45.89,
-      "implied_price_avg": 41.29
+      "implied_price_pe": 36.77,
+      "implied_price_ptbv": 45.99,
+      "implied_price_avg": 41.38
     },
     {
       "rate_fed_change_bps": 50,
@@ -311,11 +311,11 @@
       "quarterly_eps": 0.66,
       "annual_eps": 2.64,
       "tbvps": 40.68,
-      "current_pe_at_price": 17.45,
+      "current_pe_at_price": 17.49,
       "current_ptbv_at_price": 1.13,
-      "implied_price_pe": 26.91,
-      "implied_price_ptbv": 45.71,
-      "implied_price_avg": 36.31
+      "implied_price_pe": 26.97,
+      "implied_price_ptbv": 45.81,
+      "implied_price_avg": 36.39
     },
     {
       "rate_fed_change_bps": 50,
@@ -324,15 +324,16 @@
       "quarterly_eps": 0.47,
       "annual_eps": 1.88,
       "tbvps": 40.55,
-      "current_pe_at_price": 24.51,
+      "current_pe_at_price": 24.56,
       "current_ptbv_at_price": 1.14,
-      "implied_price_pe": 19.16,
-      "implied_price_ptbv": 45.56,
-      "implied_price_avg": 32.36
+      "implied_price_pe": 19.2,
+      "implied_price_ptbv": 45.66,
+      "implied_price_avg": 32.43
     }
   ],
+  "probability_sum": 1.0,
   "expected": {
-    "price": 43.97,
+    "price": 44.07,
     "annual_eps": 4.12,
     "tbvps": 40.93
   }

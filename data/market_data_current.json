@@ -1,29 +1,29 @@
 {
-  "price": 46.07,
+  "price": 46.17,
   "price_date": "2025-10-22",
-  "report_generated": "2025-10-22T19:04:25Z",
-  "data_source": "NASDAQ closing price (Tuesday, Oct 21, 2025)",
+  "report_generated": "2025-10-22T21:38:51Z",
+  "data_source": "NASDAQ closing price (Wednesday, Oct 22, 2025)",
   "ticker": "CATY",
   "company": "Cathay General Bancorp",
   "metadata": {
-    "last_trading_day": "2025-10-21",
+    "last_trading_day": "2025-10-22",
     "market_status": "closed",
-    "next_trading_day": "2025-10-22",
+    "next_trading_day": "2025-10-23",
     "data_quality": "VERIFIED",
     "update_method": "yfinance API"
   },
   "calculated_metrics": {
     "tbvps": 36.16,
-    "current_ptbv": 1.274,
+    "current_ptbv": 1.277,
     "target_regression": 51.88,
     "target_normalized": 44.39,
     "target_wilson_95": 48.95,
     "target_irc_blended": 50.12,
-    "return_regression_pct": 12.6,
-    "return_normalized_pct": -3.6,
-    "return_wilson_95_pct": 6.3,
-    "return_irc_blended_pct": 8.8,
-    "rating": "SELL",
+    "return_regression_pct": 12.4,
+    "return_normalized_pct": -3.9,
+    "return_wilson_95_pct": 6.0,
+    "return_irc_blended_pct": 8.6,
+    "rating": "HOLD",
     "normalized_ptbv": 1.228,
     "implied_coe_pct": 9.587,
     "normalized_rote_pct": 11.2,
@@ -60,8 +60,8 @@
   "report_metadata": {
     "report_date": "October 22, 2025",
     "report_date_iso": "2025-10-22",
-    "last_updated_utc": "2025-10-22T06:51:06.467906+00:00",
-    "generated_at_display": "October 22, 2025 06:51 UTC"
+    "last_updated_utc": "2025-10-22T21:38:51Z",
+    "generated_at_display": "October 22, 2025 21:36 UTC"
   },
   "narrative_prose": {
     "investment_thesis_summary": "{{company}} ({{ticker}}) trades at ${{price}} ({{price_date}}) with expected return of {{return_wilson_95_pct}}% to Wilson 95% target ${{target_wilson_95}}. Current P/TBV {{current_ptbv}}x represents premium to normalized {{normalized_ptbv}}x, driven by current earnings (ROTE {{rote_ltm_pct}}%) vs through-cycle assumptions (NCO {{through_cycle_nco_bps}} bps).",
