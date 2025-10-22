@@ -145,6 +145,28 @@ header {
     color: white;
 }
 
+/* New: Not Rated (Publication Gate) */
+.rating-nr {
+    background: #6c757d; /* neutral gray */
+    color: white;
+}
+
+/* Publication status banner */
+.status-banner {
+    border-left: 6px solid #ffc107; /* amber */
+    background: rgba(255, 193, 7, 0.12);
+    padding: 14px 18px;
+    margin: 16px 0 24px 0;
+    border-radius: 6px;
+}
+.status-banner strong {
+    color: #8a6d1d;
+}
+.status-banner.status-warning {
+    border-left-color: #dc3545; /* danger */
+    background: rgba(220, 53, 69, 0.10);
+}
+
 .price-target-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
