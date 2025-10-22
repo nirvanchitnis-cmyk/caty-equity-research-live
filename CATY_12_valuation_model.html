@@ -692,9 +692,9 @@
                             <td>Spot $47.13 ÷ TBVPS $37.13 (approx.)</td>
                         </tr>
                         <tr>
-                            <td><strong>Normalize Credit:</strong> ROTE → 11.20%</td>
-                            <td class="number">−</td>
-                            <td>Apply 30 bps NCO base (post‑2014 P90) per <a href="evidence/workpapers/CATY_Q3_2025_normalization_bridge.md" target="_blank" rel="noopener">bridge</a></td>
+                            <td><strong>Normalize Credit:</strong> Provision overlay to LTM NI</td>
+                            <td class="number">−$18.5M (after‑tax)</td>
+                            <td>30 bps base vs. 18.1 bps actual; ΔProvision 11.9 bps × $19.45B loans; 20% tax (see workpaper)</td>
                         </tr>
                         <tr>
                             <td><strong>Cost of Equity / g:</strong> COE 9.587%, g 2.5%</td>
@@ -709,6 +709,19 @@
                     </tbody>
                 </table>
                 <p class="text-small text-secondary">This bridge explains the discount from market multiple to fair multiple by (i) normalizing credit costs and (ii) applying COE/g assumptions. Full arithmetic in the linked workpaper.</p>
+            </div>
+
+            <div class="bridge-side-card">
+                <h4>Q3 → Normalized ROTE (at a glance)</h4>
+                <table>
+                    <tbody>
+                        <tr><td>Q3 Net Income</td><td class="number">$77.7M</td><td><a href="evidence/raw/CATY_2025Q3_8K/ex_873308.htm" target="_blank" rel="noopener">8‑K Ex.99.1</a></td></tr>
+                        <tr><td>ROE (reported)</td><td class="number">10.60%</td><td><a href="evidence/raw/CATY_2025Q3_8K/ex_873308.htm" target="_blank" rel="noopener">8‑K Ex.99.1</a></td></tr>
+                        <tr><td>Provision overlay (30 bps base)</td><td class="number">−$18.5M</td><td>ΔNCO 11.9 bps × $19.45B × (1−20%)</td></tr>
+                        <tr><td>Buyback effect (Q3)</td><td class="number">+$0.02 EPS</td><td><a href="evidence/workpapers/CATY_Q3_2025_buyback_analysis.md" target="_blank" rel="noopener">workpaper</a></td></tr>
+                        <tr><td>Normalized ROTE</td><td class="number">≈ 11.20%</td><td>Used in Gordon mapping</td></tr>
+                    </tbody>
+                </table>
             </div>
         </section>
 
@@ -993,6 +1006,43 @@
                 </div>
             </div>
             <p class="text-muted">Sensitivities derived from <a href="evidence/valuation_sensitivity_summary.md" target="_blank" rel="noopener">valuation_sensitivity_summary.md</a> (regression path, updated with Q3 2025 balances).</p>
+
+            <h3>NCO Sensitivity (Bank‑Level)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Base NCO (bps)</th>
+                        <th class="number">ΔProvision ($M)</th>
+                        <th class="number">After‑Tax ($M)</th>
+                        <th>Assumptions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>20</td><td class="number">+3.70</td><td class="number">+2.96</td><td>Δ vs 18.1 bps; loans $19.45B; tax 20%</td></tr>
+                    <tr><td>25</td><td class="number">+13.42</td><td class="number">+10.74</td><td>Δ vs 18.1 bps; loans $19.45B; tax 20%</td></tr>
+                    <tr class="row-highlight-gold"><td><strong>30</strong></td><td class="number"><strong>+23.14</strong></td><td class="number"><strong>+18.52</strong></td><td>Post‑2014 conservative base</td></tr>
+                    <tr><td>43</td><td class="number">+48.04</td><td class="number">+38.43</td><td>Long‑run guardrail context</td></tr>
+                </tbody>
+            </table>
+
+            <h3>NCO Distribution Summary (FDIC)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Window</th>
+                        <th class="number">n</th>
+                        <th class="number">Mean (bps)</th>
+                        <th class="number">Median (bps)</th>
+                        <th class="number">P90 (bps)</th>
+                        <th class="number">Stdev (bps)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Post‑2014</td><td class="number">46</td><td class="number">4.04</td><td class="number">2.57</td><td class="number">17.80</td><td class="number">10.66</td></tr>
+                    <tr><td>Post‑GFC (≥ 2008)</td><td class="number">70</td><td class="number">26.92</td><td class="number">7.22</td><td class="number">85.33</td><td class="number">54.28</td></tr>
+                </tbody>
+            </table>
+            <p class="text-small">Data: <code>evidence/raw/fdic_CATY_NTLNLSCOQR_timeseries.csv</code>. Post‑2014 P90 at 17.8 bps indicates the 30 bps base is conservative relative to the bank’s recent distribution.</p>
 
             <h3>EPS / NIM / TBV Bridges (Added)</h3>
             <table>
