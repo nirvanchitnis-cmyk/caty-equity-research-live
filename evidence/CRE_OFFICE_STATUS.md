@@ -267,6 +267,11 @@ Source: Q3'25 press release (PDF); see Primary Sources.
 
 Segmentation: The press release does not provide office‑specific NPL/NCO/ACL. We will update if 10‑Q or IR provides segmented figures.
 
+Footnotes:
+- NPL ratio uses end‑of‑period gross loans (Q3’25 PR table: $20.1047B) as denominator.
+- ACL ratio uses end‑of‑period gross loans (same denominator) for comparability.
+- NCO quarterly bps computed as (NCOs / EOP loans) × 10,000; annualized ≈ quarterly × 4. Where banks present NCO as avg‑loan ratio, this EOP‑based approximation is conservative.
+
 ---
 
 ## CRE/RBC — NUMERIC DISCLOSURE AND THRESHOLD
