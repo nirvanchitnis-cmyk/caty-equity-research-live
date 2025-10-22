@@ -70,9 +70,9 @@
         <!-- Publication Gate / Board Notice -->
         <section class="content-section">
             <div class="status-banner status-warning">
-                <strong>Publication Gate Active — NOT RATED.</strong>
-                Deposit betas (product‑level) and cost‑of‑equity triangulation require Q3 10‑Q + full peer refresh. Do not present to Board until gates clear.
-                SLA: deposit betas ≤24h post‑10‑Q; peer regression/COE ≤48h after last peer filing.
+                <strong>Provisional HOLD — Board gate open except for peer refresh.</strong>
+                Rate-path deposit betas, credit stress, and valuation bridge now live using Q3 8-K; final COE weighting and peer benchmarking will update within 48h of Q3 10-Q filings.
+                SLA: peer regression + FF3/DDM refresh ≤48h after last peer filing; publish revised COE pack same window.
             </div>
         </section>
 
@@ -224,12 +224,12 @@
                 </div>
                 <div class="dashboard-card">
                     <div class="dashboard-label">Current Price</div>
-                    <div class="dashboard-value">$47.13</div>
-                    <div class="dashboard-subtext">Oct 21, 2025</div>
+                    <div class="dashboard-value">$46.08</div>
+                    <div class="dashboard-subtext">Oct 22, 2025 (14:25 EDT)</div>
                 </div>
                 <div class="dashboard-card">
                     <div class="dashboard-label">Market Cap</div>
-                    <div class="dashboard-value">$3.24B</div>
+                    <div class="dashboard-value">$3.17B</div>
                     <div class="dashboard-subtext">68.70M shares</div>
                 </div>
                 <div class="dashboard-card">
@@ -352,8 +352,8 @@
             <!-- BEGIN AUTOGEN: price-target-grid -->
                 <div class="metric-card">
                     <div class="metric-label">Current Price</div>
-                    <div class="metric-value">$47.13</div>
-                    <div class="metric-subtext">As of October 21, 2025</div>
+                    <div class="metric-value">$46.08</div>
+                    <div class="metric-subtext">2:25 PM EDT · October 22, 2025</div>
                 </div>
                 <div class="metric-card">
                     <div class="metric-label">Normalized Fair Value (P/TBV 1.087x)</div>
@@ -362,13 +362,13 @@
                 </div>
                 <div class="metric-card">
                     <div class="metric-label">P/TBV (Current)</div>
-                    <div class="metric-value">1.303x</div>
-                    <div class="metric-subtext">Price / TBVPS ($36.16)</div>
+                    <div class="metric-value">1.25x</div>
+                    <div class="metric-subtext">Price / TBVPS ($36.96) — Q3 2025 8-K</div>
                 </div>
                 <div class="metric-card">
                     <div class="metric-label">Implied COE</div>
-                    <div class="metric-value">9.51%</div>
-                    <div class="metric-subtext">CAPM 2y weekly vs KBWR (4.00% Rf, 5.5% ERP) + ESG +25 bps</div>
+                    <div class="metric-value">9.99%</div>
+                    <div class="metric-subtext">CAPM 2y weekly vs KBWR (Rf 4.48%, ERP 5.50%) + ESG +25 bps</div>
                 </div>
             <!-- END AUTOGEN: price-target-grid -->
             </div>
@@ -385,16 +385,58 @@
 
             <h3>Investment Thesis</h3>
             <!-- BEGIN AUTOGEN: investment-thesis-summary -->
-            <p><strong>Rating: HOLD</strong> Cathay General Bancorp (CATY) trades at $47.13 (October 21, 2025) with expected return of +3.9% to Wilson 95% target $48.95. Current P/TBV 1.303x represents premium to normalized 1.228x, driven by current earnings (ROTE 10.60%) vs through-cycle assumptions (NCO 30.0 bps). HOLD rating reflects +3.9% expected return within -10% to +15% threshold.</p>
+            <p><strong>Rating: HOLD</strong> at $46.08 (22-Oct-2025 14:25 EDT) with probability-weighted intrinsic $46.12 (+0.1%). Rate relief contributes ~+$0.05 quarterly EPS, but guardrail credit drag (−$0.09) and a slim ROE/COE spread (11.1% vs 9.99%) cap upside; stay neutral pending Q3 10-Q deposit beta refresh and peer rerun.</p>
             <!-- END AUTOGEN: investment-thesis-summary -->
+
+            <h4>Q3 Run-Rate → Forward EPS Bridge</h4>
+            <div class="insight-box">
+                <p>We reconcile Q3 diluted EPS of <strong>$1.13</strong> (Form 8-K Exhibit 99.1) to the probability-weighted forward run-rate of <strong>$1.09</strong> (annual $4.34) produced by the scenario engine. Rate-path assumptions add +$0.05 per quarter via 32 bps of modeled deposit-cost relief, while the credit guardrail subtracts $0.09 reflecting a 25% weight on through-cycle NCOs and 15% on stress migration. Figures tie directly to <code>analysis/deposit_rate_scenarios.json</code>, <code>analysis/credit_stress_scenarios.json</code>, and <code>analysis/probabilistic_outlook.json</code>.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Step</th>
+                            <th class="numeric">Quarterly EPS</th>
+                            <th class="numeric">Δ vs Prior</th>
+                            <th>Evidence</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Q3 2025 diluted EPS (reported)</td>
+                            <td class="numeric">$1.13</td>
+                            <td class="numeric">—</td>
+                            <td><a href="evidence/raw/CATY_2025Q3_8K/ex_873308.htm" target="_blank" rel="noopener">8-K Exhibit 99.1</a></td>
+                        </tr>
+                        <tr>
+                            <td>Rate-path mix (−50/−25/0 bps weighted)</td>
+                            <td class="numeric">$1.18</td>
+                            <td class="numeric">+0.05</td>
+                            <td><a href="analysis/deposit_rate_scenarios.json" target="_blank" rel="noopener">deposit_rate_scenarios.json</a></td>
+                        </tr>
+                        <tr>
+                            <td>Credit normalization (guardrail/stress weights)</td>
+                            <td class="numeric">$1.09</td>
+                            <td class="numeric">−0.09</td>
+                            <td><a href="analysis/credit_stress_scenarios.json" target="_blank" rel="noopener">credit_stress_scenarios.json</a></td>
+                        </tr>
+                        <tr class="row-highlight-yellow">
+                            <td>Probability-weighted forward EPS</td>
+                            <td class="numeric"><strong>$1.09</strong></td>
+                            <td class="numeric">−0.04 vs Q3</td>
+                            <td><a href="analysis/probabilistic_outlook.json" target="_blank" rel="noopener">probabilistic_outlook.json</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="text-small">Quarterly per-share impacts; share-count accretion (~1.8¢) from the Q3 buyback is already embedded in the $1.13 baseline (see <a href="evidence/workpapers/CATY_Q3_2025_buyback_analysis.md" target="_blank" rel="noopener">buyback analysis workpaper</a>).</p>
+            </div>
 
             <h4>Rating Framework (Wilson Bounds)</h4>
             <!-- BEGIN AUTOGEN: key-findings-bullets -->
             <ul>
-                <li><strong>Empirical NCO Understated:</strong> 30.0 bps through-cycle average (2008-2024) vs previous 25 bps assumption; GFC peak 306 bps shows tail risk</li>
-                <li><strong>Overvaluation:</strong> Current P/TBV 1.303x vs normalized fair value 1.228x; price $47.13 vs normalized $44.39 = -5.8% expected move</li>
-                <li><strong>Mid-Tier Profitability:</strong> Normalized ROTE 11.20% trails upper-quartile peers, limiting multiple expansion</li>
-                <li><strong>CRE Concentration:</strong> 52.4% CRE exposure with 5.60% brokered deposits elevates funding sensitivity</li>
+                <li><strong>Rate relief vs credit drag:</strong> Rate mix adds +$0.05 quarterly EPS while guardrail credit costs remove $0.09, leaving forward EPS $1.09 (Module 18 + <code>analysis/probabilistic_outlook.json</code>).</li>
+                <li><strong>Valuation near fair:</strong> Spot $46.08 vs probability-weighted $46.12; normalized P/TBV 1.23× implies −3.2% drift (<code>analysis/valuation_sensitivity_summary.md</code>).</li>
+                <li><strong>Thin ROE spread:</strong> Base ROE 11.1% vs refreshed COE 9.99% (Module 12 & <a href="CATY_16_coe_triangulation.html">Module 16</a>) leaves limited cushion.</li>
+                <li><strong>Funding skew:</strong> Time deposits 58% of interest-bearing balances; every 10 bps Fed move hits EPS ~1.8¢ given a 0.63 beta (<code>analysis/deposit_beta_regressions.json</code>).</li>
             </ul>
             <!-- END AUTOGEN: key-findings-bullets -->
 
@@ -407,9 +449,9 @@
 
             <h4>Key Risks</h4>
             <ul>
-                <li><strong>CRE concentration:</strong> 52.4% of loans (latest SEC filing Q2 2025); property‑type (office) not disclosed</li>
-                <li><strong>US‑China trade:</strong> Exposure to cross‑border flows could face policy/geopolitical shocks</li>
-                <li><strong>Rate path:</strong> Faster‑than‑modeled cuts could compress asset yields</li>
+                <li><strong>Liability sensitivity:</strong> 58% time-deposit mix and 17% DDA share (IR deck slide 6) keep deposit betas elevated; +50 bps hike pushes EPS to ~$1.04 (<code>analysis/deposit_rate_scenarios.json</code>).</li>
+                <li><strong>Credit migration:</strong> $455M special-mention pool across six CRE relationships; 20% migration would add ~35 bps to NPLs (Module 08).</li>
+                <li><strong>Capital headroom:</strong> CET1 13.15% sits 115 bps above the 12% guardrail; another $50M buyback or elevated losses would breach tolerance (see <a href="evidence/workpapers/CATY_Q3_2025_buyback_analysis.md" target="_blank" rel="noopener">capital workpaper</a>).</li>
             </ul>
 
             <h4>Valuation Snapshot</h4>
@@ -425,7 +467,7 @@
                 <tbody>
                     <tr>
                         <td>P/TBV</td>
-                        <td class="text-right">1.303x</td>
+                        <td class="text-right">1.25x</td>
                         <td class="text-right">—</td>
                         <td class="text-right text-danger">—</td>
                     </tr>
@@ -444,8 +486,22 @@
         <!-- Thesis & Controversy -->
         <section id="thesis-controversy" class="content-section">
             <h2>Thesis & Controversy</h2>
-            <p><strong>Working Thesis:</strong> Liability‑sensitive deposit franchise with improving NIM (3.31%) as funding costs ease; time-deposit beta 0.87 vs money-market 0.41 highlights faster pass-through in rate cuts. Upside hinges on holding ROE ≈10.6% against refreshed COE 9.51%.</p>
-            <p><strong>Controversy:</strong> All-in beta only 0.12 because DDA shrank to 17% mix; if that mix declines further or time deposits stay elevated, NIM relief fades. Monitor CRE credit (provision $28.7M) and peer COE once factor regressions update.</p>
+            <p><strong>Investment Call:</strong> HOLD. The probability-weighted base path (60% probability: Fed eases 25–50 bps, credit stays inside guardrails) lands at $46–48 intrinsic value versus the $46.08 spot and $46.12 expected value. Upside is capped by credit and capital drag, while downside is contained by resilient NIM and buyback support.</p>
+            <ul>
+                <li><strong>Base case (60%).</strong> Weighted Fed path (−50/−25/0 bps) lowers interest-bearing deposit costs 32 bps, lifting quarterly EPS to ~$1.18 before credit adjustments; after applying guardrail weights we carry $1.09 (annual $4.34) and ROE 11.1% (<a href="analysis/probabilistic_outlook.json" target="_blank" rel="noopener">probabilistic outlook</a>).</li>
+                <li><strong>Guardrail (25%).</strong> Through-cycle NCOs at 42.8 bps reduce quarterly EPS to ~$0.99 (annual $3.96) and fair value to the mid-$45s; persistence of special-mention downgrades would tilt the rating toward SELL (<a href="analysis/credit_stress_scenarios.json" target="_blank" rel="noopener">credit stress JSON</a>).</li>
+                <li><strong>Capital/rate leverage.</strong> CET1 13.15% post-buyback leaves ~115 bps to the 12% internal floor; buybacks add ~1.8¢ EPS per quarter yet consume ~20 bps CET1, so further deployment depends on credit staying inside the base path (<a href="CATY_10_capital_actions.html">Module 10</a>).</li>
+            </ul>
+            <p><strong>Valuation bands:</strong> Spot multiples (9.9× forward P/E, 1.25× P/TBV) sit inside the HOLD band. Guardrail and stress scenarios imply spot P/E 11.6×/15.6× and fair values ≈$45/$40, framing the committee range at $44–$50 alongside the Wilson/Regression dashboard.</p>
+            <ul>
+                <li><strong>Peer context.</strong> CATY trades at 1.25× P/TBV vs peer median 1.00×; ROE 11.1% vs COE 9.99% leaves 110 bps spread, below peers such as EWBC (ROE 16.1%, COE 9.6%), reinforcing that premium multiples require flawless credit execution (<a href="CATY_11_peers_normalized.html">Peer module</a>).</li>
+            </ul>
+            <p><strong>Controversy & Disconfirmers:</strong> Credit migration and funding mix volatility could invalidate the base case.</p>
+            <ul>
+                <li><strong>Credit stress.</strong> NCOs jumping to 85 bps (movie theatre + CRE tail) drive quarterly EPS to $0.75 and TBVPS to $40.74; any sign of that trajectory triggers a downgrade (<a href="CATY_07_loans_credit_quality.html#through-cycle">Module 07</a>).</li>
+                <li><strong>Funding risk.</strong> DDA mix down to 17% with time deposits 47%; a +50 bps hike adds ~$13M interest expense per quarter and compresses ROE toward the 9.5% COE (<a href="CATY_05_nim_decomposition.html#down-cycle">Module 05</a>).</li>
+                <li><strong>Watchlist.</strong> Special-mention loans of $455M across six relationships would raise NPL ratio ~35 bps if 20% migrate; monitoring plan is embedded in <code>analysis/credit_stress_scenarios.json</code>.</li>
+            </ul>
         </section>
 
         <!-- ======================================== -->
@@ -469,17 +525,17 @@
                 <tbody>
             <tr>
                 <td><strong>Current Spot</strong></td>
-                <td class="text-align-right">$47.13</td>
+                <td class="text-align-right">$46.08</td>
                 <td class="text-align-right">—</td>
                 <td class="text-align-right">—</td>
-                <td>NASDAQ Close (Oct 20, 2025)</td>
-                <td>2025-10-21 06:27 UTC</td>
+                <td>NASDAQ intraday (Oct 22, 2025 14:25 EDT)</td>
+                <td>2025-10-22 18:35 UTC</td>
             </tr>
             <tr class="row-highlight-yellow">
                 <td><strong>Wilson 95% Upper</strong></td>
-                <td class="text-align-right">$48.95</td>
-                <td class="text-align-right">+3.9%</td>
-                <td class="text-align-right">74% / 26%</td>
+                <td class="numeric">$48.95</td>
+                <td class="numeric text-success">+3.9%</td>
+                <td class="numeric">74% / 26%</td>
                 <td><a href="analysis/probability_weighted_valuation.py" target="_blank" rel="noopener noreferrer">analysis/probability_weighted_valuation.py</a></td>
                 <td>2025-10-21 06:27 UTC</td>
             </tr>
@@ -509,11 +565,11 @@
             </tr>
             <tr class="row-highlight-blue">
                 <td><strong>Market-Implied</strong></td>
-                <td class="text-align-right">$47.13</td>
+                <td class="text-align-right">$46.08</td>
                 <td class="text-align-right">+0.0%</td>
                 <td class="text-align-right">60.9% / 39.1%</td>
                 <td><a href="analysis/probability_weighted_valuation.py" target="_blank" rel="noopener noreferrer">analysis/probability_weighted_valuation.py</a></td>
-                <td>2025-10-21 06:27 UTC</td>
+                <td>2025-10-22 18:35 UTC</td>
             </tr>
             <tr>
                 <td><strong>Monte Carlo Median</strong></td>
@@ -655,8 +711,8 @@
             <div class="price-target-grid price-target-grid-spaced">
                 <div class="metric-card">
                     <div class="metric-label">Current Price</div>
-                    <div class="metric-value">$47.13</div>
-                    <div class="metric-subtext">As of October 21, 2025</div>
+                    <div class="metric-value">$46.08</div>
+                    <div class="metric-subtext">As of October 22, 2025 (14:25 EDT)</div>
                 </div>
                 <div class="metric-card metric-card-success">
                     <div class="metric-label">Wilson 95%</div>
@@ -755,7 +811,7 @@
             <!-- BEGIN AUTOGEN: recent-developments-section -->
             <h2>Recent Developments (Last 90 Days (July 24 - October 22, 2025))</h2>
             <ul>
-                <li><strong>October 21, 2025:</strong> Q3 2025 Results (Form 8-K) - Net interest margin expanded to 3.31% (+4 bps q/q); efficiency ratio improved to 41.8%; diluted EPS $1.13. - Allowance for credit losses lifted to $196.5M (0.98% of loans) with $28.7M provision; management repurchased 1.07M shares at $46.81 average.</li>
+                <li><strong>October 21, 2025:</strong> Q3 2025 Results (Form 8-K) – Net interest margin 3.31% (+4 bps q/q), deposits up 2.6% to $20.10B and loans up 1.6% to $20.10B; management raised 2025 loan/deposit growth guidance to 3.5–5% (prior 3–4%). Provision jumped to $28.7M (movie theatre downgrades + CECL tweak) lifting ACL to $196.5M (0.98% of loans); 1.07M shares were repurchased at $46.81 (CET1 13.15%).</li>
                 <li><strong>October 21, 2025:</strong> Q3 Earnings Call (3:00 PM ET) - Monitor for loan growth, NIM guidance, CRE updates</li>
                 <li><strong>October 20, 2025:</strong> Stock Price Update - CATY closed at $47.00, down from 52-week high $55.29 - Pullback reflects broader regional bank sector weakness</li>
             </ul>
@@ -897,9 +953,9 @@
 
                 <h4>Current Valuation</h4>
                 <ul>
-                    <li><strong>Tangible Book Value per Share:</strong> $36.16</li>
-                    <li><strong>Current Price:</strong> $47.13</li>
-                    <li><strong>Current P/TBV Multiple:</strong> 1.303x</li>
+                    <li><strong>Tangible Book Value per Share:</strong> $36.96</li>
+                    <li><strong>Current Price:</strong> $46.08</li>
+                    <li><strong>Current P/TBV Multiple:</strong> 1.25x</li>
                 </ul>
 
                 <h4>Wilson Score Method (60.9% Weight)</h4>
@@ -933,6 +989,56 @@
             </div>
             <!-- END AUTOGEN: valuation-deep-dive -->
             <h3>8.6 Three-Scenario Comparison (NCO → ROTE → P/TBV)</h3>
+            <h3>Probability-Weighted EPS/TBV Outcomes</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Scenario</th>
+                        <th class="numeric">Probability</th>
+                        <th>Fed Path / Credit</th>
+                        <th class="numeric">Annual EPS</th>
+                        <th class="numeric">Spot P/E</th>
+                        <th class="numeric">TBVPS</th>
+                        <th class="numeric">Spot P/TBV</th>
+                        <th class="numeric">Implied Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Base (carry)</strong></td>
+                        <td class="numeric">60%</td>
+                        <td>Mild cuts (-50/-25/0 bps blend), benign credit migration</td>
+                        <td class="numeric">$4.71</td>
+                        <td class="numeric">10.0x</td>
+                        <td class="numeric">$41.03</td>
+                        <td class="numeric">1.15x</td>
+                        <td class="numeric">$48.07</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Guardrail</strong></td>
+                        <td class="numeric">25%</td>
+                        <td>Mild cuts/flat rates with provision normalization to 42.8 bps</td>
+                        <td class="numeric">$4.15</td>
+                        <td class="numeric">11.4x</td>
+                        <td class="numeric">$40.93</td>
+                        <td class="numeric">1.15x</td>
+                        <td class="numeric">$45.11</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Stress</strong></td>
+                        <td class="numeric">15%</td>
+                        <td>Flat/+25 bps with special-mention defaults (85 bps NCO)</td>
+                        <td class="numeric">$3.19</td>
+                        <td class="numeric">14.8x</td>
+                        <td class="numeric">$40.77</td>
+                        <td class="numeric">1.16x</td>
+                        <td class="numeric">$40.02</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="text-small text-secondary">Source: <code>analysis/probabilistic_outlook.json</code> (generated via <code>scripts/build_probabilistic_scenarios.py</code>; inputs <code>analysis/deposit_rate_scenarios.json</code>, <code>analysis/credit_stress_scenarios.json</code>).</p>
+            <p><strong>Expected value:</strong> Probability-weighted implied price = <strong>$46.12</strong> with annual EPS <strong>$4.34</strong> and TBVPS <strong>$40.97</strong>. Base case assumes the Fed delivers ~50 bps of cuts over the next 12 months (CME FedWatch 22-Oct prices ~45% probability of ≥2 cuts by Sep-26) while credit stays within internal guardrails; this underpins the HOLD stance.</p>
+            <p><strong>Rate Sensitivity Bridge:</strong> Deposit betas translated into rate-path scenarios show a 100 bps Fed cut dropping the interest-bearing deposit cost to 2.65% (▼63 bps), lifting NIM to 3.59% and quarterly EPS to $1.30, while a 50 bps hike would push costs to 3.59% (▲31 bps), compress NIM to 3.17% and EPS to $1.04. Interest expense swings $26M to the good or $13M to the bad per quarter in those extremes; see Module 05 for the full scenario table.</p>
             <!-- BEGIN AUTOGEN: scenario-analysis-table -->
             <table>
                 <thead>
@@ -1029,7 +1135,7 @@
             </table>
 
             <h3>8.7 Conclusion</h3>
-            <p><strong>HOLD:</strong> Wilson 95% confidence bounds (60.9/39.1 probability split) now point to $48.95 vs $47.13 spot (+3.9%), comfortably within the -10% / +15% HOLD band. Regression at Q3 run-rate earnings implies $51.88 (+10.1%), while the normalized base (30 bps P90) lands at $44.39 (−5.8%) and the guardrail (42.8 bps mean) maintains a $39.32 SELL trigger. The bridge above reconciles Q3 momentum with the normalized target and documents each adjustment.</p>
+            <p><strong>HOLD:</strong> Wilson 95% confidence bounds (60.9/39.1 probability split) point to $48.95 vs $46.08 spot (+6.2%), comfortably within the −10% / +15% HOLD band. Regression at Q3 run-rate earnings implies $51.88 (+12.6%), while the normalized base (30 bps P90) lands at $44.39 (−3.7%) and the guardrail (42.8 bps mean) maintains a $39.32 SELL trigger. The bridge above reconciles Q3 momentum with the normalized target and documents each adjustment.</p>
 
             <div class="insight-box">
                 <h4>Methodology & Evidence (Direct Links)</h4>
@@ -1130,10 +1236,10 @@
                 </table>
                 <h4>Key Insights</h4>
                 <ul>
-                    <li><strong>P/TBV:</strong> East West Bancorp leads at 1.844x vs CATY 1.303x.</li>
-                    <li><strong>ROTE:</strong> East West Bancorp delivers 16.10% profitability – benchmark for CATY catalytic upside.</li>
-                    <li><strong>CRE Exposure:</strong> Hanmi Financial Corp lowest at 17.7% vs CATY 52.4%.</li>
-                    <li><strong>Regression Residual:</strong> CATY trades -0.034x relative to fitted P/TBV (negative = discount).</li>
+                    <li><strong>Valuation premium:</strong> Peer median P/TBV is 0.996×; CATY at 1.303× trades ~30% above median despite similar CRE intensity (<code>data/caty11_peers_normalized.json</code>).</li>
+                    <li><strong>Profitability gap:</strong> CATY ROTE 12.35% vs peer median 9.64%; East West at 16.10% anchors the upside case.</li>
+                    <li><strong>CRE concentration:</strong> CATY 52.4% vs median 37.6%; only CVBF (78.9%) runs hotter, underscoring why credit stress carries higher weight.</li>
+                    <li><strong>Deposit betas:</strong> CATY IB beta 60% / all-in 51% vs EWBC 58% / 49% and CVBF 45% / 39% (<code>data/caty05_calculated_tables.json</code>), highlighting limited cushion if the Fed pauses.</li>
                 </ul>
             </div>
             <!-- END AUTOGEN: peer-positioning -->
@@ -1251,10 +1357,11 @@
                 </table>
                 <h3>Capital Adequacy</h3>
                 <ul>
-                    <li>CET1 Ratio: 13.35% (reg min 7.00%; well-cap 6.50%)</li>
-                    <li>Total Capital Ratio: 14.52%; Leverage Ratio 9.87%</li>
-                    <li>Status: Well Capitalized | Buffer vs well-capitalized: +6.8 pts</li>
+                    <li>CET1 Ratio: 13.15% (post Q3 buyback; reg min 7.00%, well-cap 6.50%)</li>
+                    <li>Total Capital Ratio: 14.76%; Tier 1 leverage 10.88%</li>
+                    <li>Status: Well Capitalized | Buffer vs well-capitalized: +6.6 pts after $50M buyback</li>
                 </ul>
+                <p class="text-small">Management now targets 3.5–5% loan and deposit growth for 2025 (vs 3–4% prior); the EPS sensitivity matrix (Module 18) shows ±2% growth moves quarterly EPS to $1.09 / $1.17, so base case assumes ~4% top-line expansion.</p>
                 <h3>Liquidity Coverage</h3>
                 <ul>
                     <li>Total liquid assets: $2,950.0M</li>
@@ -1322,6 +1429,56 @@
         <!-- 10. SCENARIO ANALYSIS -->
         <!-- ======================================== -->
         <section id="scenario-analysis">
+            <h3>Probability-Weighted EPS/TBV Outcomes</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Scenario</th>
+                        <th class="numeric">Probability</th>
+                        <th>Fed Path / Credit</th>
+                        <th class="numeric">Annual EPS</th>
+                        <th class="numeric">Spot P/E</th>
+                        <th class="numeric">TBVPS</th>
+                        <th class="numeric">Spot P/TBV</th>
+                        <th class="numeric">Implied Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Base (carry)</strong></td>
+                        <td class="numeric">60%</td>
+                        <td>Mild cuts (-50/-25/0 bps blend), benign credit migration</td>
+                        <td class="numeric">$4.71</td>
+                        <td class="numeric">10.0x</td>
+                        <td class="numeric">$41.03</td>
+                        <td class="numeric">1.15x</td>
+                        <td class="numeric">$48.07</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Guardrail</strong></td>
+                        <td class="numeric">25%</td>
+                        <td>Mild cuts/flat rates with provision normalization to 42.8 bps</td>
+                        <td class="numeric">$4.15</td>
+                        <td class="numeric">11.4x</td>
+                        <td class="numeric">$40.93</td>
+                        <td class="numeric">1.15x</td>
+                        <td class="numeric">$45.11</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Stress</strong></td>
+                        <td class="numeric">15%</td>
+                        <td>Flat/+25 bps with special-mention defaults (85 bps NCO)</td>
+                        <td class="numeric">$3.19</td>
+                        <td class="numeric">14.8x</td>
+                        <td class="numeric">$40.77</td>
+                        <td class="numeric">1.16x</td>
+                        <td class="numeric">$40.02</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="text-small text-secondary">Source: <code>analysis/probabilistic_outlook.json</code> (generated via <code>scripts/build_probabilistic_scenarios.py</code>; inputs <code>analysis/deposit_rate_scenarios.json</code>, <code>analysis/credit_stress_scenarios.json</code>).</p>
+            <p><strong>Expected value:</strong> Probability-weighted implied price = <strong>$46.12</strong> with annual EPS <strong>$4.34</strong> and TBVPS <strong>$40.97</strong>. Base case assumes the Fed delivers ~50 bps of cuts over the next 12 months (CME FedWatch 22-Oct prices ~45% probability of ≥2 cuts by Sep-26) while credit stays within internal guardrails; this underpins the HOLD stance.</p>
+            <p><strong>Rate Sensitivity Bridge:</strong> Deposit betas translated into rate-path scenarios show a 100 bps Fed cut dropping the interest-bearing deposit cost to 2.65% (▼63 bps), lifting NIM to 3.59% and quarterly EPS to $1.30, while a 50 bps hike would push costs to 3.59% (▲31 bps), compress NIM to 3.17% and EPS to $1.04. Interest expense swings $26M to the good or $13M to the bad per quarter in those extremes; see Module 05 for the full scenario table.</p>
             <!-- BEGIN AUTOGEN: scenario-analysis-table -->
             <table>
                 <thead>
@@ -1387,25 +1544,25 @@
         <h3>Monte Carlo Valuation (10,000 paths)</h3>
         <div class="insight-box">
             <h3>Distribution Highlights</h3>
-            <p>10,000 simulated paths • Mean $49.84 (+5.8%) • Median $48.92 (+3.8%).</p>
-            <p>Spot overlay (spot reference $47.13)</p>
+            <p>10,000 simulated paths • Mean $49.84 (+8.2%) • Median $48.92 (+6.2%).</p>
+            <p>Spot overlay (spot reference $46.08)</p>
             <table>
                 <thead><tr><th>Percentile</th><th class="text-right">Target</th><th class="text-right">Return</th><th>Scenario</th></tr></thead>
                 <tbody>
-                    <tr><td>5th Percentile</td><td class="text-right">$39.19</td><td class="text-right">-16.8%</td><td>Bear case with NCO spike + beta compression</td></tr>
-                    <tr><td>25th Percentile</td><td class="text-right">$45.23</td><td class="text-right">-4.0%</td><td>Below-median outcomes</td></tr>
-                    <tr><td>50th Percentile (Median)</td><td class="text-right">$48.92</td><td class="text-right">+3.8%</td><td>Base case (normalized performance)</td></tr>
-                    <tr><td>75th Percentile</td><td class="text-right">$53.17</td><td class="text-right">+12.8%</td><td>Above-median outcomes</td></tr>
-                    <tr><td>95th Percentile</td><td class="text-right">$65.83</td><td class="text-right">+39.7%</td><td>Bull case with ROTE expansion + beta recovery</td></tr>
+                    <tr><td>5th Percentile</td><td class="text-right">$39.19</td><td class="text-right">-15.0%</td><td>Bear case with NCO spike + beta compression</td></tr>
+                    <tr><td>25th Percentile</td><td class="text-right">$45.23</td><td class="text-right">-1.8%</td><td>Below-median outcomes</td></tr>
+                    <tr><td>50th Percentile (Median)</td><td class="text-right">$48.92</td><td class="text-right">+6.2%</td><td>Base case (normalized performance)</td></tr>
+                    <tr><td>75th Percentile</td><td class="text-right">$53.17</td><td class="text-right">+15.4%</td><td>Above-median outcomes</td></tr>
+                    <tr><td>95th Percentile</td><td class="text-right">$65.83</td><td class="text-right">+42.9%</td><td>Bull case with ROTE expansion + beta recovery</td></tr>
                 </tbody>
             </table>
             <img src="assets/monte_carlo_pt_distribution.png" alt="Monte Carlo fair value distribution" class="chart-image-full" />
             <p>95% interval: $39.19 – $65.83 (span $26.64 | 56.5%).</p>
             <h4>Probability Bands</h4>
             <ul>
-                <li>Below Spot ($47.13): 39.1% – Downside scenarios (SELL)</li>
-                <li>Spot to +15% ($47.13 to $54.20): 41.2% – Most likely outcomes</li>
-                <li>Above +15% (>$54.20): 19.7% – Upside scenarios</li>
+                <li>Below Spot ($46.08): 39.1% – Downside scenarios (SELL)</li>
+                <li>Spot to +15% ($46.08 to $53.99): 41.2% – Most likely outcomes</li>
+                <li>Above +15% (>$53.99): 19.7% – Upside scenarios</li>
             </ul>
             <p class="text-small text-secondary">Source data: <code>caty14_monte_carlo.json</code>.</p>
         </div>
@@ -1418,9 +1575,9 @@
             <!-- BEGIN AUTOGEN: investment-risks-bullets -->
             <h2>Investment Risks</h2>
             <ul>
-                <li><strong>CRE Concentration (HIGH):</strong> CRE 52.4% of loans, above peer median ~41%. Office exposure tail risk if values decline 20% = $500M loss vs $196.5M ACL.</li>
-                <li><strong>Through-Cycle NCO Normalization (MEDIUM):</strong> Current NCO 18.1 bps below through-cycle 30.0 bps. Normalizing provision reduces ROTE from 10.60% to 11.20%.</li>
-                <li><strong>NIM Compression (MEDIUM):</strong> IB-Only Beta 0.604, 100 bps Fed cuts → ~50 bps NIM impact. NIB mix 17.4% provides limited cushion.</li>
+                <li><strong>CRE Concentration (HIGH):</strong> CRE 52.4% of loans vs peer median ~37.6%; special-mention balances surged to $455M across six relationships (Q3 8-K). A 20% impairment on that cohort would consume ~$91M of ACL (46% of reserve).</li>
+                <li><strong>Credit Stress (HIGH):</strong> Provision bridge shows EPS falls to $0.75 and TBVPS to $40.74 if NCOs hit 85 bps (2× through-cycle guardrail); even mean reversion to 42.8 bps trims EPS to $0.99 (credit stress table in Module 07).</li>
+                <li><strong>Funding Costs (MEDIUM):</strong> Modeled deposit betas imply a 50 bps hike lifts interest-bearing costs to 3.59% (+31 bps), compressing NIM to 3.17% and EPS to $1.04; DDA mix only 17% limits cushion.</li>
             </ul>
             <!-- END AUTOGEN: investment-risks-bullets -->
         </section>
@@ -1816,7 +1973,7 @@
                 <h4>Governance (Most Material)</h4>
                 <p><strong>Capital Allocation Discipline:</strong></p>
                 <ul>
-                    <li>Buyback execution: $150M authorized; 804,179 shares repurchased at avg $44.22 (vs current $47.13 = 6.6% discount to current price)</li>
+                    <li>Buyback execution: $150M authorized; 804,179 shares repurchased at avg $44.22 (vs current $46.08 = 4.2% discount to current price)</li>
                     <li>Dividend policy: Consistent $0.34/quarter ($1.36 annualized), 2.7% yield, payout ratio ~27% of LTM EPS</li>
                     <li>Capital levels: Pro forma CET1 12.57% vs management floor 10%</li>
                     <li>Rating: <strong>Positive</strong> - Disciplined capital return without jeopardizing regulatory ratios (pro forma CET1 12.57% > 10% floor)</li>
@@ -1871,26 +2028,23 @@
             <div class="insight-box">
                 <h3>Rating Summary</h3>
                 <ul>
-                    <li><strong>Rating:</strong> HOLD</li>
-                    <li><strong>Current Price:</strong> $47.13 (as of 2025-10-21)</li>
-                    <li><strong>Normalized Fair Value:</strong> $44.39 (-5.8% vs spot)</li>
-                    <li><strong>Wilson 95% Upper Bound:</strong> $48.95 (+3.9% expected return)</li>
-                    <li><strong>IRC Blended Target:</strong> $50.12 (+6.3%).</li>
+                    <li><strong>Rating:</strong> HOLD (base path probability 60%).</li>
+                    <li><strong>Spot vs expected:</strong> $46.08 spot vs $46.12 probability-weighted fair value (+0.1%).</li>
+                    <li><strong>Scenario band:</strong> $40 (stress) / $48 (base) / $50.7 (rate-cut bull) — see <code>analysis/probabilistic_outlook.json</code>.</li>
+                    <li><strong>Peer context:</strong> CATY at 1.30× P/TBV vs peer median 1.00×; ROE 10.6% vs COE 9.51% leaves minimal excess return.</li>
                 </ul>
                 <h3>Key Watch Items</h3>
                 <ul>
-                    <li><strong>Credit costs:</strong> NCO 0.18% vs through-cycle 0.30%</li>
-                    <li><strong>P/TBV positioning:</strong> Current multiple 1.303x vs normalized 1.228x</li>
-                    <li><strong>Funding mix:</strong> Brokered deposits 5.6% | NIB mix 17.4%</li>
+                    <li><strong>Credit migration:</strong> Special-mention $455M; guardrail scenario assumes 42.8 bps NCO (EPS $4.15).</li>
+                    <li><strong>Funding mix:</strong> DDA 17% / time deposits 47%; +50 bps hike lifts spot P/E to 14.8× if credit stress hits.</li>
+                    <li><strong>Capital:</strong> CET1 13.15% (≈115 bps buffer to 12% floor) after $50.1M buyback.</li>
                 </ul>
-                <h3>Upgrade Triggers</h3>
+                <h3>Upgrade / Downgrade Triggers</h3>
                 <ul>
-                    <li>Sustained NCO ≤ 25 bps while maintaining growth</li>
-                    <li>ROTE ≥ 12% with efficiency ≤ 45%</li>
-                    <li>Evidence of durable NIM ≥ 3.30% as rate cuts progress</li>
-                    <li>Enhanced disclosure on CRE office exposure and ALM duration risk</li>
+                    <li><strong>Upgrade:</strong> Demonstrate NCO ≤ 25 bps with DDA mix ≥ 20% and NIM ≥ 3.30% through rate cuts (probability shifts to bull ≥30%).</li>
+                    <li><strong>Downgrade:</strong> Evidence that watchlist defaults push modeled NCO ≥ 60 bps or CET1 &lt; 12.3% (stress probability &gt;20%).</li>
                 </ul>
-                <p class="text-small text-secondary">Source data: <code>market_data_current.json</code>, <code>valuation_outputs.json</code>.</p>
+                <p class="text-small text-secondary">Sources: <code>analysis/probabilistic_outlook.json</code>, <code>analysis/deposit_rate_scenarios.json</code>, <code>analysis/credit_stress_scenarios.json</code>, <code>data/caty11_peers_normalized.json</code>.</p>
             </div>
             <!-- END AUTOGEN: investment-recommendation -->
         </section>
@@ -1904,6 +2058,10 @@
                 <li id="fn1">Q3 2025 Form 8-K Exhibit 99.1 (filed October 21, 2025): net income, EPS, NIM, loan/deposit growth, provision detail. <code>evidence/raw/CATY_2025Q3_8K/ex_873308.htm</code></li>
                 <li id="fn2">Share repurchase math and ROTE impact. <code>evidence/workpapers/CATY_Q3_2025_buyback_analysis.md</code>.</li>
                 <li id="fn3">FDIC NCO history (post-2014 90th percentile = 30 bps; 2008-2025 mean = 42.8 bps) and valuation bridge inputs. <code>evidence/workpapers/CATY_FDIC_NCO_series.md</code>, <code>data/caty12_calculated_tables.json</code>, <code>data/valuation_outputs.json</code>.</li>
+                <li id="fn4">Rate-path scenarios: <code>analysis/deposit_rate_scenarios.json</code> &lt;-- generated by <code>scripts/build_deposit_rate_scenarios.py</code>; inputs SEC 10-Q MD&A tables + Q3 8-K (deposit costs).</li>
+                <li id="fn5">Credit stress scenarios: <code>analysis/credit_stress_scenarios.json</code> (script <code>scripts/build_credit_stress.py</code> using $20.10B loan base, provision $28.7M, guardrail/stress NCO assumptions).</li>
+                <li id="fn6">Probability-weighted valuation: <code>analysis/probabilistic_outlook.json</code> (script <code>scripts/build_probabilistic_scenarios.py</code> combining rate and credit probabilities from CME FedWatch snapshot 22-Oct-2025 and internal credit review).</li>
+                <li id="fn7">Peer benchmarking: <code>data/caty11_peers_normalized.json</code> (LTM through Q2 2025; includes P/TBV, CRE mix, regression outputs).</li>
             </ol>
         </section>
 

@@ -48,6 +48,9 @@
                     <strong>Mitigating Factors:</strong>
                     <ul><li>Diversified across property types (no single type &gt; 35%)</li><li>Office exposure 8.7% (below peer median 12%)</li><li>Strong credit quality (criticized loans 2.14% of total)</li><li>Geographic diversification across CA, NY, and TX markets</li></ul>
                 </div>
+                <div class="alert-text">
+                    <strong>Current Watchlist:</strong> Special-mention loans jumped to $455M across six relationships (movie theatres, multi-tenant retail, industrial) per Q3 2025 8-K; 20% migration to non-accrual would add ~35 bps to NPL ratio.
+                </div>
             </div>
             <!-- END AUTOGEN: caty08-executive-summary -->
 
@@ -85,6 +88,16 @@
                     </div>
             </div>
             <!-- END AUTOGEN: caty08-metric-cards -->
+
+            <div class="insight-box">
+                <h3>Watchlist Composition & Stress Linkage</h3>
+                <ul>
+                    <li><strong>Movie theatre pair:</strong> ~$20M outstanding (two loans) carried a $9.1M incremental reserve in Q3 (<a href="evidence/raw/CATY_2025Q3_8K/ex_873308.htm" target="_blank" rel="noopener">8-K Exhibit 99.1</a>; <a href="evidence/CRE_OFFICE_STATUS.md" target="_blank" rel="noopener">watchlist workpaper</a>).</li>
+                    <li><strong>Multi-tenant retail & industrial:</strong> Remaining ~$435M spans neighborhood retail and logistics assets flagged for cash-flow softness (Q3 deck slide 8). We apply 150 bps loss severity in the stress case feeding <code>analysis/credit_stress_scenarios.json</code>.</li>
+                    <li><strong>Migration math:</strong> A 20% downgrade of the $455M special-mention pool lifts the NPL ratio ~35 bps and aligns with the guardrail EPS hit (−$0.14) in Module 07. Full migration plus stressed loss rates drive the 85 bps NCO scenario (EPS $0.75, TBVPS $40.74).</li>
+                </ul>
+                <p class="text-small text-secondary">Data provenance: management commentary (Oct 21 deck) and Q3 8-K; calculations reconciled in <code>analysis/credit_stress_scenarios.json</code> and <a href="evidence/CATY_FDIC_NCO_series.md" target="_blank" rel="noopener">FDIC loss history workpaper</a>.</p>
+            </div>
         </section>
 
         <!-- CRE PORTFOLIO COMPOSITION -->

@@ -1,0 +1,48 @@
+{
+  "generated_at": "2025-10-22T18:04:33.716495+00:00",
+  "base": {
+    "loan_balance_b": 20.1,
+    "nco_bps": 18.1,
+    "provision_m": 28.7
+  },
+  "scenarios": [
+    {
+      "scenario": "Base LTM",
+      "descriptor": "Q3 run-rate",
+      "nco_bps": 18.1,
+      "incremental_bps": 0.0,
+      "provision_m": 28.7,
+      "incremental_provision_m": 0.0,
+      "eps": 1.13,
+      "eps_hit": 0.0,
+      "tbvps": 41.0
+    },
+    {
+      "scenario": "Guardrail",
+      "descriptor": "Through-cycle mean",
+      "nco_bps": 42.8,
+      "incremental_bps": 24.7,
+      "provision_m": 41.1,
+      "incremental_provision_m": 12.4,
+      "eps": 0.99,
+      "eps_hit": 0.14,
+      "tbvps": 40.9
+    },
+    {
+      "scenario": "Stress",
+      "descriptor": "2\u00d7 guardrail",
+      "nco_bps": 85.0,
+      "incremental_bps": 66.9,
+      "provision_m": 62.3,
+      "incremental_provision_m": 33.6,
+      "eps": 0.75,
+      "eps_hit": 0.38,
+      "tbvps": 40.74
+    }
+  ],
+  "assumptions": {
+    "tax_rate": 0.23,
+    "shares_out_m": 68.7,
+    "payout_ratio": 0.32
+  }
+}
