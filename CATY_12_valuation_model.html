@@ -445,9 +445,13 @@
                 </div>
             </div>
             <!-- END AUTOGEN: caty12-growth-metric-grid -->
-            <p class="text-muted">
-                Scenario probabilities follow the Wilson 95% band methodology (<a href="analysis/rating_policy.md" target="_blank" rel="noopener">rating_policy.md</a>).
-            </p>
+            <div class="alert-box info">
+                <div class="alert-title">Unified Weighting: Wilson 95%</div>
+                <div class="alert-text">
+                    Scenario labels reflect <strong>Wilson 95%</strong> regime weights (no 25/60/15). Inputs: window <strong>post‑2008</strong>, quarters <strong>70</strong>, breaches <strong>11</strong>, upper bound <strong>26%</strong>.
+                    See <a href="evidence/WILSON_WINDOW_METHODOLOGY.md" target="_blank" rel="noopener">methodology</a> for counts and math.
+                </div>
+            </div>
 
             <!-- BEGIN AUTOGEN: caty12-valuation-summary-grid -->
             <div class="metric-grid">
@@ -483,6 +487,41 @@
                     </div>
             </div>
             <!-- END AUTOGEN: caty12-valuation-summary-grid -->
+
+            <div class="highlight-box highlight-box-spaced">
+                <h3>Severe Credit Stress (Added)</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>NCO (bps)</th>
+                            <th class="number">NI ($M)</th>
+                            <th class="number">ROTE</th>
+                            <th class="number">P/TBV</th>
+                            <th class="number">Price</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>100</strong></td>
+                            <td class="number">$167.3</td>
+                            <td class="number">6.79%</td>
+                            <td class="number">0.605×</td>
+                            <td class="number">$21.90</td>
+                            <td>ΔProvision +70 bps on $19.45B loans; after‑tax −$108.9M; Gordon valid (ROTE &gt; g).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>200</strong></td>
+                            <td class="number">$11.7</td>
+                            <td class="number">0.48%</td>
+                            <td class="number">n/a</td>
+                            <td class="number">$21.7–$28.9</td>
+                            <td>ROTE ≤ g makes Gordon invalid; distress band <strong>0.60–0.80× TBV</strong> shown. 2009 peak was 234 bps.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="text-small text-secondary">Assumptions: Tax 20%, TCE $2.465B, TBVPS $36.16, COE 9.587%, g 2.5%. Evidence: FDIC series; see <a href="evidence/workpapers/CATY_FDIC_NCO_series.md" target="_blank">workpaper</a>.</p>
+            </div>
 
             <div class="highlight-box highlight-box-spaced">
                 <h3>Q3 Run-Rate → Normalized Earnings Bridge</h3>
@@ -925,6 +964,55 @@
                 </div>
             </div>
             <p class="text-muted">Sensitivities derived from <a href="evidence/valuation_sensitivity_summary.md" target="_blank" rel="noopener">valuation_sensitivity_summary.md</a> (regression path, updated with Q3 2025 balances).</p>
+
+            <h3>EPS / NIM / TBV Bridges (Added)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Shock</th>
+                        <th class="number">NIM Δ (bps)</th>
+                        <th class="number">EPS Δ ($/sh)</th>
+                        <th class="number">TBVPS Δ ($/sh)</th>
+                        <th class="number">Price Δ</th>
+                        <th>Assumptions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>+50 bps deposit cost</strong></td>
+                        <td class="number">−36.7</td>
+                        <td class="number">−0.98</td>
+                        <td class="number">≈ −0.67</td>
+                        <td class="number">$−8.64</td>
+                        <td>IB base $16.9B; tax 20%; earning assets $23.0B; retention 68%.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>+100 bps deposit cost</strong></td>
+                        <td class="number">−73.4</td>
+                        <td class="number">−1.96</td>
+                        <td class="number">≈ −1.33</td>
+                        <td class="number">$−17.28</td>
+                        <td>Linear scale from +50 bps case.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>+50 bps NCO</strong></td>
+                        <td class="number">n/a</td>
+                        <td class="number">−1.14</td>
+                        <td class="number">≈ −0.78</td>
+                        <td class="number">$−9.92</td>
+                        <td>ΔProvision 0.5% × $19.45B; tax 20%; retention 68%.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>+100 bps wholesale replace</strong></td>
+                        <td class="number">−4.9</td>
+                        <td class="number">−0.13</td>
+                        <td class="number">≈ −0.09</td>
+                        <td class="number">$≈−1.3</td>
+                        <td>Replace $1.12B brokered @ +100 bps; tax 20%; EA $23.0B.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="text-small text-secondary">Figures are annualized impacts unless noted. EPS deltas use 68.7M diluted shares; TBVPS deltas assume 68% retention. Price deltas tie to the valuation sensitivity slope (workpaper).</p>
 
             <!-- BEGIN AUTOGEN: caty12-growth-note -->
             <p class="text-note">

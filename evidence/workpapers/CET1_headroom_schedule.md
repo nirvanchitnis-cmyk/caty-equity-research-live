@@ -27,6 +27,17 @@ Assumption (local linear): each $50M in net repurchases consumes ~20 bps CET1.
 - A breath test (no dividend cuts): with 70.8% LTM payout (dividends + buybacks), holding CET1 ≥12.0% suggests ≤ ~$250M of additional buybacks unless offset by earnings/RWA management.
 - See also EPS/ROTE impacts in `CATY_10_capital_actions.html` and the buyback analysis workpaper.
 
+## RWA creep scenarios (downgrade‑driven)
+Approximate impact of RWA increases on CET1 ratio, holding CET1 capital constant (ratio scales as CET1% ÷ (1+ΔRWA%)).
+
+| ΔRWA | CET1 (no buyback) | CET1 (−$100M buyback) | CET1 (−$200M buyback) |
+|------|-------------------:|----------------------:|----------------------:|
+| +0%  | 13.15%             | 12.75%               | 12.35% |
+| +5%  | 12.52%             | 12.14%               | 11.76% |
+| +10% | 11.95%             | 11.59%               | 11.23% |
+
+Interpretation: A +5% RWA step‑up trims ~63 bps off CET1, independent of buybacks; combine rows with the headroom ladder to set program caps.
+
 ## Links
 - Capital module: `CATY_10_capital_actions.html#repurchases`
 - Q3 repurchase workpaper: `evidence/workpapers/CATY_Q3_2025_buyback_analysis.md`
