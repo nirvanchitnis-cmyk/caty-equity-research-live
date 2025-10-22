@@ -32,7 +32,7 @@
         <section id="executive-summary">
             <h2>Executive Summary</h2>
             <!-- BEGIN AUTOGEN: caty16-summary-intro -->
-            <p>CATY's <strong>cost of equity (COE) = 9.587%</strong> triangulated across three independent methods:</p>
+            <p>CATY's <strong>interim cost of equity (COE) = 9.51%</strong> using an updated CAPM run (2-year weekly vs KBWR). Fama–French and dividend-implied legs are scheduled for refresh once Q3 peer filings post.</p>
             <!-- END AUTOGEN: caty16-summary-intro -->
 
             <!-- BEGIN AUTOGEN: caty16-method-weights-table -->
@@ -48,39 +48,39 @@
                 <tbody>
                     <tr>
                         <td>CAPM</td>
-                        <td class="number">9.337%</td>
-                        <td class="number">40%</td>
-                        <td class="number">3.735%</td>
+                        <td class="number">9.26%</td>
+                        <td class="number">100%</td>
+                        <td class="number">9.26%</td>
                     </tr>
                     <tr>
                         <td>Fama-French 3-Factor</td>
-                        <td class="number">9.725%</td>
-                        <td class="number">35%</td>
-                        <td class="number">3.404%</td>
+                        <td class="number">Pending</td>
+                        <td class="number">0%</td>
+                        <td class="number">0.00%</td>
                     </tr>
                     <tr>
                         <td>DDM Implied</td>
-                        <td class="number">9.125%</td>
-                        <td class="number">25%</td>
-                        <td class="number">2.281%</td>
+                        <td class="number">Pending</td>
+                        <td class="number">0%</td>
+                        <td class="number">0.00%</td>
                     </tr>
                     <tr class="base-case">
                         <td>Weighted Average (Pre-ESG)</td>
-                        <td class="number">9.420%</td>
+                        <td class="number">9.26%</td>
                         <td class="number">-</td>
-                        <td class="number">9.420%</td>
+                        <td class="number">9.26%</td>
                     </tr>
                     <tr>
                         <td>ESG Adjustment</td>
-                        <td class="number">+0.125%</td>
+                        <td class="number">+0.25%</td>
                         <td class="number">-</td>
-                        <td class="number">0.167%</td>
+                        <td class="number">0.25%</td>
                     </tr>
                     <tr class="base-case">
                         <td>Final COE</td>
-                        <td class="number">9.587%</td>
+                        <td class="number">9.51%</td>
                         <td class="number">100%</td>
-                        <td class="number">9.587%</td>
+                        <td class="number">9.51%</td>
                     </tr>
                 </tbody>
             </table>
@@ -93,13 +93,13 @@
                     <li>Governance risk: +30 bps (Board independence 40% vs 67% peers)</li>
                     <li>Climate risk: +20 bps (CRE concentration (52.4%) -> transition risk)</li>
                     <li>Social moat offset: -25 bps (Community banking focus supports social score)</li>
-                    <li><strong>Net ESG Premium:</strong> +25 bps -> 9.463% + 25 bps = 9.587%</li>
+                    <li><strong>Net ESG Premium:</strong> +25 bps applied to CAPM baseline 9.26% → <strong>9.51%</strong></li>
                 </ul>
             </div>
             <!-- END AUTOGEN: caty16-esg-components -->
 
             <!-- BEGIN AUTOGEN: caty16-summary-validation -->
-            <p><strong>Validation:</strong> COE range <strong>8.95% - 10.14%</strong> (confidence interval), <strong>9.587% within 1 standard deviation (robust estimate)</strong></p>
+            <p><strong>Validation:</strong> CAPM beta derived from 104 weekly observations (R² 0.873). Fama–French factor loadings and implied COE refresh slated post peer filings.</p>
             <!-- END AUTOGEN: caty16-summary-validation -->
         </section>
 
@@ -133,21 +133,21 @@
                 <tbody>
                     <tr>
                         <td>Risk-free rate (Rf)</td>
-                        <td class="number">4.23%</td>
-                        <td>10-year US Treasury</td>
-                        <td>Spot yield as of Q2 2025</td>
+                        <td class="number">4.00%</td>
+                        <td>10-year US Treasury (DGS10)</td>
+                        <td>Close 20 Oct 2025 (FRED)</td>
                     </tr>
                     <tr>
                         <td>Equity beta (β)</td>
-                        <td class="number">0.873</td>
-                        <td>Bloomberg 5-year weekly regression</td>
-                        <td>Leverage-adjusted beta vs S&P 500</td>
+                        <td class="number">0.957</td>
+                        <td>YFinance (CATY vs KBWR)</td>
+                        <td>2-year weekly returns</td>
                     </tr>
                     <tr>
                         <td>Market risk premium (Rm - Rf)</td>
-                        <td class="number">5.85%</td>
-                        <td>Ibbotson SBBI (1926-2024)</td>
-                        <td>Long-term equity risk premium</td>
+                        <td class="number">5.50%</td>
+                        <td>NYU Stern Implied ERP (Oct 2025)</td>
+                        <td>Updated for October 2025</td>
                     </tr>
                 </tbody>
             </table>
@@ -156,9 +156,9 @@
             <h3>1.3 CAPM COE Calculation</h3>
             <!-- BEGIN AUTOGEN: caty16-capm-calculation -->
             <pre><code>COE_CAPM = Rf + β × (Rm - Rf)
-            = 4.23% + 0.873 × 5.85%
-            = 4.23% + 5.11%
-            = 9.34% (reported 9.337%)</code></pre>
+            = 4.00% + 0.9568 × 5.50%
+            = 4.00% + 5.26%
+            = 9.26%</code></pre>
             <!-- END AUTOGEN: caty16-capm-calculation -->
 
             <h3>1.4 CAPM Sensitivity Analysis</h3>
@@ -175,33 +175,33 @@
                 <tbody>
                     <tr>
                         <td>Rf</td>
-                        <td class="number">4.23%</td>
-                        <td class="number">3.50%</td>
-                        <td class="number">5.00%</td>
+                        <td class="number">4.00%</td>
+                        <td class="number">3.25%</td>
+                        <td class="number">4.75%</td>
                     </tr>
                     <tr>
                         <td>β</td>
-                        <td class="number">0.873</td>
-                        <td class="number">0.750</td>
-                        <td class="number">1.000</td>
+                        <td class="number">0.957</td>
+                        <td class="number">0.850</td>
+                        <td class="number">1.050</td>
                     </tr>
                     <tr>
                         <td>ERP</td>
-                        <td class="number">5.85%</td>
-                        <td class="number">5.15%</td>
-                        <td class="number">6.45%</td>
+                        <td class="number">5.50%</td>
+                        <td class="number">4.80%</td>
+                        <td class="number">6.20%</td>
                     </tr>
                     <tr class="base-case">
                         <td>COE Range</td>
-                        <td class="number">9.337%</td>
-                        <td class="number">8.61%</td>
-                        <td class="number">10.11%</td>
+                        <td class="number">9.26%</td>
+                        <td class="number">8.26%</td>
+                        <td class="number">10.31%</td>
                     </tr>
                 </tbody>
             </table>
             <!-- END AUTOGEN: caty16-capm-sensitivity -->
             <!-- BEGIN AUTOGEN: caty16-capm-sensitivity-note -->
-            <p><strong>Key Sensitivity:</strong> ERP dominates: ±60 bps ERP moves COE by ±52 bps</p>
+            <p><strong>Key Sensitivity:</strong> ERP assumptions dominate — ±70 bps shifts COE by ≈±67 bps.</p>
             <!-- END AUTOGEN: caty16-capm-sensitivity-note -->
         </section>
 

@@ -265,6 +265,71 @@
                 </div>
             </div>
 
+            <h3>Regression Results (Q1 2022 → Q2 2025)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th class="numeric">Beta</th>
+                        <th class="numeric">Std Err</th>
+                        <th class="numeric">t</th>
+                        <th class="numeric">R²</th>
+                        <th class="numeric">Obs</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Time deposits</td>
+                        <td class="numeric">0.869</td>
+                        <td class="numeric">0.215</td>
+                        <td class="numeric">4.04</td>
+                        <td class="numeric">0.671</td>
+                        <td class="numeric">10</td>
+                    </tr>
+                    <tr>
+                        <td>Money market</td>
+                        <td class="numeric">0.407</td>
+                        <td class="numeric">0.132</td>
+                        <td class="numeric">3.10</td>
+                        <td class="numeric">0.545</td>
+                        <td class="numeric">10</td>
+                    </tr>
+                    <tr>
+                        <td>Interest-bearing demand</td>
+                        <td class="numeric">0.325</td>
+                        <td class="numeric">0.116</td>
+                        <td class="numeric">2.81</td>
+                        <td class="numeric">0.496</td>
+                        <td class="numeric">10</td>
+                    </tr>
+                    <tr>
+                        <td>Savings</td>
+                        <td class="numeric">-0.057</td>
+                        <td class="numeric">0.148</td>
+                        <td class="numeric">-0.39</td>
+                        <td class="numeric">0.018</td>
+                        <td class="numeric">10</td>
+                    </tr>
+                    <tr>
+                        <td>Total interest-bearing</td>
+                        <td class="numeric">0.626</td>
+                        <td class="numeric">0.172</td>
+                        <td class="numeric">3.64</td>
+                        <td class="numeric">0.624</td>
+                        <td class="numeric">10</td>
+                    </tr>
+                    <tr>
+                        <td>All-in deposits</td>
+                        <td class="numeric">0.121</td>
+                        <td class="numeric">0.038</td>
+                        <td class="numeric">3.18</td>
+                        <td class="numeric">0.559</td>
+                        <td class="numeric">10</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="text-small text-secondary">Sample covers Q1 2022 through Q2 2025 (10 quarterly deltas). Fed Funds series: FRED FEDFUNDS quarterly averages (data/fed_funds_quarterly.csv).</p>
+
             <h3>Peer Comparison Hook</h3>
             <p>Replicate the extraction and regression for peers (e.g., EWBC, FHB, WAL) by replacing the CIK/ticker in the scripts. A consolidated table will be added to the peer module once Q3 10‑Qs are posted.</p>
         </section>

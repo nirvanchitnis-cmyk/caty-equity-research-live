@@ -32,10 +32,15 @@ BASE = {
     "shares_out": 68.7e6,                    # shares
     "nim": 0.0331,                           # 3.31%
     "tax_rate": 0.23,                        # 23%
-    "non_interest_items_eps": 0.15,          # per quarter EPS from non-interest + minus opex after taxes (net), rough
     "quarterly_eps": 1.13,                   # baseline EPS (quarter)
     "tbvps": 41.00,                          # approx TBV/share
+    "payout_ratio": 0.32,                    # dividend payout (LTM)
 }
+
+# Calibrate non-interest contribution so baseline matches reported EPS.
+_nii = BASE["avg_interest_earning_assets"] * BASE["nim"] / 4.0
+_eps_from_nii = (_nii * (1 - BASE["tax_rate"])) / BASE["shares_out"]
+BASE["non_interest_items_eps"] = BASE["quarterly_eps"] - _eps_from_nii
 
 
 def eps_from_nim(nim: float, base=BASE) -> float:
@@ -69,6 +74,10 @@ def build_grid() -> Dict:
         for lg in [-0.02, 0.0, 0.02]:
             eps = eps_sensitivity(nim_bps, lg)
             row[f"eps_{int(lg*100)}pct"] = round(eps, 2)
+            retained = eps * (1 - BASE["payout_ratio"])
+            base_retained = BASE["quarterly_eps"] * (1 - BASE["payout_ratio"])
+            tbv = BASE["tbvps"] + (retained - base_retained)
+            row[f"tbv_{int(lg*100)}pct"] = round(tbv, 2)
         grid.append(row)
     return {"base": BASE, "grid": grid}
 
@@ -77,8 +86,15 @@ def render_html(payload: Dict) -> str:
     rows = []
     for r in payload["grid"]:
         rows.append(
-            f"<tr><td>{r['nim_bps']:+d}</td><td class='numeric'>{r['eps_-2pct']:.2f}</td>"
-            f"<td class='numeric'>{r['eps_0pct']:.2f}</td><td class='numeric'>{r['eps_2pct']:.2f}</td></tr>"
+            "<tr>"
+            f"<td>{r['nim_bps']:+d}</td>"
+            f"<td class='numeric'>{r['eps_-2pct']:.2f}</td>"
+            f"<td class='numeric'>{r['eps_0pct']:.2f}</td>"
+            f"<td class='numeric'>{r['eps_2pct']:.2f}</td>"
+            f"<td class='numeric'>{r['tbv_-2pct']:.2f}</td>"
+            f"<td class='numeric'>{r['tbv_0pct']:.2f}</td>"
+            f"<td class='numeric'>{r['tbv_2pct']:.2f}</td>"
+            "</tr>"
         )
     html = f"""<!DOCTYPE html>
 <html lang=\"en\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">
@@ -90,11 +106,11 @@ def render_html(payload: Dict) -> str:
 <h1>EPS Sensitivities to NIM and Loan Growth</h1>
 <p>Baseline EPS (quarter): {BASE['quarterly_eps']:.2f} | NIM: {BASE['nim']*100:.2f}% | IEA: ${BASE['avg_interest_earning_assets']/1e9:.1f}B | Shares: {BASE['shares_out']/1e6:.1f}M</p>
 <table>
-<thead><tr><th>Δ NIM (bps)</th><th class=\"numeric\">EPS @ -2% Loans</th><th class=\"numeric\">EPS @ 0%</th><th class=\"numeric\">EPS @ +2% Loans</th></tr></thead>
+<thead><tr><th>Δ NIM (bps)</th><th class=\"numeric\">EPS @ -2% Loans</th><th class=\"numeric\">EPS @ 0%</th><th class=\"numeric\">EPS @ +2% Loans</th><th class=\"numeric\">TBVPS @ -2%</th><th class=\"numeric\">TBVPS @ 0%</th><th class=\"numeric\">TBVPS @ +2%</th></tr></thead>
 <tbody>
 {''.join(rows)}
 </tbody></table>
-<p class=\"text-small text-secondary\">Method: First-order bridge EPS = (IEA×NIM/4×(1-tax))/shares + non-interest net. Update BASE from 10-Q.</p>
+<p class=\"text-small text-secondary\">Method: First-order bridge EPS = (IEA×NIM/4×(1-tax))/shares + calibrated non-interest contribution. TBV effect = EPS × (1 - payout) vs baseline. Update BASE from 10-Q.</p>
 </div></body></html>"""
     return html
 
@@ -110,4 +126,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

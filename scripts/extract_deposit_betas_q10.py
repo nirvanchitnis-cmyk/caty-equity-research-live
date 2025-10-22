@@ -26,7 +26,7 @@ from typing import Dict, Iterable, List
 
 import pandas as pd
 import requests
-from io import BytesIO
+from io import BytesIO, StringIO
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT_PATH = ROOT / "data" / "deposit_beta_history.json"
@@ -125,74 +125,92 @@ def download_filing(ref: FilingRef) -> str:
     return resp.text
 
 
-def locate_deposit_table(tables: Iterable[pd.DataFrame]) -> pd.DataFrame:
+TARGET_MATCH = "Interest-Earning Assets and Interest-Bearing Liabilities"
+
+
+def locate_deposit_table(html: str) -> pd.DataFrame:
+    try:
+        tables = pd.read_html(StringIO(html), match=TARGET_MATCH)
+    except ValueError as exc:
+        raise DepositExtractionError("Deposit table not found (read_html failed)") from exc
     for df in tables:
-        try:
-            first_col = df.iloc[:, 0].astype(str)
-        except Exception:
-            continue
-        if (
-            "Interest-earning assets:" in first_col.values
-            and "Interest-bearing demand accounts" in first_col.values
-            and "Total interest-bearing deposits" in first_col.values
-        ):
+        first_col = df.iloc[:, 0].astype(str)
+        if first_col.str.contains("Interest-bearing demand", case=False).any():
             return df
     raise DepositExtractionError("Deposit table not found in filing")
 
 
-def parse_numeric_sequence(row: pd.Series) -> List[float]:
-    numbers: List[float] = []
-    for cell in row[2:]:
-        if cell is None or (isinstance(cell, float) and pd.isna(cell)):
-            continue
-        if isinstance(cell, (int, float)):
-            numbers.append(float(cell))
-            continue
-        cell_str = str(cell).strip()
-        if not cell_str or cell_str in {"-", "--"}:
-            continue
-        cleaned = (
-            cell_str.replace("$", "")
-            .replace(",", "")
-            .replace("%", "")
-            .replace("(", "-")
-            .replace(")", "")
-        )
-        try:
-            numbers.append(float(cleaned))
-        except ValueError:
-            continue
-    return numbers
+def parse_float(value) -> float:
+    if value is None or (isinstance(value, float) and pd.isna(value)):
+        return float("nan")
+    if isinstance(value, (int, float)):
+        return float(value)
+    cell_str = str(value).strip()
+    if not cell_str or cell_str in {"-", "--"}:
+        return float("nan")
+    cleaned = (
+        cell_str.replace("$", "")
+        .replace(",", "")
+        .replace("%", "")
+        .replace("(", "-")
+        .replace(")", "")
+    )
+    try:
+        return float(cleaned)
+    except ValueError:
+        return float("nan")
 
 
 def extract_deposit_metrics(table: pd.DataFrame) -> Dict[str, Dict[str, float]]:
     metrics: Dict[str, Dict[str, float]] = {}
 
-    def grab(label: str, expect_interest: bool = True) -> Dict[str, float]:
-        target_rows = table[table.iloc[:, 0] == label]
+    def grab(label: str) -> Dict[str, float]:
+        target_rows = table[table.iloc[:, 0].astype(str).str.strip() == label]
         if target_rows.empty:
             raise DepositExtractionError(f"Row '{label}' missing from deposit table")
         row = target_rows.iloc[0]
-        values = parse_numeric_sequence(row)
-        if expect_interest:
-            if len(values) < 3:
-                raise DepositExtractionError(f"Row '{label}' missing numeric triplet: {values}")
-            avg_balance, interest_expense, avg_rate = values[:3]
-            return {
-                "avg_balance_thousands": avg_balance,
-                "interest_expense_thousands": interest_expense,
-                "avg_rate_pct": avg_rate,
-            }
-        if not values:
-            raise DepositExtractionError(f"Row '{label}' missing numeric balance")
-        return {"avg_balance_thousands": values[0]}
+        current_balance = parse_float(row[3])
+        current_interest = parse_float(row[7])
+        current_rate = parse_float(row[11])
+        dda_balance = parse_float(row[15])
+        dda_interest = parse_float(row[19])
+        dda_rate = parse_float(row[23])
+        result = {
+            "avg_balance_thousands": current_balance,
+            "interest_expense_thousands": current_interest,
+            "avg_rate_pct": current_rate,
+            "prior_avg_balance_thousands": dda_balance,
+            "prior_interest_expense_thousands": dda_interest,
+            "prior_avg_rate_pct": dda_rate,
+        }
+        return result
 
-    metrics["interest_bearing_demand"] = grab("Interest-bearing demand accounts")
-    metrics["money_market"] = grab("Money market accounts")
-    metrics["savings"] = grab("Savings accounts")
-    metrics["time_deposits"] = grab("Time deposits")
-    metrics["total_interest_bearing"] = grab("Total interest-bearing deposits")
-    metrics["noninterest_demand"] = grab("Demand deposits", expect_interest=False)
+    label_map = {
+        "interest_bearing_demand": ["Interest-bearing demand accounts", "Interest-bearing demand deposits"],
+        "money_market": ["Money market accounts", "Money market deposits"],
+        "savings": ["Savings accounts", "Savings deposits"],
+        "time_deposits": ["Time deposits"],
+        "total_interest_bearing": ["Total interest-bearing deposits"],
+    }
+
+    for key, options in label_map.items():
+        found = None
+        for label in options:
+            try:
+                found = grab(label)
+                break
+            except DepositExtractionError:
+                continue
+        if found is None:
+            raise DepositExtractionError(f"Could not find a row for {key} (tried {options})")
+        metrics[key] = found
+
+    demand_row = table[table.iloc[:, 0].astype(str).str.strip() == "Demand deposits"]
+    if demand_row.empty:
+        raise DepositExtractionError("Demand deposits row missing for DDA balances")
+    metrics["noninterest_demand"] = {
+        "avg_balance_thousands": parse_float(demand_row.iloc[0][3])
+    }
 
     return metrics
 
@@ -228,8 +246,7 @@ def build_history(
             raise DepositExtractionError(f"No 10-Q filing located for {quarter}")
         ref = filing_index[quarter]
         html = download_filing(ref)
-        tables = pd.read_html(BytesIO(html.encode("utf-8")), flavor="lxml")
-        deposit_table = locate_deposit_table(tables)
+        deposit_table = locate_deposit_table(html)
         metrics = extract_deposit_metrics(deposit_table)
         derived = compute_all_in_metrics(metrics)
 

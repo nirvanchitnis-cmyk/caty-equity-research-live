@@ -80,9 +80,9 @@
         <section id="roadmap-sla" class="content-section">
             <h2>Roadmap & SLA (Board Gating)</h2>
             <ul>
-                <li>Deposit betas: product-level regressions (time/MMA/DDA) — <strong>PENDING</strong> → <a href="CATY_05_nim_decomposition.html#deposit-beta-regression">template & commands</a></li>
-                <li>COE triangulation: CAPM (KBWR 2y weekly), implied DDM, peer regression — <strong>IN PROGRESS</strong> → <a href="CATY_16_coe_triangulation.html#reproducibility">reproducibility</a></li>
-                <li>Sensitivities: EPS & TBV/share under ±50 bps NIM, ±2% loans — <strong>ADDED</strong> → <a href="CATY_18_sensitivity_analysis.html">view table</a></li>
+                <li>Deposit betas: product-level regressions (time/MMA/DDA) — <strong>DELIVERED</strong> (Q1'22 → Q2'25 sample) → <a href="CATY_05_nim_decomposition.html#deposit-beta-regression">results & scripts</a></li>
+                <li>COE triangulation: CAPM refreshed (9.26% pre-ESG); FF3/DDM refresh pending peer data — <strong>IN PROGRESS</strong> → <a href="CATY_16_coe_triangulation.html#reproducibility">reproducibility</a></li>
+                <li>Sensitivities: EPS & TBV/share under ±50 bps NIM, ±2% loans — <strong>LIVE</strong> → <a href="CATY_18_sensitivity_analysis.html">view table</a></li>
                 <li>Peer benchmarking: deposit mix, NIM, reserve ratios, CRE concentration — <strong>PENDING</strong></li>
                 <li>Citations: link every figure to SEC line anchors — <strong>IN PROGRESS</strong> → <a href="#evidence-notes">evidence</a></li>
             </ul>
@@ -298,8 +298,8 @@
                 </div>
                 <div class="dashboard-card-subtle">
                     <div class="dashboard-label-small">Deposit Beta</div>
-                    <div class="dashboard-value-medium">0.507</div>
-                    <div class="dashboard-subtext-small">All-in (IB: 0.604)</div>
+                    <div class="dashboard-value-medium">IB 0.63</div>
+                    <div class="dashboard-subtext-small">Time 0.87 | All-in 0.12 (Q1'22→Q2'25)</div>
                 </div>
             <!-- END AUTOGEN: exec-performance-metrics -->
             </div>
@@ -367,8 +367,8 @@
                 </div>
                 <div class="metric-card">
                     <div class="metric-label">Implied COE</div>
-                    <div class="metric-value">9.59%</div>
-                    <div class="metric-subtext">Peer-calibrated (g = 2.5%)</div>
+                    <div class="metric-value">9.51%</div>
+                    <div class="metric-subtext">CAPM 2y weekly vs KBWR (4.00% Rf, 5.5% ERP) + ESG +25 bps</div>
                 </div>
             <!-- END AUTOGEN: price-target-grid -->
             </div>
@@ -432,33 +432,20 @@
                 </tbody>
             </table>
 
-            <h4>Sensitivity (Scaffold)</h4>
-            <!-- BEGIN AUTOGEN: sensitivity-table -->
-            <table>
-              <thead>
-                <tr>
-                  <th>Sensitivity</th>
-                  <th class="numeric">Δ Assumption</th>
-                  <th class="numeric">Δ NIM (bps)</th>
-                  <th class="numeric">Δ EPS ($)</th>
-                  <th class="numeric">Δ Fair Value ($)</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr><td>Deposit Beta</td><td class="numeric">+10 bps</td><td class="numeric">TBA</td><td class="numeric">TBA</td><td class="numeric">TBA</td></tr>
-                <tr><td>Credit Cost</td><td class="numeric">+10 bps</td><td class="numeric">n/a</td><td class="numeric">TBA</td><td class="numeric">TBA</td></tr>
-                <tr><td>COE</td><td class="numeric">+10 bps</td><td class="numeric">n/a</td><td class="numeric">n/a</td><td class="numeric">TBA</td></tr>
-              </tbody>
-            </table>
-            <p class="text-secondary">Scaffold: populated after Q3 10‑Q and peer COE refresh.</p>
-            <!-- END AUTOGEN: sensitivity-table -->
+            <h4>Rate &amp; Volume Sensitivities (Module 18)</h4>
+            <p>See <a href="CATY_18_sensitivity_analysis.html">Module 18</a> for full matrix. Key points:</p>
+            <ul>
+                <li><strong>NIM -50 bps:</strong> EPS $0.82 (flat loans) / TBVPS $40.79; with -2% loans EPS $0.79.</li>
+                <li><strong>NIM flat:</strong> EPS $1.13 baseline; ±2% loan growth shifts EPS to $1.09 / $1.17.</li>
+                <li><strong>NIM +50 bps:</strong> EPS $1.44 (flat loans) / TBVPS $41.21; +2% loans lifts EPS to $1.49.</li>
+            </ul>
         </div>
 
         <!-- Thesis & Controversy -->
         <section id="thesis-controversy" class="content-section">
             <h2>Thesis & Controversy</h2>
-            <p><strong>Working Thesis:</strong> Liability‑sensitive deposit franchise with improving NIM (3.31%) as funding costs ease; upside bounded by CRE concentration and rising credit costs (Q3 provision $28.7M). COE likely 11–12% near-term; at ~10.6% ROE, valuation upside requires sustained margin and expense discipline.</p>
-            <p><strong>Controversy:</strong> Whether deposit betas normalize fast enough in a cutting cycle to offset credit normalization and CRE tail risks. Disconfirming signals: renewed deposit competition, NPL migration in office CRE, or peer‑relative COE >12%.</p>
+            <p><strong>Working Thesis:</strong> Liability‑sensitive deposit franchise with improving NIM (3.31%) as funding costs ease; time-deposit beta 0.87 vs money-market 0.41 highlights faster pass-through in rate cuts. Upside hinges on holding ROE ≈10.6% against refreshed COE 9.51%.</p>
+            <p><strong>Controversy:</strong> All-in beta only 0.12 because DDA shrank to 17% mix; if that mix declines further or time deposits stay elevated, NIM relief fades. Monitor CRE credit (provision $28.7M) and peer COE once factor regressions update.</p>
         </section>
 
         <!-- ======================================== -->
@@ -1465,7 +1452,7 @@
                         <td>4</td>
                         <td>3</td>
                         <td>3</td>
-                        <td><span class="badge-success">Green</span></td>
+                        <td><span class="badge-warning">Yellow</span></td>
                     </tr>
                     <tr>
                         <td><strong>Loan Growth (CRE, C&amp;I, Residential)</strong></td>
@@ -1475,17 +1462,27 @@
                         <td>3</td>
                         <td>3</td>
                         <td>3</td>
-                        <td><span class="badge-success">Green</span></td>
+                        <td><span class="badge-warning">Yellow</span></td>
                     </tr>
                     <tr>
-                        <td><strong>Deposit Costs / Betas</strong></td>
-                        <td>BS</td>
+                        <td><strong>Deposit Beta (Time / MMA / DDA)</strong></td>
+                        <td>IS/BS</td>
+                        <td>4</td>
+                        <td>2</td>
+                        <td>4</td>
+                        <td>2</td>
+                        <td>4</td>
+                        <td><span class="badge-danger">Red</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cost of Equity (Discount Rate)</strong></td>
+                        <td>IS/BS</td>
                         <td>4</td>
                         <td>3</td>
                         <td>3</td>
                         <td>2</td>
                         <td>3</td>
-                        <td><span class="badge-warning">Yellow</span></td>
+                        <td><span class="badge-danger">Red</span></td>
                     </tr>
                     <tr>
                         <td><strong>Credit Loss Provision (NCO/NPL)</strong></td>
@@ -1548,8 +1545,8 @@
         <section id="cross-examination" class="content-section">
             <h2>Cross‑Examination (Board Prep)</h2>
             <ol>
-                <li>Deposit Beta Evidence — regressions by product, with R²: see <a href="CATY_05_nim_decomposition.html#deposit-beta-regression">deposit beta regressions</a>.</li>
-                <li>Margin Sustainability — NIM bridge under rate cuts: see <a href="CATY_18_sensitivity_analysis.html">sensitivities</a>.</li>
+                <li>Deposit Beta Evidence — Q1'22→Q2'25 regressions: Time 0.87 (R² 0.67), MMA 0.41, IB demand 0.33; see <a href="CATY_05_nim_decomposition.html#deposit-beta-regression">deposit beta regressions</a>.</li>
+                <li>Margin Sustainability — EPS $0.82 at NIM -50 bps (flat loans); see <a href="CATY_18_sensitivity_analysis.html">sensitivities</a>.</li>
                 <li>Loan Growth Composition — Q3 mix by CRE/Resi/C&amp;I: see <a href="CATY_07_loans_credit_quality.html">credit quality</a>.</li>
                 <li>Credit‑Loss Provisions — concentration and vintages: see <a href="CATY_07_loans_credit_quality.html">credit</a>, evidence pack.</li>
                 <li>Capital Utilisation — buybacks vs CET1/Tier 1: see <a href="CATY_10_capital_actions.html">capital actions</a>.</li>

@@ -24,7 +24,6 @@ Notes:
 from __future__ import annotations
 
 import json
-from dataclasses import dataclass
 from pathlib import Path
 from typing import Dict, List, Tuple
 
@@ -78,25 +77,33 @@ def delta(series: pd.Series) -> pd.Series:
     return series.diff()
 
 
-def run_ols(x: pd.Series, y: pd.Series) -> Tuple[float, float, float, int]:
-    """Simple OLS via closed-form; returns (beta, intercept, r2, n)."""
+def run_ols(x: pd.Series, y: pd.Series) -> Tuple[float, float, float, float, float, int]:
+    """Return beta, intercept, r2, std_err, t_stat, n."""
     df = pd.DataFrame({"x": x, "y": y}).dropna()
     n = len(df)
-    if n < 6:
-        return float("nan"), float("nan"), float("nan"), n
+    if n < 2:
+        return (float("nan"),) * 5 + (n,)
     x_mean = df["x"].mean()
     y_mean = df["y"].mean()
     cov = ((df["x"] - x_mean) * (df["y"] - y_mean)).sum()
     var = ((df["x"] - x_mean) ** 2).sum()
     if var == 0:
-        return float("nan"), float("nan"), float("nan"), n
+        return (float("nan"),) * 5 + (n,)
     beta = cov / var
     alpha = y_mean - beta * x_mean
     # r^2
     ss_tot = ((df["y"] - y_mean) ** 2).sum()
     ss_res = ((df["y"] - (alpha + beta * df["x"])) ** 2).sum()
     r2 = 1 - ss_res / ss_tot if ss_tot != 0 else float("nan")
-    return float(beta), float(alpha), float(r2), n
+    if n > 2:
+        sigma2 = ss_res / (n - 2) if (n - 2) > 0 else float("nan")
+        var_beta = sigma2 / var if var != 0 else float("nan")
+        std_err = math.sqrt(var_beta) if var_beta == var_beta else float("nan")
+        t_stat = beta / std_err if std_err and std_err != 0 else float("nan")
+    else:
+        std_err = float("nan")
+        t_stat = float("nan")
+    return float(beta), float(alpha), float(r2), float(std_err), float(t_stat), n
 
 
 def compute_regressions(merged: pd.DataFrame) -> Dict:
@@ -116,12 +123,15 @@ def compute_regressions(merged: pd.DataFrame) -> Dict:
     results: Dict[str, Dict] = {}
     for name, col in targets.items():
         merged[f"d_{col}"] = delta(merged[col])
-        beta, alpha, r2, n = run_ols(merged["d_fed"], merged[f"d_{col}"])
+        beta, alpha, r2, std_err, t_stat, n = run_ols(merged["d_fed"], merged[f"d_{col}"])
         results[name] = {
             "beta": None if math.isnan(beta) else round(beta, 4),
             "intercept": None if math.isnan(alpha) else round(alpha, 4),
             "r2": None if math.isnan(r2) else round(r2, 4),
+            "std_err": None if math.isnan(std_err) else round(std_err, 4),
+            "t_stat": None if math.isnan(t_stat) else round(t_stat, 2),
             "observations": n,
+            "provisional": n < 6,
         }
     return {
         "quarters": merged["quarter"].tolist(),
@@ -134,13 +144,16 @@ def to_markdown(payload: Dict) -> str:
     lines = ["# CATY Deposit Beta Regressions (Quarterly Δ vs Fed Funds Δ)", ""]
     lines.append("Method: OLS of quarterly change in product deposit rates vs change in effective Fed Funds.")
     lines.append("")
-    lines.append("| Product | Beta | R^2 | N |")
-    lines.append("|---|---:|---:|---:|")
+    lines.append("| Product | Beta | Std Err | t | R^2 | N | Notes |")
+    lines.append("|---|---:|---:|---:|---:|---:|---|")
     for k, v in payload["regressions"].items():
         beta = "NA" if v["beta"] is None else f"{v['beta']:.4f}"
+        std_err = "NA" if v.get("std_err") is None else f"{v['std_err']:.4f}"
+        t = "NA" if v.get("t_stat") is None else f"{v['t_stat']:.2f}"
         r2 = "NA" if v["r2"] is None else f"{v['r2']:.4f}"
         n = v["observations"]
-        lines.append(f"| {k} | {beta} | {r2} | {n} |")
+        note = "Provisional sample (<6 quarters)" if v.get("provisional") else ""
+        lines.append(f"| {k} | {beta} | {std_err} | {t} | {r2} | {n} | {note} |")
     lines.append("")
     lines.append("Sources: data/deposit_beta_history.json (SEC 10-Q MD&A tables), data/fed_funds_quarterly.csv (FRED FEDFUNDS quarterly average).")
     return "\n".join(lines)
@@ -162,4 +175,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-
