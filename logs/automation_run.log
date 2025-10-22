@@ -234,3 +234,618 @@
 [2025-10-20 08:39:00 UTC] update_all_data.py: SUCCESS
 [2025-10-20 08:39:09 UTC] disconfirmer_monitor.py status=PASS alerts=0
 [2025-10-20 08:46:10 UTC] disconfirmer_monitor.py status=PASS alerts=0
+[2025-10-20 15:36:41 UTC] update_all_data.py: START
+[2025-10-20 15:36:46 UTC] fetch_sec_edgar.py: Fetched None None (period None)
+[2025-10-20 15:36:53 UTC] fetch_fdic_data.py: Fetched call report 20250630 (CERT 18503)
+[2025-10-20 15:37:12 UTC] fetch_peer_banks.py: Fetched 9 peers for Q2 2025
+[2025-10-20 15:37:16 UTC] generate_peer_snapshot.py: Rebuilt evidence/peer_snapshot_2025Q2.csv
+[2025-10-20 15:37:18 UTC] merge_data_sources.py: 2 conflicts logged
+[2025-10-20 15:44:28 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-20 15:44:40 UTC] disconfirmer_monitor.py status=PASS alerts=0
+[2025-10-20 16:08:22 UTC] disconfirmer_monitor.py status=PASS alerts=0
+[2025-10-20 16:08:30 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-20 16:11:25 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-20 16:11:47 UTC] disconfirmer_monitor.py status=PASS alerts=0
+[2025-10-20 16:38:57 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-20 16:39:03 UTC] disconfirmer_monitor.py status=PASS alerts=0
+[2025-10-20 16:44:55 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-20 16:45:51 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-20 16:45:59 UTC] disconfirmer_monitor.py status=PASS alerts=0
+[2025-10-20 16:49:55 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-20 16:51:42 UTC] build_site.py FAILED: "Path 'strategic_positioning.elevator_pitch' missing key 'strategic_positioning'"
+[2025-10-20 16:52:53 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-20 16:53:59 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-20 16:54:24 UTC] disconfirmer_monitor.py status=PASS alerts=0
+[2025-10-20 17:08:51 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-20 17:09:15 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-20 17:09:16 UTC] disconfirmer_monitor.py status=PASS alerts=0
+[2025-10-20 22:10:16 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-20 22:10:16 UTC] disconfirmer_monitor.py status=PASS alerts=0
+[2025-10-20 22:32:33 UTC] update_all_data.py: START
+[2025-10-20 22:32:35 UTC] fetch_sec_edgar.py: Fetched None None (period None)
+[2025-10-20 22:32:37 UTC] fetch_fdic_data.py: Fetched call report 20250630 (CERT 18503)
+[2025-10-20 22:32:47 UTC] fetch_peer_banks.py: Fetched 9 peers for Q2 2025
+[2025-10-20 22:32:48 UTC] generate_peer_snapshot.py: Rebuilt evidence/peer_snapshot_2025Q2.csv
+[2025-10-20 22:32:48 UTC] merge_data_sources.py: 2 conflicts logged
+[2025-10-20 22:32:48 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-20 22:32:48 UTC] build_site.py: Rebuilt modules successfully
+[2025-10-20 22:32:49 UTC] reconciliation_guard.py: PASS
+[2025-10-20 22:32:49 UTC] update_all_data.py: SUCCESS
+[2025-10-20 22:32:57 UTC] update_all_data.py: START
+[2025-10-20 22:32:58 UTC] fetch_sec_edgar.py: Fetched None None (period None)
+[2025-10-20 22:33:01 UTC] fetch_fdic_data.py: Fetched call report 20250630 (CERT 18503)
+[2025-10-20 22:33:11 UTC] fetch_peer_banks.py: Fetched 9 peers for Q2 2025
+[2025-10-20 22:33:11 UTC] generate_peer_snapshot.py: Rebuilt evidence/peer_snapshot_2025Q2.csv
+[2025-10-20 22:33:11 UTC] merge_data_sources.py: 2 conflicts logged
+[2025-10-20 22:33:12 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-20 22:33:12 UTC] build_site.py: Rebuilt modules successfully
+[2025-10-20 22:33:13 UTC] reconciliation_guard.py: PASS
+[2025-10-20 22:33:13 UTC] update_all_data.py: SUCCESS
+[2025-10-20 22:33:37 UTC] update_all_data.py: START
+[2025-10-20 22:33:39 UTC] fetch_sec_edgar.py: Fetched None None (period None)
+[2025-10-20 22:33:41 UTC] fetch_fdic_data.py: Fetched call report 20250630 (CERT 18503)
+[2025-10-20 22:33:52 UTC] fetch_peer_banks.py: Fetched 9 peers for Q2 2025
+[2025-10-20 22:33:52 UTC] generate_peer_snapshot.py: Rebuilt evidence/peer_snapshot_2025Q2.csv
+[2025-10-20 22:33:52 UTC] merge_data_sources.py: 2 conflicts logged
+[2025-10-20 22:33:53 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-20 22:33:53 UTC] build_site.py: Rebuilt modules successfully
+[2025-10-20 22:33:54 UTC] reconciliation_guard.py: PASS
+[2025-10-20 22:33:54 UTC] update_all_data.py: SUCCESS
+[2025-10-20 22:34:07 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-20 22:37:55 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-20 22:37:57 UTC] update_all_data.py: START
+[2025-10-20 22:37:59 UTC] fetch_sec_edgar.py: Fetched None None (period None)
+[2025-10-20 22:38:01 UTC] fetch_fdic_data.py: Fetched call report 20250630 (CERT 18503)
+[2025-10-20 22:38:14 UTC] fetch_peer_banks.py: Fetched 9 peers for Q2 2025
+[2025-10-20 22:38:14 UTC] generate_peer_snapshot.py: Rebuilt evidence/peer_snapshot_2025Q2.csv
+[2025-10-20 22:38:14 UTC] merge_data_sources.py: 2 conflicts logged
+[2025-10-20 22:38:14 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-20 22:38:14 UTC] build_site.py: Rebuilt modules successfully
+[2025-10-20 22:38:15 UTC] reconciliation_guard.py: PASS
+[2025-10-20 22:38:15 UTC] update_all_data.py: SUCCESS
+[2025-10-20 22:38:36 UTC] disconfirmer_monitor.py status=PASS alerts=0
+[2025-10-20 23:17:34 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-20 23:18:09 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-20 23:18:20 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-20 23:30:06 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-20 23:30:38 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-20 23:30:49 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-20 23:33:23 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-20 23:33:43 UTC] disconfirmer_monitor.py status=PASS alerts=0
+[2025-10-20 23:42:50 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-20 23:45:26 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-20 23:46:06 UTC] disconfirmer_monitor.py status=PASS alerts=0
+[2025-10-21 00:10:17 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-21 00:10:45 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-21 00:10:54 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-21 00:13:07 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-21 00:13:08 UTC] disconfirmer_monitor.py status=PASS alerts=0
+[2025-10-21 00:30:49 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-21 00:31:21 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-21 00:31:31 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-21 00:31:47 UTC] update_all_data.py: START
+[2025-10-21 00:31:49 UTC] fetch_sec_edgar.py: Fetched None None (period None)
+[2025-10-21 00:31:52 UTC] fetch_fdic_data.py: Fetched call report 20250630 (CERT 18503)
+[2025-10-21 00:32:02 UTC] fetch_peer_banks.py: Fetched 9 peers for Q2 2025
+[2025-10-21 00:32:02 UTC] generate_peer_snapshot.py: Rebuilt evidence/peer_snapshot_2025Q2.csv
+[2025-10-21 00:32:02 UTC] merge_data_sources.py: 2 conflicts logged
+[2025-10-21 00:32:03 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-21 00:32:03 UTC] build_site.py: Rebuilt modules successfully
+[2025-10-21 00:32:04 UTC] reconciliation_guard.py: PASS
+[2025-10-21 00:32:04 UTC] update_all_data.py: SUCCESS
+[2025-10-21 01:36:34 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-21 01:36:35 UTC] disconfirmer_monitor.py status=PASS alerts=0
+[2025-10-21 02:40:03 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-21 02:40:39 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-21 02:41:05 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-21 02:41:20 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-21 02:41:51 UTC] update_all_data.py: START
+[2025-10-21 02:41:52 UTC] fetch_sec_edgar.py: Fetched None None (period None)
+[2025-10-21 02:41:55 UTC] fetch_fdic_data.py: Fetched call report 20250630 (CERT 18503)
+[2025-10-21 02:42:05 UTC] fetch_peer_banks.py: Fetched 9 peers for Q2 2025
+[2025-10-21 02:42:05 UTC] generate_peer_snapshot.py: Rebuilt evidence/peer_snapshot_2025Q2.csv
+[2025-10-21 02:42:05 UTC] merge_data_sources.py: 2 conflicts logged
+[2025-10-21 02:42:06 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-21 02:42:06 UTC] build_site.py: Rebuilt modules successfully
+[2025-10-21 02:42:07 UTC] reconciliation_guard.py: PASS
+[2025-10-21 02:42:07 UTC] update_all_data.py: SUCCESS
+[2025-10-21 02:44:09 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-21 02:44:17 UTC] disconfirmer_monitor.py status=PASS alerts=0
+[2025-10-21 02:57:39 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-21 02:58:16 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-21 02:58:45 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-21 02:59:06 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-21 02:59:28 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-21 02:59:44 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-21 02:59:53 UTC] update_all_data.py: START
+[2025-10-21 02:59:55 UTC] fetch_sec_edgar.py: Fetched None None (period None)
+[2025-10-21 02:59:57 UTC] fetch_fdic_data.py: Fetched call report 20250630 (CERT 18503)
+[2025-10-21 03:00:06 UTC] update_all_data.py: START
+[2025-10-21 03:00:07 UTC] fetch_sec_edgar.py: Fetched None None (period None)
+[2025-10-21 03:00:10 UTC] fetch_fdic_data.py: Fetched call report 20250630 (CERT 18503)
+[2025-10-21 03:00:19 UTC] fetch_peer_banks.py: Fetched 9 peers for Q2 2025
+[2025-10-21 03:00:19 UTC] generate_peer_snapshot.py: Rebuilt evidence/peer_snapshot_2025Q2.csv
+[2025-10-21 03:00:19 UTC] merge_data_sources.py: 2 conflicts logged
+[2025-10-21 03:00:20 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-21 03:00:20 UTC] build_site.py: Rebuilt modules successfully
+[2025-10-21 03:00:21 UTC] reconciliation_guard.py: PASS
+[2025-10-21 03:00:21 UTC] update_all_data.py: SUCCESS
+[2025-10-21 03:00:30 UTC] disconfirmer_monitor.py status=PASS alerts=0
+[2025-10-21 03:04:18 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-21 03:04:19 UTC] disconfirmer_monitor.py status=PASS alerts=0
+[2025-10-21 03:47:07 UTC] build_site.py FAILED: Marker 'valuation-deep-dive' not found in HTML
+[2025-10-21 03:49:27 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-21 03:50:11 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-21 03:50:40 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-21 03:50:54 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-21 03:51:01 UTC] update_all_data.py: START
+[2025-10-21 03:51:02 UTC] fetch_sec_edgar.py: Fetched None None (period None)
+[2025-10-21 03:51:05 UTC] fetch_fdic_data.py: Fetched call report 20250630 (CERT 18503)
+[2025-10-21 03:51:15 UTC] update_all_data.py: START
+[2025-10-21 03:51:17 UTC] fetch_sec_edgar.py: Fetched None None (period None)
+[2025-10-21 03:51:19 UTC] fetch_fdic_data.py: Fetched call report 20250630 (CERT 18503)
+[2025-10-21 03:51:30 UTC] fetch_peer_banks.py: Fetched 9 peers for Q2 2025
+[2025-10-21 03:51:30 UTC] generate_peer_snapshot.py: Rebuilt evidence/peer_snapshot_2025Q2.csv
+[2025-10-21 03:51:30 UTC] merge_data_sources.py: 2 conflicts logged
+[2025-10-21 03:51:31 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-21 03:51:31 UTC] build_site.py: Rebuilt modules successfully
+[2025-10-21 03:51:31 UTC] reconciliation_guard.py: PASS
+[2025-10-21 03:51:31 UTC] update_all_data.py: SUCCESS
+[2025-10-21 03:51:39 UTC] disconfirmer_monitor.py status=PASS alerts=0
+[2025-10-21 03:53:35 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-21 03:53:35 UTC] disconfirmer_monitor.py status=PASS alerts=0
+[2025-10-21 04:15:47 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-21 04:16:27 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-21 04:16:38 UTC] update_all_data.py: START
+[2025-10-21 04:16:40 UTC] fetch_sec_edgar.py: Fetched None None (period None)
+[2025-10-21 04:16:42 UTC] fetch_fdic_data.py: Fetched call report 20250630 (CERT 18503)
+[2025-10-21 04:16:51 UTC] update_all_data.py: START
+[2025-10-21 04:16:53 UTC] fetch_sec_edgar.py: Fetched None None (period None)
+[2025-10-21 04:16:55 UTC] fetch_fdic_data.py: Fetched call report 20250630 (CERT 18503)
+[2025-10-21 04:17:05 UTC] fetch_peer_banks.py: Fetched 9 peers for Q2 2025
+[2025-10-21 04:17:05 UTC] generate_peer_snapshot.py: Rebuilt evidence/peer_snapshot_2025Q2.csv
+[2025-10-21 04:17:05 UTC] merge_data_sources.py: 2 conflicts logged
+[2025-10-21 04:17:06 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-21 04:17:06 UTC] build_site.py: Rebuilt modules successfully
+[2025-10-21 04:17:06 UTC] reconciliation_guard.py: PASS
+[2025-10-21 04:17:06 UTC] update_all_data.py: SUCCESS
+[2025-10-21 04:17:14 UTC] disconfirmer_monitor.py status=PASS alerts=0
+[2025-10-21 04:22:08 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-21 04:22:17 UTC] disconfirmer_monitor.py status=PASS alerts=0
+[2025-10-21 05:01:10 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-21 05:01:28 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-21 05:02:05 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-21 05:02:55 UTC] update_all_data.py: START
+[2025-10-21 05:02:56 UTC] fetch_sec_edgar.py: Fetched None None (period None)
+[2025-10-21 05:02:59 UTC] fetch_fdic_data.py: Fetched call report 20250630 (CERT 18503)
+[2025-10-21 05:03:09 UTC] fetch_peer_banks.py: Fetched 9 peers for Q2 2025
+[2025-10-21 05:03:09 UTC] generate_peer_snapshot.py: Rebuilt evidence/peer_snapshot_2025Q2.csv
+[2025-10-21 05:03:09 UTC] merge_data_sources.py: 2 conflicts logged
+[2025-10-21 05:03:10 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-21 05:03:10 UTC] build_site.py: Rebuilt modules successfully
+[2025-10-21 05:03:11 UTC] reconciliation_guard.py: PASS
+[2025-10-21 05:03:11 UTC] update_all_data.py: SUCCESS
+[2025-10-21 05:03:18 UTC] disconfirmer_monitor.py status=PASS alerts=0
+[2025-10-21 05:05:04 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-21 05:07:21 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-21 05:07:35 UTC] disconfirmer_monitor.py status=PASS alerts=0
+[2025-10-21 05:17:49 UTC] update_all_data.py: START
+[2025-10-21 05:17:50 UTC] fetch_sec_edgar.py: Fetched None None (period None)
+[2025-10-21 05:17:52 UTC] fetch_fdic_data.py: Fetched call report 20250630 (CERT 18503)
+[2025-10-21 05:18:02 UTC] fetch_peer_banks.py: Fetched 9 peers for Q2 2025
+[2025-10-21 05:18:02 UTC] generate_peer_snapshot.py: Rebuilt evidence/peer_snapshot_2025Q2.csv
+[2025-10-21 05:18:02 UTC] merge_data_sources.py: 2 conflicts logged
+[2025-10-21 05:18:02 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-21 05:18:02 UTC] build_site.py: Rebuilt modules successfully
+[2025-10-21 05:18:03 UTC] reconciliation_guard.py: PASS
+[2025-10-21 05:18:03 UTC] update_all_data.py: SUCCESS
+[2025-10-21 05:18:05 UTC] update_all_data.py: START
+[2025-10-21 05:18:06 UTC] fetch_sec_edgar.py: Fetched None None (period None)
+[2025-10-21 05:18:09 UTC] fetch_fdic_data.py: Fetched call report 20250630 (CERT 18503)
+[2025-10-21 05:18:19 UTC] fetch_peer_banks.py: Fetched 9 peers for Q2 2025
+[2025-10-21 05:18:19 UTC] generate_peer_snapshot.py: Rebuilt evidence/peer_snapshot_2025Q2.csv
+[2025-10-21 05:18:19 UTC] merge_data_sources.py: 2 conflicts logged
+[2025-10-21 05:18:20 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-21 05:18:20 UTC] build_site.py: Rebuilt modules successfully
+[2025-10-21 05:18:20 UTC] reconciliation_guard.py: PASS
+[2025-10-21 05:18:20 UTC] update_all_data.py: SUCCESS
+[2025-10-21 05:57:53 UTC] update_all_data.py: START
+[2025-10-21 05:57:53 UTC] fetch_live_price.py: WARNING - live price fetch failed, using cached value
+[2025-10-21 05:57:54 UTC] fetch_sec_edgar.py: WARNING - fetch failed, using cached payload
+[2025-10-21 05:57:54 UTC] fetch_fdic_data.py: WARNING - fetch failed, using cached payload
+[2025-10-21 05:57:54 UTC] fetch_peer_banks.py: WARNING - fetch failed, using cached payload
+[2025-10-21 05:57:54 UTC] generate_peer_snapshot.py: Rebuilt evidence/peer_snapshot_2025Q2.csv
+[2025-10-21 05:57:54 UTC] merge_data_sources.py: 2 conflicts logged
+[2025-10-21 05:57:54 UTC] calculate_valuation_metrics.py: Recalculated all targets and returns
+[2025-10-21 05:57:55 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-21 05:57:55 UTC] build_site.py: Rebuilt modules successfully
+[2025-10-21 05:57:55 UTC] reconciliation_guard.py: PASS
+[2025-10-21 05:57:55 UTC] update_all_data.py: SUCCESS
+[2025-10-21 05:57:55 UTC] update_all_data.py: START
+[2025-10-21 05:57:55 UTC] fetch_live_price.py: WARNING - live price fetch failed, using cached value
+[2025-10-21 05:57:55 UTC] fetch_sec_edgar.py: WARNING - fetch failed, using cached payload
+[2025-10-21 05:57:56 UTC] fetch_fdic_data.py: WARNING - fetch failed, using cached payload
+[2025-10-21 05:57:56 UTC] fetch_peer_banks.py: WARNING - fetch failed, using cached payload
+[2025-10-21 05:57:56 UTC] generate_peer_snapshot.py: Rebuilt evidence/peer_snapshot_2025Q2.csv
+[2025-10-21 05:57:56 UTC] merge_data_sources.py: 2 conflicts logged
+[2025-10-21 05:57:56 UTC] calculate_valuation_metrics.py: Recalculated all targets and returns
+[2025-10-21 05:57:57 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-21 05:57:57 UTC] build_site.py: Rebuilt modules successfully
+[2025-10-21 05:57:57 UTC] reconciliation_guard.py: PASS
+[2025-10-21 05:57:57 UTC] update_all_data.py: SUCCESS
+[2025-10-21 05:58:10 UTC] update_all_data.py: START
+[2025-10-21 05:58:11 UTC] fetch_live_price.py: WARNING - live price fetch failed, using cached value
+[2025-10-21 05:58:11 UTC] fetch_sec_edgar.py: WARNING - fetch failed, using cached payload
+[2025-10-21 05:58:11 UTC] fetch_fdic_data.py: WARNING - fetch failed, using cached payload
+[2025-10-21 05:58:11 UTC] fetch_peer_banks.py: WARNING - fetch failed, using cached payload
+[2025-10-21 05:58:11 UTC] generate_peer_snapshot.py: Rebuilt evidence/peer_snapshot_2025Q2.csv
+[2025-10-21 05:58:11 UTC] merge_data_sources.py: 2 conflicts logged
+[2025-10-21 05:58:11 UTC] calculate_valuation_metrics.py: Recalculated all targets and returns
+[2025-10-21 05:58:12 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-21 05:58:12 UTC] build_site.py: Rebuilt modules successfully
+[2025-10-21 05:58:12 UTC] reconciliation_guard.py: PASS
+[2025-10-21 05:58:12 UTC] update_all_data.py: SUCCESS
+[2025-10-21 05:58:56 UTC] update_all_data.py: START
+[2025-10-21 05:58:57 UTC] fetch_live_price.py: WARNING - live price fetch failed, using cached value
+[2025-10-21 05:58:57 UTC] fetch_sec_edgar.py: WARNING - fetch failed, using cached payload
+[2025-10-21 05:58:57 UTC] fetch_fdic_data.py: WARNING - fetch failed, using cached payload
+[2025-10-21 05:58:57 UTC] fetch_peer_banks.py: WARNING - fetch failed, using cached payload
+[2025-10-21 05:58:57 UTC] generate_peer_snapshot.py: Rebuilt evidence/peer_snapshot_2025Q2.csv
+[2025-10-21 05:58:57 UTC] merge_data_sources.py: 2 conflicts logged
+[2025-10-21 05:58:57 UTC] calculate_valuation_metrics.py: Recalculated all targets and returns
+[2025-10-21 05:58:58 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-21 05:58:58 UTC] build_site.py: Rebuilt modules successfully
+[2025-10-21 05:58:58 UTC] reconciliation_guard.py: PASS
+[2025-10-21 05:58:58 UTC] update_all_data.py: SUCCESS
+[2025-10-21 06:05:46 UTC] update_all_data.py: START
+[2025-10-21 06:05:47 UTC] fetch_live_price.py: Updated market data with latest price
+[2025-10-21 06:05:49 UTC] fetch_sec_edgar.py: Fetched None None (period None)
+[2025-10-21 06:05:51 UTC] fetch_fdic_data.py: Fetched call report 20250630 (CERT 18503)
+[2025-10-21 06:06:01 UTC] fetch_peer_banks.py: Fetched 9 peers for Q2 2025
+[2025-10-21 06:06:01 UTC] generate_peer_snapshot.py: Rebuilt evidence/peer_snapshot_2025Q2.csv
+[2025-10-21 06:06:01 UTC] merge_data_sources.py: 2 conflicts logged
+[2025-10-21 06:06:01 UTC] calculate_valuation_metrics.py: Recalculated all targets and returns
+[2025-10-21 06:06:02 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-21 06:06:02 UTC] build_site.py: Rebuilt modules successfully
+[2025-10-21 06:06:02 UTC] reconciliation_guard.py: PASS
+[2025-10-21 06:06:02 UTC] update_all_data.py: SUCCESS
+[2025-10-21 06:06:02 UTC] update_all_data.py: START
+[2025-10-21 06:06:03 UTC] fetch_live_price.py: Updated market data with latest price
+[2025-10-21 06:06:05 UTC] fetch_sec_edgar.py: Fetched None None (period None)
+[2025-10-21 06:06:07 UTC] fetch_fdic_data.py: Fetched call report 20250630 (CERT 18503)
+[2025-10-21 06:06:16 UTC] fetch_peer_banks.py: Fetched 9 peers for Q2 2025
+[2025-10-21 06:06:16 UTC] generate_peer_snapshot.py: Rebuilt evidence/peer_snapshot_2025Q2.csv
+[2025-10-21 06:06:16 UTC] merge_data_sources.py: 2 conflicts logged
+[2025-10-21 06:06:16 UTC] calculate_valuation_metrics.py: Recalculated all targets and returns
+[2025-10-21 06:06:17 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-21 06:06:17 UTC] build_site.py: Rebuilt modules successfully
+[2025-10-21 06:06:17 UTC] reconciliation_guard.py: PASS
+[2025-10-21 06:06:17 UTC] update_all_data.py: SUCCESS
+[2025-10-21 06:10:40 UTC] update_all_data.py: START
+[2025-10-21 06:10:41 UTC] fetch_live_price.py: Updated market data with latest price
+[2025-10-21 06:10:43 UTC] fetch_sec_edgar.py: Fetched None None (period None)
+[2025-10-21 06:10:46 UTC] fetch_fdic_data.py: Fetched call report 20250630 (CERT 18503)
+[2025-10-21 06:10:56 UTC] fetch_peer_banks.py: Fetched 9 peers for Q2 2025
+[2025-10-21 06:10:56 UTC] generate_peer_snapshot.py: Rebuilt evidence/peer_snapshot_2025Q2.csv
+[2025-10-21 06:10:56 UTC] merge_data_sources.py: 2 conflicts logged
+[2025-10-21 06:10:56 UTC] calculate_valuation_metrics.py: Recalculated all targets and returns
+[2025-10-21 06:10:56 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-21 06:10:56 UTC] build_site.py: Rebuilt modules successfully
+[2025-10-21 06:10:57 UTC] reconciliation_guard.py: PASS
+[2025-10-21 06:10:57 UTC] update_all_data.py: SUCCESS
+[2025-10-21 06:10:57 UTC] update_all_data.py: START
+[2025-10-21 06:10:58 UTC] fetch_live_price.py: Updated market data with latest price
+[2025-10-21 06:10:59 UTC] fetch_sec_edgar.py: Fetched None None (period None)
+[2025-10-21 06:11:01 UTC] fetch_fdic_data.py: Fetched call report 20250630 (CERT 18503)
+[2025-10-21 06:11:10 UTC] fetch_peer_banks.py: Fetched 9 peers for Q2 2025
+[2025-10-21 06:11:10 UTC] generate_peer_snapshot.py: Rebuilt evidence/peer_snapshot_2025Q2.csv
+[2025-10-21 06:11:10 UTC] merge_data_sources.py: 2 conflicts logged
+[2025-10-21 06:11:10 UTC] calculate_valuation_metrics.py: Recalculated all targets and returns
+[2025-10-21 06:11:11 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-21 06:11:11 UTC] build_site.py: Rebuilt modules successfully
+[2025-10-21 06:11:11 UTC] reconciliation_guard.py: PASS
+[2025-10-21 06:11:11 UTC] update_all_data.py: SUCCESS
+[2025-10-21 06:19:57 UTC] update_all_data.py: START
+[2025-10-21 06:19:57 UTC] TEST MODE: Skipped live price fetch
+[2025-10-21 06:19:57 UTC] fetch_sec_edgar.py: WARNING - fetch failed, using cached payload
+[2025-10-21 06:19:57 UTC] fetch_fdic_data.py: WARNING - fetch failed, using cached payload
+[2025-10-21 06:19:57 UTC] fetch_peer_banks.py: WARNING - fetch failed, using cached payload
+[2025-10-21 06:19:57 UTC] generate_peer_snapshot.py: Rebuilt evidence/peer_snapshot_2025Q2.csv
+[2025-10-21 06:19:57 UTC] merge_data_sources.py: 2 conflicts logged
+[2025-10-21 06:19:57 UTC] calculate_valuation_metrics.py: Recalculated all targets and returns
+[2025-10-21 06:19:58 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-21 06:19:58 UTC] build_site.py: Rebuilt modules successfully
+[2025-10-21 06:19:58 UTC] reconciliation_guard.py: PASS
+[2025-10-21 06:19:58 UTC] update_all_data.py: SUCCESS
+[2025-10-21 06:19:58 UTC] update_all_data.py: START
+[2025-10-21 06:19:58 UTC] TEST MODE: Skipped live price fetch
+[2025-10-21 06:19:58 UTC] fetch_sec_edgar.py: WARNING - fetch failed, using cached payload
+[2025-10-21 06:19:58 UTC] fetch_fdic_data.py: WARNING - fetch failed, using cached payload
+[2025-10-21 06:19:58 UTC] fetch_peer_banks.py: WARNING - fetch failed, using cached payload
+[2025-10-21 06:19:58 UTC] generate_peer_snapshot.py: Rebuilt evidence/peer_snapshot_2025Q2.csv
+[2025-10-21 06:19:59 UTC] merge_data_sources.py: 2 conflicts logged
+[2025-10-21 06:19:59 UTC] calculate_valuation_metrics.py: Recalculated all targets and returns
+[2025-10-21 06:19:59 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-21 06:19:59 UTC] build_site.py: Rebuilt modules successfully
+[2025-10-21 06:19:59 UTC] reconciliation_guard.py: PASS
+[2025-10-21 06:19:59 UTC] update_all_data.py: SUCCESS
+[2025-10-21 06:20:05 UTC] update_all_data.py: START
+[2025-10-21 06:20:05 UTC] fetch_live_price.py: WARNING - live price fetch failed, using cached value
+[2025-10-21 06:20:05 UTC] fetch_sec_edgar.py: WARNING - fetch failed, using cached payload
+[2025-10-21 06:20:05 UTC] fetch_fdic_data.py: WARNING - fetch failed, using cached payload
+[2025-10-21 06:20:06 UTC] fetch_peer_banks.py: WARNING - fetch failed, using cached payload
+[2025-10-21 06:20:06 UTC] generate_peer_snapshot.py: Rebuilt evidence/peer_snapshot_2025Q2.csv
+[2025-10-21 06:20:06 UTC] merge_data_sources.py: 2 conflicts logged
+[2025-10-21 06:20:06 UTC] calculate_valuation_metrics.py: Recalculated all targets and returns
+[2025-10-21 06:20:06 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-21 06:20:06 UTC] build_site.py: Rebuilt modules successfully
+[2025-10-21 06:20:07 UTC] reconciliation_guard.py: PASS
+[2025-10-21 06:20:07 UTC] update_all_data.py: SUCCESS
+[2025-10-21 06:20:15 UTC] disconfirmer_monitor.py status=PASS alerts=0
+[2025-10-21 06:24:52 UTC] update_all_data.py: START
+[2025-10-21 06:24:52 UTC] TEST MODE: Skipped live price fetch
+[2025-10-21 06:24:53 UTC] fetch_sec_edgar.py: Fetched None None (period None)
+[2025-10-21 06:24:56 UTC] fetch_fdic_data.py: Fetched call report 20250630 (CERT 18503)
+[2025-10-21 06:25:06 UTC] fetch_peer_banks.py: Fetched 9 peers for Q2 2025
+[2025-10-21 06:25:06 UTC] generate_peer_snapshot.py: Rebuilt evidence/peer_snapshot_2025Q2.csv
+[2025-10-21 06:25:06 UTC] merge_data_sources.py: 2 conflicts logged
+[2025-10-21 06:25:06 UTC] calculate_valuation_metrics.py: Recalculated all targets and returns
+[2025-10-21 06:25:07 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-21 06:25:07 UTC] build_site.py: Rebuilt modules successfully
+[2025-10-21 06:25:07 UTC] reconciliation_guard.py: PASS
+[2025-10-21 06:25:07 UTC] update_all_data.py: SUCCESS
+[2025-10-21 06:25:07 UTC] update_all_data.py: START
+[2025-10-21 06:25:07 UTC] TEST MODE: Skipped live price fetch
+[2025-10-21 06:25:08 UTC] fetch_sec_edgar.py: Fetched None None (period None)
+[2025-10-21 06:25:10 UTC] fetch_fdic_data.py: Fetched call report 20250630 (CERT 18503)
+[2025-10-21 06:25:19 UTC] fetch_peer_banks.py: Fetched 9 peers for Q2 2025
+[2025-10-21 06:25:19 UTC] generate_peer_snapshot.py: Rebuilt evidence/peer_snapshot_2025Q2.csv
+[2025-10-21 06:25:19 UTC] merge_data_sources.py: 2 conflicts logged
+[2025-10-21 06:25:19 UTC] calculate_valuation_metrics.py: Recalculated all targets and returns
+[2025-10-21 06:25:20 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-21 06:25:20 UTC] build_site.py: Rebuilt modules successfully
+[2025-10-21 06:25:20 UTC] reconciliation_guard.py: PASS
+[2025-10-21 06:25:20 UTC] update_all_data.py: SUCCESS
+[2025-10-21 06:25:54 UTC] disconfirmer_monitor.py status=PASS alerts=0
+[2025-10-21 06:28:35 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-21 06:28:36 UTC] update_all_data.py: START
+[2025-10-21 06:28:36 UTC] TEST MODE: Skipped live price fetch
+[2025-10-21 06:28:38 UTC] fetch_sec_edgar.py: Fetched None None (period None)
+[2025-10-21 06:28:40 UTC] fetch_fdic_data.py: Fetched call report 20250630 (CERT 18503)
+[2025-10-21 06:28:49 UTC] fetch_peer_banks.py: Fetched 9 peers for Q2 2025
+[2025-10-21 06:28:49 UTC] generate_peer_snapshot.py: Rebuilt evidence/peer_snapshot_2025Q2.csv
+[2025-10-21 06:28:49 UTC] merge_data_sources.py: 2 conflicts logged
+[2025-10-21 06:28:49 UTC] calculate_valuation_metrics.py: Recalculated all targets and returns
+[2025-10-21 06:28:50 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-21 06:28:50 UTC] build_site.py: Rebuilt modules successfully
+[2025-10-21 06:28:50 UTC] reconciliation_guard.py: PASS
+[2025-10-21 06:28:50 UTC] update_all_data.py: SUCCESS
+[2025-10-21 06:28:50 UTC] update_all_data.py: START
+[2025-10-21 06:28:50 UTC] TEST MODE: Skipped live price fetch
+[2025-10-21 06:28:51 UTC] fetch_sec_edgar.py: Fetched None None (period None)
+[2025-10-21 06:28:53 UTC] fetch_fdic_data.py: Fetched call report 20250630 (CERT 18503)
+[2025-10-21 06:29:02 UTC] fetch_peer_banks.py: Fetched 9 peers for Q2 2025
+[2025-10-21 06:29:02 UTC] generate_peer_snapshot.py: Rebuilt evidence/peer_snapshot_2025Q2.csv
+[2025-10-21 06:29:02 UTC] merge_data_sources.py: 2 conflicts logged
+[2025-10-21 06:29:02 UTC] calculate_valuation_metrics.py: Recalculated all targets and returns
+[2025-10-21 06:29:03 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-21 06:29:03 UTC] build_site.py: Rebuilt modules successfully
+[2025-10-21 06:29:03 UTC] reconciliation_guard.py: PASS
+[2025-10-21 06:29:03 UTC] update_all_data.py: SUCCESS
+[2025-10-21 06:29:35 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-21 06:35:01 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-21 06:35:24 UTC] update_all_data.py: START
+[2025-10-21 06:35:24 UTC] TEST MODE: Skipped live price fetch
+[2025-10-21 06:35:25 UTC] fetch_sec_edgar.py: Fetched None None (period None)
+[2025-10-21 06:35:28 UTC] fetch_fdic_data.py: Fetched call report 20250630 (CERT 18503)
+[2025-10-21 06:35:37 UTC] fetch_peer_banks.py: Fetched 9 peers for Q2 2025
+[2025-10-21 06:35:37 UTC] generate_peer_snapshot.py: Rebuilt evidence/peer_snapshot_2025Q2.csv
+[2025-10-21 06:35:37 UTC] merge_data_sources.py: 2 conflicts logged
+[2025-10-21 06:35:37 UTC] calculate_valuation_metrics.py: Recalculated all targets and returns
+[2025-10-21 06:35:38 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-21 06:35:38 UTC] build_site.py: Rebuilt modules successfully
+[2025-10-21 06:35:38 UTC] reconciliation_guard.py: PASS
+[2025-10-21 06:35:38 UTC] update_all_data.py: SUCCESS
+[2025-10-21 06:35:38 UTC] update_all_data.py: START
+[2025-10-21 06:35:38 UTC] TEST MODE: Skipped live price fetch
+[2025-10-21 06:35:39 UTC] fetch_sec_edgar.py: Fetched None None (period None)
+[2025-10-21 06:35:41 UTC] fetch_fdic_data.py: Fetched call report 20250630 (CERT 18503)
+[2025-10-21 06:35:50 UTC] fetch_peer_banks.py: Fetched 9 peers for Q2 2025
+[2025-10-21 06:35:50 UTC] generate_peer_snapshot.py: Rebuilt evidence/peer_snapshot_2025Q2.csv
+[2025-10-21 06:35:50 UTC] merge_data_sources.py: 2 conflicts logged
+[2025-10-21 06:35:50 UTC] calculate_valuation_metrics.py: Recalculated all targets and returns
+[2025-10-21 06:35:51 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-21 06:35:51 UTC] build_site.py: Rebuilt modules successfully
+[2025-10-21 06:35:51 UTC] reconciliation_guard.py: PASS
+[2025-10-21 06:35:51 UTC] update_all_data.py: SUCCESS
+[2025-10-21 06:35:51 UTC] disconfirmer_monitor.py status=PASS alerts=0
+[2025-10-21 16:52:34 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-21 16:55:02 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-22 01:13:06 UTC] update_all_data.py: START
+[2025-10-22 01:13:07 UTC] fetch_live_price.py: Updated market data with latest price
+[2025-10-22 01:13:09 UTC] fetch_sec_edgar.py: Fetched None None (period None)
+[2025-10-22 01:13:12 UTC] fetch_fdic_data.py: Fetched call report 20250630 (CERT 18503)
+[2025-10-22 01:13:22 UTC] fetch_peer_banks.py: Fetched 9 peers for Q2 2025
+[2025-10-22 01:13:22 UTC] generate_peer_snapshot.py: Rebuilt evidence/peer_snapshot_2025Q2.csv
+[2025-10-22 01:13:22 UTC] merge_data_sources.py: 2 conflicts logged
+[2025-10-22 01:13:22 UTC] calculate_valuation_metrics.py: Recalculated all targets and returns
+[2025-10-22 01:13:23 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-22 01:13:23 UTC] build_site.py: Rebuilt modules successfully
+[2025-10-22 01:13:23 UTC] reconciliation_guard.py: PASS
+[2025-10-22 01:13:23 UTC] update_all_data.py: SUCCESS
+[2025-10-22 01:17:22 UTC] update_all_data.py: START
+[2025-10-22 01:17:22 UTC] TEST MODE: Skipped live price fetch
+[2025-10-22 01:17:23 UTC] fetch_sec_edgar.py: Fetched None None (period None)
+[2025-10-22 01:17:26 UTC] fetch_fdic_data.py: Fetched call report 20250630 (CERT 18503)
+[2025-10-22 01:17:36 UTC] fetch_peer_banks.py: Fetched 9 peers for Q2 2025
+[2025-10-22 01:17:36 UTC] generate_peer_snapshot.py: Rebuilt evidence/peer_snapshot_2025Q2.csv
+[2025-10-22 01:17:36 UTC] merge_data_sources.py: 2 conflicts logged
+[2025-10-22 01:17:36 UTC] calculate_valuation_metrics.py: Recalculated all targets and returns
+[2025-10-22 01:17:37 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-22 01:17:37 UTC] build_site.py: Rebuilt modules successfully
+[2025-10-22 01:17:37 UTC] reconciliation_guard.py: PASS
+[2025-10-22 01:17:37 UTC] update_all_data.py: SUCCESS
+[2025-10-22 01:17:37 UTC] update_all_data.py: START
+[2025-10-22 01:17:37 UTC] TEST MODE: Skipped live price fetch
+[2025-10-22 01:17:39 UTC] fetch_sec_edgar.py: Fetched None None (period None)
+[2025-10-22 01:17:42 UTC] fetch_fdic_data.py: Fetched call report 20250630 (CERT 18503)
+[2025-10-22 01:17:52 UTC] fetch_peer_banks.py: Fetched 9 peers for Q2 2025
+[2025-10-22 01:17:52 UTC] generate_peer_snapshot.py: Rebuilt evidence/peer_snapshot_2025Q2.csv
+[2025-10-22 01:17:52 UTC] merge_data_sources.py: 2 conflicts logged
+[2025-10-22 01:17:52 UTC] calculate_valuation_metrics.py: Recalculated all targets and returns
+[2025-10-22 01:17:53 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-22 01:17:53 UTC] build_site.py: Rebuilt modules successfully
+[2025-10-22 01:17:53 UTC] reconciliation_guard.py: PASS
+[2025-10-22 01:17:53 UTC] update_all_data.py: SUCCESS
+[2025-10-22 01:27:57 UTC] build_site.py FAILED: "Path 'frameworks.irc_blended.composition' missing key 'composition'"
+[2025-10-22 01:28:30 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-22 01:29:21 UTC] update_all_data.py: START
+[2025-10-22 01:29:21 UTC] TEST MODE: Skipped live price fetch
+[2025-10-22 01:29:23 UTC] fetch_sec_edgar.py: Fetched None None (period None)
+[2025-10-22 01:29:26 UTC] fetch_fdic_data.py: Fetched call report 20250630 (CERT 18503)
+[2025-10-22 01:29:36 UTC] fetch_peer_banks.py: Fetched 9 peers for Q2 2025
+[2025-10-22 01:29:36 UTC] generate_peer_snapshot.py: Rebuilt evidence/peer_snapshot_2025Q2.csv
+[2025-10-22 01:29:36 UTC] merge_data_sources.py: 2 conflicts logged
+[2025-10-22 01:29:36 UTC] calculate_valuation_metrics.py: Recalculated all targets and returns
+[2025-10-22 01:29:36 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-22 01:29:36 UTC] build_site.py: Rebuilt modules successfully
+[2025-10-22 01:29:37 UTC] reconciliation_guard.py: PASS
+[2025-10-22 01:29:37 UTC] update_all_data.py: SUCCESS
+[2025-10-22 01:29:37 UTC] update_all_data.py: START
+[2025-10-22 01:29:37 UTC] TEST MODE: Skipped live price fetch
+[2025-10-22 01:29:38 UTC] fetch_sec_edgar.py: Fetched None None (period None)
+[2025-10-22 01:29:41 UTC] fetch_fdic_data.py: Fetched call report 20250630 (CERT 18503)
+[2025-10-22 01:29:50 UTC] fetch_peer_banks.py: Fetched 9 peers for Q2 2025
+[2025-10-22 01:29:50 UTC] generate_peer_snapshot.py: Rebuilt evidence/peer_snapshot_2025Q2.csv
+[2025-10-22 01:29:50 UTC] merge_data_sources.py: 2 conflicts logged
+[2025-10-22 01:29:50 UTC] calculate_valuation_metrics.py: Recalculated all targets and returns
+[2025-10-22 01:29:51 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-22 01:29:51 UTC] build_site.py: Rebuilt modules successfully
+[2025-10-22 01:29:51 UTC] reconciliation_guard.py: PASS
+[2025-10-22 01:29:51 UTC] update_all_data.py: SUCCESS
+[2025-10-22 01:40:41 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-22 01:43:37 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-22 01:44:12 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-22 01:44:58 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-22 01:45:08 UTC] update_all_data.py: START
+[2025-10-22 01:45:08 UTC] TEST MODE: Skipped live price fetch
+[2025-10-22 01:45:09 UTC] fetch_sec_edgar.py: Fetched None None (period None)
+[2025-10-22 01:45:11 UTC] fetch_fdic_data.py: Fetched call report 20250630 (CERT 18503)
+[2025-10-22 01:45:22 UTC] fetch_peer_banks.py: Fetched 9 peers for Q2 2025
+[2025-10-22 01:45:22 UTC] generate_peer_snapshot.py: Rebuilt evidence/peer_snapshot_2025Q2.csv
+[2025-10-22 01:45:22 UTC] merge_data_sources.py: 2 conflicts logged
+[2025-10-22 01:45:22 UTC] calculate_valuation_metrics.py: Recalculated all targets and returns
+[2025-10-22 01:45:23 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-22 01:45:23 UTC] build_site.py: Rebuilt modules successfully
+[2025-10-22 01:45:23 UTC] reconciliation_guard.py: PASS
+[2025-10-22 01:45:23 UTC] update_all_data.py: SUCCESS
+[2025-10-22 01:45:23 UTC] update_all_data.py: START
+[2025-10-22 01:45:23 UTC] TEST MODE: Skipped live price fetch
+[2025-10-22 01:45:24 UTC] fetch_sec_edgar.py: Fetched None None (period None)
+[2025-10-22 01:45:27 UTC] fetch_fdic_data.py: Fetched call report 20250630 (CERT 18503)
+[2025-10-22 01:45:38 UTC] fetch_peer_banks.py: Fetched 9 peers for Q2 2025
+[2025-10-22 01:45:38 UTC] generate_peer_snapshot.py: Rebuilt evidence/peer_snapshot_2025Q2.csv
+[2025-10-22 01:45:38 UTC] merge_data_sources.py: 2 conflicts logged
+[2025-10-22 01:45:38 UTC] calculate_valuation_metrics.py: Recalculated all targets and returns
+[2025-10-22 01:45:39 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-22 01:45:39 UTC] build_site.py: Rebuilt modules successfully
+[2025-10-22 01:45:39 UTC] reconciliation_guard.py: PASS
+[2025-10-22 01:45:39 UTC] update_all_data.py: SUCCESS
+[2025-10-22 01:46:01 UTC] update_all_data.py: START
+[2025-10-22 01:46:01 UTC] TEST MODE: Skipped live price fetch
+[2025-10-22 01:46:03 UTC] fetch_sec_edgar.py: Fetched None None (period None)
+[2025-10-22 01:46:05 UTC] fetch_fdic_data.py: Fetched call report 20250630 (CERT 18503)
+[2025-10-22 01:46:18 UTC] fetch_peer_banks.py: Fetched 9 peers for Q2 2025
+[2025-10-22 01:46:18 UTC] generate_peer_snapshot.py: Rebuilt evidence/peer_snapshot_2025Q2.csv
+[2025-10-22 01:46:18 UTC] merge_data_sources.py: 2 conflicts logged
+[2025-10-22 01:46:18 UTC] calculate_valuation_metrics.py: Recalculated all targets and returns
+[2025-10-22 01:46:19 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-22 01:46:19 UTC] build_site.py: Rebuilt modules successfully
+[2025-10-22 01:46:19 UTC] reconciliation_guard.py: PASS
+[2025-10-22 01:46:19 UTC] update_all_data.py: SUCCESS
+[2025-10-22 01:46:19 UTC] update_all_data.py: START
+[2025-10-22 01:46:19 UTC] TEST MODE: Skipped live price fetch
+[2025-10-22 01:46:21 UTC] fetch_sec_edgar.py: Fetched None None (period None)
+[2025-10-22 01:46:25 UTC] fetch_fdic_data.py: Fetched call report 20250630 (CERT 18503)
+[2025-10-22 01:46:36 UTC] fetch_peer_banks.py: Fetched 9 peers for Q2 2025
+[2025-10-22 01:46:36 UTC] generate_peer_snapshot.py: Rebuilt evidence/peer_snapshot_2025Q2.csv
+[2025-10-22 01:46:36 UTC] merge_data_sources.py: 2 conflicts logged
+[2025-10-22 01:46:36 UTC] calculate_valuation_metrics.py: Recalculated all targets and returns
+[2025-10-22 01:46:37 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-22 01:46:37 UTC] build_site.py: Rebuilt modules successfully
+[2025-10-22 01:46:37 UTC] reconciliation_guard.py: PASS
+[2025-10-22 01:46:37 UTC] update_all_data.py: SUCCESS
+[2025-10-22 01:48:39 UTC] update_all_data.py: START
+[2025-10-22 01:48:39 UTC] TEST MODE: Skipped live price fetch
+[2025-10-22 01:48:40 UTC] fetch_sec_edgar.py: Fetched None None (period None)
+[2025-10-22 01:48:43 UTC] fetch_fdic_data.py: Fetched call report 20250630 (CERT 18503)
+[2025-10-22 01:48:56 UTC] fetch_peer_banks.py: Fetched 9 peers for Q2 2025
+[2025-10-22 01:48:56 UTC] generate_peer_snapshot.py: Rebuilt evidence/peer_snapshot_2025Q2.csv
+[2025-10-22 01:48:56 UTC] merge_data_sources.py: 2 conflicts logged
+[2025-10-22 01:48:56 UTC] calculate_valuation_metrics.py: Recalculated all targets and returns
+[2025-10-22 01:48:57 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-22 01:48:57 UTC] build_site.py: Rebuilt modules successfully
+[2025-10-22 01:48:57 UTC] reconciliation_guard.py: PASS
+[2025-10-22 01:48:57 UTC] update_all_data.py: SUCCESS
+[2025-10-22 01:48:57 UTC] update_all_data.py: START
+[2025-10-22 01:48:57 UTC] TEST MODE: Skipped live price fetch
+[2025-10-22 01:48:58 UTC] fetch_sec_edgar.py: Fetched None None (period None)
+[2025-10-22 01:49:00 UTC] fetch_fdic_data.py: Fetched call report 20250630 (CERT 18503)
+[2025-10-22 01:49:15 UTC] fetch_peer_banks.py: Fetched 9 peers for Q2 2025
+[2025-10-22 01:49:15 UTC] generate_peer_snapshot.py: Rebuilt evidence/peer_snapshot_2025Q2.csv
+[2025-10-22 01:49:15 UTC] merge_data_sources.py: 2 conflicts logged
+[2025-10-22 01:49:15 UTC] calculate_valuation_metrics.py: Recalculated all targets and returns
+[2025-10-22 01:49:16 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-22 01:49:16 UTC] build_site.py: Rebuilt modules successfully
+[2025-10-22 01:49:16 UTC] reconciliation_guard.py: PASS
+[2025-10-22 01:49:16 UTC] update_all_data.py: SUCCESS
+[2025-10-22 01:49:40 UTC] update_all_data.py: START
+[2025-10-22 01:49:40 UTC] TEST MODE: Skipped live price fetch
+[2025-10-22 01:49:41 UTC] fetch_sec_edgar.py: Fetched None None (period None)
+[2025-10-22 01:49:44 UTC] fetch_fdic_data.py: Fetched call report 20250630 (CERT 18503)
+[2025-10-22 01:49:58 UTC] fetch_peer_banks.py: Fetched 9 peers for Q2 2025
+[2025-10-22 01:49:58 UTC] generate_peer_snapshot.py: Rebuilt evidence/peer_snapshot_2025Q2.csv
+[2025-10-22 01:49:58 UTC] merge_data_sources.py: 2 conflicts logged
+[2025-10-22 01:49:58 UTC] calculate_valuation_metrics.py: Recalculated all targets and returns
+[2025-10-22 01:49:59 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-22 01:49:59 UTC] build_site.py: Rebuilt modules successfully
+[2025-10-22 01:49:59 UTC] reconciliation_guard.py: PASS
+[2025-10-22 01:49:59 UTC] update_all_data.py: SUCCESS
+[2025-10-22 01:49:59 UTC] update_all_data.py: START
+[2025-10-22 01:49:59 UTC] TEST MODE: Skipped live price fetch
+[2025-10-22 01:50:00 UTC] fetch_sec_edgar.py: Fetched None None (period None)
+[2025-10-22 01:50:04 UTC] fetch_fdic_data.py: Fetched call report 20250630 (CERT 18503)
+[2025-10-22 01:50:16 UTC] fetch_peer_banks.py: Fetched 9 peers for Q2 2025
+[2025-10-22 01:50:16 UTC] generate_peer_snapshot.py: Rebuilt evidence/peer_snapshot_2025Q2.csv
+[2025-10-22 01:50:17 UTC] merge_data_sources.py: 2 conflicts logged
+[2025-10-22 01:50:17 UTC] calculate_valuation_metrics.py: Recalculated all targets and returns
+[2025-10-22 01:50:17 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-22 01:50:17 UTC] build_site.py: Rebuilt modules successfully
+[2025-10-22 01:50:17 UTC] reconciliation_guard.py: PASS
+[2025-10-22 01:50:17 UTC] update_all_data.py: SUCCESS
+[2025-10-22 01:52:22 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-22 01:52:53 UTC] update_all_data.py: START
+[2025-10-22 01:52:53 UTC] TEST MODE: Skipped live price fetch
+[2025-10-22 01:52:54 UTC] fetch_sec_edgar.py: Fetched None None (period None)
+[2025-10-22 01:52:57 UTC] fetch_fdic_data.py: Fetched call report 20250630 (CERT 18503)
+[2025-10-22 01:53:07 UTC] fetch_peer_banks.py: Fetched 9 peers for Q2 2025
+[2025-10-22 01:53:07 UTC] generate_peer_snapshot.py: Rebuilt evidence/peer_snapshot_2025Q2.csv
+[2025-10-22 01:53:07 UTC] merge_data_sources.py: 2 conflicts logged
+[2025-10-22 01:53:07 UTC] calculate_valuation_metrics.py: Recalculated all targets and returns
+[2025-10-22 01:53:07 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-22 01:53:07 UTC] build_site.py: Rebuilt modules successfully
+[2025-10-22 01:53:08 UTC] reconciliation_guard.py: PASS
+[2025-10-22 01:53:08 UTC] update_all_data.py: SUCCESS
+[2025-10-22 01:53:08 UTC] update_all_data.py: START
+[2025-10-22 01:53:08 UTC] TEST MODE: Skipped live price fetch
+[2025-10-22 01:53:09 UTC] fetch_sec_edgar.py: Fetched None None (period None)
+[2025-10-22 01:53:12 UTC] fetch_fdic_data.py: Fetched call report 20250630 (CERT 18503)
+[2025-10-22 01:53:21 UTC] fetch_peer_banks.py: Fetched 9 peers for Q2 2025
+[2025-10-22 01:53:21 UTC] generate_peer_snapshot.py: Rebuilt evidence/peer_snapshot_2025Q2.csv
+[2025-10-22 01:53:21 UTC] merge_data_sources.py: 2 conflicts logged
+[2025-10-22 01:53:21 UTC] calculate_valuation_metrics.py: Recalculated all targets and returns
+[2025-10-22 01:53:22 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-22 01:53:22 UTC] build_site.py: Rebuilt modules successfully
+[2025-10-22 01:53:22 UTC] reconciliation_guard.py: PASS
+[2025-10-22 01:53:22 UTC] update_all_data.py: SUCCESS
+[2025-10-22 01:57:13 UTC] disconfirmer_monitor.py status=PASS alerts=0

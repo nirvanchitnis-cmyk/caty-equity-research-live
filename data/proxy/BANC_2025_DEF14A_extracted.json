@@ -1,0 +1,166 @@
+{
+  "version": "1.0.0",
+  "generated_at_utc": "2025-10-20T21:08:59Z",
+  "company": {
+    "name": "BANC OF CALIFORNIA, INC.",
+    "ticker": "BANC",
+    "cik": "0001169770"
+  },
+  "filing": {
+    "form": "DEF 14A",
+    "accession_number": "0001169770-25-000015",
+    "filing_date": "2025-03-27",
+    "edgar_urls": {
+      "index": "https://www.sec.gov/Archives/edgar/data/1169770/000116977025000015/0001169770-25-000015-index.htm",
+      "primary_doc": "https://www.sec.gov/Archives/edgar/data/1169770/000116977025000015/banc-20250327.htm"
+    }
+  },
+  "board": {
+    "size": 12,
+    "independent_count": 11,
+    "independence_pct": 91.7,
+    "leadership": {
+      "chair_is_independent": false,
+      "ceo_is_chair": false
+    }
+  },
+  "ownership": {
+    "top_holders": [],
+    "top5_pct": 0.0,
+    "insider_pct": 0.0,
+    "policies": {}
+  },
+  "compensation": {
+    "pay_mix_pct": {},
+    "neos": [
+      {
+        "role": "CEO",
+        "name": "Jared Wolff",
+        "total_comp_usd": null
+      }
+    ],
+    "annual_incentive": {},
+    "ltip": {},
+    "ceo_pay_ratio_to_median": 132,
+    "say_on_pay_pct": 96.0
+  },
+  "equity_plan": {
+    "overhang_pct": null,
+    "burn_rate_pct": null,
+    "shares_available": null,
+    "shares_outstanding_awards": null,
+    "plan_name": null
+  },
+  "audit": {
+    "auditor": "KPMG LLP",
+    "fees": {
+      "audit": 3884989,
+      "tax": 484546,
+      "audit_related": 0,
+      "all_other": 0,
+      "non_audit_pct": 11.1
+    }
+  },
+  "provenance": [
+    {
+      "section": "board.size",
+      "method": "regex",
+      "locators": [
+        "regex: board ... consists of (\\d+) directors"
+      ],
+      "page_range": null,
+      "text_snippet": "date. 5 Banc of California Annual Proxy Statement 2025 PROPOSAL I Election of Directors | Board Overview The Company\u2019s Board of Directors currently consists of 12 directors. At the unanimous recommendation of the Compensation, Nominating and Corporate Governance Committee (CNG Committee), th",
+      "confidence_pct": 90,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1169770/000116977025000015/banc-20250327.htm",
+      "sha256": "b38fd5eb7974c7bd1f0a8df5b2b4815fda7b5dda7b6ee8af1f13cc4c55e7a2dc"
+    },
+    {
+      "section": "board.independent_count",
+      "method": "html_parse",
+      "locators": [
+        "count: Independent Director mentions"
+      ],
+      "page_range": null,
+      "text_snippet": "Independent Director Age: 59 Director Since: 2019",
+      "confidence_pct": 80,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1169770/000116977025000015/banc-20250327.htm",
+      "sha256": "b38fd5eb7974c7bd1f0a8df5b2b4815fda7b5dda7b6ee8af1f13cc4c55e7a2dc"
+    },
+    {
+      "section": "board.independence_pct",
+      "method": "html_parse",
+      "locators": [
+        "derived from board.independent_count / board.size"
+      ],
+      "page_range": null,
+      "text_snippet": "independent_count=11, board_size=12, independence_pct=91.7",
+      "confidence_pct": 80,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1169770/000116977025000015/banc-20250327.htm",
+      "sha256": "b38fd5eb7974c7bd1f0a8df5b2b4815fda7b5dda7b6ee8af1f13cc4c55e7a2dc"
+    },
+    {
+      "section": "compensation.neos[0].name",
+      "method": "html_parse",
+      "locators": [
+        "table header: Name and Principal Position"
+      ],
+      "page_range": null,
+      "text_snippet": "Jared Wolff (5)(6) 2024 $ 1,043,269 $ 2,200,000 $ 7,637,070 $ 1,181,250 $ 67,686 $ 12,129,275",
+      "confidence_pct": 95,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1169770/000116977025000015/banc-20250327.htm",
+      "sha256": "b38fd5eb7974c7bd1f0a8df5b2b4815fda7b5dda7b6ee8af1f13cc4c55e7a2dc"
+    },
+    {
+      "section": "compensation.say_on_pay_pct",
+      "method": "regex",
+      "locators": [
+        "regex context search",
+        "regex: (\\d+)% ... votes/shares ... for"
+      ],
+      "page_range": null,
+      "text_snippet": "ry, non-binding basis with respect to compensation paid to our NEOs for the year ended December 31, 2023. Approximately 96% of the votes cast voted in favor of the Say-on-Pay proposal at our 2024 annual meeting. For the Annual Meeting, the advisory non-binding Say-on-Pay vote",
+      "confidence_pct": 80,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1169770/000116977025000015/banc-20250327.htm",
+      "sha256": "b38fd5eb7974c7bd1f0a8df5b2b4815fda7b5dda7b6ee8af1f13cc4c55e7a2dc"
+    },
+    {
+      "section": "compensation.ceo_pay_ratio_to_median",
+      "method": "regex",
+      "locators": [
+        "regex context search",
+        "regex: (\\d+):1"
+      ],
+      "page_range": null,
+      "text_snippet": "he ratio of the annual total compensation of Mr. Wolff to the median annual total compensation of all our employees was 132:1. (1) Includes: (i) Stockholder Value Creation Award equity award with grant date fair value of approximately $4.8 milli",
+      "confidence_pct": 85,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1169770/000116977025000015/banc-20250327.htm",
+      "sha256": "b38fd5eb7974c7bd1f0a8df5b2b4815fda7b5dda7b6ee8af1f13cc4c55e7a2dc"
+    },
+    {
+      "section": "audit.fees",
+      "method": "table_detect",
+      "locators": [
+        "table search: Audit Fees",
+        "table row: Audit Fees (1)",
+        "table row: Tax Fees (2)"
+      ],
+      "page_range": null,
+      "text_snippet": "Year Ended December 31, 2024 2023 Audit Fees (1) $ 3,884,989 $ 1,909,326 Tax Fees (2) 484,546 2,628,719 Other (3) \u2014 360,000 TOTAL $ 4,369,535 $ 4,898,045",
+      "confidence_pct": 90,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1169770/000116977025000015/banc-20250327.htm",
+      "sha256": "b38fd5eb7974c7bd1f0a8df5b2b4815fda7b5dda7b6ee8af1f13cc4c55e7a2dc"
+    },
+    {
+      "section": "audit.auditor",
+      "method": "regex",
+      "locators": [
+        "text contains: kpmg(?:\\s+llp)?"
+      ],
+      "page_range": null,
+      "text_snippet": "oposal II. Changes in Independent Registered Public Accounting Firm Resignation of Ernst & Young LLP and Appointment of KPMG as Independent Registered Public Accounting Firm for Year Ended December 31, 2023 As reported in the Current Report on",
+      "confidence_pct": 90,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1169770/000116977025000015/banc-20250327.htm",
+      "sha256": "b38fd5eb7974c7bd1f0a8df5b2b4815fda7b5dda7b6ee8af1f13cc4c55e7a2dc"
+    }
+  ]
+}

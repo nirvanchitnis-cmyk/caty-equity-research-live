@@ -23,10 +23,10 @@
 | File | Lines | Key Content | IRC Standard |
 |------|-------|-------------|--------------|
 | **analysis/RESIDUAL_INCOME_VALUATION.md** | 546 | RIM intrinsic value $50.08 (+9.2%), 60% weight | ✅ Primary method |
-| **analysis/valuation_bridge_final.py** | 51 | 7-peer regression $56.50 (+23.1%), 30% weight | ✅ Relative valuation |
-| **analysis/probability_weighted_valuation.py** | 45 | Wilson 95% $52.03 (+13.4%), probability framework | ✅ Scenario analysis |
+| **analysis/valuation_bridge_final.py** | 51 | 7-peer regression $54.71 (+16.1%), 30% weight | ✅ Relative valuation |
+| **analysis/probability_weighted_valuation.py** | 45 | Wilson 95% $48.70 (+3.3%), probability framework | ✅ Scenario analysis |
 
-**Blended IRC Target:** $51.51 (+12.2%) = 60% RIM + 10% DDM + 30% Relative
+**Blended IRC Target:** $50.97 (+8.1%) = 60% RIM + 10% DDM + 30% Relative
 
 ---
 
@@ -48,9 +48,9 @@
 |------|-------|-------------|--------------|
 | **analysis/MONTE_CARLO_VALUATION.md** | 456 | 10,000 runs, median $48.92 (+6.6%), 95% CI $37-$62 | ✅ Stochastic simulation |
 | **analysis/INVESTMENT_RISK_MATRIX.md** | 473 | 2×2 probability × impact, +6.0% risk-adjusted return | ✅ Risk quantification |
-| **evidence/WILSON_WINDOW_METHODOLOGY.md** | 280 | 74/26 probability split, post-2008 vs post-2014 defense | ✅ Statistical framework |
+| **evidence/WILSON_WINDOW_METHODOLOGY.md** | 280 | 60.9/39.1 probability split, post-2008 vs post-2014 defense | ✅ Statistical framework |
 
-**Key Finding:** Risk-adjusted return +6.0% (vs. +13.4% base) accounts for tail risks
+**Key Finding:** Risk-adjusted return +6.0% (vs. +3.3% base) accounts for tail risks
 
 ---
 
@@ -171,7 +171,7 @@
 | **CATY_07_loans_credit_quality.html** | Loan portfolio | NCO trends, provision adequacy |
 | **CATY_08_cre_exposure.html** | CRE deep dive | Office 28.3%, LTV 58%, peer comparison |
 | **CATY_11_peers_normalized.html** | Peer benchmarking | 7-peer regression, ROTE/P/TBV scatterplot |
-| **CATY_12_valuation_model.html** | Valuation scenarios | Wilson 74/26, Monte Carlo, sensitivity |
+| **CATY_12_valuation_model.html** | Valuation scenarios | Wilson 60.9/39.1, Monte Carlo, sensitivity |
 
 **Live Site:** https://nirvanchitnis-cmyk.github.io/caty-equity-research-live/
 
@@ -246,7 +246,7 @@
 ## IX. Document Lineage (Git History)
 
 **Key Commits (Oct 18-19, 2025):**
-1. `d18d466` - Fix hardcode alignment ($56.42 → $56.50, Wilson $52.03)
+1. `d18d466` - Fix hardcode alignment ($56.42 → $54.71, Wilson $48.70)
 2. `68baa51` - Peer regression methodology (7-peer production)
 3. `0bbcac9` - ESG materiality matrix (E/S/G quantified)
 4. `7bea9e6` - Climate risk appendix (TCFD scenario)

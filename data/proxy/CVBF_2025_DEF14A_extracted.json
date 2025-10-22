@@ -1,0 +1,168 @@
+{
+  "version": "1.0.0",
+  "generated_at_utc": "2025-10-20T21:08:53Z",
+  "company": {
+    "name": "CVB FINANCIAL CORP.",
+    "ticker": "CVBF",
+    "cik": "0000354647"
+  },
+  "filing": {
+    "form": "DEF 14A",
+    "accession_number": "0000950170-25-051966",
+    "filing_date": "2025-04-08",
+    "edgar_urls": {
+      "index": "https://www.sec.gov/Archives/edgar/data/354647/000095017025051966/0000950170-25-051966-index.htm",
+      "primary_doc": "https://www.sec.gov/Archives/edgar/data/354647/000095017025051966/cvbf-20250405.htm"
+    }
+  },
+  "board": {
+    "size": 8,
+    "independent_count": 5,
+    "independence_pct": 62.5,
+    "leadership": {
+      "chair_is_independent": false,
+      "ceo_is_chair": false
+    }
+  },
+  "ownership": {
+    "top_holders": [],
+    "top5_pct": 0.0,
+    "insider_pct": 0.0,
+    "policies": {}
+  },
+  "compensation": {
+    "pay_mix_pct": {},
+    "neos": [
+      {
+        "role": "CEO",
+        "name": "David A. Brager",
+        "total_comp_usd": null
+      }
+    ],
+    "annual_incentive": {},
+    "ltip": {},
+    "ceo_pay_ratio_to_median": 33,
+    "say_on_pay_pct": 91.75
+  },
+  "equity_plan": {
+    "overhang_pct": null,
+    "burn_rate_pct": null,
+    "shares_available": null,
+    "shares_outstanding_awards": null,
+    "plan_name": null
+  },
+  "audit": {
+    "auditor": "KPMG LLP",
+    "fees": {
+      "audit": 1668000,
+      "audit_related": 0,
+      "tax": 0,
+      "all_other": 0,
+      "non_audit_pct": 0.0
+    }
+  },
+  "provenance": [
+    {
+      "section": "board.size",
+      "method": "regex",
+      "locators": [
+        "regex: elect (\\d+) persons to the board"
+      ],
+      "page_range": null,
+      "text_snippet": "s on the audio call. At our annual meeting, we will ask you to act on the following matters: 1. Election of Directors . Elect eight (8) persons to the Board of Directors to serve for a term of one year and until their successors are elected and qualified. The following eight",
+      "confidence_pct": 90,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/354647/000095017025051966/cvbf-20250405.htm",
+      "sha256": "fe2a2463104b9a524660a8f36d015ae961cc4243300fc123000fe08ce8693516"
+    },
+    {
+      "section": "board.independent_count",
+      "method": "html_parse",
+      "locators": [
+        "count: Independent Director mentions"
+      ],
+      "page_range": null,
+      "text_snippet": "Corporate Governance Principles and Guidelines Our Board of Directors is committed to good business practices, transparency in financial reporting and strong corporate governance. To that end, the Board of Directors has adopted Corporate Governance Guidelines, which among other things, provide for: \u2022 Annual director elections; \u2022 At least a majority of independent directors; \u2022 Non-executive, independent chair of the Board of Directors; \u2022 Audit, compensation and nominating and corporate governance",
+      "confidence_pct": 80,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/354647/000095017025051966/cvbf-20250405.htm",
+      "sha256": "fe2a2463104b9a524660a8f36d015ae961cc4243300fc123000fe08ce8693516"
+    },
+    {
+      "section": "board.independence_pct",
+      "method": "html_parse",
+      "locators": [
+        "derived from board.independent_count / board.size"
+      ],
+      "page_range": null,
+      "text_snippet": "independent_count=5, board_size=8, independence_pct=62.5",
+      "confidence_pct": 80,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/354647/000095017025051966/cvbf-20250405.htm",
+      "sha256": "fe2a2463104b9a524660a8f36d015ae961cc4243300fc123000fe08ce8693516"
+    },
+    {
+      "section": "compensation.neos[0].name",
+      "method": "html_parse",
+      "locators": [
+        "table header: Name and Principal Position"
+      ],
+      "page_range": null,
+      "text_snippet": "David A. Brager 2024 879,039 686,250 1,237,496 - 237,900 - 76,530 3,117,215",
+      "confidence_pct": 95,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/354647/000095017025051966/cvbf-20250405.htm",
+      "sha256": "fe2a2463104b9a524660a8f36d015ae961cc4243300fc123000fe08ce8693516"
+    },
+    {
+      "section": "compensation.say_on_pay_pct",
+      "method": "regex",
+      "locators": [
+        "regex context search",
+        "regex: support of (\\d+)% "
+      ],
+      "page_range": null,
+      "text_snippet": "nsideration of 2024 Say-On-Pay Results At our 2024 annual meeting of shareholders, our Say-On-Pay proposal received the support of approximately 91.75% of the total shareholder votes cast. In view of this positive vote and other relevant considerations, the Compensation",
+      "confidence_pct": 80,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/354647/000095017025051966/cvbf-20250405.htm",
+      "sha256": "fe2a2463104b9a524660a8f36d015ae961cc4243300fc123000fe08ce8693516"
+    },
+    {
+      "section": "compensation.ceo_pay_ratio_to_median",
+      "method": "regex",
+      "locators": [
+        "regex context search",
+        "regex: (\\d+) to 1"
+      ],
+      "page_range": null,
+      "text_snippet": "ation Table above. Accordingly, for 2024, the ratio of our CEO\u2019s compensation to the median employee\u2019s compensation was 33.2 to 1. We believe that the pay ratio disclosed herein is a reasonable estimate calculated in a manner consistent with Item 40",
+      "confidence_pct": 85,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/354647/000095017025051966/cvbf-20250405.htm",
+      "sha256": "fe2a2463104b9a524660a8f36d015ae961cc4243300fc123000fe08ce8693516"
+    },
+    {
+      "section": "audit.fees",
+      "method": "table_detect",
+      "locators": [
+        "table search: Audit Fees",
+        "table row: Audit Fees(1)",
+        "table row: Audit-related Fees(2)",
+        "table row: Tax Fees(3)",
+        "table row: All Other Fees(4)"
+      ],
+      "page_range": null,
+      "text_snippet": "2024 2023 ($) ($) Audit Fees(1) 1,668,000 1,662,420 Audit-related Fees(2) - - Tax Fees(3) - - All Other Fees(4) - - Total 1,668,000 1,662,420",
+      "confidence_pct": 90,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/354647/000095017025051966/cvbf-20250405.htm",
+      "sha256": "fe2a2463104b9a524660a8f36d015ae961cc4243300fc123000fe08ce8693516"
+    },
+    {
+      "section": "audit.auditor",
+      "method": "regex",
+      "locators": [
+        "text contains: kpmg(?:\\s+llp)?"
+      ],
+      "page_range": null,
+      "text_snippet": "voting power on certain matters. Brokers or other nominees have discretionary voting power for Proposal 3 (approval of KPMG LLP as independent auditor), but not for Proposal 1 (election of directors) or Proposal 2 (Say-On-Pay). It is therefore imp",
+      "confidence_pct": 90,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/354647/000095017025051966/cvbf-20250405.htm",
+      "sha256": "fe2a2463104b9a524660a8f36d015ae961cc4243300fc123000fe08ce8693516"
+    }
+  ]
+}

@@ -74,7 +74,7 @@ def extract_probability_outputs(output: str) -> Dict[str, float]:
     """Extract Wilson 95% target from probability_weighted_valuation.py output"""
     data = {}
 
-    # 95% Upper Bound: P(Current)=74.0%, P(Normalized)=26.0%, Target=$52.03, Return=+13.4%
+    # 95% Upper Bound: P(Current)=74.0%, P(Normalized)=26.0%, Target=$48.70, Return=+3.3%
     match = re.search(r'95% Upper Bound.*Target=\$\s*(\d+\.\d+).*Return=([+-]\d+\.\d+)%', output)
     if match:
         data['wilson_target'] = float(match.group(1))
@@ -92,7 +92,7 @@ def extract_published_numbers() -> Dict[str, float]:
     if readme_path.exists():
         content = readme_path.read_text()
 
-        # Expected Price: **$52.03 (+13.4%)**
+        # Expected Price: **$48.70 (+3.3%)**
         match = re.search(r'Expected Price:.*\*\*\$(\d+\.\d+)\s*\(([+-]\d+\.\d+)%\)', content)
         if match:
             data['readme_wilson_target'] = float(match.group(1))
@@ -118,7 +118,7 @@ def extract_published_numbers() -> Dict[str, float]:
     if index_path.exists():
         content = index_path.read_text()
 
-        # Wilson 95% Expected Value: $52.03 (in table)
+        # Wilson 95% Expected Value: $48.70 (in table)
         # Look for the specific pattern: Wilson 95% Expected Value followed by the price in the next <td>
         wilson_match = re.search(
             r'Wilson 95% Expected Value:.*?<td[^>]*>.*?\$(\d+\.\d+)',

@@ -1,0 +1,5 @@
+{"k":"board.size","v":11,"unit":"count","src":"h2: Board; table 1","conf":0.95}
+{"k":"board.election_standard","v":"majority","unit":null,"src":"Proposal 1 text","conf":0.92}
+{"k":"comp.annual_incentive.ROTCE.weight_pct","v":40,"unit":"pct","src":"CD&A metrics","conf":0.90}
+{"k":"equity_plan.overhang_pct","v":6.4,"unit":"pct","src":"Equity Plan Info","conf":0.88}
+{"k":"audit.fees.non_audit_pct","v":9.7,"unit":"pct","src":"Audit Fees table","conf":0.93}

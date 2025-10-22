@@ -18,7 +18,7 @@
 4. **Probability of Loss:** 32% (price < $45.87 spot) → Moderate downside risk
 5. **Expected Value:** $49.84 (+8.6% vs. spot) → Mean exceeds median (right-skew confirmation)
 
-**Rating Implication:** Monte Carlo **50th percentile $48.92 (+6.6%)** aligns with **RIM blended $51.51 (+12.2%)** and **Wilson 95% $52.03 (+13.4%)** → **HOLD rating confirmed** (all methods within -10% to +15% band)
+**Rating Implication:** Monte Carlo **50th percentile $48.92 (+6.6%)** aligns with **RIM blended $50.97 (+8.1%)** and **Wilson 95% $48.70 (+3.3%)** → **HOLD rating confirmed** (all methods within -10% to +15% band)
 
 ---
 
@@ -319,14 +319,14 @@ Target = 1.741 × $39.84 = **$69.37** (exceeds simulation $62.18)
 |-------|--------------|-----------------|--------|
 | **Monte Carlo (Median)** | **$48.92** | **+6.6%** | **HOLD** |
 | **Monte Carlo (Mean)** | $49.84 | +8.6% | HOLD |
-| RIM Blended (60/10/30) | $51.51 | +12.2% | HOLD |
-| Wilson 95% (74/26) | $52.03 | +13.4% | HOLD |
-| Peer Regression (Current) | $56.50 | +23.1% | BUY |
+| RIM Blended (60/10/30) | $50.97 | +8.1% | HOLD |
+| Wilson 95% (60.9/39.1) | $48.70 | +3.3% | HOLD |
+| Peer Regression (Current) | $54.71 | +16.1% | BUY |
 | Gordon Growth (Normalized) | $39.32 | -14.3% | SELL |
 
 **Interpretation:**
 - **Monte Carlo median $48.92** sits **between** Gordon Growth ($39.32) and RIM/Wilson ($51-52 range)
-- **Mean $49.84 closer to RIM $51.51** → Upside skew pulls mean toward RIM
+- **Mean $49.84 closer to RIM $50.97** → Upside skew pulls mean toward RIM
 - **All HOLD** (within -10% to +15% band) → **Rating stable across methodologies**
 
 ---
@@ -358,7 +358,7 @@ cvar_95 = np.mean(worst_5pct)
 
 ## 7. IRC Defense Q&A
 
-**Q: Why does Monte Carlo median ($48.92) differ from Wilson 95% ($52.03) by $2.82?**
+**Q: Why does Monte Carlo median ($48.92) differ from Wilson 95% ($48.70) by $2.82?**
 A: **Different methodologies.** (1) **Wilson = Probability-weighted scenarios** (74% current + 26% normalized), (2) **Monte Carlo = Full distribution** (10,000 paths, not binary). **Monte Carlo includes tail risks** (CRE 500 bps NCO, demographic shock) **beyond Wilson bounds** → Lower median.
 
 **Q: Why use 10,000 simulations vs. 1,000 or 100,000?**

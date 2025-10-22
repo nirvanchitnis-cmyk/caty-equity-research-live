@@ -1,0 +1,13 @@
+Run: 20251020_180453
+User-Agent: NirvanChitnis/nirvanchitnis@example.com
+Throttle: 1.8s (>=1.5s policy)
+DEF14A: CATY date=2025-04-10 accn=0001437749-25-011577 primary=caty20250326_def14a.htm url=https://www.sec.gov/Archives/edgar/data/861842/000143774925011577/caty20250326_def14a.htm SHA256=43e4b3f0e50309c5655842d10d47e4e38788709c7cfb7ff3e7a6986f53028873
+DEF14A: EWBC date=2025-04-10 accn=0001174947-25-000556 primary=ea0237505-def14a_eastwest.htm url=https://www.sec.gov/Archives/edgar/data/1069157/000117494725000556/ea0237505-def14a_eastwest.htm SHA256=7811e2a8e4749a1a864f53d8ead65af4a54f9689552c8d4365b9b783bdf396a8
+DEF14A: CVBF date=2025-04-08 accn=0000950170-25-051966 primary=cvbf-20250405.htm url=https://www.sec.gov/Archives/edgar/data/354647/000095017025051966/cvbf-20250405.htm SHA256=fe2a2463104b9a524660a8f36d015ae961cc4243300fc123000fe08ce8693516
+DEF14A: HAFC date=2025-04-16 accn=0000950170-25-054713 primary=hafc-20250416.htm url=https://www.sec.gov/Archives/edgar/data/1109242/000095017025054713/hafc-20250416.htm SHA256=385a6cf4ccc02829890e015605fc84554b8a958f5fc820b396de0079c79649b2
+DEF14A: COLB date=2025-04-03 accn=0000887343-25-000152 primary=colb-20250403.htm url=https://www.sec.gov/Archives/edgar/data/887343/000088734325000152/colb-20250403.htm SHA256=2005b04b361e6bb5f11350b07a644ae28b1d4be62112413b979f2312fa29b7d9
+DEF14A: WAFD date=2025-01-29 accn=0000936528-25-000036 primary=wfsl-20250128.htm url=https://www.sec.gov/Archives/edgar/data/936528/000093652825000036/wfsl-20250128.htm SHA256=bea0c6255e3fb45f15eee88b817bfcd1b9b8bc7b2736359ca2000921c005cad6
+WARNING: No CIK for PPBI; skipping
+DEF14A: BANC date=2025-03-27 accn=0001169770-25-000015 primary=banc-20250327.htm url=https://www.sec.gov/Archives/edgar/data/1169770/000116977025000015/banc-20250327.htm SHA256=b38fd5eb7974c7bd1f0a8df5b2b4815fda7b5dda7b6ee8af1f13cc4c55e7a2dc
+DEF14A: HOPE date=2025-04-11 accn=0001193125-25-078439 primary=d888910ddef14a.htm url=https://www.sec.gov/Archives/edgar/data/1128361/000119312525078439/d888910ddef14a.htm SHA256=a96d7c937da6dcf1bcffa0accd84c1a25b760e9197441c7ce500ab663e90bb58
+XLSX SHA256: 9436381bef9668bb239d768a2cbb0cb792118aaab0dbfdb36035042778dec7f8

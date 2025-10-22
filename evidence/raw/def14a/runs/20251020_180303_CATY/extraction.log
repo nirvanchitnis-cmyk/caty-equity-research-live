@@ -1,0 +1,5 @@
+Run: 20251020_180303
+User-Agent: NirvanChitnis/nirvanchitnis@example.com
+Throttle: 1.5s (>=1.5s policy)
+DEF14A: CATY date=2025-04-10 accn=0001437749-25-011577 primary=caty20250326_def14a.htm url=https://www.sec.gov/Archives/edgar/data/861842/000143774925011577/caty20250326_def14a.htm SHA256=43e4b3f0e50309c5655842d10d47e4e38788709c7cfb7ff3e7a6986f53028873
+XLSX SHA256: 59c6e65f0a5584b48c10ef8b71f46b2eb69b4f21029c3a46ca062826cab3b65c

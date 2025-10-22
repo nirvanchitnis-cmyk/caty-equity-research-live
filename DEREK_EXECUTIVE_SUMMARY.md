@@ -10,7 +10,7 @@
 
 **HOLD Cathay General Bancorp (CATY) at $45.87**
 
-**Thesis:** Dual-path valuation shows conflict: Regression at current earnings (ROTE 12.35%) implies $56.50 target (+23.1% upside), but through-cycle normalization implies $39.32 (-14.3% downside). Wilson 95% confidence bounds on NCO breach probability give 74/26 probability split → expected $52.03 (+13.4%), just below +15% BUY threshold.
+**Thesis:** Dual-path valuation shows conflict: Regression at current earnings (ROTE 12.35%) implies $54.71 target (+16.1% upside), but through-cycle normalization implies $39.32 (-14.3% downside). Wilson 95% confidence bounds on NCO breach probability give 60.9/39.1 split → expected $48.70 (+3.3%), just below +15% BUY threshold.
 
 **Edge:** HOLD validated by statistical uncertainty. 95% upper bound (26% tail probability) keeps expected return at +13.4%, below BUY hurdle. Market pricing (39/61 split) appears overly pessimistic vs FDIC data (0% post-2014 breach rate).
 
@@ -488,7 +488,7 @@ Based on Derek's standards, these sections MUST be present and were built:
 | 60 | Bear | 9.31% | 0.961x | $34.75 | -24.3% | Bear downside |
 
 **Takeaway:** Target is highly sensitive to NCO assumption. 10 bps NCO = ~$0.90 price impact.
-**Final Rating:** HOLD at $52.03 (+13.4%), calculated as Wilson 95% weighted average (74% × $56.50 + 26% × $39.32).
+**Final Rating:** HOLD at $48.70 (+3.3%), calculated as Wilson 95% weighted average (60.9% × $54.71 + 39.1% × $39.34).
 
 ---
 
@@ -610,7 +610,7 @@ Based on his process directive, Derek will provide:
 Transformed 12 JSON data files + SEC filings into a live equity research website with interactive data modules, verified calculations, and comprehensive provenance. Deployed to GitHub Pages for easy sharing.
 
 **Investment Call:**
-HOLD CATY at $45.87, normalized target $39.32 (-14.3%), based on through-cycle credit normalization (42.8 bps NCO vs. current 18 bps) compressing ROTE and P/TBV multiple. Wilson 95% probability-weighted expected price $52.03 (+13.4%).
+HOLD CATY at $47.13, normalized target $39.34 (-16.5%), based on through-cycle credit normalization (42.8 bps NCO vs. current 18 bps) compressing ROTE and P/TBV multiple. Wilson 95% probability-weighted expected price $48.70 (+3.3%).
 
 **How to Test:**
 1. Click the URL

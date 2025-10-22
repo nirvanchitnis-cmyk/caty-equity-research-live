@@ -1,0 +1,99 @@
+{
+  "company_overview": {
+    "market_cap_billions": 3.26,
+    "shares_outstanding_millions": 69.4,
+    "fiscal_year_end": "December 31",
+    "founded_year": 1962,
+    "branches_total": 62,
+    "branches_by_state": [
+      {
+        "state": "California",
+        "count": 44,
+        "pct": 71.0
+      },
+      {
+        "state": "New York",
+        "count": 9,
+        "pct": 14.5
+      },
+      {
+        "state": "Texas",
+        "count": 5,
+        "pct": 8.1
+      },
+      {
+        "state": "Other",
+        "count": 4,
+        "pct": 6.5
+      }
+    ],
+    "business_model_summary": "Community banking with bilingual service targeting Chinese-American market. 52% CRE loan concentration, 40% retail deposits."
+  },
+  "positive_catalysts": [
+    {
+      "catalyst": "NIM Expansion",
+      "current": "3.15%",
+      "target": "3.40-3.60%",
+      "timeline": "Q4 2025 - Q2 2026",
+      "drivers": [
+        "Fed rate cuts stabilize deposit costs",
+        "Loan repricing accelerates",
+        "NIB mix stabilizes at 27%"
+      ],
+      "impact": "+10-15% EPS upside"
+    },
+    {
+      "catalyst": "Efficiency Ratio Improvement",
+      "current": "47.2%",
+      "target": "42-45%",
+      "timeline": "2026",
+      "drivers": [
+        "Revenue growth from NIM expansion",
+        "Branch rationalization in CA",
+        "Digital banking launch Q4 2025"
+      ],
+      "impact": "+8% PPNR growth"
+    },
+    {
+      "catalyst": "Texas Market Expansion",
+      "current": "5 branches, 8% footprint",
+      "target": "10 branches by 2027",
+      "timeline": "Q1 2026 start",
+      "drivers": [
+        "Houston Chinese-American HH growth +6% CAGR",
+        "Dallas commercial lending opportunities",
+        "Lower NIB mix risk vs CA"
+      ],
+      "impact": "Geographic diversification, +3% loan growth CAGR"
+    },
+    {
+      "catalyst": "Credit Quality Normalization",
+      "current": "NCO 21.7 bps (Q2 2025)",
+      "target": "Through-cycle 42.8 bps",
+      "timeline": "2026-2027",
+      "drivers": [
+        "CRE stress subsiding",
+        "Office exposure only 8% of loans",
+        "Trade finance pristine (0% NPL)"
+      ],
+      "impact": "ACL reserve release potential $25-30M"
+    },
+    {
+      "catalyst": "Digital Banking Launch",
+      "current": "Traditional branch-first model",
+      "target": "Omnichannel launch Q4 2025",
+      "timeline": "Q4 2025",
+      "drivers": [
+        "Mobile app redesign complete",
+        "API banking for SMB clients",
+        "Compete with fintech on NIB deposits"
+      ],
+      "impact": "Reduce branch dependency, lower NIB attrition"
+    }
+  ],
+  "metadata": {
+    "last_updated": "2025-10-21",
+    "provenance": "IR presentations, Q2 2025 earnings call, management guidance",
+    "confidence": "MEDIUM (forward-looking statements)"
+  }
+}

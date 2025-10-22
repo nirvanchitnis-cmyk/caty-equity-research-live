@@ -1,7 +1,7 @@
 {
-  "price": 45.89,
-  "price_date": "2025-10-18",
-  "report_generated": "2025-10-19T10:30:00Z",
+  "price": 47.13,
+  "price_date": "2025-10-21",
+  "report_generated": "2025-10-22T01:53:21.842083+00:00",
   "data_source": "NASDAQ closing price (Friday, Oct 18, 2025)",
   "ticker": "CATY",
   "company": "Cathay General Bancorp",
@@ -10,21 +10,21 @@
     "market_status": "closed",
     "next_trading_day": "2025-10-21",
     "data_quality": "VERIFIED",
-    "update_method": "manual (TODO: integrate stooq.com or live feed)"
+    "update_method": "yfinance API"
   },
   "calculated_metrics": {
     "tbvps": 36.16,
-    "current_ptbv": 1.269,
-    "target_regression": 56.50,
-    "target_normalized": 39.32,
-    "target_wilson_95": 52.03,
-    "target_irc_blended": 51.51,
-    "return_regression_pct": 23.1,
-    "return_normalized_pct": -14.3,
-    "return_wilson_95_pct": 13.4,
-    "return_irc_blended_pct": 12.2,
+    "current_ptbv": 1.303,
+    "target_regression": 54.71,
+    "target_normalized": 39.34,
+    "target_wilson_95": 48.7,
+    "target_irc_blended": 50.97,
+    "return_regression_pct": 16.1,
+    "return_normalized_pct": -16.5,
+    "return_wilson_95_pct": 3.3,
+    "return_irc_blended_pct": 8.1,
     "rating": "HOLD",
-    "normalized_ptbv": 1.087,
+    "normalized_ptbv": 1.088,
     "implied_coe_pct": 9.587,
     "normalized_rote_pct": 10.21,
     "rote_ltm_pct": 11.95,
@@ -37,7 +37,7 @@
     "through_cycle_nco_bps": 42.8,
     "acl_loans_pct": 0.88,
     "acl_amount_millions": 173.5,
-    "npa_assets_pct": 0.30,
+    "npa_assets_pct": 0.3,
     "cet1_ratio_pct": 13.35,
     "cre_loans_pct": 52.4,
     "brokered_deposit_pct": 5.62,
@@ -49,5 +49,32 @@
     "dividend_annual": 1.52
   },
   "version": "1.0",
-  "schema_url": "data/market_data_schema.json"
+  "schema_url": "data/market_data_schema.json",
+  "report_metadata": {
+    "report_date": "October 22, 2025",
+    "report_date_iso": "2025-10-22",
+    "last_updated_utc": "2025-10-22T01:53:21.842083+00:00",
+    "generated_at_display": "October 22, 2025 01:53 UTC"
+  },
+  "narrative_prose": {
+    "investment_thesis_summary": "{{company}} ({{ticker}}) trades at ${{price}} ({{price_date}}) with expected return of {{return_wilson_95_pct}}% to Wilson 95% target ${{target_wilson_95}}. Current P/TBV {{current_ptbv}}x represents premium to normalized {{normalized_ptbv}}x, driven by current earnings (ROTE {{rote_ltm_pct}}%) vs through-cycle assumptions (NCO {{through_cycle_nco_bps}} bps).",
+    "rating_rationale": "{{rating}} rating reflects {{return_wilson_95_pct}}% expected return within -10% to +15% threshold.",
+    "investment_risks": [
+      {
+        "risk": "CRE Concentration",
+        "severity": "HIGH",
+        "description": "CRE {{cre_loans_pct}}% of loans, above peer median ~41%. Office exposure tail risk if values decline 20% = $500M loss vs ${{acl_amount_millions}}M ACL."
+      },
+      {
+        "risk": "Through-Cycle NCO Normalization",
+        "severity": "MEDIUM",
+        "description": "Current NCO {{nco_rate_bps}} bps below through-cycle {{through_cycle_nco_bps}} bps. Normalizing provision reduces ROTE from {{rote_ltm_pct}}% to {{normalized_rote_pct}}%."
+      },
+      {
+        "risk": "NIM Compression",
+        "severity": "MEDIUM",
+        "description": "IB-Only Beta {{deposit_beta_interest_bearing}}, 100 bps Fed cuts \u2192 ~50 bps NIM impact. NIB mix {{nib_pct}}% provides limited cushion."
+      }
+    ]
+  }
 }

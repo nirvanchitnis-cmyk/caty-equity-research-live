@@ -3,9 +3,7 @@
     {
       "id": "CATY_01",
       "file": "CATY_01_company_profile.html",
-      "data": {
-        "last_updated_display": "October 19, 2025"
-      },
+      "data": {},
       "sections": [
         {
           "marker": "caty01-header-meta",
@@ -14,8 +12,8 @@
             "template": "<p class=\"page-meta\">\n    Corporate identifiers and market snapshot |\n    Last Updated: {last_updated} |\n    Source: SEC 10-K FY2024 + SEC 10-Q Q2 2025\n</p>",
             "placeholders": {
               "{last_updated}": {
-                "source": "module",
-                "path": "last_updated_display",
+                "source": "market",
+                "path": "report_metadata.report_date",
                 "format": "text"
               }
             }
@@ -95,16 +93,56 @@
           "template": {
             "template": "<table>\n    <thead>\n        <tr>\n            <th>Field</th>\n            <th>Value</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr><td><strong>Legal Name</strong></td><td>{legal_name}</td></tr>\n        <tr><td><strong>Ticker</strong></td><td>{ticker}</td></tr>\n        <tr><td><strong>Exchange</strong></td><td>{exchange}</td></tr>\n        <tr><td><strong>LEI</strong></td><td>{lei}</td></tr>\n        <tr><td><strong>State of Incorporation</strong></td><td>{state}</td></tr>\n        <tr><td><strong>Incorporation Date</strong></td><td>{incorporation_date}</td></tr>\n        <tr><td><strong>Fiscal Year End</strong></td><td>{fye}</td></tr>\n        <tr><td><strong>SIC</strong></td><td>{sic} - {sic_description}</td></tr>\n        <tr><td><strong>IRS Number</strong></td><td>{irs}</td></tr>\n    </tbody>\n</table>",
             "placeholders": {
-              "{legal_name}": {"source": "caty01_tables", "path": "entity.legal_name", "format": "text"},
-              "{ticker}": {"source": "caty01_tables", "path": "entity.ticker", "format": "text"},
-              "{exchange}": {"source": "caty01_tables", "path": "entity.exchange", "format": "text"},
-              "{lei}": {"source": "caty01_tables", "path": "entity.lei", "format": "text"},
-              "{state}": {"source": "caty01_tables", "path": "entity.incorporation_state", "format": "text"},
-              "{incorporation_date}": {"source": "caty01_tables", "path": "entity.incorporation_date", "format": "text"},
-              "{fye}": {"source": "caty01_tables", "path": "entity.fiscal_year_end", "format": "text"},
-              "{sic}": {"source": "caty01_tables", "path": "entity.sic_code", "format": "text"},
-              "{sic_description}": {"source": "caty01_tables", "path": "entity.sic_description", "format": "text"},
-              "{irs}": {"source": "caty01_tables", "path": "entity.irs_number", "format": "text"}
+              "{legal_name}": {
+                "source": "caty01_tables",
+                "path": "entity.legal_name",
+                "format": "text"
+              },
+              "{ticker}": {
+                "source": "caty01_tables",
+                "path": "entity.ticker",
+                "format": "text"
+              },
+              "{exchange}": {
+                "source": "caty01_tables",
+                "path": "entity.exchange",
+                "format": "text"
+              },
+              "{lei}": {
+                "source": "caty01_tables",
+                "path": "entity.lei",
+                "format": "text"
+              },
+              "{state}": {
+                "source": "caty01_tables",
+                "path": "entity.incorporation_state",
+                "format": "text"
+              },
+              "{incorporation_date}": {
+                "source": "caty01_tables",
+                "path": "entity.incorporation_date",
+                "format": "text"
+              },
+              "{fye}": {
+                "source": "caty01_tables",
+                "path": "entity.fiscal_year_end",
+                "format": "text"
+              },
+              "{sic}": {
+                "source": "caty01_tables",
+                "path": "entity.sic_code",
+                "format": "text"
+              },
+              "{sic_description}": {
+                "source": "caty01_tables",
+                "path": "entity.sic_description",
+                "format": "text"
+              },
+              "{irs}": {
+                "source": "caty01_tables",
+                "path": "entity.irs_number",
+                "format": "text"
+              }
             }
           }
         },
@@ -114,12 +152,39 @@
           "template": {
             "template": "<div class=\"alert-box info\">\n    <div class=\"alert-title\">Auditor of Record</div>\n    <div class=\"alert-text\">\n        <strong>Firm:</strong> {firm} ({location})<br>\n        <strong>Tenure:</strong> {tenure} years<br>\n        <strong>Audit Committee Policy:</strong> {pre_approval}<br>\n        <strong>FY2024 Fees:</strong> {fees}<br>\n        <em>{note}</em>\n    </div>\n</div>",
             "placeholders": {
-              "{firm}": {"source": "caty01_tables", "path": "auditor.firm", "format": "text"},
-              "{location}": {"source": "caty01_tables", "path": "auditor.office_location", "format": "text"},
-              "{tenure}": {"source": "caty01_tables", "path": "auditor.tenure_years", "format": "decimal", "decimals": 0},
-              "{pre_approval}": {"source": "caty01_tables", "path": "auditor.audit_committee_pre_approval", "format": "text"},
-              "{fees}": {"source": "caty01_tables", "path": "auditor.fees_fy2024_millions", "format": "currency_scale", "scale": "millions", "decimals": 2},
-              "{note}": {"source": "caty01_tables", "path": "auditor.note", "format": "text"}
+              "{firm}": {
+                "source": "caty01_tables",
+                "path": "auditor.firm",
+                "format": "text"
+              },
+              "{location}": {
+                "source": "caty01_tables",
+                "path": "auditor.office_location",
+                "format": "text"
+              },
+              "{tenure}": {
+                "source": "caty01_tables",
+                "path": "auditor.tenure_years",
+                "format": "decimal",
+                "decimals": 0
+              },
+              "{pre_approval}": {
+                "source": "caty01_tables",
+                "path": "auditor.audit_committee_pre_approval",
+                "format": "text"
+              },
+              "{fees}": {
+                "source": "caty01_tables",
+                "path": "auditor.fees_fy2024_millions",
+                "format": "currency_scale",
+                "scale": "millions",
+                "decimals": 2
+              },
+              "{note}": {
+                "source": "caty01_tables",
+                "path": "auditor.note",
+                "format": "text"
+              }
             }
           }
         },
@@ -163,13 +228,41 @@
           "template": {
             "template": "<div class=\"highlight-box info\">\n    <p><strong>Parent:</strong> {parent}</p>\n    <p><strong>Primary Subsidiary:</strong> {subsidiary} ({charter})</p>\n    <p><strong>FDIC Insurance:</strong> {fdic}</p>\n    <p><strong>Regulatory Oversight:</strong> State - {state_regulator}; Federal - {federal_regulator}</p>\n    <p><strong>Federal Reserve Status:</strong> {fr_status}</p>\n</div>",
             "placeholders": {
-              "{parent}": {"source": "caty01_tables", "path": "corporate_structure.parent_company", "format": "text"},
-              "{subsidiary}": {"source": "caty01_tables", "path": "corporate_structure.primary_subsidiary", "format": "text"},
-              "{charter}": {"source": "caty01_tables", "path": "corporate_structure.subsidiary_charter", "format": "text"},
-              "{fdic}": {"source": "caty01_tables", "path": "corporate_structure.fdic_insured", "format": "text"},
-              "{state_regulator}": {"source": "caty01_tables", "path": "corporate_structure.primary_regulator", "format": "text"},
-              "{federal_regulator}": {"source": "caty01_tables", "path": "corporate_structure.federal_regulator", "format": "text"},
-              "{fr_status}": {"source": "caty01_tables", "path": "corporate_structure.federal_reserve_member", "format": "text"}
+              "{parent}": {
+                "source": "caty01_tables",
+                "path": "corporate_structure.parent_company",
+                "format": "text"
+              },
+              "{subsidiary}": {
+                "source": "caty01_tables",
+                "path": "corporate_structure.primary_subsidiary",
+                "format": "text"
+              },
+              "{charter}": {
+                "source": "caty01_tables",
+                "path": "corporate_structure.subsidiary_charter",
+                "format": "text"
+              },
+              "{fdic}": {
+                "source": "caty01_tables",
+                "path": "corporate_structure.fdic_insured",
+                "format": "text"
+              },
+              "{state_regulator}": {
+                "source": "caty01_tables",
+                "path": "corporate_structure.primary_regulator",
+                "format": "text"
+              },
+              "{federal_regulator}": {
+                "source": "caty01_tables",
+                "path": "corporate_structure.federal_regulator",
+                "format": "text"
+              },
+              "{fr_status}": {
+                "source": "caty01_tables",
+                "path": "corporate_structure.federal_reserve_member",
+                "format": "text"
+              }
             }
           }
         },
@@ -177,17 +270,62 @@
           "marker": "caty01-branch-network",
           "type": "text",
           "template": {
-            "template": "<table>\n    <thead>\n        <tr>\n            <th>Region</th>\n            <th class=\"numeric\">Branches</th>\n            <th class=\"numeric\">Portfolio Share</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr><td><strong>Total Network</strong></td><td class=\"numeric\">{total}</td><td class=\"numeric\">100%</td></tr>\n        <tr><td>California</td><td class=\"numeric\">{ca_count}</td><td class=\"numeric\">{ca_pct}%</td></tr>\n        <tr><td>New York</td><td class=\"numeric\">{ny_count}</td><td class=\"numeric\">{ny_pct}%</td></tr>\n        <tr><td>Texas</td><td class=\"numeric\">{tx_count}</td><td class=\"numeric\">{tx_pct}%</td></tr>\n        <tr><td>Other</td><td class=\"numeric\">{other_count}</td><td class=\"numeric\">{other_pct}%</td></tr>\n    </tbody>\n</table>",
+            "template": "<div class=\"chart-container\">\n    <canvas id=\"caty01-geography-chart\"></canvas>\n</div>\n<table>\n    <thead>\n        <tr>\n            <th>Region</th>\n            <th class=\"numeric\">Branches</th>\n            <th class=\"numeric\">Portfolio Share</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr><td><strong>Total Network</strong></td><td class=\"numeric highlight-number\">{total}</td><td class=\"numeric\">100%</td></tr>\n        <tr><td>California</td><td class=\"numeric highlight-number\">{ca_count}</td><td class=\"numeric highlight-number\">{ca_pct}%</td></tr>\n        <tr><td>New York</td><td class=\"numeric\">{ny_count}</td><td class=\"numeric\">{ny_pct}%</td></tr>\n        <tr><td>Texas</td><td class=\"numeric\">{tx_count}</td><td class=\"numeric\">{tx_pct}%</td></tr>\n        <tr><td>Other</td><td class=\"numeric\">{other_count}</td><td class=\"numeric\">{other_pct}%</td></tr>\n    </tbody>\n</table>",
             "placeholders": {
-              "{total}": {"source": "caty01_tables", "path": "branch_network.total_branches", "format": "decimal", "decimals": 0},
-              "{ca_count}": {"source": "caty01_tables", "path": "branch_network.california_branches", "format": "decimal", "decimals": 0},
-              "{ny_count}": {"source": "caty01_tables", "path": "branch_network.new_york_branches", "format": "decimal", "decimals": 0},
-              "{tx_count}": {"source": "caty01_tables", "path": "branch_network.texas_branches", "format": "decimal", "decimals": 0},
-              "{other_count}": {"source": "caty01_tables", "path": "branch_network.other_branches", "format": "decimal", "decimals": 0},
-              "{ca_pct}": {"source": "caty01_tables", "path": "branch_network.geographic_concentration_pct.california", "format": "decimal", "decimals": 0},
-              "{ny_pct}": {"source": "caty01_tables", "path": "branch_network.geographic_concentration_pct.new_york", "format": "decimal", "decimals": 0},
-              "{tx_pct}": {"source": "caty01_tables", "path": "branch_network.geographic_concentration_pct.texas", "format": "decimal", "decimals": 0},
-              "{other_pct}": {"source": "caty01_tables", "path": "branch_network.geographic_concentration_pct.other", "format": "decimal", "decimals": 0}
+              "{total}": {
+                "source": "caty01_tables",
+                "path": "branch_network.total_branches",
+                "format": "decimal",
+                "decimals": 0
+              },
+              "{ca_count}": {
+                "source": "caty01_tables",
+                "path": "branch_network.california_branches",
+                "format": "decimal",
+                "decimals": 0
+              },
+              "{ny_count}": {
+                "source": "caty01_tables",
+                "path": "branch_network.new_york_branches",
+                "format": "decimal",
+                "decimals": 0
+              },
+              "{tx_count}": {
+                "source": "caty01_tables",
+                "path": "branch_network.texas_branches",
+                "format": "decimal",
+                "decimals": 0
+              },
+              "{other_count}": {
+                "source": "caty01_tables",
+                "path": "branch_network.other_branches",
+                "format": "decimal",
+                "decimals": 0
+              },
+              "{ca_pct}": {
+                "source": "caty01_tables",
+                "path": "branch_network.geographic_concentration_pct.california",
+                "format": "decimal",
+                "decimals": 0
+              },
+              "{ny_pct}": {
+                "source": "caty01_tables",
+                "path": "branch_network.geographic_concentration_pct.new_york",
+                "format": "decimal",
+                "decimals": 0
+              },
+              "{tx_pct}": {
+                "source": "caty01_tables",
+                "path": "branch_network.geographic_concentration_pct.texas",
+                "format": "decimal",
+                "decimals": 0
+              },
+              "{other_pct}": {
+                "source": "caty01_tables",
+                "path": "branch_network.geographic_concentration_pct.other",
+                "format": "decimal",
+                "decimals": 0
+              }
             }
           }
         },
@@ -207,34 +345,88 @@
           "cards": [
             {
               "label": "Stock Price",
-              "value": {"source": "caty01_tables", "path": "market_data_q2_2025.stock_price", "format": "currency", "decimals": 2},
-              "subtext": {"template": "As of Q2 2025 close"}
+              "value": {
+                "source": "caty01_tables",
+                "path": "market_data_q2_2025.stock_price",
+                "format": "currency",
+                "decimals": 2
+              },
+              "subtext": {
+                "template": "As of Q2 2025 close"
+              }
             },
             {
               "label": "Market Cap",
-              "value": {"source": "caty01_tables", "path": "market_data_q2_2025.market_cap_millions", "format": "currency_scale", "scale": "millions", "decimals": 0},
+              "value": {
+                "source": "caty01_tables",
+                "path": "market_data_q2_2025.market_cap_millions",
+                "format": "currency_scale",
+                "scale": "millions",
+                "decimals": 0
+              },
               "subtext": {
                 "template": "Shares outstanding {shares}",
                 "placeholders": {
-                  "{shares}": {"source": "caty01_tables", "path": "market_data_q2_2025.shares_outstanding_millions", "format": "number_scale", "scale": "millions", "decimals": 3}
+                  "{shares}": {
+                    "source": "caty01_tables",
+                    "path": "market_data_q2_2025.shares_outstanding_millions",
+                    "format": "number_scale",
+                    "scale": "millions",
+                    "decimals": 3
+                  }
                 }
               }
             },
             {
               "label": "TBVPS",
-              "value": {"source": "caty01_tables", "path": "market_data_q2_2025.tbvps", "format": "currency", "decimals": 2},
-              "subtext": {"template": "P/TBV {ptbv}x", "placeholders": {"{ptbv}": {"source": "caty01_tables", "path": "market_data_q2_2025.p_tbv", "format": "decimal", "decimals": 3}}}
+              "value": {
+                "source": "caty01_tables",
+                "path": "market_data_q2_2025.tbvps",
+                "format": "currency",
+                "decimals": 2
+              },
+              "subtext": {
+                "template": "P/TBV {ptbv}x",
+                "placeholders": {
+                  "{ptbv}": {
+                    "source": "caty01_tables",
+                    "path": "market_data_q2_2025.p_tbv",
+                    "format": "decimal",
+                    "decimals": 3
+                  }
+                }
+              }
             },
             {
               "label": "52-Week Range",
               "value": {
-                "template": "{low} → {high}",
+                "template": "{low} \u2192 {high}",
                 "placeholders": {
-                  "{low}": {"source": "caty01_tables", "path": "market_data_q2_2025.fifty_two_week_low", "format": "currency", "decimals": 2},
-                  "{high}": {"source": "caty01_tables", "path": "market_data_q2_2025.fifty_two_week_high", "format": "currency", "decimals": 2}
+                  "{low}": {
+                    "source": "caty01_tables",
+                    "path": "market_data_q2_2025.fifty_two_week_low",
+                    "format": "currency",
+                    "decimals": 2
+                  },
+                  "{high}": {
+                    "source": "caty01_tables",
+                    "path": "market_data_q2_2025.fifty_two_week_high",
+                    "format": "currency",
+                    "decimals": 2
+                  }
                 }
               },
-              "subtext": {"template": "Average daily volume {adv}k", "placeholders": {"{adv}": {"source": "caty01_tables", "path": "market_data_q2_2025.average_daily_volume_thousands", "format": "decimal", "decimals": 0}}}
+              "subtext": {
+                "template": "Average daily volume {adv}k",
+                "placeholders": {
+                  "{adv}": {
+                    "source": "caty01_tables",
+                    "path": "market_data_q2_2025.average_daily_volume_thousands",
+                    "format": "decimal",
+                    "decimals": 0
+                  }
+                }
+              }
             }
           ]
         },
@@ -244,28 +436,73 @@
           "template": {
             "template": "<div class=\"alert-box warning\">\n    <div class=\"alert-title\">Analyst Coverage Snapshot</div>\n    <div class=\"alert-text\">\n        <strong>Consensus Rating:</strong> {rating}<br>\n        <strong>Target Price:</strong> {target}<br>\n        <strong>Range:</strong> {low} to {high}<br>\n        <strong>Covering Firms:</strong> {firms}\n    </div>\n    <p class=\"text-muted\">{note}</p>\n</div>",
             "placeholders": {
-              "{rating}": {"source": "caty01_tables", "path": "analyst_coverage.consensus_rating", "format": "text"},
-              "{target}": {"source": "caty01_tables", "path": "analyst_coverage.consensus_target", "format": "currency", "decimals": 2},
-              "{low}": {"source": "caty01_tables", "path": "analyst_coverage.range_low", "format": "currency", "decimals": 2},
-              "{high}": {"source": "caty01_tables", "path": "analyst_coverage.range_high", "format": "currency", "decimals": 2},
-              "{firms}": {"source": "caty01_tables", "path": "analyst_coverage.firms_html", "format": "text"},
-              "{note}": {"source": "caty01_tables", "path": "analyst_coverage.note", "format": "text"}
+              "{rating}": {
+                "source": "caty01_tables",
+                "path": "analyst_coverage.consensus_rating",
+                "format": "text"
+              },
+              "{target}": {
+                "source": "caty01_tables",
+                "path": "analyst_coverage.consensus_target",
+                "format": "currency",
+                "decimals": 2
+              },
+              "{low}": {
+                "source": "caty01_tables",
+                "path": "analyst_coverage.range_low",
+                "format": "currency",
+                "decimals": 2
+              },
+              "{high}": {
+                "source": "caty01_tables",
+                "path": "analyst_coverage.range_high",
+                "format": "currency",
+                "decimals": 2
+              },
+              "{firms}": {
+                "source": "caty01_tables",
+                "path": "analyst_coverage.firms_html",
+                "format": "text"
+              },
+              "{note}": {
+                "source": "caty01_tables",
+                "path": "analyst_coverage.note",
+                "format": "text"
+              }
             }
           }
         },
         {
           "marker": "caty01-qa-table",
           "type": "table",
-          "headers": ["Check ID", "Description", "Rule", "Status"],
-          "columns": ["id", "description", "rule", "status"],
+          "headers": [
+            "Check ID",
+            "Description",
+            "Rule",
+            "Status"
+          ],
+          "columns": [
+            "id",
+            "description",
+            "rule",
+            "status"
+          ],
           "rows_from_list": {
             "source": "caty01_tables",
             "list_path": "qa_checks",
             "row_template": {
-              "id": {"template": "<strong>{id}</strong>"},
-              "description": {"template": "{description}"},
-              "rule": {"template": "{rule}"},
-              "status": {"template": "<span class=\"verification-badge complete\">{status}</span>"}
+              "id": {
+                "template": "<strong>{id}</strong>"
+              },
+              "description": {
+                "template": "{description}"
+              },
+              "rule": {
+                "template": "{rule}"
+              },
+              "status": {
+                "template": "<span class=\"verification-badge complete\">{status}</span>"
+              }
             }
           }
         },
@@ -275,10 +512,175 @@
           "template": {
             "template": "<table>\n    <thead>\n        <tr>\n            <th>Field</th>\n            <th>Detail</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr><td><strong>Schema Version</strong></td><td>{schema}</td></tr>\n        <tr><td><strong>Prepared On</strong></td><td>{prepared}</td></tr>\n        <tr><td><strong>Primary Sources</strong></td><td>{sources}</td></tr>\n        <tr><td><strong>Analyst Notes</strong></td><td>{notes}</td></tr>\n    </tbody>\n</table>",
             "placeholders": {
-              "{schema}": {"source": "caty01_tables", "path": "metadata.schema_version", "format": "text"},
-              "{prepared}": {"source": "caty01_tables", "path": "metadata.prepared_on", "format": "text"},
-              "{sources}": {"source": "caty01_tables", "path": "metadata.primary_sources", "format": "text"},
-              "{notes}": {"source": "caty01_tables", "path": "metadata.analyst_notes", "format": "text"}
+              "{schema}": {
+                "source": "caty01_tables",
+                "path": "metadata.schema_version",
+                "format": "text"
+              },
+              "{prepared}": {
+                "source": "caty01_tables",
+                "path": "metadata.prepared_on",
+                "format": "text"
+              },
+              "{sources}": {
+                "source": "caty01_tables",
+                "path": "metadata.primary_sources",
+                "format": "text"
+              },
+              "{notes}": {
+                "source": "caty01_tables",
+                "path": "metadata.analyst_notes",
+                "format": "text"
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty01-strategic-positioning",
+          "type": "text",
+          "template": {
+            "template": "<div class=\"narrative-box\">\n    <p><strong>Elevator Pitch:</strong> {elevator_pitch}</p>\n    <p><strong>Market Niche:</strong> {market_niche}</p>\n    <p><strong>Geographic Moat:</strong> {geographic_moat}</p>\n    <p><strong>vs. Peers:</strong> {differentiation}</p>\n</div>",
+            "placeholders": {
+              "{elevator_pitch}": {
+                "source": "caty01_tables",
+                "path": "strategic_positioning.elevator_pitch",
+                "format": "text"
+              },
+              "{market_niche}": {
+                "source": "caty01_tables",
+                "path": "strategic_positioning.market_niche",
+                "format": "text"
+              },
+              "{geographic_moat}": {
+                "source": "caty01_tables",
+                "path": "strategic_positioning.geographic_moat",
+                "format": "text"
+              },
+              "{differentiation}": {
+                "source": "caty01_tables",
+                "path": "strategic_positioning.differentiation_vs_peers",
+                "format": "text"
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty01-business-model",
+          "type": "text",
+          "template": {
+            "template": "<div class=\"chart-container\">\n    <canvas id=\"caty01-revenue-chart\"></canvas>\n</div>\n<h3>Revenue Drivers</h3>\n<table>\n    <thead><tr><th>Driver</th><th>Contribution %</th><th>Description</th></tr></thead>\n    <tbody>\n{revenue_rows}\n    </tbody>\n</table>\n<h3>Customer Segments</h3>\n<table>\n    <thead><tr><th>Segment</th><th>Loans %</th><th>Deposits %</th></tr></thead>\n    <tbody>\n{customer_rows}\n    </tbody>\n</table>",
+            "placeholders": {
+              "{revenue_rows}": {
+                "source": "caty01_tables",
+                "path": "business_model.revenue_drivers",
+                "format": "list_to_table_rows",
+                "columns": [
+                  "driver",
+                  "contribution_pct",
+                  "description"
+                ]
+              },
+              "{customer_rows}": {
+                "source": "caty01_tables",
+                "path": "business_model.customer_segments",
+                "format": "list_to_table_rows",
+                "columns": [
+                  "segment",
+                  "loans_pct",
+                  "deposits_pct"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty01-competitive-advantages",
+          "type": "text",
+          "template": {
+            "template": "<div class=\"advantage-grid\">\n{advantage_cards}\n</div>",
+            "placeholders": {
+              "{advantage_cards}": {
+                "source": "caty01_tables",
+                "path": "competitive_advantages",
+                "format": "list_to_advantage_cards"
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty01-market-opportunity",
+          "type": "text",
+          "template": {
+            "template": "<div class=\"market-box\">\n    <p><strong>Addressable Market:</strong> {tam}</p>\n    <p><strong>Market Share:</strong> {share}</p>\n    <h3>Growth Drivers</h3>\n    <ul>\n{drivers}\n    </ul>\n    <p><strong>Expansion Opportunities:</strong> {expansion}</p>\n</div>",
+            "placeholders": {
+              "{tam}": {
+                "source": "caty01_tables",
+                "path": "market_opportunity.addressable_market",
+                "format": "text"
+              },
+              "{share}": {
+                "source": "caty01_tables",
+                "path": "market_opportunity.market_share",
+                "format": "text"
+              },
+              "{drivers}": {
+                "source": "caty01_tables",
+                "path": "market_opportunity.growth_drivers",
+                "format": "list_to_li"
+              },
+              "{expansion}": {
+                "source": "caty01_tables",
+                "path": "market_opportunity.expansion_opportunities",
+                "format": "text"
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty01-historical-evolution",
+          "type": "text",
+          "template": {
+            "template": "<p><strong>Founded:</strong> {founded}</p>\n<div class=\"timeline\">\n{milestones}\n</div>\n<div class=\"insight-box\">\n    <strong>Strategic Inflection Points:</strong> {inflection}\n</div>",
+            "placeholders": {
+              "{founded}": {
+                "source": "caty01_tables",
+                "path": "historical_evolution.founded",
+                "format": "text"
+              },
+              "{milestones}": {
+                "source": "caty01_tables",
+                "path": "historical_evolution.key_milestones",
+                "format": "list_to_timeline"
+              },
+              "{inflection}": {
+                "source": "caty01_tables",
+                "path": "historical_evolution.strategic_inflection_points",
+                "format": "text"
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty01-management-strategy",
+          "type": "text",
+          "template": {
+            "template": "<p><strong>CEO:</strong> {ceo}</p>\n<h3>Key Priorities (2025-2027)</h3>\n<ul>\n{priorities}\n</ul>\n<div class=\"highlight-box success\">\n    <strong>Execution Track Record:</strong> {track_record}\n</div>",
+            "placeholders": {
+              "{ceo}": {
+                "source": "caty01_tables",
+                "path": "management_strategy.ceo",
+                "format": "text"
+              },
+              "{priorities}": {
+                "source": "caty01_tables",
+                "path": "management_strategy.key_priorities",
+                "format": "list_to_li"
+              },
+              "{track_record}": {
+                "source": "caty01_tables",
+                "path": "management_strategy.execution_track_record",
+                "format": "text"
+              }
             }
           }
         }
@@ -288,7 +690,7 @@
       "id": "CATY_04",
       "file": "CATY_04_cash_flow.html",
       "data": {
-        "last_updated_display": "October 19, 2025"
+        "last_updated_display": "October 22, 2025"
       },
       "sections": [
         {
@@ -414,14 +816,62 @@
           "template": {
             "template": "<table>\n    <thead>\n        <tr>\n            <th>Operating Activities (Q2 2025)</th>\n            <th class=\"numeric\">Amount ($M)</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr><td>Net income</td><td class=\"numeric\">{net_income}</td></tr>\n        <tr><td>Provision for credit losses</td><td class=\"numeric\">{pcl}</td></tr>\n        <tr><td>Depreciation &amp; amortization</td><td class=\"numeric\">{depr}</td></tr>\n        <tr><td>Stock-based compensation</td><td class=\"numeric\">{sbc}</td></tr>\n        <tr><td>Deferred taxes</td><td class=\"numeric\">{deferred}</td></tr>\n        <tr><td>Other non-cash items</td><td class=\"numeric\">{other}</td></tr>\n        <tr><td>Working capital changes</td><td class=\"numeric\">{wc}</td></tr>\n        <tr class=\"subtotal\"><td><strong>Total operating cash flow</strong></td><td class=\"numeric\"><strong>{total_operating}</strong></td></tr>\n    </tbody>\n</table>",
             "placeholders": {
-              "{net_income}": {"source": "caty04_tables", "path": "q2_2025_operating_activities.net_income_millions", "format": "currency_scale", "scale": "millions", "decimals": 2},
-              "{pcl}": {"source": "caty04_tables", "path": "q2_2025_operating_activities.adjustments.provision_for_credit_losses_millions", "format": "currency_scale", "scale": "millions", "decimals": 1},
-              "{depr}": {"source": "caty04_tables", "path": "q2_2025_operating_activities.adjustments.depreciation_amortization_millions", "format": "currency_scale", "scale": "millions", "decimals": 1},
-              "{sbc}": {"source": "caty04_tables", "path": "q2_2025_operating_activities.adjustments.stock_based_comp_millions", "format": "currency_scale", "scale": "millions", "decimals": 1},
-              "{deferred}": {"source": "caty04_tables", "path": "q2_2025_operating_activities.adjustments.deferred_taxes_millions", "format": "currency_scale", "scale": "millions", "decimals": 1},
-              "{other}": {"source": "caty04_tables", "path": "q2_2025_operating_activities.adjustments.other_noncash_millions", "format": "currency_scale", "scale": "millions", "decimals": 1},
-              "{wc}": {"source": "caty04_tables", "path": "q2_2025_operating_activities.working_capital_changes_millions", "format": "currency_scale", "scale": "millions", "decimals": 1},
-              "{total_operating}": {"source": "caty04_tables", "path": "q2_2025_operating_activities.total_operating_cf_millions", "format": "currency_scale", "scale": "millions", "decimals": 1}
+              "{net_income}": {
+                "source": "caty04_tables",
+                "path": "q2_2025_operating_activities.net_income_millions",
+                "format": "currency_scale",
+                "scale": "millions",
+                "decimals": 2
+              },
+              "{pcl}": {
+                "source": "caty04_tables",
+                "path": "q2_2025_operating_activities.adjustments.provision_for_credit_losses_millions",
+                "format": "currency_scale",
+                "scale": "millions",
+                "decimals": 1
+              },
+              "{depr}": {
+                "source": "caty04_tables",
+                "path": "q2_2025_operating_activities.adjustments.depreciation_amortization_millions",
+                "format": "currency_scale",
+                "scale": "millions",
+                "decimals": 1
+              },
+              "{sbc}": {
+                "source": "caty04_tables",
+                "path": "q2_2025_operating_activities.adjustments.stock_based_comp_millions",
+                "format": "currency_scale",
+                "scale": "millions",
+                "decimals": 1
+              },
+              "{deferred}": {
+                "source": "caty04_tables",
+                "path": "q2_2025_operating_activities.adjustments.deferred_taxes_millions",
+                "format": "currency_scale",
+                "scale": "millions",
+                "decimals": 1
+              },
+              "{other}": {
+                "source": "caty04_tables",
+                "path": "q2_2025_operating_activities.adjustments.other_noncash_millions",
+                "format": "currency_scale",
+                "scale": "millions",
+                "decimals": 1
+              },
+              "{wc}": {
+                "source": "caty04_tables",
+                "path": "q2_2025_operating_activities.working_capital_changes_millions",
+                "format": "currency_scale",
+                "scale": "millions",
+                "decimals": 1
+              },
+              "{total_operating}": {
+                "source": "caty04_tables",
+                "path": "q2_2025_operating_activities.total_operating_cf_millions",
+                "format": "currency_scale",
+                "scale": "millions",
+                "decimals": 1
+              }
             }
           }
         },
@@ -431,14 +881,62 @@
           "template": {
             "template": "<table>\n    <thead>\n        <tr>\n            <th>Investing Activities (Q2 2025)</th>\n            <th class=\"numeric\">Amount ($M)</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr><td>Loan originations</td><td class=\"numeric\">{loan_originations}</td></tr>\n        <tr><td>Loan repayments</td><td class=\"numeric\">{loan_repayments}</td></tr>\n        <tr><td>Net loan activity</td><td class=\"numeric\">{net_loans}</td></tr>\n        <tr><td>Securities purchases</td><td class=\"numeric\">{sec_purchases}</td></tr>\n        <tr><td>Securities maturities</td><td class=\"numeric\">{sec_maturities}</td></tr>\n        <tr><td>Net securities activity</td><td class=\"numeric\">{net_securities}</td></tr>\n        <tr><td>Premises &amp; equipment</td><td class=\"numeric\">{premises}</td></tr>\n        <tr class=\"subtotal\"><td><strong>Total investing cash flow</strong></td><td class=\"numeric\"><strong>{total_investing}</strong></td></tr>\n    </tbody>\n</table>",
             "placeholders": {
-              "{loan_originations}": {"source": "caty04_tables", "path": "q2_2025_investing_activities.loan_originations_millions", "format": "currency_scale", "scale": "millions", "decimals": 1},
-              "{loan_repayments}": {"source": "caty04_tables", "path": "q2_2025_investing_activities.loan_repayments_millions", "format": "currency_scale", "scale": "millions", "decimals": 1},
-              "{net_loans}": {"source": "caty04_tables", "path": "q2_2025_investing_activities.net_loans_millions", "format": "currency_scale", "scale": "millions", "decimals": 1},
-              "{sec_purchases}": {"source": "caty04_tables", "path": "q2_2025_investing_activities.securities_purchases_millions", "format": "currency_scale", "scale": "millions", "decimals": 1},
-              "{sec_maturities}": {"source": "caty04_tables", "path": "q2_2025_investing_activities.securities_maturities_millions", "format": "currency_scale", "scale": "millions", "decimals": 1},
-              "{net_securities}": {"source": "caty04_tables", "path": "q2_2025_investing_activities.net_securities_millions", "format": "currency_scale", "scale": "millions", "decimals": 1},
-              "{premises}": {"source": "caty04_tables", "path": "q2_2025_investing_activities.premises_equipment_millions", "format": "currency_scale", "scale": "millions", "decimals": 1},
-              "{total_investing}": {"source": "caty04_tables", "path": "q2_2025_investing_activities.total_investing_cf_millions", "format": "currency_scale", "scale": "millions", "decimals": 1}
+              "{loan_originations}": {
+                "source": "caty04_tables",
+                "path": "q2_2025_investing_activities.loan_originations_millions",
+                "format": "currency_scale",
+                "scale": "millions",
+                "decimals": 1
+              },
+              "{loan_repayments}": {
+                "source": "caty04_tables",
+                "path": "q2_2025_investing_activities.loan_repayments_millions",
+                "format": "currency_scale",
+                "scale": "millions",
+                "decimals": 1
+              },
+              "{net_loans}": {
+                "source": "caty04_tables",
+                "path": "q2_2025_investing_activities.net_loans_millions",
+                "format": "currency_scale",
+                "scale": "millions",
+                "decimals": 1
+              },
+              "{sec_purchases}": {
+                "source": "caty04_tables",
+                "path": "q2_2025_investing_activities.securities_purchases_millions",
+                "format": "currency_scale",
+                "scale": "millions",
+                "decimals": 1
+              },
+              "{sec_maturities}": {
+                "source": "caty04_tables",
+                "path": "q2_2025_investing_activities.securities_maturities_millions",
+                "format": "currency_scale",
+                "scale": "millions",
+                "decimals": 1
+              },
+              "{net_securities}": {
+                "source": "caty04_tables",
+                "path": "q2_2025_investing_activities.net_securities_millions",
+                "format": "currency_scale",
+                "scale": "millions",
+                "decimals": 1
+              },
+              "{premises}": {
+                "source": "caty04_tables",
+                "path": "q2_2025_investing_activities.premises_equipment_millions",
+                "format": "currency_scale",
+                "scale": "millions",
+                "decimals": 1
+              },
+              "{total_investing}": {
+                "source": "caty04_tables",
+                "path": "q2_2025_investing_activities.total_investing_cf_millions",
+                "format": "currency_scale",
+                "scale": "millions",
+                "decimals": 1
+              }
             }
           }
         },
@@ -448,11 +946,41 @@
           "template": {
             "template": "<table>\n    <thead>\n        <tr>\n            <th>Financing Activities (Q2 2025)</th>\n            <th class=\"numeric\">Amount ($M)</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr><td>Net change in deposits</td><td class=\"numeric\">{deposits}</td></tr>\n        <tr><td>FHLB advances (net)</td><td class=\"numeric\">{fhlb}</td></tr>\n        <tr><td>Dividends paid</td><td class=\"numeric\">{dividends}</td></tr>\n        <tr><td>Share repurchases</td><td class=\"numeric\">{buybacks}</td></tr>\n        <tr class=\"subtotal\"><td><strong>Total financing cash flow</strong></td><td class=\"numeric\"><strong>{total_financing}</strong></td></tr>\n    </tbody>\n</table>",
             "placeholders": {
-              "{deposits}": {"source": "caty04_tables", "path": "q2_2025_financing_activities.deposits_net_change_millions", "format": "currency_scale", "scale": "millions", "decimals": 1},
-              "{fhlb}": {"source": "caty04_tables", "path": "q2_2025_financing_activities.fhlb_advances_net_millions", "format": "currency_scale", "scale": "millions", "decimals": 1},
-              "{dividends}": {"source": "caty04_tables", "path": "q2_2025_financing_activities.dividends_paid_millions", "format": "currency_scale", "scale": "millions", "decimals": 1},
-              "{buybacks}": {"source": "caty04_tables", "path": "q2_2025_financing_activities.share_repurchases_millions", "format": "currency_scale", "scale": "millions", "decimals": 1},
-              "{total_financing}": {"source": "caty04_tables", "path": "q2_2025_financing_activities.total_financing_cf_millions", "format": "currency_scale", "scale": "millions", "decimals": 1}
+              "{deposits}": {
+                "source": "caty04_tables",
+                "path": "q2_2025_financing_activities.deposits_net_change_millions",
+                "format": "currency_scale",
+                "scale": "millions",
+                "decimals": 1
+              },
+              "{fhlb}": {
+                "source": "caty04_tables",
+                "path": "q2_2025_financing_activities.fhlb_advances_net_millions",
+                "format": "currency_scale",
+                "scale": "millions",
+                "decimals": 1
+              },
+              "{dividends}": {
+                "source": "caty04_tables",
+                "path": "q2_2025_financing_activities.dividends_paid_millions",
+                "format": "currency_scale",
+                "scale": "millions",
+                "decimals": 1
+              },
+              "{buybacks}": {
+                "source": "caty04_tables",
+                "path": "q2_2025_financing_activities.share_repurchases_millions",
+                "format": "currency_scale",
+                "scale": "millions",
+                "decimals": 1
+              },
+              "{total_financing}": {
+                "source": "caty04_tables",
+                "path": "q2_2025_financing_activities.total_financing_cf_millions",
+                "format": "currency_scale",
+                "scale": "millions",
+                "decimals": 1
+              }
             }
           }
         },
@@ -460,14 +988,47 @@
           "marker": "caty04-capital-return",
           "type": "text",
           "template": {
-            "template": "<div class=\"highlight-box info\">\n    <h4>Capital Return Tie-In (links to CATY_10)</h4>\n    <p><strong>Q2 2025 Dividends:</strong> {dividends} | <strong>Buybacks:</strong> {buybacks} | <strong>Total:</strong> {total}</p>\n    <p><strong>Net income:</strong> {net_income} → <strong>Payout ratio:</strong> {payout_ratio}</p>\n    <p class=\"text-muted\">{note}</p>\n</div>",
+            "template": "<div class=\"highlight-box info\">\n    <h4>Capital Return Tie-In (links to CATY_10)</h4>\n    <p><strong>Q2 2025 Dividends:</strong> {dividends} | <strong>Buybacks:</strong> {buybacks} | <strong>Total:</strong> {total}</p>\n    <p><strong>Net income:</strong> {net_income} \u2192 <strong>Payout ratio:</strong> {payout_ratio}</p>\n    <p class=\"text-muted\">{note}</p>\n</div>",
             "placeholders": {
-              "{dividends}": {"source": "caty04_tables", "path": "capital_return_tie.q2_2025_dividends_millions", "format": "currency_scale", "scale": "millions", "decimals": 1},
-              "{buybacks}": {"source": "caty04_tables", "path": "capital_return_tie.q2_2025_buybacks_millions", "format": "currency_scale", "scale": "millions", "decimals": 1},
-              "{total}": {"source": "caty04_tables", "path": "capital_return_tie.total_capital_returned_q2_millions", "format": "currency_scale", "scale": "millions", "decimals": 1},
-              "{net_income}": {"source": "caty04_tables", "path": "capital_return_tie.net_income_q2_millions", "format": "currency_scale", "scale": "millions", "decimals": 2},
-              "{payout_ratio}": {"source": "caty04_tables", "path": "capital_return_tie.payout_ratio_q2_pct", "format": "percent", "decimals": 1},
-              "{note}": {"source": "caty04_tables", "path": "capital_return_tie.note", "format": "text"}
+              "{dividends}": {
+                "source": "caty04_tables",
+                "path": "capital_return_tie.q2_2025_dividends_millions",
+                "format": "currency_scale",
+                "scale": "millions",
+                "decimals": 1
+              },
+              "{buybacks}": {
+                "source": "caty04_tables",
+                "path": "capital_return_tie.q2_2025_buybacks_millions",
+                "format": "currency_scale",
+                "scale": "millions",
+                "decimals": 1
+              },
+              "{total}": {
+                "source": "caty04_tables",
+                "path": "capital_return_tie.total_capital_returned_q2_millions",
+                "format": "currency_scale",
+                "scale": "millions",
+                "decimals": 1
+              },
+              "{net_income}": {
+                "source": "caty04_tables",
+                "path": "capital_return_tie.net_income_q2_millions",
+                "format": "currency_scale",
+                "scale": "millions",
+                "decimals": 2
+              },
+              "{payout_ratio}": {
+                "source": "caty04_tables",
+                "path": "capital_return_tie.payout_ratio_q2_pct",
+                "format": "percent",
+                "decimals": 1
+              },
+              "{note}": {
+                "source": "caty04_tables",
+                "path": "capital_return_tie.note",
+                "format": "text"
+              }
             }
           }
         },
@@ -477,11 +1038,41 @@
           "template": {
             "template": "<table>\n    <thead>\n        <tr>\n            <th>FY2024 Cash Flow Summary</th>\n            <th class=\"numeric\">Amount ($M)</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr><td>Operating cash flow</td><td class=\"numeric\">{operating}</td></tr>\n        <tr><td>Investing cash flow</td><td class=\"numeric\">{investing}</td></tr>\n        <tr><td>Financing cash flow</td><td class=\"numeric\">{financing}</td></tr>\n        <tr><td>Net change in cash</td><td class=\"numeric\">{net_change}</td></tr>\n        <tr class=\"subtotal\"><td><strong>Ending cash &amp; equivalents</strong></td><td class=\"numeric\"><strong>{ending_cash}</strong></td></tr>\n    </tbody>\n</table>",
             "placeholders": {
-              "{operating}": {"source": "caty04_tables", "path": "fy2024_summary.operating_cf_millions", "format": "currency_scale", "scale": "millions", "decimals": 1},
-              "{investing}": {"source": "caty04_tables", "path": "fy2024_summary.investing_cf_millions", "format": "currency_scale", "scale": "millions", "decimals": 1},
-              "{financing}": {"source": "caty04_tables", "path": "fy2024_summary.financing_cf_millions", "format": "currency_scale", "scale": "millions", "decimals": 1},
-              "{net_change}": {"source": "caty04_tables", "path": "fy2024_summary.net_change_cash_millions", "format": "currency_scale", "scale": "millions", "decimals": 1},
-              "{ending_cash}": {"source": "caty04_tables", "path": "fy2024_summary.ending_cash_millions", "format": "currency_scale", "scale": "millions", "decimals": 1}
+              "{operating}": {
+                "source": "caty04_tables",
+                "path": "fy2024_summary.operating_cf_millions",
+                "format": "currency_scale",
+                "scale": "millions",
+                "decimals": 1
+              },
+              "{investing}": {
+                "source": "caty04_tables",
+                "path": "fy2024_summary.investing_cf_millions",
+                "format": "currency_scale",
+                "scale": "millions",
+                "decimals": 1
+              },
+              "{financing}": {
+                "source": "caty04_tables",
+                "path": "fy2024_summary.financing_cf_millions",
+                "format": "currency_scale",
+                "scale": "millions",
+                "decimals": 1
+              },
+              "{net_change}": {
+                "source": "caty04_tables",
+                "path": "fy2024_summary.net_change_cash_millions",
+                "format": "currency_scale",
+                "scale": "millions",
+                "decimals": 1
+              },
+              "{ending_cash}": {
+                "source": "caty04_tables",
+                "path": "fy2024_summary.ending_cash_millions",
+                "format": "currency_scale",
+                "scale": "millions",
+                "decimals": 1
+              }
             }
           }
         },
@@ -525,10 +1116,26 @@
           "template": {
             "template": "<table>\n    <thead>\n        <tr>\n            <th>Field</th>\n            <th>Detail</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr><td><strong>Schema Version</strong></td><td>{schema}</td></tr>\n        <tr><td><strong>Prepared On</strong></td><td>{prepared}</td></tr>\n        <tr><td><strong>Primary Sources</strong></td><td>{sources}</td></tr>\n        <tr><td><strong>Analyst Notes</strong></td><td>{notes}</td></tr>\n    </tbody>\n</table>",
             "placeholders": {
-              "{schema}": {"source": "caty04_tables", "path": "metadata.schema_version", "format": "text"},
-              "{prepared}": {"source": "caty04_tables", "path": "metadata.prepared_on", "format": "text"},
-              "{sources}": {"source": "caty04_tables", "path": "metadata.primary_sources", "format": "text"},
-              "{notes}": {"source": "caty04_tables", "path": "metadata.analyst_notes", "format": "text"}
+              "{schema}": {
+                "source": "caty04_tables",
+                "path": "metadata.schema_version",
+                "format": "text"
+              },
+              "{prepared}": {
+                "source": "caty04_tables",
+                "path": "metadata.prepared_on",
+                "format": "text"
+              },
+              "{sources}": {
+                "source": "caty04_tables",
+                "path": "metadata.primary_sources",
+                "format": "text"
+              },
+              "{notes}": {
+                "source": "caty04_tables",
+                "path": "metadata.analyst_notes",
+                "format": "text"
+              }
             }
           }
         }
@@ -538,7 +1145,7 @@
       "id": "CATY_08",
       "file": "CATY_08_cre_exposure.html",
       "data": {
-        "last_updated_display": "October 19, 2025"
+        "last_updated_display": "October 22, 2025"
       },
       "sections": [
         {
@@ -559,7 +1166,7 @@
           "marker": "caty08-executive-summary",
           "type": "text",
           "template": {
-            "template": "<div class=\"alert-box warning\">\n    <div class=\"alert-title\">⚠️ {risk_rating} CRE CONCENTRATION</div>\n    <div class=\"alert-text\">\n        <strong>CRE Total:</strong> {cre_total_pct} of total loans ({cre_total_amount})<br>\n        <strong>Total Loans:</strong> {total_loans_amount}<br>\n        <strong>Peer Median:</strong> {peer_median}<br>\n        <strong>Excess vs Median:</strong> +{excess_ppts} ppts<br>\n        <strong>Risk Rating:</strong> {risk_rationale}\n    </div>\n    <div class=\"alert-text\">\n        <strong>Mitigating Factors:</strong>\n        {mitigating_factors}\n    </div>\n</div>",
+            "template": "<div class=\"alert-box warning\">\n    <div class=\"alert-title\">\u26a0\ufe0f {risk_rating} CRE CONCENTRATION</div>\n    <div class=\"alert-text\">\n        <strong>CRE Total:</strong> {cre_total_pct} of total loans ({cre_total_amount})<br>\n        <strong>Total Loans:</strong> {total_loans_amount}<br>\n        <strong>Peer Median:</strong> {peer_median}<br>\n        <strong>Excess vs Median:</strong> +{excess_ppts} ppts<br>\n        <strong>Risk Rating:</strong> {risk_rationale}\n    </div>\n    <div class=\"alert-text\">\n        <strong>Mitigating Factors:</strong>\n        {mitigating_factors}\n    </div>\n</div>",
             "placeholders": {
               "{risk_rating}": {
                 "source": "caty08_tables",
@@ -902,7 +1509,7 @@
           "marker": "caty08-office-detail",
           "type": "text",
           "template": {
-            "template": "<div class=\"highlight-box warning\">\n    <h4>Office Exposure Snapshot</h4>\n    <p><strong>Portfolio Share:</strong> {office_pct_total} of total loans ({office_amount}) | {office_pct_cre} of CRE portfolio</p>\n    <p><strong>Peer Median:</strong> {peer_median_office}</p>\n    <p><strong>Stress Scenario:</strong> {stress_label} → Portfolio impact {portfolio_impact} | ROTE impact {rote_impact}</p>\n    <div class=\"alert-text\"><strong>Risk Factors:</strong>{risk_factors}</div>\n    <div class=\"alert-text\"><strong>Mitigating Factors:</strong>{mitigating_factors}</div>\n    <p class=\"text-muted\">{valuation_impact}</p>\n</div>",
+            "template": "<div class=\"highlight-box warning\">\n    <h4>Office Exposure Snapshot</h4>\n    <p><strong>Portfolio Share:</strong> {office_pct_total} of total loans ({office_amount}) | {office_pct_cre} of CRE portfolio</p>\n    <p><strong>Peer Median:</strong> {peer_median_office}</p>\n    <p><strong>Stress Scenario:</strong> {stress_label} \u2192 Portfolio impact {portfolio_impact} | ROTE impact {rote_impact}</p>\n    <div class=\"alert-text\"><strong>Risk Factors:</strong>{risk_factors}</div>\n    <div class=\"alert-text\"><strong>Mitigating Factors:</strong>{mitigating_factors}</div>\n    <p class=\"text-muted\">{valuation_impact}</p>\n</div>",
             "placeholders": {
               "{office_pct_total}": {
                 "source": "caty08_tables",
@@ -1094,7 +1701,7 @@
           "marker": "caty08-regulatory-thresholds",
           "type": "text",
           "template": {
-            "template": "<table>\n    <thead>\n        <tr>\n            <th>Metric</th>\n            <th class=\"numeric\">Regulatory Threshold</th>\n            <th class=\"numeric\">CATY</th>\n            <th>Status / Response</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td>Total CRE / Risk-Based Capital</td>\n            <td class=\"numeric\">{threshold_total}%</td>\n            <td class=\"numeric\">{caty_total}%</td>\n            <td>{status_text}</td>\n        </tr>\n        <tr>\n            <td>Construction / Risk-Based Capital</td>\n            <td class=\"numeric\">{threshold_construction}%</td>\n            <td class=\"numeric\">{caty_construction}%</td>\n            <td>{response}</td>\n        </tr>\n        <tr>\n            <td>Supervision Level</td>\n            <td class=\"numeric\">—</td>\n            <td class=\"numeric\">{supervision}</td>\n            <td>Stress testing required: {stress}</td>\n        </tr>\n    </tbody>\n</table>",
+            "template": "<table>\n    <thead>\n        <tr>\n            <th>Metric</th>\n            <th class=\"numeric\">Regulatory Threshold</th>\n            <th class=\"numeric\">CATY</th>\n            <th>Status / Response</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td>Total CRE / Risk-Based Capital</td>\n            <td class=\"numeric\">{threshold_total}%</td>\n            <td class=\"numeric\">{caty_total}%</td>\n            <td>{status_text}</td>\n        </tr>\n        <tr>\n            <td>Construction / Risk-Based Capital</td>\n            <td class=\"numeric\">{threshold_construction}%</td>\n            <td class=\"numeric\">{caty_construction}%</td>\n            <td>{response}</td>\n        </tr>\n        <tr>\n            <td>Supervision Level</td>\n            <td class=\"numeric\">\u2014</td>\n            <td class=\"numeric\">{supervision}</td>\n            <td>Stress testing required: {stress}</td>\n        </tr>\n    </tbody>\n</table>",
             "placeholders": {
               "{threshold_total}": {
                 "source": "caty08_tables",
@@ -1261,7 +1868,7 @@
       "id": "CATY_10",
       "file": "CATY_10_capital_actions.html",
       "data": {
-        "last_updated_display": "October 17, 2025"
+        "last_updated_display": "October 22, 2025"
       },
       "sections": [
         {
@@ -1368,7 +1975,7 @@
           "marker": "caty10-framework-context",
           "type": "text",
           "template": {
-            "template": "<div class=\"alert-box info\">\n    <div class=\"alert-title\">Banking Sector Context</div>\n    <div class=\"alert-text\">\n        Banks like Cathay General Bancorp return capital to shareholders through two primary mechanisms:<br><br>\n        <strong>1. Cash Dividends:</strong> Regular quarterly distributions representing a percentage of earnings<br>\n        <strong>2. Share Repurchases:</strong> Buyback programs authorized by the Board to reduce share count and enhance per-share metrics<br><br>\n        Key metrics for evaluating capital return include:<br>\n        <strong>• Dividend Payout Ratio:</strong> Dividends ÷ Net Income (current {payout_ratio} within {payout_range})<br>\n        <strong>• Retention Rate:</strong> 1 - Payout Ratio ({retention_rate} retained for growth)<br>\n        <strong>• Organic Growth Capacity:</strong> ROTE × Retention = {organic_growth} sustainable equity growth ({organic_example})<br>\n        <strong>• Total Shareholder Return:</strong> Dividend Yield {dividend_yield} + Share Price Appreciation\n    </div>\n</div>",
+            "template": "<div class=\"alert-box info\">\n    <div class=\"alert-title\">Banking Sector Context</div>\n    <div class=\"alert-text\">\n        Banks like Cathay General Bancorp return capital to shareholders through two primary mechanisms:<br><br>\n        <strong>1. Cash Dividends:</strong> Regular quarterly distributions representing a percentage of earnings<br>\n        <strong>2. Share Repurchases:</strong> Buyback programs authorized by the Board to reduce share count and enhance per-share metrics<br><br>\n        Key metrics for evaluating capital return include:<br>\n        <strong>\u2022 Dividend Payout Ratio:</strong> Dividends \u00f7 Net Income (current {payout_ratio} within {payout_range})<br>\n        <strong>\u2022 Retention Rate:</strong> 1 - Payout Ratio ({retention_rate} retained for growth)<br>\n        <strong>\u2022 Organic Growth Capacity:</strong> ROTE \u00d7 Retention = {organic_growth} sustainable equity growth ({organic_example})<br>\n        <strong>\u2022 Total Shareholder Return:</strong> Dividend Yield {dividend_yield} + Share Price Appreciation\n    </div>\n</div>",
             "placeholders": {
               "{payout_ratio}": {
                 "source": "caty10_tables",
@@ -1411,7 +2018,7 @@
           "marker": "caty10-dividend-policy",
           "type": "text",
           "template": {
-            "template": "<div class=\"metric-grid\">\n    <div class=\"metric-card\">\n        <div class=\"metric-label\">Q2 2025 Dividend</div>\n        <div class=\"metric-value\">{quarterly_dividend}/share</div>\n        <div class=\"metric-subtext\">Declared quarterly</div>\n    </div>\n    <div class=\"metric-card\">\n        <div class=\"metric-label\">Annual Dividend</div>\n        <div class=\"metric-value\">{annual_dividend}/share</div>\n        <div class=\"metric-subtext\">Trailing twelve months</div>\n    </div>\n    <div class=\"metric-card\">\n        <div class=\"metric-label\">Dividend Yield</div>\n        <div class=\"metric-value\">{dividend_yield}</div>\n        <div class=\"metric-subtext\">Based on current share price</div>\n    </div>\n    <div class=\"metric-card\">\n        <div class=\"metric-label\">Dividend Payout Ratio</div>\n        <div class=\"metric-value\">{payout_ratio}</div>\n        <div class=\"metric-subtext\">Dividends ÷ Net Income</div>\n    </div>\n</div>\n<p class=\"line-height-relaxed\">{policy_statement}</p>\n<p class=\"text-muted\">Target payout range: {payout_range}. Last increased in {last_increase} by {increase_amount} per share; {years_paid} consecutive years of dividends.</p>",
+            "template": "<div class=\"metric-grid\">\n    <div class=\"metric-card\">\n        <div class=\"metric-label\">Q2 2025 Dividend</div>\n        <div class=\"metric-value\">{quarterly_dividend}/share</div>\n        <div class=\"metric-subtext\">Declared quarterly</div>\n    </div>\n    <div class=\"metric-card\">\n        <div class=\"metric-label\">Annual Dividend</div>\n        <div class=\"metric-value\">{annual_dividend}/share</div>\n        <div class=\"metric-subtext\">Trailing twelve months</div>\n    </div>\n    <div class=\"metric-card\">\n        <div class=\"metric-label\">Dividend Yield</div>\n        <div class=\"metric-value\">{dividend_yield}</div>\n        <div class=\"metric-subtext\">Based on current share price</div>\n    </div>\n    <div class=\"metric-card\">\n        <div class=\"metric-label\">Dividend Payout Ratio</div>\n        <div class=\"metric-value\">{payout_ratio}</div>\n        <div class=\"metric-subtext\">Dividends \u00f7 Net Income</div>\n    </div>\n</div>\n<p class=\"line-height-relaxed\">{policy_statement}</p>\n<p class=\"text-muted\">Target payout range: {payout_range}. Last increased in {last_increase} by {increase_amount} per share; {years_paid} consecutive years of dividends.</p>",
             "placeholders": {
               "{quarterly_dividend}": {
                 "source": "caty10_tables",
@@ -1633,7 +2240,7 @@
                 "decimals": 1
               },
               "subtext": {
-                "template": "ROTE × retention"
+                "template": "ROTE \u00d7 retention"
               }
             },
             {
@@ -1808,7 +2415,7 @@
       "id": "CATY_02",
       "file": "CATY_02_income_statement.html",
       "data": {
-        "last_updated_display": "October 18, 2025"
+        "last_updated_display": "October 22, 2025"
       },
       "sections": [
         {
@@ -2346,7 +2953,7 @@
       "data": {
         "metadata": {
           "03": {
-            "last_updated_formatted": "October 17, 2025"
+            "last_updated_formatted": "October 22, 2025"
           }
         }
       },
@@ -3007,7 +3614,7 @@
       "data": {
         "metadata": {
           "07": {
-            "last_updated_formatted": "October 18, 2025"
+            "last_updated_formatted": "October 22, 2025"
           }
         }
       },
@@ -4278,7 +4885,7 @@
       "id": "CATY_05",
       "file": "CATY_05_nim_decomposition.html",
       "data": {
-        "last_updated_display": "October 17, 2025",
+        "last_updated_display": "October 22, 2025",
         "nim": {
           "qoq_change_bps": -3,
           "asset_yield_pct": 5.83,
@@ -8833,14 +9440,14 @@
         }
       ],
       "data": {
-        "last_updated_display": "October 18, 2025"
+        "last_updated_display": "October 22, 2025"
       }
     },
     {
       "id": "CATY_11",
       "file": "CATY_11_peers_normalized.html",
       "data": {
-        "last_updated_display": "October 18, 2025"
+        "last_updated_display": "October 22, 2025"
       },
       "sections": [
         {
@@ -9735,22 +10342,22 @@
       "id": "CATY_13",
       "file": "CATY_13_residual_income_valuation.html",
       "data": {
-        "last_updated_display": "October 19, 2025"
+        "last_updated_display": "October 22, 2025"
       },
       "sections": [
-    {
-      "marker": "caty13-header-meta",
-      "type": "text_spec",
-      "template": {
-        "template": "Last Updated: {last_updated} | Source: COE Triangulation + Financial Forecasts",
-        "placeholders": {
-          "{last_updated}": {
-            "source": "module_metadata",
-            "path": "modules.12.last_updated_formatted"
+        {
+          "marker": "caty13-header-meta",
+          "type": "text_spec",
+          "template": {
+            "template": "Last Updated: {last_updated} | Source: COE Triangulation + Financial Forecasts",
+            "placeholders": {
+              "{last_updated}": {
+                "source": "module_metadata",
+                "path": "modules.12.last_updated_formatted"
+              }
+            }
           }
-        }
-      }
-    },
+        },
         {
           "marker": "caty13-executive-summary-intro",
           "type": "text",
@@ -10555,7 +11162,7 @@
       "id": "CATY_14",
       "file": "CATY_14_monte_carlo_valuation.html",
       "data": {
-        "last_updated_display": "October 19, 2025"
+        "last_updated_display": "October 22, 2025"
       },
       "sections": [
         {
@@ -11164,7 +11771,7 @@
       "id": "CATY_16",
       "file": "CATY_16_coe_triangulation.html",
       "data": {
-        "last_updated_display": "October 19, 2025"
+        "last_updated_display": "October 22, 2025"
       },
       "sections": [
         {
@@ -12077,7 +12684,7 @@
       "id": "CATY_06",
       "file": "CATY_06_deposits_funding.html",
       "data": {
-        "last_updated_display": "October 19, 2025"
+        "last_updated_display": "October 22, 2025"
       },
       "sections": [
         {
@@ -12403,7 +13010,7 @@
       "id": "CATY_09",
       "file": "CATY_09_capital_liquidity.html",
       "data": {
-        "last_updated_display": "October 19, 2025"
+        "last_updated_display": "October 22, 2025"
       },
       "sections": [
         {
@@ -12504,7 +13111,7 @@
           "marker": "caty09-capital-table",
           "type": "text",
           "template": {
-            "template": "<table>\n    <thead>\n        <tr>\n            <th>Capital Ratio</th>\n            <th class=\"numeric\">Q2 2025</th>\n            <th class=\"numeric\">Reg Minimum</th>\n            <th class=\"numeric\">Well-Capitalized</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr><td><strong>CET1</strong></td><td class=\"numeric\">{cet1}%</td><td class=\"numeric\">{reg_min}%</td><td class=\"numeric\">{well_cap}%</td></tr>\n        <tr><td>Tier 1</td><td class=\"numeric\">{tier1}%</td><td class=\"numeric\">—</td><td class=\"numeric\">—</td></tr>\n        <tr><td>Total Capital</td><td class=\"numeric\">{total}%</td><td class=\"numeric\">—</td><td class=\"numeric\">—</td></tr>\n        <tr><td>Leverage</td><td class=\"numeric\">{leverage}%</td><td class=\"numeric\">—</td><td class=\"numeric\">—</td></tr>\n    </tbody>\n</table>",
+            "template": "<table>\n    <thead>\n        <tr>\n            <th>Capital Ratio</th>\n            <th class=\"numeric\">Q2 2025</th>\n            <th class=\"numeric\">Reg Minimum</th>\n            <th class=\"numeric\">Well-Capitalized</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr><td><strong>CET1</strong></td><td class=\"numeric\">{cet1}%</td><td class=\"numeric\">{reg_min}%</td><td class=\"numeric\">{well_cap}%</td></tr>\n        <tr><td>Tier 1</td><td class=\"numeric\">{tier1}%</td><td class=\"numeric\">\u2014</td><td class=\"numeric\">\u2014</td></tr>\n        <tr><td>Total Capital</td><td class=\"numeric\">{total}%</td><td class=\"numeric\">\u2014</td><td class=\"numeric\">\u2014</td></tr>\n        <tr><td>Leverage</td><td class=\"numeric\">{leverage}%</td><td class=\"numeric\">\u2014</td><td class=\"numeric\">\u2014</td></tr>\n    </tbody>\n</table>",
             "placeholders": {
               "{cet1}": {
                 "source": "caty09_tables",
@@ -12699,7 +13306,7 @@
       "id": "CATY_15",
       "file": "CATY_15_esg_materiality_matrix.html",
       "data": {
-        "last_updated_display": "October 19, 2025"
+        "last_updated_display": "October 22, 2025"
       },
       "sections": [
         {
@@ -12941,7 +13548,7 @@
       "id": "CATY_17",
       "file": "CATY_17_esg_kpi_dashboard.html",
       "data": {
-        "last_updated_display": "October 19, 2025"
+        "last_updated_display": "October 22, 2025"
       },
       "sections": [
         {

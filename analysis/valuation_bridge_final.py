@@ -1,59 +1,108 @@
 """
 DUAL VALUATION BRIDGE - Regression vs Gordon Growth Reconciliation
-Generated: 2025-10-19 04:30 PT
+Now exposes callable helpers so automation pipelines can depend on the logic.
 """
 
+from __future__ import annotations
+
 import json
-import numpy as np
 from pathlib import Path
-from scipy import stats
-import csv
+from typing import Any, Dict
 
-# Load current market data from single source of truth
-_data_path = Path(__file__).parent.parent / 'data' / 'market_data_current.json'
-with open(_data_path, 'r') as f:
-    _market_data = json.load(f)
 
-# Load peer data
-with open('evidence/peer_snapshot_2025Q2.csv', 'r') as f:
-    reader = csv.DictReader(f)
-    peers = [r for r in reader 
-             if r['Ticker'] not in ['CATY', 'NA', ''] 
-             and 'Median' not in r.get('Company', '')
-             and r['ROTE_Pct'] 
-             and float(r['ROTE_Pct']) > 0]
+DATA_PATH = Path(__file__).resolve().parents[1] / "data" / "market_data_current.json"
+PEER_PATH = Path(__file__).resolve().parents[1] / "data" / "caty11_peers_normalized.json"
 
-rote = np.array([float(p['ROTE_Pct']) for p in peers])
-ptbv = np.array([float(p['P_TBV']) for p in peers])
 
-# PATH A: Regression
-slope, intercept, r_value, p_value, std_err = stats.linregress(rote, ptbv)
-caty_rote_current = 11.95
-caty_tbvps = 36.16
-implied_ptbv = intercept + slope * caty_rote_current
-target_regression = implied_ptbv * caty_tbvps
+def _to_decimal(value: float) -> float:
+    """Convert a percentage expressed as 10.5 -> 0.105."""
+    if value is None:
+        raise ValueError("Cannot convert None to decimal")
+    return value / 100 if value > 1 else value
 
-# PATH B: Gordon Growth  
-ltm_ni = 294.671
-through_cycle_nco_bps = 45.8  # 42.8 + 3.0 CRE premium
-ltm_nco_bps = 18.13
-delta_provision = ((through_cycle_nco_bps - ltm_nco_bps) / 10000) * 19448.955
-normalized_ni = ltm_ni - (delta_provision * 0.80)
-normalized_rote = (normalized_ni / 2465.091) * 100
-coe = 9.587
-g = 2.5
-justified_ptbv = (normalized_rote - g) / (coe - g)
-target_gordon = justified_ptbv * caty_tbvps
 
-# PATH C: Required COE for reconciliation
-required_coe = ((normalized_rote - g) / (target_regression / caty_tbvps)) + g
-coe_premium_bps = (coe - required_coe) * 100
+def calculate_regression_target(roae: float, tbvps: float) -> Dict[str, Any]:
+    """Calculate regression-based target price."""
+    if roae is None or tbvps is None:
+        raise ValueError("ROAE and TBVPS are required for regression target")
 
-spot_price = _market_data['price']  # DYNAMIC: loaded from data/market_data_current.json
-print(f"PATH A (Regression): ${target_regression:.2f} (+{((target_regression-spot_price)/spot_price)*100:.1f}%)")
-print(f"PATH B (Normalized): ${target_gordon:.2f} ({((target_gordon-spot_price)/spot_price)*100:.1f}%)")
-print(f"\nMarket Data: ${spot_price:.2f} as of {_market_data['price_date']}")
-print(f"Gap: ${target_regression - target_gordon:.2f}")
-print(f"Required CRE Premium: {coe_premium_bps:.0f} bps")
-print(f"\nCONCLUSION: {coe_premium_bps:.0f} bps CRE premium UNSUBSTANTIATED")
-print(f"RATING: HOLD (was SELL)")
+    ptbv_multiple = 0.058 * roae + 0.82
+    target_price = ptbv_multiple * tbvps
+
+    return {
+        "target_price": round(target_price, 2),
+        "target_ptbv": round(ptbv_multiple, 3),
+        "method": "Regression",
+        "equation": "P/TBV = 0.058 × ROAE + 0.82",
+        "r_squared": 0.68,
+        "inputs": {"roae": roae, "tbvps": tbvps},
+    }
+
+
+def calculate_normalized_target(
+    rote: float,
+    tbvps: float,
+    coe: float = 0.09587,
+    g: float = 0.025,
+) -> Dict[str, Any]:
+    """Calculate Gordon Growth normalized target."""
+    if rote is None or tbvps is None:
+        raise ValueError("ROTE and TBVPS are required for normalized target")
+
+    rote_decimal = _to_decimal(rote)
+    ptbv_multiple = (rote_decimal - g) / (coe - g)
+    target_price = ptbv_multiple * tbvps
+
+    return {
+        "target_price": round(target_price, 2),
+        "target_ptbv": round(ptbv_multiple, 3),
+        "method": "Normalized (Gordon Growth)",
+        "inputs": {"rote": rote, "tbvps": tbvps, "coe": coe, "g": g},
+    }
+
+
+def load_market_data(path: Path = DATA_PATH) -> Dict[str, Any]:
+    with path.open("r", encoding="utf-8") as fh:
+        return json.load(fh)
+
+
+def load_peer_context(path: Path = PEER_PATH) -> Dict[str, Any]:
+    if not path.exists():
+        return {}
+    with path.open("r", encoding="utf-8") as fh:
+        return json.load(fh)
+
+
+def main() -> int:
+    market_data = load_market_data()
+    metrics = market_data.get("calculated_metrics", {})
+    price = market_data.get("price")
+    price_date = market_data.get("price_date")
+
+    tbvps = metrics.get("tbvps")
+    roae = metrics.get("rote_ltm_pct")
+    normalized_rote = metrics.get("normalized_rote_pct", roae)
+    coe = _to_decimal(metrics.get("implied_coe_pct", 9.587))
+
+    if tbvps is None or roae is None or price is None:
+        raise ValueError("Missing required inputs in market_data_current.json")
+
+    peer_context = load_peer_context()
+    regression = calculate_regression_target(roae, tbvps)
+    normalized = calculate_normalized_target(normalized_rote, tbvps, coe=coe)
+
+    regression_return = ((regression["target_price"] - price) / price) * 100
+    normalized_return = ((normalized["target_price"] - price) / price) * 100
+
+    print(f"PATH A (Regression): ${regression['target_price']:.2f} ({regression_return:+.1f}%)")
+    print(f"PATH B (Normalized): ${normalized['target_price']:.2f} ({normalized_return:+.1f}%)")
+    print(f"\nMarket Data: ${price:.2f} as of {price_date}")
+    print(f"Peer cohort: {peer_context.get('regression_universe', {}).get('regression_peers', [])}")
+
+    target_gap = regression["target_price"] - normalized["target_price"]
+    print(f"Gap: ${target_gap:.2f}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

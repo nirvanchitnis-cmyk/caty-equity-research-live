@@ -7,9 +7,17 @@
       "description": "Entity metadata, CIK, auditor (KPMG), segments",
       "status": "UPDATED",
       "importance": "STANDARD",
-      "last_updated": "2025-10-19",
+      "last_updated": "2025-10-22",
       "automation_status": "100% - Autogen company profile dataset",
-      "data_dependencies": ["SEC 10-K", "SEC 10-Q", "Market Data"]
+      "data_dependencies": [
+        "SEC 10-K",
+        "SEC 10-Q",
+        "Market Data"
+      ],
+      "cfa_category": "Business Description",
+      "cfa_emoji": "\ud83c\udfe2",
+      "cfa_points": 5,
+      "cfa_order": 1
     },
     {
       "id": "02",
@@ -18,8 +26,14 @@
       "description": "Q2'25 NII, NIM 3.27%, efficiency 45.33%, EPS $1.10",
       "status": "UPDATED",
       "importance": "STANDARD",
-      "last_updated": "2025-10-18",
-      "data_dependencies": ["SEC 10-Q"]
+      "last_updated": "2025-10-22",
+      "data_dependencies": [
+        "SEC 10-Q"
+      ],
+      "cfa_category": "Financial Analysis",
+      "cfa_emoji": "\ud83d\udcc8",
+      "cfa_points": 20,
+      "cfa_order": 5
     },
     {
       "id": "03",
@@ -28,8 +42,14 @@
       "description": "Assets $23.7B, TCE $2.51B, TBVPS $36.16",
       "status": "UPDATED",
       "importance": "STANDARD",
-      "last_updated": "2025-10-17",
-      "data_dependencies": ["SEC 10-Q"]
+      "last_updated": "2025-10-22",
+      "data_dependencies": [
+        "SEC 10-Q"
+      ],
+      "cfa_category": "Financial Analysis",
+      "cfa_emoji": "\ud83d\udcc8",
+      "cfa_points": 20,
+      "cfa_order": 5
     },
     {
       "id": "04",
@@ -38,9 +58,16 @@
       "description": "Operating CF, investing, financing, capital returns",
       "status": "UPDATED",
       "importance": "STANDARD",
-      "last_updated": "2025-10-19",
+      "last_updated": "2025-10-22",
       "automation_status": "100% - Autogen cash flow statement",
-      "data_dependencies": ["SEC 10-Q", "SEC 10-K"]
+      "data_dependencies": [
+        "SEC 10-Q",
+        "SEC 10-K"
+      ],
+      "cfa_category": "Financial Analysis",
+      "cfa_emoji": "\ud83d\udcc8",
+      "cfa_points": 20,
+      "cfa_order": 5
     },
     {
       "id": "05",
@@ -49,8 +76,15 @@
       "description": "Deposit betas (IB 60.4%, All-in 50.7%), NIM bridge",
       "status": "UPDATED",
       "importance": "KEY",
-      "last_updated": "2025-10-17",
-      "data_dependencies": ["SEC 10-Q", "Earnings Presentation"]
+      "last_updated": "2025-10-22",
+      "data_dependencies": [
+        "SEC 10-Q",
+        "Earnings Presentation"
+      ],
+      "cfa_category": "Financial Analysis",
+      "cfa_emoji": "\ud83d\udcc8",
+      "cfa_points": 20,
+      "cfa_order": 5
     },
     {
       "id": "06",
@@ -59,9 +93,16 @@
       "description": "Relationship funding mix, NIB stability, brokered reliance",
       "status": "UPDATED",
       "importance": "STANDARD",
-      "last_updated": "2025-10-19",
+      "last_updated": "2025-10-22",
       "automation_status": "100% - Deposits dataset autogen",
-      "data_dependencies": ["SEC 10-Q", "Call Report"]
+      "data_dependencies": [
+        "SEC 10-Q",
+        "Call Report"
+      ],
+      "cfa_category": "Financial Analysis",
+      "cfa_emoji": "\ud83d\udcc8",
+      "cfa_points": 20,
+      "cfa_order": 5
     },
     {
       "id": "07",
@@ -70,8 +111,15 @@
       "description": "Through-cycle NCO: 42.8 bps (2008-2024 FDIC data)",
       "status": "UPDATED",
       "importance": "CRITICAL",
-      "last_updated": "2025-10-18",
-      "data_dependencies": ["FDIC Call Reports", "SEC 10-Q"]
+      "last_updated": "2025-10-22",
+      "data_dependencies": [
+        "FDIC Call Reports",
+        "SEC 10-Q"
+      ],
+      "cfa_category": "Investment Risks",
+      "cfa_emoji": "\u26a0\ufe0f",
+      "cfa_points": 15,
+      "cfa_order": 6
     },
     {
       "id": "08",
@@ -80,9 +128,17 @@
       "description": "CRE 52.4% (ELEVATED), office tail risk",
       "status": "UPDATED",
       "importance": "CRITICAL",
-      "last_updated": "2025-10-19",
+      "last_updated": "2025-10-22",
       "automation_status": "100% - Built with autogen from inception",
-      "data_dependencies": ["SEC 10-Q", "Peer Benchmark Dataset", "Climate Risk Model"]
+      "data_dependencies": [
+        "SEC 10-Q",
+        "Peer Benchmark Dataset",
+        "Climate Risk Model"
+      ],
+      "cfa_category": "Investment Risks",
+      "cfa_emoji": "\u26a0\ufe0f",
+      "cfa_points": 15,
+      "cfa_order": 6
     },
     {
       "id": "09",
@@ -91,9 +147,16 @@
       "description": "CET1 13.35%, regulatory capital, AOCI",
       "status": "UPDATED",
       "importance": "STANDARD",
-      "last_updated": "2025-10-19",
+      "last_updated": "2025-10-22",
       "automation_status": "100% - Capital & liquidity dataset",
-      "data_dependencies": ["SEC 10-Q", "Call Report"]
+      "data_dependencies": [
+        "SEC 10-Q",
+        "Call Report"
+      ],
+      "cfa_category": "Financial Analysis",
+      "cfa_emoji": "\ud83d\udcc8",
+      "cfa_points": 20,
+      "cfa_order": 5
     },
     {
       "id": "10",
@@ -102,48 +165,81 @@
       "description": "Dividends, buybacks, payout ratio 32.1%",
       "status": "UPDATED",
       "importance": "STANDARD",
-      "last_updated": "2025-10-17",
-      "data_dependencies": ["SEC 10-Q"]
+      "last_updated": "2025-10-22",
+      "data_dependencies": [
+        "SEC 10-Q"
+      ],
+      "cfa_category": "Financial Analysis",
+      "cfa_emoji": "\ud83d\udcc8",
+      "cfa_points": 20,
+      "cfa_order": 5
     },
     {
       "id": "11",
       "file": "CATY_11_peers_normalized.html",
       "title": "Peer Comparison & Regression",
-      "description": "n=4 peers, R²=0.9548, implied COE 9.587%",
+      "description": "n=4 peers, R\u00b2=0.9548, implied COE 9.587%",
       "status": "UPDATED",
       "importance": "KEY",
-      "last_updated": "2025-10-18",
-      "data_dependencies": ["SEC EDGAR (peers)", "FactSet"]
+      "last_updated": "2025-10-22",
+      "data_dependencies": [
+        "SEC EDGAR (peers)",
+        "FactSet"
+      ],
+      "cfa_category": "Industry Overview & Competitive Positioning",
+      "cfa_emoji": "\ud83c\udfc6",
+      "cfa_points": 10,
+      "cfa_order": 2
     },
     {
       "id": "12",
       "file": "CATY_12_valuation_model.html",
       "title": "Valuation Model",
-      "description": "3 scenarios, Expected $52.03 (Wilson weighted), probabilities",
+      "description": "3 scenarios, Wilson $48.70 (+3.3%), probability framework",
       "status": "UPDATED",
       "importance": "MOST_CRITICAL",
-      "last_updated": "2025-10-18",
-      "data_dependencies": ["All above modules", "Python scripts"]
+      "last_updated": "2025-10-22",
+      "data_dependencies": [
+        "All above modules",
+        "Python scripts"
+      ],
+      "cfa_category": "Investment Summary",
+      "cfa_emoji": "\ud83c\udfaf",
+      "cfa_points": 15,
+      "cfa_order": 3
     },
     {
       "id": "13",
       "file": "CATY_13_residual_income_valuation.html",
       "title": "Residual Income Valuation",
-      "description": "RIM intrinsic value $50.08, IRC blended $51.51 (60% weight)",
+      "description": "Residual income bridge, Wilson check $48.70",
       "status": "UPDATED",
       "importance": "KEY",
-      "last_updated": "2025-10-18",
-      "data_dependencies": ["Python scripts", "CATY_02/03"]
+      "last_updated": "2025-10-22",
+      "data_dependencies": [
+        "Python scripts",
+        "CATY_02/03"
+      ],
+      "cfa_category": "Valuation",
+      "cfa_emoji": "\ud83d\udcb0",
+      "cfa_points": 20,
+      "cfa_order": 4
     },
     {
       "id": "14",
       "file": "CATY_14_monte_carlo_valuation.html",
       "title": "Monte Carlo Simulation",
-      "description": "10,000 runs, median $48.92, 95% CI $37-$62",
+      "description": "10,000-path Monte Carlo, median $40.16 (-14.8%)",
       "status": "UPDATED",
       "importance": "KEY",
-      "last_updated": "2025-10-18",
-      "data_dependencies": ["Python scripts"]
+      "last_updated": "2025-10-22",
+      "data_dependencies": [
+        "Python scripts"
+      ],
+      "cfa_category": "Valuation",
+      "cfa_emoji": "\ud83d\udcb0",
+      "cfa_points": 20,
+      "cfa_order": 4
     },
     {
       "id": "15",
@@ -152,9 +248,16 @@
       "description": "E/S/G quantified, COE adjustments, climate scenario",
       "status": "UPDATED",
       "importance": "STANDARD",
-      "last_updated": "2025-10-19",
+      "last_updated": "2025-10-22",
       "automation_status": "100% - ESG materiality dataset",
-      "data_dependencies": ["ESG analysis", "CATY COE framework"]
+      "data_dependencies": [
+        "ESG analysis",
+        "CATY COE framework"
+      ],
+      "cfa_category": "Environmental, Social, Governance",
+      "cfa_emoji": "\ud83c\udf31",
+      "cfa_points": 15,
+      "cfa_order": 7
     },
     {
       "id": "16",
@@ -163,8 +266,15 @@
       "description": "CAPM 9.337% + FF3 10.142% + DDM 9.710%",
       "status": "UPDATED",
       "importance": "KEY",
-      "last_updated": "2025-10-19",
-      "data_dependencies": ["Python scripts", "Market data"]
+      "last_updated": "2025-10-22",
+      "data_dependencies": [
+        "Python scripts",
+        "Market data"
+      ],
+      "cfa_category": "Valuation",
+      "cfa_emoji": "\ud83d\udcb0",
+      "cfa_points": 20,
+      "cfa_order": 4
     },
     {
       "id": "17",
@@ -173,9 +283,16 @@
       "description": "Material weaknesses, valuation impact -$1.47/share",
       "status": "UPDATED",
       "importance": "STANDARD",
-      "last_updated": "2025-10-19",
+      "last_updated": "2025-10-22",
       "automation_status": "100% - ESG KPI dataset",
-      "data_dependencies": ["ESG data warehouse", "Valuation outputs"]
+      "data_dependencies": [
+        "ESG data warehouse",
+        "Valuation outputs"
+      ],
+      "cfa_category": "Environmental, Social, Governance",
+      "cfa_emoji": "\ud83c\udf31",
+      "cfa_points": 15,
+      "cfa_order": 7
     }
   ],
   "last_refresh": "2025-10-19T13:40:00Z",
@@ -185,9 +302,9 @@
     "PENDING_Q3": "red"
   },
   "importance_legend": {
-    "MOST_CRITICAL": "⭐⭐⭐",
-    "CRITICAL": "⭐⭐",
-    "KEY": "⭐",
+    "MOST_CRITICAL": "\u2b50\u2b50\u2b50",
+    "CRITICAL": "\u2b50\u2b50",
+    "KEY": "\u2b50",
     "STANDARD": ""
   }
 }

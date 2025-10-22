@@ -280,11 +280,85 @@ li {
 }
 
 .catalyst-card {
-    background: var(--bg-tertiary);
-    padding: 20px;
-    margin: 15px 0;
-    border-left: 4px solid var(--success);
-    border-radius: 4px;
+    background: var(--bg-secondary);
+    border-left: 4px solid var(--cathay-red);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.catalyst-card h4 {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    font-size: 1.2em;
+}
+
+.catalyst-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+}
+
+.catalyst-table td {
+    padding: 0.5rem 0.75rem;
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: top;
+}
+
+.catalyst-card ul {
+    margin: 0.75rem 0 0.5rem 1.25rem;
+}
+
+.catalyst-impact {
+    font-weight: 600;
+    color: var(--success);
+    margin-top: 1rem;
+}
+
+.alert-box {
+    background: var(--bg-secondary);
+    border-left: 4px solid var(--info);
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    margin: 1.5rem 0;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.alert-box.info {
+    border-left-color: var(--info);
+}
+
+.alert-box.warning {
+    border-left-color: var(--warning);
+}
+
+.alert-box.success {
+    border-left-color: var(--success);
+}
+
+.alert-box.danger {
+    border-left-color: var(--danger);
+}
+
+.alert-title {
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+.alert-text {
+    font-size: 0.95em;
+    color: var(--text-secondary);
+}
+
+.highlight-row {
+    background-color: rgba(196, 30, 58, 0.08);
+    font-weight: 600;
+}
+
+.highlight-row td {
+    border-left: 3px solid var(--cathay-red);
 }
 
 .risk-card {
@@ -472,10 +546,21 @@ a:hover {
     color: var(--text-primary);
 }
 
+.cfa-category-header {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--cathay-red);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--border-light);
+}
+
 .module-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 15px;
+    margin-bottom: 1.5rem;
 }
 
 /* ============================================================
@@ -1495,6 +1580,11 @@ a:focus-visible {
     color: var(--danger);
 }
 
+.highlight-number {
+    font-weight: 700;
+    color: var(--cathay-red);
+}
+
 /* Source box variants */
 .source-label-mono {
     font-size: 1.2em;
@@ -1714,4 +1804,48 @@ a:focus-visible {
 
 .row-tertiary {
     background: var(--bg-tertiary);
+}
+
+/* Historical timeline */
+.timeline {
+    position: relative;
+    padding-left: 1.5rem;
+    border-left: 3px solid var(--cathay-red);
+    margin: 1.5rem 0 2rem;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 1.75rem;
+}
+
+.timeline-year {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--cathay-red);
+    margin-bottom: 0.35rem;
+}
+
+.timeline-content h5 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+.strength-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.strength-card {
+    background: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.25rem;
+}
+
+.strength-card h5 {
+    margin-top: 0;
+    color: var(--cathay-red);
 }

@@ -280,7 +280,7 @@
 - [ ] **ROTE Forecast (Normalized):** [Keep 10.21% / Adjust to __%]
 
 **Valuation Impact:**
-- **Wilson 95% Target (Current):** $52.03 (+13.4%)
+- **Wilson 95% Target (Current):** $48.70 (+3.3%)
 - **Wilson 95% Target (Revised):** $[__] ([+/-__]%)
 - **Rating Change:** [Maintain HOLD / Upgrade to BUY / Downgrade to SELL]
 

@@ -1,0 +1,168 @@
+{
+  "version": "1.0.0",
+  "generated_at_utc": "2025-10-20T21:08:49Z",
+  "company": {
+    "name": "CATHAY GENERAL BANCORP",
+    "ticker": "CATY",
+    "cik": "0000861842"
+  },
+  "filing": {
+    "form": "DEF 14A",
+    "accession_number": "0001437749-25-011577",
+    "filing_date": "2025-04-10",
+    "edgar_urls": {
+      "index": "https://www.sec.gov/Archives/edgar/data/861842/000143774925011577/0001437749-25-011577-index.htm",
+      "primary_doc": "https://www.sec.gov/Archives/edgar/data/861842/000143774925011577/caty20250326_def14a.htm"
+    }
+  },
+  "board": {
+    "size": 14,
+    "independent_count": 10,
+    "independence_pct": 71.4,
+    "leadership": {
+      "chair_is_independent": false,
+      "ceo_is_chair": false
+    }
+  },
+  "ownership": {
+    "top_holders": [],
+    "top5_pct": 0.0,
+    "insider_pct": 0.0,
+    "policies": {}
+  },
+  "compensation": {
+    "pay_mix_pct": {},
+    "neos": [
+      {
+        "role": "CEO",
+        "name": "Chang M. Liu",
+        "total_comp_usd": null
+      }
+    ],
+    "annual_incentive": {},
+    "ltip": {},
+    "ceo_pay_ratio_to_median": 56,
+    "say_on_pay_pct": 94.22
+  },
+  "equity_plan": {
+    "overhang_pct": null,
+    "burn_rate_pct": null,
+    "shares_available": null,
+    "shares_outstanding_awards": null,
+    "plan_name": null
+  },
+  "audit": {
+    "auditor": "KPMG LLP",
+    "fees": {
+      "audit": 2236302,
+      "audit_related": 49668,
+      "tax": 10742,
+      "all_other": 0,
+      "non_audit_pct": 2.6
+    }
+  },
+  "provenance": [
+    {
+      "section": "board.size",
+      "method": "regex",
+      "locators": [
+        "regex: board ... consists of (\\d+) directors"
+      ],
+      "page_range": null,
+      "text_snippet": "hree and 25 directors, and the number of directors within this range may be changed from time to time by the Board. The Board currently consists of 14 directors, each of whom is also a director of Cathay Bank, a California-chartered bank and wholly-owned subsidiary of Bancorp. Th",
+      "confidence_pct": 90,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/861842/000143774925011577/caty20250326_def14a.htm",
+      "sha256": "43e4b3f0e50309c5655842d10d47e4e38788709c7cfb7ff3e7a6986f53028873"
+    },
+    {
+      "section": "board.independent_count",
+      "method": "regex",
+      "locators": [
+        "regex: following ten of current members are independent"
+      ],
+      "page_range": null,
+      "text_snippet": "sclosed below under \u201cTransactions with Related Persons, Promoters and Certain Control Persons,\u201d and determined that the following ten of its current 14 members are \u201cindependent\u201d as defined in the Nasdaq Stock Market Rules: Kelly L. Chan (who will not stand for reelection this year), Nelson Chung",
+      "confidence_pct": 95,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/861842/000143774925011577/caty20250326_def14a.htm",
+      "sha256": "43e4b3f0e50309c5655842d10d47e4e38788709c7cfb7ff3e7a6986f53028873"
+    },
+    {
+      "section": "board.independence_pct",
+      "method": "regex",
+      "locators": [
+        "derived from board.independent_count / board.size"
+      ],
+      "page_range": null,
+      "text_snippet": "independent_count=10, board_size=14, independence_pct=71.4",
+      "confidence_pct": 95,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/861842/000143774925011577/caty20250326_def14a.htm",
+      "sha256": "43e4b3f0e50309c5655842d10d47e4e38788709c7cfb7ff3e7a6986f53028873"
+    },
+    {
+      "section": "compensation.neos[0].name",
+      "method": "html_parse",
+      "locators": [
+        "table header: Name and Principal Position"
+      ],
+      "page_range": null,
+      "text_snippet": "Chang M. Liu President and Chief Executive Officer of Bancorp and Cathay Bank 2024 943,250 \u2014 1,901,973 \u2014 825,400 \u2014 17,250 3,687,873",
+      "confidence_pct": 95,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/861842/000143774925011577/caty20250326_def14a.htm",
+      "sha256": "43e4b3f0e50309c5655842d10d47e4e38788709c7cfb7ff3e7a6986f53028873"
+    },
+    {
+      "section": "compensation.say_on_pay_pct",
+      "method": "regex",
+      "locators": [
+        "regex context search",
+        "regex: (\\d+)% ... votes/shares ... for"
+      ],
+      "page_range": null,
+      "text_snippet": "to approve, on an advisory (nonbinding) basis, our executive compensation. At the 2024 annual meeting of stockholders, 94.22% of the votes cast were in favor of approving this proposal. The Compensation Committee was aware of and considered the results of the advisory vote on",
+      "confidence_pct": 80,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/861842/000143774925011577/caty20250326_def14a.htm",
+      "sha256": "43e4b3f0e50309c5655842d10d47e4e38788709c7cfb7ff3e7a6986f53028873"
+    },
+    {
+      "section": "compensation.ceo_pay_ratio_to_median",
+      "method": "regex",
+      "locators": [
+        "regex context search",
+        "regex: (\\d+) to 1"
+      ],
+      "page_range": null,
+      "text_snippet": "tion, for 2024, the ratio of Mr. Liu\u2019s Annual Total Compensation to our median employee\u2019s Annual Total Compensation was 56 to 1. We believe this ratio is a reasonable estimate calculated in a manner consistent with Item 402(u) of Regulation S-K us",
+      "confidence_pct": 85,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/861842/000143774925011577/caty20250326_def14a.htm",
+      "sha256": "43e4b3f0e50309c5655842d10d47e4e38788709c7cfb7ff3e7a6986f53028873"
+    },
+    {
+      "section": "audit.fees",
+      "method": "table_detect",
+      "locators": [
+        "table search: Audit Fees",
+        "table row: Audit Fees 1/",
+        "table row: Audit-Related Fees 2/",
+        "table row: Tax Fees 3/",
+        "table row: All Other Fees"
+      ],
+      "page_range": null,
+      "text_snippet": "2024 2023 Audit Fees 1/ $ 2,236,302 $ 1,893,900 Audit-Related Fees 2/ 49,668 49,708 Tax Fees 3/ 10,742 14,885 All Other Fees \u2014 \u2014 Total Fees $ 2,296,712 $ 1,958,493",
+      "confidence_pct": 90,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/861842/000143774925011577/caty20250326_def14a.htm",
+      "sha256": "43e4b3f0e50309c5655842d10d47e4e38788709c7cfb7ff3e7a6986f53028873"
+    },
+    {
+      "section": "audit.auditor",
+      "method": "regex",
+      "locators": [
+        "text contains: kpmg(?:\\s+llp)?"
+      ],
+      "page_range": null,
+      "text_snippet": "to vote on an advisory (non-binding) resolution to approve our executive compensation, and to ratify the appointment of KPMG LLP as our independent registered public accounting firm for the 2025 fiscal year, all as further described in the accompan",
+      "confidence_pct": 90,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/861842/000143774925011577/caty20250326_def14a.htm",
+      "sha256": "43e4b3f0e50309c5655842d10d47e4e38788709c7cfb7ff3e7a6986f53028873"
+    }
+  ]
+}

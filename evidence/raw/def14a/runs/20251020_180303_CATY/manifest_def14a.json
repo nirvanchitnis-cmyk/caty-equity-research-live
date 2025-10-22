@@ -1,0 +1,18 @@
+{
+  "pipeline": "def14a",
+  "user_agent": "NirvanChitnis/nirvanchitnis@example.com",
+  "throttle_seconds": 1.5,
+  "generated_at_utc": "2025-10-20T18:03:09Z",
+  "run_dir": "/Users/nirvanchitnis/Desktop/CATY_Clean/evidence/raw/def14a/runs/20251020_180303_CATY",
+  "xlsx_path": "/Users/nirvanchitnis/Desktop/CATY_Clean/evidence/raw/def14a/runs/20251020_180303_CATY/DEF14A_Artifacts.xlsx",
+  "xlsx_sha256": "59c6e65f0a5584b48c10ef8b71f46b2eb69b4f21029c3a46ca062826cab3b65c",
+  "http_provenance": {
+    "CATY": {
+      "def14a_url": "https://www.sec.gov/Archives/edgar/data/861842/000143774925011577/caty20250326_def14a.htm",
+      "sha256": "43e4b3f0e50309c5655842d10d47e4e38788709c7cfb7ff3e7a6986f53028873",
+      "accession_number": "0001437749-25-011577",
+      "filing_date": "2025-04-10",
+      "primary_document": "caty20250326_def14a.htm"
+    }
+  }
+}
