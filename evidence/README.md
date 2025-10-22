@@ -143,6 +143,15 @@ evidence/
 - Full CRE composition with average loan sizes/LTVs; Office $1.47B (47% LTV)
 - Office details: sub-type mix, urban/suburban/CBD, geographic mix, avg property size
 
+### primary_sources/CATY_Q3_2025_Presentation_20251021.pdf
+**Purpose:** PRIMARY SOURCE (PDF) — Q3 2025 Financial Results Presentation
+**Status:** ✅ ARCHIVED
+**File Size:** 253 KB
+**SHA256:** bb813f60ddbcd18e5ee935b9c268d14d522d59467717c7c74c1b2421bb1c2dbc
+**Download Date:** 2025-10-22 11:19 PT
+**Source URL:** https://www.cathaybank.com/CGB/pr-20251021
+**Notes:** Canonical deck archived for audit; numbers in text capture traced to slides 5–11.
+
 ### 2. CRE_OFFICE_STATUS.md
 **Purpose:** Documents office exposure data validation
 **Status:** ✅ CONFIRMED (updated Oct 18, 2025 @ 1530 PT)
@@ -372,6 +381,7 @@ curl -sL 'https://api.fdic.gov/banks/financials?filters=CERT:18503&dates=2024-12
 | 2025-10-19 | 0830 | Peer metric automation | analysis/extract_peer_metrics.py; peer_snapshot_2025Q2.csv | v0.4 (scaled facts + CRE capture, citations populated) | ✅ UPDATED |
 | 2025-10-22 | 1055 | Primary source archived | CATY_Q3_2025_Presentation_20251021.txt | SHA256: 8cf12b26c8f994d7... | ✅ ARCHIVED |
 | 2025-10-22 | 1110 | CRE office status update | CRE_OFFICE_STATUS.md | v3.0 (Q3 integration; gaps flagged) | ✅ UPDATED |
+| 2025-10-22 | 1119 | Primary source archived | CATY_Q3_2025_Presentation_20251021.pdf | SHA256: bb813f60ddbcd18e... | ✅ ARCHIVED |
 
 **Governance Protocol:**
 - All primary sources require SHA256 hash documentation

@@ -1,8 +1,8 @@
-# CRE OFFICE EXPOSURE — STATUS: CONFIRMED (Q3'25 UPDATE)
+# CRE OFFICE EXPOSURE — STATUS: PARTIAL CONFIRMATION (Q3'25 UPDATE)
 
 **Date Created:** October 18, 2025
 **Date Updated:** October 22, 2025 (Q3'25 presentation integrated)
-**Status:** ✅ **CONFIRMED** — Property-type composition and office details sourced from Q3'25 deck; maturity ladder and DSCR remain material data gaps
+**Status:** ⚠️ **PARTIAL** — Composition and office detail are evidenced; maturity ladder, DSCR by property type, and office credit metrics remain material gaps
 
 ---
 
@@ -13,7 +13,7 @@ Q3'25 update incorporates the company’s October 21, 2025 presentation (slides 
 - **Office CRE Exposure (Q3'25): $1,470M** (~14% of CRE; avg loan size $2.3M; weighted avg LTV 47%).
 - **Total CRE (Q3'25): $10.5B** (~52% of total loans; total weighted avg LTV 49%).
 - **Interest‑rate swaps on CRE (Q3'25): $626M** (vs $966M in Q2'25).
-- **CRE concentration / risk‑based capital (Q3'25): ~231%** (vs ~281% in Q2'25; well below 300% regulatory threshold and 400% internal threshold shown in the deck).
+- **CRE concentration / risk‑based capital (Q3'25): ~231%** (vs ~281% in Q2'25; thresholds shown: 300% regulatory, 400% internal).
 
 Sources: Cathay General Bancorp Q3'25 Financial Results Presentation, slides 5–11 (Presented Oct 21, 2025). URL: https://www.cathaybank.com/CGB/pr-20251021-presentation
 
@@ -41,7 +41,7 @@ Reconciliation: sum of category amounts ≈ $10,488M; ≈$12M difference vs $10.
 
 Geographic mix (CRE): CA 46%, NY 35%, TX 5%, IL 3%, WA 2%, Other 9% (Q3'25 Slide 7; unchanged vs Q2).
 
-Interest‑rate swaps on CRE: $626M notional (~3.1% of total loans) per Q3'25 Slide 5; Q2'25 cited $966M (~4.9%).
+Interest‑rate swaps on CRE: $626M notional (~3.1% of total loans) per Q3'25 Slide 5; Q2'25 cited $966M (~4.9%). Notional ≠ risk; MTM depends on rates, hedge designation, and maturities.
 
 ### Q2'25 (reference)
 
@@ -143,6 +143,23 @@ Q3'25 weighted average LTV (office): 47% (Q2'25: 46%).
 
 ---
 
+## Q2 → Q3 RECONCILIATION (Key Metrics)
+
+| Metric | Q2'25 | Q3'25 | Δ | Source |
+|--------|-------|-------|---|--------|
+| Total CRE balance | $10,363M | ~$10,500M | +$137M | Q2 Slide 8; Q3 Slides 7–8 |
+| Office CRE balance | $1,480M | $1,470M | -$10M | Q2 Slide 10; Q3 Slide 10 |
+| Office W.A. LTV | 46% | 47% | +1 pp | Q2 Slide 10; Q3 Slide 10 |
+| Total CRE W.A. LTV | 49% | 49% | 0 pp | Q2 Slide 8; Q3 Slides 7–8 |
+| CRE swaps notional | $966M | $626M | -$340M | Q2 Slide 5; Q3 Slide 5 |
+| CRE / Risk‑Based Capital | ~281% | ~231% | -50 ppts | Q2/ Q3 concentration charts |
+
+Notes:
+- Aggregates reflect rounding/“~” values in Q3 deck.
+- CRE/RBC shown in company slides; see “Definitions” for ratio description.
+
+---
+
 ## CHANGES VS Q2'25 AND PRIOR ESTIMATES
 
 | Metric | Original Estimate (PURGED) | Actual (Sourced) | Variance |
@@ -218,6 +235,22 @@ Q3'25 weighted average LTV (office): 47% (Q2'25: 46%).
 
 ---
 
+## EARNINGS CONTEXT (Q3'25) — Pending Press Release Tie‑out
+
+- This page will link CRE movement to quarterly earnings (NIM, provision, NCOs) once the Q3 press release is archived and cited.
+- Action: Archive and hash Q3'25 earnings press release; extract provision, NIM, and credit quality tables; connect to office/CRE exposures.
+
+---
+
+## DEFINITIONS & CALCULATION NOTES
+
+- CRE / Risk‑Based Capital (CRE/RBC): As shown in company slides; ratio relates total CRE loans to regulatory risk‑based capital (Tier 1 + Tier 2). Thresholds indicated on slides: 300% (regulatory), 400% (internal). This is a supervisory concentration indicator, not a GAAP metric.
+- Weighted Average LTV: Company‑reported; implicitly portfolio‑weighted within each category.
+- CBD: Central Business District (central downtown financial/business areas), per slide footnote.
+- Swaps Notional: Gross notional of interest‑rate swaps associated with CRE loans; not a measure of mark‑to‑market exposure or duration profile.
+
+---
+
 ## DOCUMENT CONTROL
 
 | Version | Date | Status | Change Log |
@@ -225,12 +258,14 @@ Q3'25 weighted average LTV (office): 47% (Q2'25: 46%).
 | 1.0 | Oct 18, 2025 @ 1200 PT | UNSUBSTANTIATED | Initial search — office % not found in 10‑Q |
 | 2.0 | Oct 18, 2025 @ 1530 PT | CONFIRMED | Q2'25 presentation sourced; complete property‑type breakdown captured |
 | 3.0 | Oct 22, 2025 @ 1100 PT | CONFIRMED (Q3 integrated) | Q3'25 presentation integrated; changes vs Q2 highlighted; DSCR/maturity flagged as material gaps |
+| 3.1 | Oct 22, 2025 @ 1120 PT | PARTIAL CONFIRMATION | Header/status clarified; reconciliation table added; definitions added; Q3 PDF archived and linked |
 
 **Primary Sources:**
 - Q3'25 deck (slides 5–11)
   - File: `evidence/primary_sources/CATY_Q3_2025_Presentation_20251021.txt`
   - URL: https://www.cathaybank.com/CGB/pr-20251021-presentation
   - Notes: Captures total loans, CRE breakdown, LTVs, office detail, swaps notional, CRE/RBC chart.
+  - PDF: `evidence/primary_sources/CATY_Q3_2025_Presentation_20251021.pdf` (SHA256 in evidence/README.md)
 - Q2'25 deck (slides 8, 10)
   - File: `evidence/primary_sources/CATY_Q2_2025_Presentation_20250722.txt`
   - URL: https://www.cathaybank.com/CGB/pr-20250722-presentation

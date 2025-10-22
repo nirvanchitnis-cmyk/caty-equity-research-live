@@ -511,6 +511,45 @@
             <!-- END AUTOGEN: reconciliation-dashboard -->
         </section>
 
+        <!-- Wilson 95% Summary (in-page methodology) -->
+        <section id="wilson-summary" class="content-section">
+            <h2>Wilson 95% Summary (Controlling Weights)</h2>
+            <p class="text-secondary">Weights are derived from observed breach frequencies of credit-cost regimes using FDIC quarterly net charge-off data (see links below). We report the observed rate and the Wilson 95% upper bound to avoid underestimating tail risk.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Window</th>
+                        <th class="number">Quarters</th>
+                        <th class="number">Breach Prob.</th>
+                        <th class="number">95% Upper</th>
+                        <th>Definition</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Post‑GFC (≥ 2008)</td>
+                        <td class="number">70</td>
+                        <td class="number">15.7%</td>
+                        <td class="number">26.0%</td>
+                        <td>Quarterly NCO ≥ threshold (per analysis/nco_probability_analysis.py)</td>
+                    </tr>
+                    <tr>
+                        <td>Post‑2014</td>
+                        <td class="number">46</td>
+                        <td class="number">0.0%</td>
+                        <td class="number">7.7%</td>
+                        <td>No breaches observed in sample; small‑n upper bound shown</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="metric-card">
+                <div class="metric-label">Weights Used</div>
+                <div class="metric-subtext">From <code>analysis/probability_weighted_valuation.py</code></div>
+                <p class="text-emphasis">Regression (current earnings) <strong>60.9%</strong> / Normalized (through‑cycle) <strong>39.1%</strong></p>
+            </div>
+            <p class="text-small">Scripts: <a href="analysis/nco_probability_analysis.py" target="_blank" rel="noopener">nco_probability_analysis.py</a>, <a href="analysis/probability_weighted_valuation.py" target="_blank" rel="noopener">probability_weighted_valuation.py</a></p>
+        </section>
+
         <!-- Evidence Links (Direct Audit) -->
         <section id="evidence-notes" class="content-section">
             <h2>Methodology & Evidence (Direct Links)</h2>
@@ -525,6 +564,44 @@
                 <li><a href="evidence/valuation_sensitivity_summary.md" target="_blank" rel="noopener">Rate & Credit Sensitivities (EPS/NIM/TBV)</a></li>
             </ul>
             <p class="text-small">These links allow line‑by‑line audit of each table and metric. Where Q3 10‑Q line items are pending, we annotate the affected modules and will update upon filing.</p>
+        </section>
+
+        <!-- Q3 Evidence Snapshot (in-page citations) -->
+        <section id="q3-evidence" class="content-section">
+            <h2>Q3 2025 Evidence Snapshot (8‑K)</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th class="number">Value</th>
+                        <th>Source (8‑K Exhibit 99.1)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Net Income (Quarter)</td>
+                        <td class="number">$77.7M</td>
+                        <td><a href="evidence/raw/CATY_2025Q3_8K/ex_873308.htm" target="_blank" rel="noopener">Consolidated Financial Highlights</a></td>
+                    </tr>
+                    <tr>
+                        <td>ROE (Quarter)</td>
+                        <td class="number">10.60%</td>
+                        <td><a href="evidence/raw/CATY_2025Q3_8K/ex_873308.htm" target="_blank" rel="noopener">Consolidated Financial Highlights</a></td>
+                    </tr>
+                    <tr>
+                        <td>NIM (Quarter)</td>
+                        <td class="number">3.31%</td>
+                        <td><a href="evidence/raw/CATY_2025Q3_8K/ex_873308.htm" target="_blank" rel="noopener">Net Interest Summary</a></td>
+                    </tr>
+                    <tr>
+                        <td>Cost of Deposits</td>
+                        <td class="number">3.28% (down from 3.35%)</td>
+                        <td><a href="evidence/primary_sources/CATY_Q3_2025_Presentation_20251021.pdf" target="_blank" rel="noopener">IR Presentation</a></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="text-small">Exact line anchors are available in workpapers; we embed direct document links here for board audit speed.
+            </p>
         </section>
 
         <!-- ======================================== -->
