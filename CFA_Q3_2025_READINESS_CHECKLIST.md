@@ -20,7 +20,7 @@
 | Recent Developments list includes Oct 21 earnings release with metrics | ✅ | `index.html` / `data/recent_developments.json` |
 | Market data hub updated (`data/market_data_current.json`) with Q3 ACL, NCO, NIB | ✅ | File check |
 | Reconciliation guard executed after changes (noted legacy warnings) | ✅ | `analysis/reconciliation_guard.py` output |
-| Manual spot-check of GitHub Pages pending (post-deploy) | ☐ | Visit https://nirvanchitnis-cmyk.github.io/caty-equity-research-live/ after publish |
+| Manual spot-check of GitHub Pages (post-deploy) | ✅ | curl verification 2025-10-22 05:41 UTC |
 | Outstanding limitation: detailed cash flow & criticized loan tables still Q2 10-Q (disclosed) | ✅ | Footnotes in Modules 02, 04, 07 |
 
 ### Additional Analyst Notes
