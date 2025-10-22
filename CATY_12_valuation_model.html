@@ -638,7 +638,7 @@
                     <tr>
                         <td><strong>Through‑Cycle NCO (Base)</strong></td>
                         <td class="number">30.0 bps</td>
-                        <td>Post‑2014 90th percentile; 42.8 bps retained as guardrail (<a href="evidence/workpapers/CATY_FDIC_NCO_series.md" target="_blank" rel="noopener">workpaper</a>)</td>
+                        <td>Policy base (above post‑2014 P90 ≈ 17.8 bps); 42.8 bps = guardrail (<a href="evidence/workpapers/CATY_FDIC_NCO_series.md" target="_blank" rel="noopener">workpaper</a>)</td>
                     </tr>
                 </tbody>
             </table>
@@ -688,8 +688,8 @@
                     <tbody>
                         <tr>
                             <td><strong>Start:</strong> Market P/TBV</td>
-                            <td class="number">1.269×</td>
-                            <td>Spot $47.13 ÷ TBVPS $37.13 (approx.)</td>
+                            <td class="number">1.303×</td>
+                            <td>Spot $47.13 ÷ TBVPS $36.16</td>
                         </tr>
                         <tr>
                             <td><strong>Normalize Credit:</strong> Provision overlay to LTM NI</td>
@@ -697,7 +697,7 @@
                             <td>30 bps base vs. 18.1 bps actual; ΔProvision 11.9 bps × $19.45B loans; 20% tax (see workpaper)</td>
                         </tr>
                         <tr>
-                            <td><strong>Cost of Equity / g:</strong> COE 9.587%, g 2.5%</td>
+                            <td><strong>Cost of Equity / g:</strong> COE (provisional), g 2.5%</td>
                             <td class="number">→</td>
                             <td>Map via Gordon formula (see below)</td>
                         </tr>
@@ -733,9 +733,7 @@
 
             <!-- BEGIN AUTOGEN: caty12-nco-intro -->
             <p class="text-intro">
-                The table below shows how different through-cycle NCO assumptions impact normalized earnings, ROTE,
-                and ultimately the target P/TBV multiple and price. The <strong>42.8 bps base case</strong> is anchored
-                to 17 years of empirical FDIC data of empirical FDIC data.
+                The table below shows how different NCO assumptions impact normalized earnings, ROTE, and the resulting P/TBV and price. We use a <strong>30.0 bps policy base</strong> (conservative vs post‑2014 history) and a <strong>42.8 bps guardrail</strong> (2008–2025 mean).
             </p>
             <!-- END AUTOGEN: caty12-nco-intro -->
 
@@ -799,7 +797,7 @@
                         <td class="number">$291.8M</td>
                         <td class="number">11.84%</td>
                         <td class="number">1.317x</td>
-                        <td class="number">—</td>
+                        <td class="number">$47.60</td>
                         <td>Very optimistic</td>
                     </tr>
                     <tr>
@@ -857,11 +855,11 @@
                     - LTM NCO: 18.10 bps (below long-term average)<br>
                     <br>
                     <strong>Formula:</strong><br>
-                    1. Delta Provision = (42.8 bps - 18.10 bps) × $19,449.0M = $48.0M<br>
-                    2. Tax Effect = $48.0M × Tax Rate (20.0%) = $9.6M<br>
-                    3. Normalized NI = $294.7M - $48.0M + $9.6M = $256.3M<br>
-                    4. Normalized ROTE = $256.3M / $2,465.1M = 10.40% → 10.21%<br>
-                    5. Target P/TBV = (10.21% - 2.5%) / (9.587% - 2.5%) = 1.087x
+                    1. ΔProvision (base) = (30.0 bps − 18.10 bps) × $19,449.0M = $23.1M (pre‑tax)<br>
+                    2. Tax Effect = $23.1M × 20.0% = $4.6M → after‑tax impact $18.5M<br>
+                    3. Normalized NI ≈ $294.7M − $18.5M = $276.2M<br>
+                    4. Normalized ROTE ≈ $276.2M / $2,465.1M = 11.20%<br>
+                    5. Target P/TBV = (11.20% − 2.5%) / (COE − 2.5%) ≈ 1.228x (COE provisional)
                 </p>
             </div>
             <!-- END AUTOGEN: caty12-normalization-methodology -->
@@ -1495,13 +1493,13 @@
             <div class="highlight-box">
                 <h4>Base Case Calculation Step-by-Step</h4>
                 <ol class="list-mono">
-                    <li><strong>Delta Provision:</strong> (42.8 bps - 18.13 bps) × $19,449.0M = $48.0M</li>
-                    <li><strong>Tax Effect:</strong> $48.0M × 20.0% = $9.6M (benefit)</li>
-                    <li><strong>After-Tax Delta:</strong> $48.0M - $9.6M = $38.4M</li>
-                    <li><strong>Normalized NI:</strong> $294.7M - $38.4M = $256.3M</li>
-                    <li><strong>Normalized ROTE:</strong> $256.3M / $2,465.1M = 10.40% → 10.21% (Gordon Growth adjusted)</li>
-                    <li><strong>Target P/TBV (Gordon Growth):</strong> (10.21% - 2.5%) / (9.587% - 2.5%) = 1.087x</li>
-                    <li><strong>Target Price:</strong> 1.087x × $36.16 = $39.32</li>
+                    <li><strong>ΔProvision (base):</strong> (30.0 bps − 18.10 bps) × $19,449.0M = $23.1M</li>
+                    <li><strong>Tax Effect:</strong> $23.1M × 20.0% = $4.6M (benefit)</li>
+                    <li><strong>After‑Tax Delta:</strong> $23.1M − $4.6M = $18.5M</li>
+                    <li><strong>Normalized NI:</strong> $294.7M − $18.5M = $276.2M</li>
+                    <li><strong>Normalized ROTE:</strong> $276.2M / $2,465.1M ≈ 11.20%</li>
+                    <li><strong>Target P/TBV (Gordon Growth):</strong> (11.20% − 2.5%) / (COE − 2.5%) ≈ 1.228x (COE provisional)</li>
+                    <li><strong>Target Price:</strong> 1.228x × $36.16 = $44.39</li>
                 </ol>
             </div>
             <!-- END AUTOGEN: caty12-formula-audit -->

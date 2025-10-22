@@ -223,7 +223,7 @@ Notes:
 
 | Data Point | Status | Notes |
 |------------|--------|-------|
-| **Office % of CRE** | ✅ CONFIRMED | 14.3% ($1,480M) |
+| **Office % of CRE** | ✅ CONFIRMED | ~14.0% ($1,470M) in Q3; 14.3% ($1,480M) in Q2 |
 | **CBD exposure** | ✅ CONFIRMED | 3.3% of office ($49M) |
 | **Office LTV** | ✅ CONFIRMED | 46% weighted average |
 | **Multifamily detail** | ✅ CONFIRMED | $3,528M (34% of CRE) |
@@ -254,6 +254,44 @@ Interpretation:
 
 ---
 
+## BANK‑LEVEL CREDIT METRICS (Q3'25)
+
+Source: Q3'25 press release (PDF); see Primary Sources.
+
+| Metric | Q3'25 | Q2'25 | Notes |
+|--------|-------|-------|-------|
+| Non‑accrual loans | $165.6M | $174.2M | ↓ $8.6M QoQ; NPL ratio ≈ 0.82% (165.6 / 20,104.7) |
+| Allowance for credit losses (ACL) | $196.5M | $183.4M | 0.98% of gross loans at Q3’25 |
+| Quarterly net charge‑offs (NCOs) | $15.6M | $12.7M | ≈ 7.8 bps of EOP loans; ~31 bps annualized |
+| Provision for credit losses | $28.7M | $11.2M | Includes $9.1M for two theatre loans (CRE‑Theater) |
+
+Segmentation: The press release does not provide office‑specific NPL/NCO/ACL. We will update if 10‑Q or IR provides segmented figures.
+
+---
+
+## CRE/RBC — NUMERIC DISCLOSURE AND THRESHOLD
+
+Company slides show CRE / Risk‑Based Capital (RBC) of ~231% (Q3) vs ~281% (Q2).
+
+Illustrative computation using disclosed totals:
+- Numerator (Total CRE): Q3 ≈ $10.50B; Q2 = $10.363B (deck). 
+- Denominator (RBC $): inferred from ratio shown in slides.
+  - Q3 inferred RBC ≈ 10.50 / 2.31 = ~$4.55B.
+  - Q2 inferred RBC ≈ 10.363 / 2.81 = ~$3.69B.
+- Resulting ratio vs threshold: Q3 ≈ 231% vs supervisory threshold 300% (internal threshold 400%).
+
+Notes:
+- Press release provides capital ratios (Tier 1 risk‑based 13.15%; Total risk‑based 14.76%; Tier 1 leverage 10.88%) but not RWA; precise RBC ($) requires RWA. We therefore present the company’s CRE/RBC ratios and display the implied RBC dollars for transparency.
+
+---
+
+## ROUNDING & CONSISTENCY NOTES
+
+- Office: $1,470M (Q3) vs $1,480M (Q2). Percentages shown as ~14.0% (Q3) vs 14.3% (Q2). Values follow the respective slides; small differences reflect rounding and “~” amounts.
+- CBD: ~$48–49M; we cite exact slide value per quarter in the tables above.
+
+---
+
 ## DEFINITIONS & CALCULATION NOTES
 
 - CRE / Risk‑Based Capital (CRE/RBC): As shown in company slides; ratio relates total CRE loans to regulatory risk‑based capital (Tier 1 + Tier 2). Thresholds indicated: 300% (supervisory), 400% (internal). Supervisory indicator, not a GAAP metric. Use regulatory filings for denominator detail.
@@ -271,6 +309,7 @@ Interpretation:
 | 2.0 | Oct 18, 2025 @ 1530 PT | CONFIRMED | Q2'25 presentation sourced; complete property‑type breakdown captured |
 | 3.0 | Oct 22, 2025 @ 1100 PT | CONFIRMED (Q3 integrated) | Q3'25 presentation integrated; changes vs Q2 highlighted; DSCR/maturity flagged as material gaps |
 | 3.1 | Oct 22, 2025 @ 1120 PT | PARTIAL CONFIRMATION | Header/status clarified; reconciliation table added; definitions added; Q3 PDF archived and linked |
+| 3.2 | Oct 22, 2025 @ 0835 PT | PRELIMINARY | Added press‑release tie‑out table, numeric CRE/RBC disclosure with thresholds, rounding notes; aligned office % \& $ |
 
 **Primary Sources:**
 - Q3'25 deck (slides 5–11)

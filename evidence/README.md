@@ -400,6 +400,7 @@ curl -sL 'https://api.fdic.gov/banks/financials?filters=CERT:18503&dates=2024-12
 | 2025-10-22 | 1127 | Primary source archived | CATY_Q3_2025_Presentation_20251021.pdf | SHA256: d99670e2eda633fb... | ✅ ARCHIVED |
 | 2025-10-22 | 1128 | Primary source archived | CATY_Q3_2025_PressRelease_20251021.pdf | SHA256: bb813f60ddbcd18e... | ✅ ARCHIVED |
 | 2025-10-22 | 1130 | IR data request drafted | IR_DATA_REQUEST_CRE_DSCR_MATURITY.md | v0.1 | ✅ CREATED |
+| 2025-10-22 | 0835 | Peer benchmark plan | peer_office_benchmark.md | v0.2 (deadline 2025-10-23 EOD for top‑line metrics) | ✅ UPDATED |
 
 **Governance Protocol:**
 - All primary sources require SHA256 hash documentation

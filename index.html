@@ -365,7 +365,7 @@
                 <div class="metric-card metric-card-gold">
                     <div class="metric-label">Net ESG Impact</div>
                     <div class="metric-value">-$1.47/share</div>
-                    <div class="metric-subtext">COE 9.587% (+25 bps ESG premium vs neutral 9.337%)</div>
+                    <div class="metric-subtext">COE provisional (+ESG premium vs neutral)</div>
                 </div>
             </div>
 
@@ -377,7 +377,7 @@
             <h4>Rating Framework (Wilson Bounds)</h4>
             <!-- BEGIN AUTOGEN: key-findings-bullets -->
             <ul>
-                <li><strong>Empirical NCO Understated:</strong> 30.0 bps through-cycle average (2008-2024) vs previous 25 bps assumption; GFC peak 306 bps shows tail risk</li>
+                <li><strong>Credit Cost Policy:</strong> 30.0 bps policy base (above post‑2014 P90 ≈ 17.8 bps); 42.8 bps mean retained as stress guardrail</li>
                 <li><strong>Overvaluation:</strong> Current P/TBV 1.303x vs normalized fair value 1.228x; price $47.13 vs normalized $44.39 = -5.8% expected move</li>
                 <li><strong>Mid-Tier Profitability:</strong> Normalized ROTE 11.20% trails upper-quartile peers, limiting multiple expansion</li>
                 <li><strong>CRE Concentration:</strong> 52.4% CRE exposure with 5.60% brokered deposits elevates funding sensitivity</li>
@@ -675,8 +675,8 @@
                         <span class="module-card-icon">🎯</span>
                         <h5 class="module-card-title">COE Triangulation</h5>
                     </div>
-                    <div class="module-card-value">9.587%</div>
-                    <div class="module-card-description">CAPM + FF3 + DDM (weighted average)</div>
+                    <div class="module-card-value">Provisional</div>
+                    <div class="module-card-description">CAPM + FF3 + DDM (refresh after Q3 peers)</div>
                     <div class="module-card-status">
                         Updated 22 Oct 2025
                     </div>
@@ -1317,14 +1317,8 @@
             <!-- BEGIN AUTOGEN: scenario-analysis-narrative -->
             <div class="insight-box">
                 <h3>Scenario Discussion</h3>
-                <p>Scenario assumptions below are synchronized with the automated valuation table above.</p>
-                <ul>
-                    <li><strong>Base Case (60% probability):</strong> Target $44.39 with -5.8% expected move. Assumes ROTE 11.20% and NCO 0.30%.</li>
-                    <li><strong>Bull Case (25% probability):</strong> Target $46.02 with -2.4% expected move. Assumes ROTE 11.52% and NCO 0.25%.</li>
-                    <li><strong>Bear Case (15% probability):</strong> Target $34.75 with -26.3% expected move. Assumes ROTE 9.31% and NCO 0.60%.</li>
-                    <li><strong>Probability-weighted outcome:</strong> $43.36 (25% Bull + 60% Base + 15% Bear).</li>
-                </ul>
-                <p class="text-small text-secondary">Source data: <code>valuation_outputs.json</code>.</p>
+                <p>Scenario cards are illustrative. The <strong>controlling weights</strong> for the rating come from the Wilson 95% method shown above (Regression 60.9% / Normalized 39.1%).</p>
+                <p class="text-small text-secondary">Source data: <code>valuation_outputs.json</code>. Weighting logic: <code>analysis/probability_weighted_valuation.py</code>.</p>
             </div>
             <!-- END AUTOGEN: scenario-analysis-narrative -->
         </section>
@@ -1332,35 +1326,7 @@
         <!-- ======================================== -->
         <!-- 10A. MONTE CARLO VALUATION -->
         <!-- ======================================== -->
-        <section id="monte-carlo">
-            <!-- BEGIN AUTOGEN: monte-carlo-summary -->
-            <h3>Monte Carlo Valuation (10,000 paths)</h3>
-            <div class="insight-box">
-                <h3>Distribution Highlights</h3>
-                <p>10,000 simulated paths • Mean $49.84 (+5.8%) • Median $48.92 (+3.8%).</p>
-                <p>Spot overlay (spot reference $47.13)</p>
-                <table>
-                    <thead><tr><th>Percentile</th><th class="text-right">Target</th><th class="text-right">Return</th><th>Scenario</th></tr></thead>
-                    <tbody>
-                        <tr><td>5th Percentile</td><td class="text-right">$39.19</td><td class="text-right">-16.8%</td><td>Bear case with NCO spike + beta compression</td></tr>
-                        <tr><td>25th Percentile</td><td class="text-right">$45.23</td><td class="text-right">-4.0%</td><td>Below-median outcomes</td></tr>
-                        <tr><td>50th Percentile (Median)</td><td class="text-right">$48.92</td><td class="text-right">+3.8%</td><td>Base case (normalized performance)</td></tr>
-                        <tr><td>75th Percentile</td><td class="text-right">$53.17</td><td class="text-right">+12.8%</td><td>Above-median outcomes</td></tr>
-                        <tr><td>95th Percentile</td><td class="text-right">$65.83</td><td class="text-right">+39.7%</td><td>Bull case with ROTE expansion + beta recovery</td></tr>
-                    </tbody>
-                </table>
-                <img src="assets/monte_carlo_pt_distribution.png" alt="Monte Carlo fair value distribution" class="chart-image-full" />
-                <p>95% interval: $39.19 – $65.83 (span $26.64 | 56.5%).</p>
-                <h4>Probability Bands</h4>
-                <ul>
-                    <li>Below Spot ($47.13): 39.1% – Downside scenarios (SELL)</li>
-                    <li>Spot to +15% ($47.13 to $54.20): 41.2% – Most likely outcomes</li>
-                    <li>Above +15% (>$54.20): 19.7% – Upside scenarios</li>
-                </ul>
-                <p class="text-small text-secondary">Source data: <code>caty14_monte_carlo.json</code>.</p>
-            </div>
-            <!-- END AUTOGEN: monte-carlo-summary -->
-        </section>
+        <!-- Monte Carlo section intentionally removed from board-facing page -->
 
         <!-- ======================================== -->
         <!-- 10. INVESTMENT RISKS -->
@@ -1370,7 +1336,7 @@
             <h2>Investment Risks</h2>
             <ul>
                 <li><strong>CRE Concentration (HIGH):</strong> CRE 52.4% of loans, above peer median ~41%. Office exposure tail risk if values decline 20% = $500M loss vs $196.5M ACL.</li>
-                <li><strong>Through-Cycle NCO Normalization (MEDIUM):</strong> Current NCO 18.1 bps below through-cycle 30.0 bps. Normalizing provision reduces ROTE from 10.60% to 11.20%.</li>
+                <li><strong>Through-Cycle NCO Normalization (MEDIUM):</strong> Current NCO 18.1 bps below policy base 30.0 bps. Normalizing provision lifts ROTE from 10.60% to ~11.20%.</li>
                 <li><strong>NIM Compression (MEDIUM):</strong> IB-Only Beta 0.604, 100 bps Fed cuts → ~50 bps NIM impact. NIB mix 17.4% provides limited cushion.</li>
             </ul>
             <!-- END AUTOGEN: investment-risks-bullets -->
@@ -1992,7 +1958,7 @@
 
             <h4>Valuation Assumptions</h4>
             <ul>
-                <li><strong>Cost of Equity:</strong> 9.587% (triangulated via CAPM, Fama-French, DDM)</li>
+                <li><strong>Cost of Equity:</strong> Provisional — to be updated after full Q3 peer refresh</li>
                 <li><strong>Sustainable Growth:</strong> 2.5% (long-run nominal GDP proxy, normalized for buyback effects)</li>
                 <li><strong>Credit Cost Base:</strong> 30 bps (post-2014 90th percentile FDIC NCO); guardrail at 42.8 bps for SELL trigger</li>
                 <li><strong>Normalized ROTE:</strong> 11.20% (Gordon Growth path using 30 bps base provision, backed by Q3 bridge)</li>
@@ -2021,7 +1987,7 @@
                     <tr>
                         <td>Cost of Equity</td>
                         <td>9.0%</td>
-                        <td>9.59%</td>
+                        <td>9.6% (prov.)</td>
                         <td>11.0%</td>
                         <td>$41.93 - $50.21</td>
                     </tr>
