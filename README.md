@@ -20,28 +20,29 @@ All public modules, data pipelines, and provenance logs now reference the Q3 202
 
 ## 🎯 Current Investment Thesis
 
-### **HOLD Rating** - Expected Price: **$48.70 (+3.3%)**
+### **HOLD Rating** - Expected Price: **$46.98 (-0.3%)**
 
 **Current Price:** $47.13 (October 21, 2025)
-**Wilson 95% Probability-Weighted:** 60.9% × $54.71 + 39.1% × $39.34 = **$48.70**
+**Wilson 95% Probability-Weighted:** 60.9% × $51.88 + 39.1% × $39.34 = **$46.98**
 
 #### Valuation Framework Reconciliation:
 | Method | Weight | Target | vs Spot | Methodology |
 |--------|--------|--------|---------|-------------|
-| **Wilson 95%** | — | **$48.70** | **+3.3%** | 60.9% Regression / 39.1% Normalized |
-| **IRC Blended** | — | **$50.97** | **+8.1%** | 60% RIM / 10% Gordon / 30% Relative |
+| **Wilson 95%** | — | **$46.98** | **-0.3%** | 60.9% Regression / 39.1% Normalized |
+| **IRC Blended** | — | **$50.12** | **+6.3%** | 60% RIM / 10% Gordon / 30% Relative |
 | **RIM (Residual Income)** | 60% | $50.08 | +6.3% | 3-stage with through-cycle NCO |
-| **Gordon Growth (Normalized)** | 10% | $39.34 | -16.5% | COE 9.587%, g 2.5%, ROTE 10.21% |
-| **Regression (Current Earnings)** | 30% | $54.71 | +16.1% | P/TBV = 0.058 × ROTE + 0.82 |
+| **Gordon Growth (Normalized)** | 10% | **$39.34** | **-16.5%** | COE 9.587%, g 2.5%, ROTE 10.21% |
+| **Regression (Current Earnings)** | 30% | **$51.88** | **+10.1%** | P/TBV = 0.058 × ROTE + 0.82 |
 | **Monte Carlo Median** | — | $40.16 | -14.8% | 10,000-path simulation |
 
-**Rating:** HOLD (+3.3% expected return within -10% to +15% policy band)
+**Rating:** HOLD (-0.3% expected return within -10% to +15% policy band)
 
 #### Key Investment Drivers:
-1. **Through-Cycle NCO Normalization (42.8 bps)** - 17-year FDIC history (2008-2024) reduces normalized ROTE to 10.21%
+1. **Through-Cycle NCO Normalization (42.8 bps)** - 17-year FDIC history (2008-2025) – bridge now explicit in Module 12 reduces normalized ROTE to 10.21%
 2. **Elevated CRE Concentration (52.4%)** - Above peer median ~41%, office exposure tail risk
 3. **NIM Compression Risk** - IB-Only Beta 60.4%, 100 bps Fed cuts → ~50 bps NIM impact
 4. **Premium Valuation vs. Fundamentals** - P/TBV 1.303x vs normalized 1.088x
+5. **Capital Return Mix** - Q3 buyback 1.07M shares ($50.1M) lifted payout to 70.8%, shaved TBVPS by 16 bps and CET1 by 20 bps; $59.9M authorization remaining
 
 ---
 
@@ -134,6 +135,8 @@ python3 analysis/disconfirmer_monitor.py
 | PPBI | Pacific Premier Bancorp | 0001031843 | ✅ Automated |
 | BANC | Banc of California | 0001169770 | ✅ Automated |
 | HOPE | Hope Bancorp | 0001584509 | ⚠️ Excluded (negative ROTE) |
+
+> **Q3 status (Oct 22, 2025):** EWBC and HAFC metrics refreshed from Q3 8-Ks. Remaining peers (CVBF, COLB, WAFD, PPBI, BANC, HOPE) still reflect Q2 10-Q data until filings drop; regression slope flagged for update once new filings post.
 
 ---
 
@@ -388,8 +391,8 @@ git add -A && git commit -m "Q3 data integrated" && git push origin-live q3-prep
 | Category | Metric | Value | Source |
 |----------|--------|-------|--------|
 | **Valuation** | Current Price | $47.13 | Market close 2025-10-21 |
-| | Wilson Expected | $48.70 (+3.3%) | 60.9% × $54.71 + 39.1% × $39.34 |
-| | IRC Blended | $50.97 (+8.1%) | 60% RIM + 10% Gordon + 30% Relative |
+| | Wilson Expected | $46.98 (-0.3%) | 60.9% × $51.88 + 39.1% × $39.34 |
+| | IRC Blended | $50.12 (+6.3%) | 60% RIM + 10% Gordon + 30% Relative |
 | | Monte Carlo Median | $40.16 (-14.8%) | 10,000-path simulation |
 | | P/TBV (Current) | 1.303x | Q3 run (updated price) |
 | | P/TBV (Normalized) | 1.088x | Gordon Growth with 42.8 bps NCO |

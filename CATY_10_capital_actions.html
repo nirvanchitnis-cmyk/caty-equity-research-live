@@ -5,6 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CATY - Capital Actions | Data Repository</title>
     <link rel="stylesheet" href="styles/caty-equity-research.css">
+    <style>
+        .buyback-impact-card {
+            margin-top: 28px;
+            padding: 24px 28px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 18px;
+        }
+
+        .buyback-impact-card h3 {
+            margin-top: 0;
+            font-size: 1.2rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .buyback-impact-card ul {
+            list-style: none;
+            margin: 16px 0 0;
+            padding: 0;
+        }
+
+        .buyback-impact-card li {
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .buyback-impact-card li span {
+            font-weight: 600;
+            margin-right: 6px;
+        }
+    </style>
 </head>
 <body>
     <!-- Theme Toggle -->
@@ -211,18 +243,18 @@
                 </div>
                 <div class="metric-card">
                     <div class="metric-label">Remaining Authorization</div>
-                    <div class="metric-value">$110M</div>
+                    <div class="metric-value">$60M</div>
                     <div class="metric-subtext">Expires 2026-07-15</div>
                 </div>
                 <div class="metric-card">
                     <div class="metric-label">Shares Repurchased</div>
-                    <div class="metric-value">0.85M</div>
+                    <div class="metric-value">1.92M</div>
                     <div class="metric-subtext">Cumulative under program</div>
                 </div>
                 <div class="metric-card">
                     <div class="metric-label">Average Price Paid</div>
-                    <div class="metric-value">$47.12</div>
-                    <div class="metric-subtext">Total cost $40M</div>
+                    <div class="metric-value">$46.81</div>
+                    <div class="metric-subtext">Total cost $90M</div>
                 </div>
             </div>
             <div class="alert-box info">
@@ -249,6 +281,13 @@
                 </thead>
                 <tbody>
                     <tr>
+                        <td><strong>2025-Q3</strong></td>
+                        <td>1.07</td>
+                        <td>$50.1</td>
+                        <td>$46.81</td>
+                        <td><span class="verification-badge verified">VERIFIED_OK</span></td>
+                    </tr>
+                    <tr>
                         <td><strong>2025-Q2</strong></td>
                         <td>TBD</td>
                         <td>TBD</td>
@@ -270,6 +309,19 @@
                     </tr>
                 </tbody>
             </table>
+            <div class="buyback-impact-card">
+                <h3>Q3 2025 Repurchase Impact Analysis</h3>
+                <ul>
+                    <li><span>Shares retired:</span> 1.07M @ $46.81 (cost $50.1M).</li>
+                    <li><span>TBVPS:</span> $36.96 actual vs $37.12 pro-forma (−16 bps).</li>
+                    <li><span>CET1 ratio:</span> 13.35% → 13.15% (−20 bps).</li>
+                    <li><span>ROTE effect:</span> ~+9 bps uplift from lower average TCE.</li>
+                    <li><span>Evidence:</span> Ex.99.1 capital table; <code>data/caty10_capital_actions.json</code>.</li>
+                </ul>
+                <p class="text-small text-secondary">Repurchases executed above TBV (1.29×) are equity-dilutive; further deployment should weigh ROTE lift against CET1 headroom.</p>
+            </div>
+
+
 
             <h3>Annual Repurchase Summary</h3>
 
@@ -308,15 +360,14 @@
             </table>
 
             <div class="source-box">
-                <div class="source-label">Data Source <span class="verification-badge not-disclosed">NOT_DISCLOSED</span></div>
+                <div class="source-label">Data Source <span class="verification-badge verified">VERIFIED_OK</span></div>
                 <div class="source-details">
-                    <strong>Required Forms:</strong> 10-Q (Quarterly), 10-K (Annual)<br>
-                    <strong>Location:</strong> Notes to Financial Statements - Stockholders' Equity / Treasury Stock Activity<br>
-                    <strong>Alternative Location:</strong> Consolidated Statements of Changes in Stockholders' Equity<br>
-                    <strong>Typical Disclosure:</strong> "During [Period], the Company repurchased X shares of common stock at an average price of $Y per share for a total cost of $Z million under its share repurchase program."<br>
-                    <strong>Period Coverage:</strong> Q1 2015 through Q2 2025<br>
-                    <strong>Extraction Status:</strong> Pending quarterly/annual filing parsing<br>
-                    <strong>URL Template:</strong> https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000861842&type=10-
+                    <strong>Primary Source:</strong> Form 8-K Exhibit 99.1 (filed October 21, 2025) – share repurchase disclosure ($50.1M, 1.07M shares).<br>
+                    <strong>Historical Required Forms:</strong> 10-Q (Quarterly), 10-K (Annual) for treasury stock rollforwards.<br>
+                    <strong>Location:</strong> Notes to Stockholders' Equity / Statement of Changes in Equity / Press Release.<br>
+                    <strong>Period Coverage:</strong> Q1 2015 through Q3 2025 (Q3 sourced from 8-K; legacy quarters pending extraction).<br>
+                    <strong>Extraction Status:</strong> Q3 2025 verified; prior quarters flagged for automated parsing backlog.<br>
+                    <strong>Evidence:</strong> <code>evidence/raw/CATY_2025Q3_8K/caty20251021_8k.htm</code>
                 </div>
             </div>
         </section>
@@ -346,17 +397,17 @@
                     </tr>
                     <tr>
                         <td>Total share repurchases (LTM)</td>
-                        <td class="number">$40.0M</td>
-                        <td>Remaining authorization $110M</td>
+                        <td class="number">$90.1M</td>
+                        <td>Remaining authorization $60M</td>
                     </tr>
                     <tr class="subtotal">
                         <td>Total capital returned (LTM)</td>
-                        <td class="number">$158.6M</td>
-                        <td>Total payout ratio 42.9%</td>
+                        <td class="number">$208.7M</td>
+                        <td>Total payout ratio 70.8%</td>
                     </tr>
                     <tr>
                         <td>Net income (LTM)</td>
-                        <td class="number">$369.8M</td>
+                        <td class="number">$294.7M</td>
                         <td>Base used for payout calculations</td>
                     </tr>
                 </tbody>

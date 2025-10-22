@@ -1,17 +1,17 @@
 {
   "metadata": {
-    "calculation_run": "2025-10-22T02:14:51.201784+00:00",
+    "calculation_run": "2025-10-22T04:31:25.162284+00:00",
     "price_used": 47.13
   },
   "methods": {
     "regression": {
-      "target_price": 54.71,
-      "target_ptbv": 1.513,
+      "target_price": 51.88,
+      "target_ptbv": 1.435,
       "method": "Regression",
       "equation": "P/TBV = 0.058 \u00d7 ROAE + 0.82",
       "r_squared": 0.68,
       "inputs": {
-        "roae": 11.95,
+        "roae": 10.6,
         "tbvps": 36.16,
         "price": 47.13,
         "peer_sample": [
@@ -25,8 +25,8 @@
           "intercept": 0.82
         }
       },
-      "return_pct": 16.1,
-      "last_calculated": "2025-10-22T02:14:51.201784+00:00"
+      "return_pct": 10.1,
+      "last_calculated": "2025-10-22T04:31:25.162284+00:00"
     },
     "normalized": {
       "target_price": 39.34,
@@ -41,17 +41,17 @@
         "through_cycle_nco_bps": 42.8
       },
       "return_pct": -16.5,
-      "last_calculated": "2025-10-22T02:14:51.201784+00:00"
+      "last_calculated": "2025-10-22T04:31:25.162284+00:00"
     },
     "wilson_95": {
-      "target_price": 48.7,
+      "target_price": 46.98,
       "method": "Wilson 95% Probability-Weighted",
       "probabilities": {
         "regression": 0.609,
         "normalized": 0.391
       },
       "inputs": {
-        "regression_target": 54.71,
+        "regression_target": 51.88,
         "normalized_target": 39.34,
         "price": 47.13,
         "probabilities": {
@@ -59,12 +59,12 @@
           "normalized": 0.391
         }
       },
-      "return_pct": 3.3,
-      "last_calculated": "2025-10-22T02:14:51.201784+00:00"
+      "return_pct": -0.3,
+      "last_calculated": "2025-10-22T04:31:25.162284+00:00"
     },
     "irc_blended": {
-      "target_price": 50.97,
-      "target_ptbv": 1.41,
+      "target_price": 50.12,
+      "target_ptbv": 1.386,
       "method": "IRC Blended (60% RIM / 10% DDM / 30% Regression)",
       "weights": {
         "rim": 0.6,
@@ -74,10 +74,10 @@
       "inputs": {
         "rim_target": 50.08,
         "ddm_target": 45.12,
-        "regression_target": 54.71
+        "regression_target": 51.88
       },
-      "return_pct": 8.1,
-      "last_calculated": "2025-10-22T02:14:51.201784+00:00"
+      "return_pct": 6.3,
+      "last_calculated": "2025-10-22T04:31:25.162284+00:00"
     }
   },
   "scenarios": {
@@ -123,11 +123,11 @@
       "target_price": 40.47,
       "composition": "25% Bull + 60% Base + 15% Bear",
       "return_pct": -14.1,
-      "last_calculated": "2025-10-22T02:14:51.201784+00:00"
+      "last_calculated": "2025-10-22T04:31:25.162284+00:00"
     },
     "irc_blended": {
-      "target_price": 50.97,
-      "target_ptbv": 1.41,
+      "target_price": 50.12,
+      "target_ptbv": 1.386,
       "method": "IRC Blended (60% RIM / 10% DDM / 30% Regression)",
       "weights": {
         "rim": 0.6,
@@ -137,17 +137,17 @@
       "inputs": {
         "rim_target": 50.08,
         "ddm_target": 45.12,
-        "regression_target": 54.71
+        "regression_target": 51.88
       },
-      "return_pct": 8.1,
-      "last_calculated": "2025-10-22T02:14:51.201784+00:00",
+      "return_pct": 6.3,
+      "last_calculated": "2025-10-22T04:31:25.162284+00:00",
       "composition": "60% RIM + 10% DDM + 30% Regression"
     },
     "wilson_95": {
-      "target_price": 48.7,
+      "target_price": 46.98,
       "composition": "60.9% Regression + 39.1% Normalized",
-      "return_pct": 3.3,
-      "last_calculated": "2025-10-22T02:14:51.201784+00:00"
+      "return_pct": -0.3,
+      "last_calculated": "2025-10-22T04:31:25.162284+00:00"
     }
   },
   "assumptions": {
@@ -160,5 +160,5 @@
     "dividend_payout_pct": 32.1,
     "current_nco_bps": 18.1
   },
-  "last_updated": "2025-10-22T02:14:51.201784+00:00"
+  "last_updated": "2025-10-22T04:31:25.162284+00:00"
 }

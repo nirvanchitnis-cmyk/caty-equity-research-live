@@ -92,13 +92,14 @@
       "intangibles_millions": 27.99,
       "net_income_annualisation_factor": 4.0,
       "net_income_millions": 310.25,
-      "period_end": "2025-06-30",
-      "rote_pct": 16.1,
-      "shares_outstanding_millions": 143.87,
+      "period_end": "2025-09-30",
+      "rote_pct": 18.48,
+      "shares_outstanding_millions": 137.568,
       "shares_unit": "shares",
-      "tangible_equity_millions": 7708.08,
-      "tbvps": 53.58,
-      "total_loans_millions": 34420.25
+      "tangible_equity_millions": 8112.38,
+      "tbvps": 58.97,
+      "total_loans_millions": 34420.25,
+      "data_status": "Q3 2025 8-K integration"
     },
     "HAFC": {
       "accession": "0000950170-25-105658",
@@ -111,14 +112,15 @@
       "goodwill_millions": 11.0,
       "intangibles_millions": 11.13,
       "net_income_annualisation_factor": 4.0,
-      "net_income_millions": 15.12,
-      "period_end": "2025-06-30",
-      "rote_pct": 8.16,
-      "shares_outstanding_millions": 30.177,
+      "net_income_millions": 22.06,
+      "period_end": "2025-09-30",
+      "rote_pct": 11.48,
+      "shares_outstanding_millions": 29.975,
       "shares_unit": "shares",
-      "tangible_equity_millions": 740.7,
-      "tbvps": 24.55,
-      "total_loans_millions": 4548.74
+      "tangible_equity_millions": 768.52,
+      "tbvps": 25.64,
+      "total_loans_millions": 4548.74,
+      "data_status": "Q3 2025 8-K integration"
     },
     "HOPE": {
       "accession": "0001128361-25-000036",
@@ -182,5 +184,5 @@
     }
   },
   "fetch_timestamp": "2025-10-22T02:14:51Z",
-  "period": "Q2 2025"
+  "period": "Q3 2025 (partial 8-K refresh)"
 }

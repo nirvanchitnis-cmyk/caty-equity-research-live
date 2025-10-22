@@ -1,7 +1,7 @@
 {
   "price": 47.13,
   "price_date": "2025-10-21",
-  "report_generated": "2025-10-22T02:14:51.201784+00:00",
+  "report_generated": "2025-10-22T04:31:25.162284+00:00",
   "data_source": "NASDAQ closing price (Tuesday, Oct 21, 2025)",
   "ticker": "CATY",
   "company": "Cathay General Bancorp",
@@ -15,14 +15,14 @@
   "calculated_metrics": {
     "tbvps": 36.16,
     "current_ptbv": 1.303,
-    "target_regression": 54.71,
+    "target_regression": 51.88,
     "target_normalized": 39.34,
-    "target_wilson_95": 48.7,
-    "target_irc_blended": 50.97,
-    "return_regression_pct": 16.1,
+    "target_wilson_95": 46.98,
+    "target_irc_blended": 50.12,
+    "return_regression_pct": 10.1,
     "return_normalized_pct": -16.5,
-    "return_wilson_95_pct": 3.3,
-    "return_irc_blended_pct": 8.1,
+    "return_wilson_95_pct": -0.3,
+    "return_irc_blended_pct": 6.3,
     "rating": "HOLD",
     "normalized_ptbv": 1.088,
     "implied_coe_pct": 9.587,
@@ -46,15 +46,22 @@
     "pe_ltm": 10.8,
     "eps_ltm": 4.25,
     "dividend_yield_pct": 3.3,
-    "dividend_annual": 1.52
+    "dividend_annual": 1.52,
+    "loan_growth_qoq_pct": 1.6,
+    "deposit_growth_qoq_pct": 2.6,
+    "noninterest_income_qoq_pct": 36.4,
+    "net_interest_income_qoq_pct": 4.6,
+    "provision_q3_millions": 28.7,
+    "share_repurchase_q3_millions": 50.1,
+    "share_repurchase_shares_millions": 1.07
   },
   "version": "1.0",
   "schema_url": "data/market_data_schema.json",
   "report_metadata": {
     "report_date": "October 22, 2025",
     "report_date_iso": "2025-10-22",
-    "last_updated_utc": "2025-10-22T02:14:51.201784+00:00",
-    "generated_at_display": "October 22, 2025 02:14 UTC"
+    "last_updated_utc": "2025-10-22T04:31:25.162284+00:00",
+    "generated_at_display": "October 22, 2025 04:31 UTC"
   },
   "narrative_prose": {
     "investment_thesis_summary": "{{company}} ({{ticker}}) trades at ${{price}} ({{price_date}}) with expected return of {{return_wilson_95_pct}}% to Wilson 95% target ${{target_wilson_95}}. Current P/TBV {{current_ptbv}}x represents premium to normalized {{normalized_ptbv}}x, driven by current earnings (ROTE {{rote_ltm_pct}}%) vs through-cycle assumptions (NCO {{through_cycle_nco_bps}} bps).",

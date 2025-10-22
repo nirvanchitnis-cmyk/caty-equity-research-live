@@ -4,7 +4,7 @@
   "source_script": "analysis/calculate_valuation_tables.py",
   "nco_metrics": [
     {
-      "label": "Current NCO (Q2 2025)",
+      "label": "Current NCO (Q3 2025)",
       "value_type": "bps",
       "value": 18.1,
       "subtext": "Below through-cycle average",
@@ -107,7 +107,8 @@
     "sample_size_quarters": 70,
     "sample_years_text": "17 years of empirical FDIC data",
     "fdic_range_text": "2008-2024 FDIC average NCO",
-    "history_years_phrase": "17 years of history"
+    "history_years_phrase": "17 years of history",
+    "ltm_rote_pct": 10.6
   },
   "coe_sensitivity_matrix": {
     "coe_columns_pct": [
@@ -625,10 +626,10 @@
     "confidence": "High on historical CAGRs/payouts; Medium on forward g (judgment-based)"
   },
   "nco_history": {
-    "range_display": "2008-Q1 to 2025-Q2",
-    "quarters_text": "70 quarters",
+    "range_display": "2008-Q1 to 2025-Q3",
+    "quarters_text": "71 quarters",
     "years_span": "2008 to 2025",
-    "through_cycle_label": "42.8 basis points"
+    "through_cycle_label": "42.8 basis points (2008-2025)"
   },
   "scenario_notes": {
     "base_history_years": "17 years of history",
@@ -636,5 +637,121 @@
   },
   "methodology": {
     "return_range_text": "+12.0-13.4%"
+  },
+  "valuation_bridge": {
+    "starting_point": {
+      "label": "Q3 2025 LTM Net Income",
+      "net_income_m": 294.7,
+      "rote_pct": 10.6,
+      "source": "data/caty02_income_statement.json:q3_2025_snapshot"
+    },
+    "adjustments": [
+      {
+        "label": "Provision normalization to 42.8 bps NCO",
+        "description": "Increase loan loss provision from Q3 actual 18.1 bps to through-cycle 42.8 bps (17-year FDIC history).",
+        "delta_net_income_m": -38.4,
+        "delta_rote_pct": -0.39,
+        "evidence": [
+          "evidence/raw/CATY_2025Q3_8K/ex_873308.htm#provision",
+          "data/fdic_nco_history.json"
+        ]
+      }
+    ],
+    "ending_point": {
+      "label": "Normalized earnings power",
+      "net_income_m": 256.3,
+      "rote_pct": 10.21,
+      "source": "data/valuation_outputs.json:methods.normalized"
+    }
+  },
+  "normalization_bridge_detail": {
+    "intro": "Bridge from reported Q3 performance to through-cycle normalized earnings, including capital and provision adjustments.",
+    "rows": [
+      {
+        "step": "Reported Q3 run-rate",
+        "net_income_m": 77.7,
+        "annualised_net_income_m": 310.8,
+        "rote_pct": 11.18,
+        "tbvps": 36.96,
+        "comment": "Annualising Q3 net income ($77.7M) yields $310.8M run-rate; ROTE calculated on post-buyback tangible equity base.",
+        "evidence": [
+          "evidence/raw/CATY_2025Q3_8K/ex_873308.htm#income-summary"
+        ]
+      },
+      {
+        "step": "Align to LTM actuals",
+        "net_income_m": 294.7,
+        "delta_net_income_m": -16.1,
+        "rote_pct": 10.6,
+        "comment": "Replaces single-quarter run-rate with trailing-twelve-month net income from Q4'24\u2013Q3'25 (press release footnote).",
+        "evidence": [
+          "data/caty02_income_statement.json:ltm_metrics",
+          "evidence/raw/CATY_2025Q3_8K/ex_873308.htm#quarterly-comparison"
+        ]
+      },
+      {
+        "step": "Remove Q3 buyback uplift",
+        "net_income_m": 294.7,
+        "delta_net_income_m": 0.0,
+        "delta_rote_pct": -0.09,
+        "comment": "Q3 repurchase (1.07M sh @ $46.81) lowered average tangible equity by ~$25M, boosting ROTE by ~9bps; neutralised for normalized view.",
+        "evidence": [
+          "data/caty10_capital_actions.json:q3_2025_share_repurchases",
+          "evidence/raw/CATY_2025Q3_8K/ex_873308.htm#tangible-equity"
+        ]
+      },
+      {
+        "step": "Provision normalization (42.8bps NCO)",
+        "delta_provision_m": 48.0,
+        "tax_effect_m": 9.6,
+        "delta_net_income_m": -38.4,
+        "rote_pct_after_step": 10.21,
+        "comment": "Applies 2008\u20132025 FDIC through-cycle NCO (42.8 bps) vs. Q3 actual 18.1 bps across $19.4B average loans; 20% tax shield recognised.",
+        "evidence": [
+          "evidence/raw/CATY_2025Q3_8K/ex_873308.htm#credit-quality",
+          "data/fdic_nco_history.json"
+        ]
+      },
+      {
+        "step": "Normalized earnings power",
+        "net_income_m": 256.3,
+        "rote_pct": 10.21,
+        "tbvps": 36.16,
+        "comment": "Through-cycle earnings bridge feeding Gordon Growth valuation (COE 9.587%, g=2.5%).",
+        "evidence": [
+          "data/valuation_outputs.json:methods.normalized"
+        ]
+      }
+    ]
+  },
+  "capital_actions_impact": {
+    "shares_repurhased_m": 1.07,
+    "avg_price": 46.81,
+    "cost_m": 50.1,
+    "tbvps_actual": 36.96,
+    "tbvps_no_buyback": 37.12,
+    "tbvps_delta": -0.16,
+    "avg_tce_with_buyback_m": 2515.81,
+    "avg_tce_without_buyback_m": 2540.86,
+    "rote_uplift_bps": 9.5,
+    "cet1_q3_pct": 13.15,
+    "cet1_q2_pct": 13.35,
+    "cet1_delta_bps": -20.0,
+    "evidence": [
+      "evidence/raw/CATY_2025Q3_8K/ex_873308.htm#capital-ratios",
+      "data/caty10_capital_actions.json"
+    ]
+  },
+  "regression_decomposition": {
+    "tbvps": 36.16,
+    "roae_pct": 10.6,
+    "slope": 0.058,
+    "intercept": 0.82,
+    "components": {
+      "intercept_component_price": 29.65,
+      "roae_component_price": 22.23
+    },
+    "reconstructed_target_price": 51.88,
+    "comment": "Target price = TBVPS \u00d7 (intercept + slope \u00d7 ROAE). Intercept term ($29.65) + ROAE term ($22.23) = $51.88."
   }
 }

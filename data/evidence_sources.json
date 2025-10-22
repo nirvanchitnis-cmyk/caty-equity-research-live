@@ -77,6 +77,17 @@
       "path": "data/fdic_raw.json",
       "refresh_frequency": "Quarterly",
       "status": "VERIFIED_OK"
+    },
+    {
+      "id": "caty_8k_q3_2025",
+      "description": "Cathay General Bancorp Q3 2025 Form 8-K (press release + financial tables)",
+      "path": "evidence/raw/CATY_2025Q3_8K/caty20251021_8k.htm",
+      "accession": "0001437749-25-031420",
+      "last_verified": "2025-10-21",
+      "owner": "Financial Reporting",
+      "refresh_frequency": "Quarterly (earnings release)",
+      "status": "VERIFIED_OK",
+      "sha256": null
     }
   ]
 }

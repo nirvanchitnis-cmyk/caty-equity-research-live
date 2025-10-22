@@ -2,10 +2,10 @@
 
 | Item | Status | Evidence / Reference |
 | --- | --- | --- |
-| Form 8-K Exhibit 99.1 (Oct 21 2025) archived in `evidence/raw/CATY_2025Q3_10Q_xbrl/` | ✅ | `git ls evidence/raw/CATY_2025Q3_10Q_xbrl` |
+| Form 8-K Exhibit 99.1 (Oct 21 2025) archived in `evidence/raw/CATY_2025Q3_8K/` | ✅ | `git ls evidence/raw/CATY_2025Q3_8K` |
 | Automation pipeline re-run (`scripts/update_all_data.py`) post 8-K ingestion | ✅ | `logs/automation_run.log` entry 2025-10-22 02:34 UTC |
 | Static site rebuilt (`scripts/build_site.py`) after data refresh | ✅ | Build log + latest timestamps on HTML modules |
-| Index valuation cards show Q3 metrics (Wilson $48.70, IRC $50.97, Regression $54.71) | ✅ | `index.html` |
+| Index valuation cards show Q3 metrics (Wilson $46.98, IRC $50.12, Regression $51.88) | ✅ | `index.html` |
 | Module 01 (Company Profile) market snapshot updated to Q3 price, shares, TBVPS | ✅ | `CATY_01_company_profile.html` / `data/caty01_company_profile.json` |
 | Module 02 (Income Statement) snapshot uses Q3 8-K; legacy tables clearly labeled Q2 | ✅ | `CATY_02_income_statement.html`, source box references 8-K + 10-Q |
 | Module 03 (Balance Sheet) assets/equity refreshed to September 30 balance | ✅ | `data/caty03_balance_sheet.json` |
@@ -14,6 +14,9 @@
 | Module 07 (Credit Quality) reflects ACL 0.98%, NPAs $198.7M, NCOs 7.8 bps (Q3) | ✅ | `CATY_07_loans_credit_quality.html`, `data/caty07_credit_quality.json` |
 | Module 09 (Capital) capital table compares Q3 vs Q2; CET1 13.15% | ✅ | `CATY_09_capital_liquidity.html`, `data/caty09_capital_liquidity.json` |
 | Valuation metadata table timestamps match Q3 run | ✅ | `CATY_12_valuation_model.html` |
+| Valuation bridge reconciles Q3 run-rate earnings to normalized base case | ✅ | `CATY_12_valuation_model.html`, `index.html` |
+| Q3 peer 8-Ks (EWBC, HAFC, WAFD) archived for regression refresh | ✅ | `evidence/raw/EWBC_2025Q3_8K/`, `HAFC_2025Q3_8K/`, `WAFD_2025Q3_8K/` |
+| Peer dataset updated with EWBC & HAFC Q3 metrics; remaining peers flagged pending filings | ⚠️ | `data/peer_data_raw.json` (`data_status`) |
 | Recent Developments list includes Oct 21 earnings release with metrics | ✅ | `index.html` / `data/recent_developments.json` |
 | Market data hub updated (`data/market_data_current.json`) with Q3 ACL, NCO, NIB | ✅ | File check |
 | Reconciliation guard executed after changes (noted legacy warnings) | ✅ | `analysis/reconciliation_guard.py` output |
@@ -25,4 +28,3 @@
 - Criticized loan percentage retains Q2 disclosure; 8-K did not provide refreshed segmentation. Disclosure text explicitly calls this out.
 - Reconciliation guard still reports legacy marker warnings (Wilson/IRC autogen), but run exits cleanly—tracked in backlog `analysis/reconciliation_guard.py`.
 - Next action once Q3 10-Q posts: refresh cash flow module, update criticized loan detail, rerun beta calculations with updated average balances, remove disclosures marked “pending Q3 10-Q”.
-
