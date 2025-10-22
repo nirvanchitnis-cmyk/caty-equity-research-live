@@ -7,13 +7,14 @@ import json
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Dict, List
+from typing import Dict, List, Tuple
 
 ROOT = Path(__file__).resolve().parents[1]
 RATE_PATH = ROOT / "analysis" / "deposit_rate_scenarios.json"
 CREDIT_PATH = ROOT / "analysis" / "credit_stress_scenarios.json"
 OUTPUT_PATH = ROOT / "analysis" / "probabilistic_outlook.json"
 MARKET_DATA_PATH = ROOT / "data" / "market_data_current.json"
+FEDWATCH_PATH = ROOT / "analysis" / "fedwatch_snapshot.json"
 
 BASE_QUARTERLY_EPS = 1.13  # Q3'25 diluted EPS per 8-K Exhibit 99.1
 BASE_TBV = 41.00  # Guardrail TBVPS per Module 18 sensitivity baseline
@@ -28,35 +29,13 @@ def load_current_price() -> float:
     return float(price)
 
 
-CURRENT_PRICE = load_current_price()
-CURRENT_P_E = CURRENT_PRICE / (BASE_QUARTERLY_EPS * 4.0)
-CURRENT_P_TBV = CURRENT_PRICE / BASE_TBV
-
-# Probabilities anchored to CME FedWatch (22-Oct-2025 15:30 ET snapshot) and IRC credit review.
-# FedWatch implies ~50% probability of ≤50 bps cuts by Sep-2026, ~25% hold, remainder skewed to hikes.
-RATE_PROB = {
-    -100: 0.08,
-    -50: 0.22,
-    -25: 0.20,
-    0: 0.25,
-    25: 0.15,
-    50: 0.10,
-}
-# Credit distribution reflects elevated watchlist risk: 50% base, 30% guardrail, 15% stress, 5% severe migration.
-CREDIT_PROB = {
-    "Base LTM": 0.50,
-    "Guardrail": 0.30,
-    "Stress": 0.15,
-    "Severe": 0.05,
-}
-
-
 @dataclass
 class RateScenario:
     fed_change_bps: int
     probability: float
     eps: float  # quarterly EPS from deposit file
     tbvps: float
+    metadata: Dict[str, float]
 
 
 @dataclass
@@ -65,38 +44,79 @@ class CreditScenario:
     probability: float
     eps_delta: float  # delta vs base
     tbv_delta: float
+    nco_bps: float
+    incremental_bps: float
+    incremental_provision_m: float
 
 
-def load_rate_scenarios() -> Dict[int, RateScenario]:
+def load_rate_probabilities() -> Tuple[Dict[int, float], Dict]:
+    payload = json.loads(FEDWATCH_PATH.read_text())
+    raw_probs = payload.get("probabilities", {})
+    probabilities = {int(k): float(v) for k, v in raw_probs.items()}
+    metadata = {
+        "source": payload.get("source"),
+        "captured_at": payload.get("captured_at"),
+        "contracts": payload.get("contracts"),
+        "notes": payload.get("notes"),
+    }
+    return probabilities, metadata
+
+
+def load_credit_probabilities() -> Tuple[Dict[str, float], Dict[str, str]]:
+    # Distribution reflects watchlist review and prior cycle default/severity mix.
+    probabilities = {
+        "Base LTM": 0.50,
+        "Guardrail": 0.30,
+        "Stress": 0.15,
+        "Severe": 0.05,
+    }
+    rationale = {
+        "Base LTM": "Q3 2025 run-rate (18 bps NCO) with stable watchlist",
+        "Guardrail": "Through-cycle mean 42.8 bps derived from FDIC NTLNLSCOQR",
+        "Stress": "Emerge of two large movie theatre loans; doubles guardrail (85 bps)",
+        "Severe": "GFC analogue; 3× LTM (120 bps) reflecting tail liquidity run",
+    }
+    return probabilities, rationale
+
+
+def load_rate_scenarios(rate_prob: Dict[int, float]) -> Dict[int, RateScenario]:
     payload = json.loads(RATE_PATH.read_text())
     mapping: Dict[int, RateScenario] = {}
     for item in payload["scenarios"]:
         delta = item["fed_change_bps"]
-        if delta not in RATE_PROB:
+        if delta not in rate_prob:
             continue
         mapping[delta] = RateScenario(
             fed_change_bps=delta,
-            probability=RATE_PROB[delta],
+            probability=rate_prob[delta],
             eps=item["quarterly_eps"],
             tbvps=item["tbvps"],
+            metadata={
+                "deposit_cost_delta_bps": item.get("deposit_cost_delta_bps"),
+                "nim_delta_bps": item.get("nim_delta_bps"),
+                "nii_delta_m": item.get("nii_delta_m"),
+            },
         )
     return mapping
 
 
-def load_credit_scenarios() -> Dict[str, CreditScenario]:
+def load_credit_scenarios(credit_prob: Dict[str, float]) -> Dict[str, CreditScenario]:
     payload = json.loads(CREDIT_PATH.read_text())
     mapping: Dict[str, CreditScenario] = {}
     for item in payload["scenarios"]:
         name = item["scenario"]
-        if name not in CREDIT_PROB:
+        if name not in credit_prob:
             continue
         eps_delta = item["eps"] - BASE_QUARTERLY_EPS
         tbv_delta = item["tbvps"] - BASE_TBV
         mapping[name] = CreditScenario(
             name=name,
-            probability=CREDIT_PROB[name],
+            probability=credit_prob[name],
             eps_delta=eps_delta,
             tbv_delta=tbv_delta,
+            nco_bps=float(item["nco_bps"]),
+            incremental_bps=float(item.get("incremental_bps", 0.0)),
+            incremental_provision_m=float(item.get("incremental_provision_m", 0.0)),
         )
     return mapping
 
@@ -105,17 +125,16 @@ def annualize_eps(quarterly_eps: float) -> float:
     return quarterly_eps * 4.0
 
 
-def scenario_price_from_pe(annual_eps: float) -> float:
-    return round(annual_eps * CURRENT_P_E, 2)
-
-
-def scenario_price_from_ptbv(tbvps: float) -> float:
-    return round(tbvps * CURRENT_P_TBV, 2)
-
-
 def combine_scenarios() -> Dict:
-    rate_map = load_rate_scenarios()
-    credit_map = load_credit_scenarios()
+    current_price = load_current_price()
+    current_p_e = current_price / (BASE_QUARTERLY_EPS * 4.0)
+    current_p_tbv = current_price / BASE_TBV
+
+    rate_prob, rate_meta = load_rate_probabilities()
+    credit_prob, credit_notes = load_credit_probabilities()
+
+    rate_map = load_rate_scenarios(rate_prob)
+    credit_map = load_credit_scenarios(credit_prob)
 
     combined: List[Dict] = []
     expected_price = 0.0
@@ -129,8 +148,8 @@ def combine_scenarios() -> Dict:
             adj_eps = rate.eps + credit.eps_delta
             adj_tbv = rate.tbvps + credit.tbv_delta
             annual_eps = annualize_eps(adj_eps)
-            pe_price = scenario_price_from_pe(annual_eps)
-            ptbv_price = scenario_price_from_ptbv(adj_tbv)
+            pe_price = round(annual_eps * current_p_e, 2)
+            ptbv_price = round(adj_tbv * current_p_tbv, 2)
             implied_price = round((pe_price + ptbv_price) / 2.0, 2)
             combined.append(
                 {
@@ -140,11 +159,17 @@ def combine_scenarios() -> Dict:
                     "quarterly_eps": round(adj_eps, 2),
                     "annual_eps": round(annual_eps, 2),
                     "tbvps": round(adj_tbv, 2),
-                    "current_pe_at_price": round(CURRENT_PRICE / annual_eps if annual_eps else float('inf'), 2),
-                    "current_ptbv_at_price": round(CURRENT_PRICE / adj_tbv if adj_tbv else float('inf'), 2),
+                    "current_pe_at_price": round(current_price / annual_eps if annual_eps else float("inf"), 2),
+                    "current_ptbv_at_price": round(current_price / adj_tbv if adj_tbv else float("inf"), 2),
                     "implied_price_pe": pe_price,
                     "implied_price_ptbv": ptbv_price,
                     "implied_price_avg": implied_price,
+                    "rate_detail": rate.metadata,
+                    "credit_detail": {
+                        "nco_bps": credit.nco_bps,
+                        "incremental_bps": credit.incremental_bps,
+                        "incremental_provision_m": credit.incremental_provision_m,
+                    },
                 }
             )
             expected_price += implied_price * joint_prob
@@ -159,17 +184,23 @@ def combine_scenarios() -> Dict:
 
     return {
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "current_price": CURRENT_PRICE,
-        "current_forward_pe": round(CURRENT_P_E, 2),
-        "current_ptbv": round(CURRENT_P_TBV, 3),
-        "rate_probabilities": RATE_PROB,
-        "credit_probabilities": CREDIT_PROB,
+        "current_price": current_price,
+        "current_forward_pe": round(current_p_e, 2),
+        "current_ptbv": round(current_p_tbv, 3),
+        "rate_probabilities": rate_prob,
+        "credit_probabilities": credit_prob,
         "combined_scenarios": combined,
         "probability_sum": probability_sum,
         "expected": {
             "price": expected_price,
             "annual_eps": expected_eps,
             "tbvps": expected_tbv,
+        },
+        "metadata": {
+            "rate_path": rate_meta,
+            "credit_mix_notes": credit_notes,
+            "credit_scenarios_source": str(CREDIT_PATH.relative_to(ROOT)),
+            "rate_scenarios_source": str(RATE_PATH.relative_to(ROOT)),
         },
     }
 

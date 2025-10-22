@@ -1,5 +1,5 @@
 {
-  "generated_at": "2025-10-22T22:02:06.700754+00:00",
+  "generated_at": "2025-10-22T22:39:48.086126+00:00",
   "base_snapshot": {
     "net_interest_income_m": 189.6,
     "noninterest_income_m": 21.0,
@@ -164,5 +164,155 @@
       "credit": "analysis/credit_stress_scenarios.json",
       "shares": "data/market_data_current.json"
     }
+  },
+  "regressions": {
+    "rate_path": {
+      "dependent": "Quarterly EPS and TBVPS",
+      "independent": "Fed funds delta (bps vs Q3 base)",
+      "sample": {
+        "points": 7,
+        "range_bps": [
+          -100.0,
+          50.0
+        ],
+        "source": "analysis/deposit_rate_scenarios.json",
+        "underlying_beta_sample": [
+          "2022Q1",
+          "2022Q2",
+          "2022Q3",
+          "2023Q1",
+          "2023Q2",
+          "2023Q3",
+          "2024Q1",
+          "2024Q2",
+          "2024Q3",
+          "2025Q1",
+          "2025Q2"
+        ]
+      },
+      "eps_regression": {
+        "equation": "y = 1.1296 + -0.001729\u00d7\u0394bps",
+        "slope_per_unit": -0.001729,
+        "slope_per_10bps": -0.0173,
+        "elasticity_pct_per_10bps": -1.53,
+        "intercept": 1.1296,
+        "r2": 0.999,
+        "std_err": 2.5e-05,
+        "t_stat": -69.86,
+        "degrees_of_freedom": 5,
+        "significant": true,
+        "significance_threshold_abs_t": 2.0,
+        "scale_reference": "10 bps"
+      },
+      "tbvps_regression": {
+        "equation": "y = 41.0000 + -0.001200\u00d7\u0394bps",
+        "slope_per_unit": -0.0012,
+        "slope_per_10bps": -0.012,
+        "elasticity_pct_per_10bps": -0.03,
+        "intercept": 41.0,
+        "r2": 1.0,
+        "std_err": 0.0,
+        "t_stat": -15797743887021.94,
+        "degrees_of_freedom": 5,
+        "significant": true,
+        "significance_threshold_abs_t": 2.0,
+        "scale_reference": "10 bps"
+      }
+    },
+    "credit_loss": {
+      "dependent": "Quarterly EPS and TBVPS",
+      "independent": "Net charge-offs (bps)",
+      "sample": {
+        "points": 4,
+        "range_bps": [
+          18.1,
+          120.0
+        ],
+        "source": "analysis/credit_stress_scenarios.json",
+        "fdic_series": "FDIC NTLNLSCOQR (through-cycle mean = 42.8 bps)"
+      },
+      "eps_regression": {
+        "equation": "y = 1.2300 + -0.005604\u00d7\u0394bps",
+        "slope_per_unit": -0.005604,
+        "slope_per_10bps": -0.056,
+        "elasticity_pct_per_10bps": -4.96,
+        "intercept": 1.23,
+        "r2": 0.9999,
+        "std_err": 4.2e-05,
+        "t_stat": -133.23,
+        "degrees_of_freedom": 2,
+        "significant": true,
+        "significance_threshold_abs_t": 2.0,
+        "scale_reference": "10 bps"
+      },
+      "tbvps_regression": {
+        "equation": "y = 41.0663 + -0.003818\u00d7\u0394bps",
+        "slope_per_unit": -0.003818,
+        "slope_per_10bps": -0.0382,
+        "elasticity_pct_per_10bps": -0.09,
+        "intercept": 41.0663,
+        "r2": 0.9997,
+        "std_err": 4.3e-05,
+        "t_stat": -88.35,
+        "degrees_of_freedom": 2,
+        "significant": true,
+        "significance_threshold_abs_t": 2.0,
+        "scale_reference": "10 bps"
+      }
+    }
+  },
+  "deposit_beta_significance": {
+    "source": "analysis/deposit_beta_regressions.json",
+    "significance_threshold_abs_t": 2.0,
+    "products": [
+      {
+        "product": "time_deposits",
+        "beta": 0.8686,
+        "t_stat": 4.04,
+        "r2": 0.6711,
+        "observations": 10,
+        "significant": true
+      },
+      {
+        "product": "money_market",
+        "beta": 0.4071,
+        "t_stat": 3.1,
+        "r2": 0.5451,
+        "observations": 10,
+        "significant": true
+      },
+      {
+        "product": "savings",
+        "beta": -0.0572,
+        "t_stat": -0.39,
+        "r2": 0.0184,
+        "observations": 10,
+        "significant": false
+      },
+      {
+        "product": "ib_demand",
+        "beta": 0.3253,
+        "t_stat": 2.81,
+        "r2": 0.4964,
+        "observations": 10,
+        "significant": true
+      },
+      {
+        "product": "interest_bearing_total",
+        "beta": 0.6261,
+        "t_stat": 3.64,
+        "r2": 0.6235,
+        "observations": 10,
+        "significant": true
+      },
+      {
+        "product": "all_in_total",
+        "beta": 0.121,
+        "t_stat": 3.18,
+        "r2": 0.5589,
+        "observations": 10,
+        "significant": true
+      }
+    ]
   }
 }

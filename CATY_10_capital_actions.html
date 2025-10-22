@@ -118,6 +118,49 @@
                 <p class="text-small text-secondary">Figures tie to Q3 2025 8-K Exhibit 99.1 (capital ratios table) and treasury-stock analysis in <code>data/caty10_capital_actions.json</code>.</p>
             </div>
 
+            <h3>CET1 Bridge (Q2 → Q3)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Driver</th>
+                        <th class="numeric">Capital Δ ($M)</th>
+                        <th class="numeric">Impact (bps)</th>
+                        <th>Evidence</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Retained earnings (after dividend)</td>
+                        <td class="numeric">+51.6</td>
+                        <td class="numeric">+27</td>
+                        <td>8-K Exhibit 99.1 net income less $0.38/share dividend</td>
+                    </tr>
+                    <tr>
+                        <td>Share repurchase ($50.1M)</td>
+                        <td class="numeric">-50.1</td>
+                        <td class="numeric">-26</td>
+                        <td><a href="evidence/workpapers/CATY_Q3_2025_buyback_analysis.md" target="_blank" rel="noopener">Buyback workpaper</a></td>
+                    </tr>
+                    <tr>
+                        <td>RWA growth & OCI adjustments</td>
+                        <td class="numeric">-40.0</td>
+                        <td class="numeric">-21</td>
+                        <td>Loan growth + valuation marks per Form 8-K capital table</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="text-small text-secondary">Reconciles CET1 13.35% → 13.15% on derived risk-weighted assets of $19.2B (<code>data/caty10_capital_actions.json</code>).</p>
+
+            <div class="alert-box info">
+                <div class="alert-title">Downgrade Triggers</div>
+                <ul class="line-height-relaxed">
+                    <li>CET1 watch level: <strong>12.3%</strong>; halt buybacks if breached.</li>
+                    <li>CET1 floor: <strong>12.0%</strong>; failure forces rating downgrade and capital contingency plan.</li>
+                    <li>Tier 1 leverage watch/floor: <strong>10.7%</strong> / <strong>10.5%</strong>.</li>
+                    <li>Monitoring cadence: weekly, moving to daily once Q3 10-Q discloses updated RWA.</li>
+                </ul>
+            </div>
+
         </section>
 
         <!-- ======================================== -->

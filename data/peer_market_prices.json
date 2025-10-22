@@ -1,16 +1,36 @@
 {
-  "date": "2025-10-21",
-  "source": "stooq.com closing prices (downloaded 2025-10-22)",
+  "date": "2025-10-22",
+  "captured_at": "2025-10-22T22:39:28.227301Z",
+  "source": "yfinance daily close (adjusted)",
+  "tickers": [
+    "CATY",
+    "EWBC",
+    "CVBF",
+    "HAFC",
+    "HOPE",
+    "COLB",
+    "WAFD",
+    "PPBI",
+    "BANC",
+    "OPBK"
+  ],
   "prices": {
-    "CATY": 47.13,
-    "EWBC": 98.81,
-    "CVBF": 18.73,
-    "HAFC": 24.45,
+    "CATY": 46.17,
+    "EWBC": 102.36,
+    "CVBF": 18.62,
+    "HAFC": 26.46,
     "HOPE": 10.57,
-    "COLB": 25.57,
-    "WAFD": 28.82,
+    "COLB": 25.0,
+    "WAFD": 29.1,
     "PPBI": 24.49,
-    "BANC": 16.78,
-    "OPBK": 13.54
+    "BANC": 16.88,
+    "OPBK": 13.58
+  },
+  "fallback_prices": {
+    "tickers": [
+      "PPBI"
+    ],
+    "note": "Retained last verified close where yfinance returned no recent data.",
+    "previous_snapshot": null
   }
 }

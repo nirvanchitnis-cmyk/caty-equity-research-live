@@ -1,25 +1,25 @@
 {
   "tolerance_dollars": 0.5,
-  "last_reconciliation_run": "2025-10-22T19:10:00Z",
+  "last_reconciliation_run": "2025-10-22T22:39:59Z",
   "methods": [
     {
       "id": "spot",
       "label": "Current Spot",
       "target_path": "price",
       "probability_text": "\u2014",
-      "data_source": "NASDAQ Close (Oct 21, 2025)",
+      "data_source": "NASDAQ Close (Oct 22, 2025)",
       "source_link": null,
-      "last_run": "2025-10-22T19:10:00Z",
+      "last_run": "2025-10-22T21:36:00Z",
       "row_class": ""
     },
     {
       "id": "probability_weighted",
       "label": "Probability-weighted",
-      "target_value": 43.97,
+      "target_value": 44.07,
       "probability_text": "Rates \u00d7 credit (FedWatch \u00d7 guardrails)",
       "data_source": "analysis/probabilistic_outlook.json",
       "source_link": "analysis/probabilistic_outlook.json",
-      "last_run": "2025-10-22T19:10:00Z",
+      "last_run": "2025-10-22T22:39:59Z",
       "row_class": "row-highlight-yellow"
     },
     {
@@ -39,7 +39,7 @@
       "probability_text": "10k runs, loss probability 60.9%",
       "data_source": "data/caty14_monte_carlo.json",
       "source_link": "data/caty14_monte_carlo.json",
-      "last_run": "2025-10-22T19:09:00Z",
+      "last_run": "2025-10-22T21:45:00Z",
       "row_class": ""
     },
     {
@@ -49,7 +49,7 @@
       "probability_text": "Spot \u2192 COE 9.99%",
       "data_source": "analysis/market_implied_coe.json",
       "source_link": "analysis/market_implied_coe.json",
-      "last_run": "2025-10-22T19:10:00Z",
+      "last_run": "2025-10-22T21:45:27Z",
       "row_class": "row-highlight-blue"
     }
   ],
@@ -57,6 +57,6 @@
     "script": "analysis/reconciliation_guard.py",
     "pre_commit": ".git/hooks/pre-commit",
     "ci_workflow": ".github/workflows/reconciliation-guard.yml",
-    "last_run": "2025-10-22T19:10:00Z"
+    "last_run": "2025-10-22T21:47:55Z"
   }
 }

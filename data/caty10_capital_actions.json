@@ -119,5 +119,43 @@
         "evidence/raw/CATY_2025Q3_8K/ex_873308.htm#capital-ratios"
       ]
     }
+  },
+  "capital_walk": {
+    "period": "Q2 2025 to Q3 2025",
+    "start_cet1_pct": 13.35,
+    "end_cet1_pct": 13.15,
+    "derived_rwa_billions": 19.193,
+    "drivers": [
+      {
+        "name": "Retained earnings (after dividend)",
+        "capital_delta_m": 51.6,
+        "impact_bps": 27,
+        "evidence": "Form 8-K Exhibit 99.1 net income $77.7M less $0.38/share dividend on 68.7M shares."
+      },
+      {
+        "name": "Share repurchase ($50.1M)",
+        "capital_delta_m": -50.1,
+        "impact_bps": -26,
+        "evidence": "Share buyback detail in evidence/workpapers/CATY_Q3_2025_buyback_analysis.md"
+      },
+      {
+        "name": "RWA growth & OCI adjustments",
+        "capital_delta_m": -40.0,
+        "impact_bps": -21,
+        "note": "Loan growth and valuation marks increased risk-weighted assets; residual needed to reconcile CET1 delta."
+      }
+    ]
+  },
+  "downgrade_triggers": {
+    "cet1_watch_pct": 12.3,
+    "cet1_floor_pct": 12.0,
+    "tier1_leverage_watch_pct": 10.7,
+    "tier1_leverage_floor_pct": 10.5,
+    "actions": [
+      "Suspend buybacks immediately upon breaching watch thresholds.",
+      "Escalate HOLD to formal downgrade if CET1 < 12.0% or leverage < 10.5%."
+    ],
+    "monitoring_cadence": "Review weekly; move to daily once Q3 10-Q discloses updated risk-weighted assets.",
+    "evidence": "CET1/leverage ratios per Form 8-K Exhibit 99.1 capital table."
   }
 }

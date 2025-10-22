@@ -1,6 +1,18 @@
 {
-  "source": "CME FedWatch snapshot 22-Oct-2025 15:30 ET (Fed funds futures Mar/Sep blend)",
+  "source": "CME FedWatch (ZQ fed funds futures blend)",
   "captured_at": "2025-10-22T19:10:40.158611+00:00",
+  "contracts": [
+    {
+      "symbol": "ZQH26",
+      "settlement_month": "Mar-2026",
+      "weight": 0.6
+    },
+    {
+      "symbol": "ZQU26",
+      "settlement_month": "Sep-2026",
+      "weight": 0.4
+    }
+  ],
   "probabilities": {
     "-100": 0.08,
     "-50": 0.22,
@@ -10,7 +22,8 @@
     "50": 0.1
   },
   "notes": {
-    "method": "Linear blend of Mar-26 and Sep-26 contract probabilities",
+    "method": "Linear blend of ZQH26 and ZQU26 contract probabilities (CME FedWatch)",
+    "refresh_policy": "Harvest daily at 21:30 UTC; rebuild scenarios if any bucket shifts >5 percentage points",
     "url": "https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html"
   }
 }
