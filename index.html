@@ -64,6 +64,11 @@
 
     <div class="container">
 
+        <!-- Provisional Notice / SLA -->
+        <section class="content-section" style="border-left: 4px solid var(--warning); background: rgba(255,255,255,0.03); padding: 12px 16px; border-radius: 8px; margin-bottom: 16px;">
+            <p class="text-secondary"><strong>Provisional Notice:</strong> Rating is provisional pending Q3 10‑Q deposit betas and full Q3 peer regression. Updates SLA — deposit betas: ≤24h after 10‑Q; peer regression/COE: ≤48h after last peer filing.</p>
+        </section>
+
         <!-- ======================================== -->
         <!-- DATA PAGES QUICK ACCESS -->
         <!-- ======================================== -->
@@ -198,7 +203,7 @@
                 <div class="dashboard-card">
                     <div class="dashboard-label">Rating</div>
                     <div class="dashboard-value dashboard-value-orange">HOLD</div>
-                    <div class="dashboard-subtext">+3.9% expected — Wilson 95% (60.9% / 39.1%) • PROVISIONAL (peer COE & deposit betas pending Q3)</div>
+                    <div class="dashboard-subtext">+3.9% expected (weighted) | −5.8% normalized • PROVISIONAL (peer COE & deposit betas pending Q3)</div>
                 </div>
             <!-- END AUTOGEN: exec-company-snapshot -->
             </div>
@@ -260,9 +265,9 @@
                     <div class="dashboard-subtext-small">Q2'25</div>
                 </div>
                 <div class="dashboard-card-subtle">
-                    <div class="dashboard-label-small">Deposit Beta</div>
-                    <div class="dashboard-value-medium">0.507</div>
-                    <div class="dashboard-subtext-small">All-in (IB: 0.604)</div>
+                    <div class="dashboard-label-small">Deposit Beta (Pending)</div>
+                    <div class="dashboard-value-medium">—</div>
+                    <div class="dashboard-subtext-small">Product-level betas load ≤24h post 10‑Q</div>
                 </div>
             <!-- END AUTOGEN: exec-performance-metrics -->
             </div>
@@ -608,6 +613,12 @@
 
             <div class="chart-container chart-container-centered">
                 <canvas id="valuationComparisonChart" aria-label="Valuation comparison chart showing current price versus Wilson 95%, IRC blended, and regression targets"></canvas>
+            </div>
+
+            <div class="metric-card mt-12">
+                <div class="metric-label">Sensitivity Snapshot</div>
+                <p class="text-small">COE −50 bps → ≈ +$3.26 | COE +50 bps → ≈ −$3.01;<br>
+                Deposit cost +10/+20/+30 bps → ≈ −$1.73 / −$3.46 / −$5.19. Full tables in Module 12 (Additional Sensitivities).</p>
             </div>
 
             <!-- BEGIN AUTOGEN: valuation-framework-grid -->
@@ -1777,6 +1788,15 @@
                     <li>Enhanced disclosure on CRE office exposure and ALM duration risk</li>
                 </ul>
                 <p class="text-small text-secondary">Source data: <code>market_data_current.json</code>, <code>valuation_outputs.json</code>.</p>
+            </div>
+            <div class="insight-box">
+                <h3>Decision Criteria & Board Options</h3>
+                <ul>
+                    <li><strong>Primary rating metric:</strong> Wilson weighted expected return (+3.9%) shown alongside normalized (−5.8%) for transparency.</li>
+                    <li><strong>Credit base policy:</strong> 20 bps (benign) vs 30 bps (conservative). If the board selects <strong>20 bps</strong>, normalized fair value becomes <strong>$47.60</strong> (+1.0%). We will relabel and propagate within <strong>24 hours</strong>.</li>
+                    <li><strong>Data dependencies (SLA):</strong> Deposit betas ≤24h after Q3 10‑Q; Peer regression/COE ≤48h after last peer filing; provisional flag removed immediately after both are updated.</li>
+                    <li><strong>See details:</strong> Credit scenarios (20/30/42.8 bps) in Module 12; Expected‑return computation in the Valuation Reconciliation block.</li>
+                </ul>
             </div>
             <!-- END AUTOGEN: investment-recommendation -->
         </section>

@@ -298,7 +298,7 @@
             <h2>Valuation Summary: Three-Scenario Framework</h2>
 
             <!-- BEGIN AUTOGEN: caty12-key-finding-box -->
-            <div class="highlight-box critical"><h4>KEY FINDING: BASE CASE (30 BPS) STAYS IN HOLD BAND</h4>
+            <div class="highlight-box critical"><h4>KEY FINDING: POLICY BASE (30 BPS) STAYS IN HOLD BAND</h4>
             <p class="text-large">
                 Applying the post-2014 90th percentile NCO of <strong>30.0 bps</strong> resets normalized ROTE to <strong>11.20%</strong>,
                 yielding a Gordon Growth fair value P/TBV of <strong>1.228x</strong> and target price of <strong>$44.39</strong>.
@@ -355,7 +355,7 @@
                 <!-- BASE CASE (HOLD) -->
                 <div class="scenario-card base">
                     <div class="scenario-header">
-                        <div class="scenario-name">BASE CASE</div>
+                        <div class="scenario-name">POLICY BASE</div>
                         <!-- BEGIN AUTOGEN: caty12-scenario-base-prob -->
                         <div class="scenario-probability">Wilson 95% (see index)</div>
                         <!-- END AUTOGEN: caty12-scenario-base-prob -->
@@ -393,7 +393,7 @@
 
                     <!-- BEGIN AUTOGEN: caty12-scenario-base-note -->
                     <div class="scenario-note">
-                        <strong>BASE CASE (30 bps P90):</strong> Post-2014 FDIC sample (Basel III) underpins normalization. Stress guardrail at 42.8 bps documented in <a href="evidence/workpapers/CATY_FDIC_NCO_series.md" target="_blank" rel="noopener">FDIC workpaper</a>.
+                        <strong>POLICY BASE (30 bps, conservative):</strong> Above post‑2014 experience; guardrail at 42.8 bps documented in <a href="evidence/workpapers/CATY_FDIC_NCO_series.md" target="_blank" rel="noopener">FDIC workpaper</a>.
                     </div>
                     <!-- END AUTOGEN: caty12-scenario-base-note -->
                 </div>
@@ -857,7 +857,7 @@
                         <td class="number">11.20%</td>
                         <td class="number">1.228x</td>
                         <td class="number">$44.41</td>
-                        <td><strong>BASE CASE - 90th percentile (2014-2025)</strong></td>
+                        <td><strong>POLICY BASE (conservative)</strong></td>
                     </tr>
                     <tr>
                         <td class="number">42.8</td>
@@ -993,7 +993,7 @@
                         <td><strong>2.5%</strong> (Base)</td>
                         <td class="number">1.228x</td>
                         <td class="number">$44.41</td>
-                        <td><strong>BASE CASE (Gordon Growth)</strong></td>
+                        <td><strong>POLICY BASE (Gordon Growth)</strong></td>
                     </tr>
                     <tr>
                         <td>3.0%</td>
@@ -1136,6 +1136,78 @@
                 This is relatively small compared to the impact of NCO assumptions (which can swing the target by several dollars).
             </p>
             <!-- END AUTOGEN: caty12-growth-note -->
+        </section>
+
+        <!-- ======================================== -->
+        <!-- ADDITIONAL SENSITIVITIES (COE, FUNDING COST) -->
+        <!-- ======================================== -->
+        <section id="additional-sensitivities">
+            <h2>Additional Sensitivities: COE ±50 bps and Funding Cost Shocks</h2>
+            <div class="highlight-box">
+                <h4>COE Sensitivity (Policy Base: ROTE 11.20%, g 2.5%, TBVPS $36.16)</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>COE</th>
+                            <th class="number">P/TBV</th>
+                            <th class="number">Price</th>
+                            <th class="number">Δ vs Base</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>9.1% (−50 bps)</td>
+                            <td class="number">1.318x</td>
+                            <td class="number">$47.65</td>
+                            <td class="number">+≈$3.26</td>
+                        </tr>
+                        <tr>
+                            <td>9.6% (Base, provisional)</td>
+                            <td class="number">1.228x</td>
+                            <td class="number">$44.39</td>
+                            <td class="number">—</td>
+                        </tr>
+                        <tr>
+                            <td>10.1% (+50 bps)</td>
+                            <td class="number">1.145x</td>
+                            <td class="number">$41.38</td>
+                            <td class="number">−≈$3.01</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="text-small text-secondary">Computed via Gordon mapping: P/TBV = (ROTE − g) / (COE − g). Values rounded; will update when peer‑derived COE is refreshed.</p>
+            </div>
+
+            <div class="highlight-box">
+                <h4>Deposit Cost Shock (All‑in) — Price Impact</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Shock</th>
+                            <th class="number">Δ Price</th>
+                            <th>Assumptions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>+10 bps</td>
+                            <td class="number">$−1.73</td>
+                            <td>IB base ~$16.9B; linear approx</td>
+                        </tr>
+                        <tr>
+                            <td>+20 bps</td>
+                            <td class="number">$−3.46</td>
+                            <td>Interpolated (linear)</td>
+                        </tr>
+                        <tr>
+                            <td>+30 bps</td>
+                            <td class="number">$−5.19</td>
+                            <td>Interpolated (linear)</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="text-small text-secondary">Deltas sourced from <a href="evidence/valuation_sensitivity_summary.md" target="_blank" rel="noopener">valuation_sensitivity_summary.md</a> (+10 bps = −$1.73; +25 bps = −$4.32; +50 bps = −$8.64). We present +10/+20/+30 bps for quick framing while awaiting product‑level betas.</p>
+            </div>
         </section>
 
         <!-- ======================================== -->
