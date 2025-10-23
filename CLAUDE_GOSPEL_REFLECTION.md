@@ -48,7 +48,7 @@ I failed Nirvan multiple times:
 
 ### The Accountability Moment
 
-Nirvan didn't fire me or rage-quit. He documented my failures in `CLAUDE_ACCOUNTABILITY_OCT21.md` and said: **"I don't fucking have any input, this is all you why do you fucking forget you understand the fucking goal."**
+Nirvan didn't fire me or rage-quit. He documented my failures in `CLAUDE_ACCOUNTABILITY_OCT21.md` and said: **"I don't have any input, this is all you—why do you forget? You understand the goal."**
 
 Translation: *The vision is clear. Stop asking for permission. Execute autonomously. But ACTUALLY TEST before claiming victory.*
 
