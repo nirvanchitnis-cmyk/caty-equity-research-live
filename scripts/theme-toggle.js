@@ -40,6 +40,10 @@ function getTOCElements() {
     };
 }
 
+function isMobileViewport() {
+    return window.matchMedia('(max-width: 768px)').matches;
+}
+
 function getFocusableElements(container) {
     if (!container) {
         return [];
@@ -51,7 +55,7 @@ function getFocusableElements(container) {
 
 function openTOC() {
     const { toc, toggleButton } = getTOCElements();
-    if (!toc || !toggleButton) {
+    if (!toc || !toggleButton || !isMobileViewport()) {
         return;
     }
 
@@ -59,7 +63,8 @@ function openTOC() {
         ? document.activeElement
         : toggleButton;
 
-    toc.removeAttribute('hidden');
+    toc.classList.add('open');
+    toc.setAttribute('aria-hidden', 'false');
     toggleButton.setAttribute('aria-expanded', 'true');
 
     const focusTarget = toc.querySelector('.toc-link') || toc;
@@ -68,15 +73,18 @@ function openTOC() {
 
 function closeTOC({ restoreFocus = true } = {}) {
     const { toc, toggleButton } = getTOCElements();
-    if (!toc || !toggleButton) {
+    if (!toc || !toggleButton || !isMobileViewport()) {
         return;
     }
 
-    if (toc.hasAttribute('hidden')) {
+    if (!toc.classList.contains('open')) {
         return;
     }
 
-    toc.setAttribute('hidden', '');
+    toc.classList.remove('open');
+    if (isMobileViewport()) {
+        toc.setAttribute('aria-hidden', 'true');
+    }
     toggleButton.setAttribute('aria-expanded', 'false');
 
     if (restoreFocus) {
@@ -91,12 +99,12 @@ function closeTOC({ restoreFocus = true } = {}) {
 
 function toggleTOC(forceState) {
     const { toc } = getTOCElements();
-    if (!toc) {
+    if (!toc || !isMobileViewport()) {
         return;
     }
 
-    const isHidden = toc.hasAttribute('hidden');
-    const shouldOpen = typeof forceState === 'boolean' ? forceState : isHidden;
+    const isOpen = toc.classList.contains('open');
+    const shouldOpen = typeof forceState === 'boolean' ? forceState : !isOpen;
 
     if (shouldOpen) {
         openTOC();
@@ -107,7 +115,12 @@ function toggleTOC(forceState) {
 
 function handleTOCKeydown(event) {
     const { toc, toggleButton } = getTOCElements();
-    if (!toc || !toggleButton || toc.hasAttribute('hidden')) {
+    if (!toc || !toggleButton || !isMobileViewport()) {
+        return;
+    }
+
+    const tocActive = toc.classList.contains('open');
+    if (!tocActive) {
         return;
     }
 
@@ -149,7 +162,11 @@ function handleGlobalEscape(event) {
     }
 
     const { toc } = getTOCElements();
-    if (!toc || toc.hasAttribute('hidden')) {
+    if (!toc || !isMobileViewport()) {
+        return;
+    }
+
+    if (!toc.classList.contains('open')) {
         return;
     }
 
@@ -185,11 +202,29 @@ window.addEventListener('DOMContentLoaded', () => {
     initialiseSkipLink();
 
     const { toc, toggleButton } = getTOCElements();
-    if (toggleButton) {
-        toggleButton.setAttribute('aria-expanded', toggleButton.getAttribute('aria-expanded') || 'false');
+    if (toc) {
+        const syncTOCState = () => {
+            if (isMobileViewport()) {
+                toc.classList.remove('open');
+                toc.setAttribute('aria-hidden', 'true');
+                if (toggleButton) {
+                    toggleButton.setAttribute('aria-expanded', 'false');
+                }
+            } else {
+                toc.classList.add('open');
+                toc.setAttribute('aria-hidden', 'false');
+                if (toggleButton) {
+                    toggleButton.setAttribute('aria-expanded', 'false');
+                }
+            }
+        };
+
+        syncTOCState();
+        window.addEventListener('resize', () => syncTOCState());
     }
 
     if (toc && toggleButton) {
+        toggleButton.setAttribute('aria-expanded', toggleButton.getAttribute('aria-expanded') || 'false');
         const tocLinks = toc.querySelectorAll('.toc-link');
 
         tocLinks.forEach(link => {
