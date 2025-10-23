@@ -809,46 +809,128 @@
             <h2 id="interactive-visuals-heading">Interactive Valuation Analysis</h2>
             <p class="text-secondary">Visual comparison of valuation methodologies with deep-dive IRC modules</p>
 
-            <!-- Valuation Comparison Chart -->
-            <h3>Price Target Comparison</h3>
-            <!-- BEGIN AUTOGEN: valuation-framework-caption -->
-            <p class="text-secondary">Current price vs. triangulated target methodologies (data as of October 21, 2025)</p>
-            <!-- END AUTOGEN: valuation-framework-caption -->
+            <section class="valuation-prescription" aria-labelledby="valuation-prescription-heading">
+                <div class="valuation-prescription-header">
+                    <div>
+                        <h3 id="valuation-prescription-heading">Decision Prescription</h3>
+                        <p class="text-secondary">Maintain the HOLD rating at $46.17 unless the −10% / +15% corridor breaks. This lens combines the peer regression fit and scenario-driven fair values (data as of 2025-10-22 close).</p>
+                    </div>
+                    <div class="valuation-prescription-meta" role="note">
+                        <p><strong>Question:</strong> Does CATY remain a HOLD at $46.17 given peer-adjusted multiples and framework targets?</p>
+                        <p><strong>Inputs:</strong> ROTE (%), P/TBV (x), target prices ($); NCO guardrails 30 bps / 42.8 bps.</p>
+                    </div>
+                </div>
 
-            <div class="chart-container chart-container-centered">
-                <canvas id="valuationComparisonChart" aria-label="Valuation comparison chart showing current price versus probability-weighted, normalized, and Monte Carlo targets"></canvas>
-            </div>
+                <div class="valuation-viz-controls" aria-label="Visualization controls">
+                    <fieldset class="control-fieldset" id="regression-control-fieldset">
+                        <legend>Regression controls</legend>
+                        <label class="control-switch">
+                            <input type="checkbox" id="refit-regression-toggle" aria-describedby="refit-regression-helper">
+                            <span>Allow peer deselection and refit regression (default off)</span>
+                        </label>
+                        <p id="refit-regression-helper" class="control-helper">Fixed regression uses y = 0.058 × ROTE + 0.82 (R² = 0.68; n = 8 peers). When refit is on, coefficients recompute on the selected cohort.</p>
+                        <div class="control-checkbox-grid" role="group" aria-label="Peer inclusion" id="peer-checkbox-grid">
+                            <!-- populated by JavaScript -->
+                        </div>
+                    </fieldset>
 
-            <div class="metric-card mt-12">
-                <div class="metric-label">Sensitivity Snapshot</div>
-                <p class="text-small">COE −50 bps → ≈ +$3.26 | COE +50 bps → ≈ −$3.01;<br>
-                Deposit cost +10/+20/+30 bps → ≈ −$1.73 / −$3.46 / −$5.19. Full tables in Module 12 (Additional Sensitivities).</p>
-            </div>
+                    <fieldset class="control-fieldset">
+                        <legend>Framework visibility</legend>
+                        <div class="control-checkbox-grid" role="group" aria-label="Framework filters" id="framework-checkbox-grid">
+                            <!-- populated by JavaScript -->
+                        </div>
+                    </fieldset>
 
-            <!-- BEGIN AUTOGEN: valuation-framework-grid -->
-            <div class="price-target-grid price-target-grid-spaced">
-                <div class="metric-card">
-                    <div class="metric-label">Current Price</div>
-                    <div class="metric-value">$46.17</div>
-                    <div class="metric-subtext">As of October 21, 2025 close</div>
+                    <div class="control-button-row">
+                        <button type="button" class="button-secondary" id="reset-valuation-viz">Reset view</button>
+                        <button type="button" class="button-secondary" id="export-valuation-png">Export PNG</button>
+                        <button type="button" class="button-secondary" id="export-valuation-csv">Export CSV</button>
+                        <button type="button" class="button-secondary" id="share-valuation-state" aria-describedby="share-feedback">Copy shareable link</button>
+                        <span id="share-feedback" class="control-feedback" role="status" aria-live="polite"></span>
+                    </div>
                 </div>
-                <div class="metric-card metric-card-danger">
-                    <div class="metric-label">Probability-weighted</div>
-                    <div class="metric-value">$44.07</div>
-                    <div class="metric-subtext">−4.6% vs spot (rates × credit)</div>
+
+                <div class="valuation-viz-grid">
+                    <article class="viz-panel scatter-panel" aria-label="Peer valuation scatter">
+                        <header class="viz-panel-header">
+                            <h4>Peer Fit: P/TBV vs. ROTE</h4>
+                            <p class="viz-panel-subtitle">Peers n = <span id="peer-count-label">8</span> (BANC, COLB, CVBF, EWBC, HAFC, OPBK, PPBI, WAFD); CATY overlayed.</p>
+                        </header>
+                        <div class="viz-canvas-wrap">
+                            <canvas id="valuation-peer-scatter" aria-label="Scatter plot comparing peer ROTE and P/TBV with regression line and CATY highlighted"></canvas>
+                        </div>
+                        <div class="viz-annotation" id="caty-residual-annotation" role="note">
+                            CATY actual 1.277x vs fit <span class="annotation-predicted">1.536x</span> → residual −0.259x (−16.9%).
+                        </div>
+                        <footer class="viz-panel-footer" id="regression-summary" aria-live="polite">
+                            y = 0.058 × ROTE + 0.82 (R² = 0.68); residual labels show largest upside and downside peers vs. fit.
+                        </footer>
+                    </article>
+
+                    <article class="viz-panel bar-panel" aria-label="Framework comparison bars">
+                        <header class="viz-panel-header">
+                            <h4>Framework Price Targets vs. Spot</h4>
+                            <p class="viz-panel-subtitle">Spot reference line at $46.17; bars sorted by |Δ vs Spot|.</p>
+                        </header>
+                        <div class="viz-canvas-wrap">
+                            <canvas id="valuation-framework-bars" aria-label="Bar chart comparing valuation framework targets to spot price"></canvas>
+                        </div>
+                        <footer class="viz-panel-footer">
+                            Regression / IRC / Wilson flagged “Model-derived”; Probability-weighted “Scenario-weighted”; Normalized = Gordon Growth.
+                        </footer>
+                    </article>
                 </div>
-                <div class="metric-card">
-                    <div class="metric-label">Normalized Gordon</div>
-                    <div class="metric-value">$44.39</div>
-                    <div class="metric-subtext">ROTE 11.2%, COE 9.59%, g 2.5%</div>
-                </div>
-                <div class="metric-card metric-card-danger">
-                    <div class="metric-label">Monte Carlo Median</div>
-                    <div class="metric-value">$42.62</div>
-                    <div class="metric-subtext">Loss probability 60.9%</div>
-                </div>
-            </div>
-            <!-- END AUTOGEN: valuation-framework-grid -->
+
+                <section class="valuation-data-fallback" aria-labelledby="valuation-data-heading">
+                    <h4 id="valuation-data-heading">Data tables (export parity)</h4>
+                    <p class="text-secondary">Tables mirror the current chart state for assistive technology and CSV verification.</p>
+                    <div class="data-table-wrapper">
+                        <table id="peer-data-table">
+                            <caption>Peer regression inputs</caption>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Ticker</th>
+                                    <th scope="col">ROTE (%)</th>
+                                    <th scope="col">P/TBV (x)</th>
+                                    <th scope="col">Predicted P/TBV (x)</th>
+                                    <th scope="col">Residual (x)</th>
+                                    <th scope="col">Included</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="6">Loading peer data…</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="data-table-wrapper">
+                        <table id="framework-data-table">
+                            <caption>Framework price targets</caption>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Framework</th>
+                                    <th scope="col">Price ($)</th>
+                                    <th scope="col">Δ vs Spot ($)</th>
+                                    <th scope="col">Δ vs Spot (%)</th>
+                                    <th scope="col">Included</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="5">Loading framework data…</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <footer class="valuation-footnotes">
+                    <p><strong>Sources:</strong> data/peer_comparables.json (filtered to BANC, COLB, CVBF, EWBC, HAFC, OPBK, PPBI, WAFD); data/valuation_outputs.json (Spot, framework targets, regression coefficients); data/fdic_nco_history.json (guardrails).</p>
+                    <p><strong>Axis domains:</strong> ROTE axis [0%, 18%] with 2% ticks; P/TBV axis [0.70×, 2.00×] with 0.20× ticks; bar axis $0–$60 with $5 increments.</p>
+                    <p class="decision-note">HOLD reaffirmed while Spot remains within −10% / +15% band around $46.17; revisit upon pierce or coefficient drift beyond QA tolerances.</p>
+                </footer>
+            </section>
 
             <!-- Interactive HTML Modules -->
             <h3 class="margin-top-40">Deep-Dive Valuation Modules</h3>
@@ -2450,26 +2532,33 @@
     <!-- JavaScript for Theme Toggle -->
     <script src="scripts/theme-toggle.js"></script>
     <script src="scripts/charts.js"></script>
+    <script src="scripts/valuation-viz.js"></script>
 
-    <!-- Initialize Charts -->
     <script>
-        // Store chart instances globally for theme updates
-        let chartInstances = [];
+        window.chartInstances = window.chartInstances || [];
 
-        // Initialize valuation comparison chart
-        document.addEventListener('DOMContentLoaded', async function() {
-            const valuationChart = await initValuationChart('valuationComparisonChart');
-            if (valuationChart) {
-                chartInstances.push(valuationChart);
+        document.addEventListener('DOMContentLoaded', async () => {
+            if (typeof window.initValuationDecisionModule === 'function') {
+                const moduleCharts = await window.initValuationDecisionModule();
+                if (Array.isArray(moduleCharts)) {
+                    moduleCharts.forEach((chart) => {
+                        if (chart) {
+                            window.chartInstances.push(chart);
+                        }
+                    });
+                }
             }
 
-            // Re-render charts when theme changes
             const originalToggleTheme = window.toggleTheme;
             window.toggleTheme = function() {
                 originalToggleTheme();
-                // Small delay to let CSS variables update
                 setTimeout(() => {
-                    updateChartsOnThemeChange(chartInstances);
+                    if (typeof updateChartsOnThemeChange === 'function') {
+                        updateChartsOnThemeChange(window.chartInstances);
+                    }
+                    if (typeof window.refreshValuationModuleTheme === 'function') {
+                        window.refreshValuationModuleTheme();
+                    }
                 }, 100);
             };
         });
