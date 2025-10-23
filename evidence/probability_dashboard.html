@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CATY - Probability Dashboard | Evidence Repository</title>
+    <link rel="stylesheet" href="../styles/caty-equity-research.css">
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Toggle dark mode" role="switch" aria-checked="false">
+        <span id="theme-icon" aria-hidden="true">🌙</span>
+        <span id="theme-text">Dark Mode</span>
+    </button>
+
+    <header>
+        <div class="header-content">
+            <h1 class="page-title">Cathay General Bancorp (NASDAQ: CATY)</h1>
+            <p class="page-subtitle">Probability Dashboard</p>
+            <p class="page-meta">Author: Nirvan Chitnis | Date: October 2025 | Purpose: Evidence documentation</p>
+        </div>
+    </header>
+
+    <main class="container" id="main-content" tabindex="-1">
+        <nav aria-label="Breadcrumb" class="breadcrumb">
+            <a href="../index.html">← Main Report</a>
+            <span aria-hidden="true"> / </span>
+            <span aria-current="page">Evidence: Probability Dashboard</span>
+        </nav>
+
+        <h3>Current Probability Estimates</h3>
+
+<table class="data-table">
+<thead>
+<tr>
+<th>Framework</th>
+<th>Base Prob</th>
+<th>Tail Prob</th>
+<th>Expected Target</th>
+<th>Expected Return</th>
+<th>Rating</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Data-Anchored (post-2008 mean)</strong></td>
+<td><strong>85%</strong></td>
+<td><strong>15%</strong></td>
+<td><strong>$53.86</strong></td>
+<td><strong>+17.4%</strong></td>
+<td>BUY</td>
+</tr>
+<tr>
+<td><strong>Wilson 95% Upper Bound</strong></td>
+<td><strong>74%</strong></td>
+<td><strong>26%</strong></td>
+<td><strong>$51.97</strong></td>
+<td><strong>+13.3%</strong></td>
+<td><strong>HOLD</strong> ✓</td>
+</tr>
+<tr>
+<td>Market-Implied (spot $45.89)</td>
+<td>38%</td>
+<td>62%</td>
+<td>$45.87</td>
+<td>0.0%</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Official Weighting:</strong> 74/26 (Wilson 95% ceiling)</p>
+<p><strong>Current Rating:</strong> HOLD</p>
+<p><strong>BUY Trigger:</strong> Tail probability &lt; 21.5%</p>
+
+<h3>Divergence Monitoring</h3>
+
+<p><strong>Data vs Market Spread:</strong></p>
+<ul>
+<li>Data-anchored: 85% base case</li>
+<li>Market-implied: 38% base case</li>
+<li><strong>Spread: 47 percentage points</strong></li>
+</ul>
+
+<p>Market appears <strong>excessively pessimistic</strong> relative to FDIC breach history (0% post-2014).</p>
+
+<h3>Monitoring Schedule</h3>
+
+<p><strong>Quarterly (post-earnings):</strong></p>
+<ul>
+<li>Rerun <code>analysis/nco_probability_analysis.py</code> with new FDIC data</li>
+<li>Update Wilson confidence bounds</li>
+<li>Recalculate expected returns</li>
+<li>Apply rating policy auto-flip if bounds shift</li>
+</ul>
+
+<p><strong>Monthly:</strong></p>
+<ul>
+<li>Track market-implied probability via stock price</li>
+<li>Monitor spread between data-anchored and market views</li>
+<li>Flag if spread widens &gt;50 ppts</li>
+</ul>
+
+<p><strong>Owner:</strong> Derek review desk</p>
+<p><strong>Next Execution:</strong> October 21, 2025 (after market close, post-Q3 earnings)</p>
+
+<hr>
+
+<p><strong>Generated:</strong> 2025-10-19 05:40 PT</p>
+
+    </main>
+
+    <footer class="evidence-footer">
+        <p class="footer-text">Evidence documentation for CFA IRC equity research challenge</p>
+        <p class="footer-meta">Author: Nirvan Chitnis | Generated: 2025-10-23 01:13 | Source: probability_dashboard.md</p>
+    </footer>
+
+    <script src="../scripts/theme.js"></script>
+</body>
+</html>

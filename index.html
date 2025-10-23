@@ -4,43 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- BEGIN AUTOGEN: page-title -->
-    <title>Cathay General Bancorp (CATY) - Institutional Equity Research | October 21, 2025</title>
+    <title>Cathay General Bancorp (CATY) - Institutional Equity Research | October 22, 2025</title>
     <!-- END AUTOGEN: page-title -->
     <link rel="stylesheet" href="styles/caty-equity-research.css">
     <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 </head>
 <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
     <!-- Theme Toggle -->
-    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" role="switch" aria-checked="false">
+    <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Toggle dark mode" role="switch" aria-checked="false">
         <span id="theme-icon" aria-hidden="true">🌙</span>
         <span id="theme-text">Dark Mode</span>
     </button>
 
     <!-- Table of Contents Navigation -->
-    <nav class="nav-toc toc-navigation" id="navTOC" aria-hidden="false">
+    <nav class="nav-toc toc-navigation" id="navTOC" aria-label="Table of contents" hidden tabindex="-1">
         <h3 class="toc-header">Table of Contents</h3>
-        <ul class="toc-list" role="list">
-            <li role="listitem"><a href="#executive-dashboard" class="toc-link">Executive Dashboard</a></li>
-            <li role="listitem"><a href="#reconciliation-dashboard" class="toc-link">🔄 Valuation Reconciliation</a></li>
-            <li role="listitem"><a href="#interactive-visuals" class="toc-link">📊 Interactive Visuals & Modules</a></li>
-            <li role="listitem"><a href="#recent-developments" class="toc-link">Recent Developments</a></li>
-            <li role="listitem"><a href="#company-overview" class="toc-link">Company Overview</a></li>
-            <li role="listitem"><a href="#industry-analysis" class="toc-link">Industry Analysis</a></li>
-            <li role="listitem"><a href="#valuation" class="toc-link">Valuation Analysis</a></li>
-            <li role="listitem"><a href="#peer-analysis" class="toc-link">Peer Comparison</a></li>
-            <li role="listitem"><a href="#financial-analysis" class="toc-link">Financial Analysis</a></li>
-            <li role="listitem"><a href="#liquidity" class="toc-link">Liquidity & Funding</a></li>
-            <li role="listitem"><a href="#scenario-analysis" class="toc-link">Scenario Analysis</a></li>
-            <li role="listitem"><a href="#investment-risks" class="toc-link">Investment Risks</a></li>
-            <li role="listitem"><a href="#catalysts" class="toc-link">Positive Catalysts</a></li>
-            <li role="listitem"><a href="#esg-assessment" class="toc-link">ESG Assessment</a></li>
-            <li role="listitem"><a href="#recommendation" class="toc-link">Recommendation</a></li>
-            <li role="listitem"><a href="#appendix" class="toc-link">Appendix</a></li>
+        <ul class="toc-list">
+            <li><a href="#executive-dashboard" class="toc-link">Executive Dashboard</a></li>
+            <li><a href="#roadmap-sla" class="toc-link">Roadmap & SLA</a></li>
+            <li><a href="#reconciliation-dashboard" class="toc-link">🔄 Valuation Reconciliation</a></li>
+            <li><a href="#interactive-visuals" class="toc-link">📊 Interactive Visuals & Modules</a></li>
+            <li><a href="#thesis-controversy" class="toc-link">Thesis & Controversy</a></li>
+            <li><a href="#recent-developments" class="toc-link">Recent Developments</a></li>
+            <li><a href="#company-overview" class="toc-link">Company Overview</a></li>
+            <li><a href="#industry-analysis" class="toc-link">Industry Analysis</a></li>
+            <li><a href="#valuation" class="toc-link">Valuation Analysis</a></li>
+            <li><a href="#peer-analysis" class="toc-link">Peer Comparison</a></li>
+            <li><a href="#financial-analysis" class="toc-link">Financial Analysis</a></li>
+            <li><a href="#liquidity" class="toc-link">Liquidity & Funding</a></li>
+            <li><a href="#scenario-analysis" class="toc-link">Scenario Analysis</a></li>
+            <li><a href="#investment-risks" class="toc-link">Investment Risks</a></li>
+            <li><a href="#driver-map" class="toc-link">Driver Map</a></li>
+            <li><a href="#cross-examination" class="toc-link">Cross-Examination</a></li>
+            <li><a href="#catalysts" class="toc-link">Positive Catalysts</a></li>
+            <li><a href="#esg-assessment" class="toc-link">ESG Assessment</a></li>
+            <li><a href="#recommendation" class="toc-link">Recommendation</a></li>
+            <li><a href="#methodology-evidence" class="toc-link">Methodology &amp; Evidence</a></li>
+            <li><a href="#evidence-notes" class="toc-link">Evidence Notes</a></li>
+            <li><a href="#appendix" class="toc-link">Appendix</a></li>
         </ul>
     </nav>
 
     <!-- TOC Toggle Button -->
-    <button type="button" class="toc-toggle-button" id="tocToggle" aria-label="Toggle table of contents" aria-controls="navTOC" aria-expanded="true">
+    <button type="button" onclick="toggleTOC()" class="toc-toggle-button" aria-label="Toggle table of contents" aria-controls="navTOC" aria-expanded="false">
         ☰
     </button>
 
@@ -51,7 +58,7 @@
             <p class="report-meta">
                 <strong>Institutional Equity Research Report</strong> |
                 <!-- BEGIN AUTOGEN: report-meta -->
-                Report Date: October 21, 2025 | Last Updated: October 21, 2025 16:31 UTC
+                Report Date: October 22, 2025 | Last Updated: October 22, 2025 06:51 UTC
                 <!-- END AUTOGEN: report-meta -->
                 |
                 Fiscal Year End: December 31 |
@@ -60,7 +67,29 @@
         </div>
     </header>
 
-    <div class="container">
+    <main class="container" id="main-content" tabindex="-1">
+
+        <!-- Publication Gate / Board Notice -->
+        <section class="content-section" aria-labelledby="board-notice-heading">
+            <h2 id="board-notice-heading" class="sr-only">Publication Status</h2>
+            <div class="status-banner status-warning" role="status" aria-live="polite">
+                <strong>HOLD — Downside skew acknowledged; awaiting Q3 10-Q evidence.</strong>
+                Probability-weighted fair value $44.07 (−4.6%) and Monte Carlo median $42.62 (−7.7%) trail the $46.17 spot, but the delta is within trading noise. Deposit-betas, credit migration, and CRE watchlist gates remain active; FF3/DDM peer rerun will post ≤48h after Q3 10-Qs.
+            </div>
+        </section>
+
+        <!-- Roadmap & SLA -->
+        <section id="roadmap-sla" class="content-section" aria-labelledby="roadmap-sla-heading">
+            <h2 id="roadmap-sla-heading">Roadmap &amp; SLA (Board Gating)</h2>
+            <ul>
+                <li>Deposit betas: product-level regressions (time/MMA/DDA) — <strong>DELIVERED</strong> (Q1'22 → Q2'25 sample; next scheduled rerun 2025-10-30 02:00 UTC) → <a href="CATY_05_nim_decomposition.html#deposit-beta-regression">results & scripts</a></li>
+                <li>COE triangulation: CAPM refreshed (9.26% pre-ESG); FF3/DDM refresh pending peer data — <strong>IN PROGRESS</strong> → <a href="CATY_16_coe_triangulation.html#reproducibility">reproducibility</a></li>
+                <li>Sensitivities: EPS & TBV/share under ±50 bps NIM, ±2% loans — <strong>LIVE</strong> → <a href="CATY_18_sensitivity_analysis.html">view table</a></li>
+                <li>Peer benchmarking: deposit mix, NIM, reserve ratios, CRE concentration — <strong>PENDING</strong></li>
+                <li>Citations: link every figure to SEC line anchors — <strong>IN PROGRESS</strong> → <a href="#evidence-notes">evidence</a></li>
+            </ul>
+            <p class="text-small text-secondary">SLA: deposit betas ≤24h post 10‑Q (timer currently set for 2025-10-30 02:00 UTC); COE + peers ≤48h after last peer filing.</p>
+        </section>
 
         <!-- ======================================== -->
         <!-- DATA PAGES QUICK ACCESS -->
@@ -78,7 +107,7 @@
                 <a href="CATY_01_company_profile.html" class="module-card" data-status="UPDATED">
                     <div class="module-card-badge">FILE 01 • UPDATED</div>
                     <div class="module-card-title">Company Profile</div>
-                    <div class="module-card-description">Entity metadata, CIK, auditor (KPMG), segments (updated 2025-10-21)</div>
+                    <div class="module-card-description">Entity metadata, CIK, updated Q3 market snapshot (updated 2025-10-22)</div>
                 </a>
             </div>
             <h3 class="cfa-category-header">🏆 Industry Overview & Competitive Positioning (10 points)</h3>
@@ -86,7 +115,7 @@
                 <a href="CATY_11_peers_normalized.html" class="module-card module-card-gold" data-status="UPDATED">
                     <div class="module-card-badge">FILE 11 ⭐ • UPDATED</div>
                     <div class="module-card-title">Peer Comparison & Regression</div>
-                    <div class="module-card-description">n=4 peers, R²=0.9548, implied COE 9.587% (updated 2025-10-21)</div>
+                    <div class="module-card-description">n=10 peers; median P/TBV 1.12× vs CATY 1.28× (updated 2025-10-22)</div>
                 </a>
             </div>
             <h3 class="cfa-category-header">🎯 Investment Summary (15 points)</h3>
@@ -94,7 +123,7 @@
                 <a href="CATY_12_valuation_model.html" class="module-card module-card-critical" data-status="UPDATED">
                     <div class="module-card-badge module-card-badge-danger">FILE 12 ⭐⭐⭐ • UPDATED</div>
                     <div class="module-card-title module-card-title-danger">Valuation Model</div>
-                    <div class="module-card-description module-card-description-primary">3 scenarios, Expected $52.03 (Wilson weighted), probabilities (updated 2025-10-21)</div>
+                    <div class="module-card-description module-card-description-primary">Probability-weighted fair value $44.07 (−4.6%); HOLD guardrails pending Q3 watchlist data (updated 2025-10-22)</div>
                 </a>
             </div>
             <h3 class="cfa-category-header">💰 Valuation (20 points)</h3>
@@ -102,17 +131,17 @@
                 <a href="CATY_13_residual_income_valuation.html" class="module-card module-card-gold" data-status="UPDATED">
                     <div class="module-card-badge">FILE 13 ⭐ • UPDATED</div>
                     <div class="module-card-title">Residual Income Valuation</div>
-                    <div class="module-card-description">RIM intrinsic value $50.08, IRC blended $51.51 (60% weight) (updated 2025-10-21)</div>
+                    <div class="module-card-description">Residual income bridge anchored to guardrail thresholds (updated 2025-10-22)</div>
                 </a>
                 <a href="CATY_14_monte_carlo_valuation.html" class="module-card module-card-gold" data-status="UPDATED">
                     <div class="module-card-badge">FILE 14 ⭐ • UPDATED</div>
                     <div class="module-card-title">Monte Carlo Simulation</div>
-                    <div class="module-card-description">10,000 runs, median $48.92, 95% CI $37-$62 (updated 2025-10-21)</div>
+                    <div class="module-card-description">10k simulation, median $42.62 (−7.7%), loss probability 60.9% (updated 2025-10-22)</div>
                 </a>
                 <a href="CATY_16_coe_triangulation.html" class="module-card module-card-gold" data-status="UPDATED">
                     <div class="module-card-badge">FILE 16 ⭐ • UPDATED</div>
                     <div class="module-card-title">COE Triangulation</div>
-                    <div class="module-card-description">CAPM 9.337% + FF3 10.142% + DDM 9.710% (updated 2025-10-21)</div>
+                    <div class="module-card-description">CAPM 9.337% + FF3 10.142% + DDM 9.710% (updated 2025-10-22)</div>
                 </a>
             </div>
             <h3 class="cfa-category-header">📈 Financial Analysis (20 points)</h3>
@@ -120,37 +149,37 @@
                 <a href="CATY_02_income_statement.html" class="module-card" data-status="UPDATED">
                     <div class="module-card-badge">FILE 02 • UPDATED</div>
                     <div class="module-card-title">Income Statement</div>
-                    <div class="module-card-description">Q2'25 NII, NIM 3.27%, efficiency 45.33%, EPS $1.10 (updated 2025-10-21)</div>
+                    <div class="module-card-description">Q3'25 NII $189.6M, NIM 3.31%, efficiency 41.84%, EPS $1.13 (updated 2025-10-22)</div>
                 </a>
                 <a href="CATY_03_balance_sheet.html" class="module-card" data-status="UPDATED">
                     <div class="module-card-badge">FILE 03 • UPDATED</div>
                     <div class="module-card-title">Balance Sheet</div>
-                    <div class="module-card-description">Assets $23.7B, TCE $2.51B, TBVPS $36.16 (updated 2025-10-21)</div>
+                    <div class="module-card-description">Assets $24.1B, TCE $2.52B, TBVPS $36.97 (updated 2025-10-22)</div>
                 </a>
                 <a href="CATY_04_cash_flow.html" class="module-card" data-status="UPDATED">
                     <div class="module-card-badge">FILE 04 • UPDATED</div>
                     <div class="module-card-title">Cash Flow</div>
-                    <div class="module-card-description">Operating CF, investing, financing, capital returns (updated 2025-10-21)</div>
+                    <div class="module-card-description">Operating CF, investing, financing, capital returns (updated 2025-10-22)</div>
                 </a>
                 <a href="CATY_05_nim_decomposition.html" class="module-card module-card-gold" data-status="UPDATED">
                     <div class="module-card-badge">FILE 05 ⭐ • UPDATED</div>
                     <div class="module-card-title">NIM Decomposition</div>
-                    <div class="module-card-description">Deposit betas (IB 60.4%, All-in 50.7%), NIM bridge (updated 2025-10-21)</div>
+                    <div class="module-card-description">Deposit betas (IB 60.4%, all-in 50.7%), NIM rebound to 3.31% (updated 2025-10-22)</div>
                 </a>
                 <a href="CATY_06_deposits_funding.html" class="module-card" data-status="UPDATED">
                     <div class="module-card-badge">FILE 06 • UPDATED</div>
                     <div class="module-card-title">Deposits & Funding</div>
-                    <div class="module-card-description">Relationship funding mix, NIB stability, brokered reliance (updated 2025-10-21)</div>
+                    <div class="module-card-description">Q3 mix: NIB 17.4%, brokered 5.6%, NOW balances 10.8% (updated 2025-10-22)</div>
                 </a>
                 <a href="CATY_09_capital_liquidity.html" class="module-card" data-status="UPDATED">
                     <div class="module-card-badge">FILE 09 • UPDATED</div>
                     <div class="module-card-title">Capital & Liquidity</div>
-                    <div class="module-card-description">CET1 13.35%, regulatory capital, AOCI (updated 2025-10-21)</div>
+                    <div class="module-card-description">CET1 13.15%, total capital 14.76%, leverage 10.88% (updated 2025-10-22)</div>
                 </a>
                 <a href="CATY_10_capital_actions.html" class="module-card" data-status="UPDATED">
                     <div class="module-card-badge">FILE 10 • UPDATED</div>
                     <div class="module-card-title">Capital Actions</div>
-                    <div class="module-card-description">Dividends, buybacks, payout ratio 32.1% (updated 2025-10-21)</div>
+                    <div class="module-card-description">Dividends, buybacks, payout ratio 32.1% (updated 2025-10-22)</div>
                 </a>
             </div>
             <h3 class="cfa-category-header">⚠️ Investment Risks (15 points)</h3>
@@ -158,12 +187,12 @@
                 <a href="CATY_07_loans_credit_quality.html" class="module-card module-card-warning" data-status="UPDATED">
                     <div class="module-card-badge module-card-badge-warning">FILE 07 ⭐⭐ • UPDATED</div>
                     <div class="module-card-title">Credit Quality & NCO Analysis</div>
-                    <div class="module-card-description">Through-cycle NCO: 42.8 bps (2008-2024 FDIC data) (updated 2025-10-21)</div>
+                    <div class="module-card-description">Q3 ACL 0.98% of loans, non-accruals $165.6M, through-cycle NCO 42.8 bps (updated 2025-10-22)</div>
                 </a>
                 <a href="CATY_08_cre_exposure.html" class="module-card module-card-warning" data-status="UPDATED">
                     <div class="module-card-badge module-card-badge-warning">FILE 08 ⭐⭐ • UPDATED</div>
                     <div class="module-card-title">CRE Exposure</div>
-                    <div class="module-card-description">CRE 52.4% (ELEVATED), office tail risk (updated 2025-10-21)</div>
+                    <div class="module-card-description">CRE 52.4% (ELEVATED), office tail risk (updated 2025-10-22)</div>
                 </a>
             </div>
             <h3 class="cfa-category-header">🌱 Environmental, Social, Governance (15 points)</h3>
@@ -171,12 +200,12 @@
                 <a href="CATY_15_esg_materiality_matrix.html" class="module-card" data-status="UPDATED">
                     <div class="module-card-badge">FILE 15 • UPDATED</div>
                     <div class="module-card-title">ESG Materiality Matrix</div>
-                    <div class="module-card-description">E/S/G quantified, COE adjustments, climate scenario (updated 2025-10-21)</div>
+                    <div class="module-card-description">E/S/G quantified, COE adjustments, climate scenario (updated 2025-10-22)</div>
                 </a>
                 <a href="CATY_17_esg_kpi_dashboard.html" class="module-card" data-status="UPDATED">
                     <div class="module-card-badge">FILE 17 • UPDATED</div>
                     <div class="module-card-title">ESG KPI Dashboard</div>
-                    <div class="module-card-description">Material weaknesses, valuation impact -$1.47/share (updated 2025-10-21)</div>
+                    <div class="module-card-description">Material weaknesses, valuation impact -$1.47/share (updated 2025-10-22)</div>
                 </a>
             </div>
             <!-- END AUTOGEN: module-grid -->
@@ -185,8 +214,8 @@
         <!-- ======================================== -->
         <!-- EXECUTIVE DASHBOARD -->
         <!-- ======================================== -->
-        <section id="executive-dashboard" class="executive-dashboard">
-            <h2 class="dashboard-header">Executive Dashboard</h2>
+        <section id="executive-dashboard" class="executive-dashboard" aria-labelledby="executive-dashboard-heading">
+            <h2 id="executive-dashboard-heading" class="dashboard-header">Executive Dashboard</h2>
 
             <!-- Company Snapshot -->
             <div class="dashboard-grid">
@@ -197,18 +226,18 @@
                 </div>
                 <div class="dashboard-card">
                     <div class="dashboard-label">Current Price</div>
-                    <div class="dashboard-value">$47.00</div>
-                    <div class="dashboard-subtext">Oct 20, 2025</div>
+                    <div class="dashboard-value">$46.17</div>
+                    <div class="dashboard-subtext">Oct 22, 2025 close</div>
                 </div>
                 <div class="dashboard-card">
                     <div class="dashboard-label">Market Cap</div>
-                    <div class="dashboard-value">$3.18B</div>
-                    <div class="dashboard-subtext">69.36M shares</div>
+                    <div class="dashboard-value">$3.24B</div>
+                    <div class="dashboard-subtext">68.70M shares</div>
                 </div>
                 <div class="dashboard-card">
                     <div class="dashboard-label">Rating</div>
                     <div class="dashboard-value dashboard-value-orange">HOLD</div>
-                    <div class="dashboard-subtext">+3.6% expected (74% / 26%)</div>
+                    <div class="dashboard-subtext">Probability-weighted value $44.07</div>
                 </div>
             <!-- END AUTOGEN: exec-company-snapshot -->
             </div>
@@ -219,13 +248,13 @@
             <!-- BEGIN AUTOGEN: exec-valuation-metrics -->
                 <div class="dashboard-card-subtle">
                     <div class="dashboard-label-small">Normalized Fair Value</div>
-                    <div class="dashboard-value-medium">$39.34</div>
-                    <div class="dashboard-subtext-small">P/TBV 1.088x</div>
+                    <div class="dashboard-value-medium">$44.39</div>
+                    <div class="dashboard-subtext-small">P/TBV 1.228x</div>
                 </div>
                 <div class="dashboard-card-subtle">
                     <div class="dashboard-label-small">P/TBV (Current)</div>
-                    <div class="dashboard-value-medium">1.300x</div>
-                    <div class="dashboard-subtext-small">vs 1.088x normalized</div>
+                    <div class="dashboard-value-medium">1.277x</div>
+                    <div class="dashboard-subtext-small">vs 1.228x normalized</div>
                 </div>
                 <div class="dashboard-card-subtle">
                     <div class="dashboard-label-small">P/E (LTM)</div>
@@ -246,33 +275,33 @@
             </div>
 
             <!-- Performance Metrics -->
-            <h3 class="dashboard-section-header">Performance Metrics (LTM through Q2'25)</h3>
+            <h3 class="dashboard-section-header">Performance Metrics (LTM through Q3'25)</h3>
             <div class="dashboard-grid-compact">
             <!-- BEGIN AUTOGEN: exec-performance-metrics -->
                 <div class="dashboard-card-subtle">
                     <div class="dashboard-label-small">ROTE</div>
-                    <div class="dashboard-value-medium">11.95%</div>
-                    <div class="dashboard-subtext-small">Normalized: 10.21%</div>
+                    <div class="dashboard-value-medium">10.60%</div>
+                    <div class="dashboard-subtext-small">Normalized: 11.20%</div>
                 </div>
                 <div class="dashboard-card-subtle">
                     <div class="dashboard-label-small">NIM</div>
-                    <div class="dashboard-value-medium">3.27%</div>
+                    <div class="dashboard-value-medium">3.31%</div>
                     <div class="dashboard-subtext-small">Q2'25</div>
                 </div>
                 <div class="dashboard-card-subtle">
                     <div class="dashboard-label-small">Efficiency</div>
-                    <div class="dashboard-value-medium">46.9%</div>
+                    <div class="dashboard-value-medium">41.8%</div>
                     <div class="dashboard-subtext-small">LTM</div>
                 </div>
                 <div class="dashboard-card-subtle">
                     <div class="dashboard-label-small">NIB %</div>
-                    <div class="dashboard-value-medium">16.9%</div>
+                    <div class="dashboard-value-medium">17.4%</div>
                     <div class="dashboard-subtext-small">Q2'25</div>
                 </div>
                 <div class="dashboard-card-subtle">
                     <div class="dashboard-label-small">Deposit Beta</div>
-                    <div class="dashboard-value-medium">0.507</div>
-                    <div class="dashboard-subtext-small">All-in (IB: 0.604)</div>
+                    <div class="dashboard-value-medium">IB 0.63</div>
+                    <div class="dashboard-subtext-small">Time 0.87 | All-in 0.12 (Q1'22→Q2'25)</div>
                 </div>
             <!-- END AUTOGEN: exec-performance-metrics -->
             </div>
@@ -284,12 +313,12 @@
                 <div class="dashboard-card-subtle">
                     <div class="dashboard-label-small">NCO Rate</div>
                     <div class="dashboard-value-medium">18.1 bps</div>
-                    <div class="dashboard-subtext-small">LTM (TC: 42.8 bps)</div>
+                    <div class="dashboard-subtext-small">LTM (TC: 30.0 bps)</div>
                 </div>
                 <div class="dashboard-card-subtle">
                     <div class="dashboard-label-small">ACL/Loans</div>
-                    <div class="dashboard-value-medium">0.88%</div>
-                    <div class="dashboard-subtext-small">$173.5M ACL</div>
+                    <div class="dashboard-value-medium">0.98%</div>
+                    <div class="dashboard-subtext-small">$196.5M ACL</div>
                 </div>
                 <div class="dashboard-card-subtle">
                     <div class="dashboard-label-small">NPA/Assets</div>
@@ -308,7 +337,7 @@
                 </div>
                 <div class="dashboard-card-subtle">
                     <div class="dashboard-label-small">Brokered Dep</div>
-                    <div class="dashboard-value-medium">5.62%</div>
+                    <div class="dashboard-value-medium">5.60%</div>
                     <div class="dashboard-subtext-small">vs peers 1-4%</div>
                 </div>
             <!-- END AUTOGEN: exec-credit-metrics -->
@@ -325,23 +354,23 @@
             <!-- BEGIN AUTOGEN: price-target-grid -->
                 <div class="metric-card">
                     <div class="metric-label">Current Price</div>
-                    <div class="metric-value">$47.00</div>
-                    <div class="metric-subtext">As of October 20, 2025</div>
+                    <div class="metric-value">$46.17</div>
+                    <div class="metric-subtext">NASDAQ close · October 22, 2025</div>
+                </div>
+                <div class="metric-card metric-card-warning">
+                    <div class="metric-label">Probability-Weighted Fair Value</div>
+                    <div class="metric-value">$44.07</div>
+                    <div class="metric-subtext">FedWatch × credit mix (−4.6% vs spot) · <a href="analysis/probabilistic_outlook.json" target="_blank" rel="noopener">analysis/probabilistic_outlook.json</a></div>
+                </div>
+                <div class="metric-card metric-card-warning">
+                    <div class="metric-label">Monte Carlo Median</div>
+                    <div class="metric-value">$42.62</div>
+                    <div class="metric-subtext">10k simulation (−7.7% vs spot) · <a href="data/caty14_monte_carlo.json" target="_blank" rel="noopener">caty14_monte_carlo.json</a></div>
                 </div>
                 <div class="metric-card">
-                    <div class="metric-label">Normalized Fair Value (P/TBV 1.087x)</div>
-                    <div class="metric-value">$39.34</div>
-                    <div class="metric-subtext">Normalized ROTE 10.21% (NCO 42.8 bps), COE 9.59%, g 2.5%</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-label">P/TBV (Current)</div>
-                    <div class="metric-value">1.300x</div>
-                    <div class="metric-subtext">Price / TBVPS ($36.16)</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-label">Implied COE</div>
-                    <div class="metric-value">9.59%</div>
-                    <div class="metric-subtext">Peer-calibrated (g = 2.5%)</div>
+                    <div class="metric-label">Normalized Fair Value (Gordon)</div>
+                    <div class="metric-value">$44.39</div>
+                    <div class="metric-subtext">ROTE 11.2%, NCO 30 bps, COE 9.59%, g 2.5%</div>
                 </div>
             <!-- END AUTOGEN: price-target-grid -->
             </div>
@@ -349,85 +378,213 @@
             <h3 class="section-header-large">ESG Impact on Valuation <a href="CATY_17_esg_kpi_dashboard.html" class="section-link-gold">[View Full Dashboard →]</a></h3>
 
             <div class="price-target-grid mt-20">
-                <div class="metric-card metric-card-success">
-                    <div class="metric-label">Social Moat Uplift</div>
-                    <div class="metric-value">+$1.15-1.50</div>
-                    <div class="metric-subtext">Community banking (deposit beta 0.35, CRA Outstanding)</div>
-                </div>
                 <div class="metric-card">
-                    <div class="metric-label">Governance Drag</div>
-                    <div class="metric-value">+30 bps COE</div>
-                    <div class="metric-subtext">Board independence 40% vs 67% peers</div>
-                </div>
-                <div class="metric-card metric-card-warning">
-                    <div class="metric-label">Climate Risk Premium</div>
-                    <div class="metric-value">+20 bps COE</div>
-                    <div class="metric-subtext">CRE 52.4% exposure, 2°C scenario -0.7% NAV</div>
-                </div>
-                <div class="metric-card metric-card-gold">
-                    <div class="metric-label">Net ESG Impact</div>
-                    <div class="metric-value">-$1.47/share</div>
-                    <div class="metric-subtext">COE 9.587% (+25 bps ESG premium vs neutral 9.337%)</div>
+                    <div class="metric-label">ESG Valuation Impact</div>
+                    <div class="metric-value">Pending</div>
+                    <div class="metric-subtext">Quantitative model and sources to be published with Q3 evidence pack</div>
                 </div>
             </div>
 
             <h3>Investment Thesis</h3>
             <!-- BEGIN AUTOGEN: investment-thesis-summary -->
-            <p><strong>Rating: HOLD</strong> Cathay General Bancorp (CATY) trades at $47.00 (October 20, 2025) with expected return of +3.6% to Wilson 95% target $48.70. Current P/TBV 1.300x represents premium to normalized 1.088x, driven by current earnings (ROTE 11.95%) vs through-cycle assumptions (NCO 42.8 bps). HOLD rating reflects +3.6% expected return within -10% to +15% threshold.</p>
+            <p><strong>Rating: HOLD</strong> at $46.17 (22-Oct-2025 close). The probability-weighted intrinsic value <strong>$44.07</strong> (−4.6%) and Monte Carlo median $42.62 (−7.7%) both sit below spot, but the gap is within a month of trading noise and the Q3 10-Q will determine whether guardrail credit risk materialises. Rate relief adds only +$0.03 quarterly EPS while credit overlays remove −$0.13; until we see product-level betas and watchlist migration in the filing, we sit on the sidelines rather than call for incremental shorting.</p>
             <!-- END AUTOGEN: investment-thesis-summary -->
 
-            <h4>Rating Framework (Wilson Bounds)</h4>
+            <h4>Q3 Run-Rate → Forward EPS Bridge</h4>
+            <div class="insight-box">
+                <p>We reconcile Q3 diluted EPS of <strong>$1.13</strong> (Form 8-K Exhibit 99.1) to the probability-weighted forward run-rate of <strong>$1.03</strong> (annual $4.12) produced by the updated scenario engine. Rate-path assumptions add +$0.03 per quarter via 22 bps of modeled deposit-cost relief, while the credit overlay subtracts −$0.13 — a weighted blend of the guardrail (+$12.4M quarterly provision), stress (+$33.6M) and severe (+$51.2M) migration cases. Figures tie directly to <code>analysis/deposit_rate_scenarios.json</code>, <code>analysis/credit_stress_scenarios.json</code>, and <code>analysis/probabilistic_outlook.json</code>.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Step</th>
+                            <th class="numeric">Quarterly EPS</th>
+                            <th class="numeric">Δ vs Prior</th>
+                            <th>Evidence</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Q3 2025 diluted EPS (reported)</td>
+                            <td class="numeric">$1.13</td>
+                            <td class="numeric">—</td>
+                            <td><a href="evidence/raw/CATY_2025Q3_8K/ex_873308.htm" target="_blank" rel="noopener">8-K Exhibit 99.1</a></td>
+                        </tr>
+                        <tr>
+                            <td>Rate-path mix (−50/−25/0 bps weighted)</td>
+                            <td class="numeric">$1.16</td>
+                            <td class="numeric">+0.03</td>
+                            <td><a href="analysis/deposit_rate_scenarios.json" target="_blank" rel="noopener">deposit_rate_scenarios.json</a></td>
+                        </tr>
+                        <tr>
+                            <td>Credit normalization (30% guardrail / 15% stress / 5% severe)</td>
+                            <td class="numeric">$1.03</td>
+                            <td class="numeric">−0.13</td>
+                            <td><a href="analysis/credit_stress_scenarios.json" target="_blank" rel="noopener">credit_stress_scenarios.json</a></td>
+                        </tr>
+                        <tr class="row-highlight-yellow">
+                            <td>Probability-weighted forward EPS</td>
+                            <td class="numeric"><strong>$1.03</strong></td>
+                            <td class="numeric">−0.10 vs Q3</td>
+                            <td><a href="analysis/probabilistic_outlook.json" target="_blank" rel="noopener">probabilistic_outlook.json</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="text-small">Quarterly per-share impacts; share-count accretion (~1.8¢) from the Q3 buyback is already embedded in the $1.13 baseline (see <a href="evidence/workpapers/CATY_Q3_2025_buyback_analysis.html" target="_blank" rel="noopener">buyback analysis workpaper</a>).</p>
+                <p class="text-small">To make the bridge auditable we published the underlying income-statement deltas in <code>analysis/driver_elasticities.json</code>; the file ties each scenario to Form 8-K line items (NII $189.6M, provision $28.7M, non-interest $21.0M, expenses $88.1M).</p>
+                <table class="mt-12">
+                    <thead>
+                        <tr>
+                            <th>Scenario</th>
+                            <th class="numeric">Net Interest Income ($M)</th>
+                            <th class="numeric">Provision ($M)</th>
+                            <th class="numeric">Net Income ($M)</th>
+                            <th class="numeric">EPS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Base run-rate (Fed 0 / Base credit)</td>
+                            <td class="numeric">189.6</td>
+                            <td class="numeric">28.7</td>
+                            <td class="numeric">77.7</td>
+                            <td class="numeric">1.13</td>
+                        </tr>
+                        <tr>
+                            <td>Fed −50 bps / Base credit</td>
+                            <td class="numeric">197.3</td>
+                            <td class="numeric">28.7</td>
+                            <td class="numeric">84.1</td>
+                            <td class="numeric">1.22</td>
+                        </tr>
+                        <tr>
+                            <td>Fed 0 / Guardrail credit (42.8 bps NCO)</td>
+                            <td class="numeric">189.6</td>
+                            <td class="numeric">41.1</td>
+                            <td class="numeric">67.5</td>
+                            <td class="numeric">0.98</td>
+                        </tr>
+                        <tr>
+                            <td>Fed −50 bps / Guardrail credit</td>
+                            <td class="numeric">197.3</td>
+                            <td class="numeric">41.1</td>
+                            <td class="numeric">73.8</td>
+                            <td class="numeric">1.07</td>
+                        </tr>
+                        <tr>
+                            <td>Fed 0 / Stress credit (85 bps NCO)</td>
+                            <td class="numeric">189.6</td>
+                            <td class="numeric">62.3</td>
+                            <td class="numeric">49.9</td>
+                            <td class="numeric">0.73</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="text-small text-secondary">All figures use the 17.2% effective tax rate reported in Q3. The bridge enforces: Net income = (NII + noninterest income − noninterest expense − provision) × (1 − tax); EPS = Net income / 68.7M shares. See <a href="analysis/driver_elasticities.json" target="_blank" rel="noopener">driver_elasticities.json</a> for machine-readable detail.</p>
+            </div>
+
+            <h4>Rating Framework (HOLD Guardrails)</h4>
             <!-- BEGIN AUTOGEN: key-findings-bullets -->
             <ul>
-                <li><strong>Empirical NCO Understated:</strong> 42.8 bps through-cycle average (2008-2024) vs previous 25 bps assumption; GFC peak 306 bps shows tail risk</li>
-                <li><strong>Overvaluation:</strong> Current P/TBV 1.300x vs normalized fair value 1.088x; price $47.00 vs normalized $39.34 = -16.3% expected move</li>
-                <li><strong>Mid-Tier Profitability:</strong> Normalized ROTE 10.21% trails upper-quartile peers, limiting multiple expansion</li>
-                <li><strong>CRE Concentration:</strong> 52.4% CRE exposure with 5.62% brokered deposits elevates funding sensitivity</li>
+                <li><strong>Rate relief vs credit drag:</strong> FedWatch-weighted rate mix only adds +$0.03 quarterly EPS while guardrail/stress overlays remove −$0.13, leaving forward EPS $1.03 (see <code>analysis/probabilistic_outlook.json</code>).</li>
+                <li><strong>Valuation gap:</strong> Spot $46.17 is 4.6% above probability-weighted fair value $44.07 and 3.6% above normalized Gordon $44.39—insufficient to justify a conviction downgrade.</li>
+                <li><strong>Thin ROE spread:</strong> Base ROE ≈10.3% vs refreshed COE 9.99% (<a href="CATY_16_coe_triangulation.html">Module 16</a>) leaves &lt;100 bps excess return, keeping us neutral until evidence breaks either way.</li>
+                <li><strong>Funding skew:</strong> Time deposits 58% of IB balances; every 10 bps Fed move shifts quarterly EPS ≈±$0.018 at a 0.60 beta (<code>analysis/deposit_beta_regressions.json</code>). Without product-level beta proof, we cannot assume upside.</li>
             </ul>
             <!-- END AUTOGEN: key-findings-bullets -->
 
-            <h4>Bull Case Scenario (Would Need)</h4>
+            <h4>Neutral Valuation Band</h4>
             <ul>
-                <li><strong>Benign Credit:</strong> Recent history NCO 20-25 bps → Fair value $46-47 → HOLD rating</li>
-                <li><strong>ROTE Improvement:</strong> Efficiency gains to 42% + NIM stable 3.3%+ → ROTE 12%+ → Fair value $48+</li>
-                <li><strong>Risk Re-rating:</strong> Market assigns lower COE (8.5% vs 9.6%) due to credit quality track record → Fair value $50+</li>
+                <li><strong>Midpoint:</strong> $44.07 probability-weighted intrinsic value from <code>analysis/probabilistic_outlook.json</code>.</li>
+                <li><strong>HOLD corridor (±5%):</strong> $41.87 – $46.27; spot $46.17 sits 0.2% below the ceiling, so upside must clear the band before an upgrade.</li>
+                <li><strong>Peer context:</strong> Median P/TBV 1.12× and P/E 11.1× vs CATY 1.28× / 10.3× (<code>data/peer_comparables.json</code>). Premium multiple comes with only +235 bps ROE–COE spread.</li>
+            </ul>
+            <!-- END AUTOGEN: key-findings-bullets -->
+
+            <h4>What Would Move Us Off HOLD?</h4>
+            <ul>
+                <li><strong>Evidence of sustained benign credit:</strong> NCOs ≤25 bps and stabilization of the $455M watchlist would justify upgrading toward BUY if valuation remains mid-$40s.</li>
+                <li><strong>Proof of credit migration:</strong> If Q3 10-Q shows 20%+ watchlist migration or NCOs tracking ≥60 bps, probability-weighted value would fall sub-$42 and force a downgrade.</li>
+                <li><strong>Deposit beta clarity:</strong> Product-level betas ≤0.45 (vs modeled 0.60) would unlock a bullish rate bridge; confirmation of stickiness >0.60 would re-open the downside call.</li>
             </ul>
 
             <h4>Key Risks</h4>
             <ul>
-                <li><strong>CRE concentration:</strong> 52.4% of loans (Q2’25); property‑type (office) not disclosed</li>
-                <li><strong>US‑China trade:</strong> Exposure to cross‑border flows could face policy/geopolitical shocks</li>
-                <li><strong>Rate path:</strong> Faster‑than‑modeled cuts could compress asset yields</li>
+                <li><strong>Liability sensitivity:</strong> 58% time-deposit mix and 17% DDA share (IR deck slide 6) keep deposit betas elevated; +50 bps hike pushes EPS to ~$1.04 (<code>analysis/deposit_rate_scenarios.json</code>).</li>
+                <li><strong>Credit migration:</strong> $455M special-mention pool across six CRE relationships; 20% migration would add ~35 bps to NPLs (Module 08).</li>
+                <li><strong>Capital headroom:</strong> CET1 13.15% sits 115 bps above the 12% guardrail; another $50M buyback or elevated losses would breach tolerance (see <a href="evidence/workpapers/CATY_Q3_2025_buyback_analysis.html" target="_blank" rel="noopener">capital workpaper</a>).</li>
             </ul>
 
             <h4>Valuation Snapshot</h4>
             <table>
                 <thead>
                     <tr>
-                        <th>Metric</th>
-                        <th class="text-right">Current</th>
-                        <th class="text-right">Fair Value</th>
-                        <th class="text-right">Premium/(Discount)</th>
+                        <th>Valuation Lens</th>
+                        <th class="text-right">Spot ($46.17)</th>
+                        <th class="text-right">Intrinsic</th>
+                        <th class="text-right">Upside / (Downside)</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>P/TBV</td>
-                        <td class="text-right">1.300x</td>
-                        <td class="text-right">1.087x</td>
-                        <td class="text-right text-danger">+16.7%</td>
+                        <td>Probability-weighted (rates × credit)</td>
+                        <td class="text-right">$46.17</td>
+                        <td class="text-right">$44.07</td>
+                        <td class="text-right text-danger">−4.6%</td>
+                    </tr>
+                    <tr>
+                        <td>Monte Carlo median (10k runs)</td>
+                        <td class="text-right">$46.17</td>
+                        <td class="text-right">$42.62</td>
+                        <td class="text-right text-danger">−7.7%</td>
+                    </tr>
+                    <tr>
+                        <td>Normalized Gordon (ROTE 11.2%, COE 9.59%)</td>
+                        <td class="text-right">$46.17</td>
+                        <td class="text-right">$44.39</td>
+                        <td class="text-right text-danger">−3.9%</td>
                     </tr>
                 </tbody>
             </table>
+
+            <h4>Rate &amp; Volume Sensitivities (Module 18)</h4>
+            <p>See <a href="CATY_18_sensitivity_analysis.html">Module 18</a> for full matrix. Key points:</p>
+            <ul>
+                <li><strong>NIM -50 bps:</strong> EPS $0.82 (flat loans) / TBVPS $40.79; with -2% loans EPS $0.79.</li>
+                <li><strong>NIM flat:</strong> EPS $1.13 baseline; ±2% loan growth shifts EPS to $1.09 / $1.17.</li>
+                <li><strong>NIM +50 bps:</strong> EPS $1.44 (flat loans) / TBVPS $41.21; +2% loans lifts EPS to $1.49.</li>
+            </ul>
         </div>
+
+        <!-- Thesis & Controversy -->
+        <section id="thesis-controversy" class="content-section" aria-labelledby="thesis-controversy-heading">
+            <h2 id="thesis-controversy-heading">Thesis &amp; Controversy</h2>
+            <p><strong>Investment Call:</strong> HOLD. The probability-weighted base path (50% probability: Fed eases 25–50 bps, credit contained) clusters at $43–45 intrinsic value versus the $46.17 spot. Guardrail, stress, and severe tails (30% / 15% / 5%) keep the skew negative, but the −4.6% expected gap is not wide enough to press a downgrade without Q3 10-Q proof of credit migration.</p>
+            <ul>
+                <li><strong>Base case (50%).</strong> FedWatch-weighted blend (−50/−25/0 bps) trims interest-bearing deposit costs ~22 bps and delivers quarterly EPS ~$1.16 before credit; after credit overlays we land at $1.03 (annual $4.12) and ROE ≈10.3% (<a href="analysis/probabilistic_outlook.json" target="_blank" rel="noopener">probabilistic outlook</a>).</li>
+                <li><strong>Guardrail (30%).</strong> Through-cycle NCOs at 42.8 bps generate $12.4M incremental quarterly provisions (EPS $0.99), implying fair value mid-$43s; this is the scenario that keeps us from upgrading to BUY.</li>
+                <li><strong>Stress (15%).</strong> Special-mention migration coupled with 85 bps NCOs pushes EPS to $0.75 and TBVPS $40.74; valuation support falls to high-$30s.</li>
+                <li><strong>Severe (5%).</strong> GFC analogue at 120 bps NCOs drops quarterly EPS to $0.56 and TBVPS to $40.61, highlighting the need for watchlist transparency.</li>
+                <li><strong>Capital/rate leverage.</strong> CET1 13.15% post-buyback leaves ~115 bps to the 12% internal floor; each additional $50M buyback consumes ~20 bps CET1 and halts if CET1 drifts below 12.3% (<a href="CATY_10_capital_actions.html">Module 10</a>).</li>
+            </ul>
+            <p><strong>Valuation bands:</strong> Spot multiples (10.1× forward P/E, 1.27× P/TBV) exceed our probability-weighted and Monte Carlo bands. Guardrail, stress and severe scenarios imply fair values ≈$43/$39/$33, framing a committee range of $38–$45 that is too thin for a downgrade yet too weak for BUY.</p>
+            <ul>
+                <li><strong>Peer context.</strong> CATY trades at 1.28× P/TBV vs peer median 1.12× and 10.3× P/E vs peer median 11.1×; ROE ≈10.3% vs COE 9.99% leaves only +235 bps spread, below peers such as EWBC (ROE 16.1%). Holding pattern remains appropriate until we confirm either credit improvement or deterioration (<a href="CATY_11_peers_normalized.html">Peer module</a>).</li>
+            </ul>
+            <p><strong>Controversy & Disconfirmers:</strong> Credit migration and funding mix volatility could invalidate the base case.</p>
+            <ul>
+                <li><strong>Credit stress.</strong> NCOs jumping to 85 bps (movie theatre + CRE tail) drive quarterly EPS to $0.75 and TBVPS to $40.74; the severe case (120 bps) erodes EPS to $0.56 (Module 07).</li>
+                <li><strong>Funding risk.</strong> DDA mix down to 17% with time deposits 47%; a +50 bps hike adds ~$13M interest expense per quarter and compresses ROE toward the 9.5% COE (<a href="CATY_05_nim_decomposition.html#down-cycle">Module 05</a>).</li>
+                <li><strong>Watchlist.</strong> Special-mention loans of $455M across six relationships would raise NPL ratio ~35 bps if 20% migrate; loan-level evidence and data gaps are detailed in <a href="CATY_08_cre_exposure.html#watchlist-detail">Module 08 watchlist table</a>.</li>
+            </ul>
+        </section>
 
         <!-- ======================================== -->
         <!-- 2. VALUATION RECONCILIATION DASHBOARD -->
         <!-- ======================================== -->
-        <section id="reconciliation-dashboard" class="content-section">
+        <section id="reconciliation-dashboard" class="content-section" aria-labelledby="reconciliation-dashboard-heading">
             <!-- BEGIN AUTOGEN: reconciliation-dashboard -->
-            <h2>Valuation Reconciliation Dashboard</h2>
-            <p class="text-secondary">All methodologies synchronized to single source: <code>data/market_data_current.json</code> | Last Updated: <strong>2025-10-21 06:27 UTC</strong></p>
+            <h2 id="reconciliation-dashboard-heading">Valuation Reconciliation Dashboard</h2>
+            <p class="text-secondary">All methodologies synchronized to single source: <code>data/market_data_current.json</code> | Last Updated: <strong>2025-10-22 21:45 UTC</strong></p>
             <table>
                 <thead>
                     <tr>
@@ -442,114 +599,340 @@
                 <tbody>
             <tr>
                 <td><strong>Current Spot</strong></td>
-                <td class="text-align-right">$47.00</td>
+                <td class="text-align-right">$46.17</td>
                 <td class="text-align-right">—</td>
                 <td class="text-align-right">—</td>
-                <td>NASDAQ Close (Oct 20, 2025)</td>
-                <td>2025-10-21 06:27 UTC</td>
+                <td>NASDAQ close (Oct 22, 2025)</td>
+                <td>2025-10-22 21:36 UTC</td>
             </tr>
             <tr class="row-highlight-yellow">
-                <td><strong>Wilson 95% Upper</strong></td>
-                <td class="text-align-right">$48.70</td>
-                <td class="text-align-right">+3.6%</td>
-                <td class="text-align-right">74% / 26%</td>
-                <td><a href="analysis/probability_weighted_valuation.py" target="_blank" rel="noopener noreferrer">analysis/probability_weighted_valuation.py</a></td>
-                <td>2025-10-21 06:27 UTC</td>
+                <td><strong>Probability-Weighted (FedWatch × credit)</strong></td>
+                <td class="text-align-right">$44.07</td>
+                <td class="text-align-right text-danger">−4.6%</td>
+                <td class="text-align-right">Rate mix 8/22/20/25/15/10 · Credit 50/30/15/5</td>
+                <td><a href="analysis/probabilistic_outlook.json" target="_blank" rel="noopener noreferrer">analysis/probabilistic_outlook.json</a></td>
+                <td>2025-10-22 21:37 UTC</td>
             </tr>
             <tr>
-                <td><strong>IRC Blended (60/10/30)</strong></td>
-                <td class="text-align-right">$50.97</td>
-                <td class="text-align-right">+8.4%</td>
-                <td class="text-align-right">RIM 60%, DDM 10%, Rel 30%</td>
-                <td><a href="analysis/RESIDUAL_INCOME_VALUATION.md" target="_blank" rel="noopener noreferrer">analysis/RESIDUAL_INCOME_VALUATION.md</a></td>
-                <td>2025-10-21 06:27 UTC</td>
+                <td><strong>Monte Carlo Median</strong></td>
+                <td class="text-align-right">$42.62</td>
+                <td class="text-align-right text-danger">−7.7%</td>
+                <td class="text-align-right">10k runs · Loss probability 60.9%</td>
+                <td><a href="data/caty14_monte_carlo.json" target="_blank" rel="noopener noreferrer">data/caty14_monte_carlo.json</a></td>
+                <td>2025-10-22 21:45 UTC</td>
             </tr>
             <tr>
-                <td><strong>Regression (7-peer)</strong></td>
-                <td class="text-align-right">$54.71</td>
-                <td class="text-align-right">+16.4%</td>
-                <td class="text-align-right">n=7, R²=0.66</td>
-                <td><a href="analysis/valuation_bridge_final.py" target="_blank" rel="noopener noreferrer">analysis/valuation_bridge_final.py</a></td>
-                <td>2025-10-21 06:27 UTC</td>
+                <td><strong>Monte Carlo Mean</strong></td>
+                <td class="text-align-right">$43.63</td>
+                <td class="text-align-right text-danger">−5.5%</td>
+                <td class="text-align-right">Same 10k distribution</td>
+                <td><a href="data/caty14_monte_carlo.json" target="_blank" rel="noopener noreferrer">data/caty14_monte_carlo.json</a></td>
+                <td>2025-10-22 21:45 UTC</td>
             </tr>
             <tr>
                 <td><strong>Normalized (Gordon Growth)</strong></td>
-                <td class="text-align-right">$39.34</td>
-                <td class="text-align-right">-16.3%</td>
-                <td class="text-align-right">NCO 42.8 bps, ROTE 10.21%</td>
+                <td class="text-align-right">$44.39</td>
+                <td class="text-align-right text-danger">−3.9%</td>
+                <td class="text-align-right">ROTE 11.2%, NCO 30 bps, COE 9.59%</td>
                 <td><a href="analysis/valuation_bridge_final.py" target="_blank" rel="noopener noreferrer">analysis/valuation_bridge_final.py</a></td>
                 <td>2025-10-21 06:27 UTC</td>
             </tr>
             <tr class="row-highlight-blue">
-                <td><strong>Market-Implied</strong></td>
-                <td class="text-align-right">$47.00</td>
-                <td class="text-align-right">+0.0%</td>
-                <td class="text-align-right">60.9% / 39.1%</td>
-                <td><a href="analysis/probability_weighted_valuation.py" target="_blank" rel="noopener noreferrer">analysis/probability_weighted_valuation.py</a></td>
-                <td>2025-10-21 06:27 UTC</td>
-            </tr>
-            <tr>
-                <td><strong>Monte Carlo Median</strong></td>
-                <td class="text-align-right">$48.92</td>
-                <td class="text-align-right">+4.1%</td>
-                <td class="text-align-right">10K runs, 95% CI $37-$62</td>
-                <td><a href="CATY_14_monte_carlo_valuation.html" target="_blank" rel="noopener noreferrer">CATY_14_monte_carlo_valuation.html</a></td>
-                <td>2025-10-21 06:27 UTC</td>
+                <td><strong>Market-Implied COE</strong></td>
+                <td class="text-align-right">$46.17</td>
+                <td class="text-align-right">0.0%</td>
+                <td class="text-align-right">Spot → COE 9.99% (CAPM + ESG)</td>
+                <td><a href="analysis/market_implied_coe.json" target="_blank" rel="noopener noreferrer">analysis/market_implied_coe.json</a></td>
+                <td>2025-10-22 21:45 UTC</td>
             </tr>
                 </tbody>
             </table>
             <div class="metric-card metric-card-gold margin-top-20">
                 <div class="metric-label">Reconciliation Status</div>
                 <div class="metric-value">✅ ALL CHECKS PASS</div>
-                <div class="metric-subtext">Validated by: <code>analysis/reconciliation_guard.py</code> | Pre-commit hook: <code>.git/hooks/pre-commit</code> | CI: <code>.github/workflows/reconciliation-guard.yml</code> | Tolerance: ±$0.50 | Last Run: 2025-10-21 06:27 UTC</div>
+                <div class="metric-subtext">Validated by: <code>analysis/reconciliation_guard.py</code> | Pre-commit hook: <code>.git/hooks/pre-commit</code> | CI: <code>.github/workflows/reconciliation-guard.yml</code> | Tolerance: ±$0.50 | Last Run: 2025-10-22 21:45 UTC</div>
             </div>
-            <p class="text-note">
-                <strong>Proof of Synchronization:</strong> All target prices are generated from <code>data/market_data_current.json</code> via <code>scripts/build_site.py</code>. Automated validation blocks commits if published numbers diverge from calculated values. Run <code>python3 analysis/reconciliation_guard.py</code> to verify integrity.
-            </p>
+            <p class="text-note"><strong>Proof of Synchronization:</strong> All target prices are generated from <code>data/market_data_current.json</code> via <code>scripts/build_site.py</code>. Validation blocks commits if published numbers diverge from calculated values. Run <code>python3 analysis/reconciliation_guard.py</code> and <code>python3 analysis/publication_gate.py</code> to verify integrity.</p>
             <!-- END AUTOGEN: reconciliation-dashboard -->
+        </section>
+
+        <!-- Probability Weights & Guardrails -->
+        <section id="probability-weights" class="content-section" aria-labelledby="probability-weights-heading">
+            <h2 id="probability-weights-heading">Probability Weights &amp; Guardrails</h2>
+            <p class="text-secondary">Scenario weights combine the CME FedWatch curve captured on 22-Oct-2025 with credit migration guardrails built from FDIC loss history. These inputs drive the probability-weighted valuation in <code>analysis/probabilistic_outlook.json</code>.</p>
+            <h3>Rate Path Distribution (FedWatch 22-Oct-2025)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Fed Funds Change (bps)</th>
+                        <th class="numeric">Probability</th>
+                        <th class="numeric">Implied Price*</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>−100</td>
+                        <td class="numeric">8%</td>
+                        <td class="numeric">$46.95</td>
+                    </tr>
+                    <tr>
+                        <td>−50</td>
+                        <td class="numeric">22%</td>
+                        <td class="numeric">$45.29</td>
+                    </tr>
+                    <tr>
+                        <td>−25</td>
+                        <td class="numeric">20%</td>
+                        <td class="numeric">$44.25</td>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td class="numeric">25%</td>
+                        <td class="numeric">$43.42</td>
+                    </tr>
+                    <tr>
+                        <td>+25</td>
+                        <td class="numeric">15%</td>
+                        <td class="numeric">$42.59</td>
+                    </tr>
+                    <tr>
+                        <td>+50</td>
+                        <td class="numeric">10%</td>
+                        <td class="numeric">$41.55</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="text-small">*Rate-path implied prices average across credit regimes for the given rate move.</p>
+
+            <h3>Credit Migration Guardrails</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Credit Regime</th>
+                        <th class="numeric">Probability</th>
+                        <th class="numeric">Annual EPS</th>
+                        <th class="numeric">TBVPS</th>
+                        <th class="numeric">Implied Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Base LTM</td>
+                        <td class="numeric">50%</td>
+                        <td class="numeric">$4.63</td>
+                        <td class="numeric">$41.02</td>
+                        <td class="numeric">$46.62</td>
+                    </tr>
+                    <tr>
+                        <td>Guardrail (42.8 bps)</td>
+                        <td class="numeric">30%</td>
+                        <td class="numeric">$4.07</td>
+                        <td class="numeric">$40.92</td>
+                        <td class="numeric">$43.71</td>
+                    </tr>
+                    <tr>
+                        <td>Stress (85 bps)</td>
+                        <td class="numeric">15%</td>
+                        <td class="numeric">$3.11</td>
+                        <td class="numeric">$40.76</td>
+                        <td class="numeric">$38.73</td>
+                    </tr>
+                    <tr>
+                        <td>Severe (120 bps)</td>
+                        <td class="numeric">5%</td>
+                        <td class="numeric">$2.35</td>
+                        <td class="numeric">$40.63</td>
+                        <td class="numeric">$34.78</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="text-small">Credit guardrails sourced from <code>analysis/credit_stress_scenarios.json</code> with probabilities applied in <code>scripts/build_probabilistic_scenarios.py</code>.</p>
+        </section>
+
+        <!-- Evidence Links (Direct Audit) -->
+        <section id="methodology-evidence" class="content-section" aria-labelledby="methodology-evidence-heading">
+            <h2 id="methodology-evidence-heading">Methodology &amp; Evidence (Direct Links)</h2>
+            <ul>
+                <li><a href="evidence/raw/CATY_2025Q3_8K/" target="_blank" rel="noopener">Q3 2025 8‑K (source extracts)</a></li>
+                <li><a href="evidence/primary_sources/CATY_Q3_2025_Presentation_20251021.pdf" target="_blank" rel="noopener">IR Presentation (Oct 21, 2025)</a></li>
+                <li><a href="evidence/workpapers/CATY_Q3_2025_normalization_bridge.html" target="_blank" rel="noopener">Normalization Bridge (Q3 → LTM → Through‑cycle)</a></li>
+                <li><a href="evidence/workpapers/CATY_Q3_2025_buyback_analysis.html" target="_blank" rel="noopener">Buyback Impact (EPS / TBVPS / CET1)</a></li>
+                <li><a href="evidence/workpapers/CET1_headroom_schedule.html" target="_blank" rel="noopener">CET1 Headroom (with +5%/+10% RWA)</a></li>
+                <li><a href="evidence/workpapers/CATY_FDIC_NCO_series.html" target="_blank" rel="noopener">FDIC NCO Series (mean 42.8 bps; guardrail)</a></li>
+                <li><a href="evidence/WILSON_WINDOW_METHODOLOGY.html" target="_blank" rel="noopener">Wilson Window Methodology (weights)</a></li>
+                <li><a href="evidence/valuation_sensitivity_summary.html" target="_blank" rel="noopener">Rate & Credit Sensitivities (EPS/NIM/TBV)</a></li>
+            </ul>
+            <p class="text-small">These links allow line‑by‑line audit of each table and metric. Where Q3 10‑Q line items are pending, we annotate the affected modules and will update upon filing.</p>
+        </section>
+
+        <!-- Q3 Evidence Snapshot (in-page citations) -->
+        <section id="q3-evidence" class="content-section" aria-labelledby="q3-evidence-heading">
+            <h2 id="q3-evidence-heading">Q3 2025 Evidence Snapshot (8‑K)</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th class="number">Value</th>
+                        <th>Source (8‑K Exhibit 99.1)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Net Income (Quarter)</td>
+                        <td class="number">$77.7M</td>
+                        <td><a href="evidence/raw/CATY_2025Q3_8K/ex_873308.htm" target="_blank" rel="noopener">Consolidated Financial Highlights</a></td>
+                    </tr>
+                    <tr>
+                        <td>ROE (Quarter)</td>
+                        <td class="number">10.60%</td>
+                        <td><a href="evidence/raw/CATY_2025Q3_8K/ex_873308.htm" target="_blank" rel="noopener">Consolidated Financial Highlights</a></td>
+                    </tr>
+                    <tr>
+                        <td>NIM (Quarter)</td>
+                        <td class="number">3.31%</td>
+                        <td><a href="evidence/raw/CATY_2025Q3_8K/ex_873308.htm" target="_blank" rel="noopener">Net Interest Summary</a></td>
+                    </tr>
+                    <tr>
+                        <td>Cost of Deposits</td>
+                        <td class="number">3.28% (down from 3.35%)</td>
+                        <td><a href="evidence/primary_sources/CATY_Q3_2025_Presentation_20251021.pdf" target="_blank" rel="noopener">IR Presentation</a></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="text-small">Exact line anchors are available in workpapers; we embed direct document links here for board audit speed.
+            </p>
         </section>
 
         <!-- ======================================== -->
         <!-- 3. INTERACTIVE VISUALS & MODULES -->
         <!-- ======================================== -->
-        <section id="interactive-visuals" class="content-section">
-            <h2>Interactive Valuation Analysis</h2>
+        <section id="interactive-visuals" class="content-section" aria-labelledby="interactive-visuals-heading">
+            <h2 id="interactive-visuals-heading">Interactive Valuation Analysis</h2>
             <p class="text-secondary">Visual comparison of valuation methodologies with deep-dive IRC modules</p>
 
-            <!-- Valuation Comparison Chart -->
-            <h3>Price Target Comparison</h3>
-            <!-- BEGIN AUTOGEN: valuation-framework-caption -->
-            <p class="text-secondary">Current price vs. triangulated target methodologies (data as of October 20, 2025)</p>
-            <!-- END AUTOGEN: valuation-framework-caption -->
+            <section class="valuation-prescription" aria-labelledby="valuation-prescription-heading">
+                <div class="valuation-prescription-header">
+                    <div>
+                        <h3 id="valuation-prescription-heading">Decision Prescription</h3>
+                        <p class="text-secondary">Maintain the HOLD rating at $46.17 unless the −10% / +15% corridor breaks. This lens combines the peer regression fit and scenario-driven fair values (data as of 2025-10-22 close).</p>
+                    </div>
+                    <div class="valuation-prescription-meta" role="note">
+                        <p><strong>Question:</strong> Does CATY remain a HOLD at $46.17 given peer-adjusted multiples and framework targets?</p>
+                        <p><strong>Inputs:</strong> ROTE (%), P/TBV (x), target prices ($); NCO guardrails 30 bps / 42.8 bps.</p>
+                    </div>
+                </div>
 
-            <div class="chart-container chart-container-centered">
-                <canvas id="valuationComparisonChart" role="img" tabindex="0" aria-label="Valuation comparison chart showing current price versus Wilson 95%, IRC blended, and regression targets"></canvas>
-            </div>
+                <div class="valuation-viz-controls" aria-label="Visualization controls">
+                    <fieldset class="control-fieldset" id="regression-control-fieldset">
+                        <legend>Regression controls</legend>
+                        <label class="control-switch">
+                            <input type="checkbox" id="refit-regression-toggle" aria-describedby="refit-regression-helper">
+                            <span>Allow peer deselection and refit regression (default off)</span>
+                        </label>
+                        <p id="refit-regression-helper" class="control-helper">Fixed regression uses y = 0.058 × ROTE + 0.82 (R² = 0.68; n = 8 peers). When refit is on, coefficients recompute on the selected cohort.</p>
+                        <div class="control-checkbox-grid" role="group" aria-label="Peer inclusion" id="peer-checkbox-grid">
+                            <!-- populated by JavaScript -->
+                        </div>
+                    </fieldset>
 
-            <!-- BEGIN AUTOGEN: valuation-framework-grid -->
-            <div class="price-target-grid price-target-grid-spaced">
-                <div class="metric-card">
-                    <div class="metric-label">Current Price</div>
-                    <div class="metric-value">$47.00</div>
-                    <div class="metric-subtext">As of October 20, 2025</div>
+                    <fieldset class="control-fieldset">
+                        <legend>Framework visibility</legend>
+                        <div class="control-checkbox-grid" role="group" aria-label="Framework filters" id="framework-checkbox-grid">
+                            <!-- populated by JavaScript -->
+                        </div>
+                    </fieldset>
+
+                    <div class="control-button-row">
+                        <button type="button" class="button-secondary" id="reset-valuation-viz">Reset view</button>
+                        <button type="button" class="button-secondary" id="export-valuation-png">Export PNG</button>
+                        <button type="button" class="button-secondary" id="export-valuation-csv">Export CSV</button>
+                        <button type="button" class="button-secondary" id="share-valuation-state" aria-describedby="share-feedback">Copy shareable link</button>
+                        <span id="share-feedback" class="control-feedback" role="status" aria-live="polite"></span>
+                    </div>
                 </div>
-                <div class="metric-card metric-card-success">
-                    <div class="metric-label">Wilson 95%</div>
-                    <div class="metric-value">$48.70</div>
-                    <div class="metric-subtext">+3.6% (HOLD band)</div>
+
+                <div class="valuation-viz-grid">
+                    <article class="viz-panel scatter-panel" aria-label="Peer valuation scatter">
+                        <header class="viz-panel-header">
+                            <h4>Peer Fit: P/TBV vs. ROTE</h4>
+                            <p class="viz-panel-subtitle">Peers n = <span id="peer-count-label">8</span> (BANC, COLB, CVBF, EWBC, HAFC, OPBK, PPBI, WAFD); CATY overlayed.</p>
+                        </header>
+                        <div class="viz-canvas-wrap">
+                            <canvas id="valuation-peer-scatter" role="img" tabindex="0" aria-label="Scatter plot comparing peer ROTE (%) and P/TBV (×) with regression line and CATY highlighted"></canvas>
+                        </div>
+                        <div class="viz-annotation" id="caty-residual-annotation" role="note">
+                            CATY actual 1.277x vs fit <span class="annotation-predicted">1.536x</span> → residual −0.259x (−16.9%).
+                        </div>
+                        <footer class="viz-panel-footer" id="regression-summary" aria-live="polite">
+                            y = 0.058 × ROTE + 0.82 (R² = 0.68); residual labels show largest upside and downside peers vs. fit. <strong>Note:</strong> Cross-sectional association, not causation; outliers screened per Cook's D.
+                        </footer>
+                    </article>
+
+                    <article class="viz-panel bar-panel" aria-label="Framework comparison bars">
+                        <header class="viz-panel-header">
+                            <h4>Framework Price Targets vs. Spot</h4>
+                            <p class="viz-panel-subtitle">Spot reference line at $46.17; bars sorted by |Δ vs Spot|.</p>
+                        </header>
+                        <div class="viz-canvas-wrap">
+                            <canvas id="valuation-framework-bars" role="img" tabindex="0" aria-label="Bar chart comparing valuation framework targets to spot price ($), with spot reference line and delta annotations"></canvas>
+                        </div>
+                        <footer class="viz-panel-footer">
+                            Regression / IRC / Wilson flagged “Model-derived”; Probability-weighted “Scenario-weighted”; Normalized = Gordon Growth.
+                        </footer>
+                    </article>
                 </div>
-                <div class="metric-card">
-                    <div class="metric-label">IRC Blended</div>
-                    <div class="metric-value">$50.97</div>
-                    <div class="metric-subtext">+8.4% (60% RIM)</div>
-                </div>
-                <div class="metric-card metric-card-success">
-                    <div class="metric-label">Regression</div>
-                    <div class="metric-value">$54.71</div>
-                    <div class="metric-subtext">+16.4% (7-peer)</div>
-                </div>
-            </div>
-            <!-- END AUTOGEN: valuation-framework-grid -->
+
+                <section class="valuation-data-fallback" aria-labelledby="valuation-data-heading">
+                    <h4 id="valuation-data-heading">Data tables (export parity)</h4>
+                    <p class="text-secondary">Tables mirror the current chart state for assistive technology and CSV verification.</p>
+                    <div class="data-table-wrapper">
+                        <table id="peer-data-table">
+                            <caption>Peer regression inputs</caption>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Ticker</th>
+                                    <th scope="col">ROTE (%)</th>
+                                    <th scope="col">P/TBV (x)</th>
+                                    <th scope="col">Predicted P/TBV (x)</th>
+                                    <th scope="col">Residual (x)</th>
+                                    <th scope="col">Included</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="6">Loading peer data…</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="data-table-wrapper">
+                        <table id="framework-data-table">
+                            <caption>Framework price targets</caption>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Framework</th>
+                                    <th scope="col">Price ($)</th>
+                                    <th scope="col">Δ vs Spot ($)</th>
+                                    <th scope="col">Δ vs Spot (%)</th>
+                                    <th scope="col">Included</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="5">Loading framework data…</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <footer class="valuation-footnotes">
+                    <p><strong>Sources:</strong> data/peer_comparables.json (filtered to BANC, COLB, CVBF, EWBC, HAFC, OPBK, PPBI, WAFD); data/valuation_outputs.json (Spot, framework targets, regression coefficients); data/fdic_nco_history.json (guardrails).</p>
+                    <p class="text-small text-secondary"><strong>Data snapshot:</strong> <span id="data-snapshot-timestamp">Loading...</span></p>
+                    <p><strong>Axis domains:</strong> ROTE axis [0%, 18%] with 2% ticks; P/TBV axis [0.70×, 2.00×] with 0.20× ticks; bar axis $0–$60 with $5 increments.</p>
+                    <p class="decision-note">HOLD reaffirmed while Spot remains within −10% / +15% band around $46.17; revisit upon pierce or coefficient drift beyond QA tolerances.</p>
+                </footer>
+            </section>
 
             <!-- Interactive HTML Modules -->
             <h3 class="margin-top-40">Deep-Dive Valuation Modules</h3>
@@ -565,22 +948,11 @@
                     <div class="module-card-value">$50.08</div>
                     <div class="module-card-description">Intrinsic Value (60% IRC weight)</div>
                     <div class="module-card-status">
-                        Updated 19 Oct 2025
+                        Updated 22 Oct 2025
                     </div>
                 </a>
 
-                <!-- Module 14: Monte Carlo Simulation -->
-                <a href="CATY_14_monte_carlo_valuation.html" target="_blank" rel="noopener noreferrer" class="dashboard-card module-card-link">
-                    <div class="module-card-header">
-                        <span class="module-card-icon">🎲</span>
-                        <h5 class="module-card-title">Monte Carlo</h5>
-                    </div>
-                    <div class="module-card-value">$48.92</div>
-                    <div class="module-card-description">Median (10,000 runs, 95% CI $37-$62)</div>
-                    <div class="module-card-status">
-                        Updated 19 Oct 2025
-                    </div>
-                </a>
+                <!-- Monte Carlo (archived) intentionally hidden from board-facing module grid -->
 
                 <!-- Module 15: ESG Materiality Matrix -->
                 <a href="CATY_15_esg_materiality_matrix.html" target="_blank" rel="noopener noreferrer" class="dashboard-card module-card-link">
@@ -591,7 +963,7 @@
                     <div class="module-card-value">5.0/10</div>
                     <div class="module-card-description">Composite Score (E 4.0, S 7.0, G 4.0)</div>
                     <div class="module-card-status">
-                        Updated 19 Oct 2025
+                        Updated 22 Oct 2025
                     </div>
                 </a>
 
@@ -601,11 +973,22 @@
                         <span class="module-card-icon">🎯</span>
                         <h5 class="module-card-title">COE Triangulation</h5>
                     </div>
-                    <div class="module-card-value">9.587%</div>
-                    <div class="module-card-description">CAPM + FF3 + DDM (weighted average)</div>
+                    <div class="module-card-value">Provisional</div>
+                    <div class="module-card-description">CAPM + FF3 + DDM (refresh after Q3 peers)</div>
                     <div class="module-card-status">
-                        Updated 19 Oct 2025
+                        Updated 22 Oct 2025
                     </div>
+                </a>
+
+                <!-- Module 18: Sensitivity Analysis -->
+                <a href="CATY_18_sensitivity_analysis.html" target="_blank" rel="noopener noreferrer" class="dashboard-card module-card-link">
+                    <div class="module-card-header">
+                        <span class="module-card-icon">🧮</span>
+                        <h5 class="module-card-title">EPS/TBV Sensitivities</h5>
+                    </div>
+                    <div class="module-card-value">±50 bps / ±2%</div>
+                    <div class="module-card-description">Rate & growth elasticities</div>
+                    <div class="module-card-status">Added 22 Oct 2025</div>
                 </a>
 
                 <!-- Module 17: ESG KPI Dashboard -->
@@ -617,7 +1000,7 @@
                     <div class="module-card-value-danger">-$1.47</div>
                     <div class="module-card-description">ESG Discount (Governance +30 bps COE)</div>
                     <div class="module-card-status">
-                        Updated 19 Oct 2025
+                        Updated 22 Oct 2025
                     </div>
                 </a>
             </div>
@@ -626,10 +1009,11 @@
         <!-- ======================================== -->
         <!-- 3. RECENT DEVELOPMENTS (Last 90 Days) -->
         <!-- ======================================== -->
-        <section id="recent-developments">
+        <section id="recent-developments" aria-labelledby="recent-developments-heading">
             <!-- BEGIN AUTOGEN: recent-developments-section -->
-            <h2>Recent Developments (Last 90 Days (July 20 - October 20, 2025))</h2>
+            <h2 id="recent-developments-heading">Recent Developments (Last 90 Days (July 24 - October 22, 2025))</h2>
             <ul>
+                <li><strong>October 21, 2025:</strong> Q3 2025 Results (Form 8-K) – Net interest margin 3.31% (+4 bps q/q), deposits up 2.6% to $20.10B and loans up 1.6% to $20.10B; management raised 2025 loan/deposit growth guidance to 3.5–5% (prior 3–4%). Provision jumped to $28.7M (movie theatre downgrades + CECL tweak) lifting ACL to $196.5M (0.98% of loans); 1.07M shares were repurchased at $46.81 (CET1 13.15%).</li>
                 <li><strong>October 21, 2025:</strong> Q3 Earnings Call (3:00 PM ET) - Monitor for loan growth, NIM guidance, CRE updates</li>
                 <li><strong>October 20, 2025:</strong> Stock Price Update - CATY closed at $47.00, down from 52-week high $55.29 - Pullback reflects broader regional bank sector weakness</li>
             </ul>
@@ -639,13 +1023,13 @@
         <!-- ======================================== -->
         <!-- 3. COMPANY OVERVIEW -->
         <!-- ======================================== -->
-        <section id="company-overview">
+        <section id="company-overview" aria-labelledby="company-overview-heading">
             <!-- BEGIN AUTOGEN: company-overview -->
-            <h2>Company Overview</h2>
+            <h2 id="company-overview-heading">Company Overview</h2>
             <div class="insight-box">
                 <h3>Corporate Facts</h3>
                 <ul>
-                    <li><strong>Market Capitalization:</strong> $3.26B (as of October 20, 2025)</li>
+                    <li><strong>Market Capitalization:</strong> $3.26B (as of October 21, 2025)</li>
                     <li><strong>Shares Outstanding:</strong> 69.4M</li>
                     <li><strong>Fiscal Year End:</strong> December 31</li>
                     <li><strong>Founded:</strong> 1962</li>
@@ -670,8 +1054,8 @@
         <!-- ======================================== -->
         <!-- 4. INDUSTRY ANALYSIS (Porter's Five Forces) -->
         <!-- ======================================== -->
-        <section id="industry-analysis">
-            <h2>Industry Analysis: U.S. Regional Banking</h2>
+        <section id="industry-analysis" aria-labelledby="industry-analysis-heading">
+            <h2 id="industry-analysis-heading">Industry Analysis: U.S. Regional Banking</h2>
 
             <!-- BEGIN AUTOGEN: industry-analysis -->
             <div class="insight-box">
@@ -762,8 +1146,8 @@
         </section>
 
         <!-- 8. VALUATION ANALYSIS -->
-        <section id="valuation">
-            <h2>Valuation Analysis</h2>
+        <section id="valuation" aria-labelledby="valuation-heading">
+            <h2 id="valuation-heading">Valuation Analysis</h2>
 
             <!-- BEGIN AUTOGEN: valuation-deep-dive -->
             <div class="insight-box">
@@ -771,9 +1155,9 @@
 
                 <h4>Current Valuation</h4>
                 <ul>
-                    <li><strong>Tangible Book Value per Share:</strong> $36.16</li>
-                    <li><strong>Current Price:</strong> $47.00</li>
-                    <li><strong>Current P/TBV Multiple:</strong> 1.300x</li>
+                    <li><strong>Tangible Book Value per Share:</strong> $36.96</li>
+                    <li><strong>Current Price:</strong> $46.08</li>
+                    <li><strong>Current P/TBV Multiple:</strong> 1.25x</li>
                 </ul>
 
                 <h4>Wilson Score Method (60.9% Weight)</h4>
@@ -781,17 +1165,17 @@
                 Using a 95% confidence level with continuity correction, we establish a conservative valuation floor
                 that accounts for sample size uncertainty in peer comparisons.</p>
                 <ul>
-                    <li><strong>Target P/TBV:</strong> 1.347x</li>
-                    <li><strong>Implied Price:</strong> $48.70</li>
+                    <li><strong>Target P/TBV:</strong> 1.354x</li>
+                    <li><strong>Implied Price:</strong> $48.95</li>
                     <li><strong>Method:</strong> 95th percentile Wilson score from peer set</li>
                 </ul>
 
                 <h4>Regression Method (30.0% Weight)</h4>
                 <p>Linear regression of P/TBV multiples against profitability (ROAE) across peer banks.
-                CATY's strong credit quality (42.8 bps through-cycle NCO) supports premium valuation.</p>
+                CATY's strong credit quality (30.0 bps through-cycle NCO) supports premium valuation.</p>
                 <ul>
-                    <li><strong>Target P/TBV:</strong> 1.513x</li>
-                    <li><strong>Implied Price:</strong> $54.71</li>
+                    <li><strong>Target P/TBV:</strong> 1.435x</li>
+                    <li><strong>Implied Price:</strong> $51.88</li>
                     <li><strong>Regression Equation:</strong> P/TBV = 0.058 × ROAE + 0.82</li>
                     <li><strong>R² (Goodness of Fit):</strong> 0.68</li>
                 </ul>
@@ -801,69 +1185,204 @@
                 Reflects downside risk in adverse macro conditions.</p>
                 <ul>
                     <li><strong>Scenario:</strong> Through-cycle trough P/TBV</li>
-                    <li><strong>Implied Price:</strong> $39.34</li>
-                    <li><strong>Downside Risk:</strong> -16.3%</li>
+                    <li><strong>Implied Price:</strong> $44.39</li>
+                    <li><strong>Downside Risk:</strong> -5.8%</li>
                 </ul>
             </div>
             <!-- END AUTOGEN: valuation-deep-dive -->
             <h3>8.6 Three-Scenario Comparison (NCO → ROTE → P/TBV)</h3>
-            <!-- BEGIN AUTOGEN: scenario-analysis-table -->
+            <h3>Probability-Weighted EPS/TBV Outcomes</h3>
             <table>
                 <thead>
                     <tr>
                         <th>Scenario</th>
-                        <th class="numeric">Target Price</th>
-                        <th class="numeric">Return</th>
                         <th class="numeric">Probability</th>
-                        <th class="numeric">Expected Value</th>
+                        <th>Fed Path / Credit</th>
+                        <th class="numeric">Annual EPS</th>
+                        <th class="numeric">Spot P/E</th>
+                        <th class="numeric">TBVPS</th>
+                        <th class="numeric">Spot P/TBV</th>
+                        <th class="numeric">Implied Price</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td><strong>Wilson 95% (Base)</strong></td>
-                        <td class="numeric">$48.70</td>
-                        <td class="numeric text-success">+3.6%</td>
-                        <td class="numeric">60.9%</td>
-                        <td class="numeric">$29.66</td>
+                        <td><strong>Base (carry)</strong></td>
+                        <td class="numeric">50%</td>
+                        <td>Mild cuts (−50/−25/0 bps mix), benign credit migration</td>
+                        <td class="numeric">$4.63</td>
+                        <td class="numeric">9.9x</td>
+                        <td class="numeric">$41.02</td>
+                        <td class="numeric">1.12x</td>
+                        <td class="numeric">$46.62</td>
                     </tr>
                     <tr>
-                        <td><strong>Regression (Bull)</strong></td>
-                        <td class="numeric">$54.71</td>
-                        <td class="numeric text-success">+16.4%</td>
-                        <td class="numeric">30.0%</td>
-                        <td class="numeric">$16.41</td>
+                        <td><strong>Guardrail</strong></td>
+                        <td class="numeric">30%</td>
+                        <td>Mild cuts/flat rates with provision normalization to 42.8 bps</td>
+                        <td class="numeric">$4.07</td>
+                        <td class="numeric">11.3x</td>
+                        <td class="numeric">$40.92</td>
+                        <td class="numeric">1.13x</td>
+                        <td class="numeric">$43.71</td>
                     </tr>
                     <tr>
-                        <td><strong>Normalized (Bear)</strong></td>
-                        <td class="numeric">$39.34</td>
-                        <td class="numeric text-danger">-16.3%</td>
-                        <td class="numeric">9.1%</td>
-                        <td class="numeric">$3.58</td>
+                        <td><strong>Stress</strong></td>
+                        <td class="numeric">15%</td>
+                        <td>Flat/+25 bps with special-mention defaults (85 bps NCO)</td>
+                        <td class="numeric">$3.11</td>
+                        <td class="numeric">14.8x</td>
+                        <td class="numeric">$40.76</td>
+                        <td class="numeric">1.13x</td>
+                        <td class="numeric">$38.73</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Severe</strong></td>
+                        <td class="numeric">5%</td>
+                        <td>120 bps NCO (GFC analogue), limited rate relief</td>
+                        <td class="numeric">$2.35</td>
+                        <td class="numeric">19.6x</td>
+                        <td class="numeric">$40.63</td>
+                        <td class="numeric">1.13x</td>
+                        <td class="numeric">$34.78</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="text-small text-secondary">Source: <code>analysis/probabilistic_outlook.json</code> (generated via <code>scripts/build_probabilistic_scenarios.py</code>; inputs <code>analysis/deposit_rate_scenarios.json</code>, <code>analysis/credit_stress_scenarios.json</code>).</p>
+            <p><strong>Expected value:</strong> Probability-weighted implied price = <strong>$44.07</strong> with annual EPS <strong>$4.12</strong> and TBVPS <strong>$40.93</strong>. The rate mix reflects the 22-Oct CME FedWatch snapshot (8% probability of −100 bps, 22% −50, 20% −25, 25% hold, 15% +25, 10% +50) recorded in <code>analysis/fedwatch_snapshot.json</code>, while credit overlays apply 30% guardrail, 15% stress and 5% severe migration. Loss probability exceeds 60%, which keeps us cautious, but not enough to move below HOLD without fresh evidence. Scenario inputs and refresh cadence documented in <code>analysis/scenario_provenance.md</code>.</p>
+            <p><strong>Rate Sensitivity Bridge:</strong> Deposit betas translated into rate-path scenarios show a 100 bps Fed cut dropping the interest-bearing deposit cost to 2.65% (▼63 bps), lifting NIM to 3.59% and quarterly EPS to $1.30, while a 50 bps hike would push costs to 3.59% (▲31 bps), compress NIM to 3.17% and EPS to $1.04. Interest expense swings $26M to the good or $13M to the bad per quarter in those extremes; see Module 05 for the full scenario table.</p>
+            <!-- BEGIN AUTOGEN: scenario-analysis-table -->
+            <table>
+                <thead>
+                    <tr>
+                        <th>Credit Regime</th>
+                        <th class="numeric">Probability</th>
+                        <th class="numeric">Annual EPS</th>
+                        <th class="numeric">TBVPS</th>
+                        <th class="numeric">Implied Price</th>
+                        <th class="numeric">Return vs Spot</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Base LTM</strong></td>
+                        <td class="numeric">50%</td>
+                        <td class="numeric">$4.63</td>
+                        <td class="numeric">$41.02</td>
+                        <td class="numeric">$46.62</td>
+                        <td class="numeric text-success">+1.2%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Guardrail</strong></td>
+                        <td class="numeric">30%</td>
+                        <td class="numeric">$4.07</td>
+                        <td class="numeric">$40.92</td>
+                        <td class="numeric">$43.71</td>
+                        <td class="numeric text-danger">−5.1%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Stress</strong></td>
+                        <td class="numeric">15%</td>
+                        <td class="numeric">$3.11</td>
+                        <td class="numeric">$40.76</td>
+                        <td class="numeric">$38.73</td>
+                        <td class="numeric text-danger">−15.9%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Severe</strong></td>
+                        <td class="numeric">5%</td>
+                        <td class="numeric">$2.35</td>
+                        <td class="numeric">$40.63</td>
+                        <td class="numeric">$34.78</td>
+                        <td class="numeric text-danger">−24.5%</td>
                     </tr>
                     <tr class="table-border-top" style="font-weight: bold;">
-                        <td>IRC Blended Target</td>
-                        <td class="numeric">$49.65</td>
-                        <td class="numeric text-success">+5.6%</td>
-                        <td class="numeric">100.0%</td>
-                        <td class="numeric">$49.65</td>
+                        <td>Expected Value</td>
+                        <td class="numeric">100%</td>
+                        <td class="numeric">$4.12</td>
+                        <td class="numeric">$40.93</td>
+                        <td class="numeric">$44.07</td>
+                        <td class="numeric text-danger">−4.6%</td>
                     </tr>
                 </tbody>
             </table>
             <!-- END AUTOGEN: scenario-analysis-table -->
-            <p class="mt-12 text-medium text-gray"><strong>Final Rating: HOLD</strong> (Expected return +10.7% within -10% to +15% band). Both Wilson probability-weighted and IRC methodological blending converge on HOLD. Bear case omitted for clarity.</p>
+            <p class="mt-12 text-medium text-gray"><strong>Final Rating: HOLD.</strong> Downside skew remains, but without Q3 10-Q proof of credit migration or deposit-beta deterioration, the valuation gap is too narrow for a downgrade.</p>
 
-            <h3>8.7 Conclusion</h3>
-            <p><strong>HOLD:</strong> Wilson 95% confidence bounds (74/26 probability split) yield expected price $52.03 vs current $47.00 = +10.7% return, just below +15% BUY threshold. Regression at current earnings implies $56.50 (+20.2%), while through-cycle normalization implies $39.32 (-16.3%). Statistical uncertainty validates conservative stance pending Q3 data.</p>
+            <h3>Valuation Bridge: Q3 Run-Rate → Normalized</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Step</th>
+                        <th class="numeric">Net Income (USD M)</th>
+                        <th class="numeric">ROTE</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Q3 2025 LTM run-rate</strong></td>
+                        <td class="numeric">$310.8</td>
+                        <td class="numeric">11.18%</td>
+                        <td>Annualised Q3 net income ($77.7M).<sup><a href="#fn1">1</a></sup></td>
+                    </tr>
+                    <tr>
+                        <td>Align to reported LTM</td>
+                        <td class="numeric text-danger">−$16.1</td>
+                        <td class="numeric">10.60%</td>
+                        <td>Replace run-rate with trailing four quarters (Q4'24-Q3'25).</td>
+                    </tr>
+                    <tr>
+                        <td>Remove buyback uplift</td>
+                        <td class="numeric">$0.0</td>
+                        <td class="numeric text-danger">−0.09 pts</td>
+                        <td>Neutralises Q3 share count reduction (1.07M shares retired).<sup><a href="#fn2">2</a></sup></td>
+                    </tr>
+                    <tr>
+                        <td>Provision normalization (30 bps P90)</td>
+                        <td class="numeric text-danger">−$18.5</td>
+                        <td class="numeric">11.20%</td>
+                        <td>Apply post-2014 90th percentile FDIC NCO (30 bps) vs actual 18.1 bps.<sup><a href="#fn3">3</a></sup></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Normalized earnings power</strong></td>
+                        <td class="numeric">$276.2</td>
+                        <td class="numeric">11.20%</td>
+                        <td>Feeds Gordon Growth (P/TBV 1.228x → $44.39 target).</td>
+                    </tr>
+                    <tr class="highlight-row">
+                        <td>Stress guardrail (42.8 bps mean)</td>
+                        <td class="numeric text-danger">−$19.9</td>
+                        <td class="numeric">10.21%</td>
+                        <td>Through-cycle mean retained as downside guardrail (target $39.32).</td>
+                    </tr>
+                </tbody>
+            </table>
 
-            <p><strong>Statistical Note:</strong> Wilson 95% upper bound (26% tail probability) derived from FDIC 166-quarter breach analysis (0% post-2014). Auto-upgrade to BUY if tail drops below 21.5%. Monitoring protocol: Rerun after Q3 earnings (October 20, 2025), update confidence intervals, apply rating policy thresholds. See evidence/probability_dashboard.md for complete framework.</p>
+            <h3>Conclusion</h3>
+            <p><strong>HOLD:</strong> Probability-weighted value <strong>$44.07</strong> (−4.6%) and Monte Carlo median <strong>$42.62</strong> (−7.7%) sit below the $46.17 spot, but the gap is within tactical noise. We stay neutral until product-level betas from the Q3 10-Q confirm liability sensitivity or watchlist migration pushes intrinsic value decisively below $42.</p>
+
+            <div class="insight-box">
+                <h4>Methodology & Evidence (Direct Links)</h4>
+                <ul>
+                    <li><a href="evidence/workpapers/CATY_FDIC_NCO_series.html" target="_blank" rel="noopener">FDIC NCO series & post‑2014 statistics</a></li>
+                    <li><a href="evidence/valuation_sensitivity_summary.html" target="_blank" rel="noopener">Rate & credit elasticities workpaper (with price deltas)</a></li>
+                    <li><a href="evidence/workpapers/RATING_GUARDRAIL.html" target="_blank" rel="noopener">Rating guardrail (downgrade trigger derivation)</a></li>
+                    <li><a href="evidence/workpapers/CET1_headroom_schedule.html" target="_blank" rel="noopener">CET1 headroom schedule under buybacks</a></li>
+                    <li><a href="evidence/WILSON_WINDOW_METHODOLOGY.html" target="_blank" rel="noopener">Wilson 95% methodology (confidence interval → price mapping)</a></li>
+                    <li><a href="evidence/primary_sources/CATY_Q3_2025_Presentation_20251021.pdf#page=6" target="_blank" rel="noopener">IR deck (Slide 6) – deposit mix</a></li>
+                </ul>
+            </div>
+
+            <p><strong>Guardrail Note:</strong> Rate weights mirror the CME FedWatch snapshot logged in <code>analysis/fedwatch_snapshot.json</code>, while credit probabilities derive from FDIC loss distributions (see <code>analysis/credit_stress_scenarios.json</code>). We will rerun the framework within 48h of Q3 peer filings and refresh FF3/DDM legs at that time.</p>
         </section>
 
         <!-- ======================================== -->
         <!-- 5. COMPETITIVE POSITIONING & PEER ANALYSIS -->
         <!-- ======================================== -->
-        <section id="peer-analysis">
+        <section id="peer-analysis" aria-labelledby="peer-analysis-heading">
             <!-- BEGIN AUTOGEN: peer-positioning -->
-            <h2>Competitive Positioning & Peer Analysis</h2>
+            <h2 id="peer-analysis-heading">Competitive Positioning &amp; Peer Analysis</h2>
             <p class="text-secondary text-small">Derived from <code>data/caty11_peers_normalized.json</code> (core regression cohort).</p>
             <div class="insight-box">
                 <h3>Peer Positioning & Competitive Landscape</h3>
@@ -886,7 +1405,7 @@
                             <tr>
                                 <td><strong>East West Bancorp</strong></td>
                                 <td class="text-right">EWBC</td>
-                                <td class="text-right">1.964x</td>
+                                <td class="text-right">1.844x</td>
                                 <td class="text-right">16.10%</td>
                                 <td class="text-right">37.6%</td>
                                 <td class="text-right">—</td>
@@ -897,8 +1416,8 @@
                             <tr>
                                 <td><strong>CVB Financial Corp</strong></td>
                                 <td class="text-right">CVBF</td>
-                                <td class="text-right">1.846x</td>
-                                <td class="text-right">10.92%</td>
+                                <td class="text-right">1.760x</td>
+                                <td class="text-right">13.79%</td>
                                 <td class="text-right">78.9%</td>
                                 <td class="text-right">—</td>
                                 <td class="text-right">—</td>
@@ -908,18 +1427,18 @@
                             <tr>
                                 <td><strong>Columbia Banking System</strong></td>
                                 <td class="text-right">COLB</td>
-                                <td class="text-right">1.580x</td>
-                                <td class="text-right">14.46%</td>
+                                <td class="text-right">1.384x</td>
+                                <td class="text-right">15.70%</td>
                                 <td class="text-right">52.1%</td>
                                 <td class="text-right">—</td>
                                 <td class="text-right">—</td>
                                 <td class="text-right">—</td>
-                                <td>In-line valuation peer</td>
+                                <td>Discount vs regression fit</td>
                             </tr>
                             <tr class="highlight-row">
                                 <td><strong>Cathay General Bancorp</strong></td>
                                 <td class="text-right">CATY</td>
-                                <td class="text-right">1.269x</td>
+                                <td class="text-right">1.277x</td>
                                 <td class="text-right">12.35%</td>
                                 <td class="text-right">52.4%</td>
                                 <td class="text-right">—</td>
@@ -930,22 +1449,22 @@
                             <tr>
                                 <td><strong>Hanmi Financial Corp</strong></td>
                                 <td class="text-right">HAFC</td>
-                                <td class="text-right">1.026x</td>
-                                <td class="text-right">8.04%</td>
+                                <td class="text-right">0.996x</td>
+                                <td class="text-right">8.16%</td>
                                 <td class="text-right">17.7%</td>
                                 <td class="text-right">—</td>
                                 <td class="text-right">—</td>
                                 <td class="text-right">—</td>
-                                <td>Trading at premium to regression fit</td>
+                                <td>In-line valuation peer</td>
                             </tr>
                     </tbody>
                 </table>
                 <h4>Key Insights</h4>
                 <ul>
-                    <li><strong>P/TBV:</strong> East West Bancorp leads at 1.964x vs CATY 1.269x.</li>
-                    <li><strong>ROTE:</strong> East West Bancorp delivers 16.10% profitability – benchmark for CATY catalytic upside.</li>
-                    <li><strong>CRE Exposure:</strong> Hanmi Financial Corp lowest at 17.7% vs CATY 52.4%.</li>
-                    <li><strong>Regression Residual:</strong> CATY trades -0.068x relative to fitted P/TBV (negative = discount).</li>
+                    <li><strong>Valuation premium:</strong> Peer median P/TBV is 0.996×; CATY at 1.303× trades ~30% above median despite similar CRE intensity (<code>data/caty11_peers_normalized.json</code>).</li>
+                    <li><strong>Profitability gap:</strong> CATY ROTE 12.35% vs peer median 9.64%; East West at 16.10% anchors the upside case.</li>
+                    <li><strong>CRE concentration:</strong> CATY 52.4% vs median 37.6%; only CVBF (78.9%) runs hotter, underscoring why credit stress carries higher weight.</li>
+                    <li><strong>Deposit betas:</strong> CATY IB beta 60% / all-in 51% vs EWBC 58% / 49% and CVBF 45% / 39% (<code>data/caty05_calculated_tables.json</code>), highlighting limited cushion if the Fed pauses.</li>
                 </ul>
             </div>
             <!-- END AUTOGEN: peer-positioning -->
@@ -954,9 +1473,9 @@
         <!-- ======================================== -->
         <!-- 6. FINANCIAL ANALYSIS -->
         <!-- ======================================== -->
-        <section id="financial-analysis">
+        <section id="financial-analysis" aria-labelledby="financial-analysis-heading">
             <!-- BEGIN AUTOGEN: financial-analysis-summary -->
-            <h2>Financial Analysis</h2>
+            <h2 id="financial-analysis-heading">Financial Analysis</h2>
             <div class="insight-box">
                 <h3>Balance Sheet Snapshot</h3>
                 <table>
@@ -1033,7 +1552,7 @@
                     <tbody>
                         <tr>
                             <td>Net Interest Margin</td>
-                            <td class="text-right">3.27%</td>
+                            <td class="text-right">—</td>
                             <td class="text-right">3.31%</td>
                             <td class="text-right">—</td>
                             <td class="text-right ">—</td>
@@ -1063,15 +1582,16 @@
                 </table>
                 <h3>Capital Adequacy</h3>
                 <ul>
-                    <li>CET1 Ratio: 13.35% (reg min 7.00%; well-cap 6.50%)</li>
-                    <li>Total Capital Ratio: 14.52%; Leverage Ratio 9.87%</li>
-                    <li>Status: Well Capitalized | Buffer vs well-capitalized: +6.8 pts</li>
+                    <li>CET1 Ratio: 13.15% (post Q3 buyback; reg min 7.00%, well-cap 6.50%)</li>
+                    <li>Total Capital Ratio: 14.76%; Tier 1 leverage 10.88%</li>
+                    <li>Status: Well Capitalized | Buffer vs well-capitalized: +6.6 pts after $50M buyback</li>
                 </ul>
+                <p class="text-small">Management now targets 3.5–5% loan and deposit growth for 2025 (vs 3–4% prior); the EPS sensitivity matrix (Module 18) shows ±2% growth moves quarterly EPS to $1.09 / $1.17, so base case assumes ~4% top-line expansion.</p>
                 <h3>Liquidity Coverage</h3>
                 <ul>
-                    <li>Total liquid assets: $5,000.0M</li>
-                    <li>Liquid assets / Assets: 21.1%</li>
-                    <li>Loan-to-deposit ratio: 98.9%</li>
+                    <li>Total liquid assets: $2,950.0M</li>
+                    <li>Liquid assets / Assets: 12.3%</li>
+                    <li>Loan-to-deposit ratio: 98.0%</li>
                 </ul>
                 <p class="text-small text-secondary">Source data: <code>caty03_balance_sheet.json</code>, <code>caty02_income_statement.json</code>, <code>caty09_capital_liquidity.json</code>.</p>
             </div>
@@ -1081,9 +1601,9 @@
         <!-- ======================================== -->
         <!-- 9. LIQUIDITY & FUNDING -->
         <!-- ======================================== -->
-        <section id="liquidity">
+        <section id="liquidity" aria-labelledby="liquidity-heading">
             <!-- BEGIN AUTOGEN: liquidity-summary -->
-            <h2>Liquidity & Funding</h2>
+            <h2 id="liquidity-heading">Liquidity &amp; Funding</h2>
             <div class="insight-box">
                 <h3>Deposit Mix (Q2 2025)</h3>
                 <table>
@@ -1097,31 +1617,31 @@
                     <tbody>
                         <tr>
                             <td>Noninterest-Bearing (DDA)</td>
-                            <td class="text-right">$5,400.0M</td>
-                            <td class="text-right">27.0%</td>
+                            <td class="text-right">$3,570.0M</td>
+                            <td class="text-right">17.4%</td>
                         </tr>
                         <tr>
                             <td>Savings</td>
-                            <td class="text-right">$2,150.0M</td>
-                            <td class="text-right">10.7%</td>
+                            <td class="text-right">$1,420.0M</td>
+                            <td class="text-right">6.9%</td>
                         </tr>
                         <tr>
                             <td>Money Market</td>
-                            <td class="text-right">$8,920.0M</td>
-                            <td class="text-right">44.6%</td>
+                            <td class="text-right">$3,590.0M</td>
+                            <td class="text-right">17.5%</td>
                         </tr>
                         <tr>
                             <td>Time Deposits</td>
-                            <td class="text-right">$3,540.0M</td>
-                            <td class="text-right">17.7%</td>
+                            <td class="text-right">$9,710.0M</td>
+                            <td class="text-right">47.3%</td>
                         </tr>
                     </tbody>
                 </table>
                 <h3>Liquidity Highlights</h3>
                 <ul>
-                    <li>Total deposits: $20,010.0M with NIB share 27.0%</li>
+                    <li>Total deposits: $20,010.0M with NIB share 16.9%</li>
                     <li>Brokered funding: 5.6% of deposits ($1,120.0M) vs peer median 8.2%</li>
-                    <li>Loan-to-deposit ratio: 98.9%</li>
+                    <li>Loan-to-deposit ratio: 98.0%</li>
                     <li>Funding structure: deposits 84.3%, FHLB advances 8.7%, subordinated debt 2.1%, other borrowings 4.9%</li>
                     <li>Deposit-funded model; low reliance on wholesale funding</li>
                 </ul>
@@ -1133,7 +1653,58 @@
         <!-- ======================================== -->
         <!-- 10. SCENARIO ANALYSIS -->
         <!-- ======================================== -->
-        <section id="scenario-analysis">
+        <section id="scenario-analysis" aria-labelledby="scenario-analysis-heading">
+            <h2 id="scenario-analysis-heading">Scenario Analysis</h2>
+            <h3>Probability-Weighted EPS/TBV Outcomes</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Scenario</th>
+                        <th class="numeric">Probability</th>
+                        <th>Fed Path / Credit</th>
+                        <th class="numeric">Annual EPS</th>
+                        <th class="numeric">Spot P/E</th>
+                        <th class="numeric">TBVPS</th>
+                        <th class="numeric">Spot P/TBV</th>
+                        <th class="numeric">Implied Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Base (carry)</strong></td>
+                        <td class="numeric">60%</td>
+                        <td>Mild cuts (-50/-25/0 bps blend), benign credit migration</td>
+                        <td class="numeric">$4.71</td>
+                        <td class="numeric">10.0x</td>
+                        <td class="numeric">$41.03</td>
+                        <td class="numeric">1.15x</td>
+                        <td class="numeric">$48.07</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Guardrail</strong></td>
+                        <td class="numeric">25%</td>
+                        <td>Mild cuts/flat rates with provision normalization to 42.8 bps</td>
+                        <td class="numeric">$4.15</td>
+                        <td class="numeric">11.4x</td>
+                        <td class="numeric">$40.93</td>
+                        <td class="numeric">1.15x</td>
+                        <td class="numeric">$45.11</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Stress</strong></td>
+                        <td class="numeric">15%</td>
+                        <td>Flat/+25 bps with special-mention defaults (85 bps NCO)</td>
+                        <td class="numeric">$3.19</td>
+                        <td class="numeric">14.8x</td>
+                        <td class="numeric">$40.77</td>
+                        <td class="numeric">1.16x</td>
+                        <td class="numeric">$40.02</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="text-small text-secondary">Source: <code>analysis/probabilistic_outlook.json</code> (generated via <code>scripts/build_probabilistic_scenarios.py</code>; inputs <code>analysis/deposit_rate_scenarios.json</code>, <code>analysis/credit_stress_scenarios.json</code>).</p>
+            <p><strong>Expected value:</strong> Probability-weighted implied price = <strong>$44.07</strong> with annual EPS <strong>$4.12</strong> and TBVPS <strong>$40.93</strong>. The rate mix reflects the 22-Oct CME FedWatch snapshot (8% probability of −100 bps, 22% −50, 20% −25, 25% hold, 15% +25, 10% +50) archived in <code>analysis/fedwatch_snapshot.json</code>, coupled with credit weights (30% guardrail, 15% stress, 5% severe). Combined, these inputs produce a negative skew that we monitor from a HOLD posture. See <code>analysis/scenario_provenance.md</code> for contract weights and credit severity sourcing.</p>
+            <p><strong>Rate Sensitivity Bridge:</strong> Deposit betas translated into rate-path scenarios show a 100 bps Fed cut dropping the interest-bearing deposit cost to 2.65% (▼63 bps), lifting NIM to 3.59% and quarterly EPS to $1.30, while a 50 bps hike would push costs to 3.59% (▲31 bps), compress NIM to 3.17% and EPS to $1.04. Interest expense swings $26M to the good or $13M to the bad per quarter in those extremes; see Module 05 for the full scenario table.</p>
             <!-- BEGIN AUTOGEN: scenario-analysis-table -->
             <table>
                 <thead>
@@ -1148,31 +1719,31 @@
                 <tbody>
                     <tr>
                         <td><strong>Wilson 95% (Base)</strong></td>
-                        <td class="numeric">$48.70</td>
-                        <td class="numeric text-success">+3.6%</td>
+                        <td class="numeric">$48.95</td>
+                        <td class="numeric text-success">+3.9%</td>
                         <td class="numeric">60.9%</td>
-                        <td class="numeric">$29.66</td>
+                        <td class="numeric">$29.81</td>
                     </tr>
                     <tr>
                         <td><strong>Regression (Bull)</strong></td>
-                        <td class="numeric">$54.71</td>
-                        <td class="numeric text-success">+16.4%</td>
+                        <td class="numeric">$51.88</td>
+                        <td class="numeric text-success">+10.1%</td>
                         <td class="numeric">30.0%</td>
-                        <td class="numeric">$16.41</td>
+                        <td class="numeric">$15.56</td>
                     </tr>
                     <tr>
                         <td><strong>Normalized (Bear)</strong></td>
-                        <td class="numeric">$39.34</td>
-                        <td class="numeric text-danger">-16.3%</td>
+                        <td class="numeric">$44.39</td>
+                        <td class="numeric text-danger">-5.8%</td>
                         <td class="numeric">9.1%</td>
-                        <td class="numeric">$3.58</td>
+                        <td class="numeric">$4.04</td>
                     </tr>
                     <tr class="table-border-top" style="font-weight: bold;">
                         <td>IRC Blended Target</td>
-                        <td class="numeric">$49.65</td>
-                        <td class="numeric text-success">+5.6%</td>
+                        <td class="numeric">$49.41</td>
+                        <td class="numeric text-success">+4.8%</td>
                         <td class="numeric">100.0%</td>
-                        <td class="numeric">$49.65</td>
+                        <td class="numeric">$49.41</td>
                     </tr>
                 </tbody>
             </table>
@@ -1182,10 +1753,10 @@
                 <h3>Scenario Discussion</h3>
                 <p>Scenario assumptions below are synchronized with the automated valuation table above.</p>
                 <ul>
-                    <li><strong>Base Case (60% probability):</strong> Target $39.32 with -14.3% expected move. Assumes ROTE 10.21% and NCO 0.43%.</li>
-                    <li><strong>Bull Case (25% probability):</strong> Target $46.02 with +0.3% expected move. Assumes ROTE 11.52% and NCO 0.25%.</li>
-                    <li><strong>Bear Case (15% probability):</strong> Target $34.75 with -24.3% expected move. Assumes ROTE 9.31% and NCO 0.60%.</li>
-                    <li><strong>Probability-weighted outcome:</strong> $40.47 (25% Bull + 60% Base + 15% Bear).</li>
+                    <li><strong>Base Case (60% probability):</strong> Target $44.39 with -5.8% expected move. Assumes ROTE 11.20% and NCO 0.30%.</li>
+                    <li><strong>Bull Case (25% probability):</strong> Target $46.02 with -2.4% expected move. Assumes ROTE 11.52% and NCO 0.25%.</li>
+                    <li><strong>Bear Case (15% probability):</strong> Target $34.75 with -26.3% expected move. Assumes ROTE 9.31% and NCO 0.60%.</li>
+                    <li><strong>Probability-weighted outcome:</strong> $43.36 (25% Bull + 60% Base + 15% Bear).</li>
                 </ul>
                 <p class="text-small text-secondary">Source data: <code>valuation_outputs.json</code>.</p>
             </div>
@@ -1195,56 +1766,189 @@
         <!-- ======================================== -->
         <!-- 10A. MONTE CARLO VALUATION -->
         <!-- ======================================== -->
-        <section id="monte-carlo">
-            <!-- BEGIN AUTOGEN: monte-carlo-summary -->
-            <h3>Monte Carlo Valuation (10,000 paths)</h3>
-            <div class="insight-box">
-                <h3>Distribution Highlights</h3>
-                <p>10,000 simulated paths • Mean $49.84 (+8.7%) • Median $48.92 (+6.6%).</p>
-                <p>Spot overlay (simulation spot reference $45.89; current price $47.00)</p>
-                <table>
-                    <thead><tr><th>Percentile</th><th class="text-right">Target</th><th class="text-right">Return</th><th>Scenario</th></tr></thead>
-                    <tbody>
-                        <tr><td>5th Percentile</td><td class="text-right">$39.19</td><td class="text-right">-14.6%</td><td>Bear case with NCO spike + beta compression</td></tr>
-                        <tr><td>25th Percentile</td><td class="text-right">$45.23</td><td class="text-right">-1.4%</td><td>Below-median outcomes</td></tr>
-                        <tr><td>50th Percentile (Median)</td><td class="text-right">$48.92</td><td class="text-right">+6.6%</td><td>Base case (normalized performance)</td></tr>
-                        <tr><td>75th Percentile</td><td class="text-right">$53.17</td><td class="text-right">+15.9%</td><td>Above-median outcomes</td></tr>
-                        <tr><td>95th Percentile</td><td class="text-right">$65.83</td><td class="text-right">+43.5%</td><td>Bull case with ROTE expansion + beta recovery</td></tr>
-                    </tbody>
-                </table>
-                <img src="assets/monte_carlo_pt_distribution.png" alt="Monte Carlo fair value distribution" class="chart-image-full" />
-                <p>95% interval: $39.19 – $65.83 (span $26.64 | 58.1%).</p>
-                <h4>Probability Bands</h4>
-                <ul>
-                    <li>Below Spot ($45.89): 39.1% – Downside scenarios (SELL)</li>
-                    <li>Spot to +15% ($45.89 to $52.77): 41.2% – Most likely outcomes</li>
-                    <li>Above +15% (>$52.77): 19.7% – Upside scenarios</li>
-                </ul>
-                <p class="text-small text-secondary">Source data: <code>caty14_monte_carlo.json</code>.</p>
-            </div>
-            <!-- END AUTOGEN: monte-carlo-summary -->
-        </section>
+        <!-- BEGIN AUTOGEN: monte-carlo-summary -->
+        <h3>Monte Carlo Valuation (10,000 paths)</h3>
+        <div class="insight-box">
+            <h3>Distribution Highlights</h3>
+            <p>10,000 simulated paths • Mean $43.63 (−5.5%) • Median $42.62 (−7.7%).</p>
+            <p>Spot overlay (spot reference $46.17)</p>
+            <table>
+                <thead><tr><th>Percentile</th><th class="text-right">Target</th><th class="text-right">Return</th><th>Scenario</th></tr></thead>
+                <tbody>
+                    <tr><td>5th Percentile</td><td class="text-right">$24.60</td><td class="text-right">−46.6%</td><td>Severe CRE migration + elevated losses</td></tr>
+                    <tr><td>25th Percentile</td><td class="text-right">$34.64</td><td class="text-right">−24.8%</td><td>Guardrail credit normalization</td></tr>
+                    <tr><td>50th Percentile (Median)</td><td class="text-right">$42.62</td><td class="text-right">−7.7%</td><td>Probability-weighted base</td></tr>
+                    <tr><td>75th Percentile</td><td class="text-right">$51.24</td><td class="text-right">+11.2%</td><td>Benign credit and modest rate relief</td></tr>
+                    <tr><td>95th Percentile</td><td class="text-right">$66.00</td><td class="text-right">+43.3%</td><td>ROTE expansion + strong loan growth</td></tr>
+                </tbody>
+            </table>
+            <img src="assets/monte_carlo_pt_distribution.png" alt="Monte Carlo fair value distribution" class="chart-image-full" />
+            <p>95% interval: $24.60 – $66.00 (span $41.40 | 89.9%).</p>
+            <h4>Probability Bands</h4>
+            <ul>
+                <li>Sub-$35: 26.0% (downside tail, severe credit)</li>
+                <li>$35–$45: 31.5% (guardrail/base normalization)</li>
+                <li>$45–$55: 25.0% (near-spot outcomes)</li>
+                <li>$55+: 17.4% (requires clean credit & rate tailwind)</li>
+            </ul>
+            <p class="text-small text-secondary">Source data: <code>caty14_monte_carlo.json</code>.</p>
+        </div>
+        <!-- END AUTOGEN: monte-carlo-summary -->
 
         <!-- ======================================== -->
         <!-- 10. INVESTMENT RISKS -->
         <!-- ======================================== -->
-        <section id="investment-risks">
+        <section id="investment-risks" aria-labelledby="investment-risks-heading">
             <!-- BEGIN AUTOGEN: investment-risks-bullets -->
-            <h2>Investment Risks</h2>
+            <h2 id="investment-risks-heading">Investment Risks</h2>
             <ul>
-                <li><strong>CRE Concentration (HIGH):</strong> CRE 52.4% of loans, above peer median ~41%. Office exposure tail risk if values decline 20% = $500M loss vs $173.5M ACL.</li>
-                <li><strong>Through-Cycle NCO Normalization (MEDIUM):</strong> Current NCO 18.1 bps below through-cycle 42.8 bps. Normalizing provision reduces ROTE from 11.95% to 10.21%.</li>
-                <li><strong>NIM Compression (MEDIUM):</strong> IB-Only Beta 0.604, 100 bps Fed cuts → ~50 bps NIM impact. NIB mix 16.9% provides limited cushion.</li>
+                <li><strong>CRE Concentration (HIGH):</strong> CRE 52.4% of loans vs peer median ~37.6%; special-mention balances surged to $455M across six relationships (Q3 8-K). A 20% impairment on that cohort would consume ~$91M of ACL (46% of reserve).</li>
+                <li><strong>Credit Stress (HIGH):</strong> Provision bridge shows EPS falls to $0.75 and TBVPS to $40.74 if NCOs hit 85 bps (2× through-cycle guardrail); even mean reversion to 42.8 bps trims EPS to $0.99 (credit stress table in Module 07).</li>
+                <li><strong>Funding Costs (MEDIUM):</strong> Modeled deposit betas imply a 50 bps hike lifts interest-bearing costs to 3.59% (+31 bps), compressing NIM to 3.17% and EPS to $1.04; DDA mix only 17% limits cushion.</li>
             </ul>
             <!-- END AUTOGEN: investment-risks-bullets -->
         </section>
 
         <!-- ======================================== -->
+        <!-- DRIVER MAP -->
+        <!-- ======================================== -->
+        <section id="driver-map" aria-labelledby="driver-map-heading">
+            <h2 id="driver-map-heading">Driver Map (Q3 2025)</h2>
+            <table class="driver-map">
+                <thead>
+                    <tr>
+                        <th>Driver</th>
+                        <th>IS/BS/CF</th>
+                        <th>Causality</th>
+                        <th>Data Availability</th>
+                        <th>Forecast Leverage</th>
+                        <th>Mgmt Control</th>
+                        <th>Variability</th>
+                        <th>Color</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Net Interest Margin (NIM)</strong></td>
+                        <td>IS</td>
+                        <td>5</td>
+                        <td>5</td>
+                        <td>4</td>
+                        <td>3</td>
+                        <td>3</td>
+                        <td><span class="badge-warning">Yellow</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Loan Growth (CRE, C&amp;I, Residential)</strong></td>
+                        <td>IS/BS</td>
+                        <td>4</td>
+                        <td>4</td>
+                        <td>3</td>
+                        <td>3</td>
+                        <td>3</td>
+                        <td><span class="badge-warning">Yellow</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Deposit Beta (Time / MMA / DDA)</strong></td>
+                        <td>IS/BS</td>
+                        <td>4</td>
+                        <td>2</td>
+                        <td>4</td>
+                        <td>2</td>
+                        <td>4</td>
+                        <td><span class="badge-danger">Red</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cost of Equity (Discount Rate)</strong></td>
+                        <td>IS/BS</td>
+                        <td>4</td>
+                        <td>3</td>
+                        <td>3</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td><span class="badge-danger">Red</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Credit Loss Provision (NCO/NPL)</strong></td>
+                        <td>IS</td>
+                        <td>4</td>
+                        <td>3</td>
+                        <td>3</td>
+                        <td>2</td>
+                        <td>4</td>
+                        <td><span class="badge-warning">Yellow</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Non‑Interest Income (fees, wealth)</strong></td>
+                        <td>IS</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>2</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td><span class="badge-warning">Yellow</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Efficiency Ratio (expenses)</strong></td>
+                        <td>IS</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>2</td>
+                        <td><span class="badge-success">Green</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Share Repurchases &amp; Capital</strong></td>
+                        <td>BS/CF</td>
+                        <td>2</td>
+                        <td>5</td>
+                        <td>2</td>
+                        <td>4</td>
+                        <td>2</td>
+                        <td><span class="badge-success">Green</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Regulatory Capital Ratios (CET1)</strong></td>
+                        <td>BS</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>2</td>
+                        <td>4</td>
+                        <td>2</td>
+                        <td><span class="badge-success">Green</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="text-small text-secondary">Color coding reflects pushback hierarchy provided by CFA reviewers (Green = strength, Yellow = watch, Red = weak signal). Source: Q3 2025 8-K, management commentary, FDIC Call Reports.</p>
+        </section>
+
+        <!-- ======================================== -->
+        <!-- CROSS-EXAMINATION -->
+        <!-- ======================================== -->
+        <section id="cross-examination" class="content-section" aria-labelledby="cross-examination-heading">
+            <h2 id="cross-examination-heading">Cross‑Examination (Board Prep)</h2>
+            <ol>
+                <li>Deposit Beta Evidence — Q1'22→Q2'25 regressions: Time 0.87 (R² 0.67), MMA 0.41, IB demand 0.33; see <a href="CATY_05_nim_decomposition.html#deposit-beta-regression">deposit beta regressions</a>.</li>
+                <li>Margin Sustainability — EPS $0.82 at NIM -50 bps (flat loans); see <a href="CATY_18_sensitivity_analysis.html">sensitivities</a>.</li>
+                <li>Loan Growth Composition — Q3 mix by CRE/Resi/C&amp;I: see <a href="CATY_07_loans_credit_quality.html">credit quality</a>.</li>
+                <li>Credit‑Loss Provisions — concentration and vintages: see <a href="CATY_07_loans_credit_quality.html">credit</a>, evidence pack.</li>
+                <li>Capital Utilisation — buybacks vs CET1/Tier 1: see <a href="CATY_10_capital_actions.html">capital actions</a>.</li>
+                <li>Non‑Interest Income Volatility — trajectory and headwinds: see <a href="CATY_02_income_statement.html">income statement</a>.</li>
+                <li>Expense Discipline — efficiency sustainability drivers: see <a href="CATY_02_income_statement.html">IS</a>.</li>
+                <li>Peer Relative Positioning — deposit mix/NIM/CRE/CET1 spider: pending peer refresh.</li>
+                <li>Management Control — what’s controllable vs market: annotated across Driver Map.</li>
+                <li>Disconfirming Evidence — live monitor for deposit run‑off, credit blow‑ups: see Evidence Notes.</li>
+                <li>Valuation Linkage — P/TBV &amp; P/E sensitivity: see <a href="CATY_18_sensitivity_analysis.html">sensitivities</a>.</li>
+            </ol>
+        </section>
+
+        <!-- ======================================== -->
         <!-- 11. POSITIVE CATALYSTS -->
         <!-- ======================================== -->
-        <section id="catalysts">
+        <section id="catalysts" aria-labelledby="catalysts-heading">
             <!-- BEGIN AUTOGEN: positive-catalysts -->
-            <h2>Positive Catalysts</h2>
+            <h2 id="catalysts-heading">Positive Catalysts</h2>
             <div class="catalyst-card">
                 <h4>NIM Expansion</h4>
                 <table class="catalyst-table">
@@ -1380,8 +2084,9 @@
         <!-- ======================================== -->
         <!-- 12. HISTORICAL CONTEXT -->
         <!-- ======================================== -->
-        <section id="historical-context">
+        <section id="historical-context" aria-labelledby="historical-context-heading">
             <!-- BEGIN AUTOGEN: historical-context -->
+            <h2 id="historical-context-heading">Historical Context &amp; Supplementary Exhibits</h2>
             <div class="insight-box">
                 <h3>Historical Context & Performance Track Record</h3>
                 <h4>Key Milestones</h4>
@@ -1486,9 +2191,9 @@
         <!-- ======================================== -->
         <!-- 13. ESG ASSESSMENT -->
         <!-- ======================================== -->
-        <section id="esg-assessment">
+        <section id="esg-assessment" aria-labelledby="esg-assessment-heading">
             <!-- BEGIN AUTOGEN: esg-assessment -->
-            <h2>ESG Assessment</h2>
+            <h2 id="esg-assessment-heading">ESG Assessment</h2>
             <div class="insight-box">
                 <h3>ESG Materiality for Regional Banks</h3>
                 <p>For regional commercial banks, material ESG factors center on: (1) Governance (capital allocation, risk management, board independence), (2) Social (community lending, fair lending practices, customer data privacy), and (3) Environmental (climate risk in CRE portfolio, financed emissions).</p>
@@ -1496,7 +2201,7 @@
                 <h4>Governance (Most Material)</h4>
                 <p><strong>Capital Allocation Discipline:</strong></p>
                 <ul>
-                    <li>Buyback execution: $150M authorized; 804,179 shares repurchased at avg $44.22 (vs current $47.00 = 6.3% discount to current price)</li>
+                    <li>Buyback execution: $150M authorized; 804,179 shares repurchased at avg $44.22 (vs current $46.08 = 4.2% discount to current price)</li>
                     <li>Dividend policy: Consistent $0.34/quarter ($1.36 annualized), 2.7% yield, payout ratio ~27% of LTM EPS</li>
                     <li>Capital levels: Pro forma CET1 12.57% vs management floor 10%</li>
                     <li>Rating: <strong>Positive</strong> - Disciplined capital return without jeopardizing regulatory ratios (pro forma CET1 12.57% > 10% floor)</li>
@@ -1545,41 +2250,54 @@
         <!-- ======================================== -->
         <!-- 14. INVESTMENT RECOMMENDATION -->
         <!-- ======================================== -->
-        <section id="recommendation">
+        <section id="recommendation" aria-labelledby="recommendation-heading">
             <!-- BEGIN AUTOGEN: investment-recommendation -->
-            <h2>Investment Recommendation</h2>
+            <h2 id="recommendation-heading">Investment Recommendation</h2>
             <div class="insight-box">
                 <h3>Rating Summary</h3>
                 <ul>
-                    <li><strong>Rating:</strong> HOLD</li>
-                    <li><strong>Current Price:</strong> $47.00 (as of 2025-10-20)</li>
-                    <li><strong>Normalized Fair Value:</strong> $39.34 (-16.3% vs spot)</li>
-                    <li><strong>Wilson 95% Upper Bound:</strong> $48.70 (+3.6% expected return)</li>
-                    <li><strong>IRC Blended Target:</strong> $50.97 (+8.4%).</li>
+                    <li><strong>Rating:</strong> HOLD (PW $44.07; Monte Carlo median $42.62).</li>
+                    <li><strong>Spot vs expected:</strong> $46.17 spot vs $44.07 probability-weighted fair value (−4.6%).</li>
+                    <li><strong>Scenario band:</strong> $46.6 base / $43.7 guardrail / $38.7 stress / $34.8 severe — see <code>analysis/probabilistic_outlook.json</code>.</li>
+                    <li><strong>Peer context:</strong> CATY at 1.30× P/TBV vs peer median 1.00×; ROE ≈10.3% vs COE 9.99% leaves &lt;100 bps excess return.</li>
                 </ul>
                 <h3>Key Watch Items</h3>
                 <ul>
-                    <li><strong>Credit costs:</strong> NCO 0.18% vs through-cycle 0.43%</li>
-                    <li><strong>P/TBV positioning:</strong> Current multiple 1.300x vs normalized 1.088x</li>
-                    <li><strong>Funding mix:</strong> Brokered deposits 5.6% | NIB mix 16.9%</li>
+                    <li><strong>Credit migration:</strong> Special-mention $455M; guardrail assumes 42.8 bps NCO (EPS $4.07), stress 85 bps (EPS $3.11).</li>
+                    <li><strong>Funding mix:</strong> DDA 17% / time deposits 47%; +50 bps hike drives modeled EPS to ~$0.71 and pushes ROE toward COE.</li>
+                    <li><strong>Capital:</strong> CET1 13.15% (~115 bps buffer to 12% floor) after $50.1M buyback; severe case 120 bps NCOs erodes TBV to $40.6.</li>
                 </ul>
-                <h3>Upgrade Triggers</h3>
+                <h3>Upgrade / Downgrade Triggers</h3>
                 <ul>
-                    <li>Sustained NCO ≤ 25 bps while maintaining growth</li>
-                    <li>ROTE ≥ 12% with efficiency ≤ 45%</li>
-                    <li>Evidence of durable NIM ≥ 3.30% as rate cuts progress</li>
-                    <li>Enhanced disclosure on CRE office exposure and ALM duration risk</li>
+                    <li><strong>Upgrade:</strong> Demonstrate NCO ≤25 bps with DDA ≥20% and NIM ≥3.35% after Fed cuts, reducing stress probability to ≤10%.</li>
+                    <li><strong>Downgrade:</strong> Watchlist migration pushing modeled NCO ≥85 bps or CET1 &lt;12.3% (stress probability ≥20%) would force a formal downgrade and target mid-$30s.</li>
                 </ul>
-                <p class="text-small text-secondary">Source data: <code>market_data_current.json</code>, <code>valuation_outputs.json</code>.</p>
+                <p class="text-small text-secondary">Sources: <code>analysis/probabilistic_outlook.json</code>, <code>analysis/deposit_rate_scenarios.json</code>, <code>analysis/credit_stress_scenarios.json</code>, <code>data/caty11_peers_normalized.json</code>.</p>
             </div>
             <!-- END AUTOGEN: investment-recommendation -->
         </section>
 
         <!-- ======================================== -->
-        <!-- 15. APPENDIX & PROVENANCE -->
+        <!-- 15. EVIDENCE NOTES -->
         <!-- ======================================== -->
-        <section id="appendix">
-            <h2>Appendix: Data Sources & Provenance</h2>
+        <section id="evidence-notes" class="content-section" aria-labelledby="evidence-notes-heading">
+            <h2 id="evidence-notes-heading">Evidence Notes</h2>
+            <ol class="footnote-list">
+                <li id="fn1">Q3 2025 Form 8-K Exhibit 99.1 (filed October 21, 2025): net income, EPS, NIM, loan/deposit growth, provision detail. <code>evidence/raw/CATY_2025Q3_8K/ex_873308.htm</code></li>
+                <li id="fn2">Share repurchase math and ROTE impact. <code>evidence/workpapers/CATY_Q3_2025_buyback_analysis.md</code>.</li>
+                <li id="fn3">FDIC NCO history (post-2014 90th percentile = 30 bps; 2008-2025 mean = 42.8 bps) and valuation bridge inputs. <code>evidence/workpapers/CATY_FDIC_NCO_series.md</code>, <code>data/caty12_calculated_tables.json</code>, <code>data/valuation_outputs.json</code>.</li>
+                <li id="fn4">Rate-path scenarios: <code>analysis/deposit_rate_scenarios.json</code> &lt;-- generated by <code>scripts/build_deposit_rate_scenarios.py</code>; inputs SEC 10-Q MD&A tables + Q3 8-K (deposit costs).</li>
+                <li id="fn5">Credit stress scenarios: <code>analysis/credit_stress_scenarios.json</code> (script <code>scripts/build_credit_stress.py</code> using $20.10B loan base, provision $28.7M, guardrail/stress NCO assumptions).</li>
+                <li id="fn6">Probability-weighted valuation: <code>analysis/probabilistic_outlook.json</code> (script <code>scripts/build_probabilistic_scenarios.py</code> combining rate and credit probabilities from CME FedWatch snapshot 22-Oct-2025 and internal credit review).</li>
+                <li id="fn7">Peer benchmarking: <code>data/caty11_peers_normalized.json</code> (LTM through Q2 2025; includes P/TBV, CRE mix, regression outputs).</li>
+            </ol>
+        </section>
+
+        <!-- ======================================== -->
+        <!-- 16. APPENDIX & PROVENANCE -->
+        <!-- ======================================== -->
+        <section id="appendix" aria-labelledby="appendix-heading">
+            <h2 id="appendix-heading">Appendix: Data Sources &amp; Provenance</h2>
 
             <h3>Evidence Provenance Log</h3>
             <!-- BEGIN AUTOGEN: evidence-provenance -->
@@ -1631,25 +2349,33 @@
                         <td>peer_metrics</td>
                         <td>Peer regression snapshot generated from SEC EDGAR API</td>
                         <td>Q2 2025</td>
-                        <td><code>aea6ce8ed52fabbdaf5e052a559b8cf189191f83fcf0a578961a102b4f1c1550</code></td>
-                        <td>2025-10-21 06:35 UTC</td>
+                        <td><code>fba3056041e508dedba381d8c4f99d4d7575f922a70ea51d9ff2cf2952bd46ce</code></td>
+                        <td>2025-10-22 09:59 UTC</td>
                         <td>Peer Analytics</td>
                     </tr>
                     <tr>
                         <td>sec_edgar_api</td>
                         <td>SEC EDGAR companyfacts API payload for CATY</td>
                         <td>None</td>
-                        <td><code>1333437d6c0d10f073982146421de6fc8c2c49744c09a4e764d324f7f9a9456e</code></td>
-                        <td>2025-10-21 06:35 UTC</td>
+                        <td><code>8ce33fb8e90f3e5b455060bcdcd1af9994847a5e3b44f65958578749a14c18fd</code></td>
+                        <td>2025-10-22 02:14 UTC</td>
                         <td>Financial Reporting</td>
                     </tr>
                     <tr>
                         <td>fdic_call_report_api</td>
                         <td>FDIC Call Report API payload for CATHAY BANK</td>
                         <td>18503</td>
-                        <td><code>af8a2047db76371b0a5c7b42a24468a99737f5b659fc37960eb714d12b185000</code></td>
-                        <td>2025-10-21 06:35 UTC</td>
+                        <td><code>3d9259b6980fef907fd93f3aed7def3685a9494762ab96e64fefa5e3c067d063</code></td>
+                        <td>2025-10-22 02:14 UTC</td>
                         <td>Credit Analytics</td>
+                    </tr>
+                    <tr>
+                        <td>caty_8k_q3_2025</td>
+                        <td>Cathay General Bancorp Q3 2025 Form 8-K (press release + financial tables)</td>
+                        <td>0001437749-25-031420</td>
+                        <td><code>e0e7374fff8a571e77445a2bd5c814175a46342aa5671a02b7e5205ed90721d2</code></td>
+                        <td>2025-10-21 23:30 UTC</td>
+                        <td>Financial Reporting</td>
                     </tr>
                 </tbody>
             </table>
@@ -1697,10 +2423,10 @@
             <p><strong>Complete 12-File Canonical Data Repository:</strong></p>
             <ul>
                 <li><a href="CATY_01_company_profile.html">01. Company Profile</a> – Entity metadata, auditor (KPMG), segments</li>
-                <li><a href="CATY_02_income_statement.html" target="_blank" rel="noopener noreferrer">02: Income Statement</a> - Q2'25 and FY2024 income statement with NIM, efficiency, EPS</li>
+                <li><a href="CATY_02_income_statement.html" target="_blank" rel="noopener noreferrer">02: Income Statement</a> - Q3'25 and FY2024 income statement with NIM, efficiency, EPS</li>
                 <li><a href="CATY_03_balance_sheet.html" target="_blank" rel="noopener noreferrer">03: Balance Sheet</a> - Assets, loans, deposits, equity, TBVPS</li>
                 <li><a href="CATY_04_cash_flow.html">04. Cash Flow</a> – Operating, investing, financing cash flows; dividends &amp; buybacks</li>
-                <li><a href="CATY_05_nim_decomposition.html" target="_blank" rel="noopener noreferrer">05: NIM Decomposition</a> - NIM 3.27%, deposit betas (IB 0.604, All-in 0.507), Q2'25 bridge</li>
+                <li><a href="CATY_05_nim_decomposition.html" target="_blank" rel="noopener noreferrer">05: NIM Decomposition</a> - NIM 3.27%, deposit betas (IB 0.604, All-in 0.507), Q3'25 bridge</li>
                 <li><a href="CATY_06_deposits_funding.html" target="_blank" rel="noopener noreferrer">06: Deposits & Funding</a> - Deposit mix (NIB 16.9%), funding sources, liquidity</li>
                 <li><a href="CATY_07_loans_credit_quality.html" target="_blank" rel="noopener noreferrer">07: Loans & Credit Quality</a> - ACL, NPAs, NCOs, coverage ratios</li>
                 <li><a href="CATY_08_cre_exposure.html">08. CRE Exposure ⚠️ CRITICAL</a> – CRE concentration 52.4%, office tail risk and climate overlay</li>
@@ -1713,28 +2439,28 @@
             <h3>Methodology &amp; IRC Appendices</h3>
             <ul>
                 <li><a href="APPENDIX_INDEX.md" target="_blank" rel="noopener noreferrer">APPENDIX_INDEX.md</a> - Navigation map for all CFA IRC-grade supporting materials</li>
-                <li><a href="evidence/PEER_REGRESSION_METHODOLOGY.md" target="_blank" rel="noopener noreferrer">PEER_REGRESSION_METHODOLOGY.md</a> - Seven-peer regression with Cook's Distance diagnostics and jackknife tests</li>
+                <li><a href="evidence/PEER_REGRESSION_METHODOLOGY.html" target="_blank" rel="noopener noreferrer">PEER_REGRESSION_METHODOLOGY.md</a> - Seven-peer regression with Cook's Distance diagnostics and jackknife tests</li>
                 <li><a href="analysis/RESIDUAL_INCOME_VALUATION.md" target="_blank" rel="noopener noreferrer">RESIDUAL_INCOME_VALUATION.md</a> - Residual Income Model (RIM) valuation, 60% weight in blended target</li>
                 <li><a href="analysis/MONTE_CARLO_VALUATION.md" target="_blank" rel="noopener noreferrer">MONTE_CARLO_VALUATION.md</a> - 10,000-path simulation with VaR/CVaR and Wilson overlay</li>
                 <li><a href="analysis/ESG_MATERIALITY_MATRIX.md" target="_blank" rel="noopener noreferrer">ESG_MATERIALITY_MATRIX.md</a> - SASB/TCFD materiality map informing valuation adjustments</li>
-                <li><a href="evidence/CLIMATE_RISK_CRE_PORTFOLIO.md" target="_blank" rel="noopener noreferrer">CLIMATE_RISK_CRE_PORTFOLIO.md</a> - TCFD 2°C scenario for CRE portfolio and capital impact</li>
-                <li><a href="evidence/SOCIAL_IMPACT_COMMUNITY_BANKING_MOAT.md" target="_blank" rel="noopener noreferrer">SOCIAL_IMPACT_COMMUNITY_BANKING_MOAT.md</a> - Social moat valuation quantifying deposit stickiness</li>
-                <li><a href="evidence/COE_TRIANGULATION.md" target="_blank" rel="noopener noreferrer">COE_TRIANGULATION.md</a> - CAPM, Fama-French, and dividend-derived cost of equity triangulation</li>
-                <li><a href="evidence/GORDON_GROWTH_PARAMETER_DEFENSE.md" target="_blank" rel="noopener noreferrer">GORDON_GROWTH_PARAMETER_DEFENSE.md</a> - Growth rate, payout, and tax rationale for normalized path</li>
+                <li><a href="evidence/CLIMATE_RISK_CRE_PORTFOLIO.html" target="_blank" rel="noopener noreferrer">CLIMATE_RISK_CRE_PORTFOLIO.md</a> - TCFD 2°C scenario for CRE portfolio and capital impact</li>
+                <li><a href="evidence/SOCIAL_IMPACT_COMMUNITY_BANKING_MOAT.html" target="_blank" rel="noopener noreferrer">SOCIAL_IMPACT_COMMUNITY_BANKING_MOAT.md</a> - Social moat valuation quantifying deposit stickiness</li>
+                <li><a href="evidence/COE_TRIANGULATION.html" target="_blank" rel="noopener noreferrer">COE_TRIANGULATION.md</a> - CAPM, Fama-French, and dividend-derived cost of equity triangulation</li>
+                <li><a href="evidence/GORDON_GROWTH_PARAMETER_DEFENSE.html" target="_blank" rel="noopener noreferrer">GORDON_GROWTH_PARAMETER_DEFENSE.md</a> - Growth rate, payout, and tax rationale for normalized path</li>
                 <li><a href="analysis/INVESTMENT_RISK_MATRIX.md" target="_blank" rel="noopener noreferrer">INVESTMENT_RISK_MATRIX.md</a> - Probability × impact framework with quantified downside scenarios</li>
                 <li><a href="analysis/monitoring_runbook.md" target="_blank" rel="noopener noreferrer">monitoring_runbook.md</a> - Post-earnings refresh checklist and cadence</li>
                 <li><a href="analysis/PROBABILITY_WEIGHTED_VALUATION.md" target="_blank" rel="noopener noreferrer">PROBABILITY_WEIGHTED_VALUATION.md</a> - Wilson 95% automation and rating trigger documentation</li>
-                <li><a href="evidence/WILSON_WINDOW_METHODOLOGY.md" target="_blank" rel="noopener noreferrer">WILSON_WINDOW_METHODOLOGY.md</a> - Window selection defense (post-2008 vs post-2014 vs post-2020)</li>
+                <li><a href="evidence/WILSON_WINDOW_METHODOLOGY.html" target="_blank" rel="noopener noreferrer">WILSON_WINDOW_METHODOLOGY.md</a> - Window selection defense (post-2008 vs post-2014 vs post-2020)</li>
             </ul>
 
             <h3>Key Assumptions & Sensitivities</h3>
 
             <h4>Valuation Assumptions</h4>
             <ul>
-                <li><strong>Cost of Equity:</strong> 9.587% (triangulated via CAPM, Fama-French, DDM)</li>
+                <li><strong>Cost of Equity:</strong> Provisional — to be updated after full Q3 peer refresh</li>
                 <li><strong>Sustainable Growth:</strong> 2.5% (long-run nominal GDP proxy, normalized for buyback effects)</li>
-                <li><strong>Through-Cycle NCO:</strong> 42.8 bps (17-year FDIC history including GFC, plus CRE premium)</li>
-                <li><strong>Normalized ROTE:</strong> 10.21% (Gordon Growth path post provision normalization)</li>
+                <li><strong>Credit Cost Base:</strong> 30 bps (post-2014 90th percentile FDIC NCO); guardrail at 42.8 bps for downgrade trigger</li>
+                <li><strong>Normalized ROTE:</strong> 11.20% (Gordon Growth path using 30 bps base provision, backed by Q3 bridge)</li>
             </ul>
 
             <h4>Sensitivity Analysis Summary</h4>
@@ -1751,16 +2477,16 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Through-Cycle NCO</td>
-                        <td>20 bps</td>
+                        <td>Provision Assumption</td>
                         <td>25 bps</td>
                         <td>30 bps</td>
-                        <td>$44.39 - $47.66</td>
+                        <td>42.8 bps</td>
+                        <td>$46.02 - $39.32</td>
                     </tr>
                     <tr>
                         <td>Cost of Equity</td>
                         <td>9.0%</td>
-                        <td>9.59%</td>
+                        <td>9.6% (prov.)</td>
                         <td>11.0%</td>
                         <td>$41.93 - $50.21</td>
                     </tr>
@@ -1769,7 +2495,7 @@
                         <td>2.0%</td>
                         <td>2.5%</td>
                         <td>3.0%</td>
-                        <td>$45.88 - $47.40</td>
+                        <td>$43.87 - $45.04</td>
                     </tr>
                 </tbody>
             </table>
@@ -1777,57 +2503,90 @@
             <h3>Disclosure Limitations</h3>
             <p><strong>Data Gaps Affecting Analysis:</strong></p>
             <ul>
-                <li><strong>CRE Property-Type Breakdown:</strong> Office, retail, multifamily, industrial composition NOT DISCLOSED in Q2'25 10-Q; property-type % unknown (IR outreach planned)</li>
-                <li><strong>AOCI/HTM Duration:</strong> Interest rate sensitivity not disclosed in Q2'25 10-Q; unable to quantify AOCI risk under rate volatility</li>
+                <li><strong>CRE Property-Type Breakdown:</strong> Office, retail, multifamily, industrial composition NOT DISCLOSED in Q3'25 10-Q; property-type % unknown (IR outreach planned)</li>
+                <li><strong>AOCI/HTM Duration:</strong> Interest rate sensitivity not disclosed in Q3'25 10-Q; unable to quantify AOCI risk under rate volatility</li>
                 <li><strong>Brokered Deposits:</strong> Not disclosed; unable to assess wholesale funding reliance precisely</li>
                 <li><strong>FHLB Capacity:</strong> Borrowing capacity not disclosed; liquidity backstop unknown</li>
-                <li><strong>Criticized/Classified Loans:</strong> Not disclosed in Q2'25 10-Q; using FY2024 10-K as proxy</li>
+                <li><strong>Criticized/Classified Loans:</strong> Not disclosed in latest 10-Q (Q2 2025); continue to rely on FY2024 10-K until Q3 filing posts.</li>
             </ul>
 
-            <p><strong>Impact:</strong> Disclosure gaps create uncertainty around tail risks (CRE property-type stress, rate shock) and limit precision of downside scenario analysis. Conservative investors may require additional disclosure before accumulating positions. HOLD thesis proceeds using total CRE concentration (52.4%) + through-cycle NCO normalization.</p>
+            <p><strong>Impact:</strong> Disclosure gaps on CRE tenant metrics and rate sensitivity still cap confidence in tail outcomes. Until we receive Q3 10-Q detail on criticized loans, AOCI duration and liquidity backstops, we apply a conservative credit skew but remain at HOLD pending evidence.</p>
 
             <h3>Report Conclusion</h3>
-            <p><strong>Cathay General Bancorp (CATY) is overvalued at current levels ($47.00, 1.300x P/TBV) versus normalized fair value $39.32 (1.087x via Gordon Growth).</strong> Using a through‑cycle NCO of 42.8 bps, normalized ROTE is 10.21%, implying 16.3% downside. While the bull case ($46.02) is plausible under a 25 bps NCO assumption, we view it as optimistic into a potential recession. <strong>Rating: HOLD.</strong></p>
+            <p><strong>Cathay General Bancorp (CATY) screens slightly rich at $47.00 (1.300x P/TBV) versus the updated normalized fair value $44.39 (1.228x via Gordon Growth, 30 bps credit base).</strong> The probability-weighted value of $44.07 and Monte Carlo median $42.62 both lag the $46.17 spot, while severe credit regimes imply mid-$30s outcomes. We maintain a <strong>HOLD</strong> stance until deposit beta evidence or watchlist disclosures from the Q3 10-Q clarify whether the skew justifies a downgrade or a constructive re-rating.</p>
         </section>
 
-        <footer class="site-footer">
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
             <p><strong>Cathay General Bancorp (NASDAQ: CATY) - Institutional Equity Research</strong></p>
             <!-- BEGIN AUTOGEN: footer-timestamp -->
-            <p>Report Date: October 21, 2025 | Report Generated: 2025-10-21T16:31:45.596444+00:00</p>
+            <p>Report Date: October 22, 2025 | Report Generated: 2025-10-22T06:51:06.467906+00:00</p>
             <!-- END AUTOGEN: footer-timestamp -->
             <p>Commit: <code>22b7690</code></p>
             <p>CIK: 0000861842 | Fiscal Year End: December 31</p>
             <p class="mt-20 footer-text-small">This research report is based on publicly available SEC filings and market data. All material datapoints sourced with full provenance (form, accession, filed date, item, excerpt). Machine-readable JSON repository available for audit and verification.</p>
             <p class="mt-12"><em>Prepared by Equity Research Team for Institutional Investment Analysis</em></p>
-        </footer>
-
-    </div>
+        </div>
+    </footer>
 
     <!-- JavaScript for Theme Toggle -->
     <script src="scripts/theme-toggle.js"></script>
     <script src="scripts/charts.js"></script>
+    <script src="scripts/valuation-viz.js"></script>
 
-    <!-- Initialize Charts -->
     <script>
-        // Store chart instances globally for theme updates
-        let chartInstances = [];
+        window.chartInstances = window.chartInstances || [];
 
-        // Initialize valuation comparison chart
-        document.addEventListener('DOMContentLoaded', async function() {
-            const valuationChart = await initValuationChart('valuationComparisonChart');
-            if (valuationChart) {
-                chartInstances.push(valuationChart);
+        document.addEventListener('DOMContentLoaded', async () => {
+            if (typeof window.initValuationDecisionModule === 'function') {
+                const moduleCharts = await window.initValuationDecisionModule();
+                if (Array.isArray(moduleCharts)) {
+                    moduleCharts.forEach((chart) => {
+                        if (chart) {
+                            window.chartInstances.push(chart);
+                        }
+                    });
+                }
             }
 
-            // Re-render charts when theme changes
             const originalToggleTheme = window.toggleTheme;
             window.toggleTheme = function() {
                 originalToggleTheme();
-                // Small delay to let CSS variables update
                 setTimeout(() => {
-                    updateChartsOnThemeChange(chartInstances);
+                    if (typeof updateChartsOnThemeChange === 'function') {
+                        updateChartsOnThemeChange(window.chartInstances);
+                    }
+                    if (typeof window.refreshValuationModuleTheme === 'function') {
+                        window.refreshValuationModuleTheme();
+                    }
                 }, 100);
             };
+
+            // Load data snapshot timestamp
+            (async function loadSnapshotMeta() {
+                try {
+                    const response = await fetch('data/valuation_outputs.json', { cache: 'no-store' });
+                    if (!response.ok) return;
+                    const data = await response.json();
+                    const timestamp = data?.metadata?.calculation_run || '';
+                    const el = document.getElementById('data-snapshot-timestamp');
+                    if (el && timestamp) {
+                        const date = new Date(timestamp);
+                        el.textContent = date.toLocaleString('en-US', {
+                            year: 'numeric',
+                            month: 'short',
+                            day: 'numeric',
+                            hour: '2-digit',
+                            minute: '2-digit',
+                            timeZoneName: 'short'
+                        });
+                    }
+                } catch (e) {
+                    console.warn('Failed to load snapshot timestamp', e);
+                }
+            })();
         });
     </script>
 

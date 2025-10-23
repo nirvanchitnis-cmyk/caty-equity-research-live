@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CATY - Rating Guardrail – SELL Flip Threshold (CATY) | Evidence Repository</title>
+    <link rel="stylesheet" href="../../styles/caty-equity-research.css">
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Toggle dark mode" role="switch" aria-checked="false">
+        <span id="theme-icon" aria-hidden="true">🌙</span>
+        <span id="theme-text">Dark Mode</span>
+    </button>
+
+    <header>
+        <div class="header-content">
+            <h1 class="page-title">Cathay General Bancorp (NASDAQ: CATY)</h1>
+            <p class="page-subtitle">Rating Guardrail – SELL Flip Threshold (CATY)</p>
+            <p class="page-meta">Author: Nirvan Chitnis | Date: October 2025 | Purpose: Evidence documentation</p>
+        </div>
+    </header>
+
+    <main class="container" id="main-content" tabindex="-1">
+        <nav aria-label="Breadcrumb" class="breadcrumb">
+            <a href="../../index.html">← Main Report</a>
+            <span aria-hidden="true"> / </span>
+            <span aria-current="page">Evidence: Rating Guardrail – SELL Flip Threshold (CATY)</span>
+        </nav>
+
+        <p>Prepared: 2025‑10‑22</p>
+
+<p>This memo documents the charge‑off threshold (NCO bps) at which the normalized valuation implies a SELL per policy (expected 12‑month return &lt; −10%). All inputs tie out to the public model and evidence files.</p>
+
+<h3>Inputs (Q3 2025 context)</h3>
+<ul>
+<li>Spot price: $47.13</li>
+<li>TBVPS: $36.16</li>
+<li>Cost of equity (COE): 9.587%</li>
+<li>Long‑run growth (g): 2.5%</li>
+<li>Average loans: $19,449M</li>
+<li>Average tangible common equity (TCE): $2,465.1M</li>
+<li>Base case: NCO 30 bps → normalized NI $276.2M; ROTE 11.20%; P/TBV 1.228×; target $44.39</li>
+<li>Stress guardrail (documentation): NCO 42.8 bps (through‑cycle mean) → ROTE 10.21%; P/TBV 1.087×; target $39.32</li>
+</ul>
+
+<p>Sources: <code>data/market_data_current.json</code>, <code>data/caty12_calculated_tables.json</code>, <code>evidence/workpapers/CATY_FDIC_NCO_series.md</code>.</p>
+
+<h3>SELL threshold calculation</h3>
+<p>We define the SELL flip when the normalized target is 10% below spot.</p>
+
+<p>1) SELL threshold price: 0.90 × $47.13 = $42.42</p>
+<p>2) Required P/TBV at threshold: $42.42 / $36.16 = 1.173×</p>
+<p>3) Gordon link: P/TBV = (ROTE − g)/(COE − g)</p>
+<p>   → Solve for ROTE: ROTE = g + 1.173 × (COE − g) = 2.5% + 1.173 × 7.087% = 10.892%</p>
+<p>4) Base ROTE at 30 bps is 11.20%; delta ROTE to SELL line = −0.308 pp</p>
+<p>5) Empirical ROTE sensitivity to NCO (from published table):</p>
+<p>   30.0 → 42.8 bps raises provision by $23.1M pre‑tax, lowering ROTE from 11.20% to 10.21% (−0.99 pp over +12.8 bps).</p>
+<p>   Approximate slope ≈ −0.077 pp ROTE per +1 bp NCO.</p>
+<p>6) NCO at SELL ≈ 30.0 bps + (0.308 / 0.077) ≈ 34 bps.</p>
+
+<p>Conclusion: If forward NCO expectations rise to ~34 bps (holding other inputs constant), the normalized path crosses the −10% SELL line. The documented 42.8 bps “guardrail” remains the formal stress bar, implying a ~$39.32 target (−16.5%).</p>
+
+<h3>Notes</h3>
+<ul>
+<li>The slope is locally linear between 30 and 42.8 bps; we validate against the 60 bps row where the published ROTE is 9.31%.</li>
+<li>Once peers refresh, re‑solve with updated TBVPS/ROTE and TCE; the guardrail will shift marginally with capital changes.</li>
+</ul>
+
+<h3>Links</h3>
+<ul>
+<li>Normalization bridge (public HTML): <code>CATY_12_valuation_model.html#valuation-summary</code></li>
+<li>FDIC series &amp; stats: <code>evidence/workpapers/CATY_FDIC_NCO_series.md</code></li>
+<li>Model JSON for table rows: <code>data/caty12_calculated_tables.json</code></li>
+</ul>
+
+    </main>
+
+    <footer class="evidence-footer">
+        <p class="footer-text">Evidence documentation for CFA IRC equity research challenge</p>
+        <p class="footer-meta">Author: Nirvan Chitnis | Generated: 2025-10-23 01:13 | Source: RATING_GUARDRAIL.md</p>
+    </footer>
+
+    <script src="../../scripts/theme.js"></script>
+</body>
+</html>

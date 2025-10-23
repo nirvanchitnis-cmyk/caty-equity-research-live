@@ -1,0 +1,15 @@
+{
+  "name": "caty-equity-research-live",
+  "version": "1.0.0",
+  "description": "**Status (22 Oct 2025):** Site is live, publication gate currently **CLEAR**, valuation cards remain hidden under “NOT RATED” until refreshed Q3 inputs (deposit betas, COE, peer regression) are published alongside the sensitivity suite. Peer regression now runs on the eight-bank universe, and deposit betas are captured directly from inline XBRL via the new extractor. Remaining board asks (sensitivities, NIM bridge integration, evidence pack) are locked to the SLAs below.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "playwright": "^1.56.1"
+  }
+}

@@ -32,6 +32,7 @@ PEER_ORDER = [
     "WAFD",
     "PPBI",
     "BANC",
+    "OPBK",
 ]
 
 CSV_FIELDS = [

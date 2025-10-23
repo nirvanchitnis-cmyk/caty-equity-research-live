@@ -140,6 +140,26 @@
       "tbvps": 13.26,
       "total_loans_millions": 12710.06
     },
+    "OPBK": {
+      "accession": "0001722010-25-000005",
+      "cik": "0001722010",
+      "company": "OP Bancorp",
+      "cre_loans_millions": null,
+      "cre_pct": null,
+      "cre_source": "missing",
+      "equity_millions": 213.72,
+      "goodwill_millions": 0.0,
+      "intangibles_millions": 0.0,
+      "net_income_annualisation_factor": 4.0,
+      "net_income_millions": 6.33,
+      "period_end": "2025-06-30",
+      "rote_pct": 11.85,
+      "shares_outstanding_millions": 14.886,
+      "shares_unit": "shares",
+      "tangible_equity_millions": 213.72,
+      "tbvps": 14.36,
+      "total_loans_millions": 1249.84
+    },
     "PPBI": {
       "accession": "0001028918-25-000086",
       "cik": "0001028918",
@@ -181,6 +201,6 @@
       "total_loans_millions": 21367.83
     }
   },
-  "fetch_timestamp": "2025-10-21T06:35:50Z",
+  "fetch_timestamp": "2025-10-22T21:39:09Z",
   "period": "Q2 2025"
 }

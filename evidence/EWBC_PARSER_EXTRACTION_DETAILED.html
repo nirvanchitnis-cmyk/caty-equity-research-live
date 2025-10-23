@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CATY - EWBC Detailed Parser Extraction Report | Evidence Repository</title>
+    <link rel="stylesheet" href="../styles/caty-equity-research.css">
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Toggle dark mode" role="switch" aria-checked="false">
+        <span id="theme-icon" aria-hidden="true">🌙</span>
+        <span id="theme-text">Dark Mode</span>
+    </button>
+
+    <header>
+        <div class="header-content">
+            <h1 class="page-title">Cathay General Bancorp (NASDAQ: CATY)</h1>
+            <p class="page-subtitle">EWBC Detailed Parser Extraction Report</p>
+            <p class="page-meta">Author: Nirvan Chitnis | Date: October 2025 | Purpose: Evidence documentation</p>
+        </div>
+    </header>
+
+    <main class="container" id="main-content" tabindex="-1">
+        <nav aria-label="Breadcrumb" class="breadcrumb">
+            <a href="../index.html">← Main Report</a>
+            <span aria-hidden="true"> / </span>
+            <span aria-current="page">Evidence: EWBC Detailed Parser Extraction Report</span>
+        </nav>
+
+        <h3>Parser Output Summary</h3>
+
+<pre class="code-block"><code>TBVPS: $56.13
+ROTE: 15.84% (annualized from Q2)
+CRE: 70.3% of total loans</code></pre>
+
+<p><strong>Verification Required:</strong></p>
+<ul>
+<li>⚠️ TBVPS components (equity, goodwill, intangibles, shares)</li>
+<li>⚠️ ROTE components (net income, average TCE)</li>
+<li>🚨 CRE ratio (70.3% is high - needs manual table inspection)</li>
+</ul>
+
+<hr>
+
+<h3>TBVPS Calculation ($56.13)</h3>
+
+<h4>Components Extracted:</h4>
+
+<p><strong>Total Stockholders' Equity (June 30, 2025):</strong></p>
+<ul>
+<li><strong>Amount:</strong> $7,925,000,000 (7.925B)</li>
+<li><strong>XBRL Context:</strong> c-3 (instant: 2025-06-30)</li>
+<li><strong>Tag:</strong> us-gaap:StockholdersEquity</li>
+<li><strong>Verification needed:</strong> Consolidated Balance Sheet, June 30, 2025 column</li>
+</ul>
+
+<p><strong>Goodwill:</strong></p>
+<ul>
+<li><strong>Amount:</strong> $188,930,000 (188.9M)</li>
+<li><strong>XBRL Context:</strong> c-3</li>
+<li><strong>Tag:</strong> us-gaap:Goodwill</li>
+<li><strong>Verification needed:</strong> Note 9 or "Goodwill and Other Intangible Assets"</li>
+</ul>
+
+<p><strong>Other Intangible Assets:</strong></p>
+<ul>
+<li><strong>Amount:</strong> $0 (or de minimis)</li>
+<li><strong>XBRL Context:</strong> c-3</li>
+<li><strong>Tag:</strong> us-gaap:IntangibleAssetsNetExcludingGoodwill</li>
+<li><strong>Verification needed:</strong> Same note as goodwill</li>
+</ul>
+
+<p><strong>Tangible Common Equity (TCE):</strong></p>
+<ul>
+<li><strong>Calculation:</strong> $7,925M - $188.9M - $0M = $7,736.1M</li>
+<li><strong>Parser result:</strong> $7,736,070,000</li>
+</ul>
+
+<p><strong>Diluted Shares Outstanding:</strong></p>
+<ul>
+<li><strong>Amount:</strong> 137,821,766 shares (137.8M)</li>
+<li><strong>XBRL Context:</strong> c-2 (instant: 2025-07-31 - latest reported)</li>
+<li><strong>Tag:</strong> us-gaap:WeightedAverageNumberOfDilutedSharesOutstanding</li>
+<li><strong>Verification needed:</strong> Cover page or Note on earnings per share</li>
+</ul>
+
+<p><strong>TBVPS Calculation:</strong></p>
+<pre class="code-block"><code>TCE / Shares = $7,736,070,000 / 137,821,766 = $56.13</code></pre>
+
+<p><strong>Manual Verification Steps:</strong></p>
+<ol>
+<li>Open SEC viewer: https://www.sec.gov/cgi-bin/viewer?action=view&amp;cik=1069157&amp;accession_number=0001069157-25-000096&amp;xbrl_type=v</li>
+<li>Navigate to Consolidated Balance Sheets</li>
+<li>Find June 30, 2025 column</li>
+<li>Verify: Total stockholders' equity = $7,925M</li>
+<li>Navigate to Note 9 (Goodwill and Intangibles)</li>
+<li>Verify: Goodwill = $188.9M, Intangibles = $0M</li>
+<li>Check cover page or EPS note</li>
+<li>Verify: Diluted shares = 137.8M</li>
+<li>Calculate: ($7,925M - $188.9M) / 137.8M = $56.13 ✓</li>
+</ol>
+
+<hr>
+
+<h3>ROTE Calculation (15.84% annualized)</h3>
+
+<h4>Components Extracted:</h4>
+
+<p><strong>Net Income (Q2 2025):</strong></p>
+<ul>
+<li><strong>Amount:</strong> $310,253,000 (310.3M quarterly)</li>
+<li><strong>XBRL Context:</strong> c-5 (duration: 2025-04-01 to 2025-06-30)</li>
+<li><strong>Tag:</strong> us-gaap:NetIncomeLoss</li>
+<li><strong>Verification needed:</strong> Consolidated Statements of Income, Q2 2025 column</li>
+</ul>
+
+<p><strong>Average Tangible Common Equity:</strong></p>
+<ul>
+<li><strong>Beginning TCE (March 31, 2025):</strong> $7,929,465,000</li>
+<ul>
+<li>Equity: $8,118M (context c-35)</li>
+<li>Less Goodwill: $188.9M (context c-35)</li>
+<li>Less Intangibles: $0M</li>
+</ul>
+<li><strong>Ending TCE (June 30, 2025):</strong> $7,736,070,000 (calculated above)</li>
+<li><strong>Average TCE:</strong> ($7,929.5M + $7,736.1M) / 2 = $7,832,767,500</li>
+</ul>
+
+<p><strong>ROTE Calculation:</strong></p>
+<pre class="code-block"><code>Annualized NI = $310.3M × 4 = $1,241.2M
+ROTE = $1,241.2M / $7,832.8M = 15.84%</code></pre>
+
+<p><strong>Parser Output:</strong> 0.1584385... (15.84%)</p>
+
+<p><strong>Manual Verification Steps:</strong></p>
+<ol>
+<li>Consolidated Statements of Income → Q2 2025 column</li>
+<li>Verify: Net income = $310.3M</li>
+<li>MD&amp;A section → Search for "average stockholders' equity" or "average tangible common equity"</li>
+<li>If disclosed: Verify average TCE = $7,833M (approximately)</li>
+<li>If not disclosed: Calculate from beginning/ending equity minus intangibles</li>
+<li>Calculate: ($310.3M × 4) / $7,833M × 100 = 15.84% ✓</li>
+</ol>
+
+<hr>
+
+<h3>CRE Ratio Calculation (70.3%) 🚨 FLAGGED</h3>
+
+<h4>Components Extracted:</h4>
+
+<p><strong>Total Loans:</strong></p>
+<ul>
+<li><strong>Amount:</strong> $26,448,000,000 (26.448B)</li>
+<li><strong>XBRL Context:</strong> c-3</li>
+<li><strong>Tag:</strong> Likely us-gaap:LoansAndLeasesReceivableNetReportedAmount or similar</li>
+<li><strong>Verification needed:</strong> Consolidated Balance Sheet OR Loan Schedule Note</li>
+</ul>
+
+<p><strong>Total CRE:</strong></p>
+<ul>
+<li><strong>Amount:</strong> $18,582,000,000 (18.582B)</li>
+<li><strong>XBRL Context:</strong> Various (loan category contexts)</li>
+<li><strong>Tags:</strong> Sum of construction, multifamily, nonfarm nonresidential, etc.</li>
+<li><strong>Verification needed:</strong> Loan Schedule footnote (typically Note 4 or 5)</li>
+</ul>
+
+<p><strong>CRE Ratio:</strong></p>
+<pre class="code-block"><code>CRE / Total Loans = $18,582M / $26,448M = 70.26% → 70.3%</code></pre>
+
+<p><strong>Parser Output:</strong> 0.7025862... (70.3%)</p>
+
+<p><strong>🚨 VERIFICATION CRITICAL:</strong></p>
+<p>This ratio seems high. Typical regional banks have CRE 40-60% of loans.</p>
+
+<p><strong>Possible Issues:</strong></p>
+<ol>
+<li><strong>Denominator error:</strong> Parser may have used gross loans before allowances instead of net loans</li>
+<li><strong>Numerator error:</strong> Parser may be double-counting categories (e.g., owner-occupied + non-owner-occupied)</li>
+<li><strong>Category inclusion:</strong> Parser may have included loans that aren't technically CRE</li>
+<li><strong>EWBC is actually a CRE specialist:</strong> 70.3% could be accurate for their business model</li>
+</ol>
+
+<p><strong>Manual Verification Steps (CRITICAL):</strong></p>
+<ol>
+<li>Open SEC viewer</li>
+<li>Navigate to Loan Schedule (usually Note 4 or Note 5)</li>
+<li>Find table showing loan categories</li>
+<li>Look for these rows:</li>
+<ul>
+<li>Construction and land development</li>
+<li>Multifamily residential (5+ units)</li>
+<li>Nonfarm nonresidential (commercial real estate)</li>
+<li>Owner-occupied CRE (if separately disclosed)</li>
+</ul>
+<li><strong>Sum CRE categories</strong> (record each line item)</li>
+<li>Find "Total loans" row (verify if gross or net of allowance)</li>
+<li><strong>Calculate:</strong> CRE sum / Total loans × 100</li>
+<li><strong>Compare to 70.3%</strong></li>
+<li>If materially different (&gt;2%), document which categories were missed/added</li>
+<li>Update CSV with verified figure</li>
+</ol>
+
+<p><strong>Expected Manual Result:</strong></p>
+<ul>
+<li>If verified: CRE ~70% → EWBC is CRE-focused bank (not a red flag, just their model)</li>
+<li>If corrected: CRE ~45-55% → Parser denominator error (likely used gross instead of net)</li>
+</ul>
+
+<hr>
+
+<h3>XBRL Context Reference</h3>
+
+<p><strong>Key Context IDs Used:</strong></p>
+<ul>
+<li><code>c-1</code>: Duration 2025-01-01 to 2025-06-30 (YTD)</li>
+<li><code>c-3</code>: Instant 2025-06-30 (current quarter end)</li>
+<li><code>c-4</code>: Instant 2024-12-31 (prior year end)</li>
+<li><code>c-5</code>: Duration 2025-04-01 to 2025-06-30 (Q2 only)</li>
+<li><code>c-35</code>: Instant 2025-03-31 (Q1 end, for average calc)</li>
+</ul>
+
+<hr>
+
+<h3>Manual Verification Checklist (For Tomorrow 0830 PT)</h3>
+
+<h4>TBVPS ($56.13):</h4>
+<ul>
+<li>[ ] Balance Sheet June 30, 2025: Total equity = $7,925M</li>
+<li>[ ] Note 9 (Goodwill): Goodwill = $188.9M</li>
+<li>[ ] Note 9 (Intangibles): Intangibles = $0M or de minimis</li>
+<li>[ ] Cover/EPS Note: Diluted shares = 137.8M</li>
+<li>[ ] Calculation: ($7,925M - $188.9M) / 137.8M = $56.13</li>
+<li>[ ] <strong>Citation:</strong> "Balance Sheet p.__, Note 9 p.__, Shares: Cover"</li>
+</ul>
+
+<h4>ROTE (15.84%):</h4>
+<ul>
+<li>[ ] Income Statement Q2: Net income = $310.3M</li>
+<li>[ ] MD&amp;A or equity note: Average TCE disclosed or calculated</li>
+<li>[ ] Calculation: ($310.3M × 4) / $7,833M = 15.84%</li>
+<li>[ ] <strong>Citation:</strong> "Income Statement p.__, MD&amp;A p.__ (Avg TCE)"</li>
+</ul>
+
+<h4>CRE % (70.3% - CRITICAL):</h4>
+<ul>
+<li>[ ] Loan Schedule Note: Find all CRE categories</li>
+<li>[ ] Sum: Construction + Multifamily + Nonfarm Nonres + Other CRE = $__.__B</li>
+<li>[ ] Total loans denominator: $26.4B (verify gross vs net)</li>
+<li>[ ] Calculation: CRE sum / Total × 100 = __.__%</li>
+<li>[ ] <strong>Citation:</strong> "Loan Schedule Note __ p.__, [Construction $XM + Multifamily $YM + ...] / Total $ZM"</li>
+<li>[ ] If verified 70.3%: Add note "EWBC CRE-focused business model"</li>
+<li>[ ] If materially different: Document correction and reason</li>
+</ul>
+
+<hr>
+
+<h3>Next Actions (0830 PT Oct 19)</h3>
+
+<ol>
+<li><strong>Open SEC viewer</strong> (requires browser - Nirvan or Derek)</li>
+<li><strong>Verify all three metrics</strong> using checklist above</li>
+<li><strong>Update evidence/peer_snapshot_2025Q2.csv:</strong></li>
+<ul>
+<li>Replace "Auto-extracted (context pending)" with actual citations</li>
+<li>Update values if corrections needed</li>
+<li>Add detailed notes in Notes column</li>
+</ul>
+<li><strong>Take screenshots</strong> of key tables and save to evidence/peer_tables/EWBC/</li>
+<li><strong>Log in evidence/README.md</strong> with timestamp and verification status</li>
+</ol>
+
+<hr>
+
+<p><strong>BOTTOM LINE:</strong></p>
+<p>Parser extracted values from XBRL with specific context IDs. Manual verification will confirm or correct these figures. CRE ratio of 70.3% is the highest priority to verify given it's above typical peer range.</p>
+
+<p><strong>—Auto-generated 2025-10-18 23:40 PT</strong></p>
+<p><strong>Manual verification required before use in valuation</strong></p>
+
+    </main>
+
+    <footer class="evidence-footer">
+        <p class="footer-text">Evidence documentation for CFA IRC equity research challenge</p>
+        <p class="footer-meta">Author: Nirvan Chitnis | Generated: 2025-10-23 01:13 | Source: EWBC_PARSER_EXTRACTION_DETAILED.md</p>
+    </footer>
+
+    <script src="../scripts/theme.js"></script>
+</body>
+</html>

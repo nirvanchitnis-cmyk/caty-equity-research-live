@@ -171,7 +171,7 @@ data/valuation_methods.json:
         "normalized_target": 39.32
       },
       "output": {
-        "target": 52.03,
+        "target": 48.70,
         "return_pct": 10.7
       }
     },

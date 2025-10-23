@@ -147,26 +147,60 @@ def main() -> int:
         "methods": methods,
     }
 
-    if existing_outputs.get("scenarios"):
-        valuation_outputs["scenarios"] = existing_outputs["scenarios"]
+    scenarios = existing_outputs.get("scenarios")
+    if scenarios:
+        updated_scenarios: Dict[str, Any] = {}
+        for name, scenario in scenarios.items():
+            entry = deepcopy(scenario)
+            target_raw = entry.get("target_price")
+            try:
+                target_price = float(target_raw)
+            except (TypeError, ValueError):
+                target_price = None
+            if target_price is not None:
+                return_pct = compute_return(target_price, current_price)
+                entry["return_pct"] = return_pct
+                if return_pct >= 0:
+                    entry["return_label"] = "Upside"
+                    entry["return_value_class"] = "scenario-metric-value"
+                else:
+                    entry["return_label"] = "Downside"
+                    entry["return_value_class"] = (
+                        "scenario-metric-value text-danger-dark" if return_pct <= -20 else "scenario-metric-value text-danger"
+                    )
+            updated_scenarios[name] = entry
+        valuation_outputs["scenarios"] = updated_scenarios
 
-    frameworks = existing_outputs.get("frameworks", {})
-    frameworks.update(
-        {
-            "wilson_95": {
-                "target_price": wilson_entry["target_price"],
-                "composition": "60.9% Regression + 39.1% Normalized",
-                "return_pct": wilson_entry["return_pct"],
-                "last_calculated": timestamp,
-            },
-            "irc_blended": {
-                "target_price": irc_entry["target_price"],
-                "composition": "60% RIM + 10% DDM + 30% Regression",
-                "return_pct": irc_entry["return_pct"],
-                "last_calculated": timestamp,
-            },
-        }
-    )
+    frameworks: Dict[str, Any] = {}
+    probability_weighted = existing_outputs.get("frameworks", {}).get("probability_weighted")
+    if probability_weighted:
+        pw_entry = deepcopy(probability_weighted)
+        target_raw = pw_entry.get("target_price")
+        try:
+            target_price = float(target_raw)
+        except (TypeError, ValueError):
+            target_price = None
+        if target_price is not None:
+            pw_entry["return_pct"] = compute_return(target_price, current_price)
+        pw_entry["last_calculated"] = timestamp
+        frameworks["probability_weighted"] = pw_entry
+
+    frameworks["irc_blended"] = {
+        "target_price": irc_entry["target_price"],
+        "target_ptbv": irc_entry["target_ptbv"],
+        "method": irc_entry["method"],
+        "weights": irc_entry["weights"],
+        "inputs": irc_entry["inputs"],
+        "return_pct": irc_entry["return_pct"],
+        "last_calculated": timestamp,
+        "composition": "60% RIM + 10% DDM + 30% Regression",
+    }
+    frameworks["wilson_95"] = {
+        "target_price": wilson_entry["target_price"],
+        "composition": "60.9% Regression + 39.1% Normalized",
+        "return_pct": wilson_entry["return_pct"],
+        "last_calculated": timestamp,
+    }
     valuation_outputs["frameworks"] = frameworks
 
     if existing_outputs.get("assumptions"):

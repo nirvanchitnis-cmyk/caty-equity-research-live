@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CATY - CATY Q3 2025 Normalization Bridge | Evidence Repository</title>
+    <link rel="stylesheet" href="../../styles/caty-equity-research.css">
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Toggle dark mode" role="switch" aria-checked="false">
+        <span id="theme-icon" aria-hidden="true">🌙</span>
+        <span id="theme-text">Dark Mode</span>
+    </button>
+
+    <header>
+        <div class="header-content">
+            <h1 class="page-title">Cathay General Bancorp (NASDAQ: CATY)</h1>
+            <p class="page-subtitle">CATY Q3 2025 Normalization Bridge</p>
+            <p class="page-meta">Author: Nirvan Chitnis | Date: October 2025 | Purpose: Evidence documentation</p>
+        </div>
+    </header>
+
+    <main class="container" id="main-content" tabindex="-1">
+        <nav aria-label="Breadcrumb" class="breadcrumb">
+            <a href="../../index.html">← Main Report</a>
+            <span aria-hidden="true"> / </span>
+            <span aria-current="page">Evidence: CATY Q3 2025 Normalization Bridge</span>
+        </nav>
+
+        <p>Prepared October 22, 2025 to document how the published normalization table in <code>CATY_12_valuation_model.html</code> reconciles to primary filings.</p>
+
+<h3>1. Trailing Twelve-Month Net Income</h3>
+
+<table class="data-table">
+<thead>
+<tr>
+<th>Quarter</th>
+<th>Net Income (USD M)</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Q3 2025</td>
+<td>77.651</td>
+<td>Form 8-K Exhibit 99.1, “Consolidated Financial Highlights”, Net income row, column “Three months ended September 30, 2025” (<code>evidence/raw/CATY_2025Q3_8K/ex_873308.htm</code>, table around line 1740)</td>
+</tr>
+<tr>
+<td>Q2 2025</td>
+<td>77.450</td>
+<td>Form 8-K Exhibit 99.1 (filed July 22, 2025), Net income row, column “Three months ended June 30, 2025” (<code>evidence/raw/CATY_2025Q2_8K_ex_841637.htm</code>, table around line 1965)</td>
+</tr>
+<tr>
+<td>Q1 2025</td>
+<td>69.493</td>
+<td>Form 8-K Exhibit 99.1 (filed April 21, 2025), Net income row, column “Three months ended March 31, 2025” (<code>evidence/raw/CATY_2025Q1_8K_ex_804040.htm</code>, table around line 1775)</td>
+</tr>
+<tr>
+<td>Q4 2024</td>
+<td>80.201</td>
+<td>Form 8-K Exhibit 99.1 (filed January 22, 2025), Net income row, column “Three months ended December 31, 2024” (<code>evidence/raw/CATY_2024Q4_8K_ex_768286.htm</code>, table around line 2085)</td>
+</tr>
+<tr>
+<td><strong>Trailing 12 months</strong></td>
+<td><strong>304.795</strong></td>
+<td>Sum of quarterly figures above (in millions)</td>
+</tr>
+</tbody>
+</table>
+
+<blockquote class="evidence-quote"><strong>Note:</strong> The public bridge continues to reference $294.7M because the automation layer trims $10.1M of non-core items identified in Q4 2024 (equity securities gains and tax adjustments). A backlog item tracks replacing this estimated adjustment with an explicit evidence tie-out once the Q3 10-Q is released.</blockquote>
+
+<h3>2. Provision Overlay (Through-Cycle NCO)</h3>
+
+<ul>
+<li>Reported LTM NCO: 18.1 bps (Form 8-K Exhibit 99.1 credit-quality table, <code>ex_873308.htm</code>, line ~3030).</li>
+<li>Through-cycle NCO assumption: 42.8 bps (FDIC Call Report series <code>NTLNLSCOQR</code>, see <code>evidence/raw/fdic_CATY_NTLNLSCOQR_timeseries.csv</code>).</li>
+<li>Average loans: $19,449M (Form 8-K Exhibit 99.1 balance sheet summary, <code>ex_873308.htm</code>, line ~1560).</li>
+</ul>
+
+<p>Computation:</p>
+
+<pre class="code-block"><code>ΔNCO (bps)      = 42.8 − 18.1 = 24.7 bps
+ΔProvision ($M) = 0.00247 × 19,449 = 48.0
+Tax shield (20%)= 9.6
+After-tax delta = 48.0 − 9.6 = 38.4</code></pre>
+
+<p>Therefore, normalized net income used in the bridge:</p>
+
+<pre class="code-block"><code>Normalized NI = LTM NI (294.7) − 38.4 = 256.3</code></pre>
+
+<p>The public page now cites the exact inputs above and links directly to these sources so the CFA review can recompute the bridge.</p>
+
+<h3>3. Publication Checks</h3>
+
+<ul>
+<li><code>data/caty12_calculated_tables.json</code> → <code>normalization_bridge_detail</code> and <code>nco_sensitivity</code> reference the same arithmetic.</li>
+<li><code>analysis/reconciliation_guard.py</code> verifies that the HTML renders the same numbers as the data files (pending selector update).</li>
+</ul>
+
+
+    </main>
+
+    <footer class="evidence-footer">
+        <p class="footer-text">Evidence documentation for CFA IRC equity research challenge</p>
+        <p class="footer-meta">Author: Nirvan Chitnis | Generated: 2025-10-23 01:13 | Source: CATY_Q3_2025_normalization_bridge.md</p>
+    </footer>
+
+    <script src="../../scripts/theme.js"></script>
+</body>
+</html>

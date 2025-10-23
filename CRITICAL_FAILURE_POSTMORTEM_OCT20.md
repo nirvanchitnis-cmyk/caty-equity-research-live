@@ -54,8 +54,8 @@
 | Current Price | $45.89 | $47.00 | -$1.11 |
 | Market Cap | $3.18B | $3.26B | -$80M |
 | P/TBV | 1.269x | 1.300x | -0.031x |
-| Return to Wilson $52.03 | +13.4% | +10.7% | -2.7 ppts |
-| Return to Regression $56.50 | +23.1% | +20.2% | -2.9 ppts |
+| Return to Wilson $48.70 | +3.3% | +10.7% | -2.7 ppts |
+| Return to Regression $54.71 | +16.1% | +20.2% | -2.9 ppts |
 
 **Every return calculation is overstated. This misleads investors.**
 

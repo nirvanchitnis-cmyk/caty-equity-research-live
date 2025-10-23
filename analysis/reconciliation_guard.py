@@ -74,8 +74,8 @@ def extract_probability_outputs(output: str) -> Dict[str, float]:
     """Extract Wilson 95% target from probability_weighted_valuation.py output"""
     data = {}
 
-    # 95% Upper Bound: P(Current)=74.0%, P(Normalized)=26.0%, Target=$52.03, Return=+13.4%
-    match = re.search(r'95% Upper Bound.*Target=\$\s*(\d+\.\d+).*Return=([+-]\d+\.\d+)%', output)
+    # 95% Upper Bound: P(Current)=74.0%, P(Normalized)=26.0%, Target=$48.70, Return=+3.3%
+    match = re.search(r'Wilson Weighted Target: \$(\d+\.\d+) \(([+-]\d+\.\d+)%\)', output)
     if match:
         data['wilson_target'] = float(match.group(1))
         data['wilson_return'] = float(match.group(2))
@@ -92,7 +92,7 @@ def extract_published_numbers() -> Dict[str, float]:
     if readme_path.exists():
         content = readme_path.read_text()
 
-        # Expected Price: **$52.03 (+13.4%)**
+        # Expected Price: **$48.70 (+3.3%)**
         match = re.search(r'Expected Price:.*\*\*\$(\d+\.\d+)\s*\(([+-]\d+\.\d+)%\)', content)
         if match:
             data['readme_wilson_target'] = float(match.group(1))
@@ -104,12 +104,12 @@ def extract_published_numbers() -> Dict[str, float]:
             data['readme_regression_target'] = float(match.group(1))
 
         # Normalization (Through-Cycle) | ... | **$39.32** | **-14.3%**
-        match = re.search(r'Normalization.*\*\*\$(\d+\.\d+)\*\*', content)
+        match = re.search(r'(Gordon Growth|Normalization).*?\*\*\$(\d+\.\d+)\*\*', content)
         if match:
-            data['readme_normalized_target'] = float(match.group(1))
+            data['readme_normalized_target'] = float(match.group(2))
 
-    # IRC Triangulation: ... = **$51.51**
-        match = re.search(r'IRC Triangulation:.*=\s*\*\*\$(\d+\.\d+)\*\*', content)
+    # IRC Blended value in valuation table
+        match = re.search(r'IRC Blended.*\*\*\$(\d+\.\d+)\*\*', content)
         if match:
             data['readme_irc_blended'] = float(match.group(1))
 
@@ -118,19 +118,19 @@ def extract_published_numbers() -> Dict[str, float]:
     if index_path.exists():
         content = index_path.read_text()
 
-        # Wilson 95% Expected Value: $52.03 (in table)
+        # Wilson 95% Expected Value: $48.70 (in table)
         # Look for the specific pattern: Wilson 95% Expected Value followed by the price in the next <td>
         wilson_match = re.search(
-            r'Wilson 95% Expected Value:.*?<td[^>]*>.*?\$(\d+\.\d+)',
+            r'<td><strong>Wilson 95%.*?</td>\s*<td class="numeric">\$(\d+\.\d+)</td>',
             content,
             re.DOTALL
         )
         if wilson_match:
             data['index_wilson_target'] = float(wilson_match.group(1))
 
-        # IRC Blended (60% RIM + 10% DDM + 30% Relative): $51.51 (in table)
+        # IRC Blended valuation card
         irc_match = re.search(
-            r'IRC Blended \(60% RIM.*?\):</td>\s*<td[^>]*>\$(\d+\.\d+)</td>',
+            r'<div class="metric-label">IRC Blended</div>\s*<div class="metric-value">\$(\d+\.\d+)</div>',
             content,
             re.DOTALL
         )

@@ -9,7 +9,7 @@
 ## DIRECTORY STRUCTURE
 
 ```
-evidence/
+    evidence/
 ├── README.md (this file)
 ├── CRE_OFFICE_STATUS.md
 ├── acl_bridge_2023Q3-2025Q2.md
@@ -18,16 +18,18 @@ evidence/
 ├── fdic_call_report_reconciliation.md
 ├── fdic_cre_2024Q4.csv
 ├── capital_stress_worksheet.md
-├── IR_OUTREACH_PLAN.md
+    ├── IR_OUTREACH_PLAN.md
+    ├── IR_DATA_REQUEST_CRE_DSCR_MATURITY.md
 ├── DEREK_DELIVERABLE_20251018.md
 ├── extract_acl_bridge.py
 ├── parse_acl_all_quarters.py
 ├── primary_sources/
 │   ├── CATY_Q2_2025_Presentation_20250722.pdf
 │   └── CATY_Q2_2025_Presentation_20250722.txt
-└── investor_decks/
-    ├── README.md
-    └── SEARCH_RESULTS.md
+    ├── peer_office_benchmark.md
+    └── investor_decks/
+        ├── README.md
+        └── SEARCH_RESULTS.md
 ```
 
 ---
@@ -129,11 +131,48 @@ evidence/
 - CBD office: $49M (3.3% of office)
 - All property types reconcile to $10,363M total CRE ✓
 
+### primary_sources/CATY_Q3_2025_Presentation_20251021.txt
+**Purpose:** PRIMARY SOURCE (text capture) — Q3 2025 Financial Results Presentation (slides 5–11)
+**Status:** ✅ ARCHIVED
+**File Size:** 3 KB
+**SHA256:** 8cf12b26c8f994d7492e8326e10dc3a90bdcd6343b3a32003e66c0bfbffbea67
+**Capture Date:** 2025-10-22 10:55 PT
+**Source URL:** https://www.cathaybank.com/CGB/pr-20251021-presentation
+**Presented:** October 21, 2025 (Q3'25 earnings call)
+**Key Data:**
+- Total Loans $20.1B; Total CRE ~$10.5B (49% W.A. LTV)
+- CRE swaps notional: $626M; CRE/RBC: ~231% (thresholds 300%/400%)
+- Full CRE composition with average loan sizes/LTVs; Office $1.47B (47% LTV)
+- Office details: sub-type mix, urban/suburban/CBD, geographic mix, avg property size
+
+### primary_sources/CATY_Q3_2025_PressRelease_20251021.pdf
+**Purpose:** PRIMARY SOURCE (PDF) — Q3 2025 Earnings Press Release
+**Status:** ✅ ARCHIVED
+**File Size:** 253 KB
+**SHA256:** bb813f60ddbcd18e5ee935b9c268d14d522d59467717c7c74c1b2421bb1c2dbc
+**Download Date:** 2025-10-22 11:28 PT
+**Source URL:** https://www.cathaybank.com/CGB/pr-20251021
+**Notes:** Contains NIM (3.31%), provision ($28.7M), charge-off table, non-accruals, ACL.
+
+### primary_sources/CATY_Q3_2025_Presentation_20251021.pdf
+**Purpose:** PRIMARY SOURCE (PDF) — Q3 2025 Financial Results Presentation (Investor Deck)
+**Status:** ✅ ARCHIVED
+**File Size:** 639 KB
+**SHA256:** d99670e2eda633fb7e51b1c9dbdfd5bbe5cd8c25a40c70995e2d9647bc7614f3
+**Download Date:** 2025-10-22 11:27 PT
+**Source URL:** https://www.cathaybank.com/CGB/pr-20251021-presentation
+**Notes:** Slides 5–11 used for CRE composition, office detail, swaps notional, CRE/RBC.
+
 ### 2. CRE_OFFICE_STATUS.md
 **Purpose:** Documents office exposure data validation
 **Status:** ✅ CONFIRMED (updated Oct 18, 2025 @ 1530 PT)
 **Key finding:** Office $1.5B (14% of CRE), CBD $49M, LTV 46%
 **Source:** Q2'25 Presentation (archived)
+
+### peer_office_benchmark.md
+**Purpose:** Peer comparison template for office/CRE concentration
+**Status:** ⏳ TO POPULATE
+**Notes:** EWBC, CVBF, HAFC, HOPE, COLB, WAFD, PPBI, BANC — pull latest decks/10‑Qs
 
 ### raw/fdic_CATY_20250630_financials.json
 **Purpose:** FDIC Bank Data API extract (Schedule RC-C balances) for 2025-06-30
@@ -356,6 +395,12 @@ curl -sL 'https://api.fdic.gov/banks/financials?filters=CERT:18503&dates=2024-12
 | 2025-10-18 | 1700 | Evidence folder complete | 13 files added | Git commit 2ff43c0 | ✅ PUSHED |
 | 2025-10-18 | 2125 | Peer filings compressed | *.html → *.html.gz | SHA256 set (see File Inventory) | ✅ UPDATED |
 | 2025-10-19 | 0830 | Peer metric automation | analysis/extract_peer_metrics.py; peer_snapshot_2025Q2.csv | v0.4 (scaled facts + CRE capture, citations populated) | ✅ UPDATED |
+| 2025-10-22 | 1055 | Primary source archived | CATY_Q3_2025_Presentation_20251021.txt | SHA256: 8cf12b26c8f994d7... | ✅ ARCHIVED |
+| 2025-10-22 | 1110 | CRE office status update | CRE_OFFICE_STATUS.md | v3.0 (Q3 integration; gaps flagged) | ✅ UPDATED |
+| 2025-10-22 | 1127 | Primary source archived | CATY_Q3_2025_Presentation_20251021.pdf | SHA256: d99670e2eda633fb... | ✅ ARCHIVED |
+| 2025-10-22 | 1128 | Primary source archived | CATY_Q3_2025_PressRelease_20251021.pdf | SHA256: bb813f60ddbcd18e... | ✅ ARCHIVED |
+| 2025-10-22 | 1130 | IR data request drafted | IR_DATA_REQUEST_CRE_DSCR_MATURITY.md | v0.1 | ✅ CREATED |
+| 2025-10-22 | 0835 | Peer benchmark plan | peer_office_benchmark.md | v0.2 (deadline 2025-10-23 EOD for top‑line metrics) | ✅ UPDATED |
 
 **Governance Protocol:**
 - All primary sources require SHA256 hash documentation
@@ -436,4 +481,3 @@ bf768e927f6ea9d112218930e07af3374bb730699550f79fb8324f64d916ed79  PPBI_2025-06-3
 **Elasticity:** -$1.83 per 10 bps NCO, -$1.57 per 10 bps deposit beta
 
 ---
-

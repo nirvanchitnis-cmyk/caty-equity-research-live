@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CATY - CET1 Headroom & Buyback Capacity – Q3 2025 | Evidence Repository</title>
+    <link rel="stylesheet" href="../../styles/caty-equity-research.css">
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Toggle dark mode" role="switch" aria-checked="false">
+        <span id="theme-icon" aria-hidden="true">🌙</span>
+        <span id="theme-text">Dark Mode</span>
+    </button>
+
+    <header>
+        <div class="header-content">
+            <h1 class="page-title">Cathay General Bancorp (NASDAQ: CATY)</h1>
+            <p class="page-subtitle">CET1 Headroom & Buyback Capacity – Q3 2025</p>
+            <p class="page-meta">Author: Nirvan Chitnis | Date: October 2025 | Purpose: Evidence documentation</p>
+        </div>
+    </header>
+
+    <main class="container" id="main-content" tabindex="-1">
+        <nav aria-label="Breadcrumb" class="breadcrumb">
+            <a href="../../index.html">← Main Report</a>
+            <span aria-hidden="true"> / </span>
+            <span aria-current="page">Evidence: CET1 Headroom & Buyback Capacity – Q3 2025</span>
+        </nav>
+
+        <p>Prepared: 2025‑10‑22</p>
+
+<p>Objective: quantify pro‑forma CET1 paths under continued repurchases using Q3 starting capital and the empirically observed CET1 sensitivity.</p>
+
+<h3>Starting point</h3>
+<ul>
+<li>CET1 ratio: 13.15% (Q3 2025)</li>
+<li>Guardrail (management/conservative floor): 12.00%</li>
+<li>Observed impact: ~$50.1M repurchase in Q3 reduced CET1 ~20 bps and TBVPS by ~16 bps (see <code>CATY_10_capital_actions.html</code>)</li>
+</ul>
+
+<p>Assumption (local linear): each $50M in net repurchases consumes ~20 bps CET1.</p>
+
+<h3>Headroom schedule</h3>
+<table class="data-table">
+<thead>
+<tr>
+<th>Incremental Buyback</th>
+<th>CET1 delta</th>
+<th>Pro‑forma CET1</th>
+<th>Status vs 12%</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$0M (base)</td>
+<td>0 bps</td>
+<td>13.15%</td>
+<td>+115 bps headroom</td>
+</tr>
+<tr>
+<td>$50M</td>
+<td>−20 bps</td>
+<td>12.95%</td>
+<td>+95 bps</td>
+</tr>
+<tr>
+<td>$100M</td>
+<td>−40 bps</td>
+<td>12.75%</td>
+<td>+75 bps</td>
+</tr>
+<tr>
+<td>$150M</td>
+<td>−60 bps</td>
+<td>12.55%</td>
+<td>+55 bps</td>
+</tr>
+<tr>
+<td>$200M</td>
+<td>−80 bps</td>
+<td>12.35%</td>
+<td>+35 bps</td>
+</tr>
+<tr>
+<td>$250M</td>
+<td>−100 bps</td>
+<td>12.15%</td>
+<td>+15 bps</td>
+</tr>
+<tr>
+<td>$300M</td>
+<td>−120 bps</td>
+<td>11.95%</td>
+<td>Breaches guardrail</td>
+</tr>
+</tbody>
+</table>
+
+<h3>Notes &amp; constraints</h3>
+<ul>
+<li>This schedule ignores earnings accretion and RWA changes; actual trajectories will be modestly better as earnings replenish capital.</li>
+<li>A breath test (no dividend cuts): with 70.8% LTM payout (dividends + buybacks), holding CET1 ≥12.0% suggests ≤ ~$250M of additional buybacks unless offset by earnings/RWA management.</li>
+<li>See also EPS/ROTE impacts in <code>CATY_10_capital_actions.html</code> and the buyback analysis workpaper.</li>
+</ul>
+
+<h3>RWA creep scenarios (downgrade‑driven)</h3>
+<p>Approximate impact of RWA increases on CET1 ratio, holding CET1 capital constant (ratio scales as CET1% ÷ (1+ΔRWA%)).</p>
+
+<table class="data-table">
+<thead>
+<tr>
+<th>ΔRWA</th>
+<th>CET1 (no buyback)</th>
+<th>CET1 (−$100M buyback)</th>
+<th>CET1 (−$200M buyback)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>+0%</td>
+<td>13.15%</td>
+<td>12.75%</td>
+<td>12.35%</td>
+</tr>
+<tr>
+<td>+5%</td>
+<td>12.52%</td>
+<td>12.14%</td>
+<td>11.76%</td>
+</tr>
+<tr>
+<td>+10%</td>
+<td>11.95%</td>
+<td>11.59%</td>
+<td>11.23%</td>
+</tr>
+</tbody>
+</table>
+
+<p>Interpretation: A +5% RWA step‑up trims ~63 bps off CET1, independent of buybacks; combine rows with the headroom ladder to set program caps.</p>
+
+<h3>Links</h3>
+<ul>
+<li>Capital module: <code>CATY_10_capital_actions.html#repurchases</code></li>
+<li>Q3 repurchase workpaper: <code>evidence/workpapers/CATY_Q3_2025_buyback_analysis.md</code></li>
+</ul>
+
+    </main>
+
+    <footer class="evidence-footer">
+        <p class="footer-text">Evidence documentation for CFA IRC equity research challenge</p>
+        <p class="footer-meta">Author: Nirvan Chitnis | Generated: 2025-10-23 01:13 | Source: CET1_headroom_schedule.md</p>
+    </footer>
+
+    <script src="../../scripts/theme.js"></script>
+</body>
+</html>

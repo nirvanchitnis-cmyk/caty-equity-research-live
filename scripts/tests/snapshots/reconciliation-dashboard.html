@@ -1,5 +1,5 @@
 <h2>Valuation Reconciliation Dashboard</h2>
-<p class="text-secondary">All methodologies synchronized to single source: <code>data/market_data_current.json</code> | Last Updated: <strong>2025-10-19 20:36 UTC</strong></p>
+<p class="text-secondary">All methodologies synchronized to single source: <code>data/market_data_current.json</code> | Last Updated: <strong>2025-10-21 06:27 UTC</strong></p>
 <table>
     <thead>
         <tr>
@@ -14,66 +14,66 @@
     <tbody>
 <tr>
     <td><strong>Current Spot</strong></td>
-    <td class="text-align-right">$45.89</td>
+    <td class="text-align-right">$47.13</td>
     <td class="text-align-right">—</td>
     <td class="text-align-right">—</td>
-    <td>NASDAQ Close (Oct 18, 2025)</td>
-    <td>2025-10-19 18:47 UTC</td>
+    <td>NASDAQ Close (Oct 20, 2025)</td>
+    <td>2025-10-21 06:27 UTC</td>
 </tr>
 <tr class="row-highlight-yellow">
     <td><strong>Wilson 95% Upper</strong></td>
-    <td class="text-align-right">$52.03</td>
-    <td class="text-align-right">+13.4%</td>
+    <td class="text-align-right">$48.70</td>
+    <td class="text-align-right">+3.3%</td>
     <td class="text-align-right">74% / 26%</td>
     <td><a href="analysis/probability_weighted_valuation.py" target="_blank" rel="noopener noreferrer">analysis/probability_weighted_valuation.py</a></td>
-    <td>2025-10-19 18:47 UTC</td>
+    <td>2025-10-21 06:27 UTC</td>
 </tr>
 <tr>
     <td><strong>IRC Blended (60/10/30)</strong></td>
-    <td class="text-align-right">$51.51</td>
-    <td class="text-align-right">+12.2%</td>
+    <td class="text-align-right">$50.97</td>
+    <td class="text-align-right">+8.1%</td>
     <td class="text-align-right">RIM 60%, DDM 10%, Rel 30%</td>
     <td><a href="analysis/RESIDUAL_INCOME_VALUATION.md" target="_blank" rel="noopener noreferrer">analysis/RESIDUAL_INCOME_VALUATION.md</a></td>
-    <td>2025-10-18 21:00 UTC</td>
+    <td>2025-10-21 06:27 UTC</td>
 </tr>
 <tr>
     <td><strong>Regression (7-peer)</strong></td>
-    <td class="text-align-right">$56.50</td>
-    <td class="text-align-right">+23.1%</td>
+    <td class="text-align-right">$54.71</td>
+    <td class="text-align-right">+16.1%</td>
     <td class="text-align-right">n=7, R²=0.66</td>
     <td><a href="analysis/valuation_bridge_final.py" target="_blank" rel="noopener noreferrer">analysis/valuation_bridge_final.py</a></td>
-    <td>2025-10-19 18:47 UTC</td>
+    <td>2025-10-21 06:27 UTC</td>
 </tr>
 <tr>
     <td><strong>Normalized (Gordon Growth)</strong></td>
-    <td class="text-align-right">$39.32</td>
-    <td class="text-align-right">-14.3%</td>
+    <td class="text-align-right">$39.34</td>
+    <td class="text-align-right">-16.5%</td>
     <td class="text-align-right">NCO 42.8 bps, ROTE 10.21%</td>
     <td><a href="analysis/valuation_bridge_final.py" target="_blank" rel="noopener noreferrer">analysis/valuation_bridge_final.py</a></td>
-    <td>2025-10-19 18:47 UTC</td>
+    <td>2025-10-21 06:27 UTC</td>
 </tr>
 <tr class="row-highlight-blue">
     <td><strong>Market-Implied</strong></td>
-    <td class="text-align-right">$45.89</td>
+    <td class="text-align-right">$47.13</td>
     <td class="text-align-right">+0.0%</td>
     <td class="text-align-right">60.9% / 39.1%</td>
     <td><a href="analysis/probability_weighted_valuation.py" target="_blank" rel="noopener noreferrer">analysis/probability_weighted_valuation.py</a></td>
-    <td>2025-10-19 18:47 UTC</td>
+    <td>2025-10-21 06:27 UTC</td>
 </tr>
 <tr>
     <td><strong>Monte Carlo Median</strong></td>
     <td class="text-align-right">$48.92</td>
-    <td class="text-align-right">+6.6%</td>
+    <td class="text-align-right">+3.8%</td>
     <td class="text-align-right">10K runs, 95% CI $37-$62</td>
     <td><a href="CATY_14_monte_carlo_valuation.html" target="_blank" rel="noopener noreferrer">CATY_14_monte_carlo_valuation.html</a></td>
-    <td>2025-10-18 21:00 UTC</td>
+    <td>2025-10-21 06:27 UTC</td>
 </tr>
     </tbody>
 </table>
 <div class="metric-card metric-card-gold margin-top-20">
     <div class="metric-label">Reconciliation Status</div>
     <div class="metric-value">✅ ALL CHECKS PASS</div>
-    <div class="metric-subtext">Validated by: <code>analysis/reconciliation_guard.py</code> | Pre-commit hook: <code>.git/hooks/pre-commit</code> | CI: <code>.github/workflows/reconciliation-guard.yml</code> | Tolerance: ±$0.50 | Last Run: 2025-10-19 20:36 UTC</div>
+    <div class="metric-subtext">Validated by: <code>analysis/reconciliation_guard.py</code> | Pre-commit hook: <code>.git/hooks/pre-commit</code> | CI: <code>.github/workflows/reconciliation-guard.yml</code> | Tolerance: ±$0.50 | Last Run: 2025-10-21 06:27 UTC</div>
 </div>
 <p class="text-note">
     <strong>Proof of Synchronization:</strong> All target prices are generated from <code>data/market_data_current.json</code> via <code>scripts/build_site.py</code>. Automated validation blocks commits if published numbers diverge from calculated values. Run <code>python3 analysis/reconciliation_guard.py</code> to verify integrity.

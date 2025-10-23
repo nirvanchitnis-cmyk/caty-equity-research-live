@@ -1,0 +1,634 @@
+{
+  "updated_at": "2025-10-22T16:53:03Z",
+  "source": "SEC inline XBRL 10-Q filings (auto-extracted)",
+  "cik": "0000861842",
+  "quarters": [
+    {
+      "quarter": "2022Q1",
+      "report_date": "2022-03-31",
+      "filing_date": "2022-05-09",
+      "accession": "0001437749-22-011384",
+      "primary_document": "caty20220331_10q.htm",
+      "metrics": {
+        "interest_bearing_demand": {
+          "avg_balance_thousands": 2400010.0,
+          "interest_expense_thousands": 481.0,
+          "avg_rate_pct": 0.08,
+          "prior_avg_balance_thousands": 1890390.0,
+          "prior_interest_expense_thousands": 664.0,
+          "prior_avg_rate_pct": 0.14
+        },
+        "money_market": {
+          "avg_balance_thousands": 4815578.0,
+          "interest_expense_thousands": 4460.0,
+          "avg_rate_pct": 0.38,
+          "prior_avg_balance_thousands": 3552217.0,
+          "prior_interest_expense_thousands": 4712.0,
+          "prior_avg_rate_pct": 0.54
+        },
+        "savings": {
+          "avg_balance_thousands": 1076690.0,
+          "interest_expense_thousands": 187.0,
+          "avg_rate_pct": 0.07,
+          "prior_avg_balance_thousands": 845543.0,
+          "prior_interest_expense_thousands": 218.0,
+          "prior_avg_rate_pct": 0.1
+        },
+        "time_deposits": {
+          "avg_balance_thousands": 5289313.0,
+          "interest_expense_thousands": 6060.0,
+          "avg_rate_pct": 0.46,
+          "prior_avg_balance_thousands": 6404755.0,
+          "prior_interest_expense_thousands": 14009.0,
+          "prior_avg_rate_pct": 0.89
+        },
+        "total_interest_bearing": {
+          "avg_balance_thousands": 13581591.0,
+          "interest_expense_thousands": 11188.0,
+          "avg_rate_pct": 0.33,
+          "prior_avg_balance_thousands": 12692905.0,
+          "prior_interest_expense_thousands": 19603.0,
+          "prior_avg_rate_pct": 0.63
+        },
+        "noninterest_demand": {
+          "avg_balance_thousands": 4360392.0
+        }
+      },
+      "derived": {
+        "interest_bearing_rate_pct": 0.33,
+        "all_in_rate_pct": 0.062,
+        "dda_mix_pct": 24.3
+      }
+    },
+    {
+      "quarter": "2022Q2",
+      "report_date": "2022-06-30",
+      "filing_date": "2022-08-09",
+      "accession": "0001437749-22-019456",
+      "primary_document": "caty20220630_10q.htm",
+      "metrics": {
+        "interest_bearing_demand": {
+          "avg_balance_thousands": 2459940.0,
+          "interest_expense_thousands": 810.0,
+          "avg_rate_pct": 0.13,
+          "prior_avg_balance_thousands": 1967069.0,
+          "prior_interest_expense_thousands": 631.0,
+          "prior_avg_rate_pct": 0.13
+        },
+        "money_market": {
+          "avg_balance_thousands": 5291824.0,
+          "interest_expense_thousands": 5879.0,
+          "avg_rate_pct": 0.45,
+          "prior_avg_balance_thousands": 3951549.0,
+          "prior_interest_expense_thousands": 4626.0,
+          "prior_avg_rate_pct": 0.47
+        },
+        "savings": {
+          "avg_balance_thousands": 1183821.0,
+          "interest_expense_thousands": 206.0,
+          "avg_rate_pct": 0.07,
+          "prior_avg_balance_thousands": 896747.0,
+          "prior_interest_expense_thousands": 208.0,
+          "prior_avg_rate_pct": 0.09
+        },
+        "time_deposits": {
+          "avg_balance_thousands": 4881365.0,
+          "interest_expense_thousands": 5724.0,
+          "avg_rate_pct": 0.47,
+          "prior_avg_balance_thousands": 6035219.0,
+          "prior_interest_expense_thousands": 10055.0,
+          "prior_avg_rate_pct": 0.67
+        },
+        "total_interest_bearing": {
+          "avg_balance_thousands": 13816950.0,
+          "interest_expense_thousands": 12619.0,
+          "avg_rate_pct": 0.37,
+          "prior_avg_balance_thousands": 12850584.0,
+          "prior_interest_expense_thousands": 15520.0,
+          "prior_avg_rate_pct": 0.48
+        },
+        "noninterest_demand": {
+          "avg_balance_thousands": 4391925.0
+        }
+      },
+      "derived": {
+        "interest_bearing_rate_pct": 0.37,
+        "all_in_rate_pct": 0.069,
+        "dda_mix_pct": 24.12
+      }
+    },
+    {
+      "quarter": "2022Q3",
+      "report_date": "2022-09-30",
+      "filing_date": "2022-11-08",
+      "accession": "0001437749-22-026389",
+      "primary_document": "caty20220930_10q.htm",
+      "metrics": {
+        "interest_bearing_demand": {
+          "avg_balance_thousands": 2508526.0,
+          "interest_expense_thousands": 1913.0,
+          "avg_rate_pct": 0.3,
+          "prior_avg_balance_thousands": 2109632.0,
+          "prior_interest_expense_thousands": 525.0,
+          "prior_avg_rate_pct": 0.1
+        },
+        "money_market": {
+          "avg_balance_thousands": 5153566.0,
+          "interest_expense_thousands": 11740.0,
+          "avg_rate_pct": 0.9,
+          "prior_avg_balance_thousands": 4228025.0,
+          "prior_interest_expense_thousands": 4554.0,
+          "prior_avg_rate_pct": 0.43
+        },
+        "savings": {
+          "avg_balance_thousands": 1151126.0,
+          "interest_expense_thousands": 218.0,
+          "avg_rate_pct": 0.07,
+          "prior_avg_balance_thousands": 914540.0,
+          "prior_interest_expense_thousands": 164.0,
+          "prior_avg_rate_pct": 0.07
+        },
+        "time_deposits": {
+          "avg_balance_thousands": 5013213.0,
+          "interest_expense_thousands": 10218.0,
+          "avg_rate_pct": 0.81,
+          "prior_avg_balance_thousands": 5882576.0,
+          "prior_interest_expense_thousands": 9299.0,
+          "prior_avg_rate_pct": 0.63
+        },
+        "total_interest_bearing": {
+          "avg_balance_thousands": 13826431.0,
+          "interest_expense_thousands": 24089.0,
+          "avg_rate_pct": 0.69,
+          "prior_avg_balance_thousands": 13134773.0,
+          "prior_interest_expense_thousands": 14542.0,
+          "prior_avg_rate_pct": 0.44
+        },
+        "noninterest_demand": {
+          "avg_balance_thousands": 4456214.0
+        }
+      },
+      "derived": {
+        "interest_bearing_rate_pct": 0.69,
+        "all_in_rate_pct": 0.132,
+        "dda_mix_pct": 24.37
+      }
+    },
+    {
+      "quarter": "2023Q1",
+      "report_date": "2023-03-31",
+      "filing_date": "2023-05-09",
+      "accession": "0001437749-23-013258",
+      "primary_document": "caty20230331_10q.htm",
+      "metrics": {
+        "interest_bearing_demand": {
+          "avg_balance_thousands": 2354531.0,
+          "interest_expense_thousands": 6531.0,
+          "avg_rate_pct": 1.12,
+          "prior_avg_balance_thousands": 2400010.0,
+          "prior_interest_expense_thousands": 481.0,
+          "prior_avg_rate_pct": 0.08
+        },
+        "money_market": {
+          "avg_balance_thousands": 3378257.0,
+          "interest_expense_thousands": 17045.0,
+          "avg_rate_pct": 2.05,
+          "prior_avg_balance_thousands": 4815578.0,
+          "prior_interest_expense_thousands": 4460.0,
+          "prior_avg_rate_pct": 0.38
+        },
+        "savings": {
+          "avg_balance_thousands": 938485.0,
+          "interest_expense_thousands": 241.0,
+          "avg_rate_pct": 0.1,
+          "prior_avg_balance_thousands": 1076690.0,
+          "prior_interest_expense_thousands": 187.0,
+          "prior_avg_rate_pct": 0.07
+        },
+        "time_deposits": {
+          "avg_balance_thousands": 8225215.0,
+          "interest_expense_thousands": 64174.0,
+          "avg_rate_pct": 3.16,
+          "prior_avg_balance_thousands": 5289313.0,
+          "prior_interest_expense_thousands": 6060.0,
+          "prior_avg_rate_pct": 0.46
+        },
+        "total_interest_bearing": {
+          "avg_balance_thousands": 14896488.0,
+          "interest_expense_thousands": 87991.0,
+          "avg_rate_pct": 2.4,
+          "prior_avg_balance_thousands": 13581591.0,
+          "prior_interest_expense_thousands": 11188.0,
+          "prior_avg_rate_pct": 0.33
+        },
+        "noninterest_demand": {
+          "avg_balance_thousands": 3958533.0
+        }
+      },
+      "derived": {
+        "interest_bearing_rate_pct": 2.4,
+        "all_in_rate_pct": 0.467,
+        "dda_mix_pct": 20.99
+      }
+    },
+    {
+      "quarter": "2023Q2",
+      "report_date": "2023-06-30",
+      "filing_date": "2023-08-08",
+      "accession": "0001437749-23-022553",
+      "primary_document": "caty20230630_10q.htm",
+      "metrics": {
+        "interest_bearing_demand": {
+          "avg_balance_thousands": 2325101.0,
+          "interest_expense_thousands": 9129.0,
+          "avg_rate_pct": 1.57,
+          "prior_avg_balance_thousands": 2459940.0,
+          "prior_interest_expense_thousands": 810.0,
+          "prior_avg_rate_pct": 0.13
+        },
+        "money_market": {
+          "avg_balance_thousands": 3047163.0,
+          "interest_expense_thousands": 19367.0,
+          "avg_rate_pct": 2.55,
+          "prior_avg_balance_thousands": 5291824.0,
+          "prior_interest_expense_thousands": 5879.0,
+          "prior_avg_rate_pct": 0.45
+        },
+        "savings": {
+          "avg_balance_thousands": 1076260.0,
+          "interest_expense_thousands": 2163.0,
+          "avg_rate_pct": 0.81,
+          "prior_avg_balance_thousands": 1183821.0,
+          "prior_interest_expense_thousands": 206.0,
+          "prior_avg_rate_pct": 0.07
+        },
+        "time_deposits": {
+          "avg_balance_thousands": 8803900.0,
+          "interest_expense_thousands": 79975.0,
+          "avg_rate_pct": 3.64,
+          "prior_avg_balance_thousands": 4881365.0,
+          "prior_interest_expense_thousands": 5724.0,
+          "prior_avg_rate_pct": 0.47
+        },
+        "total_interest_bearing": {
+          "avg_balance_thousands": 15252424.0,
+          "interest_expense_thousands": 110634.0,
+          "avg_rate_pct": 2.91,
+          "prior_avg_balance_thousands": 13816950.0,
+          "prior_interest_expense_thousands": 12619.0,
+          "prior_avg_rate_pct": 0.37
+        },
+        "noninterest_demand": {
+          "avg_balance_thousands": 3667533.0
+        }
+      },
+      "derived": {
+        "interest_bearing_rate_pct": 2.91,
+        "all_in_rate_pct": 0.585,
+        "dda_mix_pct": 19.38
+      }
+    },
+    {
+      "quarter": "2023Q3",
+      "report_date": "2023-09-30",
+      "filing_date": "2023-11-08",
+      "accession": "0001437749-23-030959",
+      "primary_document": "caty20230930_10q.htm",
+      "metrics": {
+        "interest_bearing_demand": {
+          "avg_balance_thousands": 2405011.0,
+          "interest_expense_thousands": 11997.0,
+          "avg_rate_pct": 1.98,
+          "prior_avg_balance_thousands": 2508526.0,
+          "prior_interest_expense_thousands": 1913.0,
+          "prior_avg_rate_pct": 0.3
+        },
+        "money_market": {
+          "avg_balance_thousands": 3036445.0,
+          "interest_expense_thousands": 22824.0,
+          "avg_rate_pct": 2.98,
+          "prior_avg_balance_thousands": 5153566.0,
+          "prior_interest_expense_thousands": 11740.0,
+          "prior_avg_rate_pct": 0.9
+        },
+        "savings": {
+          "avg_balance_thousands": 1151615.0,
+          "interest_expense_thousands": 3386.0,
+          "avg_rate_pct": 1.17,
+          "prior_avg_balance_thousands": 1151126.0,
+          "prior_interest_expense_thousands": 218.0,
+          "prior_avg_rate_pct": 0.08
+        },
+        "time_deposits": {
+          "avg_balance_thousands": 9145176.0,
+          "interest_expense_thousands": 90022.0,
+          "avg_rate_pct": 3.91,
+          "prior_avg_balance_thousands": 5013213.0,
+          "prior_interest_expense_thousands": 10218.0,
+          "prior_avg_rate_pct": 0.81
+        },
+        "total_interest_bearing": {
+          "avg_balance_thousands": 15738247.0,
+          "interest_expense_thousands": 128229.0,
+          "avg_rate_pct": 3.23,
+          "prior_avg_balance_thousands": 13826431.0,
+          "prior_interest_expense_thousands": 24089.0,
+          "prior_avg_rate_pct": 0.69
+        },
+        "noninterest_demand": {
+          "avg_balance_thousands": 3603779.0
+        }
+      },
+      "derived": {
+        "interest_bearing_rate_pct": 3.23,
+        "all_in_rate_pct": 0.663,
+        "dda_mix_pct": 18.63
+      }
+    },
+    {
+      "quarter": "2024Q1",
+      "report_date": "2024-03-31",
+      "filing_date": "2024-05-08",
+      "accession": "0001437749-24-015384",
+      "primary_document": "caty20240331_10q.htm",
+      "metrics": {
+        "interest_bearing_demand": {
+          "avg_balance_thousands": 2312246.0,
+          "interest_expense_thousands": 12572.0,
+          "avg_rate_pct": 2.19,
+          "prior_avg_balance_thousands": 2354531.0,
+          "prior_interest_expense_thousands": 6531.0,
+          "prior_avg_rate_pct": 1.12
+        },
+        "money_market": {
+          "avg_balance_thousands": 3114298.0,
+          "interest_expense_thousands": 27366.0,
+          "avg_rate_pct": 3.53,
+          "prior_avg_balance_thousands": 3378257.0,
+          "prior_interest_expense_thousands": 17045.0,
+          "prior_avg_rate_pct": 2.05
+        },
+        "savings": {
+          "avg_balance_thousands": 1046103.0,
+          "interest_expense_thousands": 2850.0,
+          "avg_rate_pct": 1.1,
+          "prior_avg_balance_thousands": 938485.0,
+          "prior_interest_expense_thousands": 241.0,
+          "prior_avg_rate_pct": 0.1
+        },
+        "time_deposits": {
+          "avg_balance_thousands": 9720917.0,
+          "interest_expense_thousands": 109546.0,
+          "avg_rate_pct": 4.53,
+          "prior_avg_balance_thousands": 8225215.0,
+          "prior_interest_expense_thousands": 64174.0,
+          "prior_avg_rate_pct": 3.16
+        },
+        "total_interest_bearing": {
+          "avg_balance_thousands": 16193564.0,
+          "interest_expense_thousands": 152334.0,
+          "avg_rate_pct": 3.78,
+          "prior_avg_balance_thousands": 14896488.0,
+          "prior_interest_expense_thousands": 87991.0,
+          "prior_avg_rate_pct": 2.4
+        },
+        "noninterest_demand": {
+          "avg_balance_thousands": 3338551.0
+        }
+      },
+      "derived": {
+        "interest_bearing_rate_pct": 3.78,
+        "all_in_rate_pct": 0.78,
+        "dda_mix_pct": 17.09
+      }
+    },
+    {
+      "quarter": "2024Q2",
+      "report_date": "2024-06-30",
+      "filing_date": "2024-08-08",
+      "accession": "0001437749-24-025522",
+      "primary_document": "caty20240630_10q.htm",
+      "metrics": {
+        "interest_bearing_demand": {
+          "avg_balance_thousands": 2169045.0,
+          "interest_expense_thousands": 11153.0,
+          "avg_rate_pct": 2.07,
+          "prior_avg_balance_thousands": 2325101.0,
+          "prior_interest_expense_thousands": 9129.0,
+          "prior_avg_rate_pct": 1.57
+        },
+        "money_market": {
+          "avg_balance_thousands": 3217813.0,
+          "interest_expense_thousands": 30190.0,
+          "avg_rate_pct": 3.77,
+          "prior_avg_balance_thousands": 3047163.0,
+          "prior_interest_expense_thousands": 19367.0,
+          "prior_avg_rate_pct": 2.55
+        },
+        "savings": {
+          "avg_balance_thousands": 1037771.0,
+          "interest_expense_thousands": 3169.0,
+          "avg_rate_pct": 1.23,
+          "prior_avg_balance_thousands": 1076260.0,
+          "prior_interest_expense_thousands": 2163.0,
+          "prior_avg_rate_pct": 0.81
+        },
+        "time_deposits": {
+          "avg_balance_thousands": 10185497.0,
+          "interest_expense_thousands": 118076.0,
+          "avg_rate_pct": 4.66,
+          "prior_avg_balance_thousands": 8803900.0,
+          "prior_interest_expense_thousands": 79975.0,
+          "prior_avg_rate_pct": 3.64
+        },
+        "total_interest_bearing": {
+          "avg_balance_thousands": 16610126.0,
+          "interest_expense_thousands": 162588.0,
+          "avg_rate_pct": 3.94,
+          "prior_avg_balance_thousands": 15252424.0,
+          "prior_interest_expense_thousands": 110634.0,
+          "prior_avg_rate_pct": 2.91
+        },
+        "noninterest_demand": {
+          "avg_balance_thousands": 3247498.0
+        }
+      },
+      "derived": {
+        "interest_bearing_rate_pct": 3.94,
+        "all_in_rate_pct": 0.819,
+        "dda_mix_pct": 16.35
+      }
+    },
+    {
+      "quarter": "2024Q3",
+      "report_date": "2024-09-30",
+      "filing_date": "2024-11-08",
+      "accession": "0001437749-24-034150",
+      "primary_document": "caty20240930_10q.htm",
+      "metrics": {
+        "interest_bearing_demand": {
+          "avg_balance_thousands": 2134807.0,
+          "interest_expense_thousands": 11286.0,
+          "avg_rate_pct": 2.1,
+          "prior_avg_balance_thousands": 2405011.0,
+          "prior_interest_expense_thousands": 11997.0,
+          "prior_avg_rate_pct": 1.98
+        },
+        "money_market": {
+          "avg_balance_thousands": 3073384.0,
+          "interest_expense_thousands": 28991.0,
+          "avg_rate_pct": 3.75,
+          "prior_avg_balance_thousands": 3036445.0,
+          "prior_interest_expense_thousands": 22824.0,
+          "prior_avg_rate_pct": 2.98
+        },
+        "savings": {
+          "avg_balance_thousands": 1212870.0,
+          "interest_expense_thousands": 5641.0,
+          "avg_rate_pct": 1.85,
+          "prior_avg_balance_thousands": 1151615.0,
+          "prior_interest_expense_thousands": 3386.0,
+          "prior_avg_rate_pct": 1.17
+        },
+        "time_deposits": {
+          "avg_balance_thousands": 10250601.0,
+          "interest_expense_thousands": 119786.0,
+          "avg_rate_pct": 4.65,
+          "prior_avg_balance_thousands": 9145176.0,
+          "prior_interest_expense_thousands": 90022.0,
+          "prior_avg_rate_pct": 3.91
+        },
+        "total_interest_bearing": {
+          "avg_balance_thousands": 16671662.0,
+          "interest_expense_thousands": 165704.0,
+          "avg_rate_pct": 3.95,
+          "prior_avg_balance_thousands": 15738247.0,
+          "prior_interest_expense_thousands": 128229.0,
+          "prior_avg_rate_pct": 3.23
+        },
+        "noninterest_demand": {
+          "avg_balance_thousands": 3230150.0
+        }
+      },
+      "derived": {
+        "interest_bearing_rate_pct": 3.95,
+        "all_in_rate_pct": 0.833,
+        "dda_mix_pct": 16.23
+      }
+    },
+    {
+      "quarter": "2025Q1",
+      "report_date": "2025-03-31",
+      "filing_date": "2025-05-09",
+      "accession": "0001437749-25-015797",
+      "primary_document": "caty20250331_10q.htm",
+      "metrics": {
+        "interest_bearing_demand": {
+          "avg_balance_thousands": 2142241.0,
+          "interest_expense_thousands": 8863.0,
+          "avg_rate_pct": 1.68,
+          "prior_avg_balance_thousands": 2312246.0,
+          "prior_interest_expense_thousands": 12572.0,
+          "prior_avg_rate_pct": 2.19
+        },
+        "money_market": {
+          "avg_balance_thousands": 3382292.0,
+          "interest_expense_thousands": 28591.0,
+          "avg_rate_pct": 3.43,
+          "prior_avg_balance_thousands": 3114298.0,
+          "prior_interest_expense_thousands": 27366.0,
+          "prior_avg_rate_pct": 3.53
+        },
+        "savings": {
+          "avg_balance_thousands": 1289628.0,
+          "interest_expense_thousands": 4980.0,
+          "avg_rate_pct": 1.57,
+          "prior_avg_balance_thousands": 1046103.0,
+          "prior_interest_expense_thousands": 2850.0,
+          "prior_avg_rate_pct": 1.1
+        },
+        "time_deposits": {
+          "avg_balance_thousands": 9582826.0,
+          "interest_expense_thousands": 96066.0,
+          "avg_rate_pct": 4.07,
+          "prior_avg_balance_thousands": 9720917.0,
+          "prior_interest_expense_thousands": 109546.0,
+          "prior_avg_rate_pct": 4.53
+        },
+        "total_interest_bearing": {
+          "avg_balance_thousands": 16396987.0,
+          "interest_expense_thousands": 138500.0,
+          "avg_rate_pct": 3.43,
+          "prior_avg_balance_thousands": 16193564.0,
+          "prior_interest_expense_thousands": 152334.0,
+          "prior_avg_rate_pct": 3.78
+        },
+        "noninterest_demand": {
+          "avg_balance_thousands": 3305149.0
+        }
+      },
+      "derived": {
+        "interest_bearing_rate_pct": 3.43,
+        "all_in_rate_pct": 0.703,
+        "dda_mix_pct": 16.78
+      }
+    },
+    {
+      "quarter": "2025Q2",
+      "report_date": "2025-06-30",
+      "filing_date": "2025-08-08",
+      "accession": "0001437749-25-025772",
+      "primary_document": "caty20250630_10q.htm",
+      "metrics": {
+        "interest_bearing_demand": {
+          "avg_balance_thousands": 2133874.0,
+          "interest_expense_thousands": 9090.0,
+          "avg_rate_pct": 1.71,
+          "prior_avg_balance_thousands": 2169045.0,
+          "prior_interest_expense_thousands": 11153.0,
+          "prior_avg_rate_pct": 2.07
+        },
+        "money_market": {
+          "avg_balance_thousands": 3464685.0,
+          "interest_expense_thousands": 29679.0,
+          "avg_rate_pct": 3.44,
+          "prior_avg_balance_thousands": 3217813.0,
+          "prior_interest_expense_thousands": 30190.0,
+          "prior_avg_rate_pct": 3.77
+        },
+        "savings": {
+          "avg_balance_thousands": 1343043.0,
+          "interest_expense_thousands": 5601.0,
+          "avg_rate_pct": 1.67,
+          "prior_avg_balance_thousands": 1037771.0,
+          "prior_interest_expense_thousands": 3169.0,
+          "prior_avg_rate_pct": 1.23
+        },
+        "time_deposits": {
+          "avg_balance_thousands": 9692056.0,
+          "interest_expense_thousands": 94364.0,
+          "avg_rate_pct": 3.91,
+          "prior_avg_balance_thousands": 10185497.0,
+          "prior_interest_expense_thousands": 118076.0,
+          "prior_avg_rate_pct": 4.66
+        },
+        "total_interest_bearing": {
+          "avg_balance_thousands": 16633658.0,
+          "interest_expense_thousands": 138734.0,
+          "avg_rate_pct": 3.35,
+          "prior_avg_balance_thousands": 16610126.0,
+          "prior_interest_expense_thousands": 162588.0,
+          "prior_avg_rate_pct": 3.94
+        },
+        "noninterest_demand": {
+          "avg_balance_thousands": 3331433.0
+        }
+      },
+      "derived": {
+        "interest_bearing_rate_pct": 3.35,
+        "all_in_rate_pct": 0.695,
+        "dda_mix_pct": 16.69
+      }
+    }
+  ]
+}

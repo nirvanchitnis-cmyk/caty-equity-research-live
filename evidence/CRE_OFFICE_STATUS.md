@@ -1,24 +1,49 @@
-# CRE OFFICE EXPOSURE - STATUS: CONFIRMED
+# CRE OFFICE EXPOSURE — STATUS: PRELIMINARY (Q3'25 UPDATE)
 
 **Date Created:** October 18, 2025
-**Date Updated:** October 18, 2025 (post-IR source capture)
-**Status:** ✅ **CONFIRMED** - Complete property-type disclosure obtained
+**Date Updated:** October 22, 2025 (Q3'25 presentation integrated)
+**Status:** ⚠️ **PRELIMINARY** — Composition and office detail are evidenced; DSCR by property type, maturity ladder, and office credit metrics remain material gaps
 
 ---
 
 ## EXECUTIVE SUMMARY
 
-**Office CRE Exposure: $1,480M (14% of CRE, 7% of total loans)**
+Q3'25 update incorporates the company’s October 21, 2025 presentation (slides 5–11).
 
-**Source:** Cathay General Bancorp Q2 2025 Financial Results Presentation, Slide 10
-**Presented:** July 22, 2025
-**URL:** https://www.cathaybank.com/CGB/pr-20250722-presentation
+- **Office CRE Exposure (Q3'25): $1,470M** (~14% of CRE; avg loan size $2.3M; weighted avg LTV 47%).
+- **Total CRE (Q3'25): $10.5B** (~52% of total loans; total weighted avg LTV 49%).
+- **Interest‑rate swaps on CRE (Q3'25): $626M** (vs $966M in Q2'25).
+- **CRE concentration / risk‑based capital (Q3'25): ~231%** (vs ~281% in Q2'25; thresholds shown: 300% regulatory, 400% internal).
 
-**Critical Finding:** Office exposure is **MATERIALLY LOWER** than feared. Our removed estimate of "20-30% of CRE" would have implied $2.1-3.1B. Actual exposure is $1.5B, a **52% reduction** from high-end estimate.
+Sources: Cathay General Bancorp Q3'25 Financial Results Presentation, slides 5–11 (Presented Oct 21, 2025). URL: https://www.cathaybank.com/CGB/pr-20251021-presentation
 
 ---
 
-## COMPLETE CRE PROPERTY-TYPE BREAKDOWN (Q2'25)
+## COMPLETE CRE PROPERTY‑TYPE BREAKDOWN
+
+### Q3'25
+
+| Property Type | $ Millions | Weighted Avg LTV | Avg Loan Size | Source |
+|---------------|------------|------------------|---------------|--------|
+| Residential (Multifamily) | $3,526 | 53% | $1.4M | Q3'25 Slides 7–8 |
+| Retail | $2,529 | 48% | $2.1M | Q3'25 Slides 7–8 |
+| Office | $1,470 | 47% | $2.3M | Q3'25 Slides 7–8, 10 |
+| Warehouse | ~$1,344 | 46% | $2.8M | Q3'25 Slides 7–8 |
+| Industrial | $694 | 47% | $3.4M | Q3'25 Slides 7–8 |
+| Hotel/Motel | $363 | 44% | $6.9M | Q3'25 Slides 7–8 |
+| Special Use | $292 | 45% | $3.0M | Q3'25 Slides 7–8 |
+| Restaurant | $181 | 47% | $1.0M | Q3'25 Slides 7–8 |
+| Land | $69 | 46% | $2.7M | Q3'25 Slides 7–8 |
+| Theater | $20 | 54% | $6.5M | Q3'25 Slides 7–8 |
+| TOTAL CRE | ~$10,500 | 49% | — | Q3'25 Slides 7–8 |
+
+Reconciliation: sum of category amounts ≈ $10,488M; ≈$12M difference vs $10.5B total reflects rounding/“approx” category disclosures in the deck.
+
+Geographic mix (CRE): CA 46%, NY 35%, TX 5%, IL 3%, WA 2%, Other 9% (Q3'25 Slide 7; unchanged vs Q2).
+
+Interest‑rate swaps on CRE: $626M notional (~3.1% of total loans) per Q3'25 Slide 5; Q2'25 cited $966M (~4.9%). Notional ≠ risk; MTM depends on rates, hedge designation, and maturities.
+
+### Q2'25 (reference)
 
 | Property Type | $ Millions | % of CRE | % of Total Loans | Weighted Avg LTV | Source |
 |---------------|------------|----------|------------------|------------------|--------|
@@ -38,7 +63,28 @@
 
 ---
 
-## OFFICE CRE SUB-CATEGORY DETAIL
+## OFFICE CRE SUB‑CATEGORY DETAIL
+
+### Q3'25
+
+**Total Office CRE:** $1,470M
+
+| Office Sub‑Type | $ Millions | % of Office | Weighted Avg LTV |
+|-----------------|------------|-------------|------------------|
+| Office Building | $487 | 33% | 49% |
+| Office Condominium | $399 | 27% | 46% |
+| Office/Retail Stores | $342 | 23% | 33% |
+| Medical Office | $127 | 9% | 46% |
+| Office/Mixed Use | $115 | 8% | 44% |
+| TOTAL OFFICE | **$1,470** | **100%** | **47%** |
+
+Average loan size: $2.3M; Average property size: 15,933 sq ft (Q3'25 Slide 10).
+
+Collateral distribution (Q3'25 Slide 10): Urban $942M, Suburban $480M, CBD $48M (CBD ≈ 3.3% of office; ≈ 0.46% of total CRE).
+
+Geographic mix within Office (Q3'25 Slide 10): CA 49%, NY 32%, HK 7%, NV 3%, WA 3%, IL 2%, Other 4%.
+
+### Q2'25 (reference)
 
 ### **Total Office CRE: $1,480M**
 
@@ -60,7 +106,7 @@
 
 ---
 
-## CBD EXPOSURE: MINIMAL
+## CBD EXPOSURE
 
 **Source:** Q2 2025 Financial Results Presentation, Slide 10 - "Office CRE Collateral Distribution"
 
@@ -68,21 +114,18 @@
 |---------------|------------|-----------------|
 | **Urban** | $948 | 64.0% |
 | **Suburban** | $484 | 32.7% |
-| **Central Business District (CBD)** | **$49** | **3.3%** |
+| **Central Business District (CBD)** | **$48 (Q3)** | **3.3% (Q3)** |
 | **TOTAL** | **$1,481** | **100.0%** |
 
 **CBD Definition (per presentation):** Central Business/Financial Centers (mainly city downtowns)
 
-**Critical Assessment:** CBD exposure of $49M represents:
-- 3.3% of total office CRE
-- 0.5% of total CRE portfolio
-- 0.25% of total loans ($19.8B)
+**Assessment:** CBD exposure of ~$48–49M represents ~3.3% of office CRE, ~0.5% of total CRE, and ~0.24% of total loans (~$20.1B in Q3). Minimal exposure to high‑vacancy urban cores.
 
 **Implication:** Minimal exposure to high-vacancy urban core office markets (Los Angeles CBD, New York City downtown, etc.)
 
 ---
 
-## GEOGRAPHIC DISTRIBUTION
+## GEOGRAPHIC DISTRIBUTION (OFFICE)
 
 **Source:** Q2 2025 Financial Results Presentation, Slide 10
 
@@ -96,24 +139,45 @@
 | **Illinois** | 2% |
 | **Other** | 4% |
 
-**Weighted Average LTV:** 46%
+Q3'25 weighted average LTV (office): 47% (Q2'25: 46%).
 
 ---
 
-## COMPARISON TO ORIGINAL (PURGED) ESTIMATES
+## Q2 → Q3 RECONCILIATION (Key Metrics)
+
+| Metric | Q2'25 | Q3'25 | Δ | Source |
+|--------|-------|-------|---|--------|
+| Total CRE balance | $10,363M | ~$10,500M | +$137M | Q2 Slide 8; Q3 Slides 7–8 |
+| Office CRE balance | $1,480M | $1,470M | -$10M | Q2 Slide 10; Q3 Slide 10 |
+| Office W.A. LTV | 46% | 47% | +1 pp | Q2 Slide 10; Q3 Slide 10 |
+| Total CRE W.A. LTV | 49% | 49% | 0 pp | Q2 Slide 8; Q3 Slides 7–8 |
+| CRE swaps notional | $966M | $626M | -$340M | Q2 Slide 5; Q3 Slide 5 |
+| CRE / Risk‑Based Capital | ~281% | ~231% | -50 ppts | Q2/Q3 concentration charts |
+
+Formula note (illustrative): CRE/RBC = Total CRE / Risk‑Based Capital. At Q3'25: ~10.5B / RBC ≈ 2.31 → RBC ≈ ~$4.5B (approx.). This is a supervisory indicator shown by the company, not a GAAP measure; use regulatory filings for precise capital.
+
+Notes:
+- Aggregates reflect rounding/“~” values in Q3 deck.
+- CRE/RBC shown in company slides; see “Definitions” for ratio description.
+
+---
+
+## CHANGES VS Q2'25 AND PRIOR ESTIMATES
 
 | Metric | Original Estimate (PURGED) | Actual (Sourced) | Variance |
 |--------|---------------------------|------------------|----------|
-| **Office % of CRE** | 20-30% (unsourced) | 14.3% | -29% to -52% |
-| **Office $ Amount** | $2.1-3.1B (unsourced) | $1.5B | -29% to -52% |
-| **CBD Exposure** | Not estimated | $49M (0.5% of CRE) | Minimal |
-| **Office LTV** | Not estimated | 46% | Conservative |
+| **Office % of CRE** | 20–30% (unsourced) | ~14% | -29% to -52% |
+| **Office $ Amount** | $2.1–3.1B (unsourced) | $1.47–1.48B (Q3–Q2) | -29% to -52% |
+| **CBD Exposure** | Not estimated | ~$48–49M (~0.5% of CRE) | Minimal |
+| **Office LTV** | Not estimated | 47% (Q3; 46% in Q2) | Conservative |
+| **CRE swaps notional** | n/a | $626M (Q3) vs $966M (Q2) | ↓ ~$340M |
+| **CRE/RBC concentration** | n/a | ~231% (Q3) vs ~281% (Q2) | Improved |
 
 **Conclusion:** Office tail risk is **SUBSTANTIALLY LOWER** than phantom 20-30% range would have implied.
 
 ---
 
-## WHY THIS WASN'T IN 10-Q
+## WHY THIS WASN'T IN 10‑Q
 
 **Q2 2025 10-Q (Accession 0001437749-25-025772):**
 - **CRE total confirmed:** $10,363M ✓
@@ -159,7 +223,7 @@
 
 | Data Point | Status | Notes |
 |------------|--------|-------|
-| **Office % of CRE** | ✅ CONFIRMED | 14.3% ($1,480M) |
+| **Office % of CRE** | ✅ CONFIRMED | ~14.0% ($1,470M) in Q3; 14.3% ($1,480M) in Q2 |
 | **CBD exposure** | ✅ CONFIRMED | 3.3% of office ($49M) |
 | **Office LTV** | ✅ CONFIRMED | 46% weighted average |
 | **Multifamily detail** | ✅ CONFIRMED | $3,528M (34% of CRE) |
@@ -169,7 +233,76 @@
 | **Maturity schedule** | ⏳ NOT DISCLOSED | % maturing 2025-2027 unavailable |
 | **DSCR by property type** | ⏳ NOT DISCLOSED | Debt service coverage not broken out |
 
-**Assessment:** **NO MATERIAL DATA GAPS REMAIN** for property-type composition. Maturity and DSCR are secondary metrics.
+**Assessment:** Property‑type composition is confirmed. However, **maturity schedule (by year) and DSCR (by property type) remain material data gaps** not disclosed in Q3/Q2 decks or 10‑Q. These metrics are critical for refinancing/default risk analysis; continue to seek via 10‑Q footnotes, IR, or call transcripts.
+
+---
+
+## EARNINGS TIE‑OUT (Q3'25) — Press Release
+
+- Primary source (archived): `evidence/primary_sources/CATY_Q3_2025_PressRelease_20251021.pdf` (see evidence/README.md for SHA256; URL: https://www.cathaybank.com/CGB/pr-20251021)
+- Net interest margin (NIM): 3.31% (up from 3.27% in Q2'25) — “Third Quarter Highlights” and “Net interest income” sections.
+- Net interest income before provision: $189.6M (Q3'25) vs $181.2M (Q2'25) — “Net interest income” section.
+- Provision for credit losses: $28.7M, including $9.1M for two movie theatre loans and $3.8M from a CECL model change — “Provision for credit losses”.
+- Net charge‑offs: $15.6M in Q3'25 vs $12.7M in Q2'25 — charge‑offs/recoveries table.
+- Non‑accrual loans: $165.6M (↓ from $174.2M in Q2'25) — “Asset quality”.
+- Allowance for credit losses (total): $196.5M (0.98% of gross loans) = $186.6M (loans) + $9.9M (off‑BS commitments) — “Provision/ACL”.
+- Loans: $20.10B; Deposits: $20.52B — “Balance sheet”.
+
+Interpretation:
+- $9.1M provision tied to two movie theatre loans links to the “Theater” sub‑category (deck shows $20M outstanding). Monitor severity assumptions there.
+- Rising NIM with higher provision suggests improving spreads but elevated credit costs; reflect in EPS/capital sensitivities.
+
+---
+
+## BANK‑LEVEL CREDIT METRICS (Q3'25)
+
+Source: Q3'25 press release (PDF); see Primary Sources.
+
+| Metric | Q3'25 | Q2'25 | Notes |
+|--------|-------|-------|-------|
+| Non‑accrual loans | $165.6M | $174.2M | ↓ $8.6M QoQ; NPL ratio ≈ 0.82% (165.6 / 20,104.7) |
+| Allowance for credit losses (ACL) | $196.5M | $183.4M | 0.98% of gross loans at Q3’25 |
+| Quarterly net charge‑offs (NCOs) | $15.6M | $12.7M | ≈ 7.8 bps of EOP loans; ~31 bps annualized |
+| Provision for credit losses | $28.7M | $11.2M | Includes $9.1M for two theatre loans (CRE‑Theater) |
+
+Segmentation: The press release does not provide office‑specific NPL/NCO/ACL. We will update if 10‑Q or IR provides segmented figures.
+
+Footnotes:
+- NPL ratio uses end‑of‑period gross loans (Q3’25 PR table: $20.1047B) as denominator.
+- ACL ratio uses end‑of‑period gross loans (same denominator) for comparability.
+- NCO quarterly bps computed as (NCOs / EOP loans) × 10,000; annualized ≈ quarterly × 4. Where banks present NCO as avg‑loan ratio, this EOP‑based approximation is conservative.
+
+---
+
+## CRE/RBC — NUMERIC DISCLOSURE AND THRESHOLD
+
+Company slides show CRE / Risk‑Based Capital (RBC) of ~231% (Q3) vs ~281% (Q2).
+
+Illustrative computation using disclosed totals:
+- Numerator (Total CRE): Q3 ≈ $10.50B; Q2 = $10.363B (deck). 
+- Denominator (RBC $): inferred from ratio shown in slides.
+  - Q3 inferred RBC ≈ 10.50 / 2.31 = ~$4.55B.
+  - Q2 inferred RBC ≈ 10.363 / 2.81 = ~$3.69B.
+- Resulting ratio vs threshold: Q3 ≈ 231% vs supervisory threshold 300% (internal threshold 400%).
+
+Notes:
+- Press release provides capital ratios (Tier 1 risk‑based 13.15%; Total risk‑based 14.76%; Tier 1 leverage 10.88%) but not RWA; precise RBC ($) requires RWA. We therefore present the company’s CRE/RBC ratios and display the implied RBC dollars for transparency.
+
+---
+
+## ROUNDING & CONSISTENCY NOTES
+
+- Office: $1,470M (Q3) vs $1,480M (Q2). Percentages shown as ~14.0% (Q3) vs 14.3% (Q2). Values follow the respective slides; small differences reflect rounding and “~” amounts.
+- CBD: ~$48–49M; we cite exact slide value per quarter in the tables above.
+
+---
+
+## DEFINITIONS & CALCULATION NOTES
+
+- CRE / Risk‑Based Capital (CRE/RBC): As shown in company slides; ratio relates total CRE loans to regulatory risk‑based capital (Tier 1 + Tier 2). Thresholds indicated: 300% (supervisory), 400% (internal). Supervisory indicator, not a GAAP metric. Use regulatory filings for denominator detail.
+- Weighted Average LTV: Company‑reported; implicitly portfolio‑weighted within each category.
+- CBD: Central Business District (central downtown financial/business areas), per slide footnote.
+- Swaps Notional: Gross notional of interest‑rate swaps associated with CRE loans; not a measure of mark‑to‑market exposure or duration profile.
 
 ---
 
@@ -177,19 +310,33 @@
 
 | Version | Date | Status | Change Log |
 |---------|------|--------|------------|
-| 1.0 | Oct 18, 2025 @ 1200 PT | UNSUBSTANTIATED | Initial search - office % not found in 10-Q |
-| 2.0 | Oct 18, 2025 @ 1530 PT | CONFIRMED | Q2'25 presentation sourced, complete breakdown obtained |
+| 1.0 | Oct 18, 2025 @ 1200 PT | UNSUBSTANTIATED | Initial search — office % not found in 10‑Q |
+| 2.0 | Oct 18, 2025 @ 1530 PT | CONFIRMED | Q2'25 presentation sourced; complete property‑type breakdown captured |
+| 3.0 | Oct 22, 2025 @ 1100 PT | CONFIRMED (Q3 integrated) | Q3'25 presentation integrated; changes vs Q2 highlighted; DSCR/maturity flagged as material gaps |
+| 3.1 | Oct 22, 2025 @ 1120 PT | PARTIAL CONFIRMATION | Header/status clarified; reconciliation table added; definitions added; Q3 PDF archived and linked |
+| 3.2 | Oct 22, 2025 @ 0835 PT | PRELIMINARY | Added press‑release tie‑out table, numeric CRE/RBC disclosure with thresholds, rounding notes; aligned office % \& $ |
 
-**Primary Source:**
-- File: `evidence/primary_sources/CATY_Q2_2025_Presentation_20250722.txt`
-- URL: https://www.cathaybank.com/CGB/pr-20250722-presentation
-- Verification: Total CRE = $10,363M (sum of all categories reconciles)
+**Primary Sources:**
+- Q3'25 deck (slides 5–11)
+  - File: `evidence/primary_sources/CATY_Q3_2025_Presentation_20251021.txt`
+  - URL: https://www.cathaybank.com/CGB/pr-20251021-presentation
+  - Notes: Captures total loans, CRE breakdown, LTVs, office detail, swaps notional, CRE/RBC chart.
+  - PDF: `evidence/primary_sources/CATY_Q3_2025_Presentation_20251021.pdf` (SHA256 in evidence/README.md)
+- Q3'25 earnings press release
+  - PDF: `evidence/primary_sources/CATY_Q3_2025_PressRelease_20251021.pdf` (SHA256 in evidence/README.md)
+  - URL: https://www.cathaybank.com/CGB/pr-20251021
+  - Notes: Provides NIM, provision, charge‑offs table, non‑accruals, ACL, loan/deposit balances.
+- Q2'25 deck (slides 8, 10)
+  - File: `evidence/primary_sources/CATY_Q2_2025_Presentation_20250722.txt`
+  - URL: https://www.cathaybank.com/CGB/pr-20250722-presentation
+  - Verification: Total CRE = $10,363M (sum of all categories reconciles)
 
-**Cross-References:**
-- Q2'25 10-Q (Accession 0001437749-25-025772): CRE total $10,363M ✓
-- 2024 10-K (Accession 0001437749-25-005749): Qualitative office mention ✓
-- Q2'25 Earnings Call Transcript (Jul 22, 2025): Management commentary on office (not yet reviewed)
+**Cross‑References:**
+- Q2'25 10‑Q (Accession 0001437749‑25‑025772): CRE total $10,363M ✓
+- 2024 10‑K (Accession 0001437749‑25‑005749): Qualitative office mention ✓
+- Q2'25 Earnings Call Transcript (Jul 22, 2025): Management commentary on office (pending review)
+- Q3'25 Earnings Call Transcript (Oct 21, 2025): Pending; extract any DSCR/maturity remarks when available
 
 ---
 
-**Status:** Office exposure CONFIRMED at $1.5B (14% of CRE). Thesis adjustment required - office no longer core risk driver.
+**Status:** PRELIMINARY — Office exposure ~$1.47B (~14% of CRE). Office remains a monitoring item rather than a core driver. Next steps: obtain/estimate DSCR and maturity ladder by property type; refresh stress tests with Q3 composition and updated swaps level; integrate Q3 press release credit tables.

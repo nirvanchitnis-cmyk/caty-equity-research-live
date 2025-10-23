@@ -1,245 +1,257 @@
 {
-    "comment": "CATY_07 Credit Quality & NCO Analysis - Through-cycle normalization",
-    "last_updated": "2025-10-19T23:55:00Z",
-    "data_source": "FDIC Call Reports 2008-2025 + SEC 10-Q Q2 2025",
-    "period": "Q2 2025",
-    "snapshot_metrics": {
-        "nco_rate_ltm_bps": 18.1,
-        "through_cycle_nco_bps": 42.8,
-        "acl_loans_pct": 0.88,
-        "acl_amount_millions": 173.5,
-        "npa_assets_pct": 0.3,
-        "npa_amount_millions": 65.5,
-        "criticized_loans_pct": 2.14,
-        "nonaccrual_loans_millions": 58.7
+  "comment": "CATY_07 Credit Quality & NCO Analysis - Updated with Q3 2025 8-K",
+  "last_updated": "2025-10-22T02:47:00Z",
+  "data_source": "Form 8-K Exhibit 99.1 (Q3 2025) + FDIC Call Reports 2008-2025",
+  "period": "Q3 2025",
+  "snapshot_metrics": {
+    "nco_rate_ltm_bps": 18.1,
+    "through_cycle_nco_bps": 30.0,
+    "acl_loans_pct": 0.98,
+    "acl_amount_millions": 196.5,
+    "npa_assets_pct": 0.83,
+    "npa_amount_millions": 198.7,
+    "criticized_loans_pct": 2.14,
+    "nonaccrual_loans_millions": 165.6,
+    "nco_rate_qtd_bps": 18.1,
+    "nonperforming_loans_millions": 165.7,
+    "allowance_to_npl_pct": 112.6,
+    "criticized_loans_note": "Q2 2025 (latest internal classification disclosure)",
+    "stress_guardrail_nco_bps": 42.8
+  },
+  "through_cycle_nco": {
+    "period": "2008-Q1 through 2025-Q2",
+    "quarters": 68,
+    "mean_bps": 26.9,
+    "median_bps": 7.2,
+    "gfc_peak_bps": 234.4,
+    "gfc_peak_quarter": "2009-Q4",
+    "covid_peak_bps": 28.23,
+    "covid_peak_quarter": "2024-Q4",
+    "recent_4q_avg_bps": 18.1,
+    "current_quarter_bps": 6.5,
+    "post_covid_avg_bps": 8.1,
+    "trough_bps": -5.7,
+    "mean_reversion_bps": 36.3,
+    "history_rows_html": "        <tr>\n            <td><strong>2008</strong></td>\n            <td class=\"numeric\">64.2</td>\n            <td>GFC onset - stress building</td>\n        </tr>\n        <tr class=\"gfc-row\">\n            <td><strong>2009</strong></td>\n            <td class=\"numeric\">305.9</td>\n            <td><strong>GFC PEAK - Maximum stress</strong></td>\n        </tr>\n        <tr>\n            <td><strong>2010</strong></td>\n            <td class=\"numeric\">184.0</td>\n            <td>GFC recovery - elevated losses</td>\n        </tr>\n        <tr>\n            <td><strong>2011</strong></td>\n            <td class=\"numeric\">95.1</td>\n            <td>Continued normalization</td>\n        </tr>\n        <tr>\n            <td><strong>2012</strong></td>\n            <td class=\"numeric\">20.5</td>\n            <td>Return to normalized losses</td>\n        </tr>\n        <tr>\n            <td><strong>2013</strong></td>\n            <td class=\"numeric\">8.3</td>\n            <td>Benign credit environment</td>\n        </tr>\n        <tr>\n            <td><strong>2014</strong></td>\n            <td class=\"numeric\">1.5</td>\n            <td>Exceptionally low losses</td>\n        </tr>\n        <tr>\n            <td><strong>2015</strong></td>\n            <td class=\"numeric\">11.4</td>\n            <td>Modest normalization</td>\n        </tr>\n        <tr>\n            <td><strong>2016</strong></td>\n            <td class=\"numeric\">4.0</td>\n            <td>Low loss environment</td>\n        </tr>\n        <tr>\n            <td><strong>2017</strong></td>\n            <td class=\"numeric\">-5.7</td>\n            <td>Net recoveries - trough year</td>\n        </tr>\n        <tr>\n            <td><strong>2018</strong></td>\n            <td class=\"numeric\">-2.7</td>\n            <td>Continued net recoveries</td>\n        </tr>\n        <tr>\n            <td><strong>2019</strong></td>\n            <td class=\"numeric\">-5.3</td>\n            <td>Pre-COVID net recoveries</td>\n        </tr>\n        <tr>\n            <td><strong>2020</strong></td>\n            <td class=\"numeric\">9.1</td>\n            <td>COVID-19 initial impact</td>\n        </tr>\n        <tr>\n            <td><strong>2021</strong></td>\n            <td class=\"numeric\">11.1</td>\n            <td>Post-COVID normalization</td>\n        </tr>\n        <tr>\n            <td><strong>2022</strong></td>\n            <td class=\"numeric\">1.4</td>\n            <td>Benign credit</td>\n        </tr>\n        <tr>\n            <td><strong>2023</strong></td>\n            <td class=\"numeric\">9.3</td>\n            <td>Regional bank stress period</td>\n        </tr>\n        <tr>\n            <td><strong>2024</strong></td>\n            <td class=\"numeric\">15.3</td>\n            <td>Recent normalization</td>\n        </tr>\n        <tr class=\"highlight-row\">\n            <td><strong>THROUGH-CYCLE AVERAGE</strong></td>\n            <td class=\"numeric\"><strong>42.8</strong></td>\n            <td><strong>2008-2024 normalized baseline</strong></td>\n        </tr>",
+    "source_details": {
+      "source": "FDIC Call Report API (cert=18503)",
+      "fields": "NTLNLSQ (Net Charge-offs), LNLSGR (Gross Loans)",
+      "extraction_date": "October 18, 2025",
+      "methodology": "Sum quarterly net charge-offs by year; divide by average quarterly gross loans per year",
+      "verification": "Cross-checked against SEC 10-K disclosures where available",
+      "coverage": "2008-2024 (17 years, full credit cycle)"
     },
-    "through_cycle_nco": {
-        "period": "2008-Q1 through 2024-Q4",
-        "quarters": 68,
-        "mean_bps": 42.8,
-        "median_bps": 21.5,
-        "gfc_peak_bps": 305.9,
-        "gfc_peak_quarter": "2009",
-        "covid_peak_bps": 9.1,
-        "covid_peak_quarter": "2020",
-        "recent_4q_avg_bps": 18.1,
-        "current_quarter_bps": 6.5,
-        "post_covid_avg_bps": 9.3,
-        "trough_bps": -5.7,
-        "mean_reversion_bps": 36.3,
-        "history_rows_html": "        <tr>\n            <td><strong>2008</strong></td>\n            <td class=\"numeric\">64.2</td>\n            <td>GFC onset - stress building</td>\n        </tr>\n        <tr class=\"gfc-row\">\n            <td><strong>2009</strong></td>\n            <td class=\"numeric\">305.9</td>\n            <td><strong>GFC PEAK - Maximum stress</strong></td>\n        </tr>\n        <tr>\n            <td><strong>2010</strong></td>\n            <td class=\"numeric\">184.0</td>\n            <td>GFC recovery - elevated losses</td>\n        </tr>\n        <tr>\n            <td><strong>2011</strong></td>\n            <td class=\"numeric\">95.1</td>\n            <td>Continued normalization</td>\n        </tr>\n        <tr>\n            <td><strong>2012</strong></td>\n            <td class=\"numeric\">20.5</td>\n            <td>Return to normalized losses</td>\n        </tr>\n        <tr>\n            <td><strong>2013</strong></td>\n            <td class=\"numeric\">8.3</td>\n            <td>Benign credit environment</td>\n        </tr>\n        <tr>\n            <td><strong>2014</strong></td>\n            <td class=\"numeric\">1.5</td>\n            <td>Exceptionally low losses</td>\n        </tr>\n        <tr>\n            <td><strong>2015</strong></td>\n            <td class=\"numeric\">11.4</td>\n            <td>Modest normalization</td>\n        </tr>\n        <tr>\n            <td><strong>2016</strong></td>\n            <td class=\"numeric\">4.0</td>\n            <td>Low loss environment</td>\n        </tr>\n        <tr>\n            <td><strong>2017</strong></td>\n            <td class=\"numeric\">-5.7</td>\n            <td>Net recoveries - trough year</td>\n        </tr>\n        <tr>\n            <td><strong>2018</strong></td>\n            <td class=\"numeric\">-2.7</td>\n            <td>Continued net recoveries</td>\n        </tr>\n        <tr>\n            <td><strong>2019</strong></td>\n            <td class=\"numeric\">-5.3</td>\n            <td>Pre-COVID net recoveries</td>\n        </tr>\n        <tr>\n            <td><strong>2020</strong></td>\n            <td class=\"numeric\">9.1</td>\n            <td>COVID-19 initial impact</td>\n        </tr>\n        <tr>\n            <td><strong>2021</strong></td>\n            <td class=\"numeric\">11.1</td>\n            <td>Post-COVID normalization</td>\n        </tr>\n        <tr>\n            <td><strong>2022</strong></td>\n            <td class=\"numeric\">1.4</td>\n            <td>Benign credit</td>\n        </tr>\n        <tr>\n            <td><strong>2023</strong></td>\n            <td class=\"numeric\">9.3</td>\n            <td>Regional bank stress period</td>\n        </tr>\n        <tr>\n            <td><strong>2024</strong></td>\n            <td class=\"numeric\">15.3</td>\n            <td>Recent normalization</td>\n        </tr>\n        <tr class=\"highlight-row\">\n            <td><strong>THROUGH-CYCLE AVERAGE</strong></td>\n            <td class=\"numeric\"><strong>42.8</strong></td>\n            <td><strong>2008-2024 normalized baseline</strong></td>\n        </tr>",
-        "source_details": {
-            "source": "FDIC Call Report API (cert=18503)",
-            "fields": "NTLNLSQ (Net Charge-offs), LNLSGR (Gross Loans)",
-            "extraction_date": "October 18, 2025",
-            "methodology": "Sum quarterly net charge-offs by year; divide by average quarterly gross loans per year",
-            "verification": "Cross-checked against SEC 10-K disclosures where available",
-            "coverage": "2008-2024 (17 years, full credit cycle)"
-        },
-        "years": 17,
-        "trough_year": "2017",
-        "post_covid_years": 5,
-        "current_rate_period": "Q2 2025",
-        "current_rate_gap_pct": 85,
-        "period_short": "2008-2024",
-        "post_covid_period": "2020-2024",
-        "cert_number": 18503
+    "years": 17,
+    "trough_year": "2017",
+    "post_covid_years": 6,
+    "current_rate_period": "2025-Q2",
+    "current_rate_gap_pct": 85,
+    "period_short": "2008-2024",
+    "post_covid_period": "2020-2025",
+    "cert_number": 18503,
+    "current_rate_bps": 21.73,
+    "prob90_post2014_bps": 30.0,
+    "guardrail_mean_bps": 42.8,
+    "base_case_label": "Post-2014 90th percentile (manual override)"
+  },
+  "acl_coverage": {
+    "total_loans_millions": 19794.2,
+    "acl_millions": 173.5,
+    "acl_loans_pct": 0.88,
+    "acl_nco_coverage_years": 4.9,
+    "peer_median_acl_loans_pct": 1.02
+  },
+  "npa_breakdown": {
+    "nonaccrual_loans_millions": 58.7,
+    "oreo_millions": 12.5,
+    "total_npa_millions": 71.2,
+    "npa_acl_pct": 41.0,
+    "npa_tce_pct": 2.84
+  },
+  "loan_quality_metrics": {
+    "30_89_days_past_due_millions": 23.4,
+    "90_plus_days_past_due_millions": 14.2,
+    "criticized_loans_millions": 423.7,
+    "classified_loans_millions": 187.3,
+    "special_mention_millions": 236.4
+  },
+  "cre_concentration": {
+    "cre_total_pct": 52.4,
+    "cre_nonfarm_nonresidential_pct": 34.2,
+    "cre_construction_pct": 5.1,
+    "cre_multifamily_pct": 13.1,
+    "office_cre_pct": 8.7,
+    "retail_cre_pct": 12.3,
+    "industrial_warehouse_cre_pct": 13.2
+  },
+  "provision_expense": {
+    "q2_2025_millions": 11.2,
+    "q1_2025_millions": 8.9,
+    "q2_2024_millions": 7.5,
+    "ltm_millions": 38.6
+  },
+  "snapshot_source": {
+    "form": "10-Q Q2 2025",
+    "accession": "0001437749-25-025772",
+    "filed_date": "August 8, 2025",
+    "item": "Allowance roll-forward and nonaccrual/OREO",
+    "note": "Credit quality disclosures",
+    "excerpt": "\"ACL roll-forward, charge-offs, recoveries, average loans; nonaccrual and OREO\"",
+    "url": "https://www.sec.gov/Archives/edgar/data/0000861842/000143774925025772/"
+  },
+  "valuation": {
+    "spot_nco_bps": 6.5,
+    "normalized_nco_bps": 42.8,
+    "nco_delta_bps": 36.3,
+    "rote_sensitivity_bps_per_10bps": 20.0,
+    "ptbv_sensitivity_per_10bps": 0.025,
+    "normalized_rote_delta_bps": -73.0,
+    "normalized_ptbv_delta_multiple": -0.09,
+    "gfc_peak_bps": 305.9,
+    "recession_rote_pct": 4.2,
+    "recession_ptbv_multiple": 0.25,
+    "cost_of_equity_pct": 9.6,
+    "provision_spot_millions": 13.0,
+    "provision_normalized_millions": 21.0,
+    "provision_delta_millions": 8.0,
+    "annual_impact_millions": 32.0,
+    "provision_calc_millions": 20.9,
+    "avg_loans_billions": 19.5,
+    "capital_base_billions": 2.5,
+    "tax_rate_pct": 25.0,
+    "normalized_rote_delta_bps_abs": 73.0,
+    "normalized_ptbv_delta_multiple_abs": 0.09
+  },
+  "fy2024": {
+    "snapshot": {
+      "acl_millions": 172.3,
+      "provision_millions": 37.5,
+      "nco_millions": 29.7,
+      "nco_rate_bps": 15.0,
+      "npas_millions": 192.2,
+      "npls_millions": 169.2,
+      "oreo_millions": 23.1,
+      "coverage_pct": 89.6,
+      "nco_gap_vs_through_cycle_bps": 27.8,
+      "percent_below_through_cycle": 65
     },
-    "acl_coverage": {
-        "total_loans_millions": 19794.2,
-        "acl_millions": 173.5,
-        "acl_loans_pct": 0.88,
-        "acl_nco_coverage_years": 4.9,
-        "peer_median_acl_loans_pct": 1.02
+    "source": {
+      "form": "10-K FY2024",
+      "accession": "0001437749-25-005749",
+      "filed_date": "February 28, 2025",
+      "item": "Item 8 - Balance Sheet; MD&A Non-performing Assets; Credit note",
+      "note": "ACL approximated as Loans gross less Loans, net; NCOs and rate from MD&A; Non-accrual and OREO from Non-performing table",
+      "url": "https://www.sec.gov/Archives/edgar/data/0000861842/000143774925005749/"
     },
-    "npa_breakdown": {
-        "nonaccrual_loans_millions": 58.7,
-        "oreo_millions": 12.5,
-        "total_npa_millions": 71.2,
-        "npa_acl_pct": 41.0,
-        "npa_tce_pct": 2.84
+    "year_label": "2024"
+  },
+  "time_series": {
+    "quarterly": {
+      "period": "Q2 2025",
+      "acl_millions": 173.5,
+      "provision_millions": 12.3,
+      "nco_millions": 12.7,
+      "nco_rate_bps": 6.5,
+      "npas_millions": 65.5,
+      "coverage_pct": 264.9
     },
-    "loan_quality_metrics": {
-        "30_89_days_past_due_millions": 23.4,
-        "90_plus_days_past_due_millions": 14.2,
-        "criticized_loans_millions": 423.7,
-        "classified_loans_millions": 187.3,
-        "special_mention_millions": 236.4
-    },
-    "cre_concentration": {
-        "cre_total_pct": 52.4,
-        "cre_nonfarm_nonresidential_pct": 34.2,
-        "cre_construction_pct": 5.1,
-        "cre_multifamily_pct": 13.1,
-        "office_cre_pct": 8.7,
-        "retail_cre_pct": 12.3,
-        "industrial_warehouse_cre_pct": 13.2
-    },
-    "provision_expense": {
-        "q2_2025_millions": 11.2,
-        "q1_2025_millions": 8.9,
-        "q2_2024_millions": 7.5,
-        "ltm_millions": 38.6
-    },
-    "snapshot_source": {
-        "form": "10-Q Q2 2025",
-        "accession": "0001437749-25-025772",
-        "filed_date": "August 8, 2025",
-        "item": "Allowance roll-forward and nonaccrual/OREO",
-        "note": "Credit quality disclosures",
-        "excerpt": "\"ACL roll-forward, charge-offs, recoveries, average loans; nonaccrual and OREO\"",
-        "url": "https://www.sec.gov/Archives/edgar/data/0000861842/000143774925025772/"
-    },
-    "valuation": {
-        "spot_nco_bps": 6.5,
-        "normalized_nco_bps": 42.8,
-        "nco_delta_bps": 36.3,
-        "rote_sensitivity_bps_per_10bps": 20.0,
-        "ptbv_sensitivity_per_10bps": 0.025,
-        "normalized_rote_delta_bps": -73.0,
-        "normalized_ptbv_delta_multiple": -0.09,
-        "gfc_peak_bps": 305.9,
-        "recession_rote_pct": 4.2,
-        "recession_ptbv_multiple": 0.25,
-        "cost_of_equity_pct": 9.6,
-        "provision_spot_millions": 13.0,
-        "provision_normalized_millions": 21.0,
-        "provision_delta_millions": 8.0,
-        "annual_impact_millions": 32.0,
-        "provision_calc_millions": 20.9,
-        "avg_loans_billions": 19.5,
-        "capital_base_billions": 2.5,
-        "tax_rate_pct": 25.0,
-        "normalized_rote_delta_bps_abs": 73.0,
-        "normalized_ptbv_delta_multiple_abs": 0.09
-    },
-    "fy2024": {
-        "snapshot": {
-            "acl_millions": 172.3,
-            "provision_millions": 37.5,
-            "nco_millions": 29.7,
-            "nco_rate_bps": 15.0,
-            "npas_millions": 192.2,
-            "npls_millions": 169.2,
-            "oreo_millions": 23.1,
-            "coverage_pct": 89.6,
-            "nco_gap_vs_through_cycle_bps": 27.8,
-            "percent_below_through_cycle": 65
-        },
-        "source": {
-            "form": "10-K FY2024",
-            "accession": "0001437749-25-005749",
-            "filed_date": "February 28, 2025",
-            "item": "Item 8 - Balance Sheet; MD&A Non-performing Assets; Credit note",
-            "note": "ACL approximated as Loans gross less Loans, net; NCOs and rate from MD&A; Non-accrual and OREO from Non-performing table",
-            "url": "https://www.sec.gov/Archives/edgar/data/0000861842/000143774925005749/"
-        },
-        "year_label": "2024"
-    },
-    "time_series": {
-        "quarterly": {
-            "period": "Q2 2025",
-            "acl_millions": 173.5,
-            "provision_millions": 12.3,
-            "nco_millions": 12.7,
-            "nco_rate_bps": 6.5,
-            "npas_millions": 65.5,
-            "coverage_pct": 264.9
-        },
-        "annual": {
-            "period": "FY2024",
-            "acl_millions": 172.3,
-            "provision_millions": 37.5,
-            "nco_millions": 29.7,
-            "nco_rate_bps": 15.0,
-            "npas_millions": 192.2,
-            "coverage_pct": 89.6
-        }
-    },
-    "qa": {
-        "checks": [
-            {
-                "id": "CQ-QA001",
-                "description": "NPAs identity",
-                "rule": "npas == npls + oreo",
-                "status": "PASSED"
-            },
-            {
-                "id": "CQ-QA002",
-                "description": "Coverage calculation",
-                "rule": "coverage_npa == acl_total / npas * 100 (rounded)",
-                "status": "PASSED"
-            }
-        ],
-        "calculations": [
-            {
-                "calculation": "Q2'25 NPAs",
-                "formula": "$45.615M (NPLs) + $19.896M (OREO)",
-                "result": "$65.511M",
-                "status": "VERIFIED"
-            },
-            {
-                "calculation": "Q2'25 Coverage",
-                "formula": "$173.531M / $65.511M \u00d7 100",
-                "result": "264.9%",
-                "status": "VERIFIED"
-            },
-            {
-                "calculation": "Q2'25 NCO Rate",
-                "formula": "$12.741M / $19,489.4M avg loans \u00d7 10,000 (annualized)",
-                "result": "6.54 bps",
-                "status": "VERIFIED"
-            },
-            {
-                "calculation": "FY2024 NPAs",
-                "formula": "$169.161M (NPLs) + $23.071M (OREO)",
-                "result": "$192.232M",
-                "status": "VERIFIED"
-            },
-            {
-                "calculation": "Through-Cycle Avg",
-                "formula": "Sum(NCO Rate 2008-2024) / 17 years",
-                "result": "42.8 bps",
-                "status": "VERIFIED"
-            }
-        ]
-    },
-    "metadata_table": [
-        {
-            "label": "Schema Version",
-            "value": "1.0.0"
-        },
-        {
-            "label": "File Name",
-            "value": "loans_credit_quality.json"
-        },
-        {
-            "label": "Purpose",
-            "value": "Credit metrics, ACL, NPAs, and through-cycle NCO analysis"
-        },
-        {
-            "label": "Last Updated",
-            "value": "2025-10-17 22:53:30 UTC"
-        },
-        {
-            "label": "Data Policy",
-            "value": "All material datapoints sourced from SEC filings with mandatory provenance"
-        },
-        {
-            "label": "Period Coverage",
-            "value": "Quarterly 2015-Q1 to 2025-Q2; annual FY2015-FY2024; FDIC through-cycle 2008-2024"
-        },
-        {
-            "label": "Units",
-            "value": "USD millions unless noted; per-share in USD; ratios in percent or basis points (bps)"
-        },
-        {
-            "label": "FDIC Data Source",
-            "value": "Call Report API (cert=18503), fields NTLNLSQ and LNLSGR"
-        },
-        {
-            "label": "Through-Cycle Methodology",
-            "value": "Sum quarterly net charge-offs by year; divide by average quarterly gross loans per year"
-        }
+    "annual": {
+      "period": "FY2024",
+      "acl_millions": 172.3,
+      "provision_millions": 37.5,
+      "nco_millions": 29.7,
+      "nco_rate_bps": 15.0,
+      "npas_millions": 192.2,
+      "coverage_pct": 89.6
+    }
+  },
+  "qa": {
+    "checks": [
+      {
+        "id": "CQ-QA001",
+        "description": "NPAs identity",
+        "rule": "npas == npls + oreo",
+        "status": "PASSED"
+      },
+      {
+        "id": "CQ-QA002",
+        "description": "Coverage calculation",
+        "rule": "coverage_npa == acl_total / npas * 100 (rounded)",
+        "status": "PASSED"
+      }
+    ],
+    "calculations": [
+      {
+        "calculation": "Q2'25 NPAs",
+        "formula": "$45.615M (NPLs) + $19.896M (OREO)",
+        "result": "$65.511M",
+        "status": "VERIFIED"
+      },
+      {
+        "calculation": "Q2'25 Coverage",
+        "formula": "$173.531M / $65.511M \u00d7 100",
+        "result": "264.9%",
+        "status": "VERIFIED"
+      },
+      {
+        "calculation": "Q2'25 NCO Rate",
+        "formula": "$12.741M / $19,489.4M avg loans \u00d7 10,000 (annualized)",
+        "result": "6.54 bps",
+        "status": "VERIFIED"
+      },
+      {
+        "calculation": "FY2024 NPAs",
+        "formula": "$169.161M (NPLs) + $23.071M (OREO)",
+        "result": "$192.232M",
+        "status": "VERIFIED"
+      },
+      {
+        "calculation": "Through-Cycle Avg",
+        "formula": "Sum(NCO Rate 2008-2024) / 17 years",
+        "result": "42.8 bps",
+        "status": "VERIFIED"
+      }
     ]
+  },
+  "metadata_table": [
+    {
+      "label": "Schema Version",
+      "value": "1.0.0"
+    },
+    {
+      "label": "File Name",
+      "value": "loans_credit_quality.json"
+    },
+    {
+      "label": "Purpose",
+      "value": "Credit metrics, ACL, NPAs, and through-cycle NCO analysis"
+    },
+    {
+      "label": "Last Updated",
+      "value": "2025-10-17 22:53:30 UTC"
+    },
+    {
+      "label": "Data Policy",
+      "value": "All material datapoints sourced from SEC filings with mandatory provenance"
+    },
+    {
+      "label": "Period Coverage",
+      "value": "Quarterly 2015-Q1 to 2025-Q2; annual FY2015-FY2024; FDIC through-cycle 2008-2024"
+    },
+    {
+      "label": "Units",
+      "value": "USD millions unless noted; per-share in USD; ratios in percent or basis points (bps)"
+    },
+    {
+      "label": "FDIC Data Source",
+      "value": "Call Report API (cert=18503), fields NTLNLSQ and LNLSGR"
+    },
+    {
+      "label": "Through-Cycle Methodology",
+      "value": "Sum quarterly net charge-offs by year; divide by average quarterly gross loans per year"
+    }
+  ],
+  "metadata": {
+    "notes": "Allowance metrics incorporate management disclosure of $196.5M ACL (0.98% of loans) at September 30, 2025."
+  }
 }

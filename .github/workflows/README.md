@@ -73,15 +73,11 @@ Action Required:
 4. Push corrected changes
 ```
 
-#### Bypassing the Check
+#### Publication Gate (Required)
 
-To skip CI validation (use sparingly, only for non-valuation changes):
+The workflow runs both the reconciliation guard and the publication gate. A failing gate indicates the report must be NOT RATED and valuation numbers should remain hidden.
 
-```bash
-git commit -m "Fix typo [skip ci]"
-```
-
-**Warning:** Bypassing CI means published numbers may drift. Use only for documentation fixes, typos, or unrelated changes.
+Note: Avoid using commit-message CI skip flags for site changes. Keep guardrails intact to protect publication integrity.
 
 ---
 

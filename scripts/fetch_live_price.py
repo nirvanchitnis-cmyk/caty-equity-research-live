@@ -5,7 +5,7 @@ from __future__ import annotations
 
 import json
 import sys
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 import yfinance as yf
@@ -35,8 +35,21 @@ def update_market_data(price: float, price_date: str) -> None:
 
     payload["price"] = round(price, 2)
     payload["price_date"] = price_date
-    payload["report_generated"] = datetime.now(tz=timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
-    payload.setdefault("metadata", {})["update_method"] = "yfinance API"
+    now_utc = datetime.now(tz=timezone.utc).replace(microsecond=0)
+    payload["report_generated"] = now_utc.isoformat().replace("+00:00", "Z")
+
+    price_dt = datetime.strptime(price_date, "%Y-%m-%d").date()
+    payload["data_source"] = f"NASDAQ closing price ({price_dt.strftime('%A, %b %d, %Y')})"
+
+    metadata = payload.setdefault("metadata", {})
+    metadata["update_method"] = "yfinance API"
+    metadata["last_trading_day"] = price_date
+    metadata["market_status"] = "closed"
+
+    next_trading_day = price_dt + timedelta(days=1)
+    while next_trading_day.weekday() >= 5:
+        next_trading_day += timedelta(days=1)
+    metadata["next_trading_day"] = next_trading_day.isoformat()
 
     metrics = payload.setdefault("calculated_metrics", {})
     tbvps = metrics.get("tbvps")
@@ -56,6 +69,10 @@ def update_market_data(price: float, price_date: str) -> None:
             continue
         return_pct = (target_value - price) / price * 100
         metrics[return_key] = round(return_pct, 1)
+
+    report_meta = payload.setdefault("report_metadata", {})
+    report_meta["last_updated_utc"] = now_utc.isoformat().replace("+00:00", "Z")
+    report_meta["generated_at_display"] = now_utc.strftime("%B %d, %Y %H:%M UTC")
 
     with DATA_PATH.open("w", encoding="utf-8") as fh:
         json.dump(payload, fh, indent=2)

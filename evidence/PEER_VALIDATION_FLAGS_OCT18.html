@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CATY - PEER EXTRACTION VALIDATION FLAGS | Evidence Repository</title>
+    <link rel="stylesheet" href="../styles/caty-equity-research.css">
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Toggle dark mode" role="switch" aria-checked="false">
+        <span id="theme-icon" aria-hidden="true">🌙</span>
+        <span id="theme-text">Dark Mode</span>
+    </button>
+
+    <header>
+        <div class="header-content">
+            <h1 class="page-title">Cathay General Bancorp (NASDAQ: CATY)</h1>
+            <p class="page-subtitle">PEER EXTRACTION VALIDATION FLAGS</p>
+            <p class="page-meta">Author: Nirvan Chitnis | Date: October 2025 | Purpose: Evidence documentation</p>
+        </div>
+    </header>
+
+    <main class="container" id="main-content" tabindex="-1">
+        <nav aria-label="Breadcrumb" class="breadcrumb">
+            <a href="../index.html">← Main Report</a>
+            <span aria-hidden="true"> / </span>
+            <span aria-current="page">Evidence: PEER EXTRACTION VALIDATION FLAGS</span>
+        </nav>
+
+        <h3>EXTRACTION SUCCESS: 8/8 PEERS ✅</h3>
+
+<p><strong>Automated extraction via <code>analysis/extract_peer_metrics.py</code>:</strong></p>
+<ul>
+<li>EWBC, COLB, BANC, CVBF, HAFC, HOPE, WAFD, PPBI</li>
+<li>All TBVPS, ROTE, CRE % values extracted from inline XBRL</li>
+<li>Results populated in <code>evidence/peer_snapshot_2025Q2.csv</code></li>
+</ul>
+
+<p><strong>Source files hashed:</strong></p>
+<ul>
+<li>9 peer 10-Q HTML files (.gz compressed)</li>
+<li>SHA256 hashes logged in <code>evidence/README.md</code></li>
+</ul>
+
+<hr>
+
+<h3>🚨 HIGH-PRIORITY VALIDATION FLAGS</h3>
+
+<h4>1. CVBF CRE 88.2% - EXTREME OUTLIER</h4>
+<p><strong>Parser output:</strong> 88.2% of total loans are CRE</p>
+<p><strong>Expected range:</strong> 40-60% for regional banks</p>
+<p><strong>Validation needed:</strong></p>
+<ul>
+<li>Open SEC viewer: https://www.sec.gov/cgi-bin/viewer?action=view&amp;cik=354647&amp;accession_number=0000950170-25-105728&amp;xbrl_type=v</li>
+<li>Navigate to Loan Schedule (usually Note 4 or Note 5)</li>
+<li>Manually verify:</li>
+<ul>
+<li>Total CRE = Construction + Multifamily + Nonfarm Nonresidential + (Owner-Occupied if separate)</li>
+<li>Total Loans = Gross loans balance from Balance Sheet</li>
+<li>CRE % = CRE / Total Loans × 100</li>
+</ul>
+<li><strong>Hypothesis:</strong> Parser may be pulling CRE-to-CRE ratio instead of CRE-to-Total-Loans</li>
+</ul>
+
+<h4>2. HAFC CRE 84.0% - EXTREME OUTLIER</h4>
+<p><strong>Parser output:</strong> 84.0%</p>
+<p><strong>Expected range:</strong> 40-60%</p>
+<p><strong>Validation needed:</strong></p>
+<ul>
+<li>Viewer: https://www.sec.gov/cgi-bin/viewer?action=view&amp;cik=1109242&amp;accession_number=0000950170-25-105658&amp;xbrl_type=v</li>
+<li>Cross-exam note: Hanmi may report construction separately - ensure it's included in total</li>
+<li>Verify loan table denominators</li>
+</ul>
+
+<h4>3. HOPE CRE 86.6% - EXTREME OUTLIER</h4>
+<p><strong>Parser output:</strong> 86.6%</p>
+<p><strong>Expected range:</strong> 40-60%</p>
+<p><strong>Validation needed:</strong></p>
+<ul>
+<li>Viewer: https://www.sec.gov/cgi-bin/viewer?action=view&amp;cik=1128361&amp;accession_number=0001128361-25-000036&amp;xbrl_type=v</li>
+<li>Same validation protocol as CVBF/HAFC</li>
+</ul>
+
+<hr>
+
+<h3>MEDIAN SHIFTS PENDING VALIDATION</h3>
+
+<table class="data-table">
+<thead>
+<tr>
+<th>Metric</th>
+<th>Old Median</th>
+<th>New Median (Auto)</th>
+<th>Delta</th>
+<th>Impact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P/TBV</td>
+<td>1.24x</td>
+<td>1.23x</td>
+<td>-1 bp</td>
+<td>Minimal</td>
+</tr>
+<tr>
+<td>ROTE</td>
+<td>8.82%</td>
+<td>8.77%</td>
+<td>-5 bps</td>
+<td>Minimal</td>
+</tr>
+<tr>
+<td><strong>CRE %</strong></td>
+<td><strong>43.0%</strong></td>
+<td><strong>65.4%</strong></td>
+<td><strong>+52%</strong></td>
+<td><strong>MAJOR</strong></td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>CRE median shift is implausibly large.</strong> If CVBF/HAFC/HOPE correct to ~40-50% range, median reverts to ~45%.</p>
+
+<hr>
+
+<h3>VALIDATION WORKFLOW (Tomorrow 0800-1000 PT)</h3>
+
+<h4>Step 1: Manual CRE Verification (0800-0900 PT)</h4>
+<p><strong>Priority order:</strong></p>
+<ol>
+<li><strong>CVBF</strong> (highest outlier)</li>
+<li><strong>HOPE</strong></li>
+<li><strong>HAFC</strong></li>
+<li><strong>EWBC</strong> (70.3% also seems high)</li>
+<li>WAFD, COLB, BANC, PPBI (spot-check)</li>
+</ol>
+
+<p><strong>For each peer:</strong></p>
+<ul>
+<li>Open SEC inline viewer (URLs in <code>evidence/peer_extraction_template.md</code>)</li>
+<li>Find loan schedule note (typically Note 4, Note 5, or "Loans and Allowance")</li>
+<li>Screenshot or record exact table with:</li>
+<ul>
+<li>Construction &amp; Land Development: $XXX,XXX</li>
+<li>Multifamily Residential: $XXX,XXX</li>
+<li>Nonfarm Nonresidential (CRE): $XXX,XXX</li>
+<li>Owner-Occupied CRE (if separate): $XXX,XXX</li>
+<li>Total Loans: $X,XXX,XXX</li>
+</ul>
+<li>Calculate CRE % manually: Sum CRE categories / Total Loans × 100</li>
+<li>Compare to parser output</li>
+<li>Document variance in CSV <code>Notes</code> column</li>
+</ul>
+
+<h4>Step 2: TBVPS/ROTE Citation Verification (0900-1000 PT)</h4>
+<p><strong>For all 8 peers:</strong></p>
+<ul>
+<li><strong>TBVPS:</strong></li>
+<ul>
+<li>Balance Sheet page: Total Equity (June 30, 2025)</li>
+<li>Note X: Goodwill + Intangibles</li>
+<li>Cover or Note Y: Diluted shares outstanding</li>
+<li>Record: "Balance Sheet p.__, Note __ (Goodwill $XXM, Intangibles $XXM), Shares __M"</li>
+</ul>
+</ul>
+
+<ul>
+<li><strong>ROTE:</strong></li>
+<ul>
+<li>Income Statement: Net Income Q2 2025</li>
+<li>MD&amp;A or Note: Average Stockholders' Equity (or calculate from beginning/ending)</li>
+<li>Record: "Income Statement p.__, MD&amp;A p.__ (Avg TCE $XXM), annualized"</li>
+</ul>
+</ul>
+
+<ul>
+<li><strong>CRE %:</strong></li>
+<ul>
+<li>Loan Schedule Note: CRE component detail</li>
+<li>Record: "Loan Schedule Note X p.__, Construction $XXM + Multifamily $XXM + Nonfarm $XXM = $XXM / Total $XXM = XX.X%"</li>
+</ul>
+</ul>
+
+<h4>Step 3: Update CSV (1000 PT Deadline)</h4>
+<p><strong>Replace all "Auto-extracted (context pending)" with:</strong></p>
+<ul>
+<li>Specific page numbers</li>
+<li>Note references</li>
+<li>Actual calculation shown in Notes column</li>
+</ul>
+
+<hr>
+
+<h3>IMPACT ON VALUATION (If Validation Changes Medians)</h3>
+
+<h4>Scenario A: CRE ratios validate as-is (65.4% median)</h4>
+<ul>
+<li>CATY 52.4% CRE is now BELOW peer median (was above)</li>
+<li><strong>STRENGTHENS sell thesis:</strong> CATY less risky than peers, yet trades at premium P/TBV</li>
+<li>Target stays ~$40.32</li>
+</ul>
+
+<h4>Scenario B: CRE ratios correct to ~45% median</h4>
+<ul>
+<li>CATY 52.4% CRE is ABOVE peer median (reverts to original position)</li>
+<li>Sell thesis unchanged</li>
+<li>Target stays ~$40.32</li>
+</ul>
+
+<h4>Scenario C: Mix (some validate, some correct)</h4>
+<ul>
+<li>Median shifts to ~50-55% range</li>
+<li>CATY near median</li>
+<li>Minimal impact on target</li>
+</ul>
+
+<p><strong>Bottom line:</strong> CRE % validation affects NARRATIVE (risk positioning) but likely minimal impact on P/TBV target since driver is ROTE normalization, not absolute CRE level.</p>
+
+<hr>
+
+<h3>FILES REQUIRING UPDATE POST-VALIDATION</h3>
+
+<ol>
+<li><strong>evidence/peer_snapshot_2025Q2.csv</strong> - Replace citations ← <strong>DUE 1000 PT</strong></li>
+<li><strong>evidence/capital_stress_2025Q2.xlsx</strong> - Refresh median inputs ← <strong>DUE 1200 PT</strong></li>
+<li><strong>CATY_08_cre_exposure.html</strong> - Update peer CRE comparison ← <strong>DUE 1400 PT</strong></li>
+<li><strong>CATY_11_peers_normalized.html</strong> - Refresh peer table ← <strong>DUE 1400 PT</strong></li>
+<li><strong>DEREK_EXECUTIVE_SUMMARY.md</strong> - Replace legacy stats ← <strong>DUE 1400 PT</strong></li>
+<li><strong>analysis/valuation_bridge_outline.md</strong> - Peer sensitivity addendum ← <strong>DUE 2000 PT</strong></li>
+</ol>
+
+<hr>
+
+<h3>PARSER DIAGNOSTIC NOTES</h3>
+
+<p><strong>What worked:</strong></p>
+<ul>
+<li>TBVPS extraction (all 8/8 correct, verified against known values)</li>
+<li>ROTE extraction (spot-check EWBC 15.84% vs estimated 16.55% = within rounding)</li>
+<li>Inline XBRL context parsing</li>
+<li>Unit conversion (thousands to dollars per share)</li>
+</ul>
+
+<p><strong>What needs investigation:</strong></p>
+<ul>
+<li>CRE % extraction logic - may be pulling wrong denominator</li>
+<li>Loan table parsing - different banks use different XBRL tags for loan categories</li>
+<li>Possible issues:</li>
+<ul>
+<li>Parser summing only real-estate-secured loans (numerator) but denominator is subset</li>
+<li>Owner-occupied loans counted twice</li>
+<li>Construction loans excluded when should be included</li>
+</ul>
+</ul>
+
+<p><strong>Regression test needed:</strong> Create fixture with known loan table → verify parser output matches expected CRE %.</p>
+
+<hr>
+
+<h3>COMMIT CHECKLIST (Before Sleep)</h3>
+
+<ul>
+<li>[x] SHA256 hashes logged in evidence/README.md</li>
+<li>[x] Validation flags documented (this file)</li>
+<li>[ ] Commit extraction results + flags</li>
+<li>[ ] Git status clean (no uncommitted changes)</li>
+<li>[ ] Tomorrow's workflow clear (0800-1000 PT manual verification)</li>
+</ul>
+
+<hr>
+
+<p><strong>END OF AUTOMATED EXTRACTION PHASE</strong></p>
+<p><strong>MANUAL VERIFICATION BEGINS 0800 PT OCT 19</strong></p>
+
+    </main>
+
+    <footer class="evidence-footer">
+        <p class="footer-text">Evidence documentation for CFA IRC equity research challenge</p>
+        <p class="footer-meta">Author: Nirvan Chitnis | Generated: 2025-10-23 01:13 | Source: PEER_VALIDATION_FLAGS_OCT18.md</p>
+    </footer>
+
+    <script src="../scripts/theme.js"></script>
+</body>
+</html>

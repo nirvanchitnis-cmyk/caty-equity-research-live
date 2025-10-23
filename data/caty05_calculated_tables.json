@@ -1,7 +1,7 @@
 {
   "comment": "CATY_05 NIM Decomposition - All calculated tables and prose data",
-  "last_updated": "2025-10-19T23:15:00Z",
-  "source_script": "analysis/calculate_nim_tables.py",
+  "last_updated": "2025-10-22T02:46:00Z",
+  "source_script": "manual_q3_refresh",
   "beta_calculation": {
     "ib_only": {
       "start_rate_pct": 0.33,
@@ -22,7 +22,7 @@
     },
     "all_in": {
       "start_rate_pct": 0.46,
-      "end_rate_pct": 3.00,
+      "end_rate_pct": 3.0,
       "delta_bps": 254,
       "fed_start_pct": 0.5,
       "fed_end_pct": 5.5,
@@ -58,7 +58,44 @@
     },
     "repricing_lag_low_bps": 40,
     "repricing_lag_high_bps": 80,
-    "prior_cycle_total_bps": 225
+    "prior_cycle_total_bps": 225,
+    "history": {
+      "source": "data/deposit_beta_history.json",
+      "updated_at": "2025-10-22T10:32:42Z",
+      "quarters": [
+        {
+          "quarter": "2024Q3",
+          "report_date": "2024-09-30",
+          "interest_bearing_rate_pct": 3.95,
+          "all_in_rate_pct": 0.833,
+          "dda_mix_pct": 16.23,
+          "total_interest_bearing_balance_thousands": 16671662.0,
+          "total_interest_expense_thousands": 165704.0
+        },
+        {
+          "quarter": "2025Q1",
+          "report_date": "2025-03-31",
+          "interest_bearing_rate_pct": 3.43,
+          "all_in_rate_pct": 0.703,
+          "dda_mix_pct": 16.78,
+          "total_interest_bearing_balance_thousands": 16396987.0,
+          "total_interest_expense_thousands": 138500.0
+        },
+        {
+          "quarter": "2025Q2",
+          "report_date": "2025-06-30",
+          "interest_bearing_rate_pct": 3.35,
+          "all_in_rate_pct": 0.695,
+          "dda_mix_pct": 16.69,
+          "total_interest_bearing_balance_thousands": 16633658.0,
+          "total_interest_expense_thousands": 138734.0
+        }
+      ]
+    },
+    "latest_quarter": "2025Q2",
+    "latest_interest_bearing_rate_pct": 3.35,
+    "latest_all_in_rate_pct": 0.695,
+    "latest_dda_mix_pct": 16.69
   },
   "beta_assumptions": {
     "down_cycle_beta_pct": 60,
@@ -73,7 +110,7 @@
   },
   "nim_bridge": {
     "q1_2025": {
-      "nim_pct": 3.30,
+      "nim_pct": 3.3,
       "asset_yield_pct": 5.89,
       "funding_cost_pct": 3.46,
       "fte_adjustment_bps": 8
@@ -207,5 +244,25 @@
       "nim_reported_pct": 3.27,
       "note": "Difference due to FTE adjustment and rounding"
     }
+  },
+  "nim_recent": {
+    "quarter": "Q3 2025",
+    "net_interest_margin_pct": 3.31,
+    "prior_quarter_margin_pct": 3.27,
+    "qoq_change_bps": 4,
+    "asset_yield_pct": 5.84,
+    "asset_yield_prior_pct": 5.83,
+    "asset_yield_change_bps": 1,
+    "funding_cost_pct": 3.32,
+    "funding_cost_prior_pct": 3.37,
+    "funding_cost_change_bps": -5,
+    "interest_bearing_deposit_cost_pct": 3.28,
+    "source": "Form 8-K Exhibit 99.1 (Q3 2025 results release)"
+  },
+  "data_source_notes": {
+    "q3_refresh": "Updated from Form 8-K Exhibit 99.1 for quarter ended September 30, 2025."
+  },
+  "metadata": {
+    "coverage_note": "Quarterly metrics refreshed through Q3 2025 using 8-K; structural beta analysis remains anchored on Fed tightening cycle through Q2 2025."
   }
 }

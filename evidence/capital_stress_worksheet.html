@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CATY - CAPITAL STRESS WORKSHEET - CATHAY GENERAL BANCORP | Evidence Repository</title>
+    <link rel="stylesheet" href="../styles/caty-equity-research.css">
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Toggle dark mode" role="switch" aria-checked="false">
+        <span id="theme-icon" aria-hidden="true">🌙</span>
+        <span id="theme-text">Dark Mode</span>
+    </button>
+
+    <header>
+        <div class="header-content">
+            <h1 class="page-title">Cathay General Bancorp (NASDAQ: CATY)</h1>
+            <p class="page-subtitle">CAPITAL STRESS WORKSHEET - CATHAY GENERAL BANCORP</p>
+            <p class="page-meta">Author: Nirvan Chitnis | Date: October 19, 2025 | Purpose: Quantify capital burn and tangible book value impairment if CATY normalizes to through-cycle NCO rates (42.8 bps base case, 60 bps bear case) from current 18.1 bps LTM.</p>
+        </div>
+    </header>
+
+    <main class="container" id="main-content" tabindex="-1">
+        <nav aria-label="Breadcrumb" class="breadcrumb">
+            <a href="../index.html">← Main Report</a>
+            <span aria-hidden="true"> / </span>
+            <span aria-current="page">Evidence: CAPITAL STRESS WORKSHEET - CATHAY GENERAL BANCORP</span>
+        </nav>
+
+        <h3>EXECUTIVE SUMMARY</h3>
+
+<p><strong>Purpose:</strong> Quantify capital burn and tangible book value impairment if CATY normalizes to through-cycle NCO rates (42.8 bps base case, 60 bps bear case) from current 18.1 bps LTM.</p>
+
+<p><strong>Key Findings (UPDATED):</strong></p>
+<ul>
+<li><strong>Through-cycle NCO normalization (42.8 bps)</strong> requires $48.0M gross provisions ($38.4M after tax), equating to a <strong>20.1 bps CET1 burn</strong> and leaving <strong>265 bps</strong> of cushion above the 10.5% management buffer.</li>
+<li><strong>Industrial/Warehouse bear case (15% cumulative loss)</strong> consumes <strong>121.2 bps</strong> of CET1 and, when stacked with base-case normalization, totals <strong>141.3 bps</strong> of capital erosion; buffer tightens to <strong>164 bps</strong> and <strong>TBVPS falls to $32.82 (-9.2%)</strong>.</li>
+<li><strong>Capital flexibility is materially reduced:</strong> buybacks must pause; dividend coverage remains but moves onto watch as CRE outlier risk compounds other stress assumptions.</li>
+</ul>
+
+<hr>
+
+<h3>STARTING POINT - Q2 2025 CAPITAL POSITION</h3>
+
+<h4>Regulatory Capital (Q2'25 10-Q)</h4>
+
+<table class="data-table">
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Common Equity Tier 1 (CET1)</strong></td>
+<td>$2,552.3M</td>
+<td>Q2'25 10-Q, Reg. Capital table</td>
+</tr>
+<tr>
+<td><strong>Risk-Weighted Assets (RWA)</strong></td>
+<td>$19,118.5M</td>
+<td>Q2'25 10-Q</td>
+</tr>
+<tr>
+<td><strong>CET1 Ratio</strong></td>
+<td>13.35%</td>
+<td>Q2'25 10-Q</td>
+</tr>
+<tr>
+<td><strong>Total Loans</strong></td>
+<td>$19,784.7M</td>
+<td>Q2'25 10-Q</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Regulatory Minimums:</strong> CET1 4.5% (well-capitalized: 6.5%); Cathay targets ≥10.5% buffer.</p>
+
+<hr>
+
+<h4>Tangible Book Value (Q2'25 10-Q)</h4>
+
+<table class="data-table">
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Shareholders' Equity</strong></td>
+<td>$2,511.4M</td>
+<td>Q2'25 10-Q</td>
+</tr>
+<tr>
+<td><strong>Goodwill + Intangibles</strong></td>
+<td>$7.6M</td>
+<td>Q2'25 10-Q</td>
+</tr>
+<tr>
+<td><strong>Tangible Common Equity (TCE)</strong></td>
+<td>$2,503.8M</td>
+<td>Equity − Goodwill/Intangibles</td>
+</tr>
+<tr>
+<td><strong>Shares Outstanding</strong></td>
+<td>69.34M</td>
+<td>Q2'25 10-Q</td>
+</tr>
+<tr>
+<td><strong>TBVPS</strong></td>
+<td>$36.16</td>
+<td>TCE / Shares</td>
+</tr>
+</tbody>
+</table>
+
+<hr>
+
+<h4>Allowance for Credit Losses (Q2'25)</h4>
+
+<table class="data-table">
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ACL - Loans</strong></td>
+<td>$174.5M</td>
+<td>Q2'25 10-Q, Note on ACL</td>
+</tr>
+<tr>
+<td><strong>Total Loans</strong></td>
+<td>$19,784.7M</td>
+<td>Q2'25 10-Q</td>
+</tr>
+<tr>
+<td><strong>ACL Coverage Ratio</strong></td>
+<td>0.90%</td>
+<td>ACL / Total Loans × 100</td>
+</tr>
+</tbody>
+</table>
+
+<hr>
+
+<h3>NCO NORMALIZATION SCENARIOS</h3>
+
+<h4>Current LTM NCO vs Through-Cycle</h4>
+
+<table class="data-table">
+<thead>
+<tr>
+<th>Period</th>
+<th>NCOs ($M)</th>
+<th>Avg Loans ($M)</th>
+<th>NCO Rate (bps)</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>LTM (Q3'24-Q2'25)</strong></td>
+<td>$35.3M</td>
+<td>$19,449M</td>
+<td><strong>18.1 bps</strong></td>
+<td>Current performance</td>
+</tr>
+<tr>
+<td><strong>Through-Cycle (2008-2024 FDIC)</strong></td>
+<td>—</td>
+<td>—</td>
+<td><strong>42.8 bps</strong></td>
+<td>17-year average including GFC</td>
+</tr>
+<tr>
+<td><strong>Bear Case (GFC Peak)</strong></td>
+<td>—</td>
+<td>—</td>
+<td><strong>60 bps</strong></td>
+<td>2009-2010 stress level</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Delta from Current:</strong></p>
+<ul>
+<li>Base Case: +24.7 bps (42.8 - 18.1)</li>
+<li>Bear Case: +41.9 bps (60.0 - 18.1)</li>
+</ul>
+
+<hr>
+
+<h3>SCENARIO 1: BASE CASE (42.8 BPS THROUGH-CYCLE NCO)</h3>
+
+<h4>Step 1: Calculate Incremental Provision Requirement</h4>
+
+<p><strong>Assumptions:</strong></p>
+<ul>
+<li>Avg Loans: $19,449M (LTM average)</li>
+<li>Target NCO: 42.8 bps annually</li>
+<li>Tax Rate: 20%</li>
+</ul>
+
+<p><strong>Calculation:</strong></p>
+
+<pre class="code-block"><code>Incremental NCO = (42.8 bps - 18.1 bps) × $19,449M
+                = 24.7 bps × $19,449M
+                = 0.00247 × $19,449M
+                = $48.0M annually</code></pre>
+
+<p><strong>After-Tax Impact on Net Income:</strong></p>
+<pre class="code-block"><code>Provision Expense = $48.0M
+Tax Shield = $48.0M × 20% = $9.6M
+After-Tax NI Impact = $48.0M - $9.6M = $38.4M reduction</code></pre>
+
+<hr>
+
+<h4>Step 2: Impact on ROTE and P/TBV</h4>
+
+<table class="data-table">
+<thead>
+<tr>
+<th>Metric</th>
+<th>Current</th>
+<th>Post-Normalization</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>LTM Net Income</strong></td>
+<td>$294.7M</td>
+<td>$256.3M</td>
+</tr>
+<tr>
+<td><strong>Avg TCE</strong></td>
+<td>$2,465.1M</td>
+<td>$2,465.1M</td>
+</tr>
+<tr>
+<td><strong>ROTE</strong></td>
+<td>11.95%</td>
+<td>10.40%</td>
+</tr>
+<tr>
+<td><strong>Fair P/TBV (regression)</strong></td>
+<td>—</td>
+<td>1.115x</td>
+</tr>
+<tr>
+<td><strong>Implied Target TBVPS</strong></td>
+<td>—</td>
+<td>$36.16 × 1.115 = $40.32</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Result:</strong> Current SELL thesis validated - target $40.32 vs spot $45.89 = -12.1% downside</p>
+
+<hr>
+
+<h4>Step 3: CET1 Burn Analysis</h4>
+
+<p><strong>Scenario:</strong> Assume bank normalizes to 42.8 bps NCO WITHOUT building ACL (i.e., charge-offs flow through capital)</p>
+
+<p><strong>Year 1 Capital Burn:</strong></p>
+<pre class="code-block"><code>After-tax NCO Impact = $38.4M (from Step 1)
+CET1 Reduction       = $38.4M
+Starting CET1 Ratio  = 13.35%
+RWA                  = $19,118.5M
+
+CET1 Ratio Impact = ($38.4M ÷ $19,118.5M) × 10,000 = **20.1 bps**
+Ending CET1 Ratio = 13.35% − 0.201% = **13.15%**</code></pre>
+
+<p><strong>Cushion Above Minimum:</strong></p>
+<pre class="code-block"><code>Cushion vs. 10.5% buffer = (13.15% − 10.5%) × 100 = **265 bps**</code></pre>
+
+<p><strong>Assessment:</strong> Headroom remains, but the cushion drops by ~350 bps versus the prior (incorrect) peer median math—share buybacks now compete with capital preservation.</p>
+
+<hr>
+
+<h4>Step 4: TBVPS Compression</h4>
+
+<p><strong>Scenario:</strong> NCO flow-through to equity</p>
+
+<pre class="code-block"><code>Starting TCE: $2,503.8M
+After-tax NCO Impact: -$38.4M
+Ending TCE: $2,465.4M
+Shares: 69.34M
+Ending TBVPS: $35.55 (-1.7% vs. $36.16)</code></pre>
+
+<p><strong>Valuation Impact:</strong></p>
+<pre class="code-block"><code>Fair P/TBV: 1.115x
+Target Price = $35.55 × 1.115 = $39.64
+Downside from $45.89: -13.6%</code></pre>
+
+<hr>
+
+<h3>SCENARIO 2: BEAR CASE (60 BPS GFC-LEVEL NCO)</h3>
+
+<h4>Step 1: Incremental Provision</h4>
+
+<pre class="code-block"><code>Incremental NCO = (60 bps - 18.1 bps) × $19,449M
+                = 41.9 bps × $19,449M
+                = $81.5M annually</code></pre>
+
+<p><strong>After-Tax NI Impact:</strong></p>
+<pre class="code-block"><code>Provision = $81.5M
+Tax Shield = $16.3M
+After-Tax Impact = $65.2M reduction</code></pre>
+
+<hr>
+
+<h4>Step 2: ROTE Compression</h4>
+
+<table class="data-table">
+<thead>
+<tr>
+<th>Metric</th>
+<th>Current</th>
+<th>Bear Case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>LTM Net Income</strong></td>
+<td>$294.7M</td>
+<td>$229.5M</td>
+</tr>
+<tr>
+<td><strong>ROTE</strong></td>
+<td>11.95%</td>
+<td>9.31%</td>
+</tr>
+<tr>
+<td><strong>Fair P/TBV</strong></td>
+<td>1.115x</td>
+<td>0.95x</td>
+</tr>
+<tr>
+<td><strong>Implied TBVPS Target</strong></td>
+<td>$40.32</td>
+<td>$34.35</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Downside:</strong> ~25% vs. $45.89 spot once multiple compression is applied alongside earnings drag.</p>
+
+<hr>
+
+<h4>Step 3: CET1 Burn (Bear Case)</h4>
+
+<p>After-tax NCO Impact = $65.2M/year</p>
+<p>CET1 Reduction       = $65.2M</p>
+<p>RWA                  = $19,118.5M</p>
+<p>CET1 Ratio Impact    = ($65.2M ÷ $19,118.5M) × 10,000 = <strong>34.1 bps per year</strong></p>
+<p>3-Year Cumulative    = <strong>102.3 bps</strong></p>
+<p>Ending CET1 Ratio    = 13.35% − 1.023% = <strong>12.33%</strong></p>
+<p>Buffer vs. 10.5%     = <strong>183 bps</strong></p>
+<pre class="code-block"><code>
+**Risk Assessment:** Stack this 102 bps with industrial/warehouse bear (121 bps) and base-case normalization (20 bps) → **243 bps** total erosion. CET1 would slide to ~11.0%, triggering a hard stop on buybacks and a dividend review.
+
+---
+
+### Step 4: ACL Adequacy Test
+
+**Question:** Is $174.5M ACL sufficient to absorb GFC-level NCOs?
+
+**3-Year Bear Case NCO:**</code></pre>
+<p>Annual NCO (60 bps): $116.7M ($19,449M × 0.0060)</p>
+<p>3-Year Cumulative: $350M</p>
+<p>Less: ACL Coverage: -$174.5M</p>
+<p>Shortfall: $175.5M</p>
+<pre class="code-block"><code>
+**Implication:** Bank would need $175M+ in additional reserves OR $140M+ capital raise (after-tax).
+
+---
+
+## SCENARIO 3: TOTAL CRE STRESS (20% LOSS SEVERITY)
+
+### Assumptions
+
+- Total CRE Portfolio: $10,363M
+- Loss Severity: 20% (GFC-level)
+- Expected Loss: $2,073M
+- ACL Coverage: $174.5M
+- Shortfall: $1,898M
+
+**This is EXISTENTIAL RISK - not modeled as base case**
+
+---
+
+### Capital Impairment
+</code></pre>
+<p>Loss After Reserves = $2,073M - $174.5M = $1,898M</p>
+<p>Tax Shield (20%) = $380M</p>
+<p>Net TCE Impact = -$1,518M</p>
+
+<p>Starting TCE: $2,503.8M</p>
+<p>Ending TCE: $985M</p>
+<p>Ending TBVPS: $14.23 (-60% from $36.16)</p>
+<pre class="code-block"><code>
+**CET1 Impact:**</code></pre>
+<p>CET1 Burn = $1,518M</p>
+<p>Pro forma CET1 Capital = $2,552.3M − $1,518M = $1,034.3M</p>
+<p>CET1 Ratio = $1,034.3M ÷ $19,118.5M = 5.41% (below 6.5% well-cap threshold)</p>
+<pre class="code-block"><code>
+**Result:** Bank would be undercapitalized and require TARP-style rescue or M&amp;A.
+
+---
+
+## KEY FINDINGS (UPDATED)
+
+### Base Case (42.8 bps Through-Cycle NCO)
+- ✅ **CET1 cushion shrinks to 265 bps** — still above management buffer but materially tighter than previously assumed.
+- ✅ **ROTE drops to 10.4%; TBVPS to $35.55** — regression target holds at $39.6, reinforcing SELL call.
+- ⚠ **Buybacks constrained** — optionality limited until excess CRE capital premium is addressed.
+
+### Bear Case (60 bps NCO + Industrial/Warehouse Stress)
+- ⚠ **Combined CET1 burn hits 243 bps** (102 bps NCO + 121 bps property + 20 bps base normalization) → pro forma CET1 ≈ 11.0%.
+- ⚠ **TBVPS down to $32.82 (-9.2%)** — dividend sustainable but subject to scrutiny; buybacks halted.
+- 🚨 **ACL shortfall $175M** — demands reserve build or capital action if cycle deteriorates.
+
+### Tail Risk (20% CRE Loss Severity)
+- 🚨 **Capital wipe-out scenario** — $1.9B net loss would collapse CET1; only included as qualitative tail marker.
+- Probability low (&lt;5%), but underscores necessity of caps on CRE exposure.
+
+---
+
+## NEXT STEPS
+
+1. Embed refreshed capital outputs into `CATY_11_peers_normalized.html` and `DEREK_EXECUTIVE_SUMMARY.md`.
+2. Extend workbook with multi-period capital bridge (Years 1–3) using updated NCO and property stress inputs.
+3. Align valuation bridge with revised TBVPS trajectory and CRE-driven multiple compression.
+4. Archive parser/log outputs and tie evidence hashes to this worksheet revision.
+
+---
+
+## EVIDENCE TRAIL
+
+**Data Sources:**
+- Q2 2025 10-Q: Accession 0001437749-25-025772, filed 2025-08-05
+- LTM NCO calculation: Evidence/acl_bridge_2023Q3-2025Q2_FINAL.csv
+- Through-cycle NCO: FDIC SDI 2008-2024 average (42.8 bps)
+
+**Commands Executed:**</code></pre>
+<h2>Capital extraction (pending)</h2>
+<p>curl -sL -H "User-Agent: Mozilla/5.0" \</p>
+<p>  "https://www.sec.gov/cgi-bin/viewer?action=view&amp;cik=861842&amp;accession_number=0001437749-25-025772" \</p>
+<p>  -o /tmp/caty_q2_2025_full.html</p>
+
+<h2>Search for regulatory capital table</h2>
+<p>grep -i "common equity tier 1\|risk-weighted assets" /tmp/caty_q2_2025_full.html</p>
+<pre class="code-block"><code>
+---
+
+**STATUS:** UPDATED 2025-10-19 04:35 PT — Base/Bear capital impacts recalculated; multi-period projection pending.</code></pre>
+
+    </main>
+
+    <footer class="evidence-footer">
+        <p class="footer-text">Evidence documentation for CFA IRC equity research challenge</p>
+        <p class="footer-meta">Author: Nirvan Chitnis | Generated: 2025-10-23 01:13 | Source: capital_stress_worksheet.md</p>
+    </footer>
+
+    <script src="../scripts/theme.js"></script>
+</body>
+</html>

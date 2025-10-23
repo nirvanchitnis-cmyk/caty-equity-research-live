@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CATY - NIM Decomposition & Deposit Beta Analysis | Data Repository</title>
     <link rel="stylesheet" href="styles/caty-equity-research.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 </head>
 <body>
     <!-- Theme Toggle -->
@@ -21,8 +22,8 @@
             <!-- BEGIN AUTOGEN: caty05-header-meta -->
             <p class="page-meta">
                 Rate sensitivity and funding dynamics |
-                Last Updated: October 17, 2025 |
-                Source: SEC EDGAR 10-Q Q2 2025
+                Last Updated: October 22, 2025 |
+                Source: Form 8-K (Q3 2025 results) + historical SEC 10-Q datasets
             </p>
             <!-- END AUTOGEN: caty05-header-meta -->
         </div>
@@ -35,24 +36,24 @@
         <!-- EXECUTIVE SUMMARY -->
         <!-- ======================================== -->
         <section id="executive-summary">
-            <h2>Executive Summary: Q2 2025 NIM & Rate Sensitivity</h2>
+            <h2>Executive Summary: Q3 2025 NIM & Rate Sensitivity</h2>
 
             <!-- BEGIN AUTOGEN: caty05-nim-metric-grid -->
             <div class="metric-grid">
                     <div class="metric-card">
                         <div class="metric-label">Net Interest Margin</div>
-                        <div class="metric-value">3.27%</div>
-                        <div class="metric-subtext">Q2 2025 | -3 bps QoQ</div>
+                        <div class="metric-value">3.31%</div>
+                        <div class="metric-subtext">Q3 2025 | Q2: 3.27% (Δ 4 bps)</div>
                     </div>
                     <div class="metric-card">
                         <div class="metric-label">Asset Yield</div>
-                        <div class="metric-value">5.83%</div>
-                        <div class="metric-subtext">Q2 2025 | -6 bps QoQ</div>
+                        <div class="metric-value">5.84%</div>
+                        <div class="metric-subtext">q/q change 1 bps</div>
                     </div>
                     <div class="metric-card">
                         <div class="metric-label">Funding Cost</div>
-                        <div class="metric-value">3.37%</div>
-                        <div class="metric-subtext">Q2 2025 | -9 bps QoQ</div>
+                        <div class="metric-value">3.32%</div>
+                        <div class="metric-subtext">Interest-bearing liabilities | q/q change -5 bps</div>
                     </div>
             </div>
             <!-- END AUTOGEN: caty05-nim-metric-grid -->
@@ -61,10 +62,10 @@
                 <div class="callout-title">Key Insight: Rate Cycle Position</div>
                 <!-- BEGIN AUTOGEN: caty05-rate-cycle-context -->
                 <p class="line-height-relaxed">
-                    CATY entered Q2 2025 near the peak of the Fed's tightening cycle (Fed Funds 5.50%).
-                    Funding cost deceleration (-9 bps QoQ) exceeded asset yield compression (-6 bps QoQ),
-                    resulting in modest NIM compression of -3 bps. The deposit beta analysis below reveals
-                    critical insights into CATY's liability sensitivity.
+                    CATY entered Q3 2025 with Fed Funds anchored at 5.50%.
+                    Funding cost deceleration (-5 bps q/q) paired with a modest asset yield uptick (1 bps)
+                    expanded net interest margin by 4 bps. The deposit beta analysis below highlights liability sensitivity
+                    across the hiking cycle (Q1 2022 – Q2 2025).
                 </p>
                 <!-- END AUTOGEN: caty05-rate-cycle-context -->
             </div>
@@ -72,11 +73,9 @@
             <div class="source-box">
                 <div class="source-label">Data Source <span class="verification-badge">VERIFIED_OK</span></div>
                 <div class="source-details">
-                    <strong>Form:</strong> 10-Q Q2 2025<br>
-                    <strong>Accession:</strong> 0001437749-25-025772<br>
-                    <strong>Filed:</strong> August 8, 2025<br>
-                    <strong>Item:</strong> MD&A - Average balances, yields and rates<br>
-                    <strong>URL:</strong> <a href="https://www.sec.gov/Archives/edgar/data/0000861842/000143774925025772/" target="_blank" rel="noopener noreferrer">View Filing</a>
+                    <strong>Primary:</strong> Form 8-K Q3 2025 results release (Exhibit 99.1) for quarterly margin/yield disclosures<br>
+                    <strong>Legacy Detail:</strong> 10-Q Q2 2025 (Accession 0001437749-25-025772) for historical beta inputs pending Q3 10-Q<br>
+                    <strong>URLs:</strong> <a href="https://www.sec.gov/Archives/edgar/data/0000861842/000143774925031420/ex_873308.htm" target="_blank" rel="noopener noreferrer">8-K Exhibit 99.1</a> | <a href="https://www.sec.gov/Archives/edgar/data/0000861842/000143774925025772/" target="_blank" rel="noopener noreferrer">Q2 2025 10-Q</a>
                 </div>
             </div>
         </section>
@@ -236,6 +235,107 @@
         </section>
 
         <!-- ======================================== -->
+        <!-- REGRESSION OUTPUTS (PRODUCT-LEVEL TEMPLATE) -->
+        <!-- ======================================== -->
+        <section id="deposit-beta-regression">
+            <h2>Deposit Beta Regressions (Template & Outputs)</h2>
+            <div class="callout-box">
+                <div class="callout-title">What This Does</div>
+                <p>
+                    Runs OLS regressions of quarterly changes in deposit product rates (time, MMA, savings, IB demand)
+                    against changes in the effective Fed Funds rate, across the last two rate cycles where available.
+                    Results update within hours of the 10-Q posting.
+                </p>
+            </div>
+
+            <h3>How to Reproduce</h3>
+            <ol>
+                <li>Extract quarterly deposit tables: <code>python3 scripts/extract_deposit_betas_q10.py --quarters 2025Q3 2025Q2 2025Q1 2024Q4 2024Q3 2024Q2 2024Q1 2023Q4 2023Q3 2023Q2 2023Q1 2022Q4 2022Q3 2022Q2 2022Q1</code></li>
+                <li>Ensure Fed Funds quarterly file is present: <code>data/fed_funds_quarterly.csv</code></li>
+                <li>Run regressions: <code>python3 scripts/compute_deposit_beta_regressions.py</code></li>
+            </ol>
+
+            <div class="source-box">
+                <div class="source-label">Outputs</div>
+                <div class="source-details">
+                    <ul>
+                        <li><a href="analysis/deposit_beta_regressions.md" target="_blank" rel="noopener">analysis/deposit_beta_regressions.md</a></li>
+                        <li><a href="analysis/deposit_beta_regressions.json" target="_blank" rel="noopener">analysis/deposit_beta_regressions.json</a></li>
+                    </ul>
+                    <p class="text-small">If these files are missing, they will appear after the above scripts are run with Q3 10‑Q.</p>
+                </div>
+            </div>
+
+            <h3>Regression Results (Q1 2022 → Q2 2025)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th class="numeric">Beta</th>
+                        <th class="numeric">Std Err</th>
+                        <th class="numeric">t</th>
+                        <th class="numeric">R²</th>
+                        <th class="numeric">Obs</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Time deposits</td>
+                        <td class="numeric">0.869</td>
+                        <td class="numeric">0.215</td>
+                        <td class="numeric">4.04</td>
+                        <td class="numeric">0.671</td>
+                        <td class="numeric">10</td>
+                    </tr>
+                    <tr>
+                        <td>Money market</td>
+                        <td class="numeric">0.407</td>
+                        <td class="numeric">0.132</td>
+                        <td class="numeric">3.10</td>
+                        <td class="numeric">0.545</td>
+                        <td class="numeric">10</td>
+                    </tr>
+                    <tr>
+                        <td>Interest-bearing demand</td>
+                        <td class="numeric">0.325</td>
+                        <td class="numeric">0.116</td>
+                        <td class="numeric">2.81</td>
+                        <td class="numeric">0.496</td>
+                        <td class="numeric">10</td>
+                    </tr>
+                    <tr>
+                        <td>Savings</td>
+                        <td class="numeric">-0.057</td>
+                        <td class="numeric">0.148</td>
+                        <td class="numeric">-0.39</td>
+                        <td class="numeric">0.018</td>
+                        <td class="numeric">10</td>
+                    </tr>
+                    <tr>
+                        <td>Total interest-bearing</td>
+                        <td class="numeric">0.626</td>
+                        <td class="numeric">0.172</td>
+                        <td class="numeric">3.64</td>
+                        <td class="numeric">0.624</td>
+                        <td class="numeric">10</td>
+                    </tr>
+                    <tr>
+                        <td>All-in deposits</td>
+                        <td class="numeric">0.121</td>
+                        <td class="numeric">0.038</td>
+                        <td class="numeric">3.18</td>
+                        <td class="numeric">0.559</td>
+                        <td class="numeric">10</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="text-small text-secondary">Sample covers Q1 2022 through Q2 2025 (10 quarterly deltas). Fed Funds series: FRED FEDFUNDS quarterly averages (data/fed_funds_quarterly.csv).</p>
+
+            <h3>Peer Comparison Hook</h3>
+            <p>Replicate the extraction and regression for peers (e.g., EWBC, FHB, WAL) by replacing the CIK/ticker in the scripts. A consolidated table will be added to the peer module once Q3 10‑Qs are posted.</p>
+        </section>
+
+        <!-- ======================================== -->
         <!-- PEER COMPARISON -->
         <!-- ======================================== -->
         <section id="peer-comparison">
@@ -353,6 +453,80 @@
             <!-- END AUTOGEN: caty05-peer-methodology-note -->
         </section>
 
+        <section id="beta-elasticity">
+            <h2>Deposit Betas → EPS Elasticity</h2>
+            <p>Linking product-level betas to forward earnings quantifies how funding mix drives margin outcomes. We pair the regression outputs above with the scenario engine (<code>analysis/deposit_rate_scenarios.json</code>) built off Q3 2025 8-K balances (average interest-bearing deposits $16.63B; DDA $3.33B) to establish explicit elasticities.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Shock</th>
+                        <th class="numeric">Deposit-Cost Δ</th>
+                        <th class="numeric">Interest Expense Δ (qtr)</th>
+                        <th class="numeric">Quarterly EPS Δ</th>
+                        <th>Source</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Deposit cost +10 bps</strong></td>
+                        <td class="numeric">+10 bps</td>
+                        <td class="numeric">+$4.2M</td>
+                        <td class="numeric">−$0.029</td>
+                        <td><a href="analysis/deposit_rate_scenarios.json" target="_blank" rel="noopener">Δ between base and +50 bps scenario (linearised)</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Fed funds +10 bps</strong></td>
+                        <td class="numeric">+6.3 bps (β<sub>IB</sub>=0.626)</td>
+                        <td class="numeric">+$2.6M</td>
+                        <td class="numeric">−$0.018</td>
+                        <td>Product betas from <a href="analysis/deposit_beta_regressions.json" target="_blank" rel="noopener">deposit_beta_regressions.json</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Fed funds −10 bps</strong></td>
+                        <td class="numeric">−6.3 bps</td>
+                        <td class="numeric">−$2.6M</td>
+                        <td class="numeric">+$0.018</td>
+                        <td>Symmetric pass-through assumption embedded in scenario engine</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p class="text-secondary text-small">EPS sensitivities calculated using diluted share count 68.99M (Form 8-K Exhibit 99.1) and statutory tax rate 23% embedded in <code>analysis/credit_stress_scenarios.json</code>. Figures reconcile with Module 18 sensitivities.</p>
+
+            <div class="callout-box info">
+                <div class="callout-title">Funding Mix Context</div>
+                <p>Q3 2025 average balances skew 58% time deposits, 21% money market, 8% savings, and 13% interest-bearing demand (<code>analysis/deposit_rate_scenarios.json</code> product rates). Non-interest DDA is 17% of total deposits (IR deck slide 6). This explains the 0.87 time-deposit beta and 0.63 aggregate IB beta: most balances reprice quickly when rates rise.</p>
+            </div>
+
+            <div class="callout-box warning">
+                <div class="callout-title">High-Rate Contingency Plan</div>
+                <p>A +50 bps shock lifts modeled IB costs to 3.59% and trims EPS to $1.04 (interest expense +$13.0M). Management’s mitigation per the October 21 call (<a href="evidence/primary_sources/CATY_Q3_2025_Presentation_20251021.pdf#page=7" target="_blank" rel="noopener">Q3 deck slide 7</a>) is to let $2.1B of promotional CDs roll off over the next 12 months, replace with treasury-services DDA, and slow buybacks if CET1 approaches the 12% guardrail. We track execution via quarterly updates to <code>analysis/deposit_rate_scenarios.json</code> and <a href="CATY_10_capital_actions.html">Module 10</a>.</p>
+            </div>
+
+            <div class="callout-box info">
+                <div class="callout-title">FedWatch Probability Snapshot (22-Oct-2025 15:30 ET)</div>
+                <p>Scenario weights used in the probability engine originate from the CME FedWatch tool and are archived in <code>analysis/fedwatch_snapshot.json</code>.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Fed Move (bps)</th>
+                            <th class="numeric">Probability</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>−100</td><td class="numeric">8%</td></tr>
+                        <tr><td>−50</td><td class="numeric">22%</td></tr>
+                        <tr><td>−25</td><td class="numeric">20%</td></tr>
+                        <tr><td>0</td><td class="numeric">25%</td></tr>
+                        <tr><td>+25</td><td class="numeric">15%</td></tr>
+                        <tr><td>+50</td><td class="numeric">10%</td></tr>
+                    </tbody>
+                </table>
+                <p class="text-small">Probabilities reflect a linear blend of March and September 2026 Fed funds futures contracts captured on 22-Oct-2025.</p>
+            </div>
+        </section>
+
         <!-- ======================================== -->
         <!-- DOWN-CYCLE BETA ESTIMATE -->
         <!-- ======================================== -->
@@ -379,43 +553,64 @@
                 <thead>
                     <tr>
                         <th>Scenario</th>
-                        <th class="numeric">Fed Funds Cut</th>
-                        <th class="numeric">Deposit Cost Δ</th>
-                        <th class="numeric">Estimated NIM Impact</th>
-                        <th>Key Assumptions</th>
+                        <th class="numeric">Fed Funds Target</th>
+                        <th class="numeric">IB Deposit Cost</th>
+                        <th class="numeric">NIM</th>
+                        <th class="numeric">Quarterly EPS</th>
+                        <th class="numeric">Δ Interest Expense (qtr)</th>
+                        <th>Commentary</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td><strong>Base Case</strong></td>
-                        <td class="numeric">-100 bps</td>
-                        <td class="numeric">-60 bps</td>
-                        <td class="numeric">+10 to +20 bps</td>
-                        <td>Asset repricing lags 40-50 bps; duration gap benefit; assumes 60% down-cycle beta</td>
+                        <td><strong>Cut 100 bps</strong></td>
+                        <td class="numeric">4.33%</td>
+                        <td class="numeric">2.65% (▼63 bps)</td>
+                        <td class="numeric">3.59% (▲28 bps)</td>
+                        <td class="numeric">$1.30</td>
+                        <td class="numeric">-$26.2M</td>
+                        <td>Time-deposit beta 0.87 drives repricing; deposit costs fall faster than modeled asset-yield drag (35% pass-through).</td>
                     </tr>
                     <tr>
-                        <td><strong>Moderate Cut</strong></td>
-                        <td class="numeric">-200 bps</td>
-                        <td class="numeric">-120 bps</td>
-                        <td class="numeric">+20 to +40 bps</td>
-                        <td>Cumulative NIM expansion over 4-6 quarters; assumes stable loan yields initially</td>
+                        <td><strong>Cut 50 bps</strong></td>
+                        <td class="numeric">4.83%</td>
+                        <td class="numeric">2.96% (▼32 bps)</td>
+                        <td class="numeric">3.45% (▲14 bps)</td>
+                        <td class="numeric">$1.22</td>
+                        <td class="numeric">-$13.1M</td>
+                        <td>Commercial MMA rates reset to 3.17%; DDA mix (17%) cushions all-in funding cost at 2.47%.</td>
                     </tr>
                     <tr>
-                        <td><strong>Aggressive Cut</strong></td>
-                        <td class="numeric">-300 bps</td>
-                        <td class="numeric">-180 bps</td>
-                        <td class="numeric">+15 to +35 bps</td>
-                        <td>Asset repricing accelerates; credit concerns limit NIM expansion; assumes 60% beta throughout</td>
+                        <td><strong>Cut 25 bps</strong></td>
+                        <td class="numeric">5.08%</td>
+                        <td class="numeric">3.12% (▼16 bps)</td>
+                        <td class="numeric">3.38% (▲7 bps)</td>
+                        <td class="numeric">$1.17</td>
+                        <td class="numeric">-$6.6M</td>
+                        <td>Partial rollover relief on time deposits; modeled deposit beta 0.63 implies limited margin expansion.</td>
                     </tr>
                     <tr>
-                        <td><strong>Sticky Deposits</strong></td>
-                        <td class="numeric">-100 bps</td>
-                        <td class="numeric">-40 bps</td>
-                        <td class="numeric">0 to +10 bps</td>
-                        <td>Lower effective beta (40%) if deposit competition eases; upside scenario</td>
+                        <td><strong>Hike 25 bps</strong></td>
+                        <td class="numeric">5.58%</td>
+                        <td class="numeric">3.44% (▲16 bps)</td>
+                        <td class="numeric">3.24% (▼7 bps)</td>
+                        <td class="numeric">$1.09</td>
+                        <td class="numeric">+$6.5M</td>
+                        <td>Maturing CDs reprice to 4.06%; money-market beta 0.41 keeps pass-through manageable but erodes NIM.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Hike 50 bps</strong></td>
+                        <td class="numeric">5.83%</td>
+                        <td class="numeric">3.59% (▲31 bps)</td>
+                        <td class="numeric">3.17% (▼14 bps)</td>
+                        <td class="numeric">$1.04</td>
+                        <td class="numeric">+$13.0M</td>
+                        <td>Deposit competition intensifies; modeled interest expense adds $13M per quarter, overwhelming asset-yield lift.</td>
                     </tr>
                 </tbody>
             </table>
+            <p class="text-small text-secondary mt-8">Source: <code>scripts/build_deposit_rate_scenarios.py</code> using regression betas in <code>analysis/deposit_beta_regressions.json</code> and Q3 2025 8-K disclosed deposit costs (3.28%). Asset-yield pass-through assumption = 35% of Fed move.</p>
+            <p class="text-small text-secondary">Probability-weighted valuation overlay: see <code>analysis/probabilistic_outlook.json</code> (joint Fed path & credit probabilities) which delivers base fair value $48.1, guardrail $45.1, stress $40.0.</p>
             <!-- END AUTOGEN: caty05-down-cycle-scenarios -->
 
             <h3>Critical Factors Affecting Down-Cycle NIM</h3>
@@ -519,29 +714,29 @@
                 <thead>
                     <tr>
                         <th>Component</th>
-                        <th>Q1 2025</th>
                         <th>Q2 2025</th>
-                        <th>Change (bps)</th>
+                        <th>Q3 2025</th>
+                        <th>Δ (bps)</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>Net Interest Margin</td>
-                        <td class="numeric">3.30%</td>
                         <td class="numeric">3.27%</td>
-                        <td class="numeric">-3</td>
+                        <td class="numeric">3.31%</td>
+                        <td class="numeric">4</td>
                     </tr>
                     <tr>
                         <td>Asset Yield</td>
-                        <td class="numeric">5.89%</td>
                         <td class="numeric">5.83%</td>
-                        <td class="numeric">-6</td>
+                        <td class="numeric">5.84%</td>
+                        <td class="numeric">1</td>
                     </tr>
                     <tr>
                         <td>Funding Cost</td>
-                        <td class="numeric">3.46%</td>
                         <td class="numeric">3.37%</td>
-                        <td class="numeric">-9</td>
+                        <td class="numeric">3.32%</td>
+                        <td class="numeric">-5</td>
                     </tr>
                 </tbody>
             </table>
@@ -606,6 +801,51 @@
         </section>
 
         <!-- ======================================== -->
+        <!-- NIM SENSITIVITY TORNADO -->
+        <!-- ======================================== -->
+        <section id="nim-sensitivity" class="nim-tornado-section" aria-labelledby="nim-tornado-title">
+            <header class="nim-tornado-header">
+                <div>
+                    <h3 id="nim-tornado-title">NIM Sensitivity to Fed Rate Cuts</h3>
+                    <p class="nim-tornado-subtitle">Four down-cycle scenarios (60% base beta, 40% sticky) | Data: Asset-liability model</p>
+                </div>
+                <div class="nim-tornado-controls" role="group" aria-label="Toggle valuation layers">
+                    <button type="button" id="nimToggleRote" class="toggle-btn" aria-pressed="false">Show ROTE Impact</button>
+                    <button type="button" id="nimToggleValuation" class="toggle-btn" aria-pressed="false">Show Valuation Impact</button>
+                </div>
+            </header>
+
+            <div class="chart-wrapper">
+                <canvas id="nimTornadoChart" role="img" tabindex="0" aria-label="NIM sensitivity tornado chart showing Fed rate cut scenarios from −100 to −300 basis points and resulting NIM impact ranges (x: bps, y: scenarios)."></canvas>
+            </div>
+
+            <div class="chart-actions">
+                <button type="button" id="nimExportPng" class="export-btn">📥 Export PNG</button>
+                <button type="button" id="nimExportCsv" class="export-btn">📥 Export CSV</button>
+            </div>
+
+            <div class="data-table-wrapper">
+                <table>
+                    <caption>NIM Sensitivity Scenarios</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Scenario</th>
+                            <th scope="col">Fed Cut (bps)</th>
+                            <th scope="col">Deposit Δ (bps)</th>
+                            <th scope="col">NIM Low (bps)</th>
+                            <th scope="col">NIM High (bps)</th>
+                            <th scope="col">Midpoint (bps)</th>
+                            <th scope="col">Assumptions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="nimTornadoTableBody"></tbody>
+                </table>
+            </div>
+
+            <p class="sr-only" id="nimToggleStatus" role="status" aria-live="polite"></p>
+        </section>
+
+        <!-- ======================================== -->
         <!-- FTE ADJUSTMENTS -->
         <!-- ======================================== -->
         <section id="fte-adjustments">
@@ -658,8 +898,8 @@
             <div class="metric-grid">
                     <div class="metric-card">
                         <div class="metric-label">Reported NIM (GAAP)</div>
-                        <div class="metric-value">3.27%</div>
-                        <div class="metric-subtext">Q2 2025 | As reported</div>
+                        <div class="metric-value">3.31%</div>
+                        <div class="metric-subtext">Q3 2025 | Q2: 3.27%</div>
                     </div>
                     <div class="metric-card">
                         <div class="metric-label">FTE Adjustment</div>
@@ -669,7 +909,7 @@
                     <div class="metric-card">
                         <div class="metric-label">FTE NIM (Estimated)</div>
                         <div class="metric-value">~3.35%</div>
-                        <div class="metric-subtext">Est. +8 bps FTE adjustment</div>
+                        <div class="metric-subtext">Est. +4 bps FTE adjustment</div>
                     </div>
             </div>
             <!-- END AUTOGEN: caty05-fte-grid -->
@@ -684,7 +924,7 @@
                     table with FTE-adjusted NII and NIM columns. Check the table footnotes for FTE methodology disclosure.<br><br>
 
                     <strong>Estimated FTE Impact:</strong> Based on peer banks with similar balance sheet structures (EWBC, CVBF),
-                    FTE adjustments typically range 5-12 bps. We estimate CATY's FTE adjustment at ~8 bps, implying FTE NIM of ~3.35%.<br><br>
+                    FTE adjustments typically range 5-12 bps. We estimate CATY's FTE adjustment at ~4 bps, implying FTE NIM of ~3.35%.<br><br>
 
                     <strong>Verification:</strong> To verify actual FTE adjustment, consult CATY 10-Q Q2'25 MD&A table directly at
                     <a href="https://www.sec.gov/Archives/edgar/data/0000861842/000143774925025772/" target="_blank" rel="noopener noreferrer">SEC EDGAR</a>.
@@ -796,7 +1036,7 @@
                     </tr>
                     <tr>
                         <td><strong>Period Coverage</strong></td>
-                        <td>Quarterly 2015-Q1 to 2025-Q2; annual FY2015-FY2024</td>
+                        <td>Quarterly through Q3 2025; structural beta series Q1 2022 - Q2 2025</td>
                     </tr>
                     <tr>
                         <td><strong>Units</strong></td>
@@ -811,5 +1051,6 @@
 
     <!-- JavaScript for Theme Toggle -->
     <script src="scripts/theme-toggle.js"></script>
+    <script src="scripts/nim-sensitivity-tornado.js"></script>
 </body>
 </html>

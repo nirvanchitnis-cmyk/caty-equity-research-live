@@ -1,6 +1,13 @@
 {
-  "time_window": "Last 90 Days (July 20 - October 20, 2025)",
+  "time_window": "Last 90 Days (July 24 - October 22, 2025)",
   "developments": [
+    {
+      "date": "2025-10-21",
+      "event": "Q3 2025 Results (Form 8-K)",
+      "description": "Net interest margin expanded to 3.31% (+4 bps q/q); efficiency ratio improved to 41.8%; diluted EPS $1.13.",
+      "context": "Allowance for credit losses lifted to $196.5M (0.98% of loans) with $28.7M provision; management repurchased 1.07M shares at $46.81 average.",
+      "importance": "HIGH"
+    },
     {
       "date": "2025-10-21",
       "event": "Q3 Earnings Call",

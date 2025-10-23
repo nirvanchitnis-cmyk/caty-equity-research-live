@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CATY - Prevention Measures - Never Repeat This Failure | Evidence Repository</title>
+    <link rel="stylesheet" href="../../styles/caty-equity-research.css">
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Toggle dark mode" role="switch" aria-checked="false">
+        <span id="theme-icon" aria-hidden="true">🌙</span>
+        <span id="theme-text">Dark Mode</span>
+    </button>
+
+    <header>
+        <div class="header-content">
+            <h1 class="page-title">Cathay General Bancorp (NASDAQ: CATY)</h1>
+            <p class="page-subtitle">Prevention Measures - Never Repeat This Failure</p>
+            <p class="page-meta">Author: Nirvan Chitnis | Date: October 2025 | Purpose: Evidence documentation</p>
+        </div>
+    </header>
+
+    <main class="container" id="main-content" tabindex="-1">
+        <nav aria-label="Breadcrumb" class="breadcrumb">
+            <a href="../../index.html">← Main Report</a>
+            <span aria-hidden="true"> / </span>
+            <span aria-current="page">Evidence: Prevention Measures - Never Repeat This Failure</span>
+        </nav>
+
+        <h3>WHAT WENT WRONG</h3>
+
+<ol>
+<li><strong>Updated top-level sections only</strong> (index.html lines 691-822)</li>
+<li><strong>Failed to update detailed analysis sections</strong> (lines 1274-2361)</li>
+<li><strong>Missed data pages</strong> (CATY_04, 07, 08, 11, 12)</li>
+<li><strong>No pre-deployment validation</strong> before declaring "ready for team"</li>
+<li><strong>Assumed partial update = complete</strong></li>
+</ol>
+
+<hr>
+
+<h3>MANDATORY CHECKS BEFORE ANY FUTURE DEPLOYMENT</h3>
+
+<h4>Pre-Deployment Validation Checklist</h4>
+
+<p><strong>Run BEFORE sharing any site with stakeholders:</strong></p>
+
+<pre class="code-block"><code language-bash># 1. Grep for old rating references
+grep -r "SELL" *.html | grep -v "scenario\|bear" | wc -l
+# Should be: 0 (or only in scenario tables)
+
+# 2. Grep for old target price
+grep -r "\$40.32" *.html | wc -l
+# Should be: 0 (or only in historical context)
+
+# 3. Check for file:// links
+grep -r "file://" *.html | wc -l
+# Should be: 0
+
+# 4. Validate peer median consistency
+grep -r "peer median\|CRE median" *.html | grep -v "27.8"
+# Should return: empty (all should show 27.8%)
+
+# 5. Test site locally
+open index.html
+# Manual spot-check: rating badge, executive summary, detailed sections
+
+# 6. Run subagent audit
+# Deploy Explore agent to scan all pages systematically</code></pre>
+
+<h4>Deployment Workflow (MANDATORY)</h4>
+
+<p><strong>STEP 1:</strong> Make rating/data changes</p>
+<p><strong>STEP 2:</strong> Update ALL affected files (use grep to find ALL instances)</p>
+<p><strong>STEP 3:</strong> Run 6-item pre-deployment checklist above</p>
+<p><strong>STEP 4:</strong> Deploy subagent audit (as done today)</p>
+<p><strong>STEP 5:</strong> Fix any issues found</p>
+<p><strong>STEP 6:</strong> Re-run checklist</p>
+<p><strong>STEP 7:</strong> ONLY THEN declare "ready for stakeholders"</p>
+
+<h4>Automated Safety Net</h4>
+
+<p><strong>Create pre-commit hook:</strong></p>
+<pre class="code-block"><code language-bash>#!/bin/bash
+# .git/hooks/pre-commit
+
+# Block commits with conflicting ratings
+if grep -q "rating.*SELL" index.html &amp;&amp; grep -q "rating.*HOLD" index.html; then
+    echo "ERROR: Conflicting ratings detected (both SELL and HOLD)"
+    echo "Run full audit before committing"
+    exit 1
+fi
+
+# Block file:// links
+if grep -q "file://" *.html; then
+    echo "ERROR: Absolute file:// links detected"
+    echo "Convert to relative links"
+    exit 1
+fi</code></pre>
+
+<h4>Communication Protocol</h4>
+
+<p><strong>NEVER say "site is ready" until:</strong></p>
+<ol>
+<li>Pre-deployment checklist passes (all 6 items)</li>
+<li>Subagent audit returns clean</li>
+<li>Derek cross-validates (if available)</li>
+<li>Manual spot-check confirms</li>
+</ol>
+
+<p><strong>ALWAYS include caveat:</strong></p>
+<p>"Deployed with [X] validation steps completed. Recommend final review before external sharing."</p>
+
+<hr>
+
+<h3>LESSONS FOR NEXT WEEK</h3>
+
+<ol>
+<li><strong>Partial updates are dangerous</strong> - If changing rating, update ALL pages</li>
+<li><strong>Grep is your friend</strong> - Search exhaustively before declaring done</li>
+<li><strong>Trust but verify</strong> - Even if you think it's updated, check</li>
+<li><strong>Subagents first</strong> - Run audit BEFORE declaring ready, not after</li>
+<li><strong>Derek's standards</strong> - "Show me the line numbers" for a reason</li>
+</ol>
+
+<hr>
+
+<h3>COMMITMENT</h3>
+
+<p><strong>Before any future stakeholder sharing:</strong></p>
+<ul>
+<li>[ ] Run complete grep audit (all 6 checks)</li>
+<li>[ ] Deploy subagent validation</li>
+<li>[ ] Fix all issues found</li>
+<li>[ ] Re-audit to confirm</li>
+<li>[ ] Document validation steps taken</li>
+<li>[ ] ONLY THEN share</li>
+</ul>
+
+<p><strong>No exceptions.</strong></p>
+
+<hr>
+
+<p><strong>Generated:</strong> 2025-10-19 06:05 PT</p>
+<p><strong>Incident Response:</strong> Emergency fixes deployed within 3 minutes of discovery</p>
+<p><strong>Status:</strong> Resolved - Site now consistent (commit deb6c03)</p>
+<p><strong>Prevention:</strong> Checklist mandatory for all future deployments</p>
+
+    </main>
+
+    <footer class="evidence-footer">
+        <p class="footer-text">Evidence documentation for CFA IRC equity research challenge</p>
+        <p class="footer-meta">Author: Nirvan Chitnis | Generated: 2025-10-23 01:13 | Source: PREVENTION_MEASURES.md</p>
+    </footer>
+
+    <script src="../../scripts/theme.js"></script>
+</body>
+</html>

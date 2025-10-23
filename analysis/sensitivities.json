@@ -1,0 +1,59 @@
+{
+  "base": {
+    "avg_interest_earning_assets": 22000000000.0,
+    "shares_out": 68700000.0,
+    "nim": 0.0331,
+    "tax_rate": 0.23,
+    "quarterly_eps": 1.13,
+    "tbvps": 41.0,
+    "payout_ratio": 0.32,
+    "non_interest_items_eps": -0.9104439592430862
+  },
+  "grid": [
+    {
+      "nim_bps": -50,
+      "eps_-2pct": 0.79,
+      "tbv_-2pct": 40.77,
+      "eps_0pct": 0.82,
+      "tbv_0pct": 40.79,
+      "eps_2pct": 0.86,
+      "tbv_2pct": 40.81
+    },
+    {
+      "nim_bps": -25,
+      "eps_-2pct": 0.94,
+      "tbv_-2pct": 40.87,
+      "eps_0pct": 0.98,
+      "tbv_0pct": 40.9,
+      "eps_2pct": 1.01,
+      "tbv_2pct": 40.92
+    },
+    {
+      "nim_bps": 0,
+      "eps_-2pct": 1.09,
+      "tbv_-2pct": 40.97,
+      "eps_0pct": 1.13,
+      "tbv_0pct": 41.0,
+      "eps_2pct": 1.17,
+      "tbv_2pct": 41.03
+    },
+    {
+      "nim_bps": 25,
+      "eps_-2pct": 1.24,
+      "tbv_-2pct": 41.07,
+      "eps_0pct": 1.28,
+      "tbv_0pct": 41.1,
+      "eps_2pct": 1.33,
+      "tbv_2pct": 41.13
+    },
+    {
+      "nim_bps": 50,
+      "eps_-2pct": 1.39,
+      "tbv_-2pct": 41.18,
+      "eps_0pct": 1.44,
+      "tbv_0pct": 41.21,
+      "eps_2pct": 1.49,
+      "tbv_2pct": 41.24
+    }
+  ]
+}

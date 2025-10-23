@@ -8,8 +8,9 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 </head>
 <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
     <!-- Theme Toggle -->
-    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" aria-pressed="false">
+    <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Toggle dark mode" role="switch" aria-checked="false">
         <span id="theme-icon" aria-hidden="true">🌙</span>
         <span id="theme-text">Dark Mode</span>
     </button>
@@ -22,14 +23,14 @@
             <!-- BEGIN AUTOGEN: caty12-header-meta -->
             <p class="page-meta">
                 P/TBV mapping framework, scenario analysis, and price target |
-                Last Updated: October 18, 2025 |
+                Last Updated: October 22, 2025 |
                 Source: Multi-file synthesis (files 1-11) + FDIC Call Reports
             </p>
             <!-- END AUTOGEN: caty12-header-meta -->
         </div>
     </header>
 
-    <div class="container">
+    <main class="container" id="main-content" tabindex="-1">
         <a href="index.html" class="back-button">← Back to Main Report</a>
 
         <!-- ======================================== -->
@@ -39,25 +40,25 @@
             <h2>Valuation Summary: Three-Scenario Framework</h2>
 
             <!-- BEGIN AUTOGEN: caty12-key-finding-box -->
-            <div class="highlight-box critical"><h4>KEY FINDING: BASE CASE SUPPORTS HOLD RATING</h4>
+            <div class="highlight-box critical"><h4>KEY FINDING: BASE CASE (30 BPS) STAYS IN HOLD BAND</h4>
             <p class="text-large">
-                Using empirical through-cycle NCO of <strong>42.8 bps</strong> (2008-2024 FDIC average including GFC and COVID),
-                normalized ROTE is <strong>10.21%</strong>, implying a normalized fair value P/TBV of <strong>1.088x</strong> (Gordon Growth) and target price of
-                <strong>$39.34</strong>. This represents <strong>-16.3% downside</strong> from the October 20, 2025 spot price of $47.00,
-                supporting a <strong>HOLD rating</strong>.
+                Applying the post-2014 90th percentile NCO of <strong>30.0 bps</strong> resets normalized ROTE to <strong>11.20%</strong>,
+                yielding a Gordon Growth fair value P/TBV of <strong>1.228x</strong> and target price of <strong>$44.39</strong>.
+                That is <strong>-5.8% downside</strong> versus the October 21, 2025 spot price of $47.13,
+                which remains inside the -10%/+15% HOLD corridor. The 42.8 bps through-cycle mean is now treated as a stress guardrail (<a href="evidence/workpapers/CATY_FDIC_NCO_series.html" target="_blank" rel="noopener">workpaper</a>).
             </p></div>
             <!-- END AUTOGEN: caty12-key-finding-box -->
 
-            <div class="scenario-grid">
+            <div class="scenario-grid" role="list" aria-label="Valuation scenarios">
                 <!-- BULL CASE -->
-                <div class="scenario-card bull">
+                <article class="scenario-card bull" role="listitem" aria-labelledby="scenario-bull-heading" aria-describedby="scenario-bull-note">
                     <div class="scenario-header">
-                        <div class="scenario-name">BULL CASE</div>
+                        <h3 class="scenario-name" id="scenario-bull-heading">Bull case</h3>
                         <!-- BEGIN AUTOGEN: caty12-scenario-bull-prob -->
-                        <div class="scenario-probability">25% Prob</div>
+                        <div class="scenario-probability" aria-label="Probability 25%">25% Prob</div>
                         <!-- END AUTOGEN: caty12-scenario-bull-prob -->
                     </div>
-                    <div class="scenario-rating">HOLD</div>
+                    <div class="scenario-rating" aria-label="Rating: HOLD">HOLD</div>
 
                     <!-- BEGIN AUTOGEN: caty12-scenario-bull-metrics -->
                     <div class="scenario-metrics">
@@ -66,8 +67,8 @@
                                 <div class="scenario-metric-value">$46.02</div>
                             </div>
                             <div class="scenario-metric">
-                                <div class="scenario-metric-label">Upside</div>
-                                <div class="scenario-metric-value">+0.3%</div>
+                                <div class="scenario-metric-label">Downside</div>
+                                <div class="scenario-metric-value text-danger">-2.4%</div>
                             </div>
                             <div class="scenario-metric">
                                 <div class="scenario-metric-label">P/TBV</div>
@@ -88,42 +89,42 @@
                     </div>
                     <!-- END AUTOGEN: caty12-scenario-bull-metrics -->
 
-                    <div class="scenario-note">
+                    <div class="scenario-note" id="scenario-bull-note">
                         Recent history NCO; optimistic credit environment. Target essentially at spot price.
                     </div>
-                </div>
+                </article>
 
                 <!-- BASE CASE (HOLD) -->
-                <div class="scenario-card base">
+                <article class="scenario-card base" role="listitem" aria-labelledby="scenario-base-heading" aria-describedby="scenario-base-note">
                     <div class="scenario-header">
-                        <div class="scenario-name">BASE CASE</div>
+                        <h3 class="scenario-name" id="scenario-base-heading">Policy base</h3>
                         <!-- BEGIN AUTOGEN: caty12-scenario-base-prob -->
-                        <div class="scenario-probability">60% Prob</div>
+                        <div class="scenario-probability" aria-label="Probability 60%">60% Prob</div>
                         <!-- END AUTOGEN: caty12-scenario-base-prob -->
                     </div>
-                    <div class="scenario-rating">HOLD</div>
+                    <div class="scenario-rating" aria-label="Rating: HOLD">HOLD</div>
 
                     <!-- BEGIN AUTOGEN: caty12-scenario-base-metrics -->
                     <div class="scenario-metrics">
                             <div class="scenario-metric">
                                 <div class="scenario-metric-label">Target Price</div>
-                                <div class="scenario-metric-value">$39.32</div>
+                                <div class="scenario-metric-value">$44.39</div>
                             </div>
                             <div class="scenario-metric">
                                 <div class="scenario-metric-label">Downside</div>
-                                <div class="scenario-metric-value text-danger">-14.3%</div>
+                                <div class="scenario-metric-value text-danger">-5.8%</div>
                             </div>
                             <div class="scenario-metric">
                                 <div class="scenario-metric-label">P/TBV</div>
-                                <div class="scenario-metric-value">1.087x</div>
+                                <div class="scenario-metric-value">1.228x</div>
                             </div>
                             <div class="scenario-metric">
                                 <div class="scenario-metric-label">ROTE</div>
-                                <div class="scenario-metric-value">10.21%</div>
+                                <div class="scenario-metric-value">11.20%</div>
                             </div>
                             <div class="scenario-metric">
                                 <div class="scenario-metric-label">NCO Assumption</div>
-                                <div class="scenario-metric-value">42.8 bps</div>
+                                <div class="scenario-metric-value">30.0 bps</div>
                             </div>
                             <div class="scenario-metric">
                                 <div class="scenario-metric-label">TBVPS</div>
@@ -133,22 +134,21 @@
                     <!-- END AUTOGEN: caty12-scenario-base-metrics -->
 
                     <!-- BEGIN AUTOGEN: caty12-scenario-base-note -->
-                    <div class="scenario-note">
-                        <strong>EMPIRICAL BASE CASE (Gordon Growth):</strong> 2008-2024 FDIC average NCO including GFC (peak 234 bps in 2009) and COVID.
-                        This is the most defensible normalization given 17 years of history. Gordon Growth framework yields P/TBV 1.087x.
+                    <div class="scenario-note" id="scenario-base-note">
+                        <strong>BASE CASE (30 bps P90):</strong> Post-2014 FDIC sample (Basel III) underpins normalization. Stress guardrail at 42.8 bps documented in <a href="evidence/workpapers/CATY_FDIC_NCO_series.html" target="_blank" rel="noopener">FDIC workpaper</a>.
                     </div>
                     <!-- END AUTOGEN: caty12-scenario-base-note -->
-                </div>
+                </article>
 
                 <!-- BEAR CASE -->
-                <div class="scenario-card bear">
+                <article class="scenario-card bear" role="listitem" aria-labelledby="scenario-bear-heading" aria-describedby="scenario-bear-note">
                     <div class="scenario-header">
-                        <div class="scenario-name">BEAR CASE</div>
+                        <h3 class="scenario-name" id="scenario-bear-heading">Bear case</h3>
                         <!-- BEGIN AUTOGEN: caty12-scenario-bear-prob -->
-                        <div class="scenario-probability">15% Prob</div>
+                        <div class="scenario-probability" aria-label="Probability 15%">15% Prob</div>
                         <!-- END AUTOGEN: caty12-scenario-bear-prob -->
                     </div>
-                    <div class="scenario-rating">HOLD</div>
+                    <div class="scenario-rating" aria-label="Rating: HOLD">HOLD</div>
 
                     <!-- BEGIN AUTOGEN: caty12-scenario-bear-metrics -->
                     <div class="scenario-metrics">
@@ -158,7 +158,7 @@
                             </div>
                             <div class="scenario-metric">
                                 <div class="scenario-metric-label">Downside</div>
-                                <div class="scenario-metric-value text-danger-dark">-24.3%</div>
+                                <div class="scenario-metric-value text-danger-dark">-26.3%</div>
                             </div>
                             <div class="scenario-metric">
                                 <div class="scenario-metric-label">P/TBV</div>
@@ -180,19 +180,26 @@
                     <!-- END AUTOGEN: caty12-scenario-bear-metrics -->
 
                     <!-- BEGIN AUTOGEN: caty12-scenario-bear-note -->
-                    <div class="scenario-note">
+                    <div class="scenario-note" id="scenario-bear-note">
                         Mild recession scenario: 60 bps NCO is quarter of GFC peak (234 bps). Would trade below tangible book value.
                     </div>
                     <!-- END AUTOGEN: caty12-scenario-bear-note -->
-                </div>
+                </article>
             </div>
             <!-- END AUTOGEN: caty12-growth-metric-grid -->
+            <div class="alert-box info">
+                <div class="alert-title">Unified Weighting: Wilson 95%</div>
+                <div class="alert-text">
+                    Scenario labels reflect <strong>Wilson 95%</strong> regime weights (no 25/60/15). Inputs: window <strong>post‑2008</strong>, quarters <strong>70</strong>, breaches <strong>11</strong>, upper bound <strong>26%</strong>.
+                    See <a href="evidence/WILSON_WINDOW_METHODOLOGY.html" target="_blank" rel="noopener">methodology</a> for counts and math.
+                </div>
+            </div>
 
             <!-- BEGIN AUTOGEN: caty12-valuation-summary-grid -->
             <div class="metric-grid">
                     <div class="metric-card">
-                        <div class="metric-label">Spot Price (October 20, 2025)</div>
-                        <div class="metric-value">$47.00</div>
+                        <div class="metric-label">Spot Price (October 21, 2025)</div>
+                        <div class="metric-value">$47.13</div>
                         <div class="metric-subtext">Reference for premium/discount calculations</div>
                     </div>
                     <div class="metric-card">
@@ -202,32 +209,131 @@
                     </div>
                     <div class="metric-card">
                         <div class="metric-label">Current P/TBV</div>
-                        <div class="metric-value">1.300x</div>
-                        <div class="metric-subtext">$47.00 / $36.16</div>
+                        <div class="metric-value">1.303x</div>
+                        <div class="metric-subtext">$47.13 / $36.16</div>
                     </div>
                     <div class="metric-card border-left-gold">
                         <div class="metric-label">Probability-Weighted Target</div>
-                        <div class="metric-value">$40.47</div>
+                        <div class="metric-value">$43.36</div>
                         <div class="metric-subtext">25% Bull + 60% Base + 15% Bear</div>
                     </div>
                     <div class="metric-card border-left-danger">
                         <div class="metric-label">IRC Blended Valuation</div>
-                        <div class="metric-value">$50.97</div>
+                        <div class="metric-value">$50.12</div>
                         <div class="metric-subtext">60% RIM + 10% DDM + 30% Regression</div>
                     </div>
                     <div class="metric-card border-left-danger">
                         <div class="metric-label">Wilson 95% Framework</div>
-                        <div class="metric-value">$48.70</div>
+                        <div class="metric-value">$48.95</div>
                         <div class="metric-subtext">60.9% Regression + 39.1% Normalized</div>
                     </div>
             </div>
             <!-- END AUTOGEN: caty12-valuation-summary-grid -->
 
+            <div class="highlight-box highlight-box-spaced" aria-labelledby="severe-stress-heading">
+                <h3 id="severe-stress-heading">Severe Credit Stress Scenario (Added)</h3>
+                <table class="stress-table">
+                    <caption>Projected valuation under severe credit stress regimes</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">NCO (bps)</th>
+                            <th scope="col" class="number">NI ($M)</th>
+                            <th scope="col" class="number">ROTE</th>
+                            <th scope="col" class="number">P/TBV</th>
+                            <th scope="col" class="number">Price</th>
+                            <th scope="col">Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">100</th>
+                            <td class="number">$167.3</td>
+                            <td class="number">6.79%</td>
+                            <td class="number">0.605×</td>
+                            <td class="number">$21.90</td>
+                            <td>ΔProvision +70 bps on $19.45B loans; after‑tax −$108.9M; Gordon valid (ROTE &gt; g).</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">200</th>
+                            <td class="number">$11.7</td>
+                            <td class="number">0.48%</td>
+                            <td class="number" aria-label="Not applicable">n/a</td>
+                            <td class="number">$21.7–$28.9</td>
+                            <td>ROTE ≤ g makes Gordon invalid; distress band <strong>0.60–0.80× TBV</strong> shown. 2009 peak was 234 bps.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="table-note">Assumptions: Tax 20%, TCE $2.465B, TBVPS $36.16, COE 9.587%, g 2.5%. Evidence: FDIC series; see <a href="evidence/workpapers/CATY_FDIC_NCO_series.html" target="_blank" rel="noopener">workpaper</a>.</p>
+            </div>
+
+            <div class="highlight-box highlight-box-spaced">
+                <h3>Q3 Run-Rate → Normalized Earnings Bridge</h3>
+                <p>The bridge below reconciles the reported LTM earnings power to the normalized base case used in the Gordon Growth model.</p>
+                <div class="quick-evidence text-small" aria-labelledby="quick-evidence-heading">
+                    <p class="quick-evidence-title" id="quick-evidence-heading">Quick evidence</p>
+                    <ul class="quick-evidence-list">
+                        <li><a href="evidence/workpapers/CATY_FDIC_NCO_series.html" target="_blank" rel="noopener" aria-label="Open FDIC net charge-off series workpaper in a new tab">FDIC NCO series</a></li>
+                        <li><a href="evidence/workpapers/RATING_GUARDRAIL.html" target="_blank" rel="noopener" aria-label="Open rating guardrail methodology workpaper in a new tab">Rating guardrail</a></li>
+                        <li><a href="evidence/valuation_sensitivity_summary.html" target="_blank" rel="noopener" aria-label="View rate and credit elasticities summary in a new tab">Rate/Credit elasticities</a></li>
+                        <li><a href="evidence/primary_sources/CATY_Q3_2025_Presentation_20251021.pdf#page=6" target="_blank" rel="noopener" aria-label="Open investor relations slide showing deposit mix in a new tab">IR slide (deposit mix)</a></li>
+                    </ul>
+                </div>
+                <table class="compact-table">
+                    <thead>
+                        <tr>
+                            <th>Step</th>
+                            <th class="numeric">Net Income (USD M)</th>
+                            <th class="numeric">ROTE</th>
+                            <th>Notes / Evidence</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Q3 2025 LTM run-rate</strong></td>
+                            <td class="numeric">$310.8</td>
+                            <td class="numeric">11.18%</td>
+                            <td>Annualised Q3 net income ($77.7M). <a href="evidence/raw/CATY_2025Q3_8K/ex_873308.htm#income-summary" target="_blank" rel="noopener">8-K Ex.99.1</a></td>
+                        </tr>
+                        <tr>
+                            <td>Align to reported LTM</td>
+                            <td class="numeric text-danger">−$16.1</td>
+                            <td class="numeric">10.60%</td>
+                            <td>Replaces run-rate with trailing four quarters. <code>data/caty02_income_statement.json</code></td>
+                        </tr>
+                        <tr>
+                            <td>Remove buyback uplift</td>
+                            <td class="numeric">$0.0</td>
+                            <td class="numeric text-danger">−0.09 pts</td>
+                            <td>Neutralises Q3 share count reduction. <a href="evidence/workpapers/CATY_Q3_2025_buyback_analysis.html" target="_blank" rel="noopener">buyback workpaper</a></td>
+                        </tr>
+                        <tr>
+                            <td>Provision normalization (30 bps P90)</td>
+                            <td class="numeric text-danger">−$18.5</td>
+                            <td class="numeric">11.20%</td>
+                            <td>Apply post-2014 90th percentile NCO (30 bps) vs actual 18.1 bps. <a href="evidence/workpapers/CATY_FDIC_NCO_series.html" target="_blank" rel="noopener">FDIC series</a></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Normalized earnings power</strong></td>
+                            <td class="numeric">$276.2</td>
+                            <td class="numeric">11.20%</td>
+                            <td>Feeds normalized P/TBV (1.228x) and target price $44.39.</td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td>Stress guardrail (42.8 bps mean)</td>
+                            <td class="numeric text-danger">−$19.9</td>
+                            <td class="numeric">10.21%</td>
+                            <td>Full through-cycle mean retained as downside trigger ($39.32 target).</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="text-small text-secondary">Source: <code>data/caty12_calculated_tables.json</code> (normalization_bridge_detail), <code>evidence/raw/CATY_2025Q3_8K/ex_873308.htm</code>, <code>evidence/workpapers/CATY_Q3_2025_buyback_analysis.md</code>, <code>evidence/workpapers/CATY_FDIC_NCO_series.md</code>.</p>
+            </div>
+
             <!-- BEGIN AUTOGEN: caty12-methodology-comparison -->
             <div class="highlight-box highlight-box-spaced">
                 <p class="text-small">
                     <strong>Note on Multiple Valuation Frameworks:</strong> The probability-weighted scenario ($40.47) uses symmetric probabilities (25% Bull, 60% Base, 15% Bear),
-                    while the Wilson 95% framework ($48.70) and IRC blended valuation ($50.97) use data-driven probability weights (60.9% Regression + 39.1% Normalized) and methodological triangulation respectively.
+                    while the Wilson 95% framework ($48.95) and IRC blended valuation ($50.12) use data-driven probability weights (60.9% Regression + 39.1% Normalized) and methodological triangulation respectively.
                     <strong>Both Wilson and IRC frameworks converge on +12.0-13.4% expected return → HOLD rating.</strong> The 42.8 bps NCO normalization base is consistent across all approaches.
                 </p>
             </div>
@@ -326,6 +432,87 @@
                 </div>
             </div>
             <!-- END AUTOGEN: caty12-ptbv-source-box -->
+
+            <div class="bridge-card">
+                <h4>P/TBV Reconciliation Bridge (Current → Fair)</h4>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td><strong>Start:</strong> Market P/TBV</td>
+                            <td class="number">1.303×</td>
+                            <td>Spot $47.13 ÷ TBVPS $36.16</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Normalize Credit:</strong> Provision overlay to LTM NI</td>
+                            <td class="number">−$18.5M (after‑tax)</td>
+                            <td>30 bps base vs. 18.1 bps actual; ΔProvision 11.9 bps × $19.45B loans; 20% tax (see workpaper)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cost of Equity / g:</strong> COE (provisional), g 2.5%</td>
+                            <td class="number">→</td>
+                            <td>Map via Gordon formula (see below)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Result:</strong> Fair P/TBV</td>
+                            <td class="number"><strong>1.228×</strong></td>
+                            <td>Target price <strong>$44.39</strong> (HOLD band)</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="text-small text-secondary">This bridge explains the discount from market multiple to fair multiple by (i) normalizing credit costs and (ii) applying COE/g assumptions. Full arithmetic in the linked workpaper.</p>
+            </div>
+
+            <div class="bridge-side-card">
+                <h4>Credit Base Scenarios (Audit Table)</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>NCO (bps)</th>
+                            <th class="number">Normalized ROTE</th>
+                            <th class="number">P/TBV</th>
+                            <th class="number">Target Price</th>
+                            <th class="number">vs Spot $47.13</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>20.0</td>
+                            <td class="number">11.84%</td>
+                            <td class="number">1.317x</td>
+                            <td class="number">$47.60</td>
+                            <td class="number">+1.0%</td>
+                        </tr>
+                        <tr>
+                            <td>30.0</td>
+                            <td class="number">11.20%</td>
+                            <td class="number">1.228x</td>
+                            <td class="number">$44.39</td>
+                            <td class="number">−5.8%</td>
+                        </tr>
+                        <tr>
+                            <td>42.8</td>
+                            <td class="number">10.21%</td>
+                            <td class="number">1.087x</td>
+                            <td class="number">$39.32</td>
+                            <td class="number">−17.0%</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="text-small text-secondary">Targets align with the NCO sensitivity table below. These rows provide a quick audit of credit‑assumption dependence.</p>
+            </div>
+
+            <div class="bridge-side-card">
+                <h4>Q3 → Normalized ROTE (at a glance)</h4>
+                <table>
+                    <tbody>
+                        <tr><td>Q3 Net Income</td><td class="number">$77.7M</td><td><a href="evidence/raw/CATY_2025Q3_8K/ex_873308.htm" target="_blank" rel="noopener">8‑K Ex.99.1</a></td></tr>
+                        <tr><td>ROE (reported)</td><td class="number">10.60%</td><td><a href="evidence/raw/CATY_2025Q3_8K/ex_873308.htm" target="_blank" rel="noopener">8‑K Ex.99.1</a></td></tr>
+                        <tr><td>Provision overlay (30 bps base)</td><td class="number">−$18.5M</td><td>ΔNCO 11.9 bps × $19.45B × (1−20%)</td></tr>
+                        <tr><td>Buyback effect (Q3)</td><td class="number">+$0.02 EPS</td><td><a href="evidence/workpapers/CATY_Q3_2025_buyback_analysis.html" target="_blank" rel="noopener">workpaper</a></td></tr>
+                        <tr><td>Normalized ROTE</td><td class="number">≈ 11.20%</td><td>Used in Gordon mapping</td></tr>
+                    </tbody>
+                </table>
+            </div>
         </section>
 
         <!-- ======================================== -->
@@ -344,19 +531,19 @@
 
             <h3>NCO Historical Trend (Post-2008)</h3>
             <!-- BEGIN AUTOGEN: caty12-nco-secondary -->
-            <p class="text-secondary">FDIC quarterly net charge-off rate from 2008-Q1 to 2025-Q2 (70 quarters including GFC and COVID)</p>
+            <p class="text-secondary">FDIC quarterly net charge-off rate from 2008-Q1 to 2025-Q3 (71 quarters including GFC and COVID)</p>
             <!-- END AUTOGEN: caty12-nco-secondary -->
 
             <!-- BEGIN AUTOGEN: caty12-nco-chart -->
             <div class="chart-container chart-container-centered">
-                <canvas id="ncoTrendChart" role="img" tabindex="0" aria-label="NCO trend chart showing quarterly net charge-off rates from 2008 to 2025, highlighting through-cycle assumption of 42.8 basis points"></canvas>
+                <canvas id="ncoTrendChart" aria-label="NCO trend chart showing quarterly net charge-off rates from 2008 to 2025, highlighting through-cycle assumption of 42.8 basis points (2008-2025)"></canvas>
             </div>
             <!-- END AUTOGEN: caty12-nco-chart -->
 
             <!-- BEGIN AUTOGEN: caty12-nco-metric-grid -->
             <div class="price-target-grid price-target-grid-spaced">
                 <div class="metric-card">
-                    <div class="metric-label">Current NCO (Q2 2025)</div>
+                    <div class="metric-label">Current NCO (Q3 2025)</div>
                     <div class="metric-value">18.1 bps</div>
                     <div class="metric-subtext">Below through-cycle average</div>
                 </div>
@@ -415,17 +602,17 @@
                         <td class="number">$46.02</td>
                         <td><strong>BULL CASE</strong></td>
                     </tr>
-                    <tr>
+                    <tr class="base-case">
                         <td class="number">30.0</td>
                         <td class="number">$23.1M</td>
-                        <td class="number">$18.5M</td>
+                        <td class="number">$4.6M</td>
                         <td class="number">$276.2M</td>
                         <td class="number">11.20%</td>
                         <td class="number">1.228x</td>
-                        <td class="number">—</td>
-                        <td>Moderate optimism</td>
+                        <td class="number">$44.41</td>
+                        <td><strong>BASE CASE - 90th percentile (2014-2025)</strong></td>
                     </tr>
-                    <tr class="base-case">
+                    <tr>
                         <td class="number">42.8</td>
                         <td class="number">$48.0M</td>
                         <td class="number">$38.4M</td>
@@ -433,7 +620,7 @@
                         <td class="number">10.21%</td>
                         <td class="number">1.087x</td>
                         <td class="number">$39.32</td>
-                        <td><strong>BASE CASE - GORDON GROWTH</strong></td>
+                        <td><strong>STRESS GUARDRAIL (2008-2025 mean)</strong></td>
                     </tr>
                     <tr>
                         <td class="number">60.0</td>
@@ -457,10 +644,10 @@
                     - LTM Net Income: $294.7M<br>
                     - Average TCE: $2,465.1M<br>
                     - Average Loans: $19,449.0M<br>
-                    - LTM NCO: 18.13 bps (below long-term average)<br>
+                    - LTM NCO: 18.10 bps (below long-term average)<br>
                     <br>
                     <strong>Formula:</strong><br>
-                    1. Delta Provision = (42.8 bps - 18.13 bps) × $19,449.0M = $48.0M<br>
+                    1. Delta Provision = (42.8 bps - 18.10 bps) × $19,449.0M = $48.0M<br>
                     2. Tax Effect = $48.0M × Tax Rate (20.0%) = $9.6M<br>
                     3. Normalized NI = $294.7M - $48.0M + $9.6M = $256.3M<br>
                     4. Normalized ROTE = $256.3M / $2,465.1M = 10.40% → 10.21%<br>
@@ -468,6 +655,117 @@
                 </p>
             </div>
             <!-- END AUTOGEN: caty12-normalization-methodology -->
+        </section>
+
+        <!-- ======================================== -->
+        <!-- SCENARIO WATERFALL -->
+        <!-- ======================================== -->
+        <section id="scenario-waterfall" class="scenario-waterfall-section" aria-labelledby="scenario-waterfall-title">
+            <header class="scenario-waterfall-header">
+                <div>
+                    <h3 id="scenario-waterfall-title">Bull/Base/Bear Credit Scenario Waterfall</h3>
+                    <p class="scenario-waterfall-subtitle">
+                        Comparing LTM net income to normalized earnings under 25, 30, and 60 bps NCO assumptions; annotations show ROTE and valuation outcomes.
+                    </p>
+                </div>
+                <div class="scenario-waterfall-controls" role="group" aria-label="Scenario waterfall visibility toggles">
+                    <button type="button" id="scenarioToggleBaseline" class="toggle-btn" aria-pressed="true">Show Baseline</button>
+                    <button type="button" id="scenarioToggleProvision" class="toggle-btn" aria-pressed="false">Show Provision Impact</button>
+                    <button type="button" id="scenarioToggleDetails" class="toggle-btn" aria-pressed="true">Show Details</button>
+                </div>
+            </header>
+
+            <div class="chart-wrapper">
+                <canvas
+                    id="scenarioWaterfallChart" role="img" tabindex="0"
+                    aria-label="Scenario waterfall chart comparing LTM net income to normalized net income under Bull, Base, and Bear credit assumptions (x: $M, index axis y), with provision impacts, ROTE outcomes, and target prices."
+                ></canvas>
+            </div>
+
+            <div class="chart-actions">
+                <button type="button" id="scenarioExportPng" class="export-btn">📥 Export PNG</button>
+                <button type="button" id="scenarioExportCsv" class="export-btn">📥 Export CSV</button>
+            </div>
+
+            <div class="data-table-wrapper">
+                <table>
+                    <caption>Bull/Base/Bear Credit Scenario Analysis</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Scenario</th>
+                            <th scope="col">NCO Assumption</th>
+                            <th scope="col">LTM NI</th>
+                            <th scope="col">Δ Provision</th>
+                            <th scope="col">Norm NI</th>
+                            <th scope="col">ROTE</th>
+                            <th scope="col">Target</th>
+                        </tr>
+                    </thead>
+                    <tbody id="scenarioTableBody">
+                        <!-- Populated via JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+
+            <p class="sr-only" id="scenarioToggleStatus" role="status" aria-live="polite"></p>
+        </section>
+
+        <!-- ======================================== -->
+        <!-- VALUATION BRIDGE -->
+        <!-- ======================================== -->
+        <section id="valuation-bridge" class="valuation-bridge-section" aria-labelledby="valuation-bridge-title">
+            <header class="valuation-bridge-header">
+                <div>
+                    <h3 id="valuation-bridge-title">IRC Blended Valuation Bridge</h3>
+                    <p class="valuation-bridge-subtitle">
+                        Weighted combination of Residual Income, Dividend Discount, and Regression frameworks; contributions accumulate to the $50.12 IRC target vs spot $46.17.
+                    </p>
+                </div>
+                <div class="valuation-bridge-controls" role="group" aria-label="Valuation bridge visibility toggles">
+                    <button type="button" id="bridgeToggleDetails" class="toggle-btn" aria-pressed="false">Show Component Details</button>
+                    <button type="button" id="bridgeToggleTotal" class="toggle-btn" aria-pressed="true">Show Total Bar</button>
+                    <button type="button" id="bridgeToggleOthers" class="toggle-btn" aria-pressed="false">Show Other Frameworks</button>
+                </div>
+            </header>
+
+            <div class="chart-wrapper">
+                <canvas
+                    id="valuationBridgeChart"
+                    aria-label="Valuation bridge waterfall chart showing construction of the IRC Blended target price through weighted RIM, DDM, and Regression contributions alongside spot price reference."
+                ></canvas>
+            </div>
+
+            <div class="chart-actions">
+                <button type="button" id="bridgeExportPng" class="export-btn">📥 Export PNG</button>
+                <button type="button" id="bridgeExportCsv" class="export-btn">📥 Export CSV</button>
+            </div>
+
+            <div class="data-table-wrapper">
+                <table>
+                    <caption>IRC Blended Valuation Bridge</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Component</th>
+                            <th scope="col">Framework Target</th>
+                            <th scope="col">Weight</th>
+                            <th scope="col">Contribution</th>
+                            <th scope="col">Cumulative</th>
+                        </tr>
+                    </thead>
+                    <tbody id="bridgeTableBody">
+                        <!-- Populated via JavaScript -->
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th scope="row">IRC Blended Total</th>
+                            <td colspan="2" id="bridgeTotalTargetCell"></td>
+                            <td colspan="2" id="bridgeTotalDeltaCell"></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+
+            <p class="sr-only" id="bridgeToggleStatus" role="status" aria-live="polite"></p>
         </section>
 
         <!-- ======================================== -->
@@ -551,32 +849,229 @@
                 <tbody>
                     <tr>
                         <td>2.0%</td>
-                        <td class="number">1.107x</td>
-                        <td class="number">$40.04</td>
-                        <td>Lower g → slightly lower target</td>
+                        <td class="number">1.213x</td>
+                        <td class="number">$43.87</td>
+                        <td>Lower g → softer normalized target</td>
                     </tr>
                     <tr class="row-highlight-red">
                         <td><strong>2.5%</strong> (Base)</td>
-                        <td class="number">1.087x</td>
-                        <td class="number">$39.32</td>
+                        <td class="number">1.228x</td>
+                        <td class="number">$44.41</td>
                         <td><strong>BASE CASE (Gordon Growth)</strong></td>
                     </tr>
                     <tr>
                         <td>3.0%</td>
-                        <td class="number">1.123x</td>
-                        <td class="number">$40.61</td>
-                        <td>Higher g → slightly higher target</td>
+                        <td class="number">1.245x</td>
+                        <td class="number">$45.04</td>
+                        <td>Higher g → richer valuation</td>
                     </tr>
                 </tbody>
             </table>
             <!-- END AUTOGEN: caty12-growth-sensitivity-table -->
 
+            <h3>Rate &amp; Credit Elasticities</h3>
+            <div class="metric-grid">
+                <div class="metric-card">
+                    <div class="metric-label">Deposit Beta Shocks</div>
+                    <div class="metric-subtext">Interest-bearing base ≈ $16.9B</div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Beta Shock</th>
+                                <th class="number">Price Impact</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>+10 bps</td><td class="number">$-1.73</td></tr>
+                            <tr><td>+25 bps</td><td class="number">$-4.32</td></tr>
+                            <tr><td>+50 bps</td><td class="number">$-8.64</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">NCO Shocks</div>
+                    <div class="metric-subtext">Provision fully flows to after-tax NI</div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>NCO Shock</th>
+                                <th class="number">Price Impact</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>+10 bps</td><td class="number">$-1.98</td></tr>
+                            <tr><td>+25 bps</td><td class="number">$-4.96</td></tr>
+                            <tr><td>+50 bps</td><td class="number">$-9.92</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <p class="text-muted">Sensitivities derived from <a href="evidence/valuation_sensitivity_summary.html" target="_blank" rel="noopener">valuation_sensitivity_summary.md</a> (regression path, updated with Q3 2025 balances).</p>
+
+            <h3>NCO Sensitivity (Bank‑Level)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Base NCO (bps)</th>
+                        <th class="number">ΔProvision ($M)</th>
+                        <th class="number">After‑Tax ($M)</th>
+                        <th>Assumptions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>20</td><td class="number">+3.70</td><td class="number">+2.96</td><td>Δ vs 18.1 bps; loans $19.45B; tax 20%</td></tr>
+                    <tr><td>25</td><td class="number">+13.42</td><td class="number">+10.74</td><td>Δ vs 18.1 bps; loans $19.45B; tax 20%</td></tr>
+                    <tr class="row-highlight-gold"><td><strong>30</strong></td><td class="number"><strong>+23.14</strong></td><td class="number"><strong>+18.52</strong></td><td>Post‑2014 conservative base</td></tr>
+                    <tr><td>43</td><td class="number">+48.04</td><td class="number">+38.43</td><td>Long‑run guardrail context</td></tr>
+                </tbody>
+            </table>
+
+            <h3>NCO Distribution Summary (FDIC)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Window</th>
+                        <th class="number">n</th>
+                        <th class="number">Mean (bps)</th>
+                        <th class="number">Median (bps)</th>
+                        <th class="number">P90 (bps)</th>
+                        <th class="number">Stdev (bps)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Post‑2014</td><td class="number">46</td><td class="number">4.04</td><td class="number">2.57</td><td class="number">17.80</td><td class="number">10.66</td></tr>
+                    <tr><td>Post‑GFC (≥ 2008)</td><td class="number">70</td><td class="number">26.92</td><td class="number">7.22</td><td class="number">85.33</td><td class="number">54.28</td></tr>
+                </tbody>
+            </table>
+            <p class="text-small">Data: <code>evidence/raw/fdic_CATY_NTLNLSCOQR_timeseries.csv</code>. Post‑2014 P90 at 17.8 bps indicates the 30 bps base is conservative relative to the bank’s recent distribution.</p>
+
+            <h3>EPS / NIM / TBV Bridges (Added)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Shock</th>
+                        <th class="number">NIM Δ (bps)</th>
+                        <th class="number">EPS Δ ($/sh)</th>
+                        <th class="number">TBVPS Δ ($/sh)</th>
+                        <th class="number">Price Δ</th>
+                        <th>Assumptions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>+50 bps deposit cost</strong></td>
+                        <td class="number">−36.7</td>
+                        <td class="number">−0.98</td>
+                        <td class="number">≈ −0.67</td>
+                        <td class="number">$−8.64</td>
+                        <td>IB base $16.9B; tax 20%; earning assets $23.0B; retention 68%.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>+100 bps deposit cost</strong></td>
+                        <td class="number">−73.4</td>
+                        <td class="number">−1.96</td>
+                        <td class="number">≈ −1.33</td>
+                        <td class="number">$−17.28</td>
+                        <td>Linear scale from +50 bps case.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>+50 bps NCO</strong></td>
+                        <td class="number">n/a</td>
+                        <td class="number">−1.14</td>
+                        <td class="number">≈ −0.78</td>
+                        <td class="number">$−9.92</td>
+                        <td>ΔProvision 0.5% × $19.45B; tax 20%; retention 68%.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>+100 bps wholesale replace</strong></td>
+                        <td class="number">−4.9</td>
+                        <td class="number">−0.13</td>
+                        <td class="number">≈ −0.09</td>
+                        <td class="number">$≈−1.3</td>
+                        <td>Replace $1.12B brokered @ +100 bps; tax 20%; EA $23.0B.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="text-small text-secondary">Figures are annualized impacts unless noted. EPS deltas use 68.7M diluted shares; TBVPS deltas assume 68% retention. Price deltas tie to the valuation sensitivity slope (workpaper).</p>
+
             <!-- BEGIN AUTOGEN: caty12-growth-note -->
             <p class="text-note">
-                Note: Each 50 bps change in g changes the target price by approximately <strong>$0.30</strong>.
+                Note: Each 50 bps change in g changes the target price by approximately <strong>$0.54</strong>.
                 This is relatively small compared to the impact of NCO assumptions (which can swing the target by several dollars).
             </p>
             <!-- END AUTOGEN: caty12-growth-note -->
+        </section>
+
+        <!-- ======================================== -->
+        <!-- ADDITIONAL SENSITIVITIES (COE, FUNDING COST) -->
+        <!-- ======================================== -->
+        <section id="additional-sensitivities">
+            <h2>Additional Sensitivities: COE ±50 bps and Funding Cost Shocks</h2>
+            <div class="highlight-box">
+                <h4>COE Sensitivity (Policy Base: ROTE 11.20%, g 2.5%, TBVPS $36.16)</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>COE</th>
+                            <th class="number">P/TBV</th>
+                            <th class="number">Price</th>
+                            <th class="number">Δ vs Base</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>9.1% (−50 bps)</td>
+                            <td class="number">1.318x</td>
+                            <td class="number">$47.65</td>
+                            <td class="number">+≈$3.26</td>
+                        </tr>
+                        <tr>
+                            <td>9.6% (Base, provisional)</td>
+                            <td class="number">1.228x</td>
+                            <td class="number">$44.39</td>
+                            <td class="number">—</td>
+                        </tr>
+                        <tr>
+                            <td>10.1% (+50 bps)</td>
+                            <td class="number">1.145x</td>
+                            <td class="number">$41.38</td>
+                            <td class="number">−≈$3.01</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="text-small text-secondary">Computed via Gordon mapping: P/TBV = (ROTE − g) / (COE − g). Values rounded; will update when peer‑derived COE is refreshed.</p>
+            </div>
+
+            <div class="highlight-box">
+                <h4>Deposit Cost Shock (All‑in) — Price Impact</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Shock</th>
+                            <th class="number">Δ Price</th>
+                            <th>Assumptions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>+10 bps</td>
+                            <td class="number">$−1.73</td>
+                            <td>IB base ~$16.9B; linear approx</td>
+                        </tr>
+                        <tr>
+                            <td>+20 bps</td>
+                            <td class="number">$−3.46</td>
+                            <td>Interpolated (linear)</td>
+                        </tr>
+                        <tr>
+                            <td>+30 bps</td>
+                            <td class="number">$−5.19</td>
+                            <td>Interpolated (linear)</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="text-small text-secondary">Deltas sourced from <a href="evidence/valuation_sensitivity_summary.html" target="_blank" rel="noopener">valuation_sensitivity_summary.md</a> (+10 bps = −$1.73; +25 bps = −$4.32; +50 bps = −$8.64). We present +10/+20/+30 bps for quick framing while awaiting product‑level betas.</p>
+            </div>
         </section>
 
         <!-- ======================================== -->
@@ -588,7 +1083,7 @@
             <!-- BEGIN AUTOGEN: caty12-monte-intro -->
             <p class="text-intro">
                 A Monte Carlo simulation was run with the following probability weights: <strong>25% Bull, 60% Base, 15% Bear</strong>.
-                The simulation confirms the central tendency around the base case target of $39.32 (Gordon Growth).
+                The simulation confirms the central tendency around the base case target of $44.39 (Gordon Growth).
             </p>
             <!-- END AUTOGEN: caty12-monte-intro -->
 
@@ -621,10 +1116,10 @@
             <div class="highlight-box critical">
                 <h4>KEY STAT: Market-Implied Probability</h4>
                 <p class="text-emphasis-large">
-                    Pr(Fair Value &lt; $47.00 Spot): <span class="text-danger">60.9%</span>
+                    Pr(Fair Value &lt; $47.13 Spot): <span class="text-danger">60.9%</span>
                 </p>
                 <p class="line-height-relaxed">
-                    There is a <strong>60.9%</strong> probability that the fair value is below the current spot price of $47.00
+                    There is a <strong>60.9%</strong> probability that the fair value is below the current spot price of $47.13
                     (market-implied weighting), indicating modest overvaluation. Conversely, there is a <strong>39.1%</strong>
                     probability of upside above the current price. Wilson 95% upper bound uses 26% tail probability for conservative HOLD.
                 </p>
@@ -770,10 +1265,10 @@
                 <h4>CATY Residual Analysis</h4>
                 <p class="line-height-relaxed">
                     CATY's actual P/TBV of <strong>1.269x</strong> is <strong>0.069x below</strong> the regression-fitted value of 1.338x,
-                    based on its raw ROTE of 11.95%. This suggests CATY is trading at a slight discount relative to its current profitability.
+                    based on its raw ROTE of 10.60%. This suggests CATY is trading at a slight discount relative to its current profitability.
                     <br><br>
                     <strong>However:</strong> This regression uses <em>reported ROTE</em>, not <em>normalized ROTE</em>. When we normalize
-                    CATY's ROTE to 10.21% (base case with 42.8 bps NCO via Gordon Growth), the fitted P/TBV drops to <strong>1.087x</strong>, which is
+                    CATY's ROTE to 10.21% (base case with 30.0 bps NCO via Gordon Growth), the fitted P/TBV drops to <strong>1.087x</strong>, which is
                     <em>below</em> the current market multiple of 1.269x, supporting the HOLD rating.
                 </p>
             </div>
@@ -847,7 +1342,7 @@
             <div class="highlight-box">
                 <h4>CATY Predicted P/TBV from Mean COE</h4>
                 <p class="text-large">
-                    Using the mean peer COE of <strong>9.587%</strong> and CATY's current ROTE of 11.95%,
+                    Using the mean peer COE of <strong>9.587%</strong> and CATY's current ROTE of 10.60%,
                     the predicted P/TBV is <strong>1.333x</strong>. CATY is currently trading at <strong>1.269x</strong>,
                     which is <strong>0.048x below</strong> the peer-calibrated prediction.
                     <br><br>
@@ -1062,7 +1557,7 @@
                     <strong>Framework:</strong> P/TBV mapping with through-cycle NCO normalization<br>
                     <strong>Data Sources:</strong> SEC EDGAR (companyfacts, 10-Ks), FDIC Call Reports 2008-2024, Bloomberg peer data<br>
                     <strong>Confidence Level:</strong> High on base case; Medium on bull/bear scenarios (judgment-based)<br>
-                    <strong>Last Updated:</strong> 2025-10-18 06:40:00 UTC
+                    <strong>Last Updated:</strong> October 22, 2025 02:14 UTC
                 </div>
                 <!-- END AUTOGEN: caty12-status-box -->
             </div>
@@ -1091,7 +1586,7 @@
                     </tr>
                     <tr>
                         <td><strong>Last Updated</strong></td>
-                        <td>2025-10-18T06:40:00Z</td>
+                        <td>October 22, 2025 02:14 UTC (automation run)</td>
                     </tr>
                     <tr>
                         <td><strong>Data Policy</strong></td>
@@ -1110,11 +1605,13 @@
             <!-- END AUTOGEN: caty12-metadata-table -->
         </section>
 
-    </div>
+    </main>
 
     <!-- JavaScript for Theme Toggle -->
     <script src="scripts/theme-toggle.js"></script>
     <script src="scripts/charts.js"></script>
+    <script src="scripts/scenario-waterfall.js"></script>
+    <script src="scripts/valuation-bridge.js"></script>
 
     <!-- Initialize NCO Chart -->
     <script>

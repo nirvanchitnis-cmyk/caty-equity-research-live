@@ -59,7 +59,7 @@ web_search: "EWBC Q3 2025 earnings results NCO NIM"
 
 **If 0-1 red flags:**
 → **NO CATY RECALIBRATION NEEDED**
-→ Proceed with baseline Wilson 74/26, HOLD rating
+→ Proceed with baseline Wilson 60.9/39.1, HOLD rating
 
 **If 2+ red flags:**
 → **URGENT RECALIBRATION**
@@ -112,13 +112,13 @@ CATY Call Question #3 (if needed):
 
 ### 4.1 Wilson Upper Bound Adjustment
 
-**Current:** 74/26 (26% tail probability)
+**Current:** 60.9/39.1 (26% tail probability)
 
 **Decision Tree:**
 
 | EWBC NCO | EWBC NIM | EWBC Deposits | Recommended Tail | Wilson Target | Rating |
 |----------|----------|---------------|------------------|---------------|--------|
-| <30 bps | >-10 bps | >-2% | **Keep 26%** | $52.03 | **HOLD** |
+| <30 bps | >-10 bps | >-2% | **Keep 26%** | $48.70 | **HOLD** |
 | 30-50 bps | -10 to -15 bps | -2% to -3% | **Increase to 30%** | ~$50.50 | **HOLD** |
 | >50 bps | <-15 bps | <-3% | **Increase to 35%** | ~$49.00 | **HOLD/SELL** |
 

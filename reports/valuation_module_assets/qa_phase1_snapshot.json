@@ -1,0 +1,78 @@
+{
+  "runtime_ms": 732,
+  "peerSummary": {
+    "count": 8,
+    "sample": [
+      {
+        "ticker": "EWBC",
+        "rote": 16.1,
+        "ptbv": 1.91,
+        "predicted": 1.754,
+        "residual": 0.156
+      },
+      {
+        "ticker": "CVBF",
+        "rote": 13.79,
+        "ptbv": 1.75,
+        "predicted": 1.62,
+        "residual": 0.13
+      },
+      {
+        "ticker": "HAFC",
+        "rote": 8.16,
+        "ptbv": 1.078,
+        "predicted": 1.293,
+        "residual": -0.215
+      }
+    ]
+  },
+  "caty": {
+    "rote": 12.35,
+    "ptbv": 1.277,
+    "predicted": 1.536,
+    "residual": -0.259
+  },
+  "regressionVisible": true,
+  "regressionSummary": "y = 0.058 × ROTE + 0.82 (R² = 0.68; n = 8); Fixed coefficients",
+  "annotation": "CATY actual 1.277x vs fit 1.536x → residual -0.259x (-16.9%).",
+  "frameworkSummary": {
+    "count": 6,
+    "order": [
+      "regression",
+      "irc_blended",
+      "wilson_95",
+      "probability_weighted",
+      "normalized",
+      "spot"
+    ],
+    "sample": [
+      {
+        "id": "regression",
+        "label": "Regression",
+        "price": 51.88,
+        "delta": 5.71,
+        "deltaPct": 12.4,
+        "category": "Model-derived",
+        "note": null
+      },
+      {
+        "id": "irc_blended",
+        "label": "IRC Blended",
+        "price": 50.12,
+        "delta": 3.95,
+        "deltaPct": 8.6,
+        "category": "Model-derived",
+        "note": null
+      },
+      {
+        "id": "wilson_95",
+        "label": "Wilson 95%",
+        "price": 48.95,
+        "delta": 2.78,
+        "deltaPct": 6,
+        "category": "Model-derived",
+        "note": "Simulated"
+      }
+    ]
+  }
+}

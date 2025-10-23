@@ -1,8 +1,8 @@
 {
   "comment": "CATY_10 Capital Actions - Dividends, Buybacks, and Capital Return Policy",
-  "last_updated": "2025-10-19T23:55:00Z",
+  "last_updated": "2025-10-21T00:00:00Z",
   "data_source": "SEC 10-Q/10-K + 8-K announcements",
-  "period": "Q2 2025",
+  "period": "Q3 2025",
   "capital_return_metrics": {
     "dividend_payout_ratio_pct": 32.1,
     "retention_rate_pct": 67.9,
@@ -11,14 +11,14 @@
     "quarterly_dividend": 0.38,
     "annual_dividend": 1.52,
     "dividend_yield_pct": 3.31,
-    "note": "Payout ratio = Dividends / Net Income; Retention = 1 - Payout; Organic Growth = ROTE × Retention"
+    "note": "Payout ratio = Dividends / Net Income; Retention = 1 - Payout; Organic Growth = ROTE \u00d7 Retention"
   },
   "framework_context": {
     "payout_ratio_range": "30-40%",
     "payout_ratio_interpretation": "Industry typical range for banks",
     "retention_rate_pct": 67.9,
     "retention_interpretation": "Earnings reinvested in business",
-    "organic_growth_calculation": "ROTE × Retention Rate",
+    "organic_growth_calculation": "ROTE \u00d7 Retention Rate",
     "organic_growth_example": "If ROTE = 12% and Retention = 68%, organic growth capacity = 8.1%",
     "organic_growth_interpretation": "Equity can grow 8.1% annually from retained earnings alone"
   },
@@ -36,20 +36,20 @@
   "buyback_program": {
     "authorization_millions": 150,
     "authorization_date": "2024-07-15",
-    "remaining_millions": 110,
-    "shares_repurchased_millions": 0.85,
-    "average_price": 47.12,
-    "total_cost_millions": 40,
+    "remaining_millions": 59.9,
+    "shares_repurchased_millions": 1.92,
+    "average_price": 46.81,
+    "total_cost_millions": 90.1,
     "program_status": "Active",
     "expiration_date": "2026-07-15",
     "note": "Board authorized $150M share repurchase program"
   },
   "ltm_capital_return": {
     "dividends_paid_millions": 118.6,
-    "buybacks_millions": 40.0,
-    "total_capital_returned_millions": 158.6,
-    "net_income_millions": 369.8,
-    "total_payout_ratio_pct": 42.9,
+    "buybacks_millions": 90.1,
+    "total_capital_returned_millions": 208.7,
+    "net_income_millions": 294.7,
+    "total_payout_ratio_pct": 70.8,
     "note": "Total shareholder return = Dividends + Buybacks"
   },
   "sustainability_metrics": {
@@ -85,9 +85,77 @@
       {
         "id": "CAP-QA003",
         "description": "Organic growth calculation",
-        "rule": "Organic growth = ROTE × Retention rate",
+        "rule": "Organic growth = ROTE \u00d7 Retention rate",
         "status": "PASSED"
       }
     ]
+  },
+  "q3_2025_share_repurchases": {
+    "shares_repurchased_millions": 1.07,
+    "average_price": 46.81,
+    "total_cost_millions": 50.1,
+    "source": "evidence/raw/CATY_2025Q3_8K/ex_873308.htm#share-repurchase",
+    "description": "Repurchased 1.07M shares at $46.81 average price ($50.1M total) during Q3 2025 per 8-K press release."
+  },
+  "buyback_analysis": {
+    "q3_2025": {
+      "shares_repurhased_m": 1.07,
+      "avg_price_paid": 46.81,
+      "total_cost_m": 50.1,
+      "tbvps_actual": 36.96,
+      "tbvps_no_buyback": 37.12,
+      "tbvps_delta": -0.16,
+      "avg_tce_with_buyback_m": 2515.81,
+      "avg_tce_without_buyback_m": 2540.86,
+      "rote_with_buyback_pct": 10.6,
+      "rote_without_buyback_pct": 10.51,
+      "rote_delta_bps": -9.5,
+      "cet1_q3_pct": 13.15,
+      "cet1_q2_pct": 13.35,
+      "cet1_delta_bps": -20.0,
+      "note": "Repurchase executed above TBV (36.1x vs $46.81) reduced TBVPS by 16 bps and CET1 by 20 bps, while lifting ROTE ~10 bps via smaller equity base.",
+      "evidence": [
+        "evidence/raw/CATY_2025Q3_8K/ex_873308.htm#tangible-equity",
+        "evidence/raw/CATY_2025Q3_8K/ex_873308.htm#capital-ratios"
+      ]
+    }
+  },
+  "capital_walk": {
+    "period": "Q2 2025 to Q3 2025",
+    "start_cet1_pct": 13.35,
+    "end_cet1_pct": 13.15,
+    "derived_rwa_billions": 19.193,
+    "drivers": [
+      {
+        "name": "Retained earnings (after dividend)",
+        "capital_delta_m": 51.6,
+        "impact_bps": 27,
+        "evidence": "Form 8-K Exhibit 99.1 net income $77.7M less $0.38/share dividend on 68.7M shares."
+      },
+      {
+        "name": "Share repurchase ($50.1M)",
+        "capital_delta_m": -50.1,
+        "impact_bps": -26,
+        "evidence": "Share buyback detail in evidence/workpapers/CATY_Q3_2025_buyback_analysis.md"
+      },
+      {
+        "name": "RWA growth & OCI adjustments",
+        "capital_delta_m": -40.0,
+        "impact_bps": -21,
+        "note": "Loan growth and valuation marks increased risk-weighted assets; residual needed to reconcile CET1 delta."
+      }
+    ]
+  },
+  "downgrade_triggers": {
+    "cet1_watch_pct": 12.3,
+    "cet1_floor_pct": 12.0,
+    "tier1_leverage_watch_pct": 10.7,
+    "tier1_leverage_floor_pct": 10.5,
+    "actions": [
+      "Suspend buybacks immediately upon breaching watch thresholds.",
+      "Escalate HOLD to formal downgrade if CET1 < 12.0% or leverage < 10.5%."
+    ],
+    "monitoring_cadence": "Review weekly; move to daily once Q3 10-Q discloses updated risk-weighted assets.",
+    "evidence": "CET1/leverage ratios per Form 8-K Exhibit 99.1 capital table."
   }
 }

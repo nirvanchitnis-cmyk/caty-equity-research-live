@@ -1,0 +1,60 @@
+{
+  "generated_at": "2025-10-22T19:11:01.132568+00:00",
+  "total_special_mention_m": 455.0,
+  "relationships": [
+    {
+      "relationship": "Theatre Pair (Los Angeles)",
+      "exposure_m": 20.0,
+      "property_type": "Theatre",
+      "ltv": "54% (Q3 deck slide 8)",
+      "dscr": "Not disclosed (10-Q pending)",
+      "tenants": "Two national cinema operators",
+      "status": "Specific reserve $9.1M booked Q3 2025",
+      "source": [
+        "evidence/raw/CATY_2025Q3_8K/ex_873308.htm",
+        "evidence/primary_sources/CATY_Q3_2025_Presentation_20251021.txt"
+      ]
+    },
+    {
+      "relationship": "Multi-tenant Retail Portfolio (SGV)",
+      "exposure_m": null,
+      "property_type": "Retail",
+      "ltv": "48% portfolio average",
+      "dscr": "Not disclosed (IR request 22-Oct)",
+      "tenants": "Mixture of grocery-anchored centers",
+      "status": "Special-mention; collateral reappraisal ordered Oct-2025",
+      "source": [
+        "evidence/CRE_OFFICE_STATUS.md",
+        "evidence/IR_DATA_REQUEST_CRE_DSCR_MATURITY.md"
+      ]
+    },
+    {
+      "relationship": "Industrial Flex (TX)",
+      "exposure_m": null,
+      "property_type": "Industrial",
+      "ltv": "47% (portfolio avg)",
+      "dscr": "Pending",
+      "tenants": "Logistics + light manufacturing mix",
+      "status": "Special-mention; watch for lease rollover 2026",
+      "source": [
+        "evidence/CRE_OFFICE_STATUS.md"
+      ]
+    },
+    {
+      "relationship": "Mixed-Use Retail/Office",
+      "exposure_m": null,
+      "property_type": "Office/Retail",
+      "ltv": "33% (office/retail subset)",
+      "dscr": "Pending",
+      "tenants": "Street-level retail + office",
+      "status": "Special-mention with elevated vacancy",
+      "source": [
+        "evidence/CRE_OFFICE_STATUS.md"
+      ]
+    }
+  ],
+  "notes": {
+    "disclosure_gap": "Property-level DSCR and outstanding balances for non-theatre relationships remain undisclosed; IR follow-up logged 22-Oct-2025.",
+    "pending_actions": "Update once Q3 10-Q schedule and call transcript released"
+  }
+}

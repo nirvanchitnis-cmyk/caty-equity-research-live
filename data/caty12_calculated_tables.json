@@ -1,10 +1,10 @@
 {
   "comment": "CATY_12 Valuation Model - All sensitivity tables and scenario data",
-  "last_updated": "2025-10-19T23:15:00Z",
+  "last_updated": "2025-10-22T02:14:51Z",
   "source_script": "analysis/calculate_valuation_tables.py",
   "nco_metrics": [
     {
-      "label": "Current NCO (Q2 2025)",
+      "label": "Current NCO (Q3 2025)",
       "value_type": "bps",
       "value": 18.1,
       "subtext": "Below through-cycle average",
@@ -62,14 +62,15 @@
       {
         "nco_bps": 30.0,
         "delta_provision_m": 23.1,
-        "tax_effect_m": 18.5,
+        "tax_effect_m": 4.6,
         "normalized_net_income_m": 276.2,
         "rote_pct": 11.2,
         "ptbv_multiple": 1.228,
-        "target_price": null,
-        "scenario_text": "Moderate optimism",
-        "row_class": "",
-        "row_class_attr": ""
+        "target_price": 44.41,
+        "scenario_text": "<strong>BASE CASE - 90th percentile (2014-2025)</strong>",
+        "row_class": "base-case",
+        "row_class_attr": " class=\"base-case\"",
+        "target_ptbv": 1.228
       },
       {
         "nco_bps": 42.8,
@@ -79,9 +80,10 @@
         "rote_pct": 10.21,
         "ptbv_multiple": 1.087,
         "target_price": 39.32,
-        "scenario_text": "<strong>BASE CASE - GORDON GROWTH</strong>",
-        "row_class": "base-case",
-        "row_class_attr": " class=\"base-case\""
+        "scenario_text": "<strong>STRESS GUARDRAIL (2008-2025 mean)</strong>",
+        "row_class": "",
+        "row_class_attr": "",
+        "target_ptbv": 1.087
       },
       {
         "nco_bps": 60.0,
@@ -101,13 +103,15 @@
     "ltm_net_income_m": 294.7,
     "average_tce_m": 2465.1,
     "average_loans_m": 19449.0,
-    "ltm_nco_bps": 18.13,
+    "ltm_nco_bps": 18.1,
     "tax_rate_pct": 20.0,
     "gfc_peak_nco_bps": 234.0,
     "sample_size_quarters": 70,
     "sample_years_text": "17 years of empirical FDIC data",
     "fdic_range_text": "2008-2024 FDIC average NCO",
-    "history_years_phrase": "17 years of history"
+    "history_years_phrase": "11 years post-crisis data",
+    "ltm_rote_pct": 10.6,
+    "through_cycle_nco_bps": 30.0
   },
   "coe_sensitivity_matrix": {
     "coe_columns_pct": [
@@ -161,14 +165,14 @@
   },
   "growth_rate_sensitivity": {
     "comment": "Terminal growth rate sensitivity (base: 2.5%)",
-    "base_nco_bps": 42.8,
-    "delta_target_price_per_50bps": 0.3,
+    "base_nco_bps": 30.0,
+    "delta_target_price_per_50bps": 0.54,
     "scenarios": [
       {
         "growth_rate_pct": 2.0,
-        "target_ptbv": 1.107,
-        "target_price": 40.04,
-        "impact_text": "Lower g \u2192 slightly lower target",
+        "target_ptbv": 1.213,
+        "target_price": 43.87,
+        "impact_text": "Lower g \u2192 softer normalized target",
         "row_class": "",
         "label_html": "2.0%",
         "label_suffix": "",
@@ -177,8 +181,8 @@
       },
       {
         "growth_rate_pct": 2.5,
-        "target_ptbv": 1.087,
-        "target_price": 39.32,
+        "target_ptbv": 1.228,
+        "target_price": 44.41,
         "impact_text": "<strong>BASE CASE (Gordon Growth)</strong>",
         "row_class": "row-highlight-red",
         "label_html": "<strong>2.5%</strong>",
@@ -188,9 +192,9 @@
       },
       {
         "growth_rate_pct": 3.0,
-        "target_ptbv": 1.123,
-        "target_price": 40.61,
-        "impact_text": "Higher g \u2192 slightly higher target",
+        "target_ptbv": 1.245,
+        "target_price": 45.04,
+        "impact_text": "Higher g \u2192 richer valuation",
         "row_class": "",
         "label_html": "3.0%",
         "label_suffix": "",
@@ -576,16 +580,17 @@
     "framework_text": "P/TBV mapping with through-cycle NCO normalization",
     "data_sources_text": "SEC EDGAR (companyfacts, 10-Ks), FDIC Call Reports 2008-2024, Bloomberg peer data",
     "confidence_text": "High on base case; Medium on bull/bear scenarios (judgment-based)",
-    "last_updated_display": "2025-10-18 06:40:00 UTC"
+    "last_updated_display": "October 22, 2025 02:14 UTC"
   },
   "metadata": {
     "schema_version": "1.0.0",
     "file_name": "valuation_model.json",
     "purpose": "Valuation logic, scenarios, and PT bridge (blocked until dependencies met)",
-    "last_updated_iso": "2025-10-18T06:40:00Z",
+    "last_updated_iso": "2025-10-22T02:14:51Z",
     "data_policy": "No valuation outputs until files 1-11 are VERIFIED_OK or ESTIMATED_FLAGGED with documented methods",
     "loader_rule": "REFUSE to compute target_price if any dependency blocking_level >= 3 or peer metrics not VERIFIED_OK",
-    "units": "USD millions unless noted; per-share in USD; ratios in percent or bps"
+    "units": "USD millions unless noted; per-share in USD; ratios in percent or bps",
+    "last_updated_display": "October 22, 2025 02:14 UTC (automation run)"
   },
   "growth_metrics": {
     "cards": [
@@ -624,16 +629,145 @@
     "confidence": "High on historical CAGRs/payouts; Medium on forward g (judgment-based)"
   },
   "nco_history": {
-    "range_display": "2008-Q1 to 2025-Q2",
-    "quarters_text": "70 quarters",
+    "range_display": "2008-Q1 to 2025-Q3",
+    "quarters_text": "71 quarters",
     "years_span": "2008 to 2025",
-    "through_cycle_label": "42.8 basis points"
+    "through_cycle_label": "42.8 basis points (2008-2025)"
   },
   "scenario_notes": {
-    "base_history_years": "17 years of history",
-    "bear_nco_bps": 60.0
+    "base_history_years": "Post-2014 FDIC sample (Basel III)",
+    "bear_nco_bps": 60.0,
+    "stress_label": "42.8 bps guardrail remains in stress table"
   },
   "methodology": {
     "return_range_text": "+12.0-13.4%"
-  }
+  },
+  "valuation_bridge": {
+    "starting_point": {
+      "label": "Q3 2025 LTM Net Income",
+      "net_income_m": 294.7,
+      "rote_pct": 10.6,
+      "source": "data/caty02_income_statement.json:q3_2025_snapshot"
+    },
+    "adjustments": [
+      {
+        "label": "Provision normalization to 30 bps NCO",
+        "description": "Apply 90th percentile post-2014 NCO (30 bps) on $19.4B loans; retains 42.8 bps as stress guardrail.",
+        "delta_net_income_m": -18.5,
+        "delta_rote_pct": -0.18,
+        "evidence": [
+          "evidence/raw/CATY_2025Q3_8K/ex_873308.htm#credit-quality",
+          "evidence/workpapers/CATY_FDIC_NCO_series.md"
+        ]
+      }
+    ],
+    "ending_point": {
+      "label": "Normalized earnings power",
+      "net_income_m": 276.2,
+      "rote_pct": 11.2,
+      "source": "data/valuation_outputs.json:methods.normalized"
+    }
+  },
+  "normalization_bridge_detail": {
+    "intro": "Bridge from reported Q3 performance to through-cycle normalized earnings, including capital and provision adjustments.",
+    "rows": [
+      {
+        "step": "Reported Q3 run-rate",
+        "net_income_m": 77.7,
+        "annualised_net_income_m": 310.8,
+        "rote_pct": 11.18,
+        "tbvps": 36.96,
+        "comment": "Annualising Q3 net income ($77.7M) yields $310.8M run-rate; ROTE calculated on post-buyback tangible equity base.",
+        "evidence": [
+          "evidence/raw/CATY_2025Q3_8K/ex_873308.htm#income-summary"
+        ]
+      },
+      {
+        "step": "Align to LTM actuals",
+        "net_income_m": 294.7,
+        "delta_net_income_m": -16.1,
+        "rote_pct": 10.6,
+        "comment": "Replaces single-quarter run-rate with trailing-twelve-month net income from Q4'24\u2013Q3'25 (press release footnote).",
+        "evidence": [
+          "data/caty02_income_statement.json:ltm_metrics",
+          "evidence/raw/CATY_2025Q3_8K/ex_873308.htm#quarterly-comparison"
+        ]
+      },
+      {
+        "step": "Remove Q3 buyback uplift",
+        "net_income_m": 294.7,
+        "delta_net_income_m": 0.0,
+        "delta_rote_pct": -0.09,
+        "comment": "Q3 repurchase (1.07M sh @ $46.81) lowered average tangible equity by ~$25M, boosting ROTE by ~9bps; neutralised for normalized view.",
+        "evidence": [
+          "data/caty10_capital_actions.json:q3_2025_share_repurchases",
+          "evidence/raw/CATY_2025Q3_8K/ex_873308.htm#tangible-equity"
+        ]
+      },
+      {
+        "step": "Provision normalization (30 bps P90)",
+        "delta_provision_m": 23.1,
+        "tax_effect_m": 4.6,
+        "delta_net_income_m": -18.5,
+        "rote_pct_after_step": 11.2,
+        "comment": "Applies post-2014 90th percentile NCO (30 bps) vs. Q3 actual 18.1 bps; 42.8 bps historical mean retained as stress guardrail.",
+        "evidence": [
+          "evidence/raw/CATY_2025Q3_8K/ex_873308.htm#credit-quality",
+          "evidence/workpapers/CATY_FDIC_NCO_series.md"
+        ]
+      },
+      {
+        "step": "Normalized earnings power",
+        "net_income_m": 276.2,
+        "rote_pct": 11.2,
+        "tbvps": 36.16,
+        "comment": "Normalized earnings feeding Gordon Growth valuation (COE 9.587%, g=2.5%) under 30 bps NCO base.",
+        "evidence": [
+          "data/valuation_outputs.json:methods.normalized"
+        ]
+      },
+      {
+        "step": "Stress guardrail (42.8 bps)",
+        "net_income_m": 256.3,
+        "rote_pct": 10.21,
+        "tbvps": 36.16,
+        "comment": "Full through-cycle mean (42.8 bps) retained for sell-side guardrail; links to stress valuation table.",
+        "evidence": [
+          "evidence/workpapers/CATY_FDIC_NCO_series.md"
+        ]
+      }
+    ]
+  },
+  "capital_actions_impact": {
+    "shares_repurhased_m": 1.07,
+    "avg_price": 46.81,
+    "cost_m": 50.1,
+    "tbvps_actual": 36.96,
+    "tbvps_no_buyback": 37.12,
+    "tbvps_delta": -0.16,
+    "avg_tce_with_buyback_m": 2515.81,
+    "avg_tce_without_buyback_m": 2540.86,
+    "rote_uplift_bps": 9.5,
+    "cet1_q3_pct": 13.15,
+    "cet1_q2_pct": 13.35,
+    "cet1_delta_bps": -20.0,
+    "evidence": [
+      "evidence/raw/CATY_2025Q3_8K/ex_873308.htm#capital-ratios",
+      "data/caty10_capital_actions.json"
+    ]
+  },
+  "regression_decomposition": {
+    "tbvps": 36.16,
+    "roae_pct": 10.6,
+    "slope": 0.058,
+    "intercept": 0.82,
+    "components": {
+      "intercept_component_price": 29.65,
+      "roae_component_price": 22.23
+    },
+    "reconstructed_target_price": 51.88,
+    "comment": "Target price = TBVPS \u00d7 (intercept + slope \u00d7 ROAE). Intercept term ($29.65) + ROAE term ($22.23) = $51.88."
+  },
+  "scenarios": {},
+  "frameworks": {}
 }

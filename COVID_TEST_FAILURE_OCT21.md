@@ -34,10 +34,10 @@ Spot Price: $28.20 ✅ UPDATED
 update_all_data.py: Exit 0 ✅
 
 Valuation Targets: UNCHANGED ❌
-- Regression: $56.50 (same)
-- Wilson 95%: $52.03 (same)
+- Regression: $54.71 (same)
+- Wilson 95%: $48.70 (same)
 - Normalized: $39.32 (same)
-- IRC Blended: $51.51 (same)
+- IRC Blended: $50.97 (same)
 
 Returns: UNCHANGED ❌
 - Regression: +20.2% (WRONG - should be +100.4%)
@@ -79,7 +79,7 @@ $ grep "valuation_bridge\|monte_carlo\|probability_weighted" scripts/update_all_
 {
   "calculated_metrics": {
     "target_regression": 56.5,      // HARDCODED
-    "target_wilson_95": 52.03,      // HARDCODED
+    "target_wilson_95": 48.70,      // HARDCODED
     "target_normalized": 39.32,     // HARDCODED
     "return_regression_pct": 20.2,  // HARDCODED (not recalculated from price)
     "return_wilson_95_pct": 10.7,   // HARDCODED (not recalculated from price)
@@ -89,7 +89,7 @@ $ grep "valuation_bridge\|monte_carlo\|probability_weighted" scripts/update_all_
 ```
 
 **3. Returns Don't Auto-Calculate:**
-Even though we have the current price ($28.20) and targets ($56.50), the return formula:
+Even though we have the current price ($28.20) and targets ($54.71), the return formula:
 ```python
 return_pct = ((target - current_price) / current_price) * 100
 ```
@@ -103,7 +103,7 @@ is NEVER executed by update_all_data.py.
 ```
 Website Would Show (WRONG):
   Current Price: $28.20
-  Wilson Target: $52.03
+  Wilson Target: $48.70
   Wilson Return: +10.7% ❌ WRONG (actual: +84.5%)
 
   Investment Decision: SELL (showing +10.7% return)

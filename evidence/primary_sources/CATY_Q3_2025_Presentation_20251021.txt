@@ -1,0 +1,47 @@
+Cathay General Bancorp (CATY)
+Q3 2025 Financial Results Presentation — Extracted Data (Slides 5–11)
+
+Presented: October 21, 2025
+Source URL: https://www.cathaybank.com/CGB/pr-20251021-presentation
+Captured: 2025-10-22 10:55 PT
+
+Summary of extracted figures (verbatim values where shown on slides):
+
+Slide 5 (Rates/hedging context)
+- Interest-rate swaps on CRE loans (notional): $626 million (~3.1% of total loans)
+
+Slides 7–8 (CRE Portfolio)
+- Total Loans: $20.1 billion (CRE ~52%; Residential mortgage ~30%; C&I ~16%; Construction ~2%).
+- Total CRE Loans: ~$10.5 billion. Total weighted average LTV: 49%.
+- CRE property-type composition (amounts, average loan size, and weighted avg LTV):
+  • Residential (Multifamily): $3,526m; avg loan $1.4m; LTV 53%.
+  • Retail: $2,529m; avg loan $2.1m; LTV 48%.
+  • Office: $1,470m; avg loan $2.3m; LTV 47%.
+  • Warehouse: ~ $1,344m; avg loan $2.8m; LTV 46%.
+  • Industrial: $694m; avg loan $3.4m; LTV 47%.
+  • Hotel/Motel: $363m; avg loan $6.9m; LTV 44%.
+  • Special Use: $292m; avg loan $3.0m; LTV 45%.
+  • Restaurant: $181m; avg loan $1.0m; LTV 47%.
+  • Land: $69m; avg loan $2.7m; LTV 46%.
+  • Theater: $20m; avg loan $6.5m; LTV 54%.
+- CRE geographic distribution: CA 46%, NY 35%, TX 5%, IL 3%, WA 2%, Other 9%.
+
+Slide 10 (Office portfolio details)
+- Total Office CRE: $1.47 billion; weighted avg LTV 47%.
+- Average loan size: $2.3m; Average property size: 15,933 sq ft.
+- Office collateral distribution: Urban $942m; Suburban $480m; CBD $48m (~3.3% of office).
+- Office geographic mix: CA 49%; NY 32%; HK 7%; NV 3%; WA 3%; IL 2%; Other 4%.
+- Office sub-type composition (amounts, LTVs):
+  • Office Building: $487m; LTV 49% (≈33% of office).
+  • Office Condominium: $399m; LTV 46% (≈27%).
+  • Office/Retail Stores: $342m; LTV 33% (≈23%).
+  • Medical Office: $127m; LTV 46% (≈9%).
+  • Office/Mixed Use: $115m; LTV 44% (≈8%).
+
+Slide 11 (Risk metrics – concentration)
+- CRE concentration / Risk-Based Capital: ~231%.
+- Thresholds shown: 300% (regulatory), 400% (internal).
+
+Notes
+- Some totals differ by ~$10–15m due to rounding and “~” amounts shown in slides.
+- This text file captures data points for reproducibility. For visuals/formatting, refer to the source deck.

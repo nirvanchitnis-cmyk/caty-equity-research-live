@@ -1,0 +1,143 @@
+{
+  "generated_at": "2025-10-22T22:39:37.668644Z",
+  "price_date": "2025-10-22",
+  "assumptions": {
+    "assumed_coe_pct": 10.0
+  },
+  "metrics": [
+    {
+      "ticker": "BANC",
+      "price": 16.88,
+      "price_date": "2025-10-22",
+      "tbvps": 21.78,
+      "p_tbv": 0.775,
+      "annual_eps": 0.77,
+      "p_e": 21.9,
+      "rote_pct": 3.54,
+      "roe_minus_10pct_bp": -646.0,
+      "cre_pct": 18.0
+    },
+    {
+      "ticker": "CATY",
+      "price": 46.17,
+      "price_date": "2025-10-22",
+      "tbvps": 36.16,
+      "p_tbv": 1.277,
+      "annual_eps": 4.47,
+      "p_e": 10.3,
+      "rote_pct": 12.35,
+      "roe_minus_10pct_bp": 235.0,
+      "cre_pct": 52.4
+    },
+    {
+      "ticker": "COLB",
+      "price": 25.0,
+      "price_date": "2025-10-22",
+      "tbvps": 18.47,
+      "p_tbv": 1.354,
+      "annual_eps": 2.9,
+      "p_e": 8.6,
+      "rote_pct": 15.7,
+      "roe_minus_10pct_bp": 570.0,
+      "cre_pct": 52.1
+    },
+    {
+      "ticker": "CVBF",
+      "price": 18.62,
+      "price_date": "2025-10-22",
+      "tbvps": 10.64,
+      "p_tbv": 1.75,
+      "annual_eps": 1.47,
+      "p_e": 12.7,
+      "rote_pct": 13.79,
+      "roe_minus_10pct_bp": 379.0,
+      "cre_pct": 78.9
+    },
+    {
+      "ticker": "EWBC",
+      "price": 102.36,
+      "price_date": "2025-10-22",
+      "tbvps": 53.58,
+      "p_tbv": 1.91,
+      "annual_eps": 8.63,
+      "p_e": 11.9,
+      "rote_pct": 16.1,
+      "roe_minus_10pct_bp": 610.0,
+      "cre_pct": 37.6
+    },
+    {
+      "ticker": "HAFC",
+      "price": 26.46,
+      "price_date": "2025-10-22",
+      "tbvps": 24.55,
+      "p_tbv": 1.078,
+      "annual_eps": 2.0,
+      "p_e": 13.2,
+      "rote_pct": 8.16,
+      "roe_minus_10pct_bp": -184.0,
+      "cre_pct": 17.7
+    },
+    {
+      "ticker": "HOPE",
+      "price": 10.57,
+      "price_date": "2025-10-22",
+      "tbvps": 13.26,
+      "p_tbv": 0.797,
+      "annual_eps": -0.87,
+      "p_e": -12.1,
+      "rote_pct": -6.57,
+      "roe_minus_10pct_bp": -1657.0,
+      "cre_pct": 58.1
+    },
+    {
+      "ticker": "OPBK",
+      "price": 13.58,
+      "price_date": "2025-10-22",
+      "tbvps": 14.36,
+      "p_tbv": 0.946,
+      "annual_eps": 1.7,
+      "p_e": 8.0,
+      "rote_pct": 11.85,
+      "roe_minus_10pct_bp": 185.0,
+      "cre_pct": null
+    },
+    {
+      "ticker": "PPBI",
+      "price": 24.49,
+      "price_date": "2025-10-22",
+      "tbvps": 21.1,
+      "p_tbv": 1.161,
+      "annual_eps": 1.32,
+      "p_e": 18.5,
+      "rote_pct": 6.27,
+      "roe_minus_10pct_bp": -373.0,
+      "cre_pct": 17.5
+    },
+    {
+      "ticker": "WAFD",
+      "price": 29.1,
+      "price_date": "2025-10-22",
+      "tbvps": 32.48,
+      "p_tbv": 0.896,
+      "annual_eps": 3.13,
+      "p_e": 9.3,
+      "rote_pct": 9.64,
+      "roe_minus_10pct_bp": -36.0,
+      "cre_pct": 17.5
+    }
+  ],
+  "summary": {
+    "peer_count": 10,
+    "price_date": "2025-10-22",
+    "median_p_tbv": 1.119,
+    "median_p_e": 11.1,
+    "caty_percentile": {
+      "p_tbv": 65.0,
+      "p_e": 45.0
+    }
+  },
+  "sources": {
+    "peer_data": "data/peer_data_raw.json",
+    "peer_prices": "data/peer_market_prices.json"
+  }
+}

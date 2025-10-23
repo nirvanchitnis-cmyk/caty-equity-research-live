@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CATY - Peer Extraction Workbook – Manual Pull Instructions | Evidence Repository</title>
+    <link rel="stylesheet" href="../styles/caty-equity-research.css">
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Toggle dark mode" role="switch" aria-checked="false">
+        <span id="theme-icon" aria-hidden="true">🌙</span>
+        <span id="theme-text">Dark Mode</span>
+    </button>
+
+    <header>
+        <div class="header-content">
+            <h1 class="page-title">Cathay General Bancorp (NASDAQ: CATY)</h1>
+            <p class="page-subtitle">Peer Extraction Workbook – Manual Pull Instructions</p>
+            <p class="page-meta">Author: Nirvan Chitnis | Date: October 2025 | Purpose: Evidence documentation</p>
+        </div>
+    </header>
+
+    <main class="container" id="main-content" tabindex="-1">
+        <nav aria-label="Breadcrumb" class="breadcrumb">
+            <a href="../index.html">← Main Report</a>
+            <span aria-hidden="true"> / </span>
+            <span aria-current="page">Evidence: Peer Extraction Workbook – Manual Pull Instructions</span>
+        </nav>
+
+        <p><strong>How to use this template</strong></p>
+<ul>
+<li>Open each SEC inline viewer in a browser (viewer URL provided below).</li>
+<li>Capture screenshots or copy exact figures with line labels, statement names, and column dates.</li>
+<li>Record all data points and the math inside the CSV <code>Notes</code> column.</li>
+<li>Update the new citation columns (<code>TBVPS_Citation</code>, <code>ROTE_Citation</code>, <code>CRE_Citation</code>) with “Statement/Page – Note – Column Date” references.</li>
+</ul>
+
+<hr>
+
+<h3>EWBC – East West Bancorp</h3>
+<ul>
+<li><strong>Viewer URL:</strong> https://www.sec.gov/cgi-bin/viewer?action=view&amp;cik=1069157&amp;accession_number=0001069157-25-000096&amp;xbrl_type=v</li>
+<li><strong>TBVPS Steps</strong></li>
+<ol>
+<li>Consolidated Balance Sheets → “Total stockholders’ equity” (June 30, 2025 column).</li>
+<li>Same table → “Goodwill” and “Other intangible assets”.</li>
+<li>Cover page → “Shares outstanding, diluted” (or Note 1 if disclosed elsewhere).</li>
+<li>Calculation: (Equity – Goodwill – Intangibles) ÷ diluted shares.</li>
+</ol>
+<li><strong>ROTE Steps</strong></li>
+<ol>
+<li>Consolidated Statements of Income → “Net income”.</li>
+<li>MD&amp;A section → “Average tangible common equity” (if unavailable, compute from average equity minus average intangibles).</li>
+<li>Annualize if the filing reports quarterly figures: ROTE = (Q2 net income × 4) ÷ average tangible equity.</li>
+</ol>
+<li><strong>CRE % Steps</strong></li>
+<ol>
+<li>Loans and Leases footnote (generally Note 4 or 5) → “Loans secured by real estate” detail.</li>
+<li>Identify commercial real estate total; include construction if management classifies as CRE.</li>
+<li>Divide CRE total by gross loans balance from balance sheet.</li>
+</ol>
+</ul>
+
+<h3>COLB – Columbia Banking System</h3>
+<ul>
+<li><strong>Viewer URL:</strong> https://www.sec.gov/cgi-bin/viewer?action=view&amp;cik=887343&amp;accession_number=0000887343-25-000233&amp;xbrl_type=v</li>
+<li>Repeat TBVPS, ROTE, CRE workflow above. Note that Columbia may provide average shares in the equity footnote; capture whichever is used in TBVPS calculation and document context IDs if available.</li>
+</ul>
+
+<h3>BANC – Banc of California</h3>
+<ul>
+<li><strong>Viewer URL:</strong> https://www.sec.gov/cgi-bin/viewer?action=view&amp;cik=1169770&amp;accession_number=0001169770-25-000029&amp;xbrl_type=v</li>
+<li>Ensure construction and multi-family loans are treated consistently with management guidance when computing CRE %.</li>
+</ul>
+
+<h3>CVBF – CVB Financial Corp</h3>
+<ul>
+<li><strong>Viewer URL:</strong> https://www.sec.gov/cgi-bin/viewer?action=view&amp;cik=354647&amp;accession_number=0000950170-25-105728&amp;xbrl_type=v</li>
+<li>Highlight whether owner-occupied loans are disclosed separately; note any mapping assumptions in the CSV <code>Notes</code>.</li>
+</ul>
+
+<h3>HAFC – Hanmi Financial Corp</h3>
+<ul>
+<li><strong>Viewer URL:</strong> https://www.sec.gov/cgi-bin/viewer?action=view&amp;cik=1109242&amp;accession_number=0000950170-25-105658&amp;xbrl_type=v</li>
+<li>Pay attention to construction balances; Derek wants to know if they were blended into CRE. Document explicitly.</li>
+</ul>
+
+<h3>HOPE – Hope Bancorp</h3>
+<ul>
+<li><strong>Viewer URL:</strong> https://www.sec.gov/cgi-bin/viewer?action=view&amp;cik=1128361&amp;accession_number=0001128361-25-000036&amp;xbrl_type=v</li>
+<li>Capture any average tangible equity disclosure in MD&amp;A for ROTE and cite the section header.</li>
+</ul>
+
+<h3>WAFD – Washington Federal</h3>
+<ul>
+<li><strong>Viewer URL:</strong> https://www.sec.gov/cgi-bin/viewer?action=view&amp;cik=936528&amp;accession_number=0000936528-25-000086&amp;xbrl_type=v</li>
+<li>If WAFD segregates CRE by collateral code (owner-occupied vs investor), record both and note the aggregation choice in the CSV.</li>
+</ul>
+
+<h3>PPBI – Pacific Premier Bancorp</h3>
+<ul>
+<li><strong>Viewer URLs:</strong>  </li>
+<ul>
+<li>Q2 2025: https://www.sec.gov/cgi-bin/viewer?action=view&amp;cik=1028918&amp;accession_number=0001028918-25-000086&amp;xbrl_type=v  </li>
+<li>Q1 2025 (for fiscal calendar alignment): https://www.sec.gov/cgi-bin/viewer?action=view&amp;cik=1028918&amp;accession_number=0001013237-25-000070&amp;xbrl_type=v</li>
+</ul>
+<li>Confirm fiscal quarter end dates; note any need to annualize or adjust averages.</li>
+</ul>
+
+<hr>
+
+<h4>CSV Update Checklist (per peer)</h4>
+<ol>
+<li><code>TBVPS</code> value matches the verified calculation (equity – intangibles ÷ diluted shares).</li>
+<li><code>TBVPS_Citation</code> includes statement name, column date, and note reference.</li>
+<li><code>ROTE</code> and <code>ROTE_Citation</code> document net income source, average tangible equity, and annualization.</li>
+<li><code>CRE_Pct</code> ties to loan footnote totals; <code>CRE_Citation</code> lists note/page and describes included categories.</li>
+<li><code>Notes</code> field records the actual arithmetic (with units in millions where applicable).</li>
+</ol>
+
+<p>Document all deviations or missing disclosures. If any peer lacks the data, mark the CSV row as “DATA GAP” and describe the unlock path (e.g., IR call, supplemental deck).</p>
+
+    </main>
+
+    <footer class="evidence-footer">
+        <p class="footer-text">Evidence documentation for CFA IRC equity research challenge</p>
+        <p class="footer-meta">Author: Nirvan Chitnis | Generated: 2025-10-23 01:13 | Source: peer_extraction_template.md</p>
+    </footer>
+
+    <script src="../scripts/theme.js"></script>
+</body>
+</html>

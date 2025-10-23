@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CATY - Capital Stress → Probability Weight Bridge | Evidence Repository</title>
+    <link rel="stylesheet" href="../styles/caty-equity-research.css">
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Toggle dark mode" role="switch" aria-checked="false">
+        <span id="theme-icon" aria-hidden="true">🌙</span>
+        <span id="theme-text">Dark Mode</span>
+    </button>
+
+    <header>
+        <div class="header-content">
+            <h1 class="page-title">Cathay General Bancorp (NASDAQ: CATY)</h1>
+            <p class="page-subtitle">Capital Stress → Probability Weight Bridge</p>
+            <p class="page-meta">Author: Nirvan Chitnis | Date: October 2025 | Purpose: Link capital stress outcomes to tail probability adjustments</p>
+        </div>
+    </header>
+
+    <main class="container" id="main-content" tabindex="-1">
+        <nav aria-label="Breadcrumb" class="breadcrumb">
+            <a href="../index.html">← Main Report</a>
+            <span aria-hidden="true"> / </span>
+            <span aria-current="page">Evidence: Capital Stress → Probability Weight Bridge</span>
+        </nav>
+
+        <h3>Capital Stress Outputs</h3>
+
+<p>From <code>evidence/capital_stress_2025Q2.xlsx</code>:</p>
+
+<p><strong>Base Case (42.8 bps NCO normalization):</strong></p>
+<ul>
+<li>CET1 burn: 20.1 bps</li>
+<li>Remaining cushion: 265 bps</li>
+</ul>
+
+<p><strong>Combined Stress (NCO + Industrial/Warehouse):</strong></p>
+<ul>
+<li>CET1 burn: 141.3 bps</li>
+<li><strong>Remaining cushion: 164 bps</strong></li>
+</ul>
+
+<p><strong>Regulatory minimum:</strong> CET1 7.0%</p>
+<p><strong>Management target:</strong> CET1 10.0%</p>
+
+<hr>
+
+<h3>Bridge to Probability Framework</h3>
+
+<p><strong>Question:</strong> How does capital stress inform tail probability?</p>
+
+<p><strong>Current Approach (Wilson Bounds):</strong></p>
+<ul>
+<li>Tail probability derived from FDIC NCO breach frequency</li>
+<li>95% upper bound: 26% normalization probability</li>
+<li><strong>Capital stress used for VALIDATION, not calibration</strong></li>
+</ul>
+
+<p><strong>Validation Logic:</strong></p>
+<ol>
+<li>At 74/26 weights, combined stress gives 141.3 bps CET1 burn</li>
+<li>Remaining cushion: 164 bps (above 100 bps prudent minimum)</li>
+<li><strong>Interpretation:</strong> Even at 95% pessimistic tail case, capital remains adequate</li>
+<li><strong>Conclusion:</strong> 74/26 weights are SUSTAINABLE from capital perspective</li>
+</ol>
+
+<hr>
+
+<h3>If Capital Stress Were Used to Calibrate Probability</h3>
+
+<p><strong>Hypothetical approach (NOT USED):</strong></p>
+
+<p>If CET1 cushion drops below 120 bps, increase tail probability:</p>
+<ul>
+<li>Current cushion: 164 bps → No adjustment</li>
+<li>If cushion &lt; 120 bps → Increase tail weight +5-10%</li>
+<li>If cushion &lt; 80 bps → Increase tail weight +15-20%</li>
+</ul>
+
+<p><strong>Why we DON'T use this:</strong></p>
+<ul>
+<li>Circular logic: Capital stress depends on NCO assumptions</li>
+<li>FDIC breach frequency is more objective</li>
+<li>Capital stress used for validation only</li>
+</ul>
+
+<hr>
+
+<h3>Summary</h3>
+
+<p><strong>Capital Stress Role:</strong></p>
+<ul>
+<li><strong>Validation:</strong> Confirms 74/26 weights produce sustainable capital outcomes</li>
+<li><strong>NOT Calibration:</strong> Doesn't set the probability weights directly</li>
+<li><strong>Check:</strong> 164 bps cushion at 74/26 → Adequate (no probability adjustment needed)</li>
+</ul>
+
+<p><strong>If capital stress showed cushion &lt; 100 bps at 74/26:</strong></p>
+<ul>
+<li>Would signal tail weight too low</li>
+<li>Would trigger review of NCO assumptions</li>
+<li>Might justify higher tail probability</li>
+</ul>
+
+<p><strong>Current state:</strong> 164 bps cushion validates 74/26 weights as reasonable.</p>
+
+<hr>
+
+<p><strong>Generated:</strong> 2025-10-19 05:50 PT</p>
+<p><strong>Method:</strong> Capital stress validation of probability weights</p>
+<p><strong>Conclusion:</strong> No probability adjustment needed (cushion adequate)</p>
+
+    </main>
+
+    <footer class="evidence-footer">
+        <p class="footer-text">Evidence documentation for CFA IRC equity research challenge</p>
+        <p class="footer-meta">Author: Nirvan Chitnis | Generated: 2025-10-23 01:13 | Source: capital_stress_to_probability_memo.md</p>
+    </footer>
+
+    <script src="../scripts/theme.js"></script>
+</body>
+</html>

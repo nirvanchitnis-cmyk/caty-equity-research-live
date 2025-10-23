@@ -1,0 +1,611 @@
+{
+  "generated_at": "2025-10-22T22:39:59.160792+00:00",
+  "current_price": 46.17,
+  "current_forward_pe": 10.21,
+  "current_ptbv": 1.126,
+  "rate_probabilities": {
+    "-100": 0.08,
+    "-50": 0.22,
+    "-25": 0.2,
+    "0": 0.25,
+    "25": 0.15,
+    "50": 0.1
+  },
+  "credit_probabilities": {
+    "Base LTM": 0.5,
+    "Guardrail": 0.3,
+    "Stress": 0.15,
+    "Severe": 0.05
+  },
+  "combined_scenarios": [
+    {
+      "rate_fed_change_bps": -100,
+      "credit_scenario": "Base LTM",
+      "probability": 0.04,
+      "quarterly_eps": 1.3,
+      "annual_eps": 5.2,
+      "tbvps": 41.12,
+      "current_pe_at_price": 8.88,
+      "current_ptbv_at_price": 1.12,
+      "implied_price_pe": 53.12,
+      "implied_price_ptbv": 46.31,
+      "implied_price_avg": 49.72,
+      "rate_detail": {
+        "deposit_cost_delta_bps": -62.9,
+        "nim_delta_bps": 27.9,
+        "nii_delta_m": 15.35
+      },
+      "credit_detail": {
+        "nco_bps": 18.1,
+        "incremental_bps": 0.0,
+        "incremental_provision_m": 0.0
+      }
+    },
+    {
+      "rate_fed_change_bps": -100,
+      "credit_scenario": "Guardrail",
+      "probability": 0.024,
+      "quarterly_eps": 1.16,
+      "annual_eps": 4.64,
+      "tbvps": 41.02,
+      "current_pe_at_price": 9.95,
+      "current_ptbv_at_price": 1.13,
+      "implied_price_pe": 47.4,
+      "implied_price_ptbv": 46.19,
+      "implied_price_avg": 46.8,
+      "rate_detail": {
+        "deposit_cost_delta_bps": -62.9,
+        "nim_delta_bps": 27.9,
+        "nii_delta_m": 15.35
+      },
+      "credit_detail": {
+        "nco_bps": 42.8,
+        "incremental_bps": 24.7,
+        "incremental_provision_m": 12.4
+      }
+    },
+    {
+      "rate_fed_change_bps": -100,
+      "credit_scenario": "Stress",
+      "probability": 0.012,
+      "quarterly_eps": 0.92,
+      "annual_eps": 3.68,
+      "tbvps": 40.86,
+      "current_pe_at_price": 12.55,
+      "current_ptbv_at_price": 1.13,
+      "implied_price_pe": 37.59,
+      "implied_price_ptbv": 46.01,
+      "implied_price_avg": 41.8,
+      "rate_detail": {
+        "deposit_cost_delta_bps": -62.9,
+        "nim_delta_bps": 27.9,
+        "nii_delta_m": 15.35
+      },
+      "credit_detail": {
+        "nco_bps": 85.0,
+        "incremental_bps": 66.9,
+        "incremental_provision_m": 33.6
+      }
+    },
+    {
+      "rate_fed_change_bps": -100,
+      "credit_scenario": "Severe",
+      "probability": 0.004,
+      "quarterly_eps": 0.73,
+      "annual_eps": 2.92,
+      "tbvps": 40.73,
+      "current_pe_at_price": 15.81,
+      "current_ptbv_at_price": 1.13,
+      "implied_price_pe": 29.83,
+      "implied_price_ptbv": 45.87,
+      "implied_price_avg": 37.85,
+      "rate_detail": {
+        "deposit_cost_delta_bps": -62.9,
+        "nim_delta_bps": 27.9,
+        "nii_delta_m": 15.35
+      },
+      "credit_detail": {
+        "nco_bps": 120.0,
+        "incremental_bps": 101.9,
+        "incremental_provision_m": 51.2
+      }
+    },
+    {
+      "rate_fed_change_bps": -50,
+      "credit_scenario": "Base LTM",
+      "probability": 0.11,
+      "quarterly_eps": 1.22,
+      "annual_eps": 4.88,
+      "tbvps": 41.06,
+      "current_pe_at_price": 9.46,
+      "current_ptbv_at_price": 1.12,
+      "implied_price_pe": 49.85,
+      "implied_price_ptbv": 46.24,
+      "implied_price_avg": 48.05,
+      "rate_detail": {
+        "deposit_cost_delta_bps": -31.5,
+        "nim_delta_bps": 14.0,
+        "nii_delta_m": 7.7
+      },
+      "credit_detail": {
+        "nco_bps": 18.1,
+        "incremental_bps": 0.0,
+        "incremental_provision_m": 0.0
+      }
+    },
+    {
+      "rate_fed_change_bps": -50,
+      "credit_scenario": "Guardrail",
+      "probability": 0.066,
+      "quarterly_eps": 1.08,
+      "annual_eps": 4.32,
+      "tbvps": 40.96,
+      "current_pe_at_price": 10.69,
+      "current_ptbv_at_price": 1.13,
+      "implied_price_pe": 44.13,
+      "implied_price_ptbv": 46.12,
+      "implied_price_avg": 45.12,
+      "rate_detail": {
+        "deposit_cost_delta_bps": -31.5,
+        "nim_delta_bps": 14.0,
+        "nii_delta_m": 7.7
+      },
+      "credit_detail": {
+        "nco_bps": 42.8,
+        "incremental_bps": 24.7,
+        "incremental_provision_m": 12.4
+      }
+    },
+    {
+      "rate_fed_change_bps": -50,
+      "credit_scenario": "Stress",
+      "probability": 0.033,
+      "quarterly_eps": 0.84,
+      "annual_eps": 3.36,
+      "tbvps": 40.8,
+      "current_pe_at_price": 13.74,
+      "current_ptbv_at_price": 1.13,
+      "implied_price_pe": 34.32,
+      "implied_price_ptbv": 45.94,
+      "implied_price_avg": 40.13,
+      "rate_detail": {
+        "deposit_cost_delta_bps": -31.5,
+        "nim_delta_bps": 14.0,
+        "nii_delta_m": 7.7
+      },
+      "credit_detail": {
+        "nco_bps": 85.0,
+        "incremental_bps": 66.9,
+        "incremental_provision_m": 33.6
+      }
+    },
+    {
+      "rate_fed_change_bps": -50,
+      "credit_scenario": "Severe",
+      "probability": 0.011,
+      "quarterly_eps": 0.65,
+      "annual_eps": 2.6,
+      "tbvps": 40.67,
+      "current_pe_at_price": 17.76,
+      "current_ptbv_at_price": 1.14,
+      "implied_price_pe": 26.56,
+      "implied_price_ptbv": 45.8,
+      "implied_price_avg": 36.18,
+      "rate_detail": {
+        "deposit_cost_delta_bps": -31.5,
+        "nim_delta_bps": 14.0,
+        "nii_delta_m": 7.7
+      },
+      "credit_detail": {
+        "nco_bps": 120.0,
+        "incremental_bps": 101.9,
+        "incremental_provision_m": 51.2
+      }
+    },
+    {
+      "rate_fed_change_bps": -25,
+      "credit_scenario": "Base LTM",
+      "probability": 0.1,
+      "quarterly_eps": 1.17,
+      "annual_eps": 4.68,
+      "tbvps": 41.03,
+      "current_pe_at_price": 9.87,
+      "current_ptbv_at_price": 1.13,
+      "implied_price_pe": 47.8,
+      "implied_price_ptbv": 46.2,
+      "implied_price_avg": 47.0,
+      "rate_detail": {
+        "deposit_cost_delta_bps": -15.8,
+        "nim_delta_bps": 7.0,
+        "nii_delta_m": 3.88
+      },
+      "credit_detail": {
+        "nco_bps": 18.1,
+        "incremental_bps": 0.0,
+        "incremental_provision_m": 0.0
+      }
+    },
+    {
+      "rate_fed_change_bps": -25,
+      "credit_scenario": "Guardrail",
+      "probability": 0.06,
+      "quarterly_eps": 1.03,
+      "annual_eps": 4.12,
+      "tbvps": 40.93,
+      "current_pe_at_price": 11.21,
+      "current_ptbv_at_price": 1.13,
+      "implied_price_pe": 42.08,
+      "implied_price_ptbv": 46.09,
+      "implied_price_avg": 44.09,
+      "rate_detail": {
+        "deposit_cost_delta_bps": -15.8,
+        "nim_delta_bps": 7.0,
+        "nii_delta_m": 3.88
+      },
+      "credit_detail": {
+        "nco_bps": 42.8,
+        "incremental_bps": 24.7,
+        "incremental_provision_m": 12.4
+      }
+    },
+    {
+      "rate_fed_change_bps": -25,
+      "credit_scenario": "Stress",
+      "probability": 0.03,
+      "quarterly_eps": 0.79,
+      "annual_eps": 3.16,
+      "tbvps": 40.77,
+      "current_pe_at_price": 14.61,
+      "current_ptbv_at_price": 1.13,
+      "implied_price_pe": 32.28,
+      "implied_price_ptbv": 45.91,
+      "implied_price_avg": 39.09,
+      "rate_detail": {
+        "deposit_cost_delta_bps": -15.8,
+        "nim_delta_bps": 7.0,
+        "nii_delta_m": 3.88
+      },
+      "credit_detail": {
+        "nco_bps": 85.0,
+        "incremental_bps": 66.9,
+        "incremental_provision_m": 33.6
+      }
+    },
+    {
+      "rate_fed_change_bps": -25,
+      "credit_scenario": "Severe",
+      "probability": 0.01,
+      "quarterly_eps": 0.6,
+      "annual_eps": 2.4,
+      "tbvps": 40.64,
+      "current_pe_at_price": 19.24,
+      "current_ptbv_at_price": 1.14,
+      "implied_price_pe": 24.52,
+      "implied_price_ptbv": 45.76,
+      "implied_price_avg": 35.14,
+      "rate_detail": {
+        "deposit_cost_delta_bps": -15.8,
+        "nim_delta_bps": 7.0,
+        "nii_delta_m": 3.88
+      },
+      "credit_detail": {
+        "nco_bps": 120.0,
+        "incremental_bps": 101.9,
+        "incremental_provision_m": 51.2
+      }
+    },
+    {
+      "rate_fed_change_bps": 0,
+      "credit_scenario": "Base LTM",
+      "probability": 0.125,
+      "quarterly_eps": 1.13,
+      "annual_eps": 4.52,
+      "tbvps": 41.0,
+      "current_pe_at_price": 10.21,
+      "current_ptbv_at_price": 1.13,
+      "implied_price_pe": 46.17,
+      "implied_price_ptbv": 46.17,
+      "implied_price_avg": 46.17,
+      "rate_detail": {
+        "deposit_cost_delta_bps": -0.1,
+        "nim_delta_bps": 0.1,
+        "nii_delta_m": 0.05
+      },
+      "credit_detail": {
+        "nco_bps": 18.1,
+        "incremental_bps": 0.0,
+        "incremental_provision_m": 0.0
+      }
+    },
+    {
+      "rate_fed_change_bps": 0,
+      "credit_scenario": "Guardrail",
+      "probability": 0.075,
+      "quarterly_eps": 0.99,
+      "annual_eps": 3.96,
+      "tbvps": 40.9,
+      "current_pe_at_price": 11.66,
+      "current_ptbv_at_price": 1.13,
+      "implied_price_pe": 40.45,
+      "implied_price_ptbv": 46.06,
+      "implied_price_avg": 43.26,
+      "rate_detail": {
+        "deposit_cost_delta_bps": -0.1,
+        "nim_delta_bps": 0.1,
+        "nii_delta_m": 0.05
+      },
+      "credit_detail": {
+        "nco_bps": 42.8,
+        "incremental_bps": 24.7,
+        "incremental_provision_m": 12.4
+      }
+    },
+    {
+      "rate_fed_change_bps": 0,
+      "credit_scenario": "Stress",
+      "probability": 0.0375,
+      "quarterly_eps": 0.75,
+      "annual_eps": 3.0,
+      "tbvps": 40.74,
+      "current_pe_at_price": 15.39,
+      "current_ptbv_at_price": 1.13,
+      "implied_price_pe": 30.64,
+      "implied_price_ptbv": 45.88,
+      "implied_price_avg": 38.26,
+      "rate_detail": {
+        "deposit_cost_delta_bps": -0.1,
+        "nim_delta_bps": 0.1,
+        "nii_delta_m": 0.05
+      },
+      "credit_detail": {
+        "nco_bps": 85.0,
+        "incremental_bps": 66.9,
+        "incremental_provision_m": 33.6
+      }
+    },
+    {
+      "rate_fed_change_bps": 0,
+      "credit_scenario": "Severe",
+      "probability": 0.0125,
+      "quarterly_eps": 0.56,
+      "annual_eps": 2.24,
+      "tbvps": 40.61,
+      "current_pe_at_price": 20.61,
+      "current_ptbv_at_price": 1.14,
+      "implied_price_pe": 22.88,
+      "implied_price_ptbv": 45.73,
+      "implied_price_avg": 34.3,
+      "rate_detail": {
+        "deposit_cost_delta_bps": -0.1,
+        "nim_delta_bps": 0.1,
+        "nii_delta_m": 0.05
+      },
+      "credit_detail": {
+        "nco_bps": 120.0,
+        "incremental_bps": 101.9,
+        "incremental_provision_m": 51.2
+      }
+    },
+    {
+      "rate_fed_change_bps": 25,
+      "credit_scenario": "Base LTM",
+      "probability": 0.075,
+      "quarterly_eps": 1.09,
+      "annual_eps": 4.36,
+      "tbvps": 40.97,
+      "current_pe_at_price": 10.59,
+      "current_ptbv_at_price": 1.13,
+      "implied_price_pe": 44.54,
+      "implied_price_ptbv": 46.14,
+      "implied_price_avg": 45.34,
+      "rate_detail": {
+        "deposit_cost_delta_bps": 15.6,
+        "nim_delta_bps": -6.9,
+        "nii_delta_m": -3.77
+      },
+      "credit_detail": {
+        "nco_bps": 18.1,
+        "incremental_bps": 0.0,
+        "incremental_provision_m": 0.0
+      }
+    },
+    {
+      "rate_fed_change_bps": 25,
+      "credit_scenario": "Guardrail",
+      "probability": 0.045,
+      "quarterly_eps": 0.95,
+      "annual_eps": 3.8,
+      "tbvps": 40.87,
+      "current_pe_at_price": 12.15,
+      "current_ptbv_at_price": 1.13,
+      "implied_price_pe": 38.82,
+      "implied_price_ptbv": 46.02,
+      "implied_price_avg": 42.42,
+      "rate_detail": {
+        "deposit_cost_delta_bps": 15.6,
+        "nim_delta_bps": -6.9,
+        "nii_delta_m": -3.77
+      },
+      "credit_detail": {
+        "nco_bps": 42.8,
+        "incremental_bps": 24.7,
+        "incremental_provision_m": 12.4
+      }
+    },
+    {
+      "rate_fed_change_bps": 25,
+      "credit_scenario": "Stress",
+      "probability": 0.0225,
+      "quarterly_eps": 0.71,
+      "annual_eps": 2.84,
+      "tbvps": 40.71,
+      "current_pe_at_price": 16.26,
+      "current_ptbv_at_price": 1.13,
+      "implied_price_pe": 29.01,
+      "implied_price_ptbv": 45.84,
+      "implied_price_avg": 37.43,
+      "rate_detail": {
+        "deposit_cost_delta_bps": 15.6,
+        "nim_delta_bps": -6.9,
+        "nii_delta_m": -3.77
+      },
+      "credit_detail": {
+        "nco_bps": 85.0,
+        "incremental_bps": 66.9,
+        "incremental_provision_m": 33.6
+      }
+    },
+    {
+      "rate_fed_change_bps": 25,
+      "credit_scenario": "Severe",
+      "probability": 0.0075,
+      "quarterly_eps": 0.52,
+      "annual_eps": 2.08,
+      "tbvps": 40.58,
+      "current_pe_at_price": 22.2,
+      "current_ptbv_at_price": 1.14,
+      "implied_price_pe": 21.25,
+      "implied_price_ptbv": 45.7,
+      "implied_price_avg": 33.48,
+      "rate_detail": {
+        "deposit_cost_delta_bps": 15.6,
+        "nim_delta_bps": -6.9,
+        "nii_delta_m": -3.77
+      },
+      "credit_detail": {
+        "nco_bps": 120.0,
+        "incremental_bps": 101.9,
+        "incremental_provision_m": 51.2
+      }
+    },
+    {
+      "rate_fed_change_bps": 50,
+      "credit_scenario": "Base LTM",
+      "probability": 0.05,
+      "quarterly_eps": 1.04,
+      "annual_eps": 4.16,
+      "tbvps": 40.94,
+      "current_pe_at_price": 11.1,
+      "current_ptbv_at_price": 1.13,
+      "implied_price_pe": 42.49,
+      "implied_price_ptbv": 46.1,
+      "implied_price_avg": 44.3,
+      "rate_detail": {
+        "deposit_cost_delta_bps": 31.3,
+        "nim_delta_bps": -13.8,
+        "nii_delta_m": -7.59
+      },
+      "credit_detail": {
+        "nco_bps": 18.1,
+        "incremental_bps": 0.0,
+        "incremental_provision_m": 0.0
+      }
+    },
+    {
+      "rate_fed_change_bps": 50,
+      "credit_scenario": "Guardrail",
+      "probability": 0.03,
+      "quarterly_eps": 0.9,
+      "annual_eps": 3.6,
+      "tbvps": 40.84,
+      "current_pe_at_price": 12.82,
+      "current_ptbv_at_price": 1.13,
+      "implied_price_pe": 36.77,
+      "implied_price_ptbv": 45.99,
+      "implied_price_avg": 41.38,
+      "rate_detail": {
+        "deposit_cost_delta_bps": 31.3,
+        "nim_delta_bps": -13.8,
+        "nii_delta_m": -7.59
+      },
+      "credit_detail": {
+        "nco_bps": 42.8,
+        "incremental_bps": 24.7,
+        "incremental_provision_m": 12.4
+      }
+    },
+    {
+      "rate_fed_change_bps": 50,
+      "credit_scenario": "Stress",
+      "probability": 0.015,
+      "quarterly_eps": 0.66,
+      "annual_eps": 2.64,
+      "tbvps": 40.68,
+      "current_pe_at_price": 17.49,
+      "current_ptbv_at_price": 1.13,
+      "implied_price_pe": 26.97,
+      "implied_price_ptbv": 45.81,
+      "implied_price_avg": 36.39,
+      "rate_detail": {
+        "deposit_cost_delta_bps": 31.3,
+        "nim_delta_bps": -13.8,
+        "nii_delta_m": -7.59
+      },
+      "credit_detail": {
+        "nco_bps": 85.0,
+        "incremental_bps": 66.9,
+        "incremental_provision_m": 33.6
+      }
+    },
+    {
+      "rate_fed_change_bps": 50,
+      "credit_scenario": "Severe",
+      "probability": 0.005,
+      "quarterly_eps": 0.47,
+      "annual_eps": 1.88,
+      "tbvps": 40.55,
+      "current_pe_at_price": 24.56,
+      "current_ptbv_at_price": 1.14,
+      "implied_price_pe": 19.2,
+      "implied_price_ptbv": 45.66,
+      "implied_price_avg": 32.43,
+      "rate_detail": {
+        "deposit_cost_delta_bps": 31.3,
+        "nim_delta_bps": -13.8,
+        "nii_delta_m": -7.59
+      },
+      "credit_detail": {
+        "nco_bps": 120.0,
+        "incremental_bps": 101.9,
+        "incremental_provision_m": 51.2
+      }
+    }
+  ],
+  "probability_sum": 1.0,
+  "expected": {
+    "price": 44.07,
+    "annual_eps": 4.12,
+    "tbvps": 40.93
+  },
+  "metadata": {
+    "rate_path": {
+      "source": "CME FedWatch (ZQ fed funds futures blend)",
+      "captured_at": "2025-10-22T19:10:40.158611+00:00",
+      "contracts": [
+        {
+          "symbol": "ZQH26",
+          "settlement_month": "Mar-2026",
+          "weight": 0.6
+        },
+        {
+          "symbol": "ZQU26",
+          "settlement_month": "Sep-2026",
+          "weight": 0.4
+        }
+      ],
+      "notes": {
+        "method": "Linear blend of ZQH26 and ZQU26 contract probabilities (CME FedWatch)",
+        "refresh_policy": "Harvest daily at 21:30 UTC; rebuild scenarios if any bucket shifts >5 percentage points",
+        "url": "https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html"
+      }
+    },
+    "credit_mix_notes": {
+      "Base LTM": "Q3 2025 run-rate (18 bps NCO) with stable watchlist",
+      "Guardrail": "Through-cycle mean 42.8 bps derived from FDIC NTLNLSCOQR",
+      "Stress": "Emerge of two large movie theatre loans; doubles guardrail (85 bps)",
+      "Severe": "GFC analogue; 3\u00d7 LTM (120 bps) reflecting tail liquidity run"
+    },
+    "credit_scenarios_source": "analysis/credit_stress_scenarios.json",
+    "rate_scenarios_source": "analysis/deposit_rate_scenarios.json"
+  }
+}

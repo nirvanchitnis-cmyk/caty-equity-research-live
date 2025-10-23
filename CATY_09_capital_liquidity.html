@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CATY - Capital & Liquidity | Regulatory Dashboard</title>
     <link rel="stylesheet" href="styles/caty-equity-research.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 </head>
 <body>
     <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" aria-pressed="false">
@@ -17,7 +18,11 @@
             <h1>Cathay General Bancorp (NASDAQ: CATY)</h1>
             <p class="page-subtitle">File 09: Capital & Liquidity</p>
             <!-- BEGIN AUTOGEN: caty09-header-meta -->
-            <p class="page-meta">Regulatory ratios, AOCI reconciliation, and liquidity buffers | Last Updated: October 19, 2025 | Source: SEC 10-Q Q2 2025 + Call Report</p>
+            <p class="page-meta">
+                Regulatory ratios, AOCI reconciliation, and liquidity buffers |
+                Last Updated: October 22, 2025 |
+                Source: Form 8-K (Q3 2025 results) + Call Report data
+            </p>
             <!-- END AUTOGEN: caty09-header-meta -->
         </div>
     </header>
@@ -57,19 +62,76 @@
                 <thead>
                     <tr>
                         <th>Capital Ratio</th>
+                        <th class="numeric">Q3 2025</th>
                         <th class="numeric">Q2 2025</th>
                         <th class="numeric">Reg Minimum</th>
                         <th class="numeric">Well-Capitalized</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr><td><strong>CET1</strong></td><td class="numeric">13.35%</td><td class="numeric">7.0%</td><td class="numeric">6.5%</td></tr>
-                    <tr><td>Tier 1</td><td class="numeric">13.35%</td><td class="numeric">—</td><td class="numeric">—</td></tr>
-                    <tr><td>Total Capital</td><td class="numeric">14.52%</td><td class="numeric">—</td><td class="numeric">—</td></tr>
-                    <tr><td>Leverage</td><td class="numeric">9.87%</td><td class="numeric">—</td><td class="numeric">—</td></tr>
+                    <tr><td><strong>CET1</strong></td><td class="numeric">13.15%</td><td class="numeric">13.35%</td><td class="numeric">7.0%</td><td class="numeric">6.5%</td></tr>
+                    <tr><td>Tier 1</td><td class="numeric">13.15%</td><td class="numeric">13.35%</td><td class="numeric">—</td><td class="numeric">—</td></tr>
+                    <tr><td>Total Capital</td><td class="numeric">14.76%</td><td class="numeric">14.52%</td><td class="numeric">—</td><td class="numeric">—</td></tr>
+                    <tr><td>Leverage</td><td class="numeric">10.88%</td><td class="numeric">9.87%</td><td class="numeric">—</td><td class="numeric">—</td></tr>
                 </tbody>
             </table>
             <!-- END AUTOGEN: caty09-capital-table -->
+        </section>
+
+        <!-- ======================================== -->
+        <!-- CAPITAL STRESS WATERFALL -->
+        <!-- ======================================== -->
+        <section id="capital-stress-waterfall" class="capital-stress-section" aria-labelledby="capital-stress-title">
+            <header class="capital-stress-header">
+                <div>
+                    <h3 id="capital-stress-title">Capital Stress Waterfall (CET1 Scenarios)</h3>
+                    <p class="capital-stress-subtitle">
+                        Severe recession bridge from Q3 2025 CET1 (13.15%) through stressed loss components and mitigants to the 10.55% stressed outcome versus regulatory thresholds.
+                    </p>
+                </div>
+                <div class="capital-stress-controls" role="group" aria-label="Capital stress visibility toggles">
+                    <button type="button" id="capitalToggleDetails" class="toggle-btn" aria-pressed="false">Show Component Details</button>
+                    <button type="button" id="capitalToggleWellCap" class="toggle-btn" aria-pressed="true">Show Well-Capitalized Line</button>
+                    <button type="button" id="capitalToggleBuffer" class="toggle-btn" aria-pressed="true">Show Buffer Metrics</button>
+                </div>
+            </header>
+
+            <div class="chart-wrapper">
+                <canvas
+                    id="capitalStressChart" role="img" tabindex="0"
+                    aria-label="Capital stress waterfall chart showing CET1 ratio progression from 13.15% through credit, market, and revenue stresses offset by PPNR and capital actions to 10.55% stressed ending ratio (x: %, index axis y)."
+                ></canvas>
+            </div>
+
+            <div class="chart-actions">
+                <button type="button" id="capitalExportPng" class="export-btn">📥 Export PNG</button>
+                <button type="button" id="capitalExportCsv" class="export-btn">📥 Export CSV</button>
+            </div>
+
+            <div class="data-table-wrapper">
+                <table>
+                    <caption>CET1 Capital Stress Waterfall</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Component</th>
+                            <th scope="col">Impact</th>
+                            <th scope="col">CET1 After</th>
+                            <th scope="col">Category</th>
+                        </tr>
+                    </thead>
+                    <tbody id="capitalTableBody">
+                        <!-- Populated via JavaScript -->
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th scope="row">Regulatory Minimum</th>
+                            <td colspan="3" id="capitalBufferFootnote">Loading buffer metrics…</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+
+            <p class="sr-only" id="capitalToggleStatus" role="status" aria-live="polite"></p>
         </section>
 
         <section id="aoci-impact">
@@ -112,13 +174,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr><td><strong>Cash & Equivalents</strong></td><td class="numeric">$1.88B</td></tr>
-                    <tr><td>Unencumbered Securities</td><td class="numeric">$3.12B</td></tr>
-                    <tr><td>Total Liquid Assets</td><td class="numeric">$5.00B</td></tr>
-                    <tr><td>Liquid Assets / Total Assets</td><td class="numeric">21.1%</td></tr>
-                    <tr><td>Loan-to-Deposit Ratio</td><td class="numeric">98.9%</td></tr>
-                    <tr><td>Total Loans</td><td class="numeric">$19.79B</td></tr>
-                    <tr><td>Total Deposits</td><td class="numeric">$20.01B</td></tr>
+                    <tr><td><strong>Cash & Equivalents</strong></td><td class="numeric">$0.17B</td></tr>
+                    <tr><td>Unencumbered Securities</td><td class="numeric">$1.64B</td></tr>
+                    <tr><td>Total Liquid Assets</td><td class="numeric">$2.95B</td></tr>
+                    <tr><td>Liquid Assets / Total Assets</td><td class="numeric">12.3%</td></tr>
+                    <tr><td>Loan-to-Deposit Ratio</td><td class="numeric">98.0%</td></tr>
+                    <tr><td>Total Loans</td><td class="numeric">$20.10B</td></tr>
+                    <tr><td>Total Deposits</td><td class="numeric">$20.52B</td></tr>
                 </tbody>
             </table>
             <!-- END AUTOGEN: caty09-liquidity-table -->
@@ -126,5 +188,6 @@
     </div>
 
     <script src="scripts/theme-toggle.js"></script>
+    <script src="scripts/capital-stress.js"></script>
 </body>
 </html>
