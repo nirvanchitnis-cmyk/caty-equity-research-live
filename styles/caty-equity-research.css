@@ -44,6 +44,10 @@
     --nco-ref-normalized: rgba(122, 136, 147, 0.6);
     --nco-ref-current: #2F6690;
     --nco-band-fill: rgba(122, 136, 147, 0.18);
+    --nim-tornado-expansion: #2E6F3E;
+    --nim-tornado-compression: #8C1E33;
+    --nim-tornado-bar-opacity: 0.85;
+    --nim-tornado-midpoint-label: #14202D;
 
     /* Focus */
     --focus-outline: 2px solid var(--info);
@@ -104,6 +108,10 @@
     --nco-ref-normalized: rgba(194, 205, 215, 0.45);
     --nco-ref-current: #7CB8FF;
     --nco-band-fill: rgba(194, 205, 215, 0.18);
+    --nim-tornado-expansion: #49A35C;
+    --nim-tornado-compression: #FF6B7F;
+    --nim-tornado-bar-opacity: 0.8;
+    --nim-tornado-midpoint-label: #F5F7FA;
 }
 
 /* ============================================================
@@ -2842,6 +2850,151 @@ a:focus-visible {
 
 .nco-footnotes li {
     line-height: 1.45;
+}
+
+/* ============================================================
+   NIM SENSITIVITY TORNADO MODULE
+   ============================================================ */
+.nim-tornado-section {
+    margin: 3rem 0;
+    padding: 2.25rem 2rem;
+    background: var(--bg-secondary);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 18px 32px rgba(20, 32, 45, 0.08);
+}
+
+.nim-tornado-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+}
+
+.nim-tornado-header h3 {
+    font-size: 1.35rem;
+    margin-bottom: 0.35rem;
+}
+
+.nim-tornado-subtitle {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    max-width: 720px;
+}
+
+.nim-tornado-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.toggle-btn {
+    border: 1px solid var(--border-color);
+    border-radius: 999px;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    padding: 8px 18px;
+    font-weight: 600;
+    font-size: 0.92rem;
+    cursor: pointer;
+    transition: background var(--motion-duration) var(--motion-ease),
+                color var(--motion-duration) var(--motion-ease),
+                border-color var(--motion-duration) var(--motion-ease);
+}
+
+.toggle-btn:hover,
+.toggle-btn:focus-visible {
+    background: var(--bg-muted);
+    border-color: var(--info);
+}
+
+.toggle-btn:focus-visible {
+    outline: var(--focus-outline);
+    box-shadow: var(--focus-shadow);
+}
+
+.toggle-btn[aria-pressed="true"] {
+    background: var(--success-surface);
+    border-color: var(--success);
+    color: var(--success);
+}
+
+.toggle-btn[aria-pressed="true"]:hover,
+.toggle-btn[aria-pressed="true"]:focus-visible {
+    background: rgba(46, 111, 62, 0.12);
+}
+
+.nim-tornado-section .chart-wrapper {
+    position: relative;
+    width: 100%;
+    min-height: 360px;
+}
+
+.nim-tornado-section canvas {
+    width: 100%;
+    max-width: 100%;
+    height: 420px;
+}
+
+.nim-tornado-section .chart-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 1.25rem;
+}
+
+.nim-tornado-section .export-btn {
+    border: 1px solid var(--border-color);
+    border-radius: 999px;
+    background: var(--info-surface);
+    color: var(--info);
+    padding: 8px 18px;
+    font-weight: 600;
+    font-size: 0.92rem;
+    cursor: pointer;
+    transition: background var(--motion-duration) var(--motion-ease),
+                color var(--motion-duration) var(--motion-ease),
+                border-color var(--motion-duration) var(--motion-ease);
+}
+
+.nim-tornado-section .export-btn:hover,
+.nim-tornado-section .export-btn:focus-visible {
+    background: rgba(124, 184, 255, 0.24);
+    border-color: var(--info);
+}
+
+.nim-tornado-section .export-btn:focus-visible {
+    outline: var(--focus-outline);
+    box-shadow: var(--focus-shadow);
+}
+
+.nim-tornado-section .data-table-wrapper {
+    margin-top: 1.75rem;
+}
+
+.nim-tornado-section .data-table-wrapper caption {
+    font-size: 1rem;
+}
+
+.nim-tornado-annotations {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-top: 0.75rem;
+}
+
+@media (max-width: 768px) {
+    .nim-tornado-section {
+        padding: 1.75rem 1.25rem;
+    }
+
+    .nim-tornado-section canvas {
+        height: 360px;
+    }
 }
 
 @media (max-width: 900px) {

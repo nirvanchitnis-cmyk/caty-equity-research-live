@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CATY - NIM Decomposition & Deposit Beta Analysis | Data Repository</title>
     <link rel="stylesheet" href="styles/caty-equity-research.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 </head>
 <body>
     <!-- Theme Toggle -->
@@ -800,6 +801,51 @@
         </section>
 
         <!-- ======================================== -->
+        <!-- NIM SENSITIVITY TORNADO -->
+        <!-- ======================================== -->
+        <section id="nim-sensitivity" class="nim-tornado-section" aria-labelledby="nim-tornado-title">
+            <header class="nim-tornado-header">
+                <div>
+                    <h3 id="nim-tornado-title">NIM Sensitivity to Fed Rate Cuts</h3>
+                    <p class="nim-tornado-subtitle">Four down-cycle scenarios (60% base beta, 40% sticky) | Data: Asset-liability model</p>
+                </div>
+                <div class="nim-tornado-controls" role="group" aria-label="Toggle valuation layers">
+                    <button type="button" id="nimToggleRote" class="toggle-btn" aria-pressed="false">Show ROTE Impact</button>
+                    <button type="button" id="nimToggleValuation" class="toggle-btn" aria-pressed="false">Show Valuation Impact</button>
+                </div>
+            </header>
+
+            <div class="chart-wrapper">
+                <canvas id="nimTornadoChart" aria-label="NIM sensitivity tornado chart showing Fed rate cut scenarios from -100 to -300 basis points and resulting NIM impact ranges."></canvas>
+            </div>
+
+            <div class="chart-actions">
+                <button type="button" id="nimExportPng" class="export-btn">📥 Export PNG</button>
+                <button type="button" id="nimExportCsv" class="export-btn">📥 Export CSV</button>
+            </div>
+
+            <div class="data-table-wrapper">
+                <table>
+                    <caption>NIM Sensitivity Scenarios</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Scenario</th>
+                            <th scope="col">Fed Cut (bps)</th>
+                            <th scope="col">Deposit Δ (bps)</th>
+                            <th scope="col">NIM Low (bps)</th>
+                            <th scope="col">NIM High (bps)</th>
+                            <th scope="col">Midpoint (bps)</th>
+                            <th scope="col">Assumptions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="nimTornadoTableBody"></tbody>
+                </table>
+            </div>
+
+            <p class="sr-only" id="nimToggleStatus" role="status" aria-live="polite"></p>
+        </section>
+
+        <!-- ======================================== -->
         <!-- FTE ADJUSTMENTS -->
         <!-- ======================================== -->
         <section id="fte-adjustments">
@@ -1005,5 +1051,6 @@
 
     <!-- JavaScript for Theme Toggle -->
     <script src="scripts/theme-toggle.js"></script>
+    <script src="scripts/nim-sensitivity-tornado.js"></script>
 </body>
 </html>
