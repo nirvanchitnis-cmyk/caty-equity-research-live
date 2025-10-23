@@ -173,7 +173,7 @@ Before building the CATY equity research project, I verified auditor independenc
 | CVB Financial | CVBF | KPMG LLP |
 | Hanmi Financial | HAFC | Crowe LLP |
 | Columbia Banking System | COLB | Deloitte & Touche LLP |
-| Banc of California | BANC | KPMG LLP |
+| Banc of California | BANC | EY LLP |
 | Hope Bancorp | HOPE | Crowe LLP |
 
 There are zero PwC audit clients in the dataset. Independence has been maintained throughout the project. I built this outside of work hours, using public data exclusively, on my personal hardware.
