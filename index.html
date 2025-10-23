@@ -7,40 +7,40 @@
     <title>Cathay General Bancorp (CATY) - Institutional Equity Research | October 21, 2025</title>
     <!-- END AUTOGEN: page-title -->
     <link rel="stylesheet" href="styles/caty-equity-research.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 </head>
 <body>
     <!-- Theme Toggle -->
-    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" aria-pressed="false">
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" role="switch" aria-checked="false">
         <span id="theme-icon" aria-hidden="true">🌙</span>
         <span id="theme-text">Dark Mode</span>
     </button>
 
     <!-- Table of Contents Navigation -->
-    <nav class="nav-toc toc-navigation" id="navTOC">
+    <nav class="nav-toc toc-navigation" id="navTOC" aria-hidden="false">
         <h3 class="toc-header">Table of Contents</h3>
-        <ul class="toc-list">
-            <li><a href="#executive-dashboard" class="toc-link">Executive Dashboard</a></li>
-            <li><a href="#reconciliation-dashboard" class="toc-link">🔄 Valuation Reconciliation</a></li>
-            <li><a href="#interactive-visuals" class="toc-link">📊 Interactive Visuals & Modules</a></li>
-            <li><a href="#recent-developments" class="toc-link">Recent Developments</a></li>
-            <li><a href="#company-overview" class="toc-link">Company Overview</a></li>
-            <li><a href="#industry-analysis" class="toc-link">Industry Analysis</a></li>
-            <li><a href="#valuation" class="toc-link">Valuation Analysis</a></li>
-            <li><a href="#peer-analysis" class="toc-link">Peer Comparison</a></li>
-            <li><a href="#financial-analysis" class="toc-link">Financial Analysis</a></li>
-            <li><a href="#liquidity" class="toc-link">Liquidity & Funding</a></li>
-            <li><a href="#scenario-analysis" class="toc-link">Scenario Analysis</a></li>
-            <li><a href="#investment-risks" class="toc-link">Investment Risks</a></li>
-            <li><a href="#catalysts" class="toc-link">Positive Catalysts</a></li>
-            <li><a href="#esg-assessment" class="toc-link">ESG Assessment</a></li>
-            <li><a href="#recommendation" class="toc-link">Recommendation</a></li>
-            <li><a href="#appendix" class="toc-link">Appendix</a></li>
+        <ul class="toc-list" role="list">
+            <li role="listitem"><a href="#executive-dashboard" class="toc-link">Executive Dashboard</a></li>
+            <li role="listitem"><a href="#reconciliation-dashboard" class="toc-link">🔄 Valuation Reconciliation</a></li>
+            <li role="listitem"><a href="#interactive-visuals" class="toc-link">📊 Interactive Visuals & Modules</a></li>
+            <li role="listitem"><a href="#recent-developments" class="toc-link">Recent Developments</a></li>
+            <li role="listitem"><a href="#company-overview" class="toc-link">Company Overview</a></li>
+            <li role="listitem"><a href="#industry-analysis" class="toc-link">Industry Analysis</a></li>
+            <li role="listitem"><a href="#valuation" class="toc-link">Valuation Analysis</a></li>
+            <li role="listitem"><a href="#peer-analysis" class="toc-link">Peer Comparison</a></li>
+            <li role="listitem"><a href="#financial-analysis" class="toc-link">Financial Analysis</a></li>
+            <li role="listitem"><a href="#liquidity" class="toc-link">Liquidity & Funding</a></li>
+            <li role="listitem"><a href="#scenario-analysis" class="toc-link">Scenario Analysis</a></li>
+            <li role="listitem"><a href="#investment-risks" class="toc-link">Investment Risks</a></li>
+            <li role="listitem"><a href="#catalysts" class="toc-link">Positive Catalysts</a></li>
+            <li role="listitem"><a href="#esg-assessment" class="toc-link">ESG Assessment</a></li>
+            <li role="listitem"><a href="#recommendation" class="toc-link">Recommendation</a></li>
+            <li role="listitem"><a href="#appendix" class="toc-link">Appendix</a></li>
         </ul>
     </nav>
 
     <!-- TOC Toggle Button -->
-    <button onclick="toggleTOC()" class="toc-toggle-button" aria-label="Toggle table of contents" aria-expanded="true">
+    <button type="button" class="toc-toggle-button" id="tocToggle" aria-label="Toggle table of contents" aria-controls="navTOC" aria-expanded="true">
         ☰
     </button>
 
@@ -523,7 +523,7 @@
             <!-- END AUTOGEN: valuation-framework-caption -->
 
             <div class="chart-container chart-container-centered">
-                <canvas id="valuationComparisonChart" aria-label="Valuation comparison chart showing current price versus Wilson 95%, IRC blended, and regression targets"></canvas>
+                <canvas id="valuationComparisonChart" role="img" tabindex="0" aria-label="Valuation comparison chart showing current price versus Wilson 95%, IRC blended, and regression targets"></canvas>
             </div>
 
             <!-- BEGIN AUTOGEN: valuation-framework-grid -->
@@ -1600,7 +1600,7 @@
                         <td>FDIC Call Report NCO timeseries (CATY)</td>
                         <td>FDIC API (NTLNLSCOQR)</td>
                         <td><code>8c3c4d488823df90a61aefcbfccdedf91f891bf27dcf241d56cab4b2622cb5e3</code></td>
-                        <td>2025-10-21 16:49 UTC</td>
+                        <td>2025-10-21 06:35 UTC</td>
                         <td>Credit Analytics</td>
                     </tr>
                     <tr>
@@ -1608,7 +1608,7 @@
                         <td>FDIC Call Report Q2 2025 financials (CATY)</td>
                         <td>FDIC API (Quarter 20250630)</td>
                         <td><code>8b57e0e0fc92b67fb69b801e44be0b99126663755f605cf3215529b2a50003bc</code></td>
-                        <td>2025-10-21 16:49 UTC</td>
+                        <td>2025-10-21 06:35 UTC</td>
                         <td>Credit Analytics</td>
                     </tr>
                     <tr>
@@ -1616,7 +1616,7 @@
                         <td>CATY 10-Q Q2 2025</td>
                         <td>0001437749-25-025772</td>
                         <td><code>e2129a54f3b3bb12357df6bbb490ac5f9edd0a5b1b76c377e0f4e8e84caa90bf</code></td>
-                        <td>2025-10-20</td>
+                        <td>2025-10-21 06:35 UTC</td>
                         <td>Financial Reporting</td>
                     </tr>
                     <tr>
@@ -1624,7 +1624,7 @@
                         <td>CATY 10-K FY 2024</td>
                         <td>0001437749-25-005749</td>
                         <td><code>44ad6cd3bf086809709e5a59dcb46169215de392c76063893db517be87cc6710</code></td>
-                        <td>2025-10-19</td>
+                        <td>2025-10-21 06:35 UTC</td>
                         <td>Financial Reporting</td>
                     </tr>
                     <tr>
@@ -1632,7 +1632,7 @@
                         <td>Peer regression snapshot generated from SEC EDGAR API</td>
                         <td>Q2 2025</td>
                         <td><code>aea6ce8ed52fabbdaf5e052a559b8cf189191f83fcf0a578961a102b4f1c1550</code></td>
-                        <td>2025-10-21 16:49 UTC</td>
+                        <td>2025-10-21 06:35 UTC</td>
                         <td>Peer Analytics</td>
                     </tr>
                     <tr>
@@ -1640,7 +1640,7 @@
                         <td>SEC EDGAR companyfacts API payload for CATY</td>
                         <td>None</td>
                         <td><code>1333437d6c0d10f073982146421de6fc8c2c49744c09a4e764d324f7f9a9456e</code></td>
-                        <td>2025-10-21 16:49 UTC</td>
+                        <td>2025-10-21 06:35 UTC</td>
                         <td>Financial Reporting</td>
                     </tr>
                     <tr>
@@ -1648,7 +1648,7 @@
                         <td>FDIC Call Report API payload for CATHAY BANK</td>
                         <td>18503</td>
                         <td><code>af8a2047db76371b0a5c7b42a24468a99737f5b659fc37960eb714d12b185000</code></td>
-                        <td>2025-10-21 16:49 UTC</td>
+                        <td>2025-10-21 06:35 UTC</td>
                         <td>Credit Analytics</td>
                     </tr>
                 </tbody>

@@ -33,8 +33,9 @@
     --text-primary: #F8F8F6;
     --text-secondary: #B0B0B0;
     --border-color: #3A3A3A;
-    --link-color: #E8495F;
-    --link-hover: #FF6B7F;
+    /* Use canonical brand colors instead of bright pink */
+    --link-color: #D4AF37;
+    --link-hover: #E8C04B;
 }
 
 /* ============================================================
@@ -53,6 +54,20 @@ body {
     color: var(--text-primary);
     background: var(--bg-primary);
     transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* ============================================================
+   REDUCED MOTION - Accessibility
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
 }
 
 /* ============================================================
