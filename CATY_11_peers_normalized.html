@@ -391,18 +391,83 @@
             </div>
             <!-- END AUTOGEN: caty11-regression-interpretation -->
 
-            <h3>Scatter Plot: P/TBV vs ROTE</h3>
-            <!-- BEGIN AUTOGEN: caty11-scatter-summary -->
-            <p class="text-secondary">n=8 regression peers (Cook's D screen); R²=0.599, slope=0.069</p>
-            <!-- END AUTOGEN: caty11-scatter-summary -->
+            <div id="peer-scatter-matrix" class="peer-scatter-section">
+                <div class="peer-scatter-header">
+                    <div>
+                        <h3>Peer Scatter Matrix</h3>
+                        <p class="peer-scatter-subtitle">
+                            Explore CATY&apos;s positioning versus 9 regional bank peers across profitability, valuation, credit concentration, and scale. Switch axes to evaluate CRE penalties, size premia, and regression fit while maintaining full accessibility parity.
+                        </p>
+                    </div>
+                    <div class="peer-scatter-legend" aria-hidden="true">
+                        <span><span class="legend-swatch" style="background: var(--peer-cre-low);"></span>Low CRE</span>
+                        <span><span class="legend-swatch" style="background: var(--peer-cre-mid);"></span>Mid CRE</span>
+                        <span><span class="legend-swatch" style="background: var(--peer-cre-high);"></span>High CRE</span>
+                        <span>Bubble size = Market cap (log scale)</span>
+                    </div>
+                </div>
 
-            <div class="chart-container chart-container-centered">
-                <canvas id="peerScatterChart" aria-label="Peer regression scatter plot showing P/TBV versus ROTE with regression line, highlighting CATY position relative to peers"></canvas>
+                <div class="peer-axis-controls">
+                    <div class="peer-axis-control">
+                        <label for="peerXAxisSelect">X-axis metric</label>
+                        <select id="peerXAxisSelect" aria-label="Select X-axis metric">
+                            <option value="rote_pct" selected>ROTE %</option>
+                            <option value="cre_pct">CRE %</option>
+                            <option value="mkt_cap">Market Cap ($B)</option>
+                            <option value="p_tbv">P/TBV (×)</option>
+                        </select>
+                    </div>
+                    <div class="peer-axis-control">
+                        <label for="peerYAxisSelect">Y-axis metric</label>
+                        <select id="peerYAxisSelect" aria-label="Select Y-axis metric">
+                            <option value="p_tbv" selected>P/TBV (×)</option>
+                            <option value="rote_pct">ROTE %</option>
+                            <option value="cre_pct">CRE %</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="peer-toggle-controls" role="group" aria-label="Peer scatter toggles">
+                    <button id="peerToggleRegression" type="button" class="toggle-btn" aria-pressed="true">Show Regression Line</button>
+                    <button id="peerToggleLabels" type="button" class="toggle-btn" aria-pressed="false">Show All Labels</button>
+                    <button id="peerToggleMedians" type="button" class="toggle-btn" aria-pressed="false">Show Medians</button>
+                    <button id="peerToggleHope" type="button" class="toggle-btn" aria-pressed="false">Include HOPE</button>
+                </div>
+
+                <p class="sr-only" id="peerToggleStatus" role="status" aria-live="polite"></p>
+
+                <div class="chart-wrapper">
+                    <canvas id="peerScatterChart" aria-label="Peer scatter matrix comparing CATY and peers across profitability, valuation, CRE exposure, and market capitalization with configurable axes, regression overlay, and bubble sizing."></canvas>
+                </div>
+
+                <div class="chart-actions">
+                    <button id="peerScatterExportPng" type="button" class="export-btn">Export PNG</button>
+                    <button id="peerScatterExportCsv" type="button" class="export-btn">Export CSV</button>
+                </div>
+
+                <div class="data-table-wrapper">
+                    <table>
+                        <caption>Peer Comparison Matrix (CATY + cohort)</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Ticker</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">ROTE</th>
+                                <th scope="col">P/TBV</th>
+                                <th scope="col">CRE Exposure</th>
+                                <th scope="col">Market Cap</th>
+                                <th scope="col">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="peerScatterTableBody">
+                        </tbody>
+                    </table>
+                </div>
+
+                <p class="peer-scatter-note">
+                    Regression equation applies when ROTE is mapped to the X-axis and P/TBV to the Y-axis: P/TBV = 0.481 + 0.069 × ROTE (R² = 0.599, n = 8). Toggle medians to reference cohort midpoints and add HOPE only when analyzing excluded observations.
+                </p>
             </div>
-
-            <!-- BEGIN AUTOGEN: caty11-scatter-caption -->
-            <p class="text-secondary-tiny text-align-center"><strong>Interpretation:</strong> Expanded cohort (n = 8) preserves positive ROTE vs. P/TBV relationship (R² = 0.599). Cook's D highlights WAFD/OPBK residuals but all remain below 0.5 threshold.</p>
-            <!-- END AUTOGEN: caty11-scatter-caption -->
         </section>
 
         <!-- ======================================== -->
@@ -769,14 +834,13 @@
     <!-- JavaScript for Theme Toggle and Collapsibles -->
     <script src="scripts/theme-toggle.js"></script>
     <script src="scripts/charts.js"></script>
+    <script src="scripts/peer-scatter-matrix.js"></script>
 
-    <!-- Initialize Peer Scatter Chart -->
+    <!-- Initialize Peer Scatter Matrix -->
     <script>
-        // Initialize scatter chart on page load
         document.addEventListener('DOMContentLoaded', function() {
-            const scatterChart = initPeerScatterChart('peerScatterChart');
-            if (scatterChart) {
-                console.log('Peer scatter chart initialized');
+            if (typeof initPeerScatterMatrix === 'function') {
+                initPeerScatterMatrix();
             }
         });
     </script>
