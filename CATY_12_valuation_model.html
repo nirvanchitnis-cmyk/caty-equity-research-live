@@ -32,9 +32,22 @@
         </div>
     </header>
 
-    <main class="container" id="main-content" tabindex="-1">
-        <a href="index.html" class="back-button">← Back to Main Report</a>
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="breadcrumb-separator">›</span>
+        <span class="breadcrumb-category">Valuation</span>
+        <span class="breadcrumb-separator">›</span>
+        <span class="breadcrumb-current" aria-current="page">Valuation Model</span>
+    </nav>
 
+    <main class="container" id="main-content" tabindex="-1">
+        <nav class="module-pagination" aria-label="Module navigation">
+            <a href="index.html" class="back-button">← Back to Main Report</a>
+            <div class="pagination-buttons">
+                <a href="CATY_11_peers_normalized.html" class="pagination-btn pagination-prev" aria-label="Previous module">← Previous: Peer Comparison</a>
+                <a href="CATY_13_residual_income_valuation.html" class="pagination-btn pagination-next" aria-label="Next module">Next: Residual Income →</a>
+            </div>
+        </nav>
         <!-- ======================================== -->
         <!-- VALUATION SUMMARY: THREE SCENARIOS -->
         <!-- ======================================== -->

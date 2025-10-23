@@ -29,9 +29,22 @@
         </div>
     </header>
 
-    <div class="container">
-        <a href="index.html" class="back-button">← Back to Main Report</a>
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="breadcrumb-separator">›</span>
+        <span class="breadcrumb-category">Risk Analysis</span>
+        <span class="breadcrumb-separator">›</span>
+        <span class="breadcrumb-current" aria-current="page">CRE Exposure</span>
+    </nav>
 
+    <div class="container">
+        <nav class="module-pagination" aria-label="Module navigation">
+            <a href="index.html" class="back-button">← Back to Main Report</a>
+            <div class="pagination-buttons">
+                <a href="CATY_07_loans_credit_quality.html" class="pagination-btn pagination-prev" aria-label="Previous module">← Previous: Credit Quality</a>
+                <a href="CATY_09_capital_liquidity.html" class="pagination-btn pagination-next" aria-label="Next module">Next: Capital & Liquidity →</a>
+            </div>
+        </nav>
         <!-- EXECUTIVE SUMMARY -->
         <section id="executive-summary">
             <h2>Executive Summary</h2>
@@ -98,7 +111,7 @@
                     <li><strong>Multi-tenant retail & industrial:</strong> Remaining ~$435M spans neighborhood retail and logistics assets flagged for cash-flow softness (Q3 deck slide 8). We apply 150 bps loss severity in the stress case feeding <code>analysis/credit_stress_scenarios.json</code>.</li>
                     <li><strong>Migration math:</strong> A 20% downgrade of the $455M special-mention pool lifts the NPL ratio ~35 bps and aligns with the guardrail EPS hit (−$0.14) in Module 07. Full migration plus stressed loss rates drive the 85 bps NCO scenario (EPS $0.75, TBVPS $40.74).</li>
                 </ul>
-                <p class="text-small text-secondary">Data provenance: management commentary (Oct 21 deck) and Q3 8-K; calculations reconciled in <code>analysis/credit_stress_scenarios.json</code> and <a href="evidence/CATY_FDIC_NCO_series.html" target="_blank" rel="noopener">FDIC loss history workpaper</a>.</p>
+                <p class="text-small text-secondary">Data provenance: management commentary (Oct 21 deck) and Q3 8-K; calculations reconciled in <code>analysis/credit_stress_scenarios.json</code> and <a href="evidence/workpapers/CATY_FDIC_NCO_series.html" target="_blank" rel="noopener">FDIC loss history workpaper</a>.</p>
 
                 <h4 id="watchlist-detail">Special-Mention Detail (Q3 2025)</h4>
                 <table>

@@ -30,9 +30,22 @@
         </div>
     </header>
 
-    <div class="container">
-        <a href="index.html" class="back-button">← Back to Main Report</a>
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="breadcrumb-separator">›</span>
+        <span class="breadcrumb-category">Financial Analysis</span>
+        <span class="breadcrumb-separator">›</span>
+        <span class="breadcrumb-current" aria-current="page">Balance Sheet</span>
+    </nav>
 
+    <div class="container">
+        <nav class="module-pagination" aria-label="Module navigation">
+            <a href="index.html" class="back-button">← Back to Main Report</a>
+            <div class="pagination-buttons">
+                <a href="CATY_02_income_statement.html" class="pagination-btn pagination-prev" aria-label="Previous module">← Previous: Income Statement</a>
+                <a href="CATY_04_cash_flow.html" class="pagination-btn pagination-next" aria-label="Next module">Next: Cash Flow →</a>
+            </div>
+        </nav>
         <!-- ======================================== -->
         <!-- BALANCE SHEET SNAPSHOT - Q2'25 -->
         <!-- ======================================== -->

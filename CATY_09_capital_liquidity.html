@@ -29,9 +29,22 @@
         </div>
     </header>
 
-    <div class="container">
-        <a href="index.html" class="back-button">← Back to Main Report</a>
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="breadcrumb-separator">›</span>
+        <span class="breadcrumb-category">Capital Management</span>
+        <span class="breadcrumb-separator">›</span>
+        <span class="breadcrumb-current" aria-current="page">Capital & Liquidity</span>
+    </nav>
 
+    <div class="container">
+        <nav class="module-pagination" aria-label="Module navigation">
+            <a href="index.html" class="back-button">← Back to Main Report</a>
+            <div class="pagination-buttons">
+                <a href="CATY_08_cre_exposure.html" class="pagination-btn pagination-prev" aria-label="Previous module">← Previous: CRE Exposure</a>
+                <a href="CATY_10_capital_actions.html" class="pagination-btn pagination-next" aria-label="Next module">Next: Capital Actions →</a>
+            </div>
+        </nav>
         <section id="capital-overview">
             <h2>Regulatory Capital Position</h2>
             <!-- BEGIN AUTOGEN: caty09-capital-cards -->

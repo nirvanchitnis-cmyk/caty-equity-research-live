@@ -24,9 +24,22 @@
         </div>
     </header>
 
-    <div class="container">
-        <a href="index.html" class="back-button">← Back to Main Report</a>
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="breadcrumb-separator">›</span>
+        <span class="breadcrumb-category">ESG Analysis</span>
+        <span class="breadcrumb-separator">›</span>
+        <span class="breadcrumb-current" aria-current="page">ESG KPIs</span>
+    </nav>
 
+    <div class="container">
+        <nav class="module-pagination" aria-label="Module navigation">
+            <a href="index.html" class="back-button">← Back to Main Report</a>
+            <div class="pagination-buttons">
+                <a href="CATY_16_coe_triangulation.html" class="pagination-btn pagination-prev" aria-label="Previous module">← Previous: COE Triangulation</a>
+                <a href="CATY_18_sensitivity_analysis.html" class="pagination-btn pagination-next" aria-label="Next module">Next: Sensitivity Analysis →</a>
+            </div>
+        </nav>
         <section id="kpi-summary">
             <h2>KPI Summary</h2>
             <!-- BEGIN AUTOGEN: caty17-kpi-summary -->

@@ -30,9 +30,22 @@
         </div>
     </header>
 
-    <div class="container">
-        <a href="index.html" class="back-button">← Back to Main Report</a>
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="breadcrumb-separator">›</span>
+        <span class="breadcrumb-category">Financial Analysis</span>
+        <span class="breadcrumb-separator">›</span>
+        <span class="breadcrumb-current" aria-current="page">Income Statement</span>
+    </nav>
 
+    <div class="container">
+        <nav class="module-pagination" aria-label="Module navigation">
+            <a href="index.html" class="back-button">← Back to Main Report</a>
+            <div class="pagination-buttons">
+                <a href="CATY_01_company_profile.html" class="pagination-btn pagination-prev" aria-label="Previous module">← Previous: Company Profile</a>
+                <a href="CATY_03_balance_sheet.html" class="pagination-btn pagination-next" aria-label="Next module">Next: Balance Sheet →</a>
+            </div>
+        </nav>
         <!-- ======================================== -->
         <!-- LATEST QUARTER SNAPSHOT -->
         <!-- ======================================== -->

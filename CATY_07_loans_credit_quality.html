@@ -31,9 +31,22 @@
         </div>
     </header>
 
-    <div class="container">
-        <a href="index.html" class="back-button">← Back to Main Report</a>
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="breadcrumb-separator">›</span>
+        <span class="breadcrumb-category">Risk Analysis</span>
+        <span class="breadcrumb-separator">›</span>
+        <span class="breadcrumb-current" aria-current="page">Credit Quality</span>
+    </nav>
 
+    <div class="container">
+        <nav class="module-pagination" aria-label="Module navigation">
+            <a href="index.html" class="back-button">← Back to Main Report</a>
+            <div class="pagination-buttons">
+                <a href="CATY_06_deposits_funding.html" class="pagination-btn pagination-prev" aria-label="Previous module">← Previous: Deposits & Funding</a>
+                <a href="CATY_08_cre_exposure.html" class="pagination-btn pagination-next" aria-label="Next module">Next: CRE Exposure →</a>
+            </div>
+        </nav>
         <!-- ======================================== -->
         <!-- CREDIT QUALITY SNAPSHOT -->
         <!-- ======================================== -->
@@ -161,7 +174,7 @@
                     <li><strong>Watchlist exposure:</strong> Special-mention loans rose to $455M across six CRE relationships (theatre, multi-tenant retail, industrial) per management’s slide deck (<a href="evidence/primary_sources/CATY_Q3_2025_Presentation_20251021.pdf#page=8" target="_blank" rel="noopener">Q3 deck slide 8</a>). Our guardrail assumes 20% migration, adding ~35 bps to NPLs.</li>
                     <li><strong>Stress linkage:</strong> The 85 bps NCO stress aligns with a full migration of the special-mention pool plus a 150 bps loss rate on office/theatre exposures, translating to a $33.6M incremental provision and EPS $0.75, while the severe case at 120 bps assumes additional office/retail downgrades and drives EPS to $0.56 (<code>analysis/credit_stress_scenarios.json</code>).</li>
                 </ul>
-                <p class="text-small text-secondary">Migration assumptions validated against CATY’s 2009 peak loss experience (306 bps) and the 2020 downgrade cadence documented in <a href="evidence/CATY_FDIC_NCO_series.html" target="_blank" rel="noopener">FDIC workpaper</a>.</p>
+                <p class="text-small text-secondary">Migration assumptions validated against CATY’s 2009 peak loss experience (306 bps) and the 2020 downgrade cadence documented in <a href="evidence/workpapers/CATY_FDIC_NCO_series.html" target="_blank" rel="noopener">FDIC workpaper</a>.</p>
             </div>
             <p class="text-small text-secondary">Source: <code>scripts/build_credit_stress.py</code> feeding <code>analysis/credit_stress_scenarios.json</code>. Loan base $20.10B and provision detail per Q3 2025 8-K (Exhibit 99.1 lines 213-304).</p>
             <p class="text-small text-secondary">Scenario weighting: base 50%, guardrail 30%, stress 15%, severe 5% — consistent with <code>analysis/probabilistic_outlook.json</code> and the downgrade guardrails discussed in the main deck.</p>

@@ -31,9 +31,22 @@
         </div>
     </header>
 
-    <div class="container">
-        <a href="index.html" class="back-button">← Back to Main Report</a>
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="breadcrumb-separator">›</span>
+        <span class="breadcrumb-category">Financial Analysis</span>
+        <span class="breadcrumb-separator">›</span>
+        <span class="breadcrumb-current" aria-current="page">NIM Decomposition</span>
+    </nav>
 
+    <div class="container">
+        <nav class="module-pagination" aria-label="Module navigation">
+            <a href="index.html" class="back-button">← Back to Main Report</a>
+            <div class="pagination-buttons">
+                <a href="CATY_04_cash_flow.html" class="pagination-btn pagination-prev" aria-label="Previous module">← Previous: Cash Flow</a>
+                <a href="CATY_06_deposits_funding.html" class="pagination-btn pagination-next" aria-label="Next module">Next: Deposits & Funding →</a>
+            </div>
+        </nav>
         <!-- ======================================== -->
         <!-- EXECUTIVE SUMMARY -->
         <!-- ======================================== -->

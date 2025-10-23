@@ -24,9 +24,22 @@
         </div>
     </header>
 
-    <div class="container">
-        <a href="index.html" class="back-button">← Back to Main Report</a>
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="breadcrumb-separator">›</span>
+        <span class="breadcrumb-category">Financial Analysis</span>
+        <span class="breadcrumb-separator">›</span>
+        <span class="breadcrumb-current" aria-current="page">Deposits & Funding</span>
+    </nav>
 
+    <div class="container">
+        <nav class="module-pagination" aria-label="Module navigation">
+            <a href="index.html" class="back-button">← Back to Main Report</a>
+            <div class="pagination-buttons">
+                <a href="CATY_05_nim_decomposition.html" class="pagination-btn pagination-prev" aria-label="Previous module">← Previous: NIM Decomposition</a>
+                <a href="CATY_07_loans_credit_quality.html" class="pagination-btn pagination-next" aria-label="Next module">Next: Credit Quality →</a>
+            </div>
+        </nav>
         <section id="deposit-overview">
             <h2>Deposit & Funding Snapshot</h2>
             <!-- BEGIN AUTOGEN: caty06-deposit-snapshot -->
