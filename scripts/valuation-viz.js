@@ -1072,6 +1072,22 @@
 
             applyThemeStyles();
             barChart.update('none');
+
+            // Export parity assertion (±$0.01)
+            try {
+                const tableRows = Array.from(document.querySelectorAll('#framework-data-table tbody tr'));
+                const tableMap = new Map(
+                    tableRows
+                        .map(r => [r.cells?.[0]?.textContent?.split(' (')[0], Number((r.cells?.[1]?.textContent||'').replace(/[^0-9.\-]/g,''))])
+                        .filter(([k,v]) => k && Number.isFinite(v))
+                );
+                orderedFrameworks.forEach(item => {
+                    const tbl = tableMap.get(item.label);
+                    if (Number.isFinite(tbl) && Math.abs(tbl - item.price) > 0.01) {
+                        console.warn('Export parity fail:', item.label, { chart: item.price, table: tbl, diff: Math.abs(tbl - item.price).toFixed(4) });
+                    }
+                });
+            } catch (e) { /* no-op */ }
         }
 
         function updateAnnotation(predicted, residual, residualPct) {

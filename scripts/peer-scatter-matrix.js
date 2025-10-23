@@ -329,6 +329,7 @@
             bindToggleControls();
             bindExports();
             createChart(canvas);
+            applyURLState();
             updateRegressionAvailability();
             updateTable();
             observeThemeChanges();
@@ -624,6 +625,34 @@
 
         state.chart.update('none');
         updateTable();
+        updateURL();
+    }
+
+    function applyURLState() {
+        const params = new URLSearchParams(window.location.search);
+        const xa = params.get('x');
+        const ya = params.get('y');
+        if (AXIS_CONFIG[xa]) {
+            state.xAxis = xa;
+        }
+        if (AXIS_CONFIG[ya]) {
+            state.yAxis = ya;
+        }
+        state.showRegression = params.get('reg') === '1' ? true : state.regressionPreference;
+        state.showAllLabels = params.get('lab') === '1';
+        state.showMedians = params.get('med') === '1';
+        state.includeHope = params.get('hope') === '1';
+    }
+
+    function updateURL() {
+        const params = new URLSearchParams(window.location.search);
+        params.set('x', state.xAxis);
+        params.set('y', state.yAxis);
+        params.set('reg', state.showRegression ? '1' : '0');
+        params.set('lab', state.showAllLabels ? '1' : '0');
+        params.set('med', state.showMedians ? '1' : '0');
+        params.set('hope', state.includeHope ? '1' : '0');
+        history.replaceState(null, '', `${location.pathname}?${params.toString()}`);
     }
 
     function bindAxisControls() {

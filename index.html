@@ -927,6 +927,7 @@
 
                 <footer class="valuation-footnotes">
                     <p><strong>Sources:</strong> data/peer_comparables.json (filtered to BANC, COLB, CVBF, EWBC, HAFC, OPBK, PPBI, WAFD); data/valuation_outputs.json (Spot, framework targets, regression coefficients); data/fdic_nco_history.json (guardrails).</p>
+                    <p class="text-small text-secondary"><strong>Data snapshot:</strong> <span id="data-snapshot-timestamp">Loading...</span></p>
                     <p><strong>Axis domains:</strong> ROTE axis [0%, 18%] with 2% ticks; P/TBV axis [0.70×, 2.00×] with 0.20× ticks; bar axis $0–$60 with $5 increments.</p>
                     <p class="decision-note">HOLD reaffirmed while Spot remains within −10% / +15% band around $46.17; revisit upon pierce or coefficient drift beyond QA tolerances.</p>
                 </footer>
@@ -2561,6 +2562,30 @@
                     }
                 }, 100);
             };
+
+            // Load data snapshot timestamp
+            (async function loadSnapshotMeta() {
+                try {
+                    const response = await fetch('data/valuation_outputs.json', { cache: 'no-store' });
+                    if (!response.ok) return;
+                    const data = await response.json();
+                    const timestamp = data?.metadata?.calculation_run || '';
+                    const el = document.getElementById('data-snapshot-timestamp');
+                    if (el && timestamp) {
+                        const date = new Date(timestamp);
+                        el.textContent = date.toLocaleString('en-US', {
+                            year: 'numeric',
+                            month: 'short',
+                            day: 'numeric',
+                            hour: '2-digit',
+                            minute: '2-digit',
+                            timeZoneName: 'short'
+                        });
+                    }
+                } catch (e) {
+                    console.warn('Failed to load snapshot timestamp', e);
+                }
+            })();
         });
     </script>
 
