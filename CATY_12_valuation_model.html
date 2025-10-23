@@ -711,6 +711,64 @@
         </section>
 
         <!-- ======================================== -->
+        <!-- VALUATION BRIDGE -->
+        <!-- ======================================== -->
+        <section id="valuation-bridge" class="valuation-bridge-section" aria-labelledby="valuation-bridge-title">
+            <header class="valuation-bridge-header">
+                <div>
+                    <h3 id="valuation-bridge-title">IRC Blended Valuation Bridge</h3>
+                    <p class="valuation-bridge-subtitle">
+                        Weighted combination of Residual Income, Dividend Discount, and Regression frameworks; contributions accumulate to the $50.12 IRC target vs spot $46.17.
+                    </p>
+                </div>
+                <div class="valuation-bridge-controls" role="group" aria-label="Valuation bridge visibility toggles">
+                    <button type="button" id="bridgeToggleDetails" class="toggle-btn" aria-pressed="false">Show Component Details</button>
+                    <button type="button" id="bridgeToggleTotal" class="toggle-btn" aria-pressed="true">Show Total Bar</button>
+                    <button type="button" id="bridgeToggleOthers" class="toggle-btn" aria-pressed="false">Show Other Frameworks</button>
+                </div>
+            </header>
+
+            <div class="chart-wrapper">
+                <canvas
+                    id="valuationBridgeChart"
+                    aria-label="Valuation bridge waterfall chart showing construction of the IRC Blended target price through weighted RIM, DDM, and Regression contributions alongside spot price reference."
+                ></canvas>
+            </div>
+
+            <div class="chart-actions">
+                <button type="button" id="bridgeExportPng" class="export-btn">📥 Export PNG</button>
+                <button type="button" id="bridgeExportCsv" class="export-btn">📥 Export CSV</button>
+            </div>
+
+            <div class="data-table-wrapper">
+                <table>
+                    <caption>IRC Blended Valuation Bridge</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Component</th>
+                            <th scope="col">Framework Target</th>
+                            <th scope="col">Weight</th>
+                            <th scope="col">Contribution</th>
+                            <th scope="col">Cumulative</th>
+                        </tr>
+                    </thead>
+                    <tbody id="bridgeTableBody">
+                        <!-- Populated via JavaScript -->
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th scope="row">IRC Blended Total</th>
+                            <td colspan="2" id="bridgeTotalTargetCell"></td>
+                            <td colspan="2" id="bridgeTotalDeltaCell"></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+
+            <p class="sr-only" id="bridgeToggleStatus" role="status" aria-live="polite"></p>
+        </section>
+
+        <!-- ======================================== -->
         <!-- SENSITIVITY ANALYSIS -->
         <!-- ======================================== -->
         <section id="sensitivity">
@@ -1553,6 +1611,7 @@
     <script src="scripts/theme-toggle.js"></script>
     <script src="scripts/charts.js"></script>
     <script src="scripts/scenario-waterfall.js"></script>
+    <script src="scripts/valuation-bridge.js"></script>
 
     <!-- Initialize NCO Chart -->
     <script>
