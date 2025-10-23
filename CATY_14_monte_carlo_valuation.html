@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CATY - Monte Carlo Valuation | IRC Appendix</title>
     <link rel="stylesheet" href="styles/caty-equity-research.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 </head>
 <body>
     <!-- Theme Toggle -->
@@ -58,6 +59,64 @@
             <!-- BEGIN AUTOGEN: caty14-rating-implication -->
             <p><strong>Rating Implication:</strong> Monte Carlo median <strong>$42.62 (−7.7%)</strong> and mean <strong>$43.63 (−5.5%)</strong> fall below spot, but the gap is modest; we therefore maintain a <strong>HOLD</strong> while monitoring the negative skew against upcoming Q3 disclosures.</p>
             <!-- END AUTOGEN: caty14-rating-implication -->
+        </section>
+
+        <!-- ======================================== -->
+        <!-- MONTE CARLO DISTRIBUTION -->
+        <!-- ======================================== -->
+        <section id="mc-distribution" class="mc-distribution-section" aria-labelledby="mc-dist-title">
+            <header class="mc-dist-header">
+                <div>
+                    <h3 id="mc-dist-title">Price Distribution (10,000 Simulations)</h3>
+                    <p class="mc-dist-subtitle">Probability mass across four price bands | Spot $46.17, Median $42.62</p>
+                </div>
+                <div class="mc-dist-controls" role="group" aria-label="Toggle reference overlays">
+                    <button type="button" id="mcToggleCI" class="toggle-btn" aria-pressed="true">Show 95% CI</button>
+                    <button type="button" id="mcTogglePercentiles" class="toggle-btn" aria-pressed="false">Show Percentiles</button>
+                    <button type="button" id="mcToggleInterpretations" class="toggle-btn" aria-pressed="false">Show Notes</button>
+                </div>
+            </header>
+
+            <div class="chart-wrapper">
+                <canvas id="mcDistributionChart" aria-label="Monte Carlo distribution histogram showing probability mass across price bands with reference markers for spot, median, and mean prices."></canvas>
+            </div>
+
+            <div class="chart-actions">
+                <button type="button" id="mcExportPng" class="export-btn">📥 Export PNG</button>
+                <button type="button" id="mcExportCsv" class="export-btn">📥 Export CSV</button>
+            </div>
+
+            <div class="mc-interpretations" id="mcInterpretations" hidden aria-hidden="true"></div>
+
+            <div class="data-table-wrapper">
+                <table>
+                    <caption>Monte Carlo Price Distribution (10,000 Simulations)</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Price Band</th>
+                            <th scope="col">Probability</th>
+                            <th scope="col">Interpretation</th>
+                        </tr>
+                    </thead>
+                    <tbody id="mcTableBody"></tbody>
+                    <tfoot>
+                        <tr>
+                            <th scope="row">Median Price</th>
+                            <td id="mcMedianCell" colspan="2"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Mean Price</th>
+                            <td id="mcMeanCell" colspan="2"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Spot Price</th>
+                            <td id="mcSpotCell" colspan="2"></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+
+            <p class="sr-only" id="mcToggleStatus" role="status" aria-live="polite"></p>
         </section>
 
         <!-- Continue with remaining sections... -->
@@ -624,6 +683,7 @@ Target Price = P/TBV × TBVPS</code></pre>
     </div>
 
     <!-- JavaScript for Theme Toggle -->
+    <script src="scripts/monte-carlo-distribution.js"></script>
     <script src="scripts/theme-toggle.js"></script>
 </body>
 </html>
