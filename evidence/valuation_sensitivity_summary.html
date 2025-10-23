@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CATY - Valuation Sensitivity Summary | Evidence Repository</title>
+    <link rel="stylesheet" href="../styles/caty-equity-research.css">
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Toggle dark mode" role="switch" aria-checked="false">
+        <span id="theme-icon" aria-hidden="true">🌙</span>
+        <span id="theme-text">Dark Mode</span>
+    </button>
+
+    <header>
+        <div class="header-content">
+            <h1 class="page-title">Cathay General Bancorp (NASDAQ: CATY)</h1>
+            <p class="page-subtitle">Valuation Sensitivity Summary</p>
+            <p class="page-meta">Author: Nirvan Chitnis | Date: October 2025 | Purpose: Evidence documentation</p>
+        </div>
+    </header>
+
+    <main class="container" id="main-content" tabindex="-1">
+        <nav aria-label="Breadcrumb" class="breadcrumb">
+            <a href="../index.html">← Main Report</a>
+            <span aria-hidden="true"> / </span>
+            <span aria-current="page">Evidence: Valuation Sensitivity Summary</span>
+        </nav>
+
+        <p>Baseline implied price (regression path): $56.50</p>
+
+<h3>Net charge-off shocks</h3>
+
+<p>Assumption: provision delta fully flows to after-tax earnings (20% tax).</p>
+
+<table class="data-table">
+<thead>
+<tr>
+<th>NCO Shock</th>
+<th>Price Impact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>+10 bps</td>
+<td>$-1.98</td>
+</tr>
+<tr>
+<td>+25 bps</td>
+<td>$-4.96</td>
+</tr>
+<tr>
+<td>+50 bps</td>
+<td>$-9.92</td>
+</tr>
+</tbody>
+</table>
+
+<h3>Deposit beta shocks</h3>
+
+<p>Interest-bearing deposit base assumed at 16.9B (83% of total).</p>
+
+<table class="data-table">
+<thead>
+<tr>
+<th>Beta Shock</th>
+<th>Price Impact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>+10 bps</td>
+<td>$-1.73</td>
+</tr>
+<tr>
+<td>+25 bps</td>
+<td>$-4.32</td>
+</tr>
+<tr>
+<td>+50 bps</td>
+<td>$-8.64</td>
+</tr>
+</tbody>
+</table>
+
+<h3>Usage</h3>
+
+<ul>
+<li>Apply these deltas on top of scenario prices to articulate elasticities (e.g., +10 bps NCO reduces price by $-1.98).</li>
+<li>Update TOTAL_DEPOSITS and NON_INTEREST_DDA_RATIO once Q3'25 figures are available.</li>
+</ul>
+
+<p>Generated via <code>analysis/valuation_sensitivity.py</code>.</p>
+
+    </main>
+
+    <footer class="evidence-footer">
+        <p class="footer-text">Evidence documentation for CFA IRC equity research challenge</p>
+        <p class="footer-meta">Author: Nirvan Chitnis | Generated: 2025-10-23 01:13 | Source: valuation_sensitivity_summary.md</p>
+    </footer>
+
+    <script src="../scripts/theme.js"></script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CATY - Net Charge-Off Probability Summary | Evidence Repository</title>
+    <link rel="stylesheet" href="../styles/caty-equity-research.css">
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Toggle dark mode" role="switch" aria-checked="false">
+        <span id="theme-icon" aria-hidden="true">🌙</span>
+        <span id="theme-text">Dark Mode</span>
+    </button>
+
+    <header>
+        <div class="header-content">
+            <h1 class="page-title">Cathay General Bancorp (NASDAQ: CATY)</h1>
+            <p class="page-subtitle">Net Charge-Off Probability Summary</p>
+            <p class="page-meta">Author: Nirvan Chitnis | Date: October 2025 | Purpose: Evidence documentation</p>
+        </div>
+    </header>
+
+    <main class="container" id="main-content" tabindex="-1">
+        <nav aria-label="Breadcrumb" class="breadcrumb">
+            <a href="../index.html">← Main Report</a>
+            <span aria-hidden="true"> / </span>
+            <span aria-current="page">Evidence: Net Charge-Off Probability Summary</span>
+        </nav>
+
+        <p>Data source: FDIC Bank Financials API (field <code>NTLNLSCOQR</code>). Values represent annualised quarterly net charge-off ratios.</p>
+
+<h3>Frequency of quarterly breaches</h3>
+
+<p>Threshold: 45.8 bps (0.458%) total loan &amp; lease net charge-off ratio</p>
+
+<table class="data-table">
+<thead>
+<tr>
+<th>Window</th>
+<th>Quarters</th>
+<th>Breach Probability</th>
+<th>95% Upper Bound</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Full history (since 1984)</td>
+<td>166</td>
+<td>13.3%</td>
+<td>19.3%</td>
+</tr>
+<tr>
+<td>Post-2000</td>
+<td>102</td>
+<td>12.7%</td>
+<td>20.6%</td>
+</tr>
+<tr>
+<td>Post-GFC (&gt;= 2008)</td>
+<td>70</td>
+<td>15.7%</td>
+<td>26.0%</td>
+</tr>
+<tr>
+<td>Post-2014</td>
+<td>46</td>
+<td>0.0%</td>
+<td>7.7%</td>
+</tr>
+<tr>
+<td>Post-2020</td>
+<td>22</td>
+<td>0.0%</td>
+<td>14.9%</td>
+</tr>
+</tbody>
+</table>
+
+<table class="data-table">
+<thead>
+<tr>
+<th>Trailing sample</th>
+<th>Breach Probability</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Last 8 quarters</td>
+<td>0.0%</td>
+</tr>
+<tr>
+<td>Last 16 quarters</td>
+<td>0.0%</td>
+</tr>
+<tr>
+<td>Last 32 quarters</td>
+<td>0.0%</td>
+</tr>
+</tbody>
+</table>
+
+<h3>Rolling four-quarter averages</h3>
+
+<p>Evaluates sustained loss pressure – counts instances where the trailing 4-quarter average exceeds the through-cycle assumption.</p>
+<ul>
+<li>Rolling average breach probability: 13.5% (22 of 163 observations)</li>
+<li>Last breach: 2012-03-31</li>
+</ul>
+
+<h3>Recent central tendency</h3>
+
+<ul>
+<li>Mean net charge-off ratio since 2018: 0.05%</li>
+<li>Standard deviation since 2018: 0.09%</li>
+</ul>
+
+<h3>Interpretation Guide</h3>
+
+<ul>
+<li>Quarterly breach probabilities above zero pre-2014 are driven by the GFC (2008-2012).</li>
+<li>No quarterly breaches above 45.8 bps have occurred since 2013; rolling four-quarter averages have not exceeded the threshold in that period either.</li>
+<li>Post-2020 quarters show elevated but sub-threshold ratios (peaking at 28.2 bps in 2024).</li>
+<li>Use these frequencies to calibrate scenario weights rather than relying on gut feel.</li>
+</ul>
+
+    </main>
+
+    <footer class="evidence-footer">
+        <p class="footer-text">Evidence documentation for CFA IRC equity research challenge</p>
+        <p class="footer-meta">Author: Nirvan Chitnis | Generated: 2025-10-23 01:13 | Source: NCO_probability_summary.md</p>
+    </footer>
+
+    <script src="../scripts/theme.js"></script>
+</body>
+</html>

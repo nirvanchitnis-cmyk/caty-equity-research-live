@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CATY - CATY Q3 2025 Share Repurchase Analysis | Evidence Repository</title>
+    <link rel="stylesheet" href="../../styles/caty-equity-research.css">
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Toggle dark mode" role="switch" aria-checked="false">
+        <span id="theme-icon" aria-hidden="true">🌙</span>
+        <span id="theme-text">Dark Mode</span>
+    </button>
+
+    <header>
+        <div class="header-content">
+            <h1 class="page-title">Cathay General Bancorp (NASDAQ: CATY)</h1>
+            <p class="page-subtitle">CATY Q3 2025 Share Repurchase Analysis</p>
+            <p class="page-meta">Author: Nirvan Chitnis | Date: October 2025 | Purpose: Evidence documentation</p>
+        </div>
+    </header>
+
+    <main class="container" id="main-content" tabindex="-1">
+        <nav aria-label="Breadcrumb" class="breadcrumb">
+            <a href="../../index.html">← Main Report</a>
+            <span aria-hidden="true"> / </span>
+            <span aria-current="page">Evidence: CATY Q3 2025 Share Repurchase Analysis</span>
+        </nav>
+
+        <p>Prepared October 22, 2025 to support the capital-actions module and CFA review comments.</p>
+
+<h3>1. Transaction Detail</h3>
+
+<ul>
+<li>Shares repurchased: <strong>1,070,000</strong> at an average price of <strong>$46.81</strong> (total <strong>$50.1M</strong>).  </li>
+</ul>
+<p>  Source: Q3 2025 press release (Form 8-K Exhibit 99.1), management commentary paragraph 3 (<code>evidence/raw/CATY_2025Q3_8K/ex_873308.htm</code>, line ~247).</p>
+
+<h3>2. EPS Uplift (Quarterly Run-Rate)</h3>
+
+<table class="data-table">
+<thead>
+<tr>
+<th>Metric</th>
+<th>Q3 2025</th>
+<th>Q2 2025</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Diluted average shares</td>
+<td>68,990,648</td>
+<td>70,188,902</td>
+<td>Form 8-K Exhibit 99.1 share count table (<code>ex_873308.htm</code>, lines ~4720)</td>
+</tr>
+<tr>
+<td>Net income (USD M)</td>
+<td>77.651</td>
+<td>—</td>
+<td>Form 8-K Exhibit 99.1 financial highlights (<code>ex_873308.htm</code>, line ~1745)</td>
+</tr>
+<tr>
+<td>EPS (actual)</td>
+<td>1.13</td>
+<td>—</td>
+<td>Reported</td>
+</tr>
+<tr>
+<td>EPS (pro forma, Q2 share base)</td>
+<td>77.651 ÷ 70.188902 = <strong>1.11</strong></td>
+<td>—</td>
+<td>Calculated</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Accretion:</strong> ~<strong>$0.02</strong> per share (1.8¢) quarter over quarter attributable to the lower share count.</p>
+
+<h3>3. Tangible Book Value Impact</h3>
+
+<ul>
+<li>Tangible book value per share (TBVPS) Q3 2025: <strong>$36.96</strong>  </li>
+<li>TBVPS Q2 2025: <strong>$36.16</strong>  </li>
+</ul>
+<p>  (Form 8-K Exhibit 99.1, non-GAAP reconciliation, <code>ex_873308.htm</code>, lines ~6280).</p>
+
+<p>Without deploying the $50.1M, the pro-forma TBVPS would have been <strong>$37.12</strong>, implying <strong>16 bps</strong> of dilution from buying stock at ~<strong>1.29×</strong> TBV.</p>
+
+<h3>4. CET1 Headroom</h3>
+
+<ul>
+<li>CET1 ratio September 30, 2025: <strong>13.15%</strong> (vs. 13.35% at June 30).  </li>
+</ul>
+<p>  Source: Form 8-K Exhibit 99.1 capital ratios paragraph (<code>ex_873308.htm</code>, line ~1661).</p>
+<ul>
+<li>Tangible/common equity (proxy for CET1): <strong>$2,523.9M</strong> (<code>ex_873308.htm</code>, non-GAAP table, line ~6068).</li>
+</ul>
+
+<p>Derived risk-weighted assets:</p>
+
+<pre class="code-block"><code>RWA = CET1 $ / CET1% = 2,523.9 / 0.1315 ≈ $19,193M</code></pre>
+
+<p>Headroom before breaching management’s 12.0% guardrail:</p>
+
+<pre class="code-block"><code>ΔCET1 (bps) = 13.15% − 12.00% = 1.15%
+Capital capacity = 0.0115 × 19,193 ≈ $221M</code></pre>
+
+<p>That capacity covers roughly <strong>4×</strong> the Q3 deployment.</p>
+
+<h3>5. Authorization Status</h3>
+
+<ul>
+<li>Board authorization: <strong>$150M</strong> (July 15, 2024).  </li>
+<li>Cumulative spent through Q3 2025: <strong>$90.1M</strong> → <strong>$59.9M</strong> remaining.  </li>
+</ul>
+<p>  Source: <code>data/caty10_capital_actions.json</code> (aggregated from treasury stock footnotes; next update scheduled once the Q3 10-Q posts).</p>
+
+<h3>6. Summary</h3>
+
+<ul>
+<li>Buyback lifted quarterly EPS by ~1.8¢ and ROTE by ~9 bps through a smaller equity base.</li>
+<li>Trade-off: 16 bps of TBV dilution and 20 bps CET1 consumption.</li>
+<li>With ~$221M of CET1 headroom to a 12% target and $59.9M left on the authorization, management can continue repurchases but should avoid prices materially above TBV unless incremental ROE is demonstrably accretive.</li>
+</ul>
+
+
+    </main>
+
+    <footer class="evidence-footer">
+        <p class="footer-text">Evidence documentation for CFA IRC equity research challenge</p>
+        <p class="footer-meta">Author: Nirvan Chitnis | Generated: 2025-10-23 01:13 | Source: CATY_Q3_2025_buyback_analysis.md</p>
+    </footer>
+
+    <script src="../../scripts/theme.js"></script>
+</body>
+</html>

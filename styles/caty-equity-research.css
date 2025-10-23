@@ -253,6 +253,63 @@ body {
     border: 0;
 }
 
+/* ============================================================
+   EVIDENCE PAGE UTILITIES
+   ============================================================ */
+.breadcrumb {
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.breadcrumb a {
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+.breadcrumb a:hover,
+.breadcrumb a:focus-visible {
+    text-decoration: underline;
+}
+
+.evidence-quote {
+    margin: 1.5rem 0;
+    padding: 1rem 1.5rem;
+    border-left: 4px solid var(--info);
+    background: var(--bg-secondary);
+    font-style: italic;
+}
+
+.code-block {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 1rem;
+    overflow-x: auto;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    line-height: 1.4;
+}
+
+.evidence-footer {
+    margin-top: 4rem;
+    padding: 2rem 0;
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+    color: var(--text-secondary);
+}
+
+.evidence-footer .footer-text {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.evidence-footer .footer-meta {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    opacity: 0.75;
+}
+
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
         animation-duration: 0.01ms !important;
