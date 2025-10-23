@@ -143,6 +143,11 @@
                     <div class="module-card-title">COE Triangulation</div>
                     <div class="module-card-description">CAPM 9.337% + FF3 10.142% + DDM 9.710% (updated 2025-10-22)</div>
                 </a>
+                <a href="sensitivity_analysis.html" class="module-card module-card-gold" data-status="UPDATED">
+                    <div class="module-card-badge">SENSITIVITY LAB ⭐ • NEW</div>
+                    <div class="module-card-title">NIM Sensitivity Lab</div>
+                    <div class="module-card-description">Interactive EPS &amp; TBVPS response to ±50 bps NIM shifts under 3 loan growth scenarios (updated 2025-10-23)</div>
+                </a>
             </div>
             <h3 class="cfa-category-header">📈 Financial Analysis (20 points)</h3>
             <div class="module-grid">
@@ -1782,7 +1787,9 @@
                     <tr><td>95th Percentile</td><td class="text-right">$66.00</td><td class="text-right">+43.3%</td><td>ROTE expansion + strong loan growth</td></tr>
                 </tbody>
             </table>
-            <img src="assets/monte_carlo_pt_distribution.png" alt="Monte Carlo fair value distribution" class="chart-image-full" />
+            <div class="chart-wrapper" style="position: relative; width: 100%; min-height: 400px;">
+                <canvas id="mcDistributionChartMain" style="width: 100%; height: 400px;" role="img" aria-label="Monte Carlo fair value distribution histogram"></canvas>
+            </div>
             <p>95% interval: $24.60 – $66.00 (span $41.40 | 89.9%).</p>
             <h4>Probability Bands</h4>
             <ul>
@@ -1793,6 +1800,525 @@
             </ul>
             <p class="text-small text-secondary">Source data: <code>caty14_monte_carlo.json</code>.</p>
         </div>
+        <script>
+            (function() {
+                'use strict';
+
+                const DATA_URL = 'data/caty14_monte_carlo.json';
+                const CANVAS_ID = 'mcDistributionChartMain';
+
+                function getCssVar(varName) {
+                    return getComputedStyle(document.documentElement).getPropertyValue(varName).trim();
+                }
+
+                function toNumber(value, fallback = 0) {
+                    const numeric = Number(value);
+                    return Number.isFinite(numeric) ? numeric : fallback;
+                }
+
+                function parseProbability(value) {
+                    if (typeof value === 'number') {
+                        return Number.isFinite(value) ? value : 0;
+                    }
+                    if (typeof value === 'string') {
+                        const cleaned = value.replace('%', '').trim();
+                        const numeric = Number.parseFloat(cleaned);
+                        return Number.isFinite(numeric) ? numeric : 0;
+                    }
+                    return 0;
+                }
+
+                function formatPrice(value) {
+                    return Number.isFinite(value) ? value.toFixed(2) : '0.00';
+                }
+
+                function withOpacity(color, opacity) {
+                    if (!color) {
+                        return `rgba(47, 102, 144, ${opacity})`;
+                    }
+
+                    const trimmed = color.trim();
+                    if (trimmed.startsWith('#')) {
+                        const hex = trimmed.slice(1);
+                        const isShort = hex.length === 3;
+                        const r = Number.parseInt(isShort ? hex[0] + hex[0] : hex.slice(0, 2), 16);
+                        const g = Number.parseInt(isShort ? hex[1] + hex[1] : hex.slice(2, 4), 16);
+                        const b = Number.parseInt(isShort ? hex[2] + hex[2] : hex.slice(4, 6), 16);
+                        if ([r, g, b].some(component => Number.isNaN(component))) {
+                            return `rgba(47, 102, 144, ${opacity})`;
+                        }
+                        return `rgba(${r}, ${g}, ${b}, ${opacity})`;
+                    }
+
+                    if (trimmed.startsWith('rgb')) {
+                        return trimmed.replace(/rgba?\(([^)]+)\)/, (_, rgbValues) => {
+                            const parts = rgbValues.split(',').map(part => part.trim());
+                            const base = parts.slice(0, 3).join(', ');
+                            return `rgba(${base}, ${opacity})`;
+                        });
+                    }
+
+                    return `rgba(47, 102, 144, ${opacity})`;
+                }
+
+                function computeBandRanges(bands, summary) {
+                    const percentile5 = summary.percentile5;
+                    const percentile95 = summary.percentile95;
+                    const lowerBaseline = Math.max(0, percentile5 - 10);
+                    const upperBaseline = percentile95 + 10;
+
+                    return bands.map((band, index) => {
+                        const label = band.bandLabel.toLowerCase();
+
+                        if (label.startsWith('sub-$')) {
+                            const match = label.match(/sub-\$(\d+(?:\.\d+)?)/);
+                            const maxValue = match ? Number.parseFloat(match[1]) : percentile5;
+                            return {
+                                min: lowerBaseline,
+                                max: Number.isFinite(maxValue) ? maxValue : percentile5
+                            };
+                        }
+
+                        if (/\$\d+(?:\.\d+)?\s*-\s*\$\d+(?:\.\d+)?/.test(label)) {
+                            const match = label.match(/\$(\d+(?:\.\d+)?)\s*-\s*\$(\d+(?:\.\d+)?)/);
+                            if (match) {
+                                return {
+                                    min: Number.parseFloat(match[1]),
+                                    max: Number.parseFloat(match[2])
+                                };
+                            }
+                        }
+
+                        if (label.includes('+')) {
+                            const match = label.match(/\$(\d+(?:\.\d+)?)\+/);
+                            const minValue = match ? Number.parseFloat(match[1]) : percentile95;
+                            const upper = Math.max(upperBaseline, (Number.isFinite(minValue) ? minValue : percentile95) + 20);
+                            return {
+                                min: Number.isFinite(minValue) ? minValue : percentile95,
+                                max: upper
+                            };
+                        }
+
+                        const fallbackMin = percentile5 + index * 8;
+                        return {
+                            min: fallbackMin,
+                            max: fallbackMin + 8
+                        };
+                    });
+                }
+
+                function assignBandMidpoints(bands, ranges, spot) {
+                    bands.forEach((band, index) => {
+                        const range = ranges[index];
+                        if (!range) {
+                            band.midpoint = spot;
+                            band.isUpside = false;
+                            return;
+                        }
+
+                        const midpoint = (range.min + range.max) / 2;
+                        band.midpoint = midpoint;
+                        band.isUpside = midpoint >= spot;
+                    });
+                }
+
+                function priceToPixelX(price, chart, ranges) {
+                    const chartArea = chart.chartArea;
+                    if (!ranges.length || !chartArea) {
+                        return chartArea ? chartArea.left : 0;
+                    }
+
+                    const binWidth = (chartArea.right - chartArea.left) / ranges.length;
+                    const minPrice = ranges[0].min;
+                    const maxPrice = ranges[ranges.length - 1].max;
+                    const clampedPrice = Math.min(Math.max(price, minPrice), maxPrice);
+
+                    let binIndex = ranges.length - 1;
+                    for (let i = 0; i < ranges.length; i += 1) {
+                        const range = ranges[i];
+                        if (clampedPrice <= range.max || i === ranges.length - 1) {
+                            binIndex = i;
+                            break;
+                        }
+                    }
+
+                    const range = ranges[binIndex];
+                    const span = Math.max(range.max - range.min, 0.0001);
+                    const fraction = (clampedPrice - range.min) / span;
+                    const binLeft = chartArea.left + binIndex * binWidth;
+                    return binLeft + fraction * binWidth;
+                }
+
+                function determineBarColors(bands, spot) {
+                    const downside = withOpacity(getCssVar('--mc-bar-downside') || '#B85C00', Number(getCssVar('--mc-bar-opacity')) || 0.85);
+                    const upside = withOpacity(getCssVar('--mc-bar-upside') || '#2E6F3E', Number(getCssVar('--mc-bar-opacity')) || 0.85);
+                    const neutral = withOpacity(getCssVar('--mc-ref-median') || '#2F6690', Number(getCssVar('--mc-bar-opacity')) || 0.85);
+
+                    return bands.map(band => {
+                        const delta = Math.abs(band.midpoint - spot);
+                        if (delta <= 1) {
+                            return neutral;
+                        }
+                        return band.isUpside ? upside : downside;
+                    });
+                }
+
+                function makeReferenceLines(summary, ranges) {
+                    return {
+                        id: 'mcReferenceLinesMain',
+                        afterDatasetsDraw(chart) {
+                            const chartArea = chart.chartArea;
+                            if (!chartArea) {
+                                return;
+                            }
+
+                            const borderColor = getCssVar('--border-color') || '#D6DADD';
+                            const references = [
+                                {
+                                    key: 'median',
+                                    value: summary.median,
+                                    label: `Median $${formatPrice(summary.median)}`,
+                                    color: getCssVar('--mc-ref-median') || '#2F6690',
+                                    dash: [6, 6],
+                                    align: 'right',
+                                    offset: -12
+                                },
+                                {
+                                    key: 'mean',
+                                    value: summary.mean,
+                                    label: `Mean $${formatPrice(summary.mean)}`,
+                                    color: getCssVar('--mc-ref-mean') || '#7A8893',
+                                    dash: [3, 4],
+                                    align: 'center',
+                                    offset: 0
+                                },
+                                {
+                                    key: 'spot',
+                                    value: summary.spot,
+                                    label: `Spot $${formatPrice(summary.spot)}`,
+                                    color: getCssVar('--mc-ref-spot') || '#14202D',
+                                    dash: [],
+                                    align: 'left',
+                                    offset: 12
+                                },
+                                {
+                                    key: 'p5',
+                                    value: summary.percentile5,
+                                    label: `5th %ile $${formatPrice(summary.percentile5)}`,
+                                    color: getCssVar('--mc-ref-p5') || 'rgba(140, 30, 51, 0.6)',
+                                    dash: [4, 6],
+                                    align: 'right',
+                                    offset: -16
+                                },
+                                {
+                                    key: 'p95',
+                                    value: summary.percentile95,
+                                    label: `95th %ile $${formatPrice(summary.percentile95)}`,
+                                    color: getCssVar('--mc-ref-p95') || 'rgba(46, 111, 62, 0.6)',
+                                    dash: [4, 6],
+                                    align: 'left',
+                                    offset: 16
+                                }
+                            ];
+
+                            const ctx = chart.ctx;
+                            ctx.save();
+                            ctx.font = '600 12px "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
+                            ctx.textBaseline = 'bottom';
+
+                            references.forEach(reference => {
+                                const x = priceToPixelX(reference.value, chart, ranges);
+
+                                ctx.save();
+                                ctx.beginPath();
+                                ctx.setLineDash(reference.dash);
+                                ctx.lineWidth = reference.key === 'spot' ? 2 : 1.5;
+                                ctx.strokeStyle = reference.color || borderColor;
+                                ctx.moveTo(x, chartArea.top);
+                                ctx.lineTo(x, chartArea.bottom);
+                                ctx.stroke();
+                                ctx.restore();
+
+                                ctx.save();
+                                ctx.fillStyle = reference.color;
+                                ctx.textAlign = reference.align;
+                                ctx.fillText(reference.label, x + reference.offset, chartArea.top - 8);
+                                ctx.restore();
+                            });
+
+                            ctx.restore();
+                        }
+                    };
+                }
+
+                function makeBarLabelPlugin(bands) {
+                    return {
+                        id: 'mcBarLabelsMain',
+                        afterDatasetsDraw(chart) {
+                            const meta = chart.getDatasetMeta(0);
+                            if (!meta || !meta.data) {
+                                return;
+                            }
+
+                            const ctx = chart.ctx;
+                            ctx.save();
+                            ctx.font = '700 13px "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
+                            ctx.fillStyle = getCssVar('--text-primary') || '#14202D';
+                            ctx.textAlign = 'center';
+                            ctx.textBaseline = 'bottom';
+
+                            meta.data.forEach((element, index) => {
+                                const band = bands[index];
+                                if (!element || !band) {
+                                    return;
+                                }
+                                const { x, y } = element.getProps(['x', 'y'], true);
+                                ctx.fillText(`${band.probabilityValue.toFixed(1)}%`, x, y - 8);
+                            });
+
+                            ctx.restore();
+                        }
+                    };
+                }
+
+                document.addEventListener('DOMContentLoaded', async () => {
+                    const canvas = document.getElementById(CANVAS_ID);
+                    if (!canvas) {
+                        return;
+                    }
+
+                    if (typeof Chart === 'undefined') {
+                        console.error('Chart.js not available for Monte Carlo histogram.');
+                        return;
+                    }
+
+                    try {
+                        const response = await fetch(DATA_URL);
+                        if (!response.ok) {
+                            throw new Error(`Failed to load Monte Carlo data: ${response.status}`);
+                        }
+                        const json = await response.json();
+                        const summaryRaw = json?.simulation_summary || {};
+                        const confidence = json?.confidence_interval || {};
+                        const probabilityBands = Array.isArray(json?.tables?.probability_bands)
+                            ? json.tables.probability_bands
+                            : [];
+
+                        const summary = {
+                            median: toNumber(summaryRaw.target_median, 0),
+                            mean: toNumber(summaryRaw.target_mean, 0),
+                            spot: toNumber(summaryRaw.spot_price, 0),
+                            percentile5: toNumber(confidence.lower_price, 0),
+                            percentile95: toNumber(confidence.upper_price, 0)
+                        };
+
+                        const bands = probabilityBands.map(band => ({
+                            bandLabel: band.band || '',
+                            probabilityValue: parseProbability(band.probability),
+                            interpretation: band.interpretation || ''
+                        }));
+
+                        const ranges = computeBandRanges(bands, summary);
+                        assignBandMidpoints(bands, ranges, summary.spot);
+                        const colors = determineBarColors(bands, summary.spot);
+
+                        const chart = new Chart(canvas, {
+                            type: 'bar',
+                            data: {
+                                labels: bands.map(band => band.bandLabel),
+                                datasets: [
+                                    {
+                                        label: 'Probability',
+                                        data: bands.map(band => band.probabilityValue),
+                                        backgroundColor: colors,
+                                        borderWidth: 0,
+                                        borderRadius: 12,
+                                        barPercentage: 0.75,
+                                        categoryPercentage: 0.6
+                                    }
+                                ]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                layout: {
+                                    padding: {
+                                        top: 56,
+                                        right: 36,
+                                        bottom: 24,
+                                        left: 48
+                                    }
+                                },
+                                animation: false,
+                                scales: {
+                                    x: {
+                                        grid: {
+                                            display: false
+                                        },
+                                        border: {
+                                            color: getCssVar('--border-color') || '#D6DADD'
+                                        },
+                                        ticks: {
+                                            color: getCssVar('--text-secondary') || '#4F5B67',
+                                            font: {
+                                                size: 12,
+                                                family: '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif'
+                                            }
+                                        }
+                                    },
+                                    y: {
+                                        beginAtZero: true,
+                                        suggestedMax: 35,
+                                        title: {
+                                            display: true,
+                                            text: 'Probability (%)',
+                                            color: getCssVar('--text-secondary') || '#4F5B67',
+                                            font: {
+                                                weight: '600',
+                                                size: 12
+                                            }
+                                        },
+                                        ticks: {
+                                            callback(value) {
+                                                return `${value}%`;
+                                            },
+                                            color: getCssVar('--text-secondary') || '#4F5B67',
+                                            font: {
+                                                size: 12,
+                                                family: '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif'
+                                            }
+                                        },
+                                        border: {
+                                            color: getCssVar('--border-color') || '#D6DADD'
+                                        },
+                                        grid: {
+                                            color: context => (context.tick.value === 0
+                                                ? getCssVar('--border-color') || '#D6DADD'
+                                                : `${getCssVar('--border-color') || '#D6DADD'}33`)
+                                        }
+                                    }
+                                },
+                                plugins: {
+                                    legend: {
+                                        display: false,
+                                        labels: {
+                                            color: getCssVar('--text-primary') || '#14202D'
+                                        }
+                                    },
+                                    tooltip: {
+                                        backgroundColor: getCssVar('--bg-secondary') || '#F8FBF8',
+                                        borderColor: getCssVar('--border-color') || '#D6DADD',
+                                        borderWidth: 1,
+                                        titleColor: getCssVar('--text-primary') || '#14202D',
+                                        bodyColor: getCssVar('--text-secondary') || '#4F5B67',
+                                        padding: 12,
+                                        callbacks: {
+                                            title(context) {
+                                                if (!context.length) {
+                                                    return '';
+                                                }
+                                                return bands[context[0].dataIndex]?.bandLabel || '';
+                                            },
+                                            label(context) {
+                                                const band = bands[context.dataIndex];
+                                                if (!band) {
+                                                    return '';
+                                                }
+                                                return `Probability: ${band.probabilityValue.toFixed(1)}%`;
+                                            },
+                                            afterLabel(context) {
+                                                const band = bands[context.dataIndex];
+                                                if (!band || !band.interpretation) {
+                                                    return [];
+                                                }
+                                                return [band.interpretation];
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            plugins: [
+                                makeReferenceLines(summary, ranges),
+                                makeBarLabelPlugin(bands)
+                            ]
+                        });
+
+                        const refreshChartTheme = () => {
+                            const dataset = chart.data.datasets[0];
+                            if (dataset) {
+                                dataset.backgroundColor = determineBarColors(bands, summary.spot);
+                            }
+
+                            const xScale = chart.options && chart.options.scales && chart.options.scales.x;
+                            if (xScale) {
+                                if (xScale.ticks) {
+                                    xScale.ticks.color = getCssVar('--text-secondary') || '#4F5B67';
+                                }
+                                if (xScale.border) {
+                                    xScale.border.color = getCssVar('--border-color') || '#D6DADD';
+                                }
+                            }
+
+                            const yScale = chart.options && chart.options.scales && chart.options.scales.y;
+                            const borderColor = getCssVar('--border-color') || '#D6DADD';
+                            if (yScale) {
+                                if (yScale.ticks) {
+                                    yScale.ticks.color = getCssVar('--text-secondary') || '#4F5B67';
+                                }
+                                if (yScale.title) {
+                                    yScale.title.color = getCssVar('--text-secondary') || '#4F5B67';
+                                }
+                                if (yScale.border) {
+                                    yScale.border.color = borderColor;
+                                }
+                                if (yScale.grid) {
+                                    yScale.grid.color = function(context) {
+                                        return context.tick.value === 0 ? borderColor : `${borderColor}33`;
+                                    };
+                                }
+                            }
+
+                            const tooltip = chart.options && chart.options.plugins && chart.options.plugins.tooltip;
+                            if (tooltip) {
+                                tooltip.backgroundColor = getCssVar('--bg-secondary') || '#F8FBF8';
+                                tooltip.borderColor = borderColor;
+                                tooltip.titleColor = getCssVar('--text-primary') || '#14202D';
+                                tooltip.bodyColor = getCssVar('--text-secondary') || '#4F5B67';
+                            }
+
+                            const legend = chart.options && chart.options.plugins && chart.options.plugins.legend;
+                            if (legend && legend.labels) {
+                                legend.labels.color = getCssVar('--text-primary') || '#14202D';
+                            }
+
+                            chart.update('none');
+                        };
+
+                        refreshChartTheme();
+
+                        if (typeof MutationObserver === 'function') {
+                            const themeObserver = new MutationObserver(function(mutations) {
+                                var themeChanged = mutations.some(function(mutation) {
+                                    return mutation.type === 'attributes' && mutation.attributeName === 'data-theme';
+                                });
+                                if (themeChanged) {
+                                    refreshChartTheme();
+                                }
+                            });
+
+                            themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+                        }
+
+                        if (!window.chartInstances) {
+                            window.chartInstances = [];
+                        }
+                        window.chartInstances.push(chart);
+                    } catch (error) {
+                        console.error('Monte Carlo histogram failed to render', error);
+                    }
+                });
+            })();
+        </script>
         <!-- END AUTOGEN: monte-carlo-summary -->
 
         <!-- ======================================== -->
