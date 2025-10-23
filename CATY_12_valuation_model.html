@@ -5,270 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CATY - Valuation Model | Data Repository</title>
     <link rel="stylesheet" href="styles/caty-equity-research.css">
-    <style>
-        .scenario-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 26px;
-            margin-top: 28px;
-        }
-
-        .scenario-card {
-            --scenario-accent: var(--cathay-gold);
-            position: relative;
-            background: var(--bg-secondary);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 18px;
-            padding: 26px 26px 22px;
-            box-shadow: 0 16px 30px rgba(6, 16, 28, 0.34);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .scenario-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 22px 40px rgba(6, 16, 28, 0.45);
-        }
-
-        .scenario-card::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 26px;
-            width: 56px;
-            height: 6px;
-            border-radius: 0 0 8px 8px;
-            background: var(--scenario-accent);
-            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3);
-        }
-
-        .scenario-card.bull {
-            --scenario-accent: var(--success);
-        }
-
-        .scenario-card.base {
-            --scenario-accent: var(--cathay-gold);
-        }
-
-        .scenario-card.bear {
-            --scenario-accent: var(--danger);
-        }
-
-        .scenario-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            text-transform: uppercase;
-            letter-spacing: 0.14em;
-            font-size: 0.78rem;
-            font-weight: 600;
-            color: rgba(255, 255, 255, 0.62);
-            margin-bottom: 6px;
-        }
-
-        .scenario-name {
-            color: var(--scenario-accent);
-        }
-
-        .scenario-probability {
-            font-size: 0.72rem;
-            font-weight: 600;
-            padding: 4px 12px;
-            border-radius: 999px;
-            background: rgba(255, 255, 255, 0.08);
-            color: rgba(255, 255, 255, 0.75);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-        }
-
-        .scenario-rating {
-            margin-top: 14px;
-            font-size: 0.78rem;
-            font-weight: 600;
-            letter-spacing: 0.18em;
-            color: rgba(255, 255, 255, 0.58);
-        }
-
-        .scenario-rating::before {
-            content: "RATING";
-            display: block;
-            font-size: 0.68rem;
-            letter-spacing: 0.2em;
-            color: rgba(255, 255, 255, 0.42);
-            margin-bottom: 4px;
-        }
-
-        .scenario-metrics {
-            margin-top: 20px;
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 14px 18px;
-        }
-
-        .scenario-metric {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 12px;
-            padding: 12px 14px;
-            min-height: 78px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .scenario-metric-label {
-            font-size: 0.7rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.5);
-            margin-bottom: 6px;
-        }
-
-        .scenario-metric-value {
-            font-size: 1.05rem;
-            font-weight: 600;
-            color: rgba(255, 255, 255, 0.88);
-        }
-
-        .scenario-metric:first-child {
-            grid-column: span 2;
-            padding: 18px 20px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        .scenario-metric:first-child .scenario-metric-label {
-            color: rgba(255, 255, 255, 0.6);
-            letter-spacing: 0.18em;
-        }
-
-        .scenario-metric:first-child .scenario-metric-value {
-            font-size: 2.1rem;
-            font-weight: 700;
-            color: var(--scenario-accent);
-        }
-
-        .scenario-card.bull .scenario-metric:first-child {
-            background: rgba(45, 119, 56, 0.15);
-            border-color: rgba(45, 119, 56, 0.32);
-        }
-
-        .scenario-card.base .scenario-metric:first-child {
-            background: rgba(212, 175, 55, 0.18);
-            border-color: rgba(212, 175, 55, 0.32);
-        }
-
-        .scenario-card.bear .scenario-metric:first-child {
-            background: rgba(220, 38, 38, 0.15);
-            border-color: rgba(220, 38, 38, 0.32);
-        }
-
-        .scenario-note {
-            margin-top: 8px;
-            padding: 12px 14px;
-            background: rgba(255, 255, 255, 0.03);
-            border-left: 3px solid var(--scenario-accent);
-            border-radius: 12px;
-            font-size: 0.9rem;
-            line-height: 1.45;
-            color: rgba(255, 255, 255, 0.72);
-        }
-
-
-        .bridge-card {
-            margin-top: 32px;
-            padding: 24px 28px;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 16px;
-        }
-
-        .bridge-card table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 18px;
-        }
-
-        .bridge-card th,
-        .bridge-card td {
-            padding: 10px 12px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        .bridge-card th {
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            font-size: 0.72rem;
-            color: rgba(255, 255, 255, 0.68);
-        }
-
-        .bridge-card td {
-            font-size: 0.92rem;
-            color: rgba(255, 255, 255, 0.86);
-        }
-
-        .bridge-card tbody tr:last-child td {
-            border-bottom: none;
-        }
-
-        .bridge-side-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-            margin-top: 26px;
-        }
-
-        .bridge-side-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 16px;
-            padding: 22px 24px;
-        }
-
-        .bridge-side-card table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 12px;
-        }
-
-        .bridge-side-card td {
-            padding: 8px 10px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.84);
-        }
-
-        .bridge-side-card tbody tr:last-child td {
-            border-bottom: none;
-        }
-
-        .metric-list {
-            list-style: none;
-            margin: 16px 0 0;
-            padding: 0;
-        }
-
-        .metric-list li {
-            margin-bottom: 6px;
-            font-size: 0.92rem;
-            color: rgba(255, 255, 255, 0.84);
-        }
-
-        .metric-list li span {
-            font-weight: 600;
-            color: rgba(255, 255, 255, 0.92);
-            margin-right: 6px;
-        }
-
-        @media (max-width: 720px) {
-            .scenario-metrics {
-                grid-template-columns: repeat(1, minmax(0, 1fr));
-            }
-        }
-    </style></style>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 </head>
 <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
     <!-- Theme Toggle -->
-    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" aria-pressed="false">
+    <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Toggle dark mode" role="switch" aria-checked="false">
         <span id="theme-icon" aria-hidden="true">🌙</span>
         <span id="theme-text">Dark Mode</span>
     </button>
@@ -288,7 +30,7 @@
         </div>
     </header>
 
-    <div class="container">
+    <main class="container" id="main-content" tabindex="-1">
         <a href="index.html" class="back-button">← Back to Main Report</a>
 
         <!-- ======================================== -->
@@ -307,16 +49,16 @@
             </p></div>
             <!-- END AUTOGEN: caty12-key-finding-box -->
 
-            <div class="scenario-grid">
+            <div class="scenario-grid" role="list" aria-label="Valuation scenarios">
                 <!-- BULL CASE -->
-                <div class="scenario-card bull">
+                <article class="scenario-card bull" role="listitem" aria-labelledby="scenario-bull-heading" aria-describedby="scenario-bull-note">
                     <div class="scenario-header">
-                        <div class="scenario-name">BULL CASE</div>
+                        <h3 class="scenario-name" id="scenario-bull-heading">Bull case</h3>
                         <!-- BEGIN AUTOGEN: caty12-scenario-bull-prob -->
-                        <div class="scenario-probability">25% Prob</div>
+                        <div class="scenario-probability" aria-label="Probability 25%">25% Prob</div>
                         <!-- END AUTOGEN: caty12-scenario-bull-prob -->
                     </div>
-                    <div class="scenario-rating">HOLD</div>
+                    <div class="scenario-rating" aria-label="Rating: HOLD">HOLD</div>
 
                     <!-- BEGIN AUTOGEN: caty12-scenario-bull-metrics -->
                     <div class="scenario-metrics">
@@ -347,20 +89,20 @@
                     </div>
                     <!-- END AUTOGEN: caty12-scenario-bull-metrics -->
 
-                    <div class="scenario-note">
+                    <div class="scenario-note" id="scenario-bull-note">
                         Recent history NCO; optimistic credit environment. Target essentially at spot price.
                     </div>
-                </div>
+                </article>
 
                 <!-- BASE CASE (HOLD) -->
-                <div class="scenario-card base">
+                <article class="scenario-card base" role="listitem" aria-labelledby="scenario-base-heading" aria-describedby="scenario-base-note">
                     <div class="scenario-header">
-                        <div class="scenario-name">POLICY BASE</div>
+                        <h3 class="scenario-name" id="scenario-base-heading">Policy base</h3>
                         <!-- BEGIN AUTOGEN: caty12-scenario-base-prob -->
-                        <div class="scenario-probability">60% Prob</div>
+                        <div class="scenario-probability" aria-label="Probability 60%">60% Prob</div>
                         <!-- END AUTOGEN: caty12-scenario-base-prob -->
                     </div>
-                    <div class="scenario-rating">HOLD</div>
+                    <div class="scenario-rating" aria-label="Rating: HOLD">HOLD</div>
 
                     <!-- BEGIN AUTOGEN: caty12-scenario-base-metrics -->
                     <div class="scenario-metrics">
@@ -392,21 +134,21 @@
                     <!-- END AUTOGEN: caty12-scenario-base-metrics -->
 
                     <!-- BEGIN AUTOGEN: caty12-scenario-base-note -->
-                    <div class="scenario-note">
+                    <div class="scenario-note" id="scenario-base-note">
                         <strong>BASE CASE (30 bps P90):</strong> Post-2014 FDIC sample (Basel III) underpins normalization. Stress guardrail at 42.8 bps documented in <a href="evidence/workpapers/CATY_FDIC_NCO_series.md" target="_blank" rel="noopener">FDIC workpaper</a>.
                     </div>
                     <!-- END AUTOGEN: caty12-scenario-base-note -->
-                </div>
+                </article>
 
                 <!-- BEAR CASE -->
-                <div class="scenario-card bear">
+                <article class="scenario-card bear" role="listitem" aria-labelledby="scenario-bear-heading" aria-describedby="scenario-bear-note">
                     <div class="scenario-header">
-                        <div class="scenario-name">BEAR CASE</div>
+                        <h3 class="scenario-name" id="scenario-bear-heading">Bear case</h3>
                         <!-- BEGIN AUTOGEN: caty12-scenario-bear-prob -->
-                        <div class="scenario-probability">15% Prob</div>
+                        <div class="scenario-probability" aria-label="Probability 15%">15% Prob</div>
                         <!-- END AUTOGEN: caty12-scenario-bear-prob -->
                     </div>
-                    <div class="scenario-rating">HOLD</div>
+                    <div class="scenario-rating" aria-label="Rating: HOLD">HOLD</div>
 
                     <!-- BEGIN AUTOGEN: caty12-scenario-bear-metrics -->
                     <div class="scenario-metrics">
@@ -438,11 +180,11 @@
                     <!-- END AUTOGEN: caty12-scenario-bear-metrics -->
 
                     <!-- BEGIN AUTOGEN: caty12-scenario-bear-note -->
-                    <div class="scenario-note">
+                    <div class="scenario-note" id="scenario-bear-note">
                         Mild recession scenario: 60 bps NCO is quarter of GFC peak (234 bps). Would trade below tangible book value.
                     </div>
                     <!-- END AUTOGEN: caty12-scenario-bear-note -->
-                </div>
+                </article>
             </div>
             <!-- END AUTOGEN: caty12-growth-metric-grid -->
             <div class="alert-box info">
@@ -488,22 +230,23 @@
             </div>
             <!-- END AUTOGEN: caty12-valuation-summary-grid -->
 
-            <div class="highlight-box highlight-box-spaced">
-                <h3>Severe Credit Stress (Added)</h3>
-                <table>
+            <div class="highlight-box highlight-box-spaced" aria-labelledby="severe-stress-heading">
+                <h3 id="severe-stress-heading">Severe Credit Stress Scenario (Added)</h3>
+                <table class="stress-table">
+                    <caption>Projected valuation under severe credit stress regimes</caption>
                     <thead>
                         <tr>
-                            <th>NCO (bps)</th>
-                            <th class="number">NI ($M)</th>
-                            <th class="number">ROTE</th>
-                            <th class="number">P/TBV</th>
-                            <th class="number">Price</th>
-                            <th>Notes</th>
+                            <th scope="col">NCO (bps)</th>
+                            <th scope="col" class="number">NI ($M)</th>
+                            <th scope="col" class="number">ROTE</th>
+                            <th scope="col" class="number">P/TBV</th>
+                            <th scope="col" class="number">Price</th>
+                            <th scope="col">Notes</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td><strong>100</strong></td>
+                            <th scope="row">100</th>
                             <td class="number">$167.3</td>
                             <td class="number">6.79%</td>
                             <td class="number">0.605×</td>
@@ -511,22 +254,30 @@
                             <td>ΔProvision +70 bps on $19.45B loans; after‑tax −$108.9M; Gordon valid (ROTE &gt; g).</td>
                         </tr>
                         <tr>
-                            <td><strong>200</strong></td>
+                            <th scope="row">200</th>
                             <td class="number">$11.7</td>
                             <td class="number">0.48%</td>
-                            <td class="number">n/a</td>
+                            <td class="number" aria-label="Not applicable">n/a</td>
                             <td class="number">$21.7–$28.9</td>
                             <td>ROTE ≤ g makes Gordon invalid; distress band <strong>0.60–0.80× TBV</strong> shown. 2009 peak was 234 bps.</td>
                         </tr>
                     </tbody>
                 </table>
-                <p class="text-small text-secondary">Assumptions: Tax 20%, TCE $2.465B, TBVPS $36.16, COE 9.587%, g 2.5%. Evidence: FDIC series; see <a href="evidence/workpapers/CATY_FDIC_NCO_series.md" target="_blank">workpaper</a>.</p>
+                <p class="table-note">Assumptions: Tax 20%, TCE $2.465B, TBVPS $36.16, COE 9.587%, g 2.5%. Evidence: FDIC series; see <a href="evidence/workpapers/CATY_FDIC_NCO_series.md" target="_blank" rel="noopener">workpaper</a>.</p>
             </div>
 
             <div class="highlight-box highlight-box-spaced">
                 <h3>Q3 Run-Rate → Normalized Earnings Bridge</h3>
                 <p>The bridge below reconciles the reported LTM earnings power to the normalized base case used in the Gordon Growth model.</p>
-                <p class="text-small">Quick Evidence: <a href="evidence/workpapers/CATY_FDIC_NCO_series.md" target="_blank" rel="noopener">FDIC NCO series</a> · <a href="evidence/workpapers/RATING_GUARDRAIL.md" target="_blank" rel="noopener">Rating guardrail</a> · <a href="evidence/valuation_sensitivity_summary.md" target="_blank" rel="noopener">Rate/Credit elasticities</a> · <a href="evidence/primary_sources/CATY_Q3_2025_Presentation_20251021.pdf#page=6" target="_blank" rel="noopener">IR slide (deposit mix)</a></p>
+                <div class="quick-evidence text-small" aria-labelledby="quick-evidence-heading">
+                    <p class="quick-evidence-title" id="quick-evidence-heading">Quick evidence</p>
+                    <ul class="quick-evidence-list">
+                        <li><a href="evidence/workpapers/CATY_FDIC_NCO_series.md" target="_blank" rel="noopener" aria-label="Open FDIC net charge-off series workpaper in a new tab">FDIC NCO series</a></li>
+                        <li><a href="evidence/workpapers/RATING_GUARDRAIL.md" target="_blank" rel="noopener" aria-label="Open rating guardrail methodology workpaper in a new tab">Rating guardrail</a></li>
+                        <li><a href="evidence/valuation_sensitivity_summary.md" target="_blank" rel="noopener" aria-label="View rate and credit elasticities summary in a new tab">Rate/Credit elasticities</a></li>
+                        <li><a href="evidence/primary_sources/CATY_Q3_2025_Presentation_20251021.pdf#page=6" target="_blank" rel="noopener" aria-label="Open investor relations slide showing deposit mix in a new tab">IR slide (deposit mix)</a></li>
+                    </ul>
+                </div>
                 <table class="compact-table">
                     <thead>
                         <tr>
@@ -1743,7 +1494,7 @@
             <!-- END AUTOGEN: caty12-metadata-table -->
         </section>
 
-    </div>
+    </main>
 
     <!-- JavaScript for Theme Toggle -->
     <script src="scripts/theme-toggle.js"></script>
