@@ -658,6 +658,59 @@
         </section>
 
         <!-- ======================================== -->
+        <!-- SCENARIO WATERFALL -->
+        <!-- ======================================== -->
+        <section id="scenario-waterfall" class="scenario-waterfall-section" aria-labelledby="scenario-waterfall-title">
+            <header class="scenario-waterfall-header">
+                <div>
+                    <h3 id="scenario-waterfall-title">Bull/Base/Bear Credit Scenario Waterfall</h3>
+                    <p class="scenario-waterfall-subtitle">
+                        Comparing LTM net income to normalized earnings under 25, 30, and 60 bps NCO assumptions; annotations show ROTE and valuation outcomes.
+                    </p>
+                </div>
+                <div class="scenario-waterfall-controls" role="group" aria-label="Scenario waterfall visibility toggles">
+                    <button type="button" id="scenarioToggleBaseline" class="toggle-btn" aria-pressed="true">Show Baseline</button>
+                    <button type="button" id="scenarioToggleProvision" class="toggle-btn" aria-pressed="false">Show Provision Impact</button>
+                    <button type="button" id="scenarioToggleDetails" class="toggle-btn" aria-pressed="true">Show Details</button>
+                </div>
+            </header>
+
+            <div class="chart-wrapper">
+                <canvas
+                    id="scenarioWaterfallChart"
+                    aria-label="Scenario waterfall chart comparing LTM net income to normalized net income under Bull, Base, and Bear credit assumptions showing provision impacts, ROTE outcomes, and target prices."
+                ></canvas>
+            </div>
+
+            <div class="chart-actions">
+                <button type="button" id="scenarioExportPng" class="export-btn">📥 Export PNG</button>
+                <button type="button" id="scenarioExportCsv" class="export-btn">📥 Export CSV</button>
+            </div>
+
+            <div class="data-table-wrapper">
+                <table>
+                    <caption>Bull/Base/Bear Credit Scenario Analysis</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Scenario</th>
+                            <th scope="col">NCO Assumption</th>
+                            <th scope="col">LTM NI</th>
+                            <th scope="col">Δ Provision</th>
+                            <th scope="col">Norm NI</th>
+                            <th scope="col">ROTE</th>
+                            <th scope="col">Target</th>
+                        </tr>
+                    </thead>
+                    <tbody id="scenarioTableBody">
+                        <!-- Populated via JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+
+            <p class="sr-only" id="scenarioToggleStatus" role="status" aria-live="polite"></p>
+        </section>
+
+        <!-- ======================================== -->
         <!-- SENSITIVITY ANALYSIS -->
         <!-- ======================================== -->
         <section id="sensitivity">
@@ -1499,6 +1552,7 @@
     <!-- JavaScript for Theme Toggle -->
     <script src="scripts/theme-toggle.js"></script>
     <script src="scripts/charts.js"></script>
+    <script src="scripts/scenario-waterfall.js"></script>
 
     <!-- Initialize NCO Chart -->
     <script>
