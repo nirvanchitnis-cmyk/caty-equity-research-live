@@ -318,6 +318,14 @@ body {
     opacity: 0.75;
 }
 
+/* Data snapshot timestamp styling */
+#data-snapshot-timestamp {
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    color: var(--text-primary);
+    opacity: 0.8;
+}
+
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
         animation-duration: 0.01ms !important;
