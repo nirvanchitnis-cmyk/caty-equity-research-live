@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CATY - Loans & Credit Quality | Data Repository</title>
     <link rel="stylesheet" href="styles/caty-equity-research.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 </head>
 <body>
     <!-- Theme Toggle -->
@@ -163,6 +164,75 @@
             <p class="text-small text-secondary">Source: <code>scripts/build_credit_stress.py</code> feeding <code>analysis/credit_stress_scenarios.json</code>. Loan base $20.10B and provision detail per Q3 2025 8-K (Exhibit 99.1 lines 213-304).</p>
             <p class="text-small text-secondary">Scenario weighting: base 50%, guardrail 30%, stress 15%, severe 5% — consistent with <code>analysis/probabilistic_outlook.json</code> and the downgrade guardrails discussed in the main deck.</p>
 
+
+            <section id="nco-time-series" class="nco-time-series-section" aria-labelledby="nco-time-series-title">
+                <header class="nco-time-series-header">
+                    <h3 id="nco-time-series-title">Net Charge-Offs Through Credit Cycle (2008-2025)</h3>
+                    <p class="nco-time-series-subtitle">Annual NCO rate (bars) with Q3 2025 update; through-cycle mean 42.8 bps | Data: FDIC Call Reports + Q3 2025 8-K</p>
+                </header>
+
+                <div class="nco-controls">
+                    <fieldset class="control-fieldset nco-toggle-group">
+                        <legend>Series</legend>
+                        <label class="control-switch nco-toggle">
+                            <input type="checkbox" id="ncoToggleQuarterly" checked>
+                            <span>Quarterly overlay (2024Q3-2025Q2)</span>
+                        </label>
+                    </fieldset>
+                    <fieldset class="control-fieldset nco-toggle-group">
+                        <legend>Reference lines</legend>
+                        <label class="control-switch nco-toggle">
+                            <input type="checkbox" id="ncoToggleThroughCycle" checked>
+                            <span>Through-cycle (42.8 bps)</span>
+                        </label>
+                        <label class="control-switch nco-toggle">
+                            <input type="checkbox" id="ncoToggleNormalized" checked>
+                            <span>Post-2014 90th percentile (30 bps)</span>
+                        </label>
+                        <label class="control-switch nco-toggle">
+                            <input type="checkbox" id="ncoToggleCurrent" checked>
+                            <span>Current (Q3 2025: 18.1 bps)</span>
+                        </label>
+                    </fieldset>
+                    <div class="control-button-row nco-actions">
+                        <button type="button" class="button-secondary" id="ncoExportPng">Export PNG</button>
+                        <button type="button" class="button-secondary" id="ncoExportCsv">Export CSV</button>
+                    </div>
+                    <div class="nco-normalized-note" aria-hidden="true">
+                        <span class="nco-band-swatch"></span>
+                        <span>Normalized credit range (20-45 bps)</span>
+                    </div>
+                    <span class="sr-only" id="ncoToggleStatus" role="status" aria-live="polite"></span>
+                </div>
+
+                <div class="nco-chart-container">
+                    <canvas id="ncoTimeSeriesChart" aria-label="Net charge-off rate time series from 2008 to 2025 with guardrails and quarterly overlay."></canvas>
+                </div>
+
+                <p class="nco-current-position" id="ncoCurrentPosition"></p>
+
+                <div class="data-table-wrapper nco-data-table">
+                    <table>
+                        <caption>NCO data table fallback</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Period</th>
+                                <th scope="col">Period Type</th>
+                                <th scope="col">NCO (bps)</th>
+                                <th scope="col">Color Category</th>
+                                <th scope="col">Context</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ncoDataTableBody"></tbody>
+                    </table>
+                </div>
+
+                <ul class="nco-footnotes">
+                    <li>Through-cycle mean (42.8 bps) = 2008-2024 average including GFC.</li>
+                    <li>Normalized base (30 bps) = post-2014 90th percentile, excludes GFC tail.</li>
+                    <li>Quarterly data annualized for comparability.</li>
+                </ul>
+            </section>
 
             <!-- BEGIN AUTOGEN: caty07-nco-history-heading -->
             <h3>Annual NCO Rate History (2008-2024)</h3>
@@ -704,5 +774,6 @@
 
     <!-- JavaScript for Theme Toggle -->
     <script src="scripts/theme-toggle.js"></script>
+    <script src="scripts/nco-time-series.js"></script>
 </body>
 </html>
