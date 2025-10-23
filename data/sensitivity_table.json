@@ -1,0 +1,17 @@
+[
+    {"delta_nim_bps": -50, "loan_growth": "-2%", "eps": 0.79, "tbvps": 40.77},
+    {"delta_nim_bps": -50, "loan_growth": "0%", "eps": 0.82, "tbvps": 40.79},
+    {"delta_nim_bps": -50, "loan_growth": "+2%", "eps": 0.86, "tbvps": 40.81},
+    {"delta_nim_bps": -25, "loan_growth": "-2%", "eps": 0.94, "tbvps": 40.87},
+    {"delta_nim_bps": -25, "loan_growth": "0%", "eps": 0.98, "tbvps": 40.90},
+    {"delta_nim_bps": -25, "loan_growth": "+2%", "eps": 1.01, "tbvps": 40.92},
+    {"delta_nim_bps": 0, "loan_growth": "-2%", "eps": 1.09, "tbvps": 40.97},
+    {"delta_nim_bps": 0, "loan_growth": "0%", "eps": 1.13, "tbvps": 41.00},
+    {"delta_nim_bps": 0, "loan_growth": "+2%", "eps": 1.17, "tbvps": 41.03},
+    {"delta_nim_bps": 25, "loan_growth": "-2%", "eps": 1.24, "tbvps": 41.07},
+    {"delta_nim_bps": 25, "loan_growth": "0%", "eps": 1.28, "tbvps": 41.10},
+    {"delta_nim_bps": 25, "loan_growth": "+2%", "eps": 1.33, "tbvps": 41.13},
+    {"delta_nim_bps": 50, "loan_growth": "-2%", "eps": 1.39, "tbvps": 41.18},
+    {"delta_nim_bps": 50, "loan_growth": "0%", "eps": 1.44, "tbvps": 41.21},
+    {"delta_nim_bps": 50, "loan_growth": "+2%", "eps": 1.49, "tbvps": 41.24}
+]
