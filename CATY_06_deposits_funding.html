@@ -211,5 +211,14 @@
     </div>
 
     <script src="scripts/theme-toggle.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                document.querySelectorAll('.chart-wrapper').forEach(w => w.classList.add('loaded'));
+            }, 150);
+        });
+    </script>
+
 </body>
 </html>

@@ -217,6 +217,16 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
+
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     font-size: 16px;
@@ -480,11 +490,27 @@ header {
     color: var(--warning);
 }
 .status-banner.status-warning {
-    border-left-color: var(--danger);
+    border-left: 4px solid var(--danger);
     background: var(--danger-surface);
+    animation: border-pulse 4s ease-in-out infinite;
 }
 .status-banner.status-warning strong {
     color: var(--danger);
+}
+
+@keyframes border-pulse {
+    0%, 100% {
+        border-left-color: var(--danger);
+    }
+    50% {
+        border-left-color: var(--warning);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .status-banner {
+        animation: none !important;
+    }
 }
 
 .price-target-grid {
@@ -498,6 +524,12 @@ header {
     background: var(--bg-tertiary);
     padding: 20px;
     border-radius: 8px;
+    transition: transform 200ms ease-out, box-shadow 200ms ease-out;
+}
+
+.metric-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(20, 32, 45, 0.12);
 }
 
 .metric-label {
@@ -548,8 +580,16 @@ td {
     border-bottom: 1px solid var(--border-color);
 }
 
-tr:hover {
-    background: var(--bg-tertiary);
+tbody tr:nth-child(even) {
+    background: rgba(20, 32, 45, 0.02);
+}
+
+tbody tr:hover {
+    background: rgba(196, 30, 58, 0.05);
+}
+
+[data-theme="dark"] tbody tr:nth-child(even) {
+    background: rgba(255, 255, 255, 0.02);
 }
 
 tbody tr.target-company {
@@ -668,19 +708,19 @@ li {
 }
 
 .alert-box.info {
-    border-left-color: var(--info);
+    border-left: 4px solid var(--info);
 }
 
 .alert-box.warning {
-    border-left-color: var(--warning);
+    border-left: 4px solid var(--warning);
 }
 
 .alert-box.success {
-    border-left-color: var(--success);
+    border-left: 4px solid var(--success);
 }
 
 .alert-box.danger {
-    border-left-color: var(--danger);
+    border-left: 4px solid var(--danger);
 }
 
 .alert-title {
@@ -717,12 +757,20 @@ li {
 a {
     color: var(--link-color);
     text-decoration: none;
-    transition: color 0.2s ease;
+    transition: color 200ms ease, border-bottom 200ms ease;
+    border-bottom: 1px solid transparent;
 }
 
 a:hover {
     color: var(--link-hover);
-    text-decoration: underline;
+    border-bottom: 1px solid var(--link-hover);
+}
+
+.module-card a,
+.toc-link,
+.back-button,
+.theme-toggle {
+    border-bottom: none !important;
 }
 
 .source-link {
@@ -909,6 +957,12 @@ a:hover {
     margin-bottom: 1rem;
     padding-bottom: 0.5rem;
     border-bottom: 2px solid var(--border-color);
+    transition: transform 150ms ease-out;
+    display: inline-block;
+}
+
+.cfa-category-header:hover {
+    transform: scale(1.02);
 }
 
 .module-grid {
@@ -958,6 +1012,25 @@ a:hover {
     color: var(--cathay-gold);
     font-weight: 600;
     margin-bottom: 5px;
+}
+
+@keyframes badge-pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.75;
+    }
+}
+
+.module-card[data-status="UPDATED"] .module-card-badge {
+    animation: badge-pulse 3s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .module-card-badge {
+        animation: none !important;
+    }
 }
 
 .module-card-badge-danger {
@@ -1459,7 +1532,7 @@ a:hover {
 }
 
 .highlight-box.success {
-    border-left-color: var(--success);
+    border-left: 4px solid var(--success);
     background: var(--success-surface);
 }
 
@@ -2115,17 +2188,11 @@ a:hover {
    ACCESSIBILITY - Focus States
    ============================================================ */
 
-/* Focus visible for all interactive elements */
-a:focus-visible,
-button:focus-visible,
-input:focus-visible,
-select:focus-visible,
-textarea:focus-visible,
-[tabindex]:focus-visible {
-    outline: var(--focus-outline);
+/* Focus visible for interactive elements */
+*:focus-visible {
+    outline: 2px solid var(--cathay-gold);
     outline-offset: 2px;
-    border-radius: 4px;
-    box-shadow: var(--focus-shadow);
+    border-radius: 2px;
 }
 
 /* Enhanced focus for theme and TOC toggle buttons */
@@ -2134,25 +2201,13 @@ textarea:focus-visible,
     outline-offset: 3px;
 }
 
-/* Focus for links */
-a:focus-visible {
-    outline-color: var(--link-color);
-    text-decoration: underline;
-}
-
 /* Focus for module cards */
+.module-card:focus-visible,
 .module-card-link:focus-visible,
 .dashboard-card:focus-visible {
+    outline: 3px solid var(--cathay-gold);
     outline-offset: 4px;
-    box-shadow: var(--focus-shadow);
-    transform: translateY(-2px);
-}
-
-/* Ensure focus is visible in dark mode */
-[data-theme="dark"] a:focus-visible,
-[data-theme="dark"] button:focus-visible,
-[data-theme="dark"] input:focus-visible {
-    outline-color: var(--cathay-gold);
+    border-radius: 4px;
 }
 
 /* Remove default outline (replaced by custom focus-visible) */
@@ -3023,6 +3078,18 @@ a:focus-visible {
 
 .nco-footnotes li {
     line-height: 1.45;
+}
+
+/* ============================================================
+   CHART WRAPPER
+   ============================================================ */
+.chart-wrapper {
+    opacity: 0;
+    transition: opacity 400ms ease-in;
+}
+
+.chart-wrapper.loaded {
+    opacity: 1;
 }
 
 /* ============================================================
