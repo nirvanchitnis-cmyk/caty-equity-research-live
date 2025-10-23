@@ -286,9 +286,8 @@ We're at the precipice of something amazing. Let's build it together.
 
 **Nirvan Chitnis**
 Assurance Associate, PwC
-📧 nirvan.chitnis@pwc.com
 🔗 https://github.com/nirvanchitnis-cmyk
-📍 San Jose, California
+
 
 ---
 
