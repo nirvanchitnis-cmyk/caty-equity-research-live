@@ -379,11 +379,11 @@ body {
     padding: 20px;
 }
 
-header {
-    background: var(--bg-secondary);
-    border-bottom: 3px solid var(--cathay-red);
-    padding: 30px 0;
-    margin-bottom: 40px;
+body > header {
+    background: transparent;
+    border-bottom: none;
+    padding: 0;
+    margin-bottom: 0;
 }
 
 .header-content {
@@ -392,16 +392,35 @@ header {
     padding: 0 20px;
 }
 
-.company-title {
-    font-size: 2.5em;
-    font-weight: 700;
-    color: var(--cathay-red);
-    margin-bottom: 10px;
+.page-header-section {
+    background: var(--bg-secondary);
+    border-bottom: 4px solid var(--cathay-gold);
+    padding: 40px 32px;
+    margin-bottom: 32px;
+    border-radius: 8px;
 }
 
-.report-meta {
+[data-theme="dark"] .page-header-section {
+    background: var(--bg-secondary);
+    border-bottom-color: var(--cathay-gold);
+}
+
+.page-title {
+    font-size: 2.5em;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+}
+
+.page-subtitle {
+    font-size: 1.1em;
     color: var(--text-secondary);
-    font-size: 0.95em;
+    margin-bottom: 12px;
+}
+
+.page-meta {
+    font-size: 0.9em;
+    color: var(--text-secondary);
 }
 
 /* Theme Toggle */
@@ -813,7 +832,7 @@ a:hover {
    RESPONSIVE
    ============================================================ */
 @media (max-width: 768px) {
-    .company-title {
+    .page-title {
         font-size: 1.8em;
     }
 
@@ -2020,14 +2039,14 @@ a:hover {
     }
 
     /* Headers */
-    header {
+    body > header {
         background: white !important;
         border-bottom: 2px solid #C41E3A !important;
         padding: 20px 0;
         page-break-after: avoid;
     }
 
-    .company-title {
+    .page-title {
         color: #C41E3A !important;
         font-size: 24pt;
     }
