@@ -83,6 +83,14 @@
     --peer-confidence: rgba(122, 136, 147, 0.12);
     --peer-excluded: #7A8893;
     --peer-median: rgba(122, 136, 147, 0.5);
+    --capital-base: #2E6F3E;
+    --capital-loss: #8C1E33;
+    --capital-mitigant: #2E6F3E;
+    --capital-stressed: #8B7355;
+    --capital-reg-min: #8C1E33;
+    --capital-well-cap: #B85C00;
+    --capital-bar-opacity: 0.85;
+    --capital-annotation: #4F5B67;
 
     /* Focus */
     --focus-outline: 2px solid var(--info);
@@ -182,6 +190,14 @@
     --peer-confidence: rgba(194, 205, 215, 0.12);
     --peer-excluded: #C2CDD7;
     --peer-median: rgba(194, 205, 215, 0.4);
+    --capital-base: #49A35C;
+    --capital-loss: #FF6B7F;
+    --capital-mitigant: #49A35C;
+    --capital-stressed: #D4AF37;
+    --capital-reg-min: #FF6B7F;
+    --capital-well-cap: #FFA94D;
+    --capital-bar-opacity: 0.8;
+    --capital-annotation: #C2CDD7;
 }
 
 /* ============================================================
@@ -3422,6 +3438,112 @@ a:focus-visible {
     }
 
     .valuation-bridge-section canvas {
+        height: 360px;
+    }
+}
+
+/* ============================================================
+   CAPITAL STRESS WATERFALL MODULE
+   ============================================================ */
+.capital-stress-section {
+    margin: 3.25rem 0;
+    padding: 2.25rem 2rem;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: 0 18px 32px rgba(20, 32, 45, 0.08);
+}
+
+.capital-stress-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1.75rem;
+    margin-bottom: 1.75rem;
+}
+
+.capital-stress-header h3 {
+    font-size: 1.35rem;
+    margin-bottom: 0.35rem;
+}
+
+.capital-stress-subtitle {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    max-width: 720px;
+}
+
+.capital-stress-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.capital-stress-section .chart-wrapper {
+    position: relative;
+    width: 100%;
+    min-height: 360px;
+}
+
+.capital-stress-section canvas {
+    width: 100%;
+    max-width: 100%;
+    height: 420px;
+}
+
+.capital-stress-section .chart-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 1.5rem;
+}
+
+.capital-stress-section .export-btn {
+    border: 1px solid var(--border-color);
+    border-radius: 999px;
+    background: var(--info-surface);
+    color: var(--info);
+    padding: 8px 18px;
+    font-weight: 600;
+    font-size: 0.92rem;
+    cursor: pointer;
+    transition: background var(--motion-duration) var(--motion-ease),
+                color var(--motion-duration) var(--motion-ease),
+                border-color var(--motion-duration) var(--motion-ease);
+}
+
+.capital-stress-section .export-btn:hover,
+.capital-stress-section .export-btn:focus-visible {
+    background: rgba(124, 184, 255, 0.24);
+    border-color: var(--info);
+}
+
+.capital-stress-section .export-btn:focus-visible {
+    outline: var(--focus-outline);
+    box-shadow: var(--focus-shadow);
+}
+
+.capital-stress-section .data-table-wrapper {
+    margin-top: 2rem;
+}
+
+.capital-stress-section table caption {
+    font-size: 1rem;
+}
+
+.capital-stress-annotation {
+    font-size: 0.85rem;
+    color: var(--capital-annotation);
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .capital-stress-section {
+        padding: 1.75rem 1.25rem;
+    }
+
+    .capital-stress-section canvas {
         height: 360px;
     }
 }

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CATY - Capital & Liquidity | Regulatory Dashboard</title>
     <link rel="stylesheet" href="styles/caty-equity-research.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 </head>
 <body>
     <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" aria-pressed="false">
@@ -77,6 +78,62 @@
             <!-- END AUTOGEN: caty09-capital-table -->
         </section>
 
+        <!-- ======================================== -->
+        <!-- CAPITAL STRESS WATERFALL -->
+        <!-- ======================================== -->
+        <section id="capital-stress-waterfall" class="capital-stress-section" aria-labelledby="capital-stress-title">
+            <header class="capital-stress-header">
+                <div>
+                    <h3 id="capital-stress-title">Capital Stress Waterfall (CET1 Scenarios)</h3>
+                    <p class="capital-stress-subtitle">
+                        Severe recession bridge from Q3 2025 CET1 (13.15%) through stressed loss components and mitigants to the 10.55% stressed outcome versus regulatory thresholds.
+                    </p>
+                </div>
+                <div class="capital-stress-controls" role="group" aria-label="Capital stress visibility toggles">
+                    <button type="button" id="capitalToggleDetails" class="toggle-btn" aria-pressed="false">Show Component Details</button>
+                    <button type="button" id="capitalToggleWellCap" class="toggle-btn" aria-pressed="true">Show Well-Capitalized Line</button>
+                    <button type="button" id="capitalToggleBuffer" class="toggle-btn" aria-pressed="true">Show Buffer Metrics</button>
+                </div>
+            </header>
+
+            <div class="chart-wrapper">
+                <canvas
+                    id="capitalStressChart"
+                    aria-label="Capital stress waterfall chart showing CET1 ratio progression from 13.15% through credit, market, and revenue stresses offset by PPNR and capital actions to 10.55% stressed ending ratio above the 7.0% regulatory minimum."
+                ></canvas>
+            </div>
+
+            <div class="chart-actions">
+                <button type="button" id="capitalExportPng" class="export-btn">📥 Export PNG</button>
+                <button type="button" id="capitalExportCsv" class="export-btn">📥 Export CSV</button>
+            </div>
+
+            <div class="data-table-wrapper">
+                <table>
+                    <caption>CET1 Capital Stress Waterfall</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Component</th>
+                            <th scope="col">Impact</th>
+                            <th scope="col">CET1 After</th>
+                            <th scope="col">Category</th>
+                        </tr>
+                    </thead>
+                    <tbody id="capitalTableBody">
+                        <!-- Populated via JavaScript -->
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th scope="row">Regulatory Minimum</th>
+                            <td colspan="3" id="capitalBufferFootnote">Loading buffer metrics…</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+
+            <p class="sr-only" id="capitalToggleStatus" role="status" aria-live="polite"></p>
+        </section>
+
         <section id="aoci-impact">
             <h2>AOCI Impact on Tangible Equity</h2>
             <!-- BEGIN AUTOGEN: caty09-aoci-summary -->
@@ -131,5 +188,6 @@
     </div>
 
     <script src="scripts/theme-toggle.js"></script>
+    <script src="scripts/capital-stress.js"></script>
 </body>
 </html>
