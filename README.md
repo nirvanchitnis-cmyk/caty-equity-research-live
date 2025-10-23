@@ -1,7 +1,7 @@
 # CATY — Equity Research Live
 
 <!-- CANONICAL-REMINDER:BEGIN -->
-## Canonical Reminder for All Agents (CATY) — v1.0 • 2025-10-22
+## Canonical Reminder for All Agents (CATY) (Temporal Anchor)
 
 **Non-negotiable:** We operate under canonical provenance. Integrity, clarity, and accountability govern this project.
 
