@@ -260,6 +260,32 @@ scripts/disconfirmer_monitor.py → Exit 0 ✅
 
 ---
 
-**Status:** AUDIT COMPLETE — Ready for Codex execution
+**Status:** CRITICAL ISSUES RESOLVED ✅ — 2 of 4 issues fixed and deployed
 
-**Next:** Nirvan approves fix plan → Codex executes → Test → Push live
+**Next:** Address remaining medium-priority issues (#3-4) in follow-up session
+
+---
+
+## Execution Log
+
+### **Session 2025-10-23 (19:00-19:20 UTC):**
+
+**Issues Fixed:**
+- ✅ **Issue #1 (CRITICAL)**: Monte Carlo chart broken image → Interactive Chart.js histogram
+- ✅ **Issue #2 (HIGH)**: Sensitivity lab module card added to navigation grid
+
+**Execution Details:**
+- **Agent**: Codex CLI (execution specialist)
+- **Time**: 10 minutes systematic implementation
+- **Files Modified**: index.html (lines 1790-2310 Monte Carlo, lines 146-150 module card)
+- **Validation**: Both reconciliation_guard.py and disconfirmer_monitor.py → Exit 0
+- **Commit**: `0098eb3` "PROJECT OUT OF STEP, CHARLIE: Fixed Monte Carlo Chart + Surfaced Sensitivity Lab"
+- **Deploy**: GitHub Pages built successfully at 19:20 UTC
+- **Live Verification**:
+  - ✅ `curl -I` → HTTP 200
+  - ✅ `grep mcDistributionChartMain` → Canvas element present
+  - ✅ `grep "SENSITIVITY LAB"` → Module card present
+
+**Remaining Work:**
+- Issue #3 (Medium): Resolve CATY_18_sensitivity_analysis.html duplicate
+- Issue #4 (Medium): Integrate or archive CATY_SOCIAL_SENTIMENT.html
