@@ -3,21 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CATY Sensitivity Lab | NIM vs EPS & TBVPS</title>
-    <link rel="stylesheet" href="assets/css/sensitivity_viz.css">
+    <title>CATY - NIM Sensitivity Lab | EPS & TBVPS Response Analysis</title>
+    <link rel="stylesheet" href="styles/caty-equity-research.css">
     <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
 </head>
-<body class="sensitivity-page">
-<main>
-    <header class="page-header" aria-label="Page header">
-        <a href="index.html" class="filter-chip" style="text-decoration:none;" aria-label="Back to dashboard">← All modules</a>
+<body>
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" aria-pressed="false">
+        <span id="theme-icon" aria-hidden="true">🌙</span>
+        <span id="theme-text">Dark Mode</span>
+    </button>
+
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <h1 class="page-title">Cathay General Bancorp (NASDAQ: CATY)</h1>
+            <p class="page-subtitle">NIM Sensitivity Lab | EPS &amp; TBVPS Response to ±50 bps NIM Shifts</p>
+            <p class="page-meta">
+                Interactive scenario analysis |
+                Last Updated: October 23, 2025 |
+                Source: Q3 2025 First-Order Bridge Calculation
+            </p>
+        </div>
     </header>
 
-    <section class="headline-callout" aria-live="polite">
-        <strong>50 bps NIM swing = <span id="headline-variation">62%</span> EPS range</strong>
-        From $0.79 to $1.49 under extreme scenarios (-50 bps/-2% loans → +50 bps/+2% loans)
-    </section>
+    <div class="container">
+        <a href="index.html" class="back-button">← Back to Main Report</a>
+
+        <div class="callout-box" style="border-left-color: #2F6690;">
+            <div class="callout-title">Key Insight: NIM Sensitivity Range</div>
+            <p class="line-height-relaxed">
+                <strong>50 bps NIM swing = <span id="headline-variation">62%</span> EPS range</strong><br>
+                From $0.79 to $1.49 under extreme scenarios (-50 bps/-2% loans → +50 bps/+2% loans)
+            </p>
+        </div>
 
     <section class="chart-grid">
         <article class="chart-card" aria-labelledby="eps-chart-heading">
@@ -25,14 +45,14 @@
             <p class="chart-subtitle">Quarterly EPS response to ±50 bps NIM shifts under alternative loan growth paths.</p>
             <div class="chart-toolbar" role="toolbar" aria-label="Scenario visibility toggles">
                 <span class="sr-only" id="scenario-toggle-instructions">Press Enter to toggle loan growth scenarios.</span>
-                <button type="button" class="filter-chip" data-scenario="-2%" aria-pressed="true" aria-describedby="scenario-toggle-instructions">-2% loans</button>
-                <button type="button" class="filter-chip" data-scenario="0%" aria-pressed="true" aria-describedby="scenario-toggle-instructions">0% loans</button>
-                <button type="button" class="filter-chip" data-scenario="+2%" aria-pressed="true" aria-describedby="scenario-toggle-instructions">+2% loans</button>
+                <button type="button" class="filter-chip" data-scenario="-2%" aria-pressed="true" aria-describedby="scenario-toggle-instructions" style="border: 1px solid #cbd2e1; border-radius: 999px; padding: 0.4rem 0.9rem; background: #8C1E33; color: #ffffff; cursor: pointer; font-size: 0.9rem;">-2% loans</button>
+                <button type="button" class="filter-chip" data-scenario="0%" aria-pressed="true" aria-describedby="scenario-toggle-instructions" style="border: 1px solid #cbd2e1; border-radius: 999px; padding: 0.4rem 0.9rem; background: #4F5B67; color: #ffffff; cursor: pointer; font-size: 0.9rem;">0% loans</button>
+                <button type="button" class="filter-chip" data-scenario="+2%" aria-pressed="true" aria-describedby="scenario-toggle-instructions" style="border: 1px solid #cbd2e1; border-radius: 999px; padding: 0.4rem 0.9rem; background: #2E6F3E; color: #ffffff; cursor: pointer; font-size: 0.9rem;">+2% loans</button>
             </div>
-            <div class="chart-wrapper">
-                <canvas id="epsChart" role="img" aria-label="EPS sensitivity to NIM changes chart"></canvas>
+            <div class="chart-wrapper" style="position: relative; width: 100%; min-height: 450px;">
+                <canvas id="epsChart" style="width: 100%; height: 450px;" role="img" aria-label="EPS sensitivity to NIM changes chart"></canvas>
             </div>
-            <p class="chart-footnote">Baseline EPS $1.13 at 0 bps NIM delta and flat loans. Annotations show worst and best cases versus baseline.</p>
+            <p class="chart-footnote">Baseline EPS $1.13 at 0 bps NIM delta and flat loans. Range: $0.79 (worst: -50 bps/-2% loans) to $1.49 (best: +50 bps/+2% loans).</p>
         </article>
 
         <article class="chart-card" aria-labelledby="tbvps-chart-heading">
@@ -40,14 +60,14 @@
             <p class="chart-subtitle">Tangible book value per share (TBVPS) response to ±50 bps NIM shifts under alternative loan growth paths.</p>
             <div class="chart-toolbar" role="toolbar" aria-label="Scenario visibility toggles (mirrors EPS chart)">
                 <span class="sr-only" id="scenario-toggle-instructions-tbvps">Press Enter to toggle loan growth scenarios.</span>
-                <button type="button" class="filter-chip" data-scenario="-2%" aria-pressed="true" aria-describedby="scenario-toggle-instructions-tbvps">-2% loans</button>
-                <button type="button" class="filter-chip" data-scenario="0%" aria-pressed="true" aria-describedby="scenario-toggle-instructions-tbvps">0% loans</button>
-                <button type="button" class="filter-chip" data-scenario="+2%" aria-pressed="true" aria-describedby="scenario-toggle-instructions-tbvps">+2% loans</button>
+                <button type="button" class="filter-chip" data-scenario="-2%" aria-pressed="true" aria-describedby="scenario-toggle-instructions-tbvps" style="border: 1px solid #cbd2e1; border-radius: 999px; padding: 0.4rem 0.9rem; background: #8C1E33; color: #ffffff; cursor: pointer; font-size: 0.9rem;">-2% loans</button>
+                <button type="button" class="filter-chip" data-scenario="0%" aria-pressed="true" aria-describedby="scenario-toggle-instructions-tbvps" style="border: 1px solid #cbd2e1; border-radius: 999px; padding: 0.4rem 0.9rem; background: #4F5B67; color: #ffffff; cursor: pointer; font-size: 0.9rem;">0% loans</button>
+                <button type="button" class="filter-chip" data-scenario="+2%" aria-pressed="true" aria-describedby="scenario-toggle-instructions-tbvps" style="border: 1px solid #cbd2e1; border-radius: 999px; padding: 0.4rem 0.9rem; background: #2E6F3E; color: #ffffff; cursor: pointer; font-size: 0.9rem;">+2% loans</button>
             </div>
-            <div class="chart-wrapper">
-                <canvas id="tbvpsChart" role="img" aria-label="TBVPS sensitivity to NIM changes chart"></canvas>
+            <div class="chart-wrapper" style="position: relative; width: 100%; min-height: 450px;">
+                <canvas id="tbvpsChart" style="width: 100%; height: 450px;" role="img" aria-label="TBVPS sensitivity to NIM changes chart"></canvas>
             </div>
-            <p class="chart-footnote">Baseline TBVPS $41.00 at 0 bps NIM delta and flat loans. Worst/best callouts quantify per-share delta versus baseline.</p>
+            <p class="chart-footnote">Baseline TBVPS $41.00 at 0 bps NIM delta and flat loans. Range: $40.77 (worst) to $41.24 (best).</p>
         </article>
     </section>
 
@@ -89,7 +109,8 @@
         <p><strong>Method</strong>: First-order bridge. EPS = (IEA × NIM / 4 × (1 - tax)) ÷ shares + non-interest contribution. TBVPS effect = EPS × (1 - payout) versus baseline.</p>
         <p><strong>Data vintage</strong>: Oct 22 2025 &nbsp;|&nbsp; Source: CATY 10-Q Q2 2025 &nbsp;|&nbsp; Baseline: EPS $1.13, TBVPS $41.00, NIM 3.31%, IEA $22.0B, shares 68.7M.</p>
     </section>
-</main>
+
+</div> <!-- end .container -->
 
 <script>
 const FALLBACK_SENSITIVITY_DATA = [
@@ -178,14 +199,6 @@ const directLabelPlugin = {
         });
     }
 };
-
-const annotationPlugin = window["chartjs-plugin-annotation"];
-if (annotationPlugin) {
-    Chart.register(annotationPlugin);
-}
-Chart.register(directLabelPlugin);
-console.log("Chart.js loaded:", typeof Chart !== "undefined");
-console.log("Annotation plugin loaded:", typeof annotationPlugin !== "undefined");
 
 async function loadSensitivityData() {
     try {
@@ -286,48 +299,6 @@ function prepareAnnotations(type) {
                     font: { size: 11, weight: "600" },
                     padding: 6
                 }
-            },
-            worst: {
-                type: "label",
-                xValue: "-50",
-                yValue: 0.79,
-                backgroundColor: "rgba(140,30,51,0.12)",
-                borderColor: "#8C1E33",
-                borderWidth: 1,
-                content: ["Worst case:", "-30% vs baseline"],
-                font: { size: 11, weight: "600" },
-                color: "#8C1E33",
-                position: { x: "center", y: "bottom" },
-                padding: 8,
-                callout: {
-                    enabled: true,
-                    borderColor: "#8C1E33",
-                    borderWidth: 1,
-                    arrowHeadSize: 6,
-                    position: "center",
-                    side: "bottom"
-                }
-            },
-            best: {
-                type: "label",
-                xValue: "+50",
-                yValue: 1.49,
-                backgroundColor: "rgba(46,111,62,0.12)",
-                borderColor: "#2E6F3E",
-                borderWidth: 1,
-                content: ["Best case:", "+32% vs baseline"],
-                font: { size: 11, weight: "600" },
-                color: "#2E6F3E",
-                position: { x: "center", y: "top" },
-                padding: 8,
-                callout: {
-                    enabled: true,
-                    borderColor: "#2E6F3E",
-                    borderWidth: 1,
-                    arrowHeadSize: 6,
-                    position: "center",
-                    side: "top"
-                }
             }
         };
     }
@@ -348,48 +319,6 @@ function prepareAnnotations(type) {
                 font: { size: 11, weight: "600" },
                 padding: 6
             }
-        },
-        worst: {
-            type: "label",
-            xValue: "-50",
-            yValue: 40.77,
-            backgroundColor: "rgba(140,30,51,0.12)",
-            borderColor: "#8C1E33",
-            borderWidth: 1,
-            content: ["Worst case:", "-$0.23 vs baseline"],
-            font: { size: 11, weight: "600" },
-            color: "#8C1E33",
-            position: { x: "center", y: "bottom" },
-            padding: 8,
-            callout: {
-                enabled: true,
-                borderColor: "#8C1E33",
-                borderWidth: 1,
-                arrowHeadSize: 6,
-                position: "center",
-                side: "bottom"
-            }
-        },
-        best: {
-            type: "label",
-            xValue: "+50",
-            yValue: 41.24,
-            backgroundColor: "rgba(46,111,62,0.12)",
-            borderColor: "#2E6F3E",
-            borderWidth: 1,
-            content: ["Best case:", "+$0.24 vs baseline"],
-            font: { size: 11, weight: "600" },
-            color: "#2E6F3E",
-            position: { x: "center", y: "top" },
-            padding: 8,
-            callout: {
-                enabled: true,
-                borderColor: "#2E6F3E",
-                borderWidth: 1,
-                arrowHeadSize: 6,
-                position: "center",
-                side: "top"
-            }
         }
     };
 }
@@ -408,7 +337,7 @@ function sharedChartOptions(yTitle, yMin, yMax, step, formatter, annotations, la
         maintainAspectRatio: false,
         layout: {
             padding: {
-                right: 90
+                right: 140
             }
         },
         scales: {
@@ -478,6 +407,20 @@ function sharedChartOptions(yTitle, yMin, yMax, step, formatter, annotations, la
     };
 }
 
+function updateScenarioButtonState(button) {
+    const color = SCENARIO_COLORS[button.dataset.scenario] || "#2F6690";
+    const pressed = button.getAttribute("aria-pressed") === "true";
+    if (pressed) {
+        button.style.backgroundColor = color;
+        button.style.color = "#ffffff";
+        button.style.borderColor = color;
+    } else {
+        button.style.backgroundColor = "#ffffff";
+        button.style.color = color;
+        button.style.borderColor = color;
+    }
+}
+
 function toggleScenarioVisibility(charts, scenario, buttons) {
     charts.forEach((chart) => {
         const datasetIndex = chart.data.datasets.findIndex((dataset) => dataset.scenario === scenario);
@@ -493,6 +436,7 @@ function toggleScenarioVisibility(charts, scenario, buttons) {
         if (btn.dataset.scenario === scenario) {
             const pressed = btn.getAttribute("aria-pressed") === "true";
             btn.setAttribute("aria-pressed", String(!pressed));
+            updateScenarioButtonState(btn);
         }
     });
 }
@@ -575,7 +519,22 @@ function exportTableAsCsv(data) {
     URL.revokeObjectURL(url);
 }
 
-document.addEventListener("DOMContentLoaded", async () => {
+async function initializeCharts() {
+    // Wait for Chart.js to load
+    if (typeof Chart === "undefined" || typeof window["chartjs-plugin-annotation"] === "undefined") {
+        setTimeout(initializeCharts, 50);
+        return;
+    }
+
+    // Register plugins now that Chart.js is loaded
+    const annotationPlugin = window["chartjs-plugin-annotation"];
+    if (annotationPlugin) {
+        Chart.register(annotationPlugin);
+    }
+    Chart.register(directLabelPlugin);
+    console.log("Chart.js loaded:", typeof Chart !== "undefined");
+    console.log("Annotation plugin loaded:", typeof annotationPlugin !== "undefined");
+
     const data = await loadSensitivityData();
     computeHeadline(data);
     buildTable(data);
@@ -635,6 +594,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const toggleButtons = Array.from(document.querySelectorAll('.chart-toolbar .filter-chip'));
     toggleButtons.forEach((button) => {
+        updateScenarioButtonState(button);
         button.addEventListener("click", () => {
             const scenario = button.dataset.scenario;
             toggleScenarioVisibility([epsChart, tbvpsChart], scenario, toggleButtons.filter((btn) => btn.dataset.scenario === scenario));
@@ -649,7 +609,42 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     document.getElementById("exportPng").addEventListener("click", () => exportChartsAsPng([epsChart, tbvpsChart]));
     document.getElementById("exportCsv").addEventListener("click", () => exportTableAsCsv(data));
-});
+}
+
+document.addEventListener("DOMContentLoaded", initializeCharts);
+</script>
+
+<script>
+function toggleTheme() {
+    const html = document.documentElement;
+    const currentTheme = html.getAttribute("data-theme");
+    const newTheme = currentTheme === "dark" ? "light" : "dark";
+    html.setAttribute("data-theme", newTheme);
+
+    const icon = document.getElementById("theme-icon");
+    const text = document.getElementById("theme-text");
+    const button = document.querySelector(".theme-toggle");
+
+    if (newTheme === "dark") {
+        icon.textContent = "☀️";
+        text.textContent = "Light Mode";
+        button.setAttribute("aria-pressed", "true");
+    } else {
+        icon.textContent = "🌙";
+        text.textContent = "Dark Mode";
+        button.setAttribute("aria-pressed", "false");
+    }
+
+    localStorage.setItem("theme", newTheme);
+}
+
+const savedTheme = localStorage.getItem("theme") || "light";
+if (savedTheme === "dark") {
+    document.documentElement.setAttribute("data-theme", "dark");
+    document.getElementById("theme-icon").textContent = "☀️";
+    document.getElementById("theme-text").textContent = "Light Mode";
+    document.querySelector(".theme-toggle").setAttribute("aria-pressed", "true");
+}
 </script>
 </body>
 </html>
