@@ -15,8 +15,8 @@
 }
 
 .headline-callout {
-    background: #dfe9ff;
-    border-left: 6px solid #1d4ed8;
+    background: #E1ECF4;
+    border-left: 6px solid #2F6690;
     border-radius: 12px;
     padding: 1.25rem 1.5rem;
     font-size: 1.2rem;
@@ -79,29 +79,29 @@
 }
 
 .filter-chip:focus {
-    outline: 3px solid rgba(29, 78, 216, 0.35);
+    outline: 3px solid rgba(47, 102, 144, 0.35);
     outline-offset: 2px;
 }
 
 .filter-chip[aria-pressed="true"] {
-    background: #1d4ed8;
+    background: #2F6690;
     color: #ffffff;
-    border-color: #1d4ed8;
+    border-color: #2F6690;
 }
 
 .filter-chip[data-scenario="-2%"][aria-pressed="true"] {
-    background: #b91c1c;
-    border-color: #991b1b;
+    background: #8C1E33;
+    border-color: #721829;
 }
 
 .filter-chip[data-scenario="0%"][aria-pressed="true"] {
-    background: #1e3a8a;
-    border-color: #1e3a8a;
+    background: #4F5B67;
+    border-color: #3D4851;
 }
 
 .filter-chip[data-scenario="+2%"][aria-pressed="true"] {
-    background: #065f46;
-    border-color: #065f46;
+    background: #2E6F3E;
+    border-color: #245830;
 }
 
 .chart-wrapper {
@@ -160,7 +160,7 @@
 }
 
 .sensitivity-table tbody tr:hover {
-    background: rgba(29, 78, 216, 0.05);
+    background: rgba(47, 102, 144, 0.05);
 }
 
 .export-actions {
@@ -176,8 +176,8 @@
     gap: 0.5rem;
     border-radius: 999px;
     padding: 0.55rem 1.25rem;
-    border: 1px solid #2563eb;
-    background: #1d4ed8;
+    border: 1px solid #2F6690;
+    background: #2F6690;
     color: #ffffff;
     cursor: pointer;
     font-size: 0.9rem;
@@ -185,12 +185,12 @@
 }
 
 .export-button:hover {
-    background: #1e40af;
+    background: #265478;
     transform: translateY(-1px);
 }
 
 .export-button:focus {
-    outline: 3px solid rgba(37, 99, 235, 0.35);
+    outline: 3px solid rgba(47, 102, 144, 0.35);
     outline-offset: 2px;
 }
 
@@ -201,7 +201,7 @@ details.data-fallback {
 details.data-fallback summary {
     cursor: pointer;
     font-weight: 600;
-    color: #1d4ed8;
+    color: #2F6690;
 }
 
 .footnotes {
