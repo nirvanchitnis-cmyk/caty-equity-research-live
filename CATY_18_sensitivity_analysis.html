@@ -1,26 +1,826 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CATY - EPS/TBV Sensitivities</title>
-<link rel="stylesheet" href="styles/caty-equity-research.css"></head>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CATY - NIM Sensitivity Lab | EPS &amp; TBVPS Response Analysis</title>
+    <link rel="stylesheet" href="styles/caty-equity-research.css">
+    <script async src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script async src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+</head>
 <body>
-<a href="index.html" class="back-button">← Back to Main Report</a>
-<div class="container">
-<h1 class="page-title">EPS Sensitivities to NIM and Loan Growth</h1>
-<p>Baseline EPS (quarter): 1.13 | NIM: 3.31% | IEA: $22.0B | Shares: 68.7M</p>
-<table>
-<thead><tr><th>Δ NIM (bps)</th><th class="numeric">EPS @ -2% Loans</th><th class="numeric">EPS @ 0%</th><th class="numeric">EPS @ +2% Loans</th><th class="numeric">TBVPS @ -2%</th><th class="numeric">TBVPS @ 0%</th><th class="numeric">TBVPS @ +2%</th></tr></thead>
-<tbody>
-<tr><td>-50</td><td class='numeric'>0.79</td><td class='numeric'>0.82</td><td class='numeric'>0.86</td><td class='numeric'>40.77</td><td class='numeric'>40.79</td><td class='numeric'>40.81</td></tr><tr><td>-25</td><td class='numeric'>0.94</td><td class='numeric'>0.98</td><td class='numeric'>1.01</td><td class='numeric'>40.87</td><td class='numeric'>40.90</td><td class='numeric'>40.92</td></tr><tr><td>+0</td><td class='numeric'>1.09</td><td class='numeric'>1.13</td><td class='numeric'>1.17</td><td class='numeric'>40.97</td><td class='numeric'>41.00</td><td class='numeric'>41.03</td></tr><tr><td>+25</td><td class='numeric'>1.24</td><td class='numeric'>1.28</td><td class='numeric'>1.33</td><td class='numeric'>41.07</td><td class='numeric'>41.10</td><td class='numeric'>41.13</td></tr><tr><td>+50</td><td class='numeric'>1.39</td><td class='numeric'>1.44</td><td class='numeric'>1.49</td><td class='numeric'>41.18</td><td class='numeric'>41.21</td><td class='numeric'>41.24</td></tr>
-</tbody></table>
-<p class="text-small text-secondary">Method: First-order bridge EPS = (IEA×NIM/4×(1-tax))/shares + calibrated non-interest contribution. TBV effect = EPS × (1 - payout) vs baseline. Update BASE from 10-Q.</p>
-</div>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            setTimeout(() => {
-                document.querySelectorAll('.chart-wrapper').forEach(w => w.classList.add('loaded'));
-            }, 150);
-        });
-    </script>
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" aria-pressed="false">
+        <span id="theme-icon" aria-hidden="true">🌙</span>
+        <span id="theme-text">Dark Mode</span>
+    </button>
 
+    <!-- Header -->
+    <header>
+        <div class="page-header-section">
+            <div class="header-content">
+                <h1 class="page-title">Cathay General Bancorp (NASDAQ: CATY)</h1>
+                <p class="page-subtitle">NIM Sensitivity Lab | EPS &amp; TBVPS Response to ±50 bps NIM Shifts</p>
+                <p class="page-meta">
+                    Interactive scenario analysis |
+                    Last Updated: October 23, 2025 |
+                    Source: Q3 2025 First-Order Bridge Calculation
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <a href="index.html" class="back-button">← Back to Main Report</a>
+
+        <div id="chart-error" class="alert-box danger hidden" style="margin-bottom: 20px;">
+            <div class="alert-title">⚠️ Chart Loading Failed</div>
+            <div class="alert-text">
+                Unable to load interactive charts. Please refresh the page or contact support if the issue persists.
+            </div>
+        </div>
+
+        <div class="callout-box" style="border-left-color: var(--info);">
+            <div class="callout-title">Key Insight: NIM Sensitivity Range</div>
+            <p class="line-height-relaxed">
+                <strong>50 bps NIM swing = <span id="headline-variation">62%</span> EPS range</strong><br>
+                From $0.79 to $1.49 under extreme scenarios (-50 bps/-2% loans → +50 bps/+2% loans)
+            </p>
+        </div>
+
+        <section class="chart-grid">
+            <article class="chart-card" aria-labelledby="eps-chart-heading">
+                <h2 id="eps-chart-heading">EPS Sensitivity</h2>
+                <p class="chart-subtitle">Quarterly EPS response to ±50 bps NIM shifts under alternative loan growth paths.</p>
+                <div class="chart-toolbar" role="toolbar" aria-label="Scenario visibility toggles">
+                    <span class="sr-only" id="scenario-toggle-instructions">Press Enter to toggle loan growth scenarios.</span>
+                    <button type="button" class="filter-chip" data-scenario="-2%" aria-pressed="true" aria-describedby="scenario-toggle-instructions" style="border: 1px solid var(--border-color); border-radius: 999px; padding: 0.4rem 0.9rem; background: var(--danger); color: #ffffff; cursor: pointer; font-size: 0.9rem;">-2% loans</button>
+                    <button type="button" class="filter-chip" data-scenario="0%" aria-pressed="true" aria-describedby="scenario-toggle-instructions" style="border: 1px solid var(--border-color); border-radius: 999px; padding: 0.4rem 0.9rem; background: var(--bar-neutral); color: #ffffff; cursor: pointer; font-size: 0.9rem;">0% loans</button>
+                    <button type="button" class="filter-chip" data-scenario="+2%" aria-pressed="true" aria-describedby="scenario-toggle-instructions" style="border: 1px solid var(--border-color); border-radius: 999px; padding: 0.4rem 0.9rem; background: var(--success); color: #ffffff; cursor: pointer; font-size: 0.9rem;">+2% loans</button>
+                </div>
+                <div class="chart-wrapper" style="position: relative; width: 100%; min-height: 450px;">
+                    <canvas id="epsChart" style="width: 100%; height: 450px;" role="img" aria-label="EPS sensitivity to NIM changes chart"></canvas>
+                </div>
+                <p class="chart-footnote">Baseline EPS $1.13 at 0 bps NIM delta and flat loans. Range: $0.79 (worst: -50 bps/-2% loans) to $1.49 (best: +50 bps/+2% loans).</p>
+            </article>
+
+            <article class="chart-card" aria-labelledby="tbvps-chart-heading">
+                <h2 id="tbvps-chart-heading">TBVPS Sensitivity</h2>
+                <p class="chart-subtitle">Tangible book value per share (TBVPS) response to ±50 bps NIM shifts under alternative loan growth paths.</p>
+                <div class="chart-toolbar" role="toolbar" aria-label="Scenario visibility toggles (mirrors EPS chart)">
+                    <span class="sr-only" id="scenario-toggle-instructions-tbvps">Press Enter to toggle loan growth scenarios.</span>
+                    <button type="button" class="filter-chip" data-scenario="-2%" aria-pressed="true" aria-describedby="scenario-toggle-instructions-tbvps" style="border: 1px solid var(--border-color); border-radius: 999px; padding: 0.4rem 0.9rem; background: var(--danger); color: #ffffff; cursor: pointer; font-size: 0.9rem;">-2% loans</button>
+                    <button type="button" class="filter-chip" data-scenario="0%" aria-pressed="true" aria-describedby="scenario-toggle-instructions-tbvps" style="border: 1px solid var(--border-color); border-radius: 999px; padding: 0.4rem 0.9rem; background: var(--bar-neutral); color: #ffffff; cursor: pointer; font-size: 0.9rem;">0% loans</button>
+                    <button type="button" class="filter-chip" data-scenario="+2%" aria-pressed="true" aria-describedby="scenario-toggle-instructions-tbvps" style="border: 1px solid var(--border-color); border-radius: 999px; padding: 0.4rem 0.9rem; background: var(--success); color: #ffffff; cursor: pointer; font-size: 0.9rem;">+2% loans</button>
+                </div>
+                <div class="chart-wrapper" style="position: relative; width: 100%; min-height: 450px;">
+                    <canvas id="tbvpsChart" style="width: 100%; height: 450px;" role="img" aria-label="TBVPS sensitivity to NIM changes chart"></canvas>
+                </div>
+                <p class="chart-footnote">Baseline TBVPS $41.00 at 0 bps NIM delta and flat loans. Range: $40.77 (worst) to $41.24 (best).</p>
+            </article>
+        </section>
+
+        <section aria-labelledby="sensitivity-table-heading">
+            <h2 id="sensitivity-table-heading">Integrated Sensitivity Table</h2>
+            <p class="chart-subtitle">Values shown in USD per share. Table mirrors the interactive charts above.</p>
+            <table class="sensitivity-table" id="sensitivityTable">
+                <thead>
+                    <tr>
+                        <th scope="col">Δ NIM (bps)</th>
+                        <th scope="col">EPS (-2%)</th>
+                        <th scope="col">EPS (0%)</th>
+                        <th scope="col">EPS (+2%)</th>
+                        <th scope="col">TBVPS (-2%)</th>
+                        <th scope="col">TBVPS (0%)</th>
+                        <th scope="col">TBVPS (+2%)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </section>
+
+        <div class="export-actions" role="group" aria-label="Export options">
+            <button type="button" class="export-button" id="exportPng">
+                Export charts (PNG)
+            </button>
+            <button type="button" class="export-button" id="exportCsv">
+                Export table (CSV)
+            </button>
+        </div>
+        <details class="data-fallback">
+            <summary>Keyboard / screen reader data view</summary>
+            <p>The table above mirrors data from <code>data/sensitivity_table.json</code>. Use the CSV export for downstream analysis.</p>
+        </details>
+
+        <section class="footnotes" aria-label="Methodology footnotes">
+            <p><strong>Method</strong>: First-order bridge. EPS = (IEA × NIM / 4 × (1 - tax)) ÷ shares + non-interest contribution. TBVPS effect = EPS × (1 - payout) versus baseline.</p>
+            <p><strong>Data vintage</strong>: Oct 22 2025 &nbsp;|&nbsp; Source: CATY 10-Q Q2 2025 &nbsp;|&nbsp; Baseline: EPS $1.13, TBVPS $41.00, NIM 3.31%, IEA $22.0B, shares 68.7M.</p>
+        </section>
+
+    </div> <!-- end .container -->
+
+<script>
+const FALLBACK_SENSITIVITY_DATA = [
+    {"delta_nim_bps": -50, "loan_growth": "-2%", "eps": 0.79, "tbvps": 40.77},
+    {"delta_nim_bps": -50, "loan_growth": "0%", "eps": 0.82, "tbvps": 40.79},
+    {"delta_nim_bps": -50, "loan_growth": "+2%", "eps": 0.86, "tbvps": 40.81},
+    {"delta_nim_bps": -25, "loan_growth": "-2%", "eps": 0.94, "tbvps": 40.87},
+    {"delta_nim_bps": -25, "loan_growth": "0%", "eps": 0.98, "tbvps": 40.90},
+    {"delta_nim_bps": -25, "loan_growth": "+2%", "eps": 1.01, "tbvps": 40.92},
+    {"delta_nim_bps": 0, "loan_growth": "-2%", "eps": 1.09, "tbvps": 40.97},
+    {"delta_nim_bps": 0, "loan_growth": "0%", "eps": 1.13, "tbvps": 41.00},
+    {"delta_nim_bps": 0, "loan_growth": "+2%", "eps": 1.17, "tbvps": 41.03},
+    {"delta_nim_bps": 25, "loan_growth": "-2%", "eps": 1.24, "tbvps": 41.07},
+    {"delta_nim_bps": 25, "loan_growth": "0%", "eps": 1.28, "tbvps": 41.10},
+    {"delta_nim_bps": 25, "loan_growth": "+2%", "eps": 1.33, "tbvps": 41.13},
+    {"delta_nim_bps": 50, "loan_growth": "-2%", "eps": 1.39, "tbvps": 41.18},
+    {"delta_nim_bps": 50, "loan_growth": "0%", "eps": 1.44, "tbvps": 41.21},
+    {"delta_nim_bps": 50, "loan_growth": "+2%", "eps": 1.49, "tbvps": 41.24}
+];
+
+const NIM_LABELS = ["-50", "-25", "0", "+25", "+50"];
+const SCENARIOS = ["-2%", "0%", "+2%"];
+const EPS_BASELINE = 1.13;
+const TBVPS_BASELINE = 41.00;
+const chartLoadingStates = new Map();
+const chartInstances = [];
+let SCENARIO_COLORS = {};
+let scenarioButtons = [];
+
+function colorWithAlpha(color, alpha) {
+    if (!color) {
+        return color;
+    }
+    const trimmed = color.trim();
+    if (trimmed.startsWith('rgba(')) {
+        const parts = trimmed
+            .replace('rgba(', '')
+            .replace(')', '')
+            .split(',')
+            .map((part) => part.trim());
+        if (parts.length >= 3) {
+            const [r, g, b] = parts;
+            return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+        }
+    }
+    if (trimmed.startsWith('rgb(')) {
+        const parts = trimmed
+            .replace('rgb(', '')
+            .replace(')', '')
+            .split(',')
+            .map((part) => part.trim());
+        if (parts.length >= 3) {
+            const [r, g, b] = parts;
+            return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+        }
+    }
+    if (trimmed.startsWith('#')) {
+        const hex = trimmed.replace('#', '');
+        const normalized = hex.length === 3
+            ? hex.split('').map((char) => char + char).join('')
+            : hex.padEnd(6, '0');
+        const r = parseInt(normalized.slice(0, 2), 16);
+        const g = parseInt(normalized.slice(2, 4), 16);
+        const b = parseInt(normalized.slice(4, 6), 16);
+        if (Number.isFinite(r) && Number.isFinite(g) && Number.isFinite(b)) {
+            return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+        }
+    }
+    return trimmed;
+}
+
+function getScenarioColors() {
+    const style = getComputedStyle(document.documentElement);
+    return {
+        "-2%": style.getPropertyValue('--danger').trim() || '#8C1E33',
+        "0%": style.getPropertyValue('--bar-neutral').trim() || '#4F5B67',
+        "+2%": style.getPropertyValue('--success').trim() || '#2E6F3E'
+    };
+}
+
+function getChartThemeTokens() {
+    const style = getComputedStyle(document.documentElement);
+    const textPrimary = style.getPropertyValue('--text-primary').trim() || '#1f2937';
+    const textSecondary = style.getPropertyValue('--text-secondary').trim() || '#4f5b67';
+    const bgPrimary = style.getPropertyValue('--bg-primary').trim() || '#ffffff';
+    const bgSecondary = style.getPropertyValue('--bg-secondary').trim() || '#f8fbf8';
+    const borderColor = style.getPropertyValue('--border-color').trim() || '#d6dadd';
+    return {
+        axisColor: textPrimary,
+        gridColor: colorWithAlpha(borderColor, 0.35),
+        tooltipBackground: bgSecondary,
+        tooltipText: textPrimary,
+        tooltipBorder: colorWithAlpha(textSecondary, 0.4),
+        annotationLineColor: textSecondary,
+        annotationLabelBackground: colorWithAlpha(textSecondary, 0.8),
+        annotationLabelColor: bgPrimary,
+        loaderColor: textSecondary,
+        inactiveButtonBg: bgSecondary
+    };
+}
+
+function setupChartSkeleton() {
+    const tokens = getChartThemeTokens();
+    document.querySelectorAll('.chart-wrapper').forEach((wrapper) => {
+        const canvas = wrapper.querySelector('canvas');
+        if (!canvas) {
+            return;
+        }
+        if (getComputedStyle(wrapper).position === 'static') {
+            wrapper.style.position = 'relative';
+        }
+        const loader = document.createElement('p');
+        loader.className = 'chart-loading-message';
+        loader.textContent = 'Loading chart...';
+        loader.setAttribute('role', 'status');
+        loader.style.position = 'absolute';
+        loader.style.top = '50%';
+        loader.style.left = '50%';
+        loader.style.transform = 'translate(-50%, -50%)';
+        loader.style.color = tokens.loaderColor || '#6b7280';
+        loader.style.fontSize = '0.95rem';
+        loader.style.margin = '0';
+        wrapper.appendChild(loader);
+        chartLoadingStates.set(canvas.id, loader);
+    });
+}
+
+function showChartError() {
+    const errorBox = document.getElementById('chart-error');
+    if (errorBox) {
+        errorBox.classList.remove('hidden');
+    }
+}
+
+function hideChartError() {
+    const errorBox = document.getElementById('chart-error');
+    if (errorBox) {
+        errorBox.classList.add('hidden');
+    }
+}
+
+function clearLoadingStateFor(chartId) {
+    const loader = chartLoadingStates.get(chartId);
+    if (loader) {
+        const wrapper = loader.closest('.chart-wrapper');
+        loader.remove();
+        if (wrapper) {
+            wrapper.classList.add('loaded');
+        }
+        chartLoadingStates.delete(chartId);
+    }
+}
+
+const directLabelPlugin = {
+    id: 'directLabel',
+    afterDatasetsDraw(chart, args, pluginOptions) {
+        const { ctx } = chart;
+        chart.data.datasets.forEach((dataset, datasetIndex) => {
+            if (!chart.isDatasetVisible(datasetIndex)) {
+                return;
+            }
+            const meta = chart.getDatasetMeta(datasetIndex);
+            if (!meta || !meta.data || !meta.data.length) {
+                return;
+            }
+            const el = meta.data[meta.data.length - 1];
+            if (!el) {
+                return;
+            }
+            const { x, y } = el.tooltipPosition();
+            const labelText = typeof pluginOptions.formatter === 'function'
+                ? pluginOptions.formatter(dataset)
+                : dataset.label;
+            ctx.save();
+            ctx.font = '600 12px Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif';
+            ctx.fillStyle = dataset.borderColor;
+            ctx.textAlign = 'left';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(labelText, x + 12, y);
+            ctx.restore();
+        });
+    }
+};
+
+async function loadSensitivityData() {
+    try {
+        const response = await fetch('data/sensitivity_table.json');
+        if (!response.ok) {
+            throw new Error('Failed to load data');
+        }
+        return await response.json();
+    } catch (error) {
+        console.warn('Falling back to embedded sensitivity data:', error);
+        return FALLBACK_SENSITIVITY_DATA;
+    }
+}
+
+function groupByScenario(data, key) {
+    return SCENARIOS.map((scenario) => {
+        const scenarioPoints = NIM_LABELS.map((label) => {
+            const nim = parseInt(label.replace('+', ''), 10);
+            const row = data.find((entry) => entry.delta_nim_bps === nim && entry.loan_growth === scenario);
+            return {
+                x: label,
+                y: parseFloat(row[key])
+            };
+        });
+        const color = SCENARIO_COLORS[scenario] || '#2F6690';
+        return {
+            label: `${scenario} loans`,
+            scenario,
+            data: scenarioPoints,
+            borderColor: color,
+            backgroundColor: color,
+            tension: 0.35,
+            borderWidth: 3,
+            pointRadius: 4,
+            pointHoverRadius: 6
+        };
+    });
+}
+
+function formatCurrency(value) {
+    return `$${value.toFixed(2)}`;
+}
+
+function buildTable(data) {
+    const tbody = document.querySelector('#sensitivityTable tbody');
+    if (!tbody) {
+        return;
+    }
+    tbody.innerHTML = '';
+    NIM_LABELS.forEach((label) => {
+        const nim = parseInt(label.replace('+', ''), 10);
+        const rowData = data.filter((entry) => entry.delta_nim_bps === nim);
+        const tr = document.createElement('tr');
+        const deltaCell = document.createElement('td');
+        deltaCell.textContent = label;
+        tr.appendChild(deltaCell);
+
+        SCENARIOS.forEach((scenario) => {
+            const scenarioRow = rowData.find((entry) => entry.loan_growth === scenario);
+            const epsCell = document.createElement('td');
+            epsCell.textContent = formatCurrency(scenarioRow.eps);
+            tr.appendChild(epsCell);
+        });
+
+        SCENARIOS.forEach((scenario) => {
+            const scenarioRow = rowData.find((entry) => entry.loan_growth === scenario);
+            const tbvpsCell = document.createElement('td');
+            tbvpsCell.textContent = formatCurrency(scenarioRow.tbvps);
+            tr.appendChild(tbvpsCell);
+        });
+
+        tbody.appendChild(tr);
+    });
+}
+
+function computeHeadline(data) {
+    const epsValues = data.map((entry) => entry.eps);
+    const epsMin = Math.min(...epsValues);
+    const epsMax = Math.max(...epsValues);
+    const variationPct = ((epsMax - epsMin) / EPS_BASELINE) * 100;
+    const headline = document.getElementById('headline-variation');
+    if (headline) {
+        headline.textContent = `${Math.round(variationPct)}%`;
+    }
+}
+
+function prepareAnnotations(type, tokens) {
+    const baselineValue = type === 'EPS' ? EPS_BASELINE : TBVPS_BASELINE;
+    const labelText = type === 'EPS' ? 'Baseline $1.13' : 'Baseline $41.00';
+    return {
+        baseline: {
+            type: 'line',
+            yMin: baselineValue,
+            yMax: baselineValue,
+            borderColor: tokens.annotationLineColor,
+            borderWidth: 1.5,
+            borderDash: [6, 6],
+            label: {
+                enabled: true,
+                position: 'start',
+                backgroundColor: tokens.annotationLabelBackground,
+                content: [labelText],
+                color: tokens.annotationLabelColor,
+                font: { size: 11, weight: '600' },
+                padding: 6
+            }
+        }
+    };
+}
+
+function sharedChartOptions(tokens, yTitle, yMin, yMax, step, formatter, annotations, labelFormatter) {
+    return {
+        responsive: true,
+        maintainAspectRatio: false,
+        layout: {
+            padding: {
+                right: 140
+            }
+        },
+        scales: {
+            x: {
+                type: 'category',
+                labels: NIM_LABELS,
+                grid: {
+                    color: tokens.gridColor,
+                    drawBorder: false
+                },
+                ticks: {
+                    color: tokens.axisColor,
+                    font: { size: 12 }
+                },
+                title: {
+                    display: true,
+                    text: 'Δ NIM (bps)',
+                    font: { weight: '600', size: 12 },
+                    color: tokens.axisColor
+                }
+            },
+            y: {
+                min: yMin,
+                max: yMax,
+                grid: {
+                    color: tokens.gridColor,
+                    drawBorder: false
+                },
+                ticks: {
+                    stepSize: step,
+                    color: tokens.axisColor,
+                    font: { size: 12 },
+                    callback: formatter
+                },
+                title: {
+                    display: true,
+                    text: yTitle,
+                    font: { weight: '600', size: 12 },
+                    color: tokens.axisColor
+                }
+            }
+        },
+        interaction: {
+            mode: 'index',
+            intersect: false
+        },
+        plugins: {
+            legend: {
+                display: false
+            },
+            tooltip: {
+                backgroundColor: tokens.tooltipBackground,
+                borderColor: tokens.tooltipBorder,
+                borderWidth: 1,
+                titleColor: tokens.tooltipText,
+                bodyColor: tokens.tooltipText,
+                borderRadius: 8,
+                padding: 12,
+                callbacks: {
+                    title: (items) => `Δ NIM: ${items[0].label}`,
+                    label: (context) => `${context.dataset.scenario} loans: ${formatter(context.parsed.y)}`
+                }
+            },
+            annotation: {
+                annotations
+            },
+            directLabel: {
+                formatter: labelFormatter
+            }
+        }
+    };
+}
+
+function updateScenarioButtonState(button) {
+    const scenario = button.dataset.scenario;
+    const color = SCENARIO_COLORS[scenario] || '#2F6690';
+    const tokens = getChartThemeTokens();
+    const pressed = button.getAttribute('aria-pressed') === 'true';
+    if (pressed) {
+        button.style.backgroundColor = color;
+        button.style.color = '#ffffff';
+        button.style.borderColor = color;
+    } else {
+        button.style.backgroundColor = tokens.inactiveButtonBg;
+        button.style.color = color;
+        button.style.borderColor = color;
+    }
+}
+
+function refreshScenarioButtons() {
+    scenarioButtons.forEach(updateScenarioButtonState);
+}
+
+function toggleScenarioVisibility(charts, scenario, buttons) {
+    charts.forEach((chart) => {
+        const datasetIndex = chart.data.datasets.findIndex((dataset) => dataset.scenario === scenario);
+        if (datasetIndex === -1) {
+            return;
+        }
+        const isVisible = chart.isDatasetVisible(datasetIndex);
+        chart.setDatasetVisibility(datasetIndex, !isVisible);
+        chart.update();
+    });
+
+    buttons.forEach((btn) => {
+        if (btn.dataset.scenario === scenario) {
+            const pressed = btn.getAttribute('aria-pressed') === 'true';
+            btn.setAttribute('aria-pressed', String(!pressed));
+            updateScenarioButtonState(btn);
+        }
+    });
+}
+
+function syncHover(sourceChart, targetChart, event) {
+    const points = sourceChart.getElementsAtEventForMode(event, 'index', { intersect: false }, false);
+    if (points.length) {
+        const { index } = points[0];
+        const active = targetChart.getSortedVisibleDatasetMetas().map((meta) => ({
+            datasetIndex: meta.index,
+            index
+        }));
+        targetChart.tooltip.setActiveElements(active, {
+            x: targetChart.scales.x.getPixelForValue(targetChart.data.labels[index]),
+            y: targetChart.scales.y.top
+        });
+        targetChart.update('none');
+    } else {
+        targetChart.tooltip.setActiveElements([], { x: 0, y: 0 });
+        targetChart.update('none');
+    }
+}
+
+function setupHoverSync(epsChart, tbvpsChart) {
+    const epsCanvas = epsChart.canvas;
+    const tbvpsCanvas = tbvpsChart.canvas;
+
+    epsCanvas.addEventListener('mousemove', (event) => syncHover(epsChart, tbvpsChart, event));
+    epsCanvas.addEventListener('mouseout', () => {
+        tbvpsChart.tooltip.setActiveElements([], { x: 0, y: 0 });
+        tbvpsChart.update('none');
+    });
+
+    tbvpsCanvas.addEventListener('mousemove', (event) => syncHover(tbvpsChart, epsChart, event));
+    tbvpsCanvas.addEventListener('mouseout', () => {
+        epsChart.tooltip.setActiveElements([], { x: 0, y: 0 });
+        epsChart.update('none');
+    });
+}
+
+function exportChartsAsPng(charts) {
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    const width = charts.reduce((acc, chart) => acc + chart.width, 0);
+    const height = Math.max(...charts.map((chart) => chart.height));
+    canvas.width = width;
+    canvas.height = height;
+
+    let offsetX = 0;
+    charts.forEach((chart) => {
+        ctx.drawImage(chart.canvas, offsetX, 0);
+        offsetX += chart.width;
+    });
+
+    const link = document.createElement('a');
+    link.href = canvas.toDataURL('image/png', 1.0);
+    link.download = 'caty_nim_sensitivity.png';
+    link.click();
+}
+
+function exportTableAsCsv(data) {
+    const header = ['delta_nim_bps', 'loan_growth', 'eps', 'tbvps'];
+    const rows = [header.join(',')];
+    data.forEach((entry) => {
+        rows.push(`${entry.delta_nim_bps},${entry.loan_growth},${entry.eps.toFixed(2)},${entry.tbvps.toFixed(2)}`);
+    });
+    const blob = new Blob([rows.join('\n')], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'caty_nim_sensitivity.csv';
+    link.click();
+    URL.revokeObjectURL(link.href);
+}
+
+function updateChartStylingForTheme() {
+    const tokens = getChartThemeTokens();
+    chartInstances.forEach((chart) => {
+        if (!chart) {
+            return;
+        }
+        chart.data.datasets.forEach((dataset) => {
+            const color = SCENARIO_COLORS[dataset.scenario] || dataset.borderColor;
+            dataset.borderColor = color;
+            dataset.backgroundColor = color;
+            dataset.pointBackgroundColor = color;
+            dataset.pointBorderColor = color;
+        });
+        if (chart.options.scales?.x) {
+            chart.options.scales.x.ticks.color = tokens.axisColor;
+            chart.options.scales.x.grid.color = tokens.gridColor;
+            chart.options.scales.x.title.color = tokens.axisColor;
+        }
+        if (chart.options.scales?.y) {
+            chart.options.scales.y.ticks.color = tokens.axisColor;
+            chart.options.scales.y.grid.color = tokens.gridColor;
+            chart.options.scales.y.title.color = tokens.axisColor;
+        }
+        if (chart.options.plugins?.tooltip) {
+            chart.options.plugins.tooltip.backgroundColor = tokens.tooltipBackground;
+            chart.options.plugins.tooltip.borderColor = tokens.tooltipBorder;
+            chart.options.plugins.tooltip.titleColor = tokens.tooltipText;
+            chart.options.plugins.tooltip.bodyColor = tokens.tooltipText;
+        }
+        const annotation = chart.options.plugins?.annotation?.annotations?.baseline;
+        if (annotation) {
+            annotation.borderColor = tokens.annotationLineColor;
+            if (annotation.label) {
+                annotation.label.backgroundColor = tokens.annotationLabelBackground;
+                annotation.label.color = tokens.annotationLabelColor;
+            }
+        }
+        chart.update();
+    });
+    refreshScenarioButtons();
+}
+
+async function initializeCharts() {
+    let retries = 0;
+    const maxRetries = 20;
+
+    while (
+        retries < maxRetries &&
+        (typeof window.Chart === 'undefined' || typeof window['chartjs-plugin-annotation'] === 'undefined')
+    ) {
+        await new Promise((resolve) => setTimeout(resolve, 50 * Math.pow(1.2, retries)));
+        retries += 1;
+    }
+
+    if (typeof window.Chart === 'undefined') {
+        console.error('Chart.js failed to load after 20 retries');
+        showChartError();
+        return;
+    }
+
+    const annotationPlugin = window['chartjs-plugin-annotation'];
+    if (annotationPlugin && annotationPlugin.default) {
+        window.Chart.register(annotationPlugin.default);
+    } else if (annotationPlugin) {
+        window.Chart.register(annotationPlugin);
+    }
+    window.Chart.register(directLabelPlugin);
+
+    const epsCanvas = document.getElementById('epsChart');
+    const tbvpsCanvas = document.getElementById('tbvpsChart');
+
+    if (!epsCanvas || !tbvpsCanvas) {
+        console.error('Canvas elements not found in DOM');
+        showChartError();
+        return;
+    }
+
+    try {
+        const data = await loadSensitivityData();
+        hideChartError();
+        computeHeadline(data);
+        buildTable(data);
+
+        SCENARIO_COLORS = getScenarioColors();
+        const tokens = getChartThemeTokens();
+
+        const epsDatasets = groupByScenario(data, 'eps');
+        const tbvpsDatasets = groupByScenario(data, 'tbvps');
+
+        const epsChart = new window.Chart(
+            epsCanvas,
+            {
+                type: 'line',
+                data: {
+                    labels: NIM_LABELS,
+                    datasets: epsDatasets
+                },
+                options: sharedChartOptions(
+                    tokens,
+                    'EPS (USD/share)',
+                    0.75,
+                    1.55,
+                    0.25,
+                    (value) => formatCurrency(value),
+                    prepareAnnotations('EPS', tokens),
+                    (dataset) => {
+                        const lastPoint = dataset.data[dataset.data.length - 1];
+                        return `${dataset.scenario} loans: ${formatCurrency(lastPoint.y)}`;
+                    }
+                )
+            }
+        );
+        clearLoadingStateFor('epsChart');
+
+        const tbvpsChart = new window.Chart(
+            tbvpsCanvas,
+            {
+                type: 'line',
+                data: {
+                    labels: NIM_LABELS,
+                    datasets: tbvpsDatasets
+                },
+                options: sharedChartOptions(
+                    tokens,
+                    'TBVPS (USD/share)',
+                    40.7,
+                    41.3,
+                    0.2,
+                    (value) => formatCurrency(value),
+                    prepareAnnotations('TBVPS', tokens),
+                    (dataset) => {
+                        const lastPoint = dataset.data[dataset.data.length - 1];
+                        return `${dataset.scenario} loans: ${formatCurrency(lastPoint.y)}`;
+                    }
+                )
+            }
+        );
+        clearLoadingStateFor('tbvpsChart');
+
+        chartInstances.push(epsChart, tbvpsChart);
+        window.chartInstances = window.chartInstances || [];
+        window.chartInstances.push(epsChart, tbvpsChart);
+
+        setupHoverSync(epsChart, tbvpsChart);
+
+        scenarioButtons = Array.from(document.querySelectorAll('.chart-toolbar .filter-chip'));
+        scenarioButtons.forEach((button) => {
+            updateScenarioButtonState(button);
+            button.addEventListener('click', () => {
+                const scenario = button.dataset.scenario;
+                toggleScenarioVisibility([epsChart, tbvpsChart], scenario, scenarioButtons.filter((btn) => btn.dataset.scenario === scenario));
+            });
+            button.addEventListener('keyup', (event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    button.click();
+                }
+            });
+        });
+
+        const dataForExport = [...data];
+        document.getElementById('exportPng').addEventListener('click', () => exportChartsAsPng([epsChart, tbvpsChart]));
+        document.getElementById('exportCsv').addEventListener('click', () => exportTableAsCsv(dataForExport));
+
+        updateChartStylingForTheme();
+    } catch (error) {
+        console.error('Chart initialization failed:', error);
+        showChartError();
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    setupChartSkeleton();
+    initializeCharts().catch((error) => {
+        console.error('Chart initialization failed:', error);
+        showChartError();
+    });
+});
+
+function toggleTheme() {
+    const html = document.documentElement;
+    const currentTheme = html.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', newTheme);
+
+    const icon = document.getElementById('theme-icon');
+    const text = document.getElementById('theme-text');
+    const button = document.querySelector('.theme-toggle');
+
+    if (newTheme === 'dark') {
+        icon.textContent = '☀️';
+        text.textContent = 'Light Mode';
+        button.setAttribute('aria-pressed', 'true');
+    } else {
+        icon.textContent = '🌙';
+        text.textContent = 'Dark Mode';
+        button.setAttribute('aria-pressed', 'false');
+    }
+
+    localStorage.setItem('theme', newTheme);
+    SCENARIO_COLORS = getScenarioColors();
+    updateChartStylingForTheme();
+}
+
+const savedTheme = localStorage.getItem('theme') || 'light';
+if (savedTheme === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.getElementById('theme-icon').textContent = '☀️';
+    document.getElementById('theme-text').textContent = 'Light Mode';
+    document.querySelector('.theme-toggle').setAttribute('aria-pressed', 'true');
+}
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(() => {
+            document.querySelectorAll('.chart-wrapper').forEach((w) => w.classList.add('loaded'));
+        }, 150);
+    });
+</script>
 </body>
 </html>
