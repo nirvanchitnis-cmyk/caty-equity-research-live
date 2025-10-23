@@ -121,6 +121,33 @@ const SCENARIOS = ["-2%", "0%", "+2%"];
 const EPS_BASELINE = 1.13;
 const TBVPS_BASELINE = 41.00;
 
+const chartLoadingStates = new Map();
+
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".chart-wrapper").forEach((wrapper) => {
+        const canvas = wrapper.querySelector("canvas");
+        if (!canvas) {
+            return;
+        }
+        if (getComputedStyle(wrapper).position === "static") {
+            wrapper.style.position = "relative";
+        }
+        const loader = document.createElement("p");
+        loader.className = "chart-loading-message";
+        loader.textContent = "Loading chart...";
+        loader.setAttribute("role", "status");
+        loader.style.position = "absolute";
+        loader.style.top = "50%";
+        loader.style.left = "50%";
+        loader.style.transform = "translate(-50%, -50%)";
+        loader.style.color = "#6b7280";
+        loader.style.fontSize = "0.95rem";
+        loader.style.margin = "0";
+        wrapper.appendChild(loader);
+        chartLoadingStates.set(canvas.id, loader);
+    });
+});
+
 const directLabelPlugin = {
     id: "directLabel",
     afterDatasetsDraw(chart, args, pluginOptions) {
@@ -157,6 +184,8 @@ if (annotationPlugin) {
     Chart.register(annotationPlugin);
 }
 Chart.register(directLabelPlugin);
+console.log("Chart.js loaded:", typeof Chart !== "undefined");
+console.log("Annotation plugin loaded:", typeof annotationPlugin !== "undefined");
 
 async function loadSensitivityData() {
     try {
@@ -262,17 +291,17 @@ function prepareAnnotations(type) {
                 type: "label",
                 xValue: "-50",
                 yValue: 0.79,
-                backgroundColor: "rgba(185,28,28,0.12)",
-                borderColor: "#b91c1c",
+                backgroundColor: "rgba(140,30,51,0.12)",
+                borderColor: "#8C1E33",
                 borderWidth: 1,
                 content: ["Worst case:", "-30% vs baseline"],
                 font: { size: 11, weight: "600" },
-                color: "#b91c1c",
+                color: "#8C1E33",
                 position: { x: "center", y: "bottom" },
                 padding: 8,
                 callout: {
                     enabled: true,
-                    borderColor: "#b91c1c",
+                    borderColor: "#8C1E33",
                     borderWidth: 1,
                     arrowHeadSize: 6,
                     position: "center",
@@ -283,17 +312,17 @@ function prepareAnnotations(type) {
                 type: "label",
                 xValue: "+50",
                 yValue: 1.49,
-                backgroundColor: "rgba(6,95,70,0.12)",
-                borderColor: "#065f46",
+                backgroundColor: "rgba(46,111,62,0.12)",
+                borderColor: "#2E6F3E",
                 borderWidth: 1,
                 content: ["Best case:", "+32% vs baseline"],
                 font: { size: 11, weight: "600" },
-                color: "#065f46",
+                color: "#2E6F3E",
                 position: { x: "center", y: "top" },
                 padding: 8,
                 callout: {
                     enabled: true,
-                    borderColor: "#065f46",
+                    borderColor: "#2E6F3E",
                     borderWidth: 1,
                     arrowHeadSize: 6,
                     position: "center",
@@ -324,17 +353,17 @@ function prepareAnnotations(type) {
             type: "label",
             xValue: "-50",
             yValue: 40.77,
-            backgroundColor: "rgba(185,28,28,0.12)",
-            borderColor: "#b91c1c",
+            backgroundColor: "rgba(140,30,51,0.12)",
+            borderColor: "#8C1E33",
             borderWidth: 1,
             content: ["Worst case:", "-$0.23 vs baseline"],
             font: { size: 11, weight: "600" },
-            color: "#b91c1c",
+            color: "#8C1E33",
             position: { x: "center", y: "bottom" },
             padding: 8,
             callout: {
                 enabled: true,
-                borderColor: "#b91c1c",
+                borderColor: "#8C1E33",
                 borderWidth: 1,
                 arrowHeadSize: 6,
                 position: "center",
@@ -345,17 +374,17 @@ function prepareAnnotations(type) {
             type: "label",
             xValue: "+50",
             yValue: 41.24,
-            backgroundColor: "rgba(6,95,70,0.12)",
-            borderColor: "#065f46",
+            backgroundColor: "rgba(46,111,62,0.12)",
+            borderColor: "#2E6F3E",
             borderWidth: 1,
             content: ["Best case:", "+$0.24 vs baseline"],
             font: { size: 11, weight: "600" },
-            color: "#065f46",
+            color: "#2E6F3E",
             position: { x: "center", y: "top" },
             padding: 8,
             callout: {
                 enabled: true,
-                borderColor: "#065f46",
+                borderColor: "#2E6F3E",
                 borderWidth: 1,
                 arrowHeadSize: 6,
                 position: "center",
@@ -363,6 +392,14 @@ function prepareAnnotations(type) {
             }
         }
     };
+}
+
+function clearLoadingStateFor(chartId) {
+    const loader = chartLoadingStates.get(chartId);
+    if (loader) {
+        loader.remove();
+        chartLoadingStates.delete(chartId);
+    }
 }
 
 function sharedChartOptions(yTitle, yMin, yMax, step, formatter, annotations, labelFormatter) {
@@ -568,6 +605,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             )
         }
     );
+    clearLoadingStateFor("epsChart");
 
     const tbvpsChart = new Chart(
         document.getElementById("tbvpsChart"),
@@ -591,6 +629,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             )
         }
     );
+    clearLoadingStateFor("tbvpsChart");
 
     setupHoverSync(epsChart, tbvpsChart);
 
