@@ -188,7 +188,7 @@
             const textColor = getCssVar('--text-secondary') || '#4F5B67';
             const summary = [
                 state.regression.equation || `P/TBV = ${toFixed(intercept, 3)} + ${toFixed(slope, 3)} × ROTE`,
-                `R² = ${toFixed(state.regression.rSquared * 100, 1)} bps`,
+                `R² = ${toFixed(state.regression.rSquared, 3)}`,
                 `n = ${state.regression.sampleSize}`
             ];
 

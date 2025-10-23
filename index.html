@@ -857,13 +857,13 @@
                             <p class="viz-panel-subtitle">Peers n = <span id="peer-count-label">8</span> (BANC, COLB, CVBF, EWBC, HAFC, OPBK, PPBI, WAFD); CATY overlayed.</p>
                         </header>
                         <div class="viz-canvas-wrap">
-                            <canvas id="valuation-peer-scatter" aria-label="Scatter plot comparing peer ROTE and P/TBV with regression line and CATY highlighted"></canvas>
+                            <canvas id="valuation-peer-scatter" role="img" tabindex="0" aria-label="Scatter plot comparing peer ROTE (%) and P/TBV (×) with regression line and CATY highlighted"></canvas>
                         </div>
                         <div class="viz-annotation" id="caty-residual-annotation" role="note">
                             CATY actual 1.277x vs fit <span class="annotation-predicted">1.536x</span> → residual −0.259x (−16.9%).
                         </div>
                         <footer class="viz-panel-footer" id="regression-summary" aria-live="polite">
-                            y = 0.058 × ROTE + 0.82 (R² = 0.68); residual labels show largest upside and downside peers vs. fit.
+                            y = 0.058 × ROTE + 0.82 (R² = 0.68); residual labels show largest upside and downside peers vs. fit. <strong>Note:</strong> Cross-sectional association, not causation; outliers screened per Cook's D.
                         </footer>
                     </article>
 
@@ -873,7 +873,7 @@
                             <p class="viz-panel-subtitle">Spot reference line at $46.17; bars sorted by |Δ vs Spot|.</p>
                         </header>
                         <div class="viz-canvas-wrap">
-                            <canvas id="valuation-framework-bars" aria-label="Bar chart comparing valuation framework targets to spot price"></canvas>
+                            <canvas id="valuation-framework-bars" role="img" tabindex="0" aria-label="Bar chart comparing valuation framework targets to spot price ($), with spot reference line and delta annotations"></canvas>
                         </div>
                         <footer class="viz-panel-footer">
                             Regression / IRC / Wilson flagged “Model-derived”; Probability-weighted “Scenario-weighted”; Normalized = Gordon Growth.

@@ -34,6 +34,10 @@
     --caty-marker-outline: #F5F7FA;
     --regression-line: #2F6690;
     --bar-neutral: #4F5B67;
+    /* Canonical viz tokens (map to brand palette) */
+    --viz-up-600: var(--success);
+    --viz-down-600: var(--danger);
+    --viz-neu-600: var(--bar-neutral);
     --nco-bar-gfc: #8C1E33;
     --nco-bar-elevated: #B85C00;
     --nco-bar-normalized: #7A8893;
@@ -141,6 +145,10 @@
     --caty-marker-outline: #14202D;
     --regression-line: #7CB8FF;
     --bar-neutral: #C2CDD7;
+    /* Canonical viz tokens (dark mapping) */
+    --viz-up-600: var(--success);
+    --viz-down-600: var(--danger);
+    --viz-neu-600: var(--bar-neutral);
     --nco-bar-gfc: #FF6B7F;
     --nco-bar-elevated: #FFA94D;
     --nco-bar-normalized: #C2CDD7;

@@ -821,7 +821,7 @@
             bindToggle(
                 document.getElementById(SELECTORS.toggleCI),
                 'showCI',
-                '95% confidence interval band',
+                '5th-95th percentiles (simulated)',
                 () => {
                     if (state.chart) {
                         state.chart.update('none');

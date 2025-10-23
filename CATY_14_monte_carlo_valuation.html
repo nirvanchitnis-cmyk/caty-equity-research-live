@@ -68,17 +68,17 @@
             <header class="mc-dist-header">
                 <div>
                     <h3 id="mc-dist-title">Price Distribution (10,000 Simulations)</h3>
-                    <p class="mc-dist-subtitle">Probability mass across four price bands | Spot $46.17, Median $42.62</p>
+                    <p class="mc-dist-subtitle">Probability mass across four price bands | Spot $46.17, Median $42.62 | Price bins are categorical; percentile lines interpolate within bin widths</p>
                 </div>
                 <div class="mc-dist-controls" role="group" aria-label="Toggle reference overlays">
-                    <button type="button" id="mcToggleCI" class="toggle-btn" aria-pressed="true">Show 95% CI</button>
+                    <button type="button" id="mcToggleCI" class="toggle-btn" aria-pressed="true">Show 5th-95th %ile</button>
                     <button type="button" id="mcTogglePercentiles" class="toggle-btn" aria-pressed="false">Show Percentiles</button>
                     <button type="button" id="mcToggleInterpretations" class="toggle-btn" aria-pressed="false">Show Notes</button>
                 </div>
             </header>
 
             <div class="chart-wrapper">
-                <canvas id="mcDistributionChart" aria-label="Monte Carlo distribution histogram showing probability mass across price bands with reference markers for spot, median, and mean prices."></canvas>
+                <canvas id="mcDistributionChart" role="img" tabindex="0" aria-label="Monte Carlo distribution histogram showing probability mass across price bands with reference markers for spot ($), median, mean, and optional percentile lines."></canvas>
             </div>
 
             <div class="chart-actions">
