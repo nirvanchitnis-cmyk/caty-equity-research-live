@@ -1090,26 +1090,111 @@ li {
 }
 
 /* ============================================================
-   LINKS
+   BASE LINK STYLES - All <a> elements
    ============================================================ */
 a {
     color: var(--link-color);
     text-decoration: none;
-    transition: color 200ms ease, border-bottom 200ms ease;
-    border-bottom: 1px solid transparent;
+    transition: color 200ms ease, border-bottom 200ms ease, opacity 200ms ease;
+    border-bottom: 1px dotted var(--link-color); /* Default underline with subtlety */
 }
 
 a:hover {
     color: var(--link-hover);
-    border-bottom: 1px solid var(--link-hover);
+    border-bottom: 1px solid var(--link-hover); /* Solid underline on hover for emphasis */
 }
 
 a:visited {
-    color: #6F1626;
+    color: #6F1626; /* Darker maroon for visited state */
+    opacity: 0.75; /* Slight dimming to distinguish visited links */
 }
 
 [data-theme="dark"] a:visited {
-    color: #ff8a9f;
+    color: #cc8a9f; /* Muted rose for dark mode visited links */
+    opacity: 0.8;
+}
+
+/* Keyboard navigation compliance (WCAG 2.4.7) */
+a:focus-visible {
+    outline: var(--focus-outline);
+    outline-offset: 2px;
+    box-shadow: var(--focus-shadow);
+    border-radius: 2px;
+}
+
+/* ============================================================
+   EXTERNAL LINK AUTO-DETECTION
+   ============================================================ */
+a[target="_blank"]::after {
+    content: " ↗";
+    font-size: 0.85em;
+    color: var(--text-secondary);
+    opacity: 0.65;
+    margin-left: 0.25em;
+    display: inline-block;
+    transition: opacity 200ms ease;
+}
+
+a[target="_blank"]:hover::after {
+    opacity: 1;
+    color: var(--link-hover);
+}
+
+/* ============================================================
+   SEC/FDIC REGULATORY LINK TRUST SIGNALS
+   ============================================================ */
+a[href*="sec.gov"] {
+    color: var(--info);
+    font-weight: 500;
+    border-bottom: 1px dotted var(--info);
+}
+
+a[href*="sec.gov"]:hover {
+    color: #1e5073;
+    border-bottom: 2px solid var(--info);
+}
+
+[data-theme="dark"] a[href*="sec.gov"]:hover {
+    color: #9fd0ff;
+}
+
+a[href*="fdic.gov"],
+a[href*="banks.data.fdic.gov"],
+a[href*="api.fdic.gov"] {
+    color: var(--info);
+    font-weight: 500;
+    border-bottom: 1px dotted var(--info);
+}
+
+a[href*="fdic.gov"]:hover,
+a[href*="banks.data.fdic.gov"]:hover,
+a[href*="api.fdic.gov"]:hover {
+    color: #1e5073;
+    border-bottom: 2px solid var(--info);
+}
+
+[data-theme="dark"] a[href*="fdic.gov"]:hover,
+[data-theme="dark"] a[href*="banks.data.fdic.gov"]:hover,
+[data-theme="dark"] a[href*="api.fdic.gov"]:hover {
+    color: #9fd0ff;
+}
+
+a[href*="pcaobus.org"],
+a[href*="coso.org"],
+a[href*="nist.gov"],
+a[href*="isaca.org"] {
+    color: var(--text-secondary);
+    font-weight: 500;
+    border-bottom: 1px dotted var(--text-secondary);
+    font-size: 0.95em;
+}
+
+a[href*="pcaobus.org"]:hover,
+a[href*="coso.org"]:hover,
+a[href*="nist.gov"]:hover,
+a[href*="isaca.org"]:hover {
+    color: var(--info);
+    border-bottom: 1px solid var(--info);
 }
 
 .module-card a,
