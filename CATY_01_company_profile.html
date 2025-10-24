@@ -457,6 +457,11 @@
                 };
 
             const initializeCharts = () => {
+                const styles = getComputedStyle(document.documentElement);
+                const textPrimary = styles.getPropertyValue('--text-primary').trim();
+                const textSecondary = styles.getPropertyValue('--text-secondary').trim();
+                const borderColor = styles.getPropertyValue('--border-color').trim();
+
                 // Chart 1: Revenue Breakdown (Doughnut)
                 const revenueCtx = document.getElementById('caty01-revenue-chart');
                 if (revenueCtx) {
@@ -478,12 +483,12 @@
                                     display: true,
                                     text: 'Revenue Composition',
                                     font: { size: 16, weight: '600' },
-                                    color: getComputedStyle(document.documentElement).getPropertyValue('--text-primary').trim()
+                                    color: textPrimary
                                 },
                                 legend: {
                                     position: 'bottom',
                                     labels: {
-                                        color: getComputedStyle(document.documentElement).getPropertyValue('--text-primary').trim(),
+                                        color: textPrimary,
                                         font: { size: 12 }
                                     }
                                 },
@@ -521,7 +526,7 @@
                                     display: true,
                                     text: 'Branch Network by Region (62 Total)',
                                     font: { size: 16, weight: '600' },
-                                    color: getComputedStyle(document.documentElement).getPropertyValue('--text-primary').trim()
+                                    color: textPrimary
                                 },
                                 legend: { display: false },
                                 tooltip: {
@@ -537,15 +542,15 @@
                                 y: {
                                     beginAtZero: true,
                                     ticks: {
-                                        color: getComputedStyle(document.documentElement).getPropertyValue('--text-secondary').trim()
+                                        color: textSecondary
                                     },
                                     grid: {
-                                        color: getComputedStyle(document.documentElement).getPropertyValue('--border-light').trim()
+                                        color: borderColor || textSecondary
                                     }
                                 },
                                 x: {
                                     ticks: {
-                                        color: getComputedStyle(document.documentElement).getPropertyValue('--text-secondary').trim()
+                                        color: textSecondary
                                     },
                                     grid: { display: false }
                                 }

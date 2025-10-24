@@ -565,7 +565,7 @@ body {
     border-radius: 6px;
     box-shadow: none;
     z-index: 1200;
-    transition: transform 0.2s var(--motion-ease);
+    transition: transform var(--motion-duration) var(--motion-ease);
     text-decoration: none;
 }
 
@@ -4107,11 +4107,16 @@ a[href*="isaca.org"]:hover {
    ============================================================ */
 .chart-wrapper {
     opacity: 0;
-    transition: opacity 400ms ease-in;
+    transition: opacity var(--motion-duration) ease-in;
 }
 
 .chart-wrapper.loaded {
     opacity: 1;
+}
+
+:root[data-reduces-motion="true"] .skip-link,
+:root[data-reduces-motion="true"] .chart-wrapper {
+    transition: none;
 }
 
 /* ============================================================

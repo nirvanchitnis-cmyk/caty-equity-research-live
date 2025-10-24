@@ -22,7 +22,12 @@
 
     if (motionQuery) {
         applyMotionPreference(motionQuery.matches);
-        motionQuery.addEventListener('change', (event) => applyMotionPreference(event.matches));
+        const handleMotionChange = (event) => applyMotionPreference(event.matches);
+        if (typeof motionQuery.addEventListener === 'function') {
+            motionQuery.addEventListener('change', handleMotionChange);
+        } else if (typeof motionQuery.addListener === 'function') {
+            motionQuery.addListener(handleMotionChange);
+        }
     }
 
     function scheduleIdle(callback, timeout = 1200) {
@@ -50,6 +55,7 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
+        normaliseExternalLinks();
         scheduleIdle(normaliseExternalLinks, 1800);
     });
 
