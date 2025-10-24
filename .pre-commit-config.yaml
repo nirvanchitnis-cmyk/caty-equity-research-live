@@ -1,0 +1,14 @@
+repos:
+  - repo: local
+    hooks:
+      - id: html-md-link-check
+        name: HTML+Markdown internal link checker
+        entry: python analysis/internal_link_checker.py
+        language: system
+        pass_filenames: false
+      - id: reconciliation-guard
+        name: Valuation reconciliation guard
+        entry: python analysis/reconciliation_guard.py
+        language: system
+        pass_filenames: false
+

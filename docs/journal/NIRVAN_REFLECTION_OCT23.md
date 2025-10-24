@@ -471,7 +471,7 @@ October 23, 2025
 Share, adapt, build on it. Just give credit.
 
 **Repository**: https://github.com/nirvanchitnis-cmyk/caty-equity-research-live
-**Incident Report**: [INCIDENT_REPORT_OCT20-23_COMPLETE.md](./INCIDENT_REPORT_OCT20-23_COMPLETE.md)
+**Incident Report**: [INCIDENT_REPORT_OCT20-23_COMPLETE.md](../postmortems/INCIDENT_REPORT_OCT20-23_COMPLETE.md)
 **Live Dashboard**: https://nirvanchitnis-cmyk.github.io/caty-equity-research-live/
 
 ---
