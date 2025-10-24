@@ -459,7 +459,7 @@ bf768e927f6ea9d112218930e07af3374bb730699550f79fb8324f64d916ed79  PPBI_2025-06-3
 - Expected return at 74/26: +13.3% (HOLD validated)
 - BUY trigger: tail <21.5%
 
-**File:** analysis/rating_policy.md  
+**File:** analysis/methodologies/rating_policy.md  
 **Created:** 2025-10-19 05:15 PT  
 **SHA256:** [To be calculated]
 
