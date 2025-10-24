@@ -118,8 +118,7 @@ def extract_published_numbers() -> Dict[str, float]:
     if index_path.exists():
         content = index_path.read_text()
 
-        # Wilson 95% Expected Value: $48.70 (in table)
-        # Look for the specific pattern: Wilson 95% Expected Value followed by the price in the next <td>
+        # Wilson 95% Expected Value (support reconciliation or scenario tables)
         wilson_match = re.search(
             r'<td><strong>Wilson 95%.*?</td>\s*<td class="numeric">\$(\d+\.\d+)</td>',
             content,
@@ -128,14 +127,51 @@ def extract_published_numbers() -> Dict[str, float]:
         if wilson_match:
             data['index_wilson_target'] = float(wilson_match.group(1))
 
-        # IRC Blended valuation card
-        irc_match = re.search(
-            r'<div class="metric-label">IRC Blended</div>\s*<div class="metric-value">\$(\d+\.\d+)</div>',
-            content,
-            re.DOTALL
-        )
-        if irc_match:
-            data['index_irc_blended'] = float(irc_match.group(1))
+        # IRC Blended (support both metric-card and table variants). Collect duplicates for consistency checks.
+        irc_values: List[float] = []
+        for m in re.finditer(r'<div class="metric-label">IRC Blended</div>\s*<div class="metric-value">\$(\d+\.\d+)</div>', content, re.DOTALL):
+            irc_values.append(float(m.group(1)))
+        for m in re.finditer(r'<td[^>]*>\s*<strong>IRC Blended(?: Target)?</strong>\s*</td>\s*<td[^>]*class="numeric"[^>]*>\$(\d+\.\d+)</td>', content, re.DOTALL):
+            irc_values.append(float(m.group(1)))
+        if irc_values:
+            data['index_irc_blended'] = irc_values[0]
+            data['index_irc_blended_all'] = irc_values
+
+        # SUMM table cross-check values if present
+        summ_patterns = {
+            'summ_wilson': r'<td[^>]*>\s*<strong>Wilson 95% Target</strong>\s*</td>\s*<td[^>]*class="numeric"[^>]*>\$(\d+\.\d+)</td>',
+            'summ_irc': r'<td[^>]*>\s*<strong>IRC Blended</strong>\s*</td>\s*<td[^>]*class="numeric"[^>]*>\$(\d+\.\d+)</td>',
+            'summ_regression': r'<td[^>]*>\s*<strong>Regression Target</strong>\s*</td>\s*<td[^>]*class="numeric"[^>]*>\$(\d+\.\d+)</td>',
+            'summ_normalized': r'<td[^>]*>\s*<strong>Normalized Target</strong>\s*</td>\s*<td[^>]*class="numeric"[^>]*>\$(\d+\.\d+)</td>',
+        }
+        for key, pattern in summ_patterns.items():
+            m = re.search(pattern, content, re.DOTALL)
+            if m:
+                data[key] = float(m.group(1))
+
+        # Fallback: row-based extraction for SUMM table when class attributes differ
+        def _summ_value(label: str):
+            row = re.search(
+                rf'<tr[^>]*>.*?<td[^>]*>\s*<strong>{label}</strong>\s*</td>(?P<cells>.*?)</tr>',
+                content,
+                re.DOTALL,
+            )
+            if not row:
+                return None
+            cells = row.group('cells')
+            m2 = re.search(r'>\$(\d+\.\d+)<', cells)
+            return float(m2.group(1)) if m2 else None
+
+        for key, label in {
+            'summ_wilson': 'Wilson 95% Target',
+            'summ_irc': 'IRC Blended',
+            'summ_regression': 'Regression Target',
+            'summ_normalized': 'Normalized Target',
+        }.items():
+            if key not in data:
+                val = _summ_value(label)
+                if val is not None:
+                    data[key] = val
 
     return data
 
@@ -243,8 +279,30 @@ def main():
     if published_irc_blended > 0:
         if not compare_values("IRC Blended", published_irc_blended, calculated_irc_blended):
             all_passed = False
+        # SUMM table IRC cross-check
+        if published.get('summ_irc', 0) > 0:
+            if not compare_values("IRC Blended (SUMM)", published['summ_irc'], calculated_irc_blended):
+                all_passed = False
+        # Duplicate index values should be internally consistent
+        if isinstance(published.get('index_irc_blended_all'), list):
+            for v in published['index_irc_blended_all']:
+                if not compare_values("IRC Blended (duplicate)", v, published_irc_blended):
+                    all_passed = False
     else:
         print(f"  {Colors.YELLOW}⚠{Colors.RESET} IRC Blended: Not found in index.html (expected ${calculated_irc_blended:.2f})")
+
+    # Step 6: SUMM table cross-check
+    if any(k.startswith('summ_') for k in published.keys()):
+        print(f"\n{Colors.BOLD}Step 6: SUMM table cross-check...{Colors.RESET}")
+        if published.get('summ_wilson', 0) > 0:
+            if not compare_values("Wilson Target (SUMM)", published['summ_wilson'], prob_data.get('wilson_target', 0)):
+                all_passed = False
+        if published.get('summ_regression', 0) > 0:
+            if not compare_values("Regression Target (SUMM)", published['summ_regression'], bridge_data.get('regression_target', 0)):
+                all_passed = False
+        if published.get('summ_normalized', 0) > 0:
+            if not compare_values("Normalized Target (SUMM)", published['summ_normalized'], bridge_data.get('normalized_target', 0)):
+                all_passed = False
 
     # Final summary
     print(f"\n{'='*60}")

@@ -69,15 +69,7 @@ jobs:
       - name: Summary
         if: success()
         run: |
-          echo "### ✅ Valuation Numbers Validated" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "All published valuation numbers match script outputs within ±\$0.50 tolerance." >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "**Validated Metrics:**" >> $GITHUB_STEP_SUMMARY
-          echo "- Wilson 95% Target: \$51.74" >> $GITHUB_STEP_SUMMARY
-          echo "- IRC Blended Target: \$51.39" >> $GITHUB_STEP_SUMMARY
-          echo "- Regression Target: \$56.11" >> $GITHUB_STEP_SUMMARY
-          echo "- Normalized Target: \$39.32" >> $GITHUB_STEP_SUMMARY
+          python3 analysis/emit_guard_summary.py >> $GITHUB_STEP_SUMMARY
 
       - name: Failure Summary
         if: failure()
@@ -98,3 +90,7 @@ jobs:
           echo "Publication Gate — Rating Eligibility"
           echo "========================================"
           python3 analysis/publication_gate.py
+      
+      - name: Generate evidence hash manifest
+        run: |
+          python3 analysis/hash_manifest.py | tee -a $GITHUB_STEP_SUMMARY
