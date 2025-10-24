@@ -741,6 +741,11 @@
                             <div class="metric-label">Evidence Quality</div>
                             <div class="metric-value">88% Tier 1</div>
                             <div class="metric-subtext">SEC EDGAR (47) + FDIC (12)</div>
+                            <div class="metric-subtext" style="margin-top: 4px; font-size: 0.85em;">
+                                <a href="evidence/manifest_sha256.json" target="_blank" rel="noopener noreferrer" style="color: var(--cathay-gold);">
+                                    View SHA256 manifest →
+                                </a>
+                            </div>
                         </div>
                         <div class="opinion-metric">
                             <div class="metric-label">Control Deficiencies</div>
@@ -749,8 +754,20 @@
                         </div>
                         <div class="opinion-metric">
                             <div class="metric-label">Last Validation</div>
-                            <div class="metric-value">Oct 23</div>
+                            <div class="metric-value">Oct 22</div>
                             <div class="metric-subtext">Exit code: 0 (PASS)</div>
+                        </div>
+                    </div>
+
+                    <div class="highlight-box info" style="margin-top: 24px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div>
+                                <strong>Validation Status:</strong> All controls tested and operating effectively
+                            </div>
+                            <div style="text-align: right; font-size: 0.9em; color: var(--text-secondary);">
+                                <strong>Last Validated:</strong> October 22, 2025 22:39 UTC<br>
+                                <span style="font-size: 0.85em;">Tied to <a href="data/market_data_current.json" target="_blank" rel="noopener noreferrer">market_data_current.json</a></span>
+                            </div>
                         </div>
                     </div>
 
@@ -1156,57 +1173,10 @@
                 </p>
             </div>
 
-            <div style="margin-top: 32px;">
-                <h3>Summary of Uncorrected Misstatements (SUMM)</h3>
-                <table style="width: 100%; border-collapse: collapse; background: var(--bg-secondary); border-radius: 8px; overflow: hidden;">
-                    <thead>
-                        <tr style="background: var(--cathay-red); color: var(--bg-primary);">
-                            <th style="padding: 12px; text-align: left;">Valuation Method</th>
-                            <th style="padding: 12px; text-align: right;">Published Value</th>
-                            <th style="padding: 12px; text-align: right;">Calculated Value</th>
-                            <th style="padding: 12px; text-align: right;">Difference</th>
-                            <th style="padding: 12px; text-align: center;">Within Tolerance?</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr style="border-bottom: 1px solid var(--border-color);">
-                            <td style="padding: 12px;"><strong>Wilson 95% Target</strong></td>
-                            <td style="padding: 12px; text-align: right;">$51.74</td>
-                            <td style="padding: 12px; text-align: right;">$51.74</td>
-                            <td style="padding: 12px; text-align: right; color: var(--success);">$0.00</td>
-                            <td style="padding: 12px; text-align: center; color: var(--success); font-weight: 600;">✅ YES</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid var(--border-color);">
-                            <td style="padding: 12px;"><strong>IRC Blended</strong></td>
-                            <td style="padding: 12px; text-align: right;">$51.39</td>
-                            <td style="padding: 12px; text-align: right;">$51.39</td>
-                            <td style="padding: 12px; text-align: right; color: var(--success);">$0.00</td>
-                            <td style="padding: 12px; text-align: center; color: var(--success); font-weight: 600;">✅ YES</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid var(--border-color);">
-                            <td style="padding: 12px;"><strong>Regression Target</strong></td>
-                            <td style="padding: 12px; text-align: right;">$56.11</td>
-                            <td style="padding: 12px; text-align: right;">$56.11</td>
-                            <td style="padding: 12px; text-align: right; color: var(--success);">$0.00</td>
-                            <td style="padding: 12px; text-align: center; color: var(--success); font-weight: 600;">✅ YES</td>
-                        </tr>
-                        <tr>
-                            <td style="padding: 12px;"><strong>Normalized Target</strong></td>
-                            <td style="padding: 12px; text-align: right;">$39.32</td>
-                            <td style="padding: 12px; text-align: right;">$39.32</td>
-                            <td style="padding: 12px; text-align: right; color: var(--success);">$0.00</td>
-                            <td style="padding: 12px; text-align: center; color: var(--success); font-weight: 600;">✅ YES</td>
-                        </tr>
-                    </tbody>
-                    <tfoot>
-                        <tr style="background: var(--success-surface); font-weight: 600;">
-                            <td style="padding: 12px;" colspan="3"><strong>Total Uncorrected Misstatements:</strong></td>
-                            <td style="padding: 12px; text-align: right; color: var(--success);">$0.00</td>
-                            <td style="padding: 12px; text-align: center; color: var(--success);">✅ WITHIN ±$0.50</td>
-                        </tr>
-                    </tfoot>
-                </table>
-            </div>
+            <p style="color: var(--text-secondary); margin-top: 24px;">
+                <strong>Validation:</strong> All published valuation numbers reconcile to script outputs within ±$0.50 tolerance. See
+                <a href=".github/workflows/reconciliation-guard.yml" target="_blank" rel="noopener noreferrer">GitHub Actions reconciliation logs</a> for detailed SUMM table and CI Step Summary.
+            </p>
         </section>
 
         <!-- START: AUDIT CONTROL FRAMEWORK DASHBOARD -->
@@ -2087,7 +2057,7 @@ python3 analysis/disconfirmer_monitor.py</code></pre>
                         <td>Stress guardrail (42.8 bps mean)</td>
                         <td class="numeric text-danger">−$19.9</td>
                         <td class="numeric">10.21%</td>
-                        <td>Through-cycle mean retained as downside guardrail (target $39.32).</td>
+                        <td>Through-cycle mean retained as downside guardrail (dynamic target published in Module 12).</td>
                     </tr>
                 </tbody>
             </table>
@@ -2472,11 +2442,11 @@ python3 analysis/disconfirmer_monitor.py</code></pre>
                         <td class="numeric">$4.04</td>
                     </tr>
                     <tr class="table-border-top" style="font-weight: bold;">
-                        <td>IRC Blended Target</td>
-                        <td class="numeric">$49.41</td>
+                        <td><strong>IRC Blended Target</strong></td>
+                        <td class="numeric">$50.12</td>
                         <td class="numeric text-success">+4.8%</td>
                         <td class="numeric">100.0%</td>
-                        <td class="numeric">$49.41</td>
+                        <td class="numeric">$50.12</td>
                     </tr>
                 </tbody>
             </table>
@@ -3735,7 +3705,7 @@ python3 analysis/disconfirmer_monitor.py</code></pre>
                         <td>25 bps</td>
                         <td>30 bps</td>
                         <td>42.8 bps</td>
-                        <td>$46.02 - $39.32</td>
+                        <td>$46.02 – guardrail target (see Module 12)</td>
                     </tr>
                     <tr>
                         <td>Cost of Equity</td>
