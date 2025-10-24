@@ -4119,6 +4119,10 @@ a[href*="isaca.org"]:hover {
     transition: none;
 }
 
+:root[data-reduces-motion="true"] .module-card[data-status="UPDATED"] .module-card-badge {
+    animation: none !important;
+}
+
 /* ============================================================
    NIM SENSITIVITY TORNADO MODULE
    ============================================================ */

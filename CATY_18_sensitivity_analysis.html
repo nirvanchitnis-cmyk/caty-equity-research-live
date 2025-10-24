@@ -158,10 +158,26 @@ const NIM_LABELS = ["-50", "-25", "0", "+25", "+50"];
 const SCENARIOS = ["-2%", "0%", "+2%"];
 const EPS_BASELINE = 1.13;
 const TBVPS_BASELINE = 41.00;
-const chartLoadingStates = new Map();
+let chartLoadingStates = new Map();
 const chartInstances = [];
 let SCENARIO_COLORS = {};
 let scenarioButtons = [];
+let cachedThemeStyles = null;
+let cachedThemeToken = '';
+
+function getThemeKey() {
+    const root = document.documentElement;
+    return `${root.getAttribute('data-theme') || 'light'}|${root.getAttribute('data-reduces-motion') || 'false'}`;
+}
+
+function getThemeStyles() {
+    const key = getThemeKey();
+    if (!cachedThemeStyles || cachedThemeToken !== key) {
+        cachedThemeStyles = getComputedStyle(document.documentElement);
+        cachedThemeToken = key;
+    }
+    return cachedThemeStyles;
+}
 
 function colorWithAlpha(color, alpha) {
     if (!color) {
@@ -206,7 +222,7 @@ function colorWithAlpha(color, alpha) {
 }
 
 function getScenarioColors() {
-    const style = getComputedStyle(document.documentElement);
+    const style = getThemeStyles();
     return {
         "-2%": style.getPropertyValue('--danger').trim() || '#8C1E33',
         "0%": style.getPropertyValue('--bar-neutral').trim() || '#4F5B67',
@@ -215,7 +231,7 @@ function getScenarioColors() {
 }
 
 function getChartThemeTokens() {
-    const style = getComputedStyle(document.documentElement);
+    const style = getThemeStyles();
     const textPrimary = style.getPropertyValue('--text-primary').trim() || '#1f2937';
     const textSecondary = style.getPropertyValue('--text-secondary').trim() || '#4f5b67';
     const bgPrimary = style.getPropertyValue('--bg-primary').trim() || '#fff';
@@ -511,10 +527,12 @@ function updateScenarioButtonState(button) {
     const scenario = button.dataset.scenario;
     const color = SCENARIO_COLORS[scenario] || '#2F6690';
     const tokens = getChartThemeTokens();
+    const style = getThemeStyles();
+    const backgroundBase = style.getPropertyValue('--bg-primary').trim() || '#fff';
     const pressed = button.getAttribute('aria-pressed') === 'true';
     if (pressed) {
         button.style.backgroundColor = color;
-        button.style.color = getComputedStyle(document.documentElement).getPropertyValue('--bg-primary').trim() || '#fff';
+        button.style.color = backgroundBase;
         button.style.borderColor = color;
     } else {
         button.style.backgroundColor = tokens.inactiveButtonBg;
