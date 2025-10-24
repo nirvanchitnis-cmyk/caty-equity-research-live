@@ -641,6 +641,16 @@ body {
     opacity: 0.75;
 }
 
+.disclosure-note {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin: -0.25rem 0 1rem;
+}
+
+[data-theme="dark"] .disclosure-note {
+    color: #CDD4DA;
+}
+
 /* Data snapshot timestamp styling */
 #data-snapshot-timestamp {
     font-family: 'Courier New', monospace;
