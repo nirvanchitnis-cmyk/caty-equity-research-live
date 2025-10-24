@@ -90,7 +90,7 @@ def extract_published_numbers() -> Dict[str, float]:
     # Read README.md
     readme_path = Path(__file__).parent.parent / 'README.md'
     if readme_path.exists():
-        content = readme_path.read_text()
+        content = readme_path.read_text(encoding='utf-8')
 
         # Expected Price: **$48.70 (+3.3%)**
         match = re.search(r'Expected Price:.*\*\*\$(\d+\.\d+)\s*\(([+-]\d+\.\d+)%\)', content)
@@ -116,7 +116,7 @@ def extract_published_numbers() -> Dict[str, float]:
     # Read index.html
     index_path = Path(__file__).parent.parent / 'index.html'
     if index_path.exists():
-        content = index_path.read_text()
+        content = index_path.read_text(encoding='utf-8')
 
         # Wilson 95% Expected Value (support reconciliation or scenario tables)
         wilson_match = re.search(
