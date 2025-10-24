@@ -240,6 +240,14 @@ html {
     scroll-behavior: smooth;
 }
 
+html[data-reduces-motion="true"] {
+    scroll-behavior: auto;
+}
+
+:root[data-reduces-motion="true"] {
+    --motion-duration: 0.01ms;
+}
+
 @media (prefers-reduced-motion: reduce) {
     html {
         scroll-behavior: auto;
@@ -835,7 +843,8 @@ body > header {
     color: var(--text-primary);
 }
 .status-banner strong {
-    color: var(--warning);
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--warning);
 }
 .status-banner.status-warning {
     border-left: 4px solid var(--danger);
@@ -844,6 +853,7 @@ body > header {
 }
 .status-banner.status-warning strong {
     color: var(--danger);
+    border-bottom-color: var(--danger);
 }
 
 @keyframes border-pulse {
@@ -1473,10 +1483,14 @@ a[href*="isaca.org"]:hover {
         width: 240px;
         left: -240px;
         transition: left var(--motion-duration) var(--motion-ease);
+        visibility: hidden;
+        pointer-events: none;
     }
 
     .nav-toc.open {
         left: 0;
+        visibility: visible;
+        pointer-events: auto;
     }
 
     .nav-toc ~ header,
@@ -1530,13 +1544,29 @@ a[href*="isaca.org"]:hover {
     margin: 0;
 }
 
+.nav-toc[aria-hidden="true"] {
+    visibility: hidden;
+    pointer-events: none;
+}
+
 .toc-header {
     font-size: 1.1em;
     font-weight: 700;
-    color: var(--cathay-gold);
+    color: var(--text-primary);
     margin-bottom: 20px;
-    border-bottom: 2px solid var(--cathay-gold);
+    border-bottom: 2px solid var(--border-color);
     padding-bottom: 10px;
+    position: relative;
+}
+
+.toc-header::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 48px;
+    height: 2px;
+    background: var(--cathay-gold);
 }
 
 .toc-list {
@@ -1561,12 +1591,12 @@ a[href*="isaca.org"]:hover {
 
 .toc-link:hover {
     background-color: var(--bg-tertiary);
-    color: var(--cathay-gold);
+    color: var(--link-hover);
 }
 
 .toc-link:focus-visible {
     background-color: var(--bg-tertiary);
-    color: var(--cathay-gold);
+    color: var(--link-hover);
     outline: var(--focus-outline);
     box-shadow: var(--focus-shadow);
 }
@@ -1574,7 +1604,7 @@ a[href*="isaca.org"]:hover {
 .toc-link[aria-current="page"] {
     background-color: var(--bg-tertiary);
     border-left: 3px solid var(--cathay-gold);
-    color: var(--cathay-gold);
+    color: var(--link-hover);
     font-weight: 600;
 }
 
@@ -1692,9 +1722,12 @@ a[href*="isaca.org"]:hover {
 
 .module-card-badge {
     font-size: 0.85em;
-    color: var(--cathay-gold);
+    color: var(--text-primary);
     font-weight: 600;
     margin-bottom: 5px;
+    display: inline-block;
+    padding-bottom: 2px;
+    border-bottom: 2px solid var(--cathay-gold);
 }
 
 @keyframes badge-pulse {
@@ -1719,11 +1752,13 @@ a[href*="isaca.org"]:hover {
 .module-card-badge-danger {
     color: var(--danger);
     font-weight: 700;
+    border-bottom-color: var(--danger);
 }
 
 .module-card-badge-warning {
-    color: var(--warning);
+    color: var(--text-primary);
     font-weight: 600;
+    border-bottom-color: var(--warning);
 }
 
 .module-card-title {
@@ -3369,11 +3404,12 @@ a[href*="isaca.org"]:hover {
     align-items: center;
     gap: 6px;
     background: var(--warning-surface);
-    color: var(--warning);
+    color: var(--text-primary);
     padding: 4px 12px;
     border-radius: 4px;
     font-weight: 600;
     font-size: 0.85em;
+    border: 1px solid var(--warning);
 }
 
 /* Numeric cell colors */

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CATY - Company Profile | Corporate Overview</title>
     <link rel="stylesheet" href="styles/caty-equity-research.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 </head>
 <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -441,114 +441,141 @@
         <p>Generated automatically from canonical company profile dataset.</p>
     </footer>
 
+    <script src="scripts/performance.js"></script>
     <script src="scripts/theme-toggle.js"></script>
     <script>
         // CATY_01 Charts - Data-driven from caty01_company_profile.json
-        document.addEventListener('DOMContentLoaded', function() {
-            // Chart 1: Revenue Breakdown (Doughnut)
-            const revenueCtx = document.getElementById('caty01-revenue-chart');
-            if (revenueCtx) {
-                new Chart(revenueCtx, {
-                    type: 'doughnut',
-                    data: {
-                        labels: ['Net Interest Income', 'Fee Income', 'Other'],
-                        datasets: [{
-                            data: [78, 15, 7],
-                            backgroundColor: ['#C41E3A', '#D4AF37', '#8B7355'],
-                            borderWidth: 0
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: true,
-                        plugins: {
-                            title: {
-                                display: true,
-                                text: 'Revenue Composition',
-                                font: { size: 16, weight: '600' },
-                                color: getComputedStyle(document.documentElement).getPropertyValue('--text-primary').trim()
-                            },
-                            legend: {
-                                position: 'bottom',
-                                labels: {
-                                    color: getComputedStyle(document.documentElement).getPropertyValue('--text-primary').trim(),
-                                    font: { size: 12 }
-                                }
-                            },
-                            tooltip: {
-                                callbacks: {
-                                    label: function(context) {
-                                        return context.label + ': ' + context.parsed + '%';
-                                    }
-                                }
-                            }
-                        }
+        document.addEventListener('DOMContentLoaded', () => {
+            const scheduleIdle = typeof window.__scheduleIdle === 'function'
+                ? window.__scheduleIdle
+                : (callback, timeout = 1200) => {
+                    if ('requestIdleCallback' in window) {
+                        window.requestIdleCallback(callback, { timeout });
+                        return;
                     }
-                });
-            }
+                    window.setTimeout(callback, Math.min(timeout, 500));
+                };
 
-            // Chart 2: Geographic Footprint (Bar)
-            const geoCtx = document.getElementById('caty01-geography-chart');
-            if (geoCtx) {
-                new Chart(geoCtx, {
-                    type: 'bar',
-                    data: {
-                        labels: ['California', 'New York', 'Texas', 'Other'],
-                        datasets: [{
-                            label: 'Branches',
-                            data: [44, 9, 5, 4],
-                            backgroundColor: ['#C41E3A', '#D4AF37', '#8B7355', '#1C1C1C'],
-                            borderWidth: 0
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: true,
-                        plugins: {
-                            title: {
-                                display: true,
-                                text: 'Branch Network by Region (62 Total)',
-                                font: { size: 16, weight: '600' },
-                                color: getComputedStyle(document.documentElement).getPropertyValue('--text-primary').trim()
-                            },
-                            legend: { display: false },
-                            tooltip: {
-                                callbacks: {
-                                    afterLabel: function(context) {
-                                        const percentages = [71, 15, 8, 6];
-                                        return percentages[context.dataIndex] + '% of network';
+            const initializeCharts = () => {
+                // Chart 1: Revenue Breakdown (Doughnut)
+                const revenueCtx = document.getElementById('caty01-revenue-chart');
+                if (revenueCtx) {
+                    new Chart(revenueCtx, {
+                        type: 'doughnut',
+                        data: {
+                            labels: ['Net Interest Income', 'Fee Income', 'Other'],
+                            datasets: [{
+                                data: [78, 15, 7],
+                                backgroundColor: ['#C41E3A', '#D4AF37', '#8B7355'],
+                                borderWidth: 0
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: true,
+                            plugins: {
+                                title: {
+                                    display: true,
+                                    text: 'Revenue Composition',
+                                    font: { size: 16, weight: '600' },
+                                    color: getComputedStyle(document.documentElement).getPropertyValue('--text-primary').trim()
+                                },
+                                legend: {
+                                    position: 'bottom',
+                                    labels: {
+                                        color: getComputedStyle(document.documentElement).getPropertyValue('--text-primary').trim(),
+                                        font: { size: 12 }
+                                    }
+                                },
+                                tooltip: {
+                                    callbacks: {
+                                        label: function(context) {
+                                            return context.label + ': ' + context.parsed + '%';
+                                        }
                                     }
                                 }
                             }
+                        }
+                    });
+                }
+
+                // Chart 2: Geographic Footprint (Bar)
+                const geoCtx = document.getElementById('caty01-geography-chart');
+                if (geoCtx) {
+                    new Chart(geoCtx, {
+                        type: 'bar',
+                        data: {
+                            labels: ['California', 'New York', 'Texas', 'Other'],
+                            datasets: [{
+                                label: 'Branches',
+                                data: [44, 9, 5, 4],
+                                backgroundColor: ['#C41E3A', '#D4AF37', '#8B7355', '#1C1C1C'],
+                                borderWidth: 0
+                            }]
                         },
-                        scales: {
-                            y: {
-                                beginAtZero: true,
-                                ticks: {
-                                    color: getComputedStyle(document.documentElement).getPropertyValue('--text-secondary').trim()
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: true,
+                            plugins: {
+                                title: {
+                                    display: true,
+                                    text: 'Branch Network by Region (62 Total)',
+                                    font: { size: 16, weight: '600' },
+                                    color: getComputedStyle(document.documentElement).getPropertyValue('--text-primary').trim()
                                 },
-                                grid: {
-                                    color: getComputedStyle(document.documentElement).getPropertyValue('--border-light').trim()
+                                legend: { display: false },
+                                tooltip: {
+                                    callbacks: {
+                                        afterLabel: function(context) {
+                                            const percentages = [71, 15, 8, 6];
+                                            return percentages[context.dataIndex] + '% of network';
+                                        }
+                                    }
                                 }
                             },
-                            x: {
-                                ticks: {
-                                    color: getComputedStyle(document.documentElement).getPropertyValue('--text-secondary').trim()
+                            scales: {
+                                y: {
+                                    beginAtZero: true,
+                                    ticks: {
+                                        color: getComputedStyle(document.documentElement).getPropertyValue('--text-secondary').trim()
+                                    },
+                                    grid: {
+                                        color: getComputedStyle(document.documentElement).getPropertyValue('--border-light').trim()
+                                    }
                                 },
-                                grid: { display: false }
+                                x: {
+                                    ticks: {
+                                        color: getComputedStyle(document.documentElement).getPropertyValue('--text-secondary').trim()
+                                    },
+                                    grid: { display: false }
+                                }
                             }
                         }
-                    }
-                });
-            }
+                    });
+                }
+            };
+
+            scheduleIdle(initializeCharts, 800);
         });
     </script>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            setTimeout(() => {
-                document.querySelectorAll('.chart-wrapper').forEach(w => w.classList.add('loaded'));
-            }, 150);
+            const scheduleIdle = typeof window.__scheduleIdle === 'function'
+                ? window.__scheduleIdle
+                : (callback, timeout = 1200) => {
+                    if ('requestIdleCallback' in window) {
+                        window.requestIdleCallback(callback, { timeout });
+                        return;
+                    }
+                    window.setTimeout(callback, Math.min(timeout, 500));
+                };
+
+            scheduleIdle(() => {
+                document.querySelectorAll('.chart-wrapper').forEach((wrapper) => {
+                    wrapper.classList.add('loaded');
+                });
+            }, 300);
         });
     </script>
 

@@ -4,9 +4,41 @@
  * All charts read CSS variables to respect light/dark modes
  */
 
+const rootElement = document.documentElement;
+let cachedRootStyles = null;
+let cachedStyleToken = null;
+
+function getStyleToken() {
+    if (!rootElement) {
+        return '';
+    }
+
+    const theme = rootElement.getAttribute('data-theme') || 'light';
+    const motion = rootElement.getAttribute('data-reduces-motion') || 'false';
+    return `${theme}|${motion}`;
+}
+
+function getRootStyles() {
+    if (!rootElement) {
+        return null;
+    }
+
+    const token = getStyleToken();
+    if (!cachedRootStyles || cachedStyleToken !== token) {
+        cachedRootStyles = getComputedStyle(rootElement);
+        cachedStyleToken = token;
+    }
+
+    return cachedRootStyles;
+}
+
 // Get CSS variable value
 function getCSSVar(varName) {
-    return getComputedStyle(document.documentElement).getPropertyValue(varName).trim();
+    const styles = getRootStyles();
+    if (!styles) {
+        return '';
+    }
+    return styles.getPropertyValue(varName).trim();
 }
 
 // Get theme colors from CSS variables

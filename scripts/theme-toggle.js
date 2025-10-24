@@ -8,6 +8,7 @@ const TOC_FOCUSABLE_SELECTOR = [
 ].join(', ');
 
 let tocPreviouslyFocusedElement = null;
+const motionQuery = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
 
 function updateThemeToggleState(isDarkMode) {
     const button = document.querySelector('.theme-toggle');
@@ -40,6 +41,27 @@ function getTOCElements() {
     };
 }
 
+function setTOCLinksInteractive(toc, enabled) {
+    if (!toc) {
+        return;
+    }
+
+    if (enabled) {
+        toc.removeAttribute('inert');
+    } else {
+        toc.setAttribute('inert', '');
+    }
+
+    const links = toc.querySelectorAll('.toc-link');
+    links.forEach((link) => {
+        if (enabled) {
+            link.removeAttribute('tabindex');
+        } else {
+            link.setAttribute('tabindex', '-1');
+        }
+    });
+}
+
 function isMobileViewport() {
     return window.matchMedia('(max-width: 768px)').matches;
 }
@@ -65,10 +87,18 @@ function openTOC() {
 
     toc.classList.add('open');
     toc.setAttribute('aria-hidden', 'false');
+    setTOCLinksInteractive(toc, true);
     toggleButton.setAttribute('aria-expanded', 'true');
 
     const focusTarget = toc.querySelector('.toc-link') || toc;
     window.requestAnimationFrame(() => focusTarget.focus());
+}
+
+function allowsSmoothScroll() {
+    if (document.documentElement.getAttribute('data-reduces-motion') === 'true') {
+        return false;
+    }
+    return !(motionQuery && motionQuery.matches);
 }
 
 function closeTOC({ restoreFocus = true } = {}) {
@@ -85,6 +115,7 @@ function closeTOC({ restoreFocus = true } = {}) {
     if (isMobileViewport()) {
         toc.setAttribute('aria-hidden', 'true');
     }
+    setTOCLinksInteractive(toc, false);
     toggleButton.setAttribute('aria-expanded', 'false');
 
     if (restoreFocus) {
@@ -210,12 +241,14 @@ window.addEventListener('DOMContentLoaded', () => {
                 if (toggleButton) {
                     toggleButton.setAttribute('aria-expanded', 'false');
                 }
+                setTOCLinksInteractive(toc, false);
             } else {
                 toc.classList.add('open');
                 toc.setAttribute('aria-hidden', 'false');
                 if (toggleButton) {
                     toggleButton.setAttribute('aria-expanded', 'false');
                 }
+                setTOCLinksInteractive(toc, true);
             }
         };
 
@@ -234,7 +267,10 @@ window.addEventListener('DOMContentLoaded', () => {
                 const targetElement = document.querySelector(targetId);
 
                 if (targetElement) {
-                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    targetElement.scrollIntoView({
+                        behavior: allowsSmoothScroll() ? 'smooth' : 'auto',
+                        block: 'start'
+                    });
 
                     if (window.innerWidth < 768) {
                         closeTOC({ restoreFocus: true });

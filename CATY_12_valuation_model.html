@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CATY - Valuation Model | Data Repository</title>
     <link rel="stylesheet" href="styles/caty-equity-research.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 </head>
 <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -1622,6 +1622,7 @@
     </main>
 
     <!-- JavaScript for Theme Toggle -->
+    <script src="scripts/performance.js"></script>
     <script src="scripts/theme-toggle.js"></script>
     <script src="scripts/charts.js"></script>
     <script src="scripts/scenario-waterfall.js"></script>
@@ -1629,33 +1630,45 @@
 
     <!-- Initialize NCO Chart -->
     <script>
-        // Store chart instances globally for theme updates
-        let chartInstances = [];
+        window.chartInstances = window.chartInstances || [];
 
-        // Initialize NCO trend chart
-        document.addEventListener('DOMContentLoaded', async function() {
-            const ncoChart = await initNCOChart('ncoTrendChart');
-            if (ncoChart) {
-                chartInstances.push(ncoChart);
+        document.addEventListener('DOMContentLoaded', () => {
+            const scheduleIdle = typeof window.__scheduleIdle === 'function'
+                ? window.__scheduleIdle
+                : (callback, timeout = 1200) => {
+                    if ('requestIdleCallback' in window) {
+                        window.requestIdleCallback(callback, { timeout });
+                        return;
+                    }
+                    window.setTimeout(callback, Math.min(timeout, 500));
+                };
+
+            const initialiseCharts = async () => {
+                const ncoChart = await initNCOChart('ncoTrendChart');
+                if (ncoChart) {
+                    window.chartInstances.push(ncoChart);
+                }
+            };
+
+            scheduleIdle(initialiseCharts, 800);
+
+            const originalToggleTheme = window.toggleTheme;
+            if (typeof originalToggleTheme === 'function') {
+                window.toggleTheme = function () {
+                    originalToggleTheme();
+                    scheduleIdle(() => {
+                        if (typeof updateChartsOnThemeChange === 'function') {
+                            updateChartsOnThemeChange(window.chartInstances);
+                        }
+                    }, 200);
+                };
             }
 
-            // Re-render charts when theme changes
-            const originalToggleTheme = window.toggleTheme;
-            window.toggleTheme = function() {
-                originalToggleTheme();
-                // Small delay to let CSS variables update
-                setTimeout(() => {
-                    updateChartsOnThemeChange(chartInstances);
-                }, 100);
-            };
-        });
-    </script>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            setTimeout(() => {
-                document.querySelectorAll('.chart-wrapper').forEach(w => w.classList.add('loaded'));
-            }, 150);
+            scheduleIdle(() => {
+                document.querySelectorAll('.chart-wrapper').forEach((wrapper) => {
+                    wrapper.classList.add('loaded');
+                });
+            }, 300);
         });
     </script>
 
