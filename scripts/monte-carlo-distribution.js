@@ -29,14 +29,36 @@
     };
 
     const state = {
-        chart: null,
-        bands: [],
-        ranges: [],
-        summary: null,
-        showCI: true,
-        showPercentiles: false,
-        showInterpretations: false
-    };
+       chart: null,
+       bands: [],
+       ranges: [],
+       summary: null,
+       showCI: true,
+       showPercentiles: false,
+       showInterpretations: false
+   };
+
+    const root = document.documentElement;
+    let cachedStyles = null;
+    let cachedToken = '';
+
+    function getThemeToken() {
+        const theme = root ? root.getAttribute('data-theme') || 'light' : 'light';
+        const motion = root ? root.getAttribute('data-reduces-motion') || 'false' : 'false';
+        return `${theme}|${motion}`;
+    }
+
+    function getRootStyles() {
+        if (!root) {
+            return null;
+        }
+        const token = getThemeToken();
+        if (!cachedStyles || cachedToken !== token) {
+            cachedStyles = getComputedStyle(root);
+            cachedToken = token;
+        }
+        return cachedStyles;
+    }
 
     const confidenceBandPlugin = {
         id: 'mcConfidenceBand',
@@ -193,7 +215,11 @@
     };
 
     function getCssVar(varName) {
-        return getComputedStyle(document.documentElement).getPropertyValue(varName).trim();
+        const styles = getRootStyles();
+        if (!styles) {
+            return '';
+        }
+        return styles.getPropertyValue(varName).trim();
     }
 
     function parseProbability(value) {

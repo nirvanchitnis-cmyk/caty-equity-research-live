@@ -343,7 +343,7 @@ html[data-reduces-motion="true"] {
     padding: 24px;
     border-radius: 8px;
     border-left: 6px solid;
-    transition: transform 200ms ease, box-shadow 200ms ease;
+    transition: transform var(--motion-duration) var(--motion-ease), box-shadow var(--motion-duration) var(--motion-ease);
 }
 
 .evidence-tier:hover {
@@ -415,7 +415,7 @@ html[data-reduces-motion="true"] {
     color: var(--info);
     text-decoration: none;
     border-bottom: 1px dotted var(--info);
-    transition: border-bottom-color 200ms ease;
+    transition: border-bottom-color var(--motion-duration) var(--motion-ease);
 }
 
 .tier-examples a:hover {
@@ -452,7 +452,7 @@ html[data-reduces-motion="true"] {
     border-radius: 8px;
     padding: 24px;
     margin-bottom: 24px;
-    transition: box-shadow 200ms ease;
+    transition: box-shadow var(--motion-duration) var(--motion-ease);
 }
 
 .control-test-card:hover {
@@ -521,7 +521,7 @@ html[data-reduces-motion="true"] {
     color: var(--info);
     text-decoration: none;
     border-bottom: 1px dotted var(--info);
-    transition: border-bottom-color 200ms ease;
+    transition: border-bottom-color var(--motion-duration) var(--motion-ease);
 }
 
 .control-evidence a:hover {
@@ -882,7 +882,7 @@ body > header {
     background: var(--bg-tertiary);
     padding: 20px;
     border-radius: 8px;
-    transition: transform 200ms ease-out, box-shadow 200ms ease-out;
+    transition: transform var(--motion-duration) ease-out, box-shadow var(--motion-duration) ease-out;
 }
 
 .metric-card:hover {
@@ -1115,7 +1115,7 @@ li {
 a {
     color: var(--link-color);
     text-decoration: none;
-    transition: color 200ms ease, border-bottom 200ms ease, opacity 200ms ease;
+    transition: color var(--motion-duration) var(--motion-ease), border-bottom var(--motion-duration) var(--motion-ease), opacity var(--motion-duration) var(--motion-ease);
     border-bottom: 1px dotted var(--link-color); /* Default underline with subtlety */
 }
 
@@ -1152,7 +1152,7 @@ a[target="_blank"]::after {
     opacity: 0.65;
     margin-left: 0.25em;
     display: inline-block;
-    transition: opacity 200ms ease;
+    transition: opacity var(--motion-duration) var(--motion-ease);
 }
 
 a[target="_blank"]:hover::after {
@@ -1259,7 +1259,7 @@ a[href*="isaca.org"]:hover {
     text-decoration: none;
     font-size: 0.9em;
     font-weight: 500;
-    transition: all 200ms ease;
+    transition: all var(--motion-duration) var(--motion-ease);
 }
 
 .pagination-btn:hover {
@@ -1325,7 +1325,7 @@ a[href*="isaca.org"]:hover {
     color: var(--text-primary);
     text-decoration: none;
     font-weight: 500;
-    transition: all 200ms ease;
+    transition: all var(--motion-duration) var(--motion-ease);
 }
 
 .back-button:hover {
@@ -1403,7 +1403,7 @@ a[href*="isaca.org"]:hover {
     display: flex;
     align-items: center;
     gap: 12px;
-    transition: color 200ms ease;
+    transition: color var(--motion-duration) var(--motion-ease);
 }
 
 .audit-framework-summary:hover {
@@ -1585,7 +1585,7 @@ a[href*="isaca.org"]:hover {
     text-decoration: none;
     padding: 8px 12px;
     border-radius: 4px;
-    transition: background-color 200ms ease, color 200ms ease;
+    transition: background-color var(--motion-duration) var(--motion-ease), color var(--motion-duration) var(--motion-ease);
     font-size: 0.95em;
 }
 
@@ -1935,7 +1935,7 @@ a[href*="isaca.org"]:hover {
     color: var(--info);
     border-bottom: 1px dotted var(--info);
     text-decoration: none;
-    transition: border-bottom-color 200ms ease;
+    transition: border-bottom-color var(--motion-duration) var(--motion-ease);
 }
 
 .opinion-standards a:hover {
@@ -1957,7 +1957,7 @@ a[href*="isaca.org"]:hover {
     gap: 12px;
     font-size: 1.05em;
     color: var(--cathay-red);
-    transition: color 200ms ease;
+    transition: color var(--motion-duration) var(--motion-ease);
 }
 
 .opinion-summary:hover {
@@ -1986,7 +1986,7 @@ a[href*="isaca.org"]:hover {
     margin-bottom: 8px;
     color: var(--info);
     text-decoration: none;
-    transition: color 200ms ease;
+    transition: color var(--motion-duration) var(--motion-ease);
 }
 
 .opinion-jump-link:hover {

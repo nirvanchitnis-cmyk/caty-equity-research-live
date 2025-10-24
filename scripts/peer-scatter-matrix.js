@@ -100,6 +100,28 @@
         marketCapRange: { min: Number.POSITIVE_INFINITY, max: Number.NEGATIVE_INFINITY }
     };
 
+    const root = document.documentElement;
+    let cachedStyles = null;
+    let cachedToken = '';
+
+    function getThemeToken() {
+        const theme = root ? root.getAttribute('data-theme') || 'light' : 'light';
+        const motion = root ? root.getAttribute('data-reduces-motion') || 'false' : 'false';
+        return `${theme}|${motion}`;
+    }
+
+    function getRootStyles() {
+        if (!root) {
+            return null;
+        }
+        const token = getThemeToken();
+        if (!cachedStyles || cachedToken !== token) {
+            cachedStyles = getComputedStyle(root);
+            cachedToken = token;
+        }
+        return cachedStyles;
+    }
+
     const peerRegressionPlugin = {
         id: 'peerRegressionPlugin',
         afterDatasetsDraw(chart) {
@@ -1054,7 +1076,11 @@
     }
 
     function getCssVar(name) {
-        return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+        const styles = getRootStyles();
+        if (!styles) {
+            return '';
+        }
+        return styles.getPropertyValue(name).trim();
     }
 
     function toFixed(value, decimals) {

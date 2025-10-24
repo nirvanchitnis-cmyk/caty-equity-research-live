@@ -71,8 +71,34 @@
         recoveryIndices: []
     };
 
+    const root = document.documentElement;
+    let cachedStyles = null;
+    let cachedToken = '';
+
+    function getThemeToken() {
+        const theme = root ? root.getAttribute('data-theme') || 'light' : 'light';
+        const motion = root ? root.getAttribute('data-reduces-motion') || 'false' : 'false';
+        return `${theme}|${motion}`;
+    }
+
+    function getRootStyles() {
+        if (!root) {
+            return null;
+        }
+        const token = getThemeToken();
+        if (!cachedStyles || cachedToken !== token) {
+            cachedStyles = getComputedStyle(root);
+            cachedToken = token;
+        }
+        return cachedStyles;
+    }
+
     function getCssVar(varName) {
-        return getComputedStyle(document.documentElement).getPropertyValue(varName).trim();
+        const styles = getRootStyles();
+        if (!styles) {
+            return '';
+        }
+        return styles.getPropertyValue(varName).trim();
     }
 
     function toNumber(value, fallback = null) {
