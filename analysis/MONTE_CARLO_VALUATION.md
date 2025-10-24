@@ -223,7 +223,7 @@ The refreshed simulation ties percentile narratives back to the deterministic br
 ### 3.2 50th Percentile (Median) – $42.62 (−7.7%)
 
 - **Credit:** Guardrail provisioning (~$41M) dominates the weighted average; shares earn ~$0.98–$1.05 per quarter.
-- **Rates:** FedWatch mix centres on −25/0 bps, adding only +7–8 bps of NIM relief (NII +$7–8M). Deposit betas decline marginally (0.507 → ~0.48).
+- **Rates:** FedWatch mix centers on −25/0 bps, adding only +7–8 bps of NIM relief (NII +$7–8M). Deposit betas decline marginally (0.507 → ~0.48).
 - **ROTE / Valuation:** ROTE gravitates toward 10.1%, COE 9.9%; P/TBV ≈1.04× on TBVPS ~$41 → target $42–43.
 - **Bridge:** Aligns with the "Cut 50 bps + guardrail credit" row (EPS $1.07) blended with hold-case weighting in <code>analysis/probabilistic_outlook.json</code>.
 

@@ -7,8 +7,9 @@
     <link rel="stylesheet" href="styles/caty-equity-research.css">
 </head>
 <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
     <!-- Theme Toggle -->
-    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" aria-pressed="false">
+    <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Toggle dark mode" role="switch" aria-checked="false">
         <span id="theme-icon" aria-hidden="true">🌙</span>
         <span id="theme-text">Dark Mode</span>
     </button>
@@ -38,7 +39,7 @@
         <span class="breadcrumb-current" aria-current="page">Income Statement</span>
     </nav>
 
-    <div class="container">
+    <main class="container" id="main-content" tabindex="-1">
         <nav class="module-pagination" aria-label="Module navigation">
             <a href="index.html" class="back-button">← Back to Main Report</a>
             <div class="pagination-buttons">
@@ -616,7 +617,7 @@
             </table>
         </section>
 
-    </div>
+    </main>
 
     <!-- JavaScript for Theme Toggle -->
     <script src="scripts/theme-toggle.js"></script>

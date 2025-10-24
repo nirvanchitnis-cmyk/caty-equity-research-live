@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles/caty-equity-research.css">
 </head>
 <body>
-    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" aria-pressed="false">
+    <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Toggle dark mode" role="switch" aria-checked="false">
         <span id="theme-icon" aria-hidden="true">🌙</span>
         <span id="theme-text">Dark Mode</span>
     </button>
@@ -24,6 +24,13 @@
 
     <div class="container">
         <a class="back-button" href="index.html">← Back to Main Report</a>
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-category">ESG &amp; Social Analysis</span>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current" aria-current="page">Social Sentiment</span>
+        </nav>
 
         <section id="executive-summary">
             <h2>Executive Summary</h2>

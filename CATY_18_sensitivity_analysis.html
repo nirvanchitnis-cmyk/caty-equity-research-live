@@ -9,8 +9,9 @@
     <script async src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
 </head>
 <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
     <!-- Theme Toggle -->
-    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" aria-pressed="false">
+    <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Toggle dark mode" role="switch" aria-checked="false">
         <span id="theme-icon" aria-hidden="true">🌙</span>
         <span id="theme-text">Dark Mode</span>
     </button>
@@ -38,7 +39,7 @@
         <span class="breadcrumb-current" aria-current="page">Sensitivity Analysis</span>
     </nav>
 
-    <div class="container">
+    <main class="container" id="main-content" tabindex="-1">
         <nav class="module-pagination" aria-label="Module navigation">
             <a href="index.html" class="back-button">← Back to Main Report</a>
             <div class="pagination-buttons">
@@ -66,9 +67,9 @@
                 <p class="chart-subtitle">Quarterly EPS response to ±50 bps NIM shifts under alternative loan growth paths.</p>
                 <div class="chart-toolbar" role="toolbar" aria-label="Scenario visibility toggles">
                     <span class="sr-only" id="scenario-toggle-instructions">Press Enter to toggle loan growth scenarios.</span>
-                    <button type="button" class="filter-chip" data-scenario="-2%" aria-pressed="true" aria-describedby="scenario-toggle-instructions" style="border: 1px solid var(--border-color); border-radius: 999px; padding: 0.4rem 0.9rem; background: var(--danger); color: #ffffff; cursor: pointer; font-size: 0.9rem;">-2% loans</button>
-                    <button type="button" class="filter-chip" data-scenario="0%" aria-pressed="true" aria-describedby="scenario-toggle-instructions" style="border: 1px solid var(--border-color); border-radius: 999px; padding: 0.4rem 0.9rem; background: var(--bar-neutral); color: #ffffff; cursor: pointer; font-size: 0.9rem;">0% loans</button>
-                    <button type="button" class="filter-chip" data-scenario="+2%" aria-pressed="true" aria-describedby="scenario-toggle-instructions" style="border: 1px solid var(--border-color); border-radius: 999px; padding: 0.4rem 0.9rem; background: var(--success); color: #ffffff; cursor: pointer; font-size: 0.9rem;">+2% loans</button>
+                    <button type="button" class="filter-chip" data-scenario="-2%" aria-pressed="true" aria-describedby="scenario-toggle-instructions" style="border: 1px solid var(--border-color); border-radius: 999px; padding: 0.4rem 0.9rem; background: var(--danger); color: var(--bg-primary); cursor: pointer; font-size: 0.9rem;">-2% loans</button>
+                    <button type="button" class="filter-chip" data-scenario="0%" aria-pressed="true" aria-describedby="scenario-toggle-instructions" style="border: 1px solid var(--border-color); border-radius: 999px; padding: 0.4rem 0.9rem; background: var(--bar-neutral); color: var(--bg-primary); cursor: pointer; font-size: 0.9rem;">0% loans</button>
+                    <button type="button" class="filter-chip" data-scenario="+2%" aria-pressed="true" aria-describedby="scenario-toggle-instructions" style="border: 1px solid var(--border-color); border-radius: 999px; padding: 0.4rem 0.9rem; background: var(--success); color: var(--bg-primary); cursor: pointer; font-size: 0.9rem;">+2% loans</button>
                 </div>
                 <div class="chart-wrapper" style="position: relative; width: 100%; min-height: 450px;">
                     <canvas id="epsChart" style="width: 100%; height: 450px;" role="img" aria-label="EPS sensitivity to NIM changes chart"></canvas>
@@ -81,9 +82,9 @@
                 <p class="chart-subtitle">Tangible book value per share (TBVPS) response to ±50 bps NIM shifts under alternative loan growth paths.</p>
                 <div class="chart-toolbar" role="toolbar" aria-label="Scenario visibility toggles (mirrors EPS chart)">
                     <span class="sr-only" id="scenario-toggle-instructions-tbvps">Press Enter to toggle loan growth scenarios.</span>
-                    <button type="button" class="filter-chip" data-scenario="-2%" aria-pressed="true" aria-describedby="scenario-toggle-instructions-tbvps" style="border: 1px solid var(--border-color); border-radius: 999px; padding: 0.4rem 0.9rem; background: var(--danger); color: #ffffff; cursor: pointer; font-size: 0.9rem;">-2% loans</button>
-                    <button type="button" class="filter-chip" data-scenario="0%" aria-pressed="true" aria-describedby="scenario-toggle-instructions-tbvps" style="border: 1px solid var(--border-color); border-radius: 999px; padding: 0.4rem 0.9rem; background: var(--bar-neutral); color: #ffffff; cursor: pointer; font-size: 0.9rem;">0% loans</button>
-                    <button type="button" class="filter-chip" data-scenario="+2%" aria-pressed="true" aria-describedby="scenario-toggle-instructions-tbvps" style="border: 1px solid var(--border-color); border-radius: 999px; padding: 0.4rem 0.9rem; background: var(--success); color: #ffffff; cursor: pointer; font-size: 0.9rem;">+2% loans</button>
+                    <button type="button" class="filter-chip" data-scenario="-2%" aria-pressed="true" aria-describedby="scenario-toggle-instructions-tbvps" style="border: 1px solid var(--border-color); border-radius: 999px; padding: 0.4rem 0.9rem; background: var(--danger); color: var(--bg-primary); cursor: pointer; font-size: 0.9rem;">-2% loans</button>
+                    <button type="button" class="filter-chip" data-scenario="0%" aria-pressed="true" aria-describedby="scenario-toggle-instructions-tbvps" style="border: 1px solid var(--border-color); border-radius: 999px; padding: 0.4rem 0.9rem; background: var(--bar-neutral); color: var(--bg-primary); cursor: pointer; font-size: 0.9rem;">0% loans</button>
+                    <button type="button" class="filter-chip" data-scenario="+2%" aria-pressed="true" aria-describedby="scenario-toggle-instructions-tbvps" style="border: 1px solid var(--border-color); border-radius: 999px; padding: 0.4rem 0.9rem; background: var(--success); color: var(--bg-primary); cursor: pointer; font-size: 0.9rem;">+2% loans</button>
                 </div>
                 <div class="chart-wrapper" style="position: relative; width: 100%; min-height: 450px;">
                     <canvas id="tbvpsChart" style="width: 100%; height: 450px;" role="img" aria-label="TBVPS sensitivity to NIM changes chart"></canvas>
@@ -130,7 +131,7 @@
             <p><strong>Data vintage</strong>: Oct 22 2025 &nbsp;|&nbsp; Source: CATY 10-Q Q2 2025 &nbsp;|&nbsp; Baseline: EPS $1.13, TBVPS $41.00, NIM 3.31%, IEA $22.0B, shares 68.7M.</p>
         </section>
 
-    </div> <!-- end .container -->
+    </main> <!-- end .container -->
 
 <script>
 const FALLBACK_SENSITIVITY_DATA = [
@@ -215,7 +216,7 @@ function getChartThemeTokens() {
     const style = getComputedStyle(document.documentElement);
     const textPrimary = style.getPropertyValue('--text-primary').trim() || '#1f2937';
     const textSecondary = style.getPropertyValue('--text-secondary').trim() || '#4f5b67';
-    const bgPrimary = style.getPropertyValue('--bg-primary').trim() || '#ffffff';
+    const bgPrimary = style.getPropertyValue('--bg-primary').trim() || '#fff';
     const bgSecondary = style.getPropertyValue('--bg-secondary').trim() || '#f8fbf8';
     const borderColor = style.getPropertyValue('--border-color').trim() || '#d6dadd';
     return {
@@ -511,7 +512,7 @@ function updateScenarioButtonState(button) {
     const pressed = button.getAttribute('aria-pressed') === 'true';
     if (pressed) {
         button.style.backgroundColor = color;
-        button.style.color = '#ffffff';
+        button.style.color = getComputedStyle(document.documentElement).getPropertyValue('--bg-primary').trim() || '#fff';
         button.style.borderColor = color;
     } else {
         button.style.backgroundColor = tokens.inactiveButtonBg;

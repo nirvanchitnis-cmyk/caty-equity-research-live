@@ -176,7 +176,7 @@
                 <a href="CATY_16_coe_triangulation.html" class="module-card module-card-gold" data-status="UPDATED">
                     <div class="module-card-badge">FILE 16 ⭐ • UPDATED</div>
                     <div class="module-card-title">COE Triangulation</div>
-                    <div class="module-card-description">CAPM 9.337% + FF3 10.142% + DDM 9.710% (updated 2025-10-22)</div>
+                    <div class="module-card-description">CAPM 9.34% + FF3 10.14% + DDM 9.71% (updated 2025-10-22)</div>
                 </a>
                 <a href="CATY_18_sensitivity_analysis.html" class="module-card module-card-gold" data-status="UPDATED">
                     <div class="module-card-badge">SENSITIVITY LAB ⭐ • NEW</div>
@@ -282,7 +282,7 @@
                 <div class="dashboard-card">
                     <div class="dashboard-label">Current Price</div>
                     <div class="dashboard-value">$46.17</div>
-                    <div class="dashboard-subtext">Oct 22, 2025 close</div>
+                    <div class="dashboard-subtext">October 22, 2025 close</div>
                 </div>
                 <div class="dashboard-card">
                     <div class="dashboard-label">Market Cap</div>
@@ -442,7 +442,7 @@
 
             <h3>Investment Thesis</h3>
             <!-- BEGIN AUTOGEN: investment-thesis-summary -->
-            <p><strong>Rating: HOLD</strong> at $46.17 (22-Oct-2025 close). The probability-weighted intrinsic value <strong>$44.07</strong> (−4.6%) and Monte Carlo median $42.62 (−7.7%) both sit below spot, but the gap is within a month of trading noise and the Q3 10-Q will determine whether guardrail credit risk materialises. Rate relief adds only +$0.03 quarterly EPS while credit overlays remove −$0.13; until we see product-level betas and watchlist migration in the filing, we sit on the sidelines rather than call for incremental shorting.</p>
+            <p><strong>Rating: HOLD</strong> at $46.17 (October 22, 2025 close). The probability-weighted intrinsic value <strong>$44.07</strong> (−4.6%) and Monte Carlo median $42.62 (−7.7%) both sit below spot, but the gap is within a month of trading noise and the Q3 10-Q will determine whether guardrail credit risk materializes. Rate relief adds only +$0.03 quarterly EPS while credit overlays remove −$0.13; until we see product-level betas and watchlist migration in the filing, we sit on the sidelines rather than call for incremental shorting.</p>
             <!-- END AUTOGEN: investment-thesis-summary -->
 
             <h4>Q3 Run-Rate → Forward EPS Bridge</h4>
@@ -657,7 +657,7 @@
                 <td class="text-align-right">$46.17</td>
                 <td class="text-align-right">—</td>
                 <td class="text-align-right">—</td>
-                <td>NASDAQ close (Oct 22, 2025)</td>
+                <td>NASDAQ close (October 22, 2025)</td>
                 <td>2025-10-22 21:36 UTC</td>
             </tr>
             <tr class="row-highlight-yellow">
@@ -1175,7 +1175,7 @@
 
             <p style="color: var(--text-secondary); margin-top: 24px;">
                 <strong>Validation:</strong> All published valuation numbers reconcile to script outputs within ±$0.50 tolerance. See
-                <a href=".github/workflows/reconciliation-guard.yml" target="_blank" rel="noopener noreferrer">GitHub Actions reconciliation logs</a> for detailed SUMM table and CI Step Summary.
+                <a href=".github/workflows/reconciliation-guard.yml" target="_blank" rel="noopener noreferrer">GitHub Actions reconciliation logs</a> for detailed summary table and CI Step Summary.
             </p>
         </section>
 
@@ -1362,8 +1362,8 @@ python3 analysis/disconfirmer_monitor.py</code></pre>
         <!-- Probability Weights & Guardrails -->
         <section id="probability-weights" class="content-section" aria-labelledby="probability-weights-heading">
             <h2 id="probability-weights-heading">Probability Weights &amp; Guardrails</h2>
-            <p class="text-secondary">Scenario weights combine the CME FedWatch curve captured on 22-Oct-2025 with credit migration guardrails built from FDIC loss history. These inputs drive the probability-weighted valuation in <code>analysis/probabilistic_outlook.json</code>.</p>
-            <h3>Rate Path Distribution (FedWatch 22-Oct-2025)</h3>
+            <p class="text-secondary">Scenario weights combine the CME FedWatch curve captured on October 22, 2025 with credit migration guardrails built from FDIC loss history. These inputs drive the probability-weighted valuation in <code>analysis/probabilistic_outlook.json</code>.</p>
+            <h3>Rate Path Distribution (FedWatch October 22, 2025)</h3>
             <table>
                 <thead>
                     <tr>
@@ -3512,7 +3512,7 @@ python3 analysis/disconfirmer_monitor.py</code></pre>
                 <li id="fn3">FDIC NCO history (post-2014 90th percentile = 30 bps; 2008-2025 mean = 42.8 bps) and valuation bridge inputs. <code>evidence/workpapers/CATY_FDIC_NCO_series.md</code>, <code>data/caty12_calculated_tables.json</code>, <code>data/valuation_outputs.json</code>.</li>
                 <li id="fn4">Rate-path scenarios: <code>analysis/deposit_rate_scenarios.json</code> &lt;-- generated by <code>scripts/build_deposit_rate_scenarios.py</code>; inputs SEC 10-Q MD&A tables + Q3 8-K (deposit costs).</li>
                 <li id="fn5">Credit stress scenarios: <code>analysis/credit_stress_scenarios.json</code> (script <code>scripts/build_credit_stress.py</code> using $20.10B loan base, provision $28.7M, guardrail/stress NCO assumptions).</li>
-                <li id="fn6">Probability-weighted valuation: <code>analysis/probabilistic_outlook.json</code> (script <code>scripts/build_probabilistic_scenarios.py</code> combining rate and credit probabilities from CME FedWatch snapshot 22-Oct-2025 and internal credit review).</li>
+                <li id="fn6">Probability-weighted valuation: <code>analysis/probabilistic_outlook.json</code> (script <code>scripts/build_probabilistic_scenarios.py</code> combining rate and credit probabilities from CME FedWatch snapshot October 22, 2025 and internal credit review).</li>
                 <li id="fn7">Peer benchmarking: <code>data/caty11_peers_normalized.json</code> (LTM through Q2 2025; includes P/TBV, CRE mix, regression outputs).</li>
             </ol>
         </section>
