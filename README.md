@@ -80,6 +80,50 @@ python3 -m tools.def14a_extract.cli facts --ticker CATY --year 2025 \
 
 ---
 
+## DEF14A Pipeline Status (Phase 1+2 Complete)
+
+**Shipped:** 2025-10-24 | **Commit:** `4ad4464` + `c2911e0` | **Postmortem:** `docs/postmortems/2025-10-24_def14a_pipeline_phase1_phase2.md`
+
+### What's Working (21/21 Facts Extractable via CLI)
+
+| Category | Facts | Status |
+|----------|-------|--------|
+| **Meeting** | date, record_date, time, timezone, location_type, access_url | 6/6 ✅ |
+| **Audit** | auditor_name, fees (current/prior/related/tax/other) | 6/6 ✅ |
+| **Compensation** | CEO name/total/pay_ratio, all NEOs total, equity plan metrics | 4/4 ✅ |
+| **Ownership** | >5% beneficial owners (name, shares, percent) | 1/1 ✅ |
+| **Governance** | total directors, independent count | 2/2 ✅ |
+
+### Automation vs CLI
+
+- **CLI:** All 21 facts extract with full provenance (source_url, file_sha256, confidence, method)
+- **Automation:** `update_all_data.py` ships 15/21 facts to `data/def14a_facts_latest.json`
+- **Gap:** 6 facts (ownership, equity plan, governance) work in CLI but not yet in automation
+
+### Example Extraction (CATY 2025)
+
+```bash
+python3 -m tools.def14a_extract.cli facts --ticker CATY --year 2025 \
+  --facts ceo_pay_ratio,director_nominees_independent,audit_fees_current_year \
+  --provenance --output test.json
+```
+
+**Output:**
+- CEO pay ratio: `56:1`
+- Independent directors: `8` (of 12 total)
+- Audit fees: `$2,236,302`
+- All with SEC Edgar provenance + SHA-256 hash
+
+### Validation Gates
+
+- ✅ Required facts enforced (meeting_date, record_date, auditor_name, audit_fees)
+- ✅ Aborts on missing/null values (no silent failures)
+- ⚠️ Low confidence warnings (<70%) on most facts (expected for proxy extraction)
+
+See [postmortem](docs/postmortems/2025-10-24_def14a_pipeline_phase1_phase2.md) for full technical details, verification proofs, and reflection on gaps.
+
+---
+
 ## Repository Structure
 
 ```
@@ -208,7 +252,7 @@ Every number in the dashboard includes:
 3. **Calculation Logic:** Git commit hash referencing the script
 4. **Vintage Timestamp:** When data was fetched
 
-Example provenance metadata:
+Example provenance metadata (XBRL):
 ```json
 {
   "value": 1.303,
@@ -217,6 +261,19 @@ Example provenance metadata:
   "extracted_at": "2025-10-23T00:00:00Z",
   "calculation": "data/caty03_balance_sheet.json",
   "vintage": "2025Q2"
+}
+```
+
+Example provenance metadata (DEF14A proxy facts):
+```json
+{
+  "value": "56:1",
+  "value_type": "ratio",
+  "source_url": "https://www.sec.gov/Archives/edgar/data/861842/000143774925011577/caty20250326_def14a.htm",
+  "file_sha256": "43e4b3f0e50309c5655842d10d47e4e38788709c7cfb7ff3e7a6986f53028873",
+  "method": "regex",
+  "confidence": 0.494,
+  "dom_path": null
 }
 ```
 
@@ -275,6 +332,7 @@ data/*.json ──> scripts/build_site.py ──> HTML modules + index.html
 - **Planning:** `docs/planning/` (project plans, readiness checklists)
 - **Accountability:** `docs/accountability/` (performance tracking, delivery docs)
 - **Postmortems:** `docs/postmortems/` (failure analysis, lessons learned)
+  - **Latest:** [2025-10-24 DEF14A Pipeline Phase 1+2](docs/postmortems/2025-10-24_def14a_pipeline_phase1_phase2.md) - Full technical postmortem with verification proofs, gap analysis, and multi-agent collaboration reflection
 - **Governance:** `docs/governance/` (canonical frameworks)
 
 See `docs/README.md` for full documentation index.
@@ -400,4 +458,4 @@ For this project, "done" means:
 
 ---
 
-**Last Updated:** 2025-10-24 (Operation Intuitive File System reorganization)
+**Last Updated:** 2025-10-25 (DEF14A Pipeline Phase 1+2 complete, 21/21 facts extractable)
