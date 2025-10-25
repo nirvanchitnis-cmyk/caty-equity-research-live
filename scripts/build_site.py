@@ -1853,6 +1853,8 @@ def render_monte_carlo_summary(context: Dict[str, Any]) -> str:
             comparison = f" (spot reference ${reference_spot:.2f})"
         parts.append(f"    <p>Spot overlay{comparison}</p>")
 
+    image_path = ROOT / "assets" / "monte_carlo_pt_distribution.png"
+
     if percentiles:
         parts.append("    <table>")
         parts.append("        <thead><tr><th>Percentile</th><th class=\"text-right\">Target</th><th class=\"text-right\">Return</th><th>Scenario</th></tr></thead>")
@@ -1868,7 +1870,8 @@ def render_monte_carlo_summary(context: Dict[str, Any]) -> str:
             )
         parts.append("        </tbody>")
         parts.append("    </table>")
-        parts.append('    <img src="assets/monte_carlo_pt_distribution.png" alt="Monte Carlo fair value distribution" class="chart-image-full" />')
+        if image_path.exists():
+            parts.append('    <img src="assets/monte_carlo_pt_distribution.png" alt="Monte Carlo fair value distribution" class="chart-image-full" />')
 
     lower = extract_numeric(confidence.get("lower_price"))
     upper = extract_numeric(confidence.get("upper_price"))
