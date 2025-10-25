@@ -1,0 +1,12 @@
+profiles:
+  - ticker: CATY
+    ir_base: https://www.cathaygeneralbancorp.com/investor-relations
+    press_releases_path: /press-releases
+    presentations_path: /presentations
+    financials_path: /financial-information
+  - ticker: AAPL
+    ir_base: https://investor.apple.com
+    press_releases_path: /investor-relations/press-releases
+  - ticker: MSFT
+    ir_base: https://www.microsoft.com/en-us/investor
+    press_releases_path: /earnings

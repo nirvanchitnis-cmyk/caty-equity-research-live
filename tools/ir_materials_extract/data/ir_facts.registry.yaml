@@ -1,0 +1,98 @@
+facts:
+  - id: guidance_revenue_low
+    label: "Revenue guidance (low end)"
+    value_type: currency
+    unit: USD
+    sources: [press_release, earnings_deck, transcript]
+    anchors:
+      - pattern: "(?i)revenue.*outlook"
+      - pattern: "(?i)guidance.*revenue"
+    extraction_hints:
+      - "Range appears as $X.XB - $X.XB"
+      - "Low end is the first number in the range"
+    normalization:
+      billion_markers: ["B", "billion"]
+      million_markers: ["M", "million"]
+
+  - id: guidance_revenue_high
+    label: "Revenue guidance (high end)"
+    value_type: currency
+    unit: USD
+    sources: [press_release, earnings_deck, transcript]
+    anchors:
+      - pattern: "(?i)revenue.*outlook"
+      - pattern: "(?i)guidance.*revenue"
+    extraction_hints:
+      - "High end is the second number in the range"
+
+  - id: guidance_revenue_mid
+    label: "Revenue guidance (midpoint)"
+    value_type: currency
+    unit: USD
+    sources: [press_release, earnings_deck, transcript]
+    cross_checks:
+      - formula: "(guidance_revenue_low + guidance_revenue_high) / 2"
+
+  - id: guidance_eps_non_gaap_low
+    label: "Non-GAAP EPS guidance (low)"
+    value_type: currency
+    unit: USD
+    sources: [press_release, earnings_deck]
+    anchors:
+      - pattern: "(?i)non[- ]?gaap.*eps.*outlook"
+      - pattern: "(?i)adjusted.*eps.*guidance"
+
+  - id: guidance_eps_non_gaap_high
+    label: "Non-GAAP EPS guidance (high)"
+    value_type: currency
+    unit: USD
+    sources: [press_release, earnings_deck]
+    anchors:
+      - pattern: "(?i)non[- ]?gaap.*eps.*outlook"
+      - pattern: "(?i)adjusted.*eps.*guidance"
+
+  - id: guidance_eps_non_gaap_mid
+    label: "Non-GAAP EPS guidance (midpoint)"
+    value_type: currency
+    unit: USD
+    sources: [press_release, earnings_deck]
+    cross_checks:
+      - formula: "(guidance_eps_non_gaap_low + guidance_eps_non_gaap_high) / 2"
+
+  - id: revenue_total
+    label: "Total revenue (quarterly)"
+    value_type: currency
+    unit: USD
+    sources: [press_release, earnings_deck, supplement]
+    anchors:
+      - pattern: "(?i)total.*revenue"
+      - pattern: "(?i)revenue.*total"
+    table_headers: ["Revenue", "Total Revenue", "Net Revenue"]
+
+  - id: revenue_yoy_growth
+    label: "Revenue YoY growth %"
+    value_type: percentage
+    sources: [press_release, earnings_deck]
+    anchors:
+      - pattern: "(?i)revenue.*grew.*(\\d+)%"
+      - pattern: "(?i)(\\d+)%.*revenue.*growth"
+
+  - id: eps_non_gaap
+    label: "Non-GAAP EPS (quarterly)"
+    value_type: currency
+    unit: USD
+    sources: [press_release, earnings_deck]
+    anchors:
+      - pattern: "(?i)non[- ]?gaap.*eps"
+      - pattern: "(?i)adjusted.*eps"
+    table_headers: ["Non-GAAP EPS", "Adjusted EPS", "EPS (Non-GAAP)"]
+
+  - id: eps_gaap
+    label: "GAAP EPS (quarterly)"
+    value_type: currency
+    unit: USD
+    sources: [press_release, earnings_deck]
+    anchors:
+      - pattern: "(?i)gaap.*eps"
+      - pattern: "(?i)diluted.*eps"
+    table_headers: ["GAAP EPS", "Diluted EPS", "EPS (GAAP)"]
