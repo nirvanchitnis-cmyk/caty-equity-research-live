@@ -1,6 +1,6 @@
 {
   "cik": "0000861842",
-  "fetch_timestamp": "2025-10-25T04:47:25Z",
+  "fetch_timestamp": "2025-10-25T04:58:37Z",
   "fy2024": {
     "accession": "0001437749-25-005749",
     "cik": "0000861842",
@@ -244,7 +244,7 @@
         "value": 2845704000
       }
     },
-    "fetch_timestamp": "2025-10-25T04:47:25Z",
+    "fetch_timestamp": "2025-10-25T04:58:37Z",
     "filing_date": "2025-02-28",
     "form_type": "10-K",
     "period_end": "2024-12-31",
@@ -481,7 +481,7 @@
         "value": 2886295000
       }
     },
-    "fetch_timestamp": "2025-10-25T04:47:25Z",
+    "fetch_timestamp": "2025-10-25T04:58:37Z",
     "filing_date": "2025-08-08",
     "form_type": "10-Q",
     "period_end": "2025-06-30",

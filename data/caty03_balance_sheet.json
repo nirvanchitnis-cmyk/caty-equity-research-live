@@ -43,7 +43,7 @@
         "InterestBearingDepositLiabilities",
         "Deposits"
       ],
-      "fetch_timestamp": "2025-10-25T04:47:25Z",
+      "fetch_timestamp": "2025-10-25T04:58:37Z",
       "period_end": "2024-12-31",
       "source": "SEC EDGAR 10-K",
       "value": 83.3167
@@ -54,7 +54,7 @@
         "Deposits",
         "InterestBearingDepositLiabilities"
       ],
-      "fetch_timestamp": "2025-10-25T04:47:25Z",
+      "fetch_timestamp": "2025-10-25T04:58:37Z",
       "period_end": "2024-12-31",
       "source": "SEC EDGAR 10-K",
       "value": 16.6833
@@ -64,7 +64,7 @@
       "computed_from": [
         "Deposits"
       ],
-      "fetch_timestamp": "2025-10-25T04:47:25Z",
+      "fetch_timestamp": "2025-10-25T04:58:37Z",
       "period_end": "2024-12-31",
       "source": "SEC EDGAR 10-K",
       "value": 100.0
@@ -73,7 +73,7 @@
   "fy2024_detailed_table": {
     "afs_securities_millions": {
       "accession": "0001437749-25-005749",
-      "fetch_timestamp": "2025-10-25T04:47:25Z",
+      "fetch_timestamp": "2025-10-25T04:58:37Z",
       "period_end": "2024-12-31",
       "source": "SEC EDGAR 10-K",
       "value": 1547.1,
@@ -84,14 +84,14 @@
       "computed_from": [
         "AccumulatedOtherComprehensiveIncomeLossNetOfTax"
       ],
-      "fetch_timestamp": "2025-10-25T04:47:25Z",
+      "fetch_timestamp": "2025-10-25T04:58:37Z",
       "period_end": "2024-12-31",
       "source": "SEC EDGAR 10-K",
       "value": 85.607
     },
     "aoci_millions": {
       "accession": "0001437749-25-005749",
-      "fetch_timestamp": "2025-10-25T04:47:25Z",
+      "fetch_timestamp": "2025-10-25T04:58:37Z",
       "period_end": "2024-12-31",
       "source": "SEC EDGAR 10-K",
       "value": -85.607,
@@ -99,7 +99,7 @@
     },
     "cash_millions": {
       "accession": "0001437749-25-005749",
-      "fetch_timestamp": "2025-10-25T04:47:25Z",
+      "fetch_timestamp": "2025-10-25T04:58:37Z",
       "period_end": "2024-12-31",
       "source": "SEC EDGAR 10-K",
       "value": 157.2,
@@ -107,7 +107,7 @@
     },
     "fhlb_advances_millions": {
       "accession": "0001437749-25-005749",
-      "fetch_timestamp": "2025-10-25T04:47:25Z",
+      "fetch_timestamp": "2025-10-25T04:58:37Z",
       "period_end": "2024-12-31",
       "source": "SEC EDGAR 10-K",
       "value": 0.0,
@@ -115,7 +115,7 @@
     },
     "goodwill_millions": {
       "accession": "0001437749-25-005749",
-      "fetch_timestamp": "2025-10-25T04:47:25Z",
+      "fetch_timestamp": "2025-10-25T04:58:37Z",
       "period_end": "2024-12-31",
       "source": "SEC EDGAR 10-K",
       "value": 375.696,
@@ -123,7 +123,7 @@
     },
     "intangible_assets_millions": {
       "accession": "0001437749-25-005749",
-      "fetch_timestamp": "2025-10-25T04:47:25Z",
+      "fetch_timestamp": "2025-10-25T04:58:37Z",
       "period_end": "2024-12-31",
       "source": "SEC EDGAR 10-K",
       "value": 3.335,
@@ -131,7 +131,7 @@
     },
     "interest_bearing_deposits_millions": {
       "accession": "0001437749-25-005749",
-      "fetch_timestamp": "2025-10-25T04:47:25Z",
+      "fetch_timestamp": "2025-10-25T04:58:37Z",
       "period_end": "2024-12-31",
       "source": "SEC EDGAR 10-K",
       "value": 16401.9,
@@ -139,7 +139,7 @@
     },
     "loans_hfi_millions": {
       "accession": "0001437749-25-005749",
-      "fetch_timestamp": "2025-10-25T04:47:25Z",
+      "fetch_timestamp": "2025-10-25T04:58:37Z",
       "period_end": "2024-12-31",
       "source": "SEC EDGAR 10-K",
       "value": 19376.0,
@@ -147,7 +147,7 @@
     },
     "loans_hfs_millions": {
       "accession": "0001437749-25-005749",
-      "fetch_timestamp": "2025-10-25T04:47:25Z",
+      "fetch_timestamp": "2025-10-25T04:58:37Z",
       "period_end": "2024-12-31",
       "source": "SEC EDGAR 10-K",
       "value": 0.0,
@@ -159,21 +159,21 @@
         "Deposits",
         "InterestBearingDepositLiabilities"
       ],
-      "fetch_timestamp": "2025-10-25T04:47:25Z",
+      "fetch_timestamp": "2025-10-25T04:58:37Z",
       "period_end": "2024-12-31",
       "source": "SEC EDGAR 10-K",
       "value": 3284.3
     },
     "period_end": {
       "accession": "0001437749-25-005749",
-      "fetch_timestamp": "2025-10-25T04:47:25Z",
+      "fetch_timestamp": "2025-10-25T04:58:37Z",
       "period_end": "2024-12-31",
       "source": "SEC EDGAR 10-K",
       "value": "2024-12-31"
     },
     "shares_outstanding_millions": {
       "accession": "0001437749-25-005749",
-      "fetch_timestamp": "2025-10-25T04:47:25Z",
+      "fetch_timestamp": "2025-10-25T04:58:37Z",
       "period_end": "2024-12-31",
       "source": "SEC EDGAR 10-K",
       "value": 70.863324,
@@ -181,7 +181,7 @@
     },
     "subordinated_debt_millions": {
       "accession": "0001437749-25-005749",
-      "fetch_timestamp": "2025-10-25T04:47:25Z",
+      "fetch_timestamp": "2025-10-25T04:58:37Z",
       "period_end": "2024-12-31",
       "source": "SEC EDGAR 10-K",
       "value": 0.0,
@@ -195,7 +195,7 @@
         "IntangibleAssetsNetExcludingGoodwill",
         "CommonStockSharesOutstanding"
       ],
-      "fetch_timestamp": "2025-10-25T04:47:25Z",
+      "fetch_timestamp": "2025-10-25T04:58:37Z",
       "period_end": "2024-12-31",
       "source": "SEC EDGAR 10-K",
       "value": 34.8089
@@ -207,14 +207,14 @@
         "Goodwill",
         "IntangibleAssetsNetExcludingGoodwill"
       ],
-      "fetch_timestamp": "2025-10-25T04:47:25Z",
+      "fetch_timestamp": "2025-10-25T04:58:37Z",
       "period_end": "2024-12-31",
       "source": "SEC EDGAR 10-K",
       "value": 2466.673
     },
     "total_assets_millions": {
       "accession": "0001437749-25-005749",
-      "fetch_timestamp": "2025-10-25T04:47:25Z",
+      "fetch_timestamp": "2025-10-25T04:58:37Z",
       "period_end": "2024-12-31",
       "source": "SEC EDGAR 10-K",
       "value": 23054.681,
@@ -222,7 +222,7 @@
     },
     "total_deposits_millions": {
       "accession": "0001437749-25-005749",
-      "fetch_timestamp": "2025-10-25T04:47:25Z",
+      "fetch_timestamp": "2025-10-25T04:58:37Z",
       "period_end": "2024-12-31",
       "source": "SEC EDGAR 10-K",
       "value": 19686.199,
@@ -230,7 +230,7 @@
     },
     "total_equity_millions": {
       "accession": "0001437749-25-005749",
-      "fetch_timestamp": "2025-10-25T04:47:25Z",
+      "fetch_timestamp": "2025-10-25T04:58:37Z",
       "period_end": "2024-12-31",
       "source": "SEC EDGAR 10-K",
       "value": 2845.704,
@@ -239,14 +239,14 @@
   },
   "fy2024_detailed_table_metadata": {
     "accession": "0001437749-25-005749",
-    "fetch_timestamp": "2025-10-25T04:47:25Z",
+    "fetch_timestamp": "2025-10-25T04:58:37Z",
     "period_end": "2024-12-31",
     "source": "SEC EDGAR 10-K"
   },
   "fy2024_tce_calculation": {
     "less_goodwill_millions": {
       "accession": "0001437749-25-005749",
-      "fetch_timestamp": "2025-10-25T04:47:25Z",
+      "fetch_timestamp": "2025-10-25T04:58:37Z",
       "period_end": "2024-12-31",
       "source": "SEC EDGAR 10-K",
       "value": 375.696,
@@ -254,7 +254,7 @@
     },
     "less_intangibles_millions": {
       "accession": "0001437749-25-005749",
-      "fetch_timestamp": "2025-10-25T04:47:25Z",
+      "fetch_timestamp": "2025-10-25T04:58:37Z",
       "period_end": "2024-12-31",
       "source": "SEC EDGAR 10-K",
       "value": 3.335,
@@ -262,7 +262,7 @@
     },
     "shares_outstanding_millions": {
       "accession": "0001437749-25-005749",
-      "fetch_timestamp": "2025-10-25T04:47:25Z",
+      "fetch_timestamp": "2025-10-25T04:58:37Z",
       "period_end": "2024-12-31",
       "source": "SEC EDGAR 10-K",
       "value": 70.863324,
@@ -275,7 +275,7 @@
         "Goodwill",
         "IntangibleAssetsNetExcludingGoodwill"
       ],
-      "fetch_timestamp": "2025-10-25T04:47:25Z",
+      "fetch_timestamp": "2025-10-25T04:58:37Z",
       "period_end": "2024-12-31",
       "source": "SEC EDGAR 10-K",
       "value": 2466.673
@@ -286,21 +286,21 @@
         "tangible_common_equity_millions",
         "shares_outstanding_millions"
       ],
-      "fetch_timestamp": "2025-10-25T04:47:25Z",
+      "fetch_timestamp": "2025-10-25T04:58:37Z",
       "period_end": "2024-12-31",
       "source": "SEC EDGAR 10-K",
       "value": 34.8089
     },
     "total_equity_millions": {
       "accession": "0001437749-25-005749",
-      "fetch_timestamp": "2025-10-25T04:47:25Z",
+      "fetch_timestamp": "2025-10-25T04:58:37Z",
       "period_end": "2024-12-31",
       "source": "SEC EDGAR 10-K",
       "value": 2845.704,
       "xbrl_tag": "us-gaap:StockholdersEquity"
     }
   },
-  "last_updated": "2025-10-25T04:47:25Z",
+  "last_updated": "2025-10-25T04:58:37Z",
   "liabilities": {
     "deposits_millions": 19965.1,
     "fhlb_advances_millions": 190.0,
@@ -335,7 +335,7 @@
     "price_to_tangible_book": 1.269,
     "shares_outstanding_millions": {
       "accession": "0001437749-25-025772",
-      "fetch_timestamp": "2025-10-25T04:47:25Z",
+      "fetch_timestamp": "2025-10-25T04:58:37Z",
       "period_end": "2025-06-30",
       "source": "SEC EDGAR 10-Q",
       "value": 69.343395,
@@ -356,14 +356,14 @@
       "computed_from": [
         "AccumulatedOtherComprehensiveIncomeLossNetOfTax"
       ],
-      "fetch_timestamp": "2025-10-25T04:47:25Z",
+      "fetch_timestamp": "2025-10-25T04:58:37Z",
       "period_end": "2025-06-30",
       "source": "SEC EDGAR 10-Q",
       "value": 69.222
     },
     "aoci_millions": {
       "accession": "0001437749-25-025772",
-      "fetch_timestamp": "2025-10-25T04:47:25Z",
+      "fetch_timestamp": "2025-10-25T04:58:37Z",
       "period_end": "2025-06-30",
       "source": "SEC EDGAR 10-Q",
       "value": -69.222,
@@ -371,7 +371,7 @@
     },
     "cash_millions": {
       "accession": "0001437749-25-025772",
-      "fetch_timestamp": "2025-10-25T04:47:25Z",
+      "fetch_timestamp": "2025-10-25T04:58:37Z",
       "period_end": "2025-06-30",
       "source": "SEC EDGAR 10-Q",
       "value": 190.011,
@@ -380,7 +380,7 @@
     "fhlb_advances_millions": 412.0,
     "goodwill_millions": {
       "accession": "0001437749-25-025772",
-      "fetch_timestamp": "2025-10-25T04:47:25Z",
+      "fetch_timestamp": "2025-10-25T04:58:37Z",
       "period_end": "2025-06-30",
       "source": "SEC EDGAR 10-Q",
       "value": 375.696,
@@ -388,7 +388,7 @@
     },
     "intangible_assets_millions": {
       "accession": "0001437749-25-025772",
-      "fetch_timestamp": "2025-10-25T04:47:25Z",
+      "fetch_timestamp": "2025-10-25T04:58:37Z",
       "period_end": "2025-06-30",
       "source": "SEC EDGAR 10-Q",
       "value": 2.888,
@@ -400,14 +400,14 @@
     "noninterest_bearing_deposits_millions": 3381.4,
     "period_end": {
       "accession": "0001437749-25-025772",
-      "fetch_timestamp": "2025-10-25T04:47:25Z",
+      "fetch_timestamp": "2025-10-25T04:58:37Z",
       "period_end": "2025-06-30",
       "source": "SEC EDGAR 10-Q",
       "value": "2025-06-30"
     },
     "shares_outstanding_millions": {
       "accession": "0001437749-25-025772",
-      "fetch_timestamp": "2025-10-25T04:47:25Z",
+      "fetch_timestamp": "2025-10-25T04:58:37Z",
       "period_end": "2025-06-30",
       "source": "SEC EDGAR 10-Q",
       "value": 69.343395,
@@ -422,7 +422,7 @@
         "IntangibleAssetsNetExcludingGoodwill",
         "CommonStockSharesOutstanding"
       ],
-      "fetch_timestamp": "2025-10-25T04:47:25Z",
+      "fetch_timestamp": "2025-10-25T04:58:37Z",
       "period_end": "2025-06-30",
       "source": "SEC EDGAR 10-Q",
       "value": 36.1637
@@ -434,7 +434,7 @@
         "Goodwill",
         "IntangibleAssetsNetExcludingGoodwill"
       ],
-      "fetch_timestamp": "2025-10-25T04:47:25Z",
+      "fetch_timestamp": "2025-10-25T04:58:37Z",
       "period_end": "2025-06-30",
       "source": "SEC EDGAR 10-Q",
       "value": 2507.711
@@ -444,7 +444,7 @@
       "fdic_diff_pct": 0.062,
       "fdic_match": true,
       "fdic_value": 23709.143,
-      "fetch_timestamp": "2025-10-25T04:47:25Z",
+      "fetch_timestamp": "2025-10-25T04:58:37Z",
       "period_end": "2025-06-30",
       "source": "SEC EDGAR 10-Q",
       "value": 23723.847,
@@ -455,7 +455,7 @@
       "fdic_diff_pct": 0.1131,
       "fdic_match": true,
       "fdic_value": 20028.958,
-      "fetch_timestamp": "2025-10-25T04:47:25Z",
+      "fetch_timestamp": "2025-10-25T04:58:37Z",
       "period_end": "2025-06-30",
       "source": "SEC EDGAR 10-Q",
       "value": 20006.33,
@@ -466,7 +466,7 @@
       "fdic_diff_pct": 2.8666,
       "fdic_match": false,
       "fdic_value": 2969.033,
-      "fetch_timestamp": "2025-10-25T04:47:25Z",
+      "fetch_timestamp": "2025-10-25T04:58:37Z",
       "period_end": "2025-06-30",
       "source": "SEC EDGAR 10-Q",
       "value": 2886.295,
@@ -476,7 +476,7 @@
   "q2_2025_tce_calculation": {
     "less_goodwill_millions": {
       "accession": "0001437749-25-025772",
-      "fetch_timestamp": "2025-10-25T04:47:25Z",
+      "fetch_timestamp": "2025-10-25T04:58:37Z",
       "period_end": "2025-06-30",
       "source": "SEC EDGAR 10-Q",
       "value": 375.696,
@@ -484,7 +484,7 @@
     },
     "less_intangibles_millions": {
       "accession": "0001437749-25-025772",
-      "fetch_timestamp": "2025-10-25T04:47:25Z",
+      "fetch_timestamp": "2025-10-25T04:58:37Z",
       "period_end": "2025-06-30",
       "source": "SEC EDGAR 10-Q",
       "value": 2.888,
@@ -492,7 +492,7 @@
     },
     "shares_outstanding_millions": {
       "accession": "0001437749-25-025772",
-      "fetch_timestamp": "2025-10-25T04:47:25Z",
+      "fetch_timestamp": "2025-10-25T04:58:37Z",
       "period_end": "2025-06-30",
       "source": "SEC EDGAR 10-Q",
       "value": 69.343395,
@@ -505,7 +505,7 @@
         "Goodwill",
         "IntangibleAssetsNetExcludingGoodwill"
       ],
-      "fetch_timestamp": "2025-10-25T04:47:25Z",
+      "fetch_timestamp": "2025-10-25T04:58:37Z",
       "period_end": "2025-06-30",
       "source": "SEC EDGAR 10-Q",
       "value": 2507.711
@@ -516,7 +516,7 @@
         "tangible_common_equity_millions",
         "shares_outstanding_millions"
       ],
-      "fetch_timestamp": "2025-10-25T04:47:25Z",
+      "fetch_timestamp": "2025-10-25T04:58:37Z",
       "period_end": "2025-06-30",
       "source": "SEC EDGAR 10-Q",
       "value": 36.1637
@@ -526,7 +526,7 @@
       "fdic_diff_pct": 2.8666,
       "fdic_match": false,
       "fdic_value": 2969.033,
-      "fetch_timestamp": "2025-10-25T04:47:25Z",
+      "fetch_timestamp": "2025-10-25T04:58:37Z",
       "period_end": "2025-06-30",
       "source": "SEC EDGAR 10-Q",
       "value": 2886.295,
@@ -537,7 +537,7 @@
     "fy2024": {
       "shares_millions": {
         "accession": "0001437749-25-005749",
-        "fetch_timestamp": "2025-10-25T04:47:25Z",
+        "fetch_timestamp": "2025-10-25T04:58:37Z",
         "period_end": "2024-12-31",
         "source": "SEC EDGAR 10-K",
         "value": 70.863324,
@@ -551,7 +551,7 @@
           "IntangibleAssetsNetExcludingGoodwill",
           "CommonStockSharesOutstanding"
         ],
-        "fetch_timestamp": "2025-10-25T04:47:25Z",
+        "fetch_timestamp": "2025-10-25T04:58:37Z",
         "period_end": "2024-12-31",
         "source": "SEC EDGAR 10-K",
         "value": 34.8089
@@ -563,14 +563,14 @@
           "Goodwill",
           "IntangibleAssetsNetExcludingGoodwill"
         ],
-        "fetch_timestamp": "2025-10-25T04:47:25Z",
+        "fetch_timestamp": "2025-10-25T04:58:37Z",
         "period_end": "2024-12-31",
         "source": "SEC EDGAR 10-K",
         "value": 2466.673
       },
       "tolerance_bps": {
         "accession": "0001437749-25-005749",
-        "fetch_timestamp": "2025-10-25T04:47:25Z",
+        "fetch_timestamp": "2025-10-25T04:58:37Z",
         "note": "tbvps verification tolerance",
         "period_end": "2024-12-31",
         "source": "SEC EDGAR 10-K",
@@ -580,7 +580,7 @@
     "q2_2025": {
       "shares_millions": {
         "accession": "0001437749-25-025772",
-        "fetch_timestamp": "2025-10-25T04:47:25Z",
+        "fetch_timestamp": "2025-10-25T04:58:37Z",
         "period_end": "2025-06-30",
         "source": "SEC EDGAR 10-Q",
         "value": 69.343395,
@@ -594,7 +594,7 @@
           "IntangibleAssetsNetExcludingGoodwill",
           "CommonStockSharesOutstanding"
         ],
-        "fetch_timestamp": "2025-10-25T04:47:25Z",
+        "fetch_timestamp": "2025-10-25T04:58:37Z",
         "period_end": "2025-06-30",
         "source": "SEC EDGAR 10-Q",
         "value": 36.1637
@@ -606,14 +606,14 @@
           "Goodwill",
           "IntangibleAssetsNetExcludingGoodwill"
         ],
-        "fetch_timestamp": "2025-10-25T04:47:25Z",
+        "fetch_timestamp": "2025-10-25T04:58:37Z",
         "period_end": "2025-06-30",
         "source": "SEC EDGAR 10-Q",
         "value": 2507.711
       },
       "tolerance_bps": {
         "accession": "0001437749-25-025772",
-        "fetch_timestamp": "2025-10-25T04:47:25Z",
+        "fetch_timestamp": "2025-10-25T04:58:37Z",
         "note": "tbvps verification tolerance",
         "period_end": "2025-06-30",
         "source": "SEC EDGAR 10-Q",
@@ -634,7 +634,7 @@
         "IntangibleAssetsNetExcludingGoodwill",
         "CommonStockSharesOutstanding"
       ],
-      "fetch_timestamp": "2025-10-25T04:47:25Z",
+      "fetch_timestamp": "2025-10-25T04:58:37Z",
       "period_end": "2025-06-30",
       "source": "SEC EDGAR 10-Q",
       "value": 36.1637
@@ -646,7 +646,7 @@
         "Goodwill",
         "IntangibleAssetsNetExcludingGoodwill"
       ],
-      "fetch_timestamp": "2025-10-25T04:47:25Z",
+      "fetch_timestamp": "2025-10-25T04:58:37Z",
       "period_end": "2025-06-30",
       "source": "SEC EDGAR 10-Q",
       "value": 2.5077
@@ -656,7 +656,7 @@
       "fdic_diff_pct": 0.062,
       "fdic_match": true,
       "fdic_value": 23709.143,
-      "fetch_timestamp": "2025-10-25T04:47:25Z",
+      "fetch_timestamp": "2025-10-25T04:58:37Z",
       "period_end": "2025-06-30",
       "source": "SEC EDGAR 10-Q",
       "value": 23.7238,
@@ -667,7 +667,7 @@
       "fdic_diff_pct": 0.1131,
       "fdic_match": true,
       "fdic_value": 20028.958,
-      "fetch_timestamp": "2025-10-25T04:47:25Z",
+      "fetch_timestamp": "2025-10-25T04:58:37Z",
       "period_end": "2025-06-30",
       "source": "SEC EDGAR 10-Q",
       "value": 20.0063,

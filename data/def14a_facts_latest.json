@@ -17,5 +17,100 @@
       "cross_checks": [],
       "warnings": []
     }
+  },
+  "record_date": {
+    "value": "2025-03-20",
+    "value_type": "string",
+    "unit": null,
+    "fiscal_year": null,
+    "issuer_cik": "0001437749",
+    "filing_accession": "0001437749-25-011577",
+    "source_url": "https://www.sec.gov/Archives/edgar/data/861842/000143774925011577/caty20250326_def14a.htm",
+    "file_sha256": "43e4b3f0e50309c5655842d10d47e4e38788709c7cfb7ff3e7a6986f53028873",
+    "page_numbers": [],
+    "dom_path": null,
+    "table_id": null,
+    "method": "regex",
+    "confidence": 0.585225,
+    "validation": {
+      "cross_checks": [],
+      "warnings": []
+    }
+  },
+  "meeting_time": {
+    "value": "5:00PM",
+    "value_type": "string",
+    "unit": null,
+    "fiscal_year": null,
+    "issuer_cik": "0001437749",
+    "filing_accession": "0001437749-25-011577",
+    "source_url": "https://www.sec.gov/Archives/edgar/data/861842/000143774925011577/caty20250326_def14a.htm",
+    "file_sha256": "43e4b3f0e50309c5655842d10d47e4e38788709c7cfb7ff3e7a6986f53028873",
+    "page_numbers": [],
+    "dom_path": null,
+    "table_id": null,
+    "method": "regex",
+    "confidence": 0.585225,
+    "validation": {
+      "cross_checks": [],
+      "warnings": []
+    }
+  },
+  "meeting_timezone": {
+    "value": "Pacific",
+    "value_type": "string",
+    "unit": null,
+    "fiscal_year": null,
+    "issuer_cik": "0001437749",
+    "filing_accession": "0001437749-25-011577",
+    "source_url": "https://www.sec.gov/Archives/edgar/data/861842/000143774925011577/caty20250326_def14a.htm",
+    "file_sha256": "43e4b3f0e50309c5655842d10d47e4e38788709c7cfb7ff3e7a6986f53028873",
+    "page_numbers": [],
+    "dom_path": null,
+    "table_id": null,
+    "method": "regex",
+    "confidence": 0.585225,
+    "validation": {
+      "cross_checks": [],
+      "warnings": []
+    }
+  },
+  "meeting_location_type": {
+    "value": "virtual-only",
+    "value_type": "string",
+    "unit": null,
+    "fiscal_year": null,
+    "issuer_cik": "0001437749",
+    "filing_accession": "0001437749-25-011577",
+    "source_url": "https://www.sec.gov/Archives/edgar/data/861842/000143774925011577/caty20250326_def14a.htm",
+    "file_sha256": "43e4b3f0e50309c5655842d10d47e4e38788709c7cfb7ff3e7a6986f53028873",
+    "page_numbers": [],
+    "dom_path": null,
+    "table_id": null,
+    "method": "regex",
+    "confidence": 0.585225,
+    "validation": {
+      "cross_checks": [],
+      "warnings": []
+    }
+  },
+  "meeting_access_url": {
+    "value": "http://www.virtualshareholdermeeting.com/CATY2025",
+    "value_type": "string",
+    "unit": null,
+    "fiscal_year": null,
+    "issuer_cik": "0001437749",
+    "filing_accession": "0001437749-25-011577",
+    "source_url": "https://www.sec.gov/Archives/edgar/data/861842/000143774925011577/caty20250326_def14a.htm",
+    "file_sha256": "43e4b3f0e50309c5655842d10d47e4e38788709c7cfb7ff3e7a6986f53028873",
+    "page_numbers": [],
+    "dom_path": null,
+    "table_id": null,
+    "method": "regex",
+    "confidence": 0.585225,
+    "validation": {
+      "cross_checks": [],
+      "warnings": []
+    }
   }
 }

@@ -80,7 +80,7 @@ def run_def14a_refresh(year: Optional[int] = None) -> None:
         "--year",
         str(filing_year),
         "--facts",
-        "meeting_date,ceo_pay_ratio,audit_fees",
+        "meeting_date,record_date,meeting_time,meeting_timezone,meeting_location_type,meeting_access_url",
         "--provenance",
         "--output",
         str(DEF14A_OUTPUT_PATH),
