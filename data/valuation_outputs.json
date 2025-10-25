@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "calculation_run": "2025-10-25T01:36:13.705295+00:00",
+    "calculation_run": "2025-10-25T04:20:42.293701+00:00",
     "price_used": 46.94
   },
   "methods": {
@@ -30,7 +30,7 @@
         }
       },
       "return_pct": 10.5,
-      "last_calculated": "2025-10-25T01:36:13.705295+00:00"
+      "last_calculated": "2025-10-25T04:20:42.293701+00:00"
     },
     "normalized": {
       "target_price": 44.39,
@@ -45,7 +45,7 @@
         "through_cycle_nco_bps": 30.0
       },
       "return_pct": -5.4,
-      "last_calculated": "2025-10-25T01:36:13.705295+00:00"
+      "last_calculated": "2025-10-25T04:20:42.293701+00:00"
     },
     "wilson_95": {
       "target_price": 48.95,
@@ -64,7 +64,7 @@
         }
       },
       "return_pct": 4.3,
-      "last_calculated": "2025-10-25T01:36:13.705295+00:00"
+      "last_calculated": "2025-10-25T04:20:42.293701+00:00"
     },
     "irc_blended": {
       "target_price": 50.12,
@@ -81,7 +81,7 @@
         "regression_target": 51.88
       },
       "return_pct": 6.8,
-      "last_calculated": "2025-10-25T01:36:13.705295+00:00"
+      "last_calculated": "2025-10-25T04:20:42.293701+00:00"
     }
   },
   "scenarios": {
@@ -127,7 +127,7 @@
       "target_price": 44.07,
       "composition": "25% Bull + 60% Base + 15% Bear",
       "return_pct": -6.1,
-      "last_calculated": "2025-10-25T01:36:13.705295+00:00"
+      "last_calculated": "2025-10-25T04:20:42.293701+00:00"
     },
     "irc_blended": {
       "target_price": 50.12,
@@ -144,14 +144,14 @@
         "regression_target": 51.88
       },
       "return_pct": 6.8,
-      "last_calculated": "2025-10-25T01:36:13.705295+00:00",
+      "last_calculated": "2025-10-25T04:20:42.293701+00:00",
       "composition": "60% RIM + 10% DDM + 30% Regression"
     },
     "wilson_95": {
       "target_price": 48.95,
       "composition": "60.9% Regression + 39.1% Normalized",
       "return_pct": 4.3,
-      "last_calculated": "2025-10-25T01:36:13.705295+00:00"
+      "last_calculated": "2025-10-25T04:20:42.293701+00:00"
     }
   },
   "assumptions": {
@@ -164,5 +164,5 @@
     "dividend_payout_pct": 32.1,
     "current_nco_bps": 18.1
   },
-  "last_updated": "2025-10-25T01:36:13.705295+00:00"
+  "last_updated": "2025-10-25T04:20:42.293701+00:00"
 }

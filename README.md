@@ -68,6 +68,15 @@ python3 scripts/build_site.py
 ```bash
 python3 scripts/update_all_data.py
 ```
+- Runs market data refresh, proxy fact extraction (via `tools.def14a_extract`), SEC/FDIC pulls, site rebuild, and validation gates end-to-end.
+
+### Pull Proxy Statement Facts On-Demand
+```bash
+python3 -m tools.def14a_extract.cli facts --ticker CATY --year 2025 \
+  --facts meeting_date,ceo_pay_ratio,audit_fees --provenance --output data/def14a_facts_latest.json
+```
+- Produces deterministic DEF 14A fact packs with provenance JSON written to `data/def14a_facts_latest.json`.
+- Use `--refresh` to bypass cache or omit `--facts` to return the full registry (≥25 canonical facts).
 
 ---
 
@@ -123,6 +132,9 @@ caty-equity-research-live/
 │   ├── build_peer_comparables.py # Peer analysis automation
 │   ├── charts.js                 # Chart rendering
 │   └── adhoc/                    # One-off utility scripts
+│
+├── tools/                        # Automation toolkits
+│   └── def14a_extract/           # DEF 14A fact extraction suite (CLI + API + tests)
 │
 ├── styles/                       # Canonical design system
 │   └── caty-equity-research.css  # Master stylesheet

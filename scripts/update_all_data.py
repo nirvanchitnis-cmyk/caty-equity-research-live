@@ -34,6 +34,7 @@ PEER_RAW_PATH = DATA_DIR / "peer_data_raw.json"
 DQ_REPORT_PATH = DATA_DIR / "data_quality_report.json"
 PEER_SNAPSHOT_PATH = ROOT / "evidence" / "peer_snapshot_2025Q2.csv"
 EVIDENCE_PATH = DATA_DIR / "evidence_sources.json"
+DEF14A_OUTPUT_PATH = DATA_DIR / "def14a_facts_latest.json"
 
 SCRIPTS = ROOT / "scripts"
 
@@ -64,6 +65,31 @@ def run_step(cmd: list[str], step_name: str, allow_failure: bool = False) -> sub
     if result.returncode != 0:
         logging.warning("%s returned non-zero exit %s (continuing)", step_name, result.returncode)
     return result
+
+
+def run_def14a_refresh(year: Optional[int] = None) -> None:
+    filing_year = year or dt.date.today().year
+    DEF14A_OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
+    cmd = [
+        sys.executable,
+        "-m",
+        "tools.def14a_extract.cli",
+        "facts",
+        "--ticker",
+        "CATY",
+        "--year",
+        str(filing_year),
+        "--facts",
+        "meeting_date,ceo_pay_ratio,audit_fees",
+        "--provenance",
+        "--output",
+        str(DEF14A_OUTPUT_PATH),
+    ]
+    run_step(cmd, "def14a_facts")
+    append_log(
+        f"tools.def14a_extract.cli: Refreshed DEF 14A facts for {filing_year} "
+        f"to {DEF14A_OUTPUT_PATH.relative_to(ROOT)}"
+    )
 
 
 def load_json(path: Path) -> Dict[str, Any]:
@@ -203,6 +229,21 @@ def main() -> int:
     else:
         print("⚠️ Test mode: Skipping live price fetch")
         append_log("TEST MODE: Skipped live price fetch")
+
+    # Step 0b: DEF 14A fact refresh via CLI (skip in test mode)
+    if not os.environ.get("CATY_TEST_MODE"):
+        try:
+            print("Refreshing DEF 14A facts via CLI...")
+            run_def14a_refresh()
+            print(f"✅ DEF 14A facts captured to {DEF14A_OUTPUT_PATH.relative_to(ROOT)}")
+        except subprocess.CalledProcessError as exc:
+            print("⚠️ DEF 14A refresh failed - continuing without update")
+            append_log(
+                f"tools.def14a_extract.cli: ERROR - def14a refresh failed ({exc.returncode})"
+            )
+    else:
+        print("⚠️ Test mode: Skipping DEF 14A CLI refresh")
+        append_log("TEST MODE: Skipped DEF 14A CLI refresh")
 
     # Step 1: SEC EDGAR
     sec_result = run_step([sys.executable, str(SCRIPTS / "fetch_sec_edgar.py")], "fetch_sec_edgar", allow_failure=True)

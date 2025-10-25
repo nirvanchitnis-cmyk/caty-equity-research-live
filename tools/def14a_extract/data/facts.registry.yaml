@@ -1,0 +1,302 @@
+facts:
+  - id: meeting_date
+    label: "Annual meeting date"
+    anchors:
+      - pattern: "(?i)annual meeting of shareholders"
+      - pattern: "(?i)notice of annual meeting"
+    patterns:
+      - regex: "(?i)Annual Meeting(?: of Shareholders)? will be held on (?P<date>[A-Z][a-z]+ \\d{1,2}, \\d{4})"
+      - regex: "(?i)Meeting Date[:\\s]+(?P<date>[A-Z][a-z]+ \\d{1,2}, \\d{4})"
+    normalization:
+      type: date
+      formats: ["%B %d, %Y"]
+    cross_checks:
+      - rule: "meeting_date >= record_date"
+  - id: meeting_time
+    label: "Meeting start time"
+    anchors:
+      - pattern: "(?i)commencing at"
+      - pattern: "(?i)starting at"
+    patterns:
+      - regex: "(?i)at (?P<time>\\d{1,2}:\\d{2}\\s?(?:a\\.m\\.|p\\.m\\.))"
+      - regex: "(?i)starting at\\s+(?P<time>\\d{1,2}:\\d{2}\\s?[AP]M)"
+    normalization:
+      type: time
+      formats: ["%I:%M %p"]
+    cross_checks:
+      - rule: "meeting_time within business_hours"
+  - id: meeting_timezone
+    label: "Meeting timezone"
+    anchors:
+      - pattern: "(?i)time"
+    patterns:
+      - regex: "(?i)(?P<tz>Eastern|Central|Mountain|Pacific) Time"
+      - regex: "(?i)(?P<tz>[A-Z]{2,4})\\s+Time"
+    normalization:
+      type: timezone
+  - id: record_date
+    label: "Record date"
+    anchors:
+      - pattern: "(?i)record at the close of business"
+      - pattern: "(?i)holders of record on"
+    patterns:
+      - regex: "(?i)holders of record at the close of business on (?P<date>[A-Z][a-z]+ \\d{1,2}, \\d{4})"
+      - regex: "(?i)Record Date[:\\s]+(?P<date>[A-Z][a-z]+ \\d{1,2}, \\d{4})"
+    normalization:
+      type: date
+      formats: ["%B %d, %Y"]
+  - id: meeting_location_type
+    label: "Meeting format"
+    anchors:
+      - pattern: "(?i)virtual"
+      - pattern: "(?i)in-person"
+    patterns:
+      - regex: "(?i)virtual-only meeting"
+      - regex: "(?i)hybrid meeting"
+      - regex: "(?i)will be held in person"
+    normalization:
+      type: category
+      categories: ["virtual", "physical", "hybrid"]
+  - id: meeting_access_url
+    label: "Virtual meeting access URL"
+    anchors:
+      - pattern: "(?i)VirtualShareholderMeeting\\."
+      - pattern: "(?i)www\\."
+    patterns:
+      - regex: "(https?://[\\w\\./\\-]+virtualshareholdermeeting\\.com/[\\w\\-]+)"
+      - regex: "(https?://[\\w\\./\\-]+webcast[\\w\\./\\-]*)"
+    normalization:
+      type: url
+  - id: proposal_count
+    label: "Number of proposals"
+    anchors:
+      - pattern: "(?i)the following proposals"
+      - pattern: "(?i)vote on the following"
+    patterns:
+      - regex: "(?i)vote on (?P<count>\\d+) proposals"
+      - regex: "(?i)Proposals?\\s+(?P<range>\\d+(?:\\s*-\\s*\\d+)?)"
+    normalization:
+      type: integer
+      derive_from_range: true
+  - id: proposal_1_type
+    label: "Proposal 1 description"
+    anchors:
+      - pattern: "(?i)PROPOSAL 1"
+      - pattern: "(?i)Election of Directors"
+    patterns:
+      - regex: "(?i)Proposal 1[:\\s]+(?P<text>.+?)(?:\\.)"
+      - regex: "(?i)To elect (?P<count>\\w+) directors"
+    normalization:
+      type: string
+  - id: proposal_1_board_recommendation
+    label: "Board recommendation on Proposal 1"
+    anchors:
+      - pattern: "(?i)Board of Directors recommends"
+    patterns:
+      - regex: "(?i)Board of Directors recommends that you vote (?P<vote>FOR|AGAINST|ABSTAIN)"
+      - regex: "(?i)THE BOARD RECOMMENDS A VOTE (?P<vote>FOR|AGAINST)"
+    normalization:
+      type: category
+      categories: ["FOR", "AGAINST", "ABSTAIN", "NO RECOMMENDATION"]
+  - id: director_nominees_total
+    label: "Total number of director nominees"
+    anchors:
+      - pattern: "(?i)Election of Directors"
+    patterns:
+      - regex: "(?i)Election of (?P<count>\\d+) directors"
+      - regex: "(?i)Our Board has (?P<count>\\d+) nominees"
+    normalization:
+      type: integer
+  - id: director_nominees_independent
+    label: "Independent director nominees"
+    anchors:
+      - pattern: "(?i)independent nominees"
+    patterns:
+      - regex: "(?i)(?P<count>\\d+) of our nominees are independent"
+      - regex: "(?i)Independent nominees[:\\s]+(?P<count>\\d+)"
+    normalization:
+      type: integer
+  - id: audit_committee_members
+    label: "Audit Committee members"
+    anchors:
+      - pattern: "(?i)Audit Committee"
+    patterns:
+      - regex: "(?i)Audit Committee Members?[:\\s]+(?P<names>[A-Z][\\w\\s,]+)"
+      - regex: "(?i)consists of (?P<names>[A-Z][\\w\\s,]+) all of whom"
+    normalization:
+      type: list
+  - id: audit_committee_chair
+    label: "Audit Committee chair"
+    anchors:
+      - pattern: "(?i)Chair"
+    patterns:
+      - regex: "(?i)Audit Committee is chaired by (?P<name>[A-Z][\\w\\s]+)"
+      - regex: "(?i)Audit Committee Chair[:\\s]+(?P<name>[A-Z][\\w\\s]+)"
+    normalization:
+      type: string
+  - id: ceo_name
+    label: "CEO (SCT)"
+    anchors:
+      - pattern: "(?i)chief executive officer"
+    patterns:
+      - regex: "(?i)(?P<name>[A-Z][A-Za-z\\s\\.]+),\\s+Chief Executive Officer"
+      - regex: "(?i)Chief Executive Officer[:\\s]+(?P<name>[A-Z][A-Za-z\\s\\.]+)"
+    normalization:
+      type: string
+  - id: ceo_total_compensation_current_year
+    label: "CEO total compensation"
+    anchors:
+      - pattern: "(?i)Total"
+    patterns:
+      - regex: "(?i)\\$?(?P<value>[0-9,()\\.]+)\\s+Total"
+      - regex: "(?i)Total\\s+\\$?(?P<value>[0-9,()\\.]+)"
+    normalization:
+      type: currency
+      currency: USD
+  - id: sct_total_compensation_all_neos
+    label: "Total NEO compensation"
+    anchors:
+      - pattern: "(?i)Summary Compensation Table"
+    patterns:
+      - table_header: "Total"
+    normalization:
+      type: currency
+      currency: USD
+  - id: ceo_pay_ratio
+    label: "CEO pay ratio"
+    anchors:
+      - pattern: "(?i)CEO Pay Ratio"
+    patterns:
+      - regex: "(?i)(?P<ratio>\\d+(?:\\.\\d+)?:1)\\s+CEO to median employee"
+      - regex: "(?i)ratio of (?P<ratio>\\d+(?:\\.\\d+)?:1)"
+    normalization:
+      type: ratio
+  - id: pvp_tsr_company
+    label: "PVP - Company TSR"
+    anchors:
+      - pattern: "(?i)Company TSR"
+    patterns:
+      - table_header: "Company TSR"
+    normalization:
+      type: percentage
+  - id: pvp_net_income
+    label: "PVP - Net income"
+    anchors:
+      - pattern: "(?i)Net Income"
+    patterns:
+      - table_header: "Net Income"
+    normalization:
+      type: currency
+      currency: USD
+  - id: equity_plan_available_shares
+    label: "Equity plan available shares"
+    anchors:
+      - pattern: "(?i)Equity Compensation Plan Information"
+    patterns:
+      - regex: "(?i)remaining available for future issuance[:\\s]+(?P<value>[0-9,()\\.]+)"
+      - table_header: "Number of securities remaining available"
+    normalization:
+      type: integer
+  - id: equity_plan_overhang_percent
+    label: "Equity plan overhang"
+    anchors:
+      - pattern: "(?i)overhang"
+    patterns:
+      - regex: "(?i)(?P<value>\\d+(?:\\.\\d+)?)%\\s+overhang"
+      - regex: "(?i)represents approximately (?P<value>\\d+(?:\\.\\d+)?)% of outstanding"
+    normalization:
+      type: percentage
+  - id: auditor_name
+    label: "Independent auditor"
+    anchors:
+      - pattern: "(?i)Independent Registered Public Accounting Firm"
+      - pattern: "(?i)Audit Committee has selected"
+    patterns:
+      - regex: "(?i)we have selected (?P<name>[A-Z][A-Za-z&\\s\\.]+) as"
+      - regex: "(?i)services are provided by (?P<name>[A-Z][A-Za-z&\\s\\.]+)"
+    normalization:
+      type: string
+  - id: audit_fees_current_year
+    label: "Audit fees (current year)"
+    anchors:
+      - pattern: "(?i)Audit Fees"
+    patterns:
+      - table_header: "Audit Fees"
+      - regex: "(?i)Audit Fees\\s+\\$?(?P<value>[0-9,()\\.]+)"
+    normalization:
+      type: currency
+      currency: USD
+  - id: audit_fees_prior_year
+    label: "Audit fees (prior year)"
+    anchors:
+      - pattern: "(?i)Audit Fees"
+    patterns:
+      - table_header: "Audit Fees"
+    normalization:
+      type: currency
+      currency: USD
+  - id: audit_related_fees_current_year
+    label: "Audit-related fees"
+    anchors:
+      - pattern: "(?i)Audit-Related Fees"
+    patterns:
+      - table_header: "Audit-Related Fees"
+      - regex: "(?i)Audit-Related Fees\\s+\\$?(?P<value>[0-9,()\\.]+)"
+    normalization:
+      type: currency
+      currency: USD
+  - id: tax_fees_current_year
+    label: "Tax fees"
+    anchors:
+      - pattern: "(?i)Tax Fees"
+    patterns:
+      - table_header: "Tax Fees"
+    normalization:
+      type: currency
+      currency: USD
+  - id: other_fees_current_year
+    label: "All other fees"
+    anchors:
+      - pattern: "(?i)All Other Fees"
+    patterns:
+      - table_header: "All Other Fees"
+    normalization:
+      type: currency
+      currency: USD
+  - id: beneficial_owners_over5pct
+    label: ">5% beneficial owners"
+    anchors:
+      - pattern: "(?i)Security Ownership of Certain Beneficial Owners"
+      - pattern: "(?i)Beneficial Ownership"
+    patterns:
+      - table_header: "Name and Address of Beneficial Owner"
+      - regex: "(?i)(?P<name>[A-Z][A-Za-z\\s&\\.]+)\\s+(?P<shares>[0-9,()\\.]+)\\s+(?P<percent>\\d+(?:\\.\\d+)?)%"
+    normalization:
+      type: table
+  - id: say_on_pay_for_percent
+    label: "Say-on-pay support"
+    anchors:
+      - pattern: "(?i)Say-on-Pay"
+    patterns:
+      - regex: "(?i)For\\s+(?P<value>\\d+(?:\\.\\d+)?)%"
+      - regex: "(?i)received (?P<value>\\d+(?:\\.\\d+)?) percent support"
+    normalization:
+      type: percentage
+  - id: related_party_transactions_summary
+    label: "Related person transactions summary"
+    anchors:
+      - pattern: "(?i)Related Person Transactions"
+    patterns:
+      - regex: "(?i)During (?P<year>\\d{4}), we (?P<text>.+?)(?:\\.)"
+      - regex: "(?i)The following is a summary of (?P<text>.+?)(?:\\.)"
+    normalization:
+      type: string
+  - id: section16a_compliance_statement
+    label: "Section 16(a) compliance"
+    anchors:
+      - pattern: "(?i)Section 16(a)"
+    patterns:
+      - regex: "(?i)complied with Section 16\\(a\\)"
+      - regex: "(?i)were late in filing (?P<count>\\d+) reports"
+    normalization:
+      type: string
