@@ -361,7 +361,7 @@ Audit firms spend **millions** on client onboarding research that gets lost in e
 - [ ] Bootstrap new repo (`project-ground-truth`) with router + sector stubs
 - [ ] Migrate CATY's banking tools into `sectors/banking/` plugin
 - [ ] Build core layer (SEC fetcher, IR scraper, DEF 14A universal extractor)
-- [ ] Test router with 5 diverse companies (CATY, MNST, GOOGL, JPM, JNJ)
+- [ ] Test router with 5 diverse companies
 - [ ] Prove replication works before scaling
 
 📋 **Infrastructure Hardening**
@@ -461,23 +461,6 @@ Then we build Project Ground Truth. Then we replicate. Then we scale.
 
 **Equity research at scale. Audit research at scale. One canonical base. Two professional futures.**
 
----
-
-## For CFA Judges, GitHub Visitors, and Future Collaborators
-
-This document is the North Star. If you're reading this:
-
-- **CFA IRC Judges**: CATY is the exemplar, but the vision is universal equity research at scale. We're proving the thesis with one bank, then replicating across sectors.
-
-- **GitHub Community**: The ground truth layer will be open-source. Sector plugins will be modular. If you want to build a plugin for mining (reserves disclosures, NI 43-101) or agriculture (USDA reports, commodity pricing) or shipping (IMO compliance, fleet age), the architecture will support it.
-
-- **Audit Firms**: The audit research engine is coming. Same provenance, different output. If you want to collaborate, the foundation is being built now.
-
-- **Employers / Recruiters**: This is not an academic exercise. This is infrastructure for the future of financial analysis. The rigor here exceeds most Big 4 audit workpapers. The ambition exceeds most sell-side research. We're building something that doesn't exist yet.
-
-**Building in public. Failing forward. One company at a time. Starting with CATY.**
-
----
 
 **Document Version**: 1.0.0
 **Last Updated**: 2025-10-24
