@@ -3,13 +3,12 @@
 from __future__ import annotations
 
 import hashlib
-import json
-import tempfile
 import uuid
 from pathlib import Path
-from typing import Iterable, List, Sequence
+from typing import List, Sequence
 
 import pandas as pd
+from lxml import html as lxml_html
 
 from .logging_utils import log_event
 from .models import DocumentProfile, SectionSpan, TableExtractionResult
@@ -42,29 +41,43 @@ class TableExtractionOrchestrator:
         section: SectionSpan,
         profile: DocumentProfile,
     ) -> List[TableExtractionResult]:
-        url = profile.artifact.url
         try:
-            tables = pd.read_html(str(profile.artifact.path), flavor="lxml")
-        except ValueError:
-            return []
+            tree = lxml_html.parse(str(profile.artifact.path)).getroot()
+        except (OSError, ValueError):
+            try:
+                tables = pd.read_html(str(profile.artifact.path), flavor="lxml")
+            except ValueError:
+                return []
+            return [
+                self._build_table_result(section, idx, frame, profile.artifact.url, "html")
+                for idx, frame in enumerate(tables[:3])
+            ]
+
+        if section.dom_path:
+            xpath = f"{section.dom_path}/following::table[position()<=5]"
+            table_nodes = tree.xpath(xpath)
+        else:
+            table_nodes = tree.xpath("//table[position()<=5]")
+
         results: List[TableExtractionResult] = []
-        for idx, frame in enumerate(tables):
-            table_id = f"{section.section_id}_html_{idx}"
-            snapshot_path = self._dump_snapshot(frame, table_id)
-            sha256 = self._hash_table(frame)
-            results.append(
-                TableExtractionResult(
-                    section_id=section.section_id,
-                    table_id=table_id,
-                    dataframe=frame,
-                    raw_snapshot_path=snapshot_path,
-                    source_method="html",
-                    quality_score=0.9,
-                    source_url=profile.artifact.url,
-                    sha256=sha256,
+        for idx, node in enumerate(table_nodes):
+            try:
+                table_html = lxml_html.tostring(node, encoding="unicode")
+                frames = pd.read_html(table_html, flavor="lxml")
+            except ValueError:
+                continue
+            for frame_idx, frame in enumerate(frames):
+                table_idx = idx * 10 + frame_idx
+                results.append(
+                    self._build_table_result(
+                        section,
+                        table_idx,
+                        frame,
+                        profile.artifact.url,
+                        "html",
+                    )
                 )
-            )
-        return results
+        return results[:5]
 
     def _extract_pdf_tables(
         self,
@@ -87,22 +100,41 @@ class TableExtractionOrchestrator:
         results: List[TableExtractionResult] = []
         for idx, table in enumerate(tables):
             frame = table.df
-            table_id = f"{section.section_id}_pdf_{idx}"
-            snapshot_path = self._dump_snapshot(frame, table_id)
-            sha256 = self._hash_table(frame)
             results.append(
-                TableExtractionResult(
-                    section_id=section.section_id,
-                    table_id=table_id,
-                    dataframe=frame,
-                    raw_snapshot_path=snapshot_path,
-                    source_method="pdf",
+                self._build_table_result(
+                    section,
+                    idx,
+                    frame,
+                    profile.artifact.url,
+                    "pdf",
                     quality_score=0.7,
-                    source_url=profile.artifact.url,
-                    sha256=sha256,
                 )
             )
         return results
+
+    def _build_table_result(
+        self,
+        section: SectionSpan,
+        idx: int,
+        frame: pd.DataFrame,
+        source_url: str,
+        method: str,
+        *,
+        quality_score: float = 0.9,
+    ) -> TableExtractionResult:
+        table_id = f"{section.section_id}_{method}_{idx}"
+        snapshot_path = self._dump_snapshot(frame, table_id)
+        sha256 = self._hash_table(frame)
+        return TableExtractionResult(
+            section_id=section.section_id,
+            table_id=table_id,
+            dataframe=frame,
+            raw_snapshot_path=snapshot_path,
+            source_method=method,
+            quality_score=quality_score,
+            source_url=source_url,
+            sha256=sha256,
+        )
 
     def _dump_snapshot(self, frame: pd.DataFrame, table_id: str) -> Path:
         snapshot_dir = Path(".cache/def14a_snapshots")

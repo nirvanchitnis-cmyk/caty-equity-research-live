@@ -1038,3 +1038,17 @@
 [2025-10-25 04:20:44 UTC] reconciliation_guard.py: PASS
 [2025-10-25 04:20:44 UTC] update_all_data.py: SUCCESS
 [2025-10-25 04:24:10 UTC] disconfirmer_monitor.py status=PASS alerts=0
+[2025-10-25 04:47:20 UTC] update_all_data.py: START
+[2025-10-25 04:47:21 UTC] fetch_live_price.py: Updated market data with latest price
+[2025-10-25 04:47:23 UTC] tools.def14a_extract.cli: Refreshed DEF 14A facts for 2025 to data/def14a_facts_latest.json
+[2025-10-25 04:47:25 UTC] fetch_sec_edgar.py: Fetched None None (period None)
+[2025-10-25 04:47:28 UTC] fetch_fdic_data.py: Fetched call report 20250630 (CERT 18503)
+[2025-10-25 04:47:40 UTC] fetch_peer_banks.py: Fetched 10 peers for Q2 2025
+[2025-10-25 04:47:40 UTC] generate_peer_snapshot.py: Rebuilt evidence/peer_snapshot_2025Q2.csv
+[2025-10-25 04:47:40 UTC] merge_data_sources.py: 2 conflicts logged
+[2025-10-25 04:47:40 UTC] calculate_valuation_metrics.py: Recalculated all targets and returns
+[2025-10-25 04:47:41 UTC] build_site.py completed: reconciliation-dashboard, module-grid, evidence-provenance, executive-dashboard, price-target, module-pages updated
+[2025-10-25 04:47:41 UTC] build_site.py: Rebuilt modules successfully
+[2025-10-25 04:47:42 UTC] reconciliation_guard.py: PASS
+[2025-10-25 04:47:42 UTC] update_all_data.py: SUCCESS
+[2025-10-25 04:49:58 UTC] disconfirmer_monitor.py status=PASS alerts=0

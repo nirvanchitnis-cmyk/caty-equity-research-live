@@ -70,7 +70,7 @@ class BeneficialOwnershipExtractor(BaseFactExtractor):
 
     def _normalize_table(self, frame: pd.DataFrame) -> pd.DataFrame:
         renamed = frame.rename(
-            columns=lambda col: col.lower().strip().replace(" ", "_"),
+            columns=lambda col: str(col).lower().strip().replace(" ", "_"),
         )
         columns = renamed.columns.tolist()
         mapping = {}

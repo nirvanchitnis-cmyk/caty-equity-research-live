@@ -174,7 +174,11 @@ def _extract_text(doc: DocumentProfile) -> tuple[str, dict]:
         "dom_path": None,
     }
     if doc.doc_type == "html":
-        return doc.artifact.path.read_text(errors="ignore"), meta
+        from ..normalizers.html_normalizer import normalize_html
+
+        normalized = normalize_html(doc)
+        meta["selector_map"] = normalized.get("selector_map", {})
+        return normalized.get("text", ""), meta
     if doc.doc_type.startswith("pdf"):
         from ..normalizers.pdf_text import extract_pdf_text
         pdf_data = extract_pdf_text(doc)

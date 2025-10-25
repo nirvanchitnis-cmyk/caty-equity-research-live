@@ -52,6 +52,7 @@ class SectionSpan:
     heading_text: str
     score: float
     source: str
+    dom_path: Optional[str] = None
 
 
 @dataclass

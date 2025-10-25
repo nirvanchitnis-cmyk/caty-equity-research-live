@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass
-from typing import Dict, Iterable, List, Sequence
+from typing import Dict, Iterable, List, Optional, Sequence
 
 try:  # pragma: no cover - optional dependency guard
     from rapidfuzz import fuzz
@@ -49,6 +49,7 @@ class HeadingCandidate:
     score: float
     start_offset: int
     end_offset: int
+    dom_path: Optional[str] = None
 
 
 def score_heading(section_id: str, heading: str) -> float:
@@ -65,10 +66,10 @@ def score_heading(section_id: str, heading: str) -> float:
 
 def find_heading_candidates(
     section_id: str,
-    headings: Iterable[tuple[str, int, int]],
+    headings: Iterable[tuple[str, int, int, Optional[str]]],
 ) -> List[HeadingCandidate]:
     candidates: List[HeadingCandidate] = []
-    for heading_text, start, end in headings:
+    for heading_text, start, end, dom_path in headings:
         score = score_heading(section_id, heading_text)
         if score >= 0.5:
             candidates.append(
@@ -78,6 +79,7 @@ def find_heading_candidates(
                     score=score,
                     start_offset=start,
                     end_offset=end,
+                    dom_path=dom_path,
                 )
             )
     return sorted(candidates, key=lambda c: c.score, reverse=True)
