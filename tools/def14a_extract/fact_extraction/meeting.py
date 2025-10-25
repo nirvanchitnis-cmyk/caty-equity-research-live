@@ -14,7 +14,7 @@ from ..models import (
     SectionSpan,
     TableExtractionResult,
 )
-from . import BaseFactExtractor
+from .base import BaseFactExtractor
 
 
 class MeetingFactExtractor(BaseFactExtractor):

@@ -1,30 +1,30 @@
-"""Factories for fact extraction engines."""
+from typing import List
 
-from __future__ import annotations
-
-class BaseFactExtractor:
-    fact_ids: List[str] = []
-
-    def extract(
-        self,
-        section_spans: Iterable[SectionSpan],
-        tables: Iterable[TableExtractionResult],
-        documents: Iterable[DocumentProfile],
-        registry: Mapping[str, object],
-    ) -> Dict[str, FactCandidate]:
-        raise NotImplementedError
+from .audit import AuditFactExtractor
+from .base import BaseFactExtractor
+from .compensation import CompensationFactExtractor
+from .meeting import MeetingFactExtractor
+from .ownership import BeneficialOwnershipExtractor
+from .governance import GovernanceFactExtractor
 
 
-from typing import Dict, Iterable, List, Mapping  # noqa: E402
-
-from ..models import DocumentProfile, FactCandidate, SectionSpan, TableExtractionResult  # noqa: E402
-from . import audit, compensation, meeting, ownership  # noqa: E402
-
-
-def build_fact_extractors() -> List["BaseFactExtractor"]:
+def build_fact_extractors() -> List[BaseFactExtractor]:
+    """Build the default set of fact extractors."""
     return [
-        meeting.MeetingFactExtractor(),
-        ownership.BeneficialOwnershipExtractor(),
-        compensation.CompensationFactExtractor(),
-        audit.AuditFactExtractor(),
+        MeetingFactExtractor(),
+        AuditFactExtractor(),
+        CompensationFactExtractor(),
+        BeneficialOwnershipExtractor(),
+        GovernanceFactExtractor(),
     ]
+
+
+__all__ = [
+    "BaseFactExtractor",
+    "build_fact_extractors",
+    "AuditFactExtractor",
+    "CompensationFactExtractor",
+    "MeetingFactExtractor",
+    "BeneficialOwnershipExtractor",
+    "GovernanceFactExtractor",
+]

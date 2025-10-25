@@ -30,6 +30,7 @@ SECTION_IDS = [
     "beneficial_ownership",
     "executive_compensation",
     "audit_fees",
+    "election_of_directors",
 ]
 
 

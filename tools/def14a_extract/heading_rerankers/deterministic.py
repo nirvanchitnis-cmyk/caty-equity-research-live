@@ -39,6 +39,12 @@ SECTION_SYNONYMS: Dict[str, Sequence[str]] = {
         "audit fees",
         "fees billed by",
     ],
+    "election_of_directors": [
+        "proposal one",
+        "election of directors",
+        "director nominees",
+        "board of directors and corporate governance",
+    ],
 }
 
 

@@ -36,6 +36,58 @@ PEER_SNAPSHOT_PATH = ROOT / "evidence" / "peer_snapshot_2025Q2.csv"
 EVIDENCE_PATH = DATA_DIR / "evidence_sources.json"
 DEF14A_OUTPUT_PATH = DATA_DIR / "def14a_facts_latest.json"
 
+
+def validate_def14a_output(output_path: Path) -> bool:
+    """Enforce non-empty, schema-valid proxy data before proceeding"""
+    if not output_path.exists():
+        print('❌ DEF14A output file missing')
+        return False
+
+    try:
+        with output_path.open('r', encoding='utf-8') as handle:
+            facts = json.load(handle)
+    except json.JSONDecodeError as exc:
+        print(f'❌ DEF14A output is invalid JSON: {exc}')
+        return False
+
+    if not facts:
+        print('❌ DEF14A payload is empty (0 facts)')
+        return False
+
+    required = [
+        'meeting_date',
+        'record_date',
+        'auditor_name',
+        'audit_fees_current_year',
+    ]
+    missing = [fact_id for fact_id in required if fact_id not in facts]
+    null_values = [
+        fact_id
+        for fact_id in required
+        if fact_id in facts
+        and isinstance(facts[fact_id], dict)
+        and facts[fact_id].get('value') is None
+    ]
+
+    if missing:
+        print(f'❌ Missing required facts: {missing}')
+        return False
+    if null_values:
+        print(f'❌ Required facts have null values: {null_values}')
+        return False
+
+    low_confidence = [
+        fact_id
+        for fact_id, payload in facts.items()
+        if isinstance(payload, dict) and payload.get('confidence', 0) < 0.70
+    ]
+    if low_confidence:
+        print(f'⚠️  Low-confidence facts (<70%): {low_confidence}')
+
+    print(f'✅ DEF14A validation passed ({len(facts)} facts extracted)')
+    return True
+
+
 SCRIPTS = ROOT / "scripts"
 
 
@@ -80,7 +132,7 @@ def run_def14a_refresh(year: Optional[int] = None) -> None:
         "--year",
         str(filing_year),
         "--facts",
-        "meeting_date,record_date,meeting_time,meeting_timezone,meeting_location_type,meeting_access_url",
+        "meeting_date,record_date,meeting_time,meeting_timezone,meeting_location_type,meeting_access_url,auditor_name,audit_fees_current_year,audit_fees_prior_year,audit_related_fees_current_year,tax_fees_current_year,other_fees_current_year,ceo_name,ceo_total_compensation_current_year,ceo_pay_ratio",
         "--provenance",
         "--output",
         str(DEF14A_OUTPUT_PATH),
@@ -232,15 +284,11 @@ def main() -> int:
 
     # Step 0b: DEF 14A fact refresh via CLI (skip in test mode)
     if not os.environ.get("CATY_TEST_MODE"):
-        try:
-            print("Refreshing DEF 14A facts via CLI...")
-            run_def14a_refresh()
-            print(f"✅ DEF 14A facts captured to {DEF14A_OUTPUT_PATH.relative_to(ROOT)}")
-        except subprocess.CalledProcessError as exc:
-            print("⚠️ DEF 14A refresh failed - continuing without update")
-            append_log(
-                f"tools.def14a_extract.cli: ERROR - def14a refresh failed ({exc.returncode})"
-            )
+        print("Refreshing DEF 14A facts via CLI...")
+        run_def14a_refresh()
+        if not validate_def14a_output(DEF14A_OUTPUT_PATH):
+            raise RuntimeError('DEF14A validation failed - aborting automation run')
+        print(f"✅ DEF 14A facts captured to {DEF14A_OUTPUT_PATH.relative_to(ROOT)}")
     else:
         print("⚠️ Test mode: Skipping DEF 14A CLI refresh")
         append_log("TEST MODE: Skipped DEF 14A CLI refresh")
