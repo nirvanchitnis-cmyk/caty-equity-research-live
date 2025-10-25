@@ -1,15 +1,15 @@
 {
-  "generated_at": "2025-10-22T21:45:27Z",
+  "generated_at": "2025-10-25T02:43:01Z",
   "inputs": {
-    "spot": 46.17,
+    "spot": 46.94,
     "quarterly_eps": 1.13,
     "annual_eps": 4.52,
     "tbvps": 41.0,
-    "ptbv": 1.126,
+    "ptbv": 1.145,
     "roe": 0.1102,
     "growth": 0.025,
     "model_coe": 0.0999
   },
-  "implied_coe": 0.1007,
-  "difference_bps": 8.0
+  "implied_coe": 0.0994,
+  "difference_bps": -4.9
 }

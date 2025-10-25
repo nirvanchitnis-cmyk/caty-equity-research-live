@@ -357,16 +357,16 @@
     "growth_pct": 2.5,
     "coe_pct": 9.587,
     "implied_ptbv": 1.333,
-    "actual_ptbv": 1.269,
-    "price": 45.89,
+    "actual_ptbv": 1.298,
+    "price": 46.94,
     "tbvps": 36.16,
     "difference_pct": 5.0,
-    "market_implied_coe_pct": 9.947,
+    "market_implied_coe_pct": 9.94,
     "conclusion": "Model COE slightly below market-implied -> conservative bias",
     "numerator_pct": 9.45,
     "denominator_pct": 7.087,
     "market_implied_prem_bps": 36,
-    "price_as_of_display": "October 18, 2025"
+    "price_as_of_display": "October 24, 2025"
   },
   "summary_points": [
     "Triangulated COE range 9.337% to 9.725%",
@@ -400,5 +400,8 @@
         "status": "PASSED"
       }
     ]
+  },
+  "narratives": {
+    "market_implied_note_html": "<div class=\"highlight-box info\"><h4>Market-Implied Cross-Check</h4><p>At $46.94 spot and TBV $36.16 (P/TBV 1.298\u00d7), the Gordon bridge implies a <strong>9.94%</strong> cost of equity assuming ROE 11.02% and terminal growth 2.50%. The 4.9 bps lighter implied COE vs the 9.59% model output sits within tolerance.</p></div>"
   }
 }

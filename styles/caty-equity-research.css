@@ -856,6 +856,116 @@ body > header {
     border-bottom-color: var(--danger);
 }
 
+.refresh-banner {
+    margin-top: 1rem;
+    padding: 1rem 1.25rem;
+    border-radius: 0.75rem;
+    border: 1px solid var(--border-color, #d0d7de);
+    background: #f5f8fb;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08);
+}
+
+.refresh-banner.refresh-ok {
+    border-color: #4caf50;
+    background: #f1fff3;
+}
+
+.refresh-banner.refresh-warning {
+    border-color: #ffb300;
+    background: #fff8e5;
+}
+
+.refresh-banner.refresh-critical {
+    border-color: #f04747;
+    background: #fff1f1;
+}
+
+.refresh-banner.refresh-muted {
+    opacity: 0.9;
+}
+
+.refresh-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.refresh-status {
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.refresh-command-btn {
+    background: #1f6feb;
+    border: none;
+    color: #fff;
+    font-weight: 600;
+    padding: 0.45rem 0.85rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.refresh-command-btn:hover,
+.refresh-command-btn:focus {
+    background: #1a66d1;
+}
+
+.refresh-command-btn-success {
+    background: #179c52 !important;
+}
+
+.refresh-metrics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: #334155;
+}
+
+.refresh-note {
+    margin-top: 0.6rem;
+    font-size: 0.85rem;
+    color: #1f2933;
+}
+
+.materiality-label {
+    display: inline-block;
+    margin-top: 0.35rem;
+    padding: 0.15rem 0.5rem;
+    border-radius: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    background: #e2e8f0;
+    color: #1e293b;
+}
+
+.materiality-label.materiality-critical {
+    background: #ffe4e6;
+    color: #c81e1e;
+}
+
+.materiality-label.materiality-warning {
+    background: #fff4e5;
+    color: #b45309;
+}
+
+.materiality-label.materiality-ok {
+    background: #def7ec;
+    color: #057a55;
+}
+
+.materiality-note {
+    font-size: 0.8rem;
+    color: #475569;
+}
+
+.refresh-banner-wrapper {
+    margin: 0 0 1.5rem 0;
+}
+
 @keyframes border-pulse {
     0%, 100% {
         border-left-color: var(--danger);

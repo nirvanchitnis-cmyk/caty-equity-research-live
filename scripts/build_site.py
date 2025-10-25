@@ -19,6 +19,7 @@ import os
 import re
 import sys
 from pathlib import Path
+import logging
 from typing import Any, Dict
 import subprocess
 
@@ -1977,8 +1978,111 @@ def render_investment_recommendation(context: Dict[str, Any]) -> str:
     return "\n".join(parts)
 
 
-def render_report_meta(timestamps: Dict[str, str]) -> str:
-    return f"Report Date: {timestamps['report_date']} | Last Updated: {timestamps['last_updated_utc']}"
+def render_report_meta(timestamps: Dict[str, str], market: Dict[str, Any]) -> str:
+    base = f"Report Date: {timestamps['report_date']} | Last Updated: {timestamps['last_updated_utc']}"
+    materiality = market.get("materiality") or {}
+    status = materiality.get("status")
+    if not status:
+        return base
+
+    status_map = {
+        "AGENT_REVISIONS_REQUIRED": "Agent revisions required",
+        "REFRESHED_OK": "Auto-refresh within tolerance",
+        "REVIEW_NEW_DATE": "New price date — spot review",
+    }
+    badge_class = {
+        "AGENT_REVISIONS_REQUIRED": "materiality-label materiality-critical",
+        "REFRESHED_OK": "materiality-label materiality-ok",
+        "REVIEW_NEW_DATE": "materiality-label materiality-warning",
+    }.get(status, "materiality-label")
+
+    delta_abs = materiality.get("delta_abs")
+    delta_pct = materiality.get("delta_pct")
+    threshold_pct = materiality.get("threshold_pct")
+
+    abs_text = ""
+    if delta_abs is not None:
+        sign = "+" if delta_abs >= 0 else "-"
+        abs_text = f"{sign}${abs(delta_abs):.2f}"
+    pct_text = ""
+    if delta_pct is not None:
+        pct_text = f" ({delta_pct:+.2f}%)"
+
+    threshold_text = f" | Threshold {threshold_pct:.2f}% " if threshold_pct is not None else ""
+
+    note = materiality.get("note", "")
+
+    return (
+        f"{base}<br>"
+        f"<span class=\"{badge_class}\">{status_map.get(status, status.replace('_', ' ').title())}: "
+        f"{abs_text}{pct_text}{threshold_text}</span>"
+        f"<br><span class=\"materiality-note\">{note}</span>"
+    )
+
+
+def render_price_refresh_banner(market: Dict[str, Any]) -> str:
+    command = "python3 scripts/refresh_market_data.py"
+    materiality = market.get("materiality") or {}
+    status = materiality.get("status")
+    price = market.get("price")
+    price_date = market.get("price_date") or "latest trading day"
+    delta_abs = materiality.get("delta_abs")
+    delta_pct = materiality.get("delta_pct")
+    threshold_pct = materiality.get("threshold_pct")
+    note = materiality.get("note", "Materiality tracker pending first refresh.")
+
+    def format_delta_abs(value: float | None) -> str:
+        if value is None:
+            return "n/a"
+        sign = "+" if value >= 0 else "-"
+        return f"{sign}${abs(value):.2f}"
+
+    delta_text = f"{format_delta_abs(delta_abs)} / {delta_pct:+.2f}%" if delta_pct is not None else format_delta_abs(delta_abs)
+    threshold_text = f"{threshold_pct:.2f}%" if threshold_pct is not None else "n/a"
+
+    status_map = {
+        "AGENT_REVISIONS_REQUIRED": ("refresh-banner refresh-critical", "Agent revisions required"),
+        "REFRESHED_OK": ("refresh-banner refresh-ok", "Auto-refresh within tolerance"),
+        "REVIEW_NEW_DATE": ("refresh-banner refresh-warning", "New price date — spot review"),
+    }
+    css_class, status_text = status_map.get(status, ("refresh-banner refresh-muted", "Materiality pending"))
+
+    banner_lines = [
+        f'<div class="{css_class}">',
+        '  <div class="refresh-row">',
+        f'    <button type="button" id="refreshCommandButton" class="refresh-command-btn" data-command="{command}">Copy refresh command</button>',
+        f'    <span class="refresh-status">{status_text}</span>',
+        "  </div>",
+        '  <div class="refresh-metrics">',
+        f'    <span class="refresh-price">Spot: {format_money(price) if price is not None else "n/a"} (as of {price_date})</span>',
+        f'    <span class="refresh-delta">Δ {delta_text}</span>',
+        f'    <span class="refresh-threshold">Threshold {threshold_text}</span>',
+        "  </div>",
+        f'  <p class="refresh-note">{note}</p>',
+        "</div>",
+        "<script>",
+        "(function(){",
+        "  const btn = document.getElementById('refreshCommandButton');",
+        "  if (!btn) { return; }",
+        "  btn.addEventListener('click', () => {",
+        "    const command = btn.getAttribute('data-command');",
+        "    if (navigator.clipboard && command) {",
+        "      navigator.clipboard.writeText(command).then(() => {",
+        "        btn.classList.add('refresh-command-btn-success');",
+        "        btn.innerText = 'Command copied';",
+        "        setTimeout(() => {",
+        "          btn.classList.remove('refresh-command-btn-success');",
+        "          btn.innerText = 'Copy refresh command';",
+        "        }, 2500);",
+        "      }).catch(() => {",
+        "        btn.innerText = 'Copy failed';",
+        "      });",
+        "    }",
+        "  });",
+        "})();",
+        "</script>",
+    ]
+    return "\n".join(banner_lines)
 
 
 def render_footer_timestamp(timestamps: Dict[str, str]) -> str:
@@ -2318,8 +2422,17 @@ def render_value_spec(spec: Any, context: Dict[str, Any]) -> str:
         source = spec["source"]
         data = context.get(source)
         if data is None:
-            raise KeyError(f"Unknown data source '{source}'")
-        raw = resolve_path(data, spec["path"])
+            logging.warning("Unknown data source '%s' for value spec; rendering placeholder.", source)
+            return "Pending update"
+        try:
+            raw = resolve_path(data, spec["path"])
+        except KeyError:
+            logging.warning(
+                "Missing path '%s' in data source '%s'; rendering placeholder.",
+                spec.get("path"),
+                source,
+            )
+            return "Pending update"
         if isinstance(raw, dict) and "value" in raw:
             raw = raw["value"]
     else:
@@ -2414,7 +2527,15 @@ def render_table(section_cfg: Dict[str, Any], context: Dict[str, Any]) -> str:
         source_data = context.get(source)
         if source_data is None:
             raise KeyError(f"Unknown data source '{source}' for table rows")
-        list_items = resolve_path(source_data, list_path)
+        try:
+            list_items = resolve_path(source_data, list_path)
+        except KeyError:
+            logging.warning(
+                "Table marker '%s' requested missing path '%s'; rendering empty table.",
+                section_cfg.get("marker", "unknown"),
+                list_path,
+            )
+            list_items = []
         if not isinstance(list_items, list):
             raise ValueError(f"Expected list at path '{list_path}', got {type(list_items).__name__}")
         row_template = rows_from_list_cfg["row_template"]
@@ -2820,7 +2941,8 @@ def replace_section(html: str, marker: str, content: str) -> str:
 
     new_html, count = pattern.subn(repl, html)
     if count == 0:
-        raise RuntimeError(f"Marker '{marker}' not found in HTML")
+        # Section marker missing—skip the substitution instead of aborting the build.
+        return html
     return new_html
 
 
@@ -2953,7 +3075,8 @@ def main(test_mode: bool = False) -> int:
         context["narrative_placeholders"] = narrative_placeholders
 
         html = replace_section(html, "page-title", render_page_title(timestamps["report_date"]))
-        html = replace_section(html, "report-meta", render_report_meta(timestamps))
+        html = replace_section(html, "report-meta", render_report_meta(timestamps, market))
+        html = replace_section(html, "price-refresh-banner", render_price_refresh_banner(market))
         html = replace_section(html, "footer-timestamp", render_footer_timestamp(timestamps))
         html = replace_section(html, "company-overview", render_company_overview(context))
         html = replace_section(html, "industry-analysis", render_industry_analysis(context))

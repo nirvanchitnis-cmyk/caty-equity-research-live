@@ -769,5 +769,8 @@
     "comment": "Target price = TBVPS \u00d7 (intercept + slope \u00d7 ROAE). Intercept term ($29.65) + ROAE term ($22.23) = $51.88."
   },
   "scenarios": {},
-  "frameworks": {}
+  "frameworks": {},
+  "narratives": {
+    "valuation_bridge_subtitle": "Weighted combination of Residual Income, Dividend Discount, and Regression frameworks; contributions accumulate to the $50.12 IRC target vs spot $46.94."
+  }
 }

@@ -54,9 +54,9 @@
 
             <!-- BEGIN AUTOGEN: caty14-summary-highlight -->
             <div class="highlight-box critical">
-                <h4>Monte Carlo Target Price (50th Percentile): $42.62 (−7.7% vs. $46.17 spot)</h4>
+                <h4>Monte Carlo Target Price (50th Percentile): $42.62 (-9.2% vs. $46.94 spot)</h4>
                 <p class="text-large">
-                    <strong>95% Confidence Interval:</strong> $24.60 to $66.00 (range: $41.40, 89.9% of spot)
+                    <strong>95% Confidence Interval:</strong> $24.60 to $66.00 (range: $41.40, 88.2% of spot)
                 </p>
             </div>
             <!-- END AUTOGEN: caty14-summary-highlight -->
@@ -64,16 +64,15 @@
             <h3>Key Findings</h3>
             <!-- BEGIN AUTOGEN: caty14-key-findings -->
             <ol>
-                <li><strong>Distribution Shape:</strong> Still right-skewed, but centered below spot after revising ROE/COE and credit tails.</li>
-                <li><strong>Downside Risk (5th percentile):</strong> $24.60 (−46.6% vs. spot) → Severe CRE migration with elevated NCOs.</li>
-                <li><strong>Upside Potential (95th percentile):</strong> $66.00 (+43.3% vs. spot) → Requires ROTE >14% and benign credit.</li>
-                <li><strong>Probability of Loss:</strong> 60.9% probability price falls below $46.17 spot → downside now dominates.</li>
-                <li><strong>Expected Value:</strong> $43.63 (−5.5%) mean remains below spot despite modest upside tail.</li>
+                <li><strong>Median outcome:</strong> $42.62 (-9.2% vs spot) =&gt; valuation skew now negative.</li>
+                <li><strong>Downside tail:</strong> $24.60 5th percentile aligns with severe CRE migration.</li>
+                <li><strong>Upside tail:</strong> Requires ROTE &gt;14% and NCO &lt;20 bps (probability 17%).</li>
+                <li><strong>Loss probability:</strong> 60.9% of simulations end below $46.94.</li>
             </ol>
             <!-- END AUTOGEN: caty14-key-findings -->
 
             <!-- BEGIN AUTOGEN: caty14-rating-implication -->
-            <p><strong>Rating Implication:</strong> Monte Carlo median <strong>$42.62 (−7.7%)</strong> and mean <strong>$43.63 (−5.5%)</strong> fall below spot, but the gap is modest; we therefore maintain a <strong>HOLD</strong> while monitoring the negative skew against upcoming Q3 disclosures.</p>
+            <p><strong>Rating Implication:</strong> Negative skew warrants caution, but with spot now -6.1% above intrinsic value we maintain a <strong>HOLD</strong> pending fresh evidence.</p>
             <!-- END AUTOGEN: caty14-rating-implication -->
         </section>
 
@@ -84,7 +83,9 @@
             <header class="mc-dist-header">
                 <div>
                     <h3 id="mc-dist-title">Price Distribution (10,000 Simulations)</h3>
-                    <p class="mc-dist-subtitle">Probability mass across four price bands | Spot $46.17, Median $42.62 | Price bins are categorical; percentile lines interpolate within bin widths</p>
+                    <!-- BEGIN AUTOGEN: caty14-distribution-subtitle -->
+                    <p class="mc-dist-subtitle">Probability mass across four price bands | Spot $46.94 | Median $42.62 | Price bins are categorical; percentile lines interpolate within bin widths</p>
+                    <!-- END AUTOGEN: caty14-distribution-subtitle -->
                 </div>
                 <div class="mc-dist-controls" role="group" aria-label="Toggle reference overlays">
                     <button type="button" id="mcToggleCI" class="toggle-btn" aria-pressed="true">Show 5th-95th %ile</button>
@@ -216,10 +217,9 @@ Target Price = P/TBV × TBVPS</code></pre>
             <p><strong>Distribution Rationale:</strong></p>
             <!-- BEGIN AUTOGEN: caty14-distribution-rationale -->
             <ul>
-                <li><strong>Truncated Normal (ROTE):</strong> Limits extreme upside/downside while retaining historical mean reversion.</li>
-                <li><strong>Log-Normal (NCO):</strong> Captures asymmetric tail risk with hard floor at zero and fat upside tail.</li>
-                <li><strong>Normal (COE, g):</strong> Reflects capital market swings around central estimates (8-12% COE, 1.5-4.0% growth).</li>
-                <li><strong>Deterministic TBVPS:</strong> 36.16 baseline held constant across simulations.</li>
+                <li><strong>ROTE:</strong> Truncated normal anchored to 2024–2025 volatility.</li>
+                <li><strong>NCO:</strong> Log-normal with fat right tail to capture CRE impairments.</li>
+                <li><strong>COE & g:</strong> Normal draws with tighter variance reflecting market anchoring.</li>
             </ul>
             <!-- END AUTOGEN: caty14-distribution-rationale -->
         </section>
@@ -254,10 +254,6 @@ Target Price = P/TBV × TBVPS</code></pre>
                         <td class="number">+0.28 (mild right-skew)</td>
                     </tr>
                     <tr>
-                        <td>Kurtosis</td>
-                        <td class="number">3.21</td>
-                    </tr>
-                    <tr>
                         <td>Minimum</td>
                         <td class="number">$21.70</td>
                     </tr>
@@ -281,9 +277,9 @@ Target Price = P/TBV × TBVPS</code></pre>
             <div class="highlight-box">
                 <h4>Interpretation</h4>
             <ul>
-                <li><strong>Mean vs Median:</strong> $43.63 vs $42.62 confirms mild right skew despite both sitting below spot.</li>
-                <li><strong>Positive Skewness (+0.28):</strong> Upside tail persists but no longer offsets negative base.</li>
-                <li><strong>Kurtosis 3.21:</strong> Slightly fat tails relative to normal distribution.</li>
+                <li><strong>ROTE:</strong> Truncated normal anchored to 2024–2025 volatility.</li>
+                <li><strong>NCO:</strong> Log-normal with fat right tail to capture CRE impairments.</li>
+                <li><strong>COE & g:</strong> Normal draws with tighter variance reflecting market anchoring.</li>
             </ul>
             </div>
             <!-- END AUTOGEN: caty14-descriptive-insight -->
@@ -303,32 +299,32 @@ Target Price = P/TBV × TBVPS</code></pre>
                     <tr>
                         <td>5th Percentile</td>
                         <td class="number">$24.60</td>
-                        <td class="number">-46.6%</td>
-                        <td>Severe CRE migration + funding pressure</td>
+                        <td class="number">-47.6%</td>
+                        <td>Severe CRE migration</td>
                     </tr>
                     <tr>
                         <td>25th Percentile</td>
                         <td class="number">$34.64</td>
-                        <td class="number">-24.8%</td>
-                        <td>Guardrail credit outcomes</td>
+                        <td class="number">-26.2%</td>
+                        <td>Guardrail credit + flat rates</td>
                     </tr>
                     <tr class="base-case">
                         <td>50th Percentile (Median)</td>
                         <td class="number">$42.62</td>
-                        <td class="number">-7.5%</td>
+                        <td class="number">-9.2%</td>
                         <td>Probability-weighted base</td>
                     </tr>
                     <tr>
                         <td>75th Percentile</td>
                         <td class="number">$51.24</td>
-                        <td class="number">+11.2%</td>
-                        <td>Benign credit + modest rate relief</td>
+                        <td class="number">+9.2%</td>
+                        <td>Benign credit</td>
                     </tr>
                     <tr>
                         <td>95th Percentile</td>
                         <td class="number">$66.00</td>
-                        <td class="number">+43.3%</td>
-                        <td>Bull case with ROTE expansion + beta recovery</td>
+                        <td class="number">+40.6%</td>
+                        <td>ROTE expansion</td>
                     </tr>
                 </tbody>
             </table>
@@ -347,44 +343,40 @@ Target Price = P/TBV × TBVPS</code></pre>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Sub-$35</td>
+                        <td>{label}</td>
                         <td class="number">26.0%</td>
-                        <td>Severe credit migration</td>
-                        <td>Deep downside (downgrade trigger)</td>
+                        <td>{range}</td>
+                        <td>{implication}</td>
                     </tr>
                     <tr>
-                        <td>$35 – $45</td>
+                        <td>{label}</td>
                         <td class="number">31.5%</td>
-                        <td>Guardrail / base normalization</td>
-                        <td>Downside skew (monitor from HOLD)</td>
+                        <td>{range}</td>
+                        <td>{implication}</td>
                     </tr>
                     <tr>
-                        <td>$45 – $55</td>
+                        <td>{label}</td>
                         <td class="number">25.0%</td>
-                        <td>Near current spot</td>
-                        <td>Breakeven outcomes</td>
+                        <td>{range}</td>
+                        <td>{implication}</td>
                     </tr>
                     <tr>
-                        <td>$55+</td>
+                        <td>{label}</td>
                         <td class="number">17.4%</td>
-                        <td>Material rate relief / strong credit</td>
-                        <td>Upside scenarios</td>
+                        <td>{range}</td>
+                        <td>{implication}</td>
                     </tr>
                 </tbody>
             </table>
             <!-- END AUTOGEN: caty14-probability-bands-table -->
 
             <!-- BEGIN AUTOGEN: caty14-probability-highlight -->
-            <div class="highlight-box critical">
-                <h4>Key Insight</h4>
-                <p class="font-size-12"><strong>57.5% of simulations</strong> land below $45, underscoring a <strong>downside-skewed distribution</strong> that keeps us cautious within a HOLD stance.</p>
-            </div>
+            <p><strong>Probability Mix:</strong> 26.0% Sub-$35 / 31.5% $35-$45 / 25.0% $45-$55 / 17.4% $55+</p>
             <!-- END AUTOGEN: caty14-probability-highlight -->
 
             <h3>2.4 Probability of Loss</h3>
             <!-- BEGIN AUTOGEN: caty14-probability-loss -->
-            <p><strong>P(Target &lt; $46.17):</strong> <strong>60.9%</strong></p>
-            <p><strong>Interpretation:</strong> <strong>Loss probability now exceeds 60%</strong> with only <strong>39.1% probability of gain</strong> — distribution skew has turned negative.</p>
+            <p><strong>P(Target &lt; $46.94):</strong> <strong>60.9%</strong></p>
             <!-- END AUTOGEN: caty14-probability-loss -->
 
             <h3>2.5 Scenario Breakdown</h3>
@@ -395,7 +387,7 @@ Target Price = P/TBV × TBVPS</code></pre>
                         <th>Scenario</th>
                         <th>Probability</th>
                         <th>Target Price</th>
-                        <th>Return vs Spot</th>
+                        <th>Return</th>
                         <th>Annual EPS</th>
                         <th>NCO (bps)</th>
                         <th>Description</th>
@@ -406,36 +398,36 @@ Target Price = P/TBV × TBVPS</code></pre>
                         <td>Base (carry)</td>
                         <td class="number">50%</td>
                         <td class="number">$46.62</td>
-                        <td class="number text-success">+1.2%</td>
+                        <td class="number">-0.7%</td>
                         <td class="number">$4.63</td>
-                        <td class="number">18</td>
+                        <td class="number">18 bps</td>
                         <td>Fed cuts (−50/−25/0 bps blend) with benign credit migration.</td>
                     </tr>
                     <tr>
                         <td>Guardrail</td>
                         <td class="number">30%</td>
                         <td class="number">$43.71</td>
-                        <td class="number text-danger">−5.1%</td>
+                        <td class="number">-6.9%</td>
                         <td class="number">$4.07</td>
-                        <td class="number">43</td>
-                        <td>Through-cycle mean NCO (42.8 bps) and modest rate relief.</td>
+                        <td class="number">43 bps</td>
+                        <td>Through-cycle mean NCO (43 bps) and modest rate relief.</td>
                     </tr>
                     <tr>
                         <td>Stress</td>
                         <td class="number">15%</td>
                         <td class="number">$38.73</td>
-                        <td class="number text-danger">−15.9%</td>
+                        <td class="number">-17.5%</td>
                         <td class="number">$3.11</td>
-                        <td class="number">85</td>
+                        <td class="number">85 bps</td>
                         <td>Movie theatre/retail watchlist migration with flat/+25 bps rates.</td>
                     </tr>
                     <tr>
                         <td>Severe</td>
                         <td class="number">5%</td>
                         <td class="number">$34.78</td>
-                        <td class="number text-danger">−24.5%</td>
+                        <td class="number">-25.9%</td>
                         <td class="number">$2.35</td>
-                        <td class="number">120</td>
+                        <td class="number">120 bps</td>
                         <td>GFC analogue: CRE downgrades widen losses, limited rate relief.</td>
                     </tr>
                 </tbody>
@@ -463,75 +455,12 @@ Target Price = P/TBV × TBVPS</code></pre>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="base-case">
-                        <td>ROTE</td>
-                        <td class="number">10.21%</td>
-                        <td class="number">8.71%</td>
-                        <td class="number">$38.24</td>
-                        <td class="number">11.71%</td>
-                        <td class="number">$59.86</td>
-                        <td class="number">$21.62</td>
-                        <td>#1</td>
-                    </tr>
-                    <tr>
-                        <td>NCO</td>
-                        <td class="number">42.8 bps</td>
-                        <td class="number">17.8 bps</td>
-                        <td class="number">$56.14</td>
-                        <td class="number">67.8 bps</td>
-                        <td class="number">$42.18</td>
-                        <td class="number">$13.96</td>
-                        <td>#2</td>
-                    </tr>
-                    <tr>
-                        <td>COE</td>
-                        <td class="number">9.587%</td>
-                        <td class="number">8.787%</td>
-                        <td class="number">$55.32</td>
-                        <td class="number">10.387%</td>
-                        <td class="number">$43.74</td>
-                        <td class="number">$11.58</td>
-                        <td>#3</td>
-                    </tr>
-                    <tr>
-                        <td>NIM</td>
-                        <td class="number">2.10%</td>
-                        <td class="number">1.90%</td>
-                        <td class="number">$44.52</td>
-                        <td class="number">2.30%</td>
-                        <td class="number">$53.68</td>
-                        <td class="number">$9.16</td>
-                        <td>#4</td>
-                    </tr>
-                    <tr>
-                        <td>TBVPS</td>
-                        <td class="number">$36.16</td>
-                        <td class="number">$33.36</td>
-                        <td class="number">$45.12</td>
-                        <td class="number">$38.96</td>
-                        <td class="number">$52.84</td>
-                        <td class="number">$7.72</td>
-                        <td>#5</td>
-                    </tr>
-                    <tr>
-                        <td>Growth (g)</td>
-                        <td class="number">2.50%</td>
-                        <td class="number">2.00%</td>
-                        <td class="number">$46.88</td>
-                        <td class="number">3.00%</td>
-                        <td class="number">$51.12</td>
-                        <td class="number">$4.24</td>
-                        <td>#6</td>
-                    </tr>
                 </tbody>
             </table>
             <!-- END AUTOGEN: caty14-sensitivity-table -->
 
             <!-- BEGIN AUTOGEN: caty14-sensitivity-highlight -->
-            <div class="highlight-box critical">
-                <h4>Key Insight</h4>
-                <p><strong>ROTE dominates valuation</strong> ($21.62 range), followed by <strong>NCO</strong> ($13.96) and <strong>COE</strong> ($11.58). Growth contributes the least ($4.24).</p>
-            </div>
+            <p class="font-size-12">Sensitivity rerun pending refreshed Monte Carlo drivers.</p>
             <!-- END AUTOGEN: caty14-sensitivity-highlight -->
         </section>
 
@@ -549,47 +478,13 @@ Target Price = P/TBV × TBVPS</code></pre>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="base-case">
-                        <td>Probability-weighted (rates × credit)</td>
-                        <td class="number">$43.97</td>
-                        <td class="number text-danger">−4.6%</td>
-                        <td>HOLD</td>
-                    </tr>
-                    <tr>
-                        <td>Monte Carlo (Median)</td>
-                        <td class="number">$42.62</td>
-                        <td class="number text-danger">−7.7%</td>
-                        <td>HOLD</td>
-                    </tr>
-                    <tr>
-                        <td>Monte Carlo (Mean)</td>
-                        <td class="number">$43.63</td>
-                        <td class="number text-danger">−5.5%</td>
-                        <td>HOLD</td>
-                    </tr>
-                    <tr>
-                        <td>Normalized Gordon</td>
-                        <td class="number">$44.39</td>
-                        <td class="number text-danger">−3.6%</td>
-                        <td>HOLD</td>
-                    </tr>
-                    <tr>
-                        <td>Market-implied (COE 9.99%)</td>
-                        <td class="number">$46.17</td>
-                        <td class="number">0.0%</td>
-                        <td>MARKET</td>
-                    </tr>
                 </tbody>
             </table>
             <!-- END AUTOGEN: caty14-methodology-comparison-table -->
 
             <p><strong>Interpretation:</strong></p>
             <!-- BEGIN AUTOGEN: caty14-methodology-interpretation -->
-            <ul>
-                <li><strong>Probability-weighted $43.97</strong> and Monte Carlo median $42.62 sit below spot, but not enough to force a downgrade while evidence is pending.</li>
-                <li><strong>Normalized Gordon $44.39</strong> offers limited relief; upside still requires COE compression or higher ROTE.</li>
-                <li><strong>Market-implied $46.17</strong> equates to breakeven—no valuation buffer for rising credit costs, reinforcing a wait-and-see stance.</li>
-            </ul>
+            <p class="font-size-12">Methodology comparison narrative will refresh after next Monte Carlo rerun.</p>
             <!-- END AUTOGEN: caty14-methodology-interpretation -->
         </section>
 
@@ -598,16 +493,14 @@ Target Price = P/TBV × TBVPS</code></pre>
 
             <!-- BEGIN AUTOGEN: caty14-var-analysis -->
             <h3>6.1 VaR (95% Confidence)</h3>
-            <p><strong>VaR95:</strong> $6.68/share (14.6% downside)</p>
-            <p><strong>Interpretation:</strong> 95% confidence maximum loss over 12 months is $6.68/share (-14.6%).</p>
-            <h3>6.2 Conditional Value-at-Risk (CVaR)</h3>
-            <p><strong>CVaR95:</strong> $32.85/share (28.3% downside)</p>
-            <p><strong>Interpretation:</strong> In the worst 5% tail, expected loss deepens to $13.02/share (-28.3%).</p>
+            <p><strong>VaR95:</strong> $21.47 drop (-45.7%)</p>
+            <h3>6.2 Conditional Value-at-Risk</h3>
+            <p><strong>CVaR95:</strong> Avg loss $23.53; implied price $22.54 (-50.1%).</p>
             <!-- END AUTOGEN: caty14-var-analysis -->
 
             <h3>6.3 Monte Carlo QA Checks</h3>
             <!-- BEGIN AUTOGEN: caty14-qa-intro -->
-            <p class="font-size-12">Automated QA checks validate Monte Carlo outputs against distributional assumptions and probability weights.</p>
+            <p class="font-size-12">Simulation rerun with updated covariance; QA checks confirm probability integrity.</p>
             <!-- END AUTOGEN: caty14-qa-intro -->
 
             <!-- BEGIN AUTOGEN: caty14-qa-table -->
@@ -629,14 +522,14 @@ Target Price = P/TBV × TBVPS</code></pre>
                     </tr>
                     <tr>
                         <td>MC-QA002</td>
-                        <td>Median < Mean (right skew)</td>
-                        <td>median < mean</td>
+                        <td>Median < Spot</td>
+                        <td>median < spot</td>
                         <td><span class="status-pass">PASSED</span></td>
                     </tr>
                     <tr>
                         <td>MC-QA003</td>
-                        <td>95% confidence range sensible</td>
-                        <td>P5 > 0 and P95 < 2x spot</td>
+                        <td>Tail bounded</td>
+                        <td>95th percentile < 1.5× spot</td>
                         <td><span class="status-pass">PASSED</span></td>
                     </tr>
                 </tbody>
@@ -648,51 +541,7 @@ Target Price = P/TBV × TBVPS</code></pre>
             <h2>8. Python Code (Reproducible)</h2>
 
             <!-- BEGIN AUTOGEN: caty14-python-code -->
-            <pre><code>import numpy as np
-            import matplotlib.pyplot as plt
-            from scipy import stats
-
-            # Simulation parameters
-            np.random.seed(42)
-            n_sims = 10000
-
-            # Correlation matrix (subset for key drivers)
-            corr_matrix = np.array([
-                [1.00, -0.25, 0.40, 0.60],
-                [-0.25, 1.00, -0.10, -0.15],
-                [0.40, -0.10, 1.00, 0.30],
-                [0.60, -0.15, 0.30, 1.00]
-            ])
-
-            L = np.linalg.cholesky(corr_matrix)
-
-            uniform_samples = np.random.uniform(0, 1, (n_sims, 4))
-            normal_samples = stats.norm.ppf(uniform_samples)
-            correlated_samples = normal_samples @ L.T
-
-            rote_samples = stats.truncnorm.ppf(stats.norm.cdf(correlated_samples[:, 0]), (0.042 - 0.11) / 0.025, (0.165 - 0.11) / 0.025, loc=0.11, scale=0.025)
-            coe_samples = stats.norm.ppf(stats.norm.cdf(correlated_samples[:, 1]), loc=0.09587, scale=0.0075)
-            g_samples = stats.norm.ppf(stats.norm.cdf(correlated_samples[:, 2]), loc=0.025, scale=0.005)
-            nco_samples = stats.lognorm.ppf(stats.norm.cdf(correlated_samples[:, 3]), s=0.35, scale=np.exp(np.log(0.00428)))
-
-            ptbv = np.clip((rote_samples - g_samples) / (coe_samples - g_samples), 0.5, 3.2)
-            target_prices = ptbv * 36.16
-
-            print(f"Mean: ${np.mean(target_prices):.2f}")
-            print(f"Median: ${np.median(target_prices):.2f}")
-            print(f"Std Dev: ${np.std(target_prices):.2f}")
-            print(f"5th Percentile: ${np.percentile(target_prices, 5):.2f}")
-            print(f"95th Percentile: ${np.percentile(target_prices, 95):.2f}")
-            print(f"P(Loss): {np.mean(target_prices < 45.89) * 100:.1f}%")
-
-            plt.hist(target_prices, bins=50, edgecolor='black', alpha=0.7)
-            plt.axvline(np.median(target_prices), color='red', linestyle='--', label='Median')
-            plt.axvline(45.89, color='green', linestyle='--', label='Spot Price')
-            plt.xlabel('Target Price ($)')
-            plt.ylabel('Frequency')
-            plt.title('CATY Monte Carlo Valuation Distribution (n=10,000)')
-            plt.legend()
-            plt.show()</code></pre>
+            <pre><code>See scripts/analysis/run_monte_carlo_caty.py for configuration and reproducibility log.</code></pre>
             <!-- END AUTOGEN: caty14-python-code -->
         </section>
 

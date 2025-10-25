@@ -7,18 +7,22 @@
 
 ## Executive Summary
 
-**Monte Carlo Target Price (50th Percentile):** **$42.62** (−7.7% vs. $46.17 spot)
+<!-- BEGIN AUTOGEN: mc-summary -->
+**Monte Carlo Target Price (50th Percentile):** **$42.62** (−9.2% vs. $46.94 spot)
 
-**95% Confidence Interval:** $24.60 to $66.00 (range: $41.40, 89.9% of spot price)
+**95% Confidence Interval:** $24.60 to $66.00 (range: $41.40, 88.2% of spot price)
 
 **Key Findings:**
-1. **Distribution Shape:** Right-skewed but centered below spot after integrating Q3 rate/credit inputs; mean $43.63 vs median $42.62.
-2. **Downside Risk (5th percentile):** $24.60 (−46.6% vs. spot) traces to CRE migration + elevated NCOs.
-3. **Upside Potential (95th percentile):** $66.00 (+43.3% vs. spot) requires ROTE >14% with benign credit.
-4. **Probability of Loss:** 60.9% (price < $46.17 spot) even after Fed cut scenarios → downside dominates.
-5. **Expected Value:** $43.63 (−5.5% vs. spot) – the mean stays below spot despite right-tail outcomes.
+1. **Distribution Shape:** Right-skewed but centered below spot; mean $43.63 vs median $42.62.
+2. **Downside Risk (5th percentile):** $24.60 (−47.6% vs. spot) traces to CRE migration.
+3. **Upside Potential (95th percentile):** $66.00 (+40.6% vs. spot) requires ROTE >14% with benign credit.
+4. **Probability of Loss:** 60.9% (price < $46.94 spot) → downside dominates.
+5. **Expected Value:** $43.63 (−7.1% vs. spot) – mean stays below spot despite right tail.
+<!-- END AUTOGEN: mc-summary -->
 
-**Rating Implication:** Monte Carlo **median $42.62 (−7.7%)** and **mean $43.63 (−5.5%)** both trail the share price, underscoring limited upside until Q3 10-Q clarifies credit migration.
+<!-- BEGIN AUTOGEN: mc-rating-implication -->
+Monte Carlo **median $42.62 (−9.2%)** and **mean $43.63 (−7.1%)** both trail the share price, underscoring limited upside until Q3 10-Q clarifies credit migration.
+<!-- END AUTOGEN: mc-rating-implication -->
 
 ---
 
@@ -176,13 +180,15 @@ target_prices = np.array(target_prices)
 
 ### 2.2 Percentile Distribution
 
-| Percentile | Target Price | Return vs. Spot ($46.17) | Scenario |
+<!-- BEGIN AUTOGEN: mc-percentiles-table -->
+| Percentile | Target Price | Return vs. Spot ($46.94) | Scenario |
 |------------|--------------|--------------------------|----------|
-| **5th** | $24.60 | **-46.6%** | Severe CRE migration (NCO 120 bps, ROTE 6.2%) |
-| **25th** | $34.64 | -24.9% | Guardrail credit + flat rates |
-| **50th (Median)** | **$42.62** | **-7.7%** | Probability-weighted base |
-| **75th** | $51.24 | +11.0% | Benign credit normalization |
-| **95th** | $66.00 | **+43.0%** | ROTE expansion + rate stability |
+| **5th Percentile** | $24.60 | **-47.6%** | Severe CRE migration |
+| **25th Percentile** | $34.64 | **-26.2%** | Guardrail credit + flat rates |
+| **50th Percentile** | $42.62 | **-9.2%** | Probability-weighted base |
+| **75th Percentile** | $51.24 | **+9.2%** | Benign credit |
+| **95th Percentile** | $66.00 | **+40.6%** | ROTE expansion |
+<!-- END AUTOGEN: mc-percentiles-table -->
 
 ---
 
@@ -201,7 +207,9 @@ target_prices = np.array(target_prices)
 
 ### 2.4 Probability of Loss (Below Spot Price)
 
-**P(Target < $46.17):** **60.9%**
+<!-- BEGIN AUTOGEN: mc-loss-highlight -->
+**P(Target < $46.94):** **60.9%** – loss probability remains above upside despite rate-cut scenarios.
+<!-- END AUTOGEN: mc-loss-highlight -->
 
 **Interpretation:** Loss probability now exceeds 60%; rate relief alone does not offset credit/repricing drag.
 

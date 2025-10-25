@@ -6866,6 +6866,20 @@
           ]
         },
         {
+          "marker": "caty12-valuation-bridge-subtitle",
+          "type": "text",
+          "template": {
+            "template": "<p class=\"valuation-bridge-subtitle\">{content}</p>",
+            "placeholders": {
+              "{content}": {
+                "source": "caty12_tables",
+                "path": "narratives.valuation_bridge_subtitle",
+                "format": "text"
+              }
+            }
+          }
+        },
+        {
           "marker": "caty12-key-finding-box",
           "type": "text",
           "wrapper": {
@@ -11395,6 +11409,27 @@
           }
         },
         {
+          "marker": "caty14-distribution-subtitle",
+          "type": "text",
+          "template": {
+            "template": "<p class=\"mc-dist-subtitle\">Probability mass across four price bands | Spot {spot_price} | Median {median_price} | Price bins are categorical; percentile lines interpolate within bin widths</p>",
+            "placeholders": {
+              "{spot_price}": {
+                "source": "caty14_tables",
+                "path": "simulation_summary.spot_price",
+                "format": "currency",
+                "decimals": 2
+              },
+              "{median_price}": {
+                "source": "caty14_tables",
+                "path": "simulation_summary.target_median",
+                "format": "currency",
+                "decimals": 2
+              }
+            }
+          }
+        },
+        {
           "marker": "caty14-rating-implication",
           "type": "text",
           "template": {
@@ -11639,9 +11674,8 @@
             "Probability",
             "Target Price",
             "Return",
-            "ROTE",
-            "NCO",
-            "COE",
+            "Annual EPS",
+            "NCO (bps)",
             "Description"
           ],
           "columns": [
@@ -11649,14 +11683,12 @@
             "probability",
             "target_price",
             "return",
-            "rote",
-            "nco",
-            "coe",
+            "annual_eps",
+            "nco_bps",
             "description"
           ],
           "column_classes": [
             "",
-            "number",
             "number",
             "number",
             "number",
@@ -11680,14 +11712,11 @@
               "return": {
                 "template": "{return}"
               },
-              "rote": {
-                "template": "{rote}"
+              "annual_eps": {
+                "template": "{annual_eps}"
               },
-              "nco": {
-                "template": "{nco}"
-              },
-              "coe": {
-                "template": "{coe}"
+              "nco_bps": {
+                "template": "{nco_bps}"
               },
               "description": {
                 "template": "{description}"
@@ -12071,6 +12100,20 @@
               "{validation_text}": {
                 "source": "caty16_tables",
                 "path": "coe_summary.validation",
+                "format": "text"
+              }
+            }
+          }
+        },
+        {
+          "marker": "caty16-market-crosscheck",
+          "type": "text",
+          "template": {
+            "template": "{content}",
+            "placeholders": {
+              "{content}": {
+                "source": "caty16_tables",
+                "path": "narratives.market_implied_note_html",
                 "format": "text"
               }
             }

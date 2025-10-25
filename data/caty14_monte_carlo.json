@@ -1,28 +1,28 @@
 {
   "comment": "CATY_14 Monte Carlo Valuation - 10K Simulation Runs",
-  "last_updated": "2025-10-22T21:45:14Z",
+  "last_updated": "2025-10-25T02:43:01Z",
   "data_source": "Recalibrated 10k-run simulation (ROTE/COE/NCO as of 22-Oct-2025)",
   "period": "Q3 2025",
   "simulation_summary": {
     "num_runs": 10000,
     "target_median": 42.62,
     "target_mean": 43.63,
-    "spot_price": 46.17,
-    "median_return_pct": -7.7,
-    "mean_return_pct": -5.5,
+    "spot_price": 46.94,
+    "median_return_pct": -9.2,
+    "mean_return_pct": -7.1,
     "rating": "HOLD",
-    "rating_rationale": "Median -7.7% and mean -5.5% vs spot flag downside skew, but delta is within HOLD guardrails pending Q3 10-Q evidence.",
+    "rating_rationale": "Median -9.2% and mean -7.1% vs spot flag downside skew, but delta remains within HOLD guardrails pending Q3 10-Q evidence.",
     "distribution_skew": "Right-skewed below spot",
     "skew_note": "Mean remains above median but both trail the share price; loss probability now 61%.",
-    "key_findings_html": "<ol>\n    <li><strong>Median outcome:</strong> $42.62 (\u22127.7% vs spot) => valuation skew now negative.</li>\n    <li><strong>Downside tail:</strong> $24.60 5th percentile aligns with severe CRE migration.</li>\n    <li><strong>Upside tail:</strong> Requires ROTE >14% and NCO <20 bps (probability 17%).</li>\n    <li><strong>Loss probability:</strong> 60.9% of simulations end below $46.17.</li>\n</ol>",
-    "probability_of_loss_html": "<p><strong>P(Target < $46.17):</strong> <strong>60.9%</strong></p>"
+    "key_findings_html": "<ol>\n    <li><strong>Median outcome:</strong> $42.62 (-9.2% vs spot) =&gt; valuation skew now negative.</li>\n    <li><strong>Downside tail:</strong> $24.60 5th percentile aligns with severe CRE migration.</li>\n    <li><strong>Upside tail:</strong> Requires ROTE &gt;14% and NCO &lt;20 bps (probability 17%).</li>\n    <li><strong>Loss probability:</strong> 60.9% of simulations end below $46.94.</li>\n</ol>",
+    "probability_of_loss_html": "<p><strong>P(Target &lt; $46.94):</strong> <strong>60.9%</strong></p>"
   },
   "confidence_interval": {
     "level": "95%",
     "lower_price": 24.6,
     "upper_price": 66.0,
     "range_dollars": 41.4,
-    "range_pct_of_spot": 89.9
+    "range_pct_of_spot": 88.2
   },
   "tables": {
     "parameter_distributions": [
@@ -102,35 +102,35 @@
         "row_class": "",
         "label": "5th Percentile",
         "target_price": "$24.60",
-        "return": "-46.6%",
+        "return": "-47.6%",
         "scenario": "Severe CRE migration"
       },
       {
         "row_class": "",
         "label": "25th Percentile",
         "target_price": "$34.64",
-        "return": "-24.8%",
+        "return": "-26.2%",
         "scenario": "Guardrail credit + flat rates"
       },
       {
         "row_class": "base-case",
         "label": "50th Percentile (Median)",
         "target_price": "$42.62",
-        "return": "-7.7%",
+        "return": "-9.2%",
         "scenario": "Probability-weighted base"
       },
       {
         "row_class": "",
         "label": "75th Percentile",
         "target_price": "$51.24",
-        "return": "11.2%",
+        "return": "+9.2%",
         "scenario": "Benign credit"
       },
       {
         "row_class": "",
         "label": "95th Percentile",
         "target_price": "$66.00",
-        "return": "43.3%",
+        "return": "+40.6%",
         "scenario": "ROTE expansion"
       }
     ],
@@ -175,7 +175,47 @@
         "rule": "95th percentile < 1.5\u00d7 spot",
         "status_html": "<span class=\"status-pass\">PASSED</span>"
       }
-    ]
+    ],
+    "scenario_breakdown": [
+      {
+        "scenario": "Base (carry)",
+        "probability": "50%",
+        "target_price": "$46.62",
+        "return": "-0.7%",
+        "annual_eps": "$4.63",
+        "nco_bps": "18 bps",
+        "description": "Fed cuts (\u221250/\u221225/0 bps blend) with benign credit migration."
+      },
+      {
+        "scenario": "Guardrail",
+        "probability": "30%",
+        "target_price": "$43.71",
+        "return": "-6.9%",
+        "annual_eps": "$4.07",
+        "nco_bps": "43 bps",
+        "description": "Through-cycle mean NCO (43 bps) and modest rate relief."
+      },
+      {
+        "scenario": "Stress",
+        "probability": "15%",
+        "target_price": "$38.73",
+        "return": "-17.5%",
+        "annual_eps": "$3.11",
+        "nco_bps": "85 bps",
+        "description": "Movie theatre/retail watchlist migration with flat/+25 bps rates."
+      },
+      {
+        "scenario": "Severe",
+        "probability": "5%",
+        "target_price": "$34.78",
+        "return": "-25.9%",
+        "annual_eps": "$2.35",
+        "nco_bps": "120 bps",
+        "description": "GFC analogue: CRE downgrades widen losses, limited rate relief."
+      }
+    ],
+    "sensitivity": [],
+    "methodology_comparison": []
   },
   "probability_of_loss": {
     "loss_probability_pct": 60.9,
@@ -186,21 +226,25 @@
   },
   "var_analysis": {
     "var_95_abs": "$21.47/share",
-    "var_95_pct": "-46.6%",
+    "var_95_pct": "-45.7%",
     "var_interpretation": "5th percentile outcome implies >$21 downside per share",
     "cvar_95_price": "$22.54/share",
-    "cvar_95_pct": "-51.1%",
+    "cvar_95_pct": "-50.1%",
     "cvar_interpretation": "Average of worst 5% implies shares near $22.5"
   },
   "narratives": {
-    "key_findings_html": "<ol>\n    <li><strong>Median outcome:</strong> $42.62 (\u22127.7% vs spot) \u2014 valuation skew negative.</li>\n    <li><strong>Downside tail:</strong> $24.60 5th percentile links to severe CRE migration.</li>\n    <li><strong>Upside tail:</strong> Requires NIM expansion and normalized credit; probability 17%.</li>\n    <li><strong>Loss probability:</strong> 60.9% of simulations fall below $46.17.</li>\n</ol>",
-    "rating_implication_html": "<p><strong>Rating Implication:</strong> Negative skew warrants caution, but with spot only ~5% above intrinsic value we maintain a <strong>HOLD</strong> pending fresh evidence.</p>",
+    "key_findings_html": "<ol>\n    <li><strong>Median outcome:</strong> $42.62 (-9.2% vs spot) =&gt; valuation skew now negative.</li>\n    <li><strong>Downside tail:</strong> $24.60 5th percentile aligns with severe CRE migration.</li>\n    <li><strong>Upside tail:</strong> Requires ROTE &gt;14% and NCO &lt;20 bps (probability 17%).</li>\n    <li><strong>Loss probability:</strong> 60.9% of simulations end below $46.94.</li>\n</ol>",
+    "rating_implication_html": "<p><strong>Rating Implication:</strong> Negative skew warrants caution, but with spot now -6.1% above intrinsic value we maintain a <strong>HOLD</strong> pending fresh evidence.</p>",
     "distribution_rationale_html": "<ul>\n    <li><strong>ROTE:</strong> Truncated normal anchored to 2024\u20132025 volatility.</li>\n    <li><strong>NCO:</strong> Log-normal with fat right tail to capture CRE impairments.</li>\n    <li><strong>COE & g:</strong> Normal draws with tighter variance reflecting market anchoring.</li>\n</ul>",
-    "probability_of_loss_html": "<p><strong>P(Target < $46.17):</strong> <strong>60.9%</strong></p>",
-    "var_analysis_html": "<h3>6.1 VaR (95% Confidence)</h3>\n<p><strong>VaR95:</strong> $21.47 drop (\u2212-46.6%)</p>\n<h3>6.2 Conditional Value-at-Risk</h3>\n<p><strong>CVaR95:</strong> Avg loss $23.53; implied price $22.54.</p>",
+    "probability_of_loss_html": "<p><strong>P(Target &lt; $46.94):</strong> <strong>60.9%</strong></p>",
+    "var_analysis_html": "<h3>6.1 VaR (95% Confidence)</h3>\n<p><strong>VaR95:</strong> $21.47 drop (-45.7%)</p>\n<h3>6.2 Conditional Value-at-Risk</h3>\n<p><strong>CVaR95:</strong> Avg loss $23.53; implied price $22.54 (-50.1%).</p>",
     "qa_intro_html": "<p class=\"font-size-12\">Simulation rerun with updated covariance; QA checks confirm probability integrity.</p>",
-    "python_code_html": "<pre><code>See scripts/analysis/run_monte_carlo_caty.py for configuration and reproducibility log.</code></pre>"
+    "python_code_html": "<pre><code>See scripts/analysis/run_monte_carlo_caty.py for configuration and reproducibility log.</code></pre>",
+    "distribution_interpretation_html": "<ul>\n    <li><strong>ROTE:</strong> Truncated normal anchored to 2024\u20132025 volatility.</li>\n    <li><strong>NCO:</strong> Log-normal with fat right tail to capture CRE impairments.</li>\n    <li><strong>COE & g:</strong> Normal draws with tighter variance reflecting market anchoring.</li>\n</ul>",
+    "probability_highlight_html": "<p><strong>Probability Mix:</strong> 26.0% Sub-$35 / 31.5% $35-$45 / 25.0% $45-$55 / 17.4% $55+</p>",
+    "sensitivity_highlight_html": "<p class=\"font-size-12\">Sensitivity rerun pending refreshed Monte Carlo drivers.</p>",
+    "methodology_interpretation_html": "<p class=\"font-size-12\">Methodology comparison narrative will refresh after next Monte Carlo rerun.</p>"
   },
-  "key_findings_html": "<ol>\n    <li><strong>Median outcome:</strong> $42.62 (\u22127.7% vs spot) => valuation skew now negative.</li>\n    <li><strong>Downside tail:</strong> $24.60 5th percentile aligns with severe CRE migration.</li>\n    <li><strong>Upside tail:</strong> Requires ROTE >14% and NCO <20 bps (probability 17%).</li>\n    <li><strong>Loss probability:</strong> 60.9% of simulations end below $46.17.</li>\n</ol>",
-  "probability_of_loss_html": "<p><strong>P(Target < $46.17):</strong> <strong>60.9%</strong></p>"
+  "key_findings_html": "<ol>\n    <li><strong>Median outcome:</strong> $42.62 (-9.2% vs spot) =&gt; valuation skew now negative.</li>\n    <li><strong>Downside tail:</strong> $24.60 5th percentile aligns with severe CRE migration.</li>\n    <li><strong>Upside tail:</strong> Requires ROTE &gt;14% and NCO &lt;20 bps (probability 17%).</li>\n    <li><strong>Loss probability:</strong> 60.9% of simulations end below $46.94.</li>\n</ol>",
+  "probability_of_loss_html": "<p><strong>P(Target &lt; $46.94):</strong> <strong>60.9%</strong></p>"
 }

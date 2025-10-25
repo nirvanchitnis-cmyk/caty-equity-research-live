@@ -165,7 +165,7 @@
                 <div class="source-details">
                     <strong>Q1'22 Data:</strong> Form 10-Q, Accession 0001437749-22-011384, Filed May 9, 2022<br>
                     <strong>Excerpt:</strong> "...cost of funds on average interest-bearing liabilities was 0.38%, and the cost of interest-bearing deposits was 0.33%..."<br>
-                    <strong>URL:</strong> <a href="https://www.sec.gov/Archives/edgar/data/0000861842/000143774922011384/caty20220331_10q.htm" target="_blank" rel="noopener noreferrer">View Q1'22 Filing</a><br><br>
+                    <strong>URL:</strong> <a href="https://www.sec.gov/Archives/edgar/data/861842/000143774922011384/caty20220331_10q.htm" target="_blank" rel="noopener noreferrer">View Q1'22 Filing</a><br><br>
 
                     <strong>Q2'25 Data:</strong> Form 10-Q, Accession 0001437749-25-025772, Filed August 8, 2025<br>
                     <strong>Excerpt:</strong> "...the average cost of interest-bearing deposits was 3.35%..."<br>
@@ -208,7 +208,7 @@
 
                     <strong>Q1'22 Data:</strong> Form 10-Q, MD&A - Average balances, yields and rates (liabilities table)<br>
                     <strong>Note:</strong> Total interest-bearing deposits (avg $13,581,591k; interest $11,188k; rate 0.33%) and Demand deposits (avg $4,360,392k)<br>
-                    <strong>URL:</strong> <a href="https://www.sec.gov/Archives/edgar/data/0000861842/000143774922011384/caty20220331_10q.htm" target="_blank" rel="noopener noreferrer">View Q1'22 Filing</a>
+                    <strong>URL:</strong> <a href="https://www.sec.gov/Archives/edgar/data/861842/000143774922011384/caty20220331_10q.htm" target="_blank" rel="noopener noreferrer">View Q1'22 Filing</a>
                 </div>
             </div>
             <!-- END AUTOGEN: caty05-all-in-beta-sources -->
@@ -569,64 +569,43 @@
                 <thead>
                     <tr>
                         <th>Scenario</th>
-                        <th class="numeric">Fed Funds Target</th>
-                        <th class="numeric">IB Deposit Cost</th>
-                        <th class="numeric">NIM</th>
-                        <th class="numeric">Quarterly EPS</th>
-                        <th class="numeric">Δ Interest Expense (qtr)</th>
-                        <th>Commentary</th>
+                        <th class="numeric">Fed Funds Cut</th>
+                        <th class="numeric">Deposit Cost Δ</th>
+                        <th class="numeric">Estimated NIM Impact</th>
+                        <th>Key Assumptions</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td><strong>Cut 100 bps</strong></td>
-                        <td class="numeric">4.33%</td>
-                        <td class="numeric">2.65% (▼63 bps)</td>
-                        <td class="numeric">3.59% (▲28 bps)</td>
-                        <td class="numeric">$1.30</td>
-                        <td class="numeric">-$26.2M</td>
-                        <td>Time-deposit beta 0.87 drives repricing; deposit costs fall faster than modeled asset-yield drag (35% pass-through).</td>
+                        <td><strong>Base Case</strong></td>
+                        <td class="numeric">-100 bps</td>
+                        <td class="numeric">-60 bps</td>
+                        <td class="numeric">+10 to +20 bps</td>
+                        <td>Asset repricing lags 40-50 bps; duration gap benefit; assumes 60% down-cycle beta</td>
                     </tr>
                     <tr>
-                        <td><strong>Cut 50 bps</strong></td>
-                        <td class="numeric">4.83%</td>
-                        <td class="numeric">2.96% (▼32 bps)</td>
-                        <td class="numeric">3.45% (▲14 bps)</td>
-                        <td class="numeric">$1.22</td>
-                        <td class="numeric">-$13.1M</td>
-                        <td>Commercial MMA rates reset to 3.17%; DDA mix (17%) cushions all-in funding cost at 2.47%.</td>
+                        <td><strong>Moderate Cut</strong></td>
+                        <td class="numeric">-200 bps</td>
+                        <td class="numeric">-120 bps</td>
+                        <td class="numeric">+20 to +40 bps</td>
+                        <td>Cumulative NIM expansion over 4-6 quarters; assumes stable loan yields initially</td>
                     </tr>
                     <tr>
-                        <td><strong>Cut 25 bps</strong></td>
-                        <td class="numeric">5.08%</td>
-                        <td class="numeric">3.12% (▼16 bps)</td>
-                        <td class="numeric">3.38% (▲7 bps)</td>
-                        <td class="numeric">$1.17</td>
-                        <td class="numeric">-$6.6M</td>
-                        <td>Partial rollover relief on time deposits; modeled deposit beta 0.63 implies limited margin expansion.</td>
+                        <td><strong>Aggressive Cut</strong></td>
+                        <td class="numeric">-300 bps</td>
+                        <td class="numeric">-180 bps</td>
+                        <td class="numeric">+15 to +35 bps</td>
+                        <td>Asset repricing accelerates; credit concerns limit NIM expansion; assumes 60% beta throughout</td>
                     </tr>
                     <tr>
-                        <td><strong>Hike 25 bps</strong></td>
-                        <td class="numeric">5.58%</td>
-                        <td class="numeric">3.44% (▲16 bps)</td>
-                        <td class="numeric">3.24% (▼7 bps)</td>
-                        <td class="numeric">$1.09</td>
-                        <td class="numeric">+$6.5M</td>
-                        <td>Maturing CDs reprice to 4.06%; money-market beta 0.41 keeps pass-through manageable but erodes NIM.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Hike 50 bps</strong></td>
-                        <td class="numeric">5.83%</td>
-                        <td class="numeric">3.59% (▲31 bps)</td>
-                        <td class="numeric">3.17% (▼14 bps)</td>
-                        <td class="numeric">$1.04</td>
-                        <td class="numeric">+$13.0M</td>
-                        <td>Deposit competition intensifies; modeled interest expense adds $13M per quarter, overwhelming asset-yield lift.</td>
+                        <td><strong>Sticky Deposits</strong></td>
+                        <td class="numeric">-100 bps</td>
+                        <td class="numeric">-40 bps</td>
+                        <td class="numeric">0 to +10 bps</td>
+                        <td>Lower effective beta (40%) if deposit competition eases; upside scenario</td>
                     </tr>
                 </tbody>
             </table>
-            <p class="text-small text-secondary mt-8">Source: <code>scripts/build_deposit_rate_scenarios.py</code> using regression betas in <code>analysis/deposit_beta_regressions.json</code> and Q3 2025 8-K disclosed deposit costs (3.28%). Asset-yield pass-through assumption = 35% of Fed move.</p>
-            <p class="text-small text-secondary">Probability-weighted valuation overlay: see <code>analysis/probabilistic_outlook.json</code> (joint Fed path & credit probabilities) which delivers base fair value $48.1, guardrail $45.1, stress $40.0.</p>
             <!-- END AUTOGEN: caty05-down-cycle-scenarios -->
 
             <h3>Critical Factors Affecting Down-Cycle NIM</h3>

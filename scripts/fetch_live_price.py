@@ -7,6 +7,7 @@ import json
 import sys
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
+from typing import Any
 
 import yfinance as yf
 
@@ -14,18 +15,23 @@ ROOT = Path(__file__).resolve().parents[1]
 DATA_PATH = ROOT / "data" / "market_data_current.json"
 
 
-def fetch_latest_price() -> tuple[float, str]:
-    """Return the most recent close price and corresponding date string."""
+def fetch_latest_price(days: int = 5) -> tuple[float, str]:
+    """Return the most recent close price within the trailing `days` window."""
+    if days < 1:
+        raise ValueError("days must be >= 1")
+
     ticker = yf.Ticker("CATY")
-    data = ticker.history(period="1d")
-    if data.empty:
+    history = ticker.history(period=f"{days}d")
+    history = history.dropna(subset=["Close"])
+    if history.empty:
         raise RuntimeError("No price data returned from Yahoo Finance")
-    close_price = float(data["Close"].iloc[-1])
-    price_date = data.index[-1].strftime("%Y-%m-%d")
+
+    close_price = float(history["Close"].iloc[-1])
+    price_date = history.index[-1].strftime("%Y-%m-%d")
     return close_price, price_date
 
 
-def update_market_data(price: float, price_date: str) -> None:
+def update_market_data(price: float, price_date: str) -> dict[str, Any]:
     """Update market_data_current.json with the latest price information."""
     if not DATA_PATH.exists():
         raise FileNotFoundError(f"Market data file missing: {DATA_PATH}")
@@ -78,12 +84,18 @@ def update_market_data(price: float, price_date: str) -> None:
         json.dump(payload, fh, indent=2)
         fh.write("\n")
 
+    return payload
+
 
 def main() -> int:
     try:
         price, price_date = fetch_latest_price()
-        update_market_data(price, price_date)
+        payload = update_market_data(price, price_date)
+        metrics = payload.get("calculated_metrics", {})
+        tbvps = metrics.get("tbvps", "n/a")
+        ptbv = metrics.get("current_ptbv", "n/a")
         print(f"✅ Updated CATY price: ${price:.2f} ({price_date})")
+        print(f"   Tangible book ${tbvps} | Current P/TBV {ptbv}")
         return 0
     except Exception as exc:  # noqa: BLE001
         print(f"❌ Failed to update CATY price: {exc}", file=sys.stderr)

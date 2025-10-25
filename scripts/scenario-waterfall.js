@@ -23,7 +23,7 @@
     const CONSTANTS = {
         pngWidth: 1200,
         pngHeight: 800,
-        spotPrice: 46.17
+        spotPrice: 46.94
     };
 
     const SCENARIO_CONFIG = {

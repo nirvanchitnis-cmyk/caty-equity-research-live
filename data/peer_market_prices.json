@@ -1,6 +1,6 @@
 {
-  "date": "2025-10-22",
-  "captured_at": "2025-10-22T22:39:28.227301Z",
+  "date": "2025-10-24",
+  "captured_at": "2025-10-25T02:28:28.661425Z",
   "source": "yfinance daily close (adjusted)",
   "tickers": [
     "CATY",
@@ -15,22 +15,22 @@
     "OPBK"
   ],
   "prices": {
-    "CATY": 46.17,
-    "EWBC": 102.36,
-    "CVBF": 18.62,
-    "HAFC": 26.46,
-    "HOPE": 10.57,
-    "COLB": 25.0,
-    "WAFD": 29.1,
+    "CATY": 46.94,
+    "EWBC": 102.52,
+    "CVBF": 19.07,
+    "HAFC": 27.05,
+    "HOPE": 10.73,
+    "COLB": 25.54,
+    "WAFD": 29.57,
     "PPBI": 24.49,
-    "BANC": 16.88,
-    "OPBK": 13.58
+    "BANC": 16.98,
+    "OPBK": 13.64
   },
   "fallback_prices": {
     "tickers": [
       "PPBI"
     ],
     "note": "Retained last verified close where yfinance returned no recent data.",
-    "previous_snapshot": null
+    "previous_snapshot": "2025-10-25T02:25:34.463751Z"
   }
 }

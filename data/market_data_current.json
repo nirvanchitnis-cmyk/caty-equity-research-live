@@ -1,28 +1,28 @@
 {
-  "price": 46.17,
-  "price_date": "2025-10-22",
-  "report_generated": "2025-10-22T22:38:16Z",
-  "data_source": "NASDAQ closing price (Wednesday, Oct 22, 2025)",
+  "price": 46.94,
+  "price_date": "2025-10-24",
+  "report_generated": "2025-10-25T02:43:01Z",
+  "data_source": "NASDAQ closing price (Friday, Oct 24, 2025)",
   "ticker": "CATY",
   "company": "Cathay General Bancorp",
   "metadata": {
-    "last_trading_day": "2025-10-22",
+    "last_trading_day": "2025-10-24",
     "market_status": "closed",
-    "next_trading_day": "2025-10-23",
+    "next_trading_day": "2025-10-27",
     "data_quality": "VERIFIED",
     "update_method": "yfinance API"
   },
   "calculated_metrics": {
     "tbvps": 36.16,
-    "current_ptbv": 1.277,
+    "current_ptbv": 1.298,
     "target_regression": 51.88,
     "target_normalized": 44.39,
     "target_wilson_95": 48.95,
     "target_irc_blended": 50.12,
-    "return_regression_pct": 12.4,
-    "return_normalized_pct": -3.9,
-    "return_wilson_95_pct": 6.0,
-    "return_irc_blended_pct": 8.6,
+    "return_regression_pct": 10.5,
+    "return_normalized_pct": -5.4,
+    "return_wilson_95_pct": 4.3,
+    "return_irc_blended_pct": 6.8,
     "rating": "HOLD",
     "normalized_ptbv": 1.228,
     "implied_coe_pct": 9.587,
@@ -58,10 +58,10 @@
   "version": "1.0",
   "schema_url": "data/market_data_schema.json",
   "report_metadata": {
-    "report_date": "October 22, 2025",
-    "report_date_iso": "2025-10-22",
-    "last_updated_utc": "2025-10-22T22:38:16Z",
-    "generated_at_display": "October 22, 2025 22:38 UTC"
+    "report_date": "October 25, 2025",
+    "report_date_iso": "2025-10-25",
+    "last_updated_utc": "2025-10-25T02:43:01+00:00",
+    "generated_at_display": "October 25, 2025 02:43 UTC"
   },
   "narrative_prose": {
     "investment_thesis_summary": "{{company}} ({{ticker}}) trades at ${{price}} ({{price_date}}) with expected return of {{return_wilson_95_pct}}% to Wilson 95% target ${{target_wilson_95}}. Current P/TBV {{current_ptbv}}x represents premium to normalized {{normalized_ptbv}}x, driven by current earnings (ROTE {{rote_ltm_pct}}%) vs through-cycle assumptions (NCO {{through_cycle_nco_bps}} bps).",
@@ -83,5 +83,25 @@
         "description": "IB-Only Beta {{deposit_beta_interest_bearing}}, 100 bps Fed cuts \u2192 ~50 bps NIM impact. NIB mix {{nib_pct}}% provides limited cushion."
       }
     ]
+  },
+  "materiality": {
+    "threshold_pct": 1.0,
+    "delta_pct": 0.0,
+    "delta_abs": 0.0,
+    "status": "REFRESHED_OK",
+    "note": "Spot move immaterial; automated narratives remain in tolerance.",
+    "timestamp": "2025-10-25T02:43:01Z",
+    "before": {
+      "price": 46.94,
+      "price_date": "2025-10-24",
+      "normalized_return_pct": -5.4,
+      "irc_blended_return_pct": 6.8
+    },
+    "after": {
+      "price": 46.94,
+      "price_date": "2025-10-24",
+      "normalized_return_pct": -5.4,
+      "irc_blended_return_pct": 6.8
+    }
   }
 }

@@ -80,7 +80,7 @@
               },
               "{probability}": {
                 "source": "valuation",
-                "path": "methods.wilson.probability_text",
+                "path": "methods.probability_weighted.probability_text",
                 "format": "text"
               }
             }

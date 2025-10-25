@@ -232,6 +232,7 @@ data/*.json ──> scripts/build_site.py ──> HTML modules + index.html
 
 ### Data Fetching
 - `scripts/update_all_data.py` - One-command refresh for all data sources
+- `scripts/refresh_market_data.py` - Spot price refresh via yfinance with before/after logging, materiality gate, and site rebuild
 - `scripts/fetch_fdic_data.py` - FDIC Call Report data
 - `scripts/fetch_peer_filings.py` - SEC EDGAR peer company data
 - `scripts/extract_deposit_betas_q10.py` - Product-level deposit averages from XBRL
